@@ -29,11 +29,11 @@ const PrefectureList = ({ prefecture }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          { prefecture && prefecture.docs.map(
+          { prefecture && prefecture.data.map(
             (pre, index) => (
               <PrefectureItem 
                 key={ index } 
-                preNo={ index } 
+                preNo={ pre.id } 
                 preName={ pre.name } 
               />
             )

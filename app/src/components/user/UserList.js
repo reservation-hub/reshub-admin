@@ -34,8 +34,8 @@ const UserList = ({ users }) => {
           { users && users.map(
             (user, index) => (
               <UserItem 
-                key={ user._id }
-                userId={ user._id }
+                key={ user.id }
+                userId={ user.id }
                 userNo={ index }
                 userFirstname={ user.firstName }
                 userLastname={ user.lastName }

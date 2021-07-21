@@ -28,11 +28,11 @@ const CityList = ({ cities }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          { cities && cities.docs.map(
+          { cities && cities.data.map(
             (city, index) => (
               <CityItem
                 key={ index }
-                cityNo={ index }
+                cityNo={ city.id }
                 cityName={ city.name }
               />
             )
