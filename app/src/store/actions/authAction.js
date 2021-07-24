@@ -75,8 +75,11 @@ export const loginStart = (email, password) => async dispatch => {
 // googelログインを実行するアクション
 export const googleLogin = googleResponse => async (dispatch) => {
 
+  const provider = 'google'
+
   try {
-    const user = await apiEndpoint.googleLogin(googleResponse.tokenId)
+    const user = await apiEndpoint.googleLogin(provider, googleResponse.tokenId)
+    console.log(user)
     const token = user.data.token
 
     Cookies.set('refreshToken', token)

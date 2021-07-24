@@ -15,7 +15,7 @@ const PrefectureList = ({ prefecture }) => {
   return (
     <Paper>
       <Typography variant='h4'>
-        Prefecture List
+        県一覧
       </Typography>
       <Table>
         <TableHead>
@@ -24,7 +24,7 @@ const PrefectureList = ({ prefecture }) => {
               No
             </TableCell>
             <TableCell>
-              Prefecture
+              県
             </TableCell>
           </TableRow>
         </TableHead>

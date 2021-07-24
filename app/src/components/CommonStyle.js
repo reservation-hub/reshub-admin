@@ -1,45 +1,29 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const CommonStyle = makeStyles({
-  h255: {
-    height: '255px'
-  },
-  mt1: {
-    marginTop: '1rem'
-  },
-  mb1: {
-    marginBottom: '1rem'
-  },
-  mb2: {
-    marginBottom: '2rem'
-  },
+const CommonStyle = makeStyles(theme => ({
   boxCenter: {
     position: 'absolute',
     top: '25%',
     left: '25%',
-    right: '25%'
+    right: '25%',
+    bottom: '25%'
   },
-  commonButton: {
-    width: '100%',
-    padding: '.32rem',
-    fontSize: '1.2rem',
-    border: '1px solid #84A8E3',
+  buttonRoot: {
+    fontSize: '.85rem',
+    border: `1px solid ${ theme.maincolor }`,
     borderRadius: '.25rem',
-    backgroundColor: '#fafafa',
+    backgroundColor: theme.subcolor,
     cursor: 'pointer',
     color: '#999',
+    transition: 'all .5s ease 0s',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     '&:hover': {
       color: '#fafafa',
-      backgroundColor: '#84A8E3',
-      transition: '.3s ease'
+      backgroundColor: theme.maincolor,
+      transition: 'all .5s ease 0s',
+      transform: 'translateY(0.2rem)'
     }
-  },
-  ics1: {
-    width: '25px',
-    height: '25px',
-    margin: '.1rem -2rem 0 1rem',
-    float: 'left',
   }
-})
+}))
 
 export default CommonStyle

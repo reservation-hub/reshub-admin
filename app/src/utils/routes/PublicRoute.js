@@ -18,7 +18,7 @@ const PublicRoute = ({ children, ...rest }) => {
             { children }
           </Route>
         ) : (
-          <Redirect to='/' />
+          <Redirect to='/auth' />
         ) }
     </>
   )

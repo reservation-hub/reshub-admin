@@ -14,7 +14,7 @@ const UserList = ({ users }) => {
   return (
     <Paper>
       <Typography variant='h4'>
-        User List
+        ユーザー一覧
       </Typography>
       <Table>
         <TableHead>
@@ -23,10 +23,10 @@ const UserList = ({ users }) => {
               No
             </TableCell>
             <TableCell>
-              UserName
+              お名前
             </TableCell>
             <TableCell>
-              Email
+              メールアドレス
             </TableCell>
           </TableRow>
         </TableHead>

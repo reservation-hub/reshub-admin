@@ -1,6 +1,6 @@
 alias admin-init="git submodule update --init reshub-deploy"
 
-alias admin-up="docker-compose build && docker-compose up"
-alias admin-down="docker-compose down"
-alias admin-bash="docker-compose exec admin bash"
-alias admin-log="docker-compose logs -f --tail 100 admin"
+alias rhadmin="docker-compose build && docker-compose up"
+alias addown="docker-compose down"
+alias adbash="docker-compose exec admin bash"
+alias adlog="docker-compose logs -f --tail 100 admin"

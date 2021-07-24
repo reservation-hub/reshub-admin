@@ -99,8 +99,8 @@ export const localLogin = async (email, password) => await instance.post(
   `/auth/login`, { email, password }
 )
 
-export const googleLogin = async tokenId => await instance.post(
-  `/auth/google`, { tokenId }
+export const googleLogin = async (provider, tokenId) => await instance.post(
+  `/auth/google`, { tokenId, provider }
 )
 
 export const silentRefresh = async () => await instance.post(
