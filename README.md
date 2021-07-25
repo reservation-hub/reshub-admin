@@ -1,10 +1,12 @@
 # reshub-admin
-reshubの管理画面リポジトリ
+Reshubの管理画面リポジトリ
 
+
+-------------------------------
 
 ## reshub-adminの初期設定
 
-aliasの設定と環境変数定義
+aliasの実行と環境変数のアップデート
 
 ```
 $ source aliases.sh
@@ -18,30 +20,29 @@ $ admin-init
 * admin画面のコンテナー起動
 
 ```
-$ admin-up
+$ rhadmin
 ```
 
 * admin画面のコンテナー停止
 
 ```
-$ admin-down
+$ addown
 ```
 
 * 実行中のコンテナーのbashに接続
 
 ```
-$ admin-bash
+$ adbash
 ```
 
 * ログの確認
 
 ```
-$ admin-log
+$ adlog
 ```
 
 -------------------------------
 
-ResHub-adminのURL及び起動ポートは
+Reshub-adminのURL及び起動ポートは
 _http://localhost:8080_
 
--------------------------------

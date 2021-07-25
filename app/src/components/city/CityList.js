@@ -14,7 +14,7 @@ const CityList = ({ cities }) => {
   return (
     <Paper>
       <Typography variant='h4'>
-        City List
+        市区町村一覧
       </Typography>
       <Table>
         <TableHead>
@@ -23,16 +23,16 @@ const CityList = ({ cities }) => {
               No
             </TableCell>
             <TableCell>
-              City
+              市区町村
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          { cities && cities.docs.map(
+          { cities && cities.data.map(
             (city, index) => (
               <CityItem
                 key={ index }
-                cityNo={ index }
+                cityNo={ city.id }
                 cityName={ city.name }
               />
             )

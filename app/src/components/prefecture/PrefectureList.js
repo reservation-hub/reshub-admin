@@ -15,7 +15,7 @@ const PrefectureList = ({ prefecture }) => {
   return (
     <Paper>
       <Typography variant='h4'>
-        Prefecture List
+        県一覧
       </Typography>
       <Table>
         <TableHead>
@@ -24,16 +24,16 @@ const PrefectureList = ({ prefecture }) => {
               No
             </TableCell>
             <TableCell>
-              Prefecture
+              県
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          { prefecture && prefecture.docs.map(
+          { prefecture && prefecture.data.map(
             (pre, index) => (
               <PrefectureItem 
                 key={ index } 
-                preNo={ index } 
+                preNo={ pre.id } 
                 preName={ pre.name } 
               />
             )

@@ -14,7 +14,7 @@ const UserList = ({ users }) => {
   return (
     <Paper>
       <Typography variant='h4'>
-        User List
+        ユーザー一覧
       </Typography>
       <Table>
         <TableHead>
@@ -23,10 +23,10 @@ const UserList = ({ users }) => {
               No
             </TableCell>
             <TableCell>
-              UserName
+              お名前
             </TableCell>
             <TableCell>
-              Email
+              メールアドレス
             </TableCell>
           </TableRow>
         </TableHead>
@@ -34,8 +34,8 @@ const UserList = ({ users }) => {
           { users && users.map(
             (user, index) => (
               <UserItem 
-                key={ user._id }
-                userId={ user._id }
+                key={ user.id }
+                userId={ user.id }
                 userNo={ index }
                 userFirstname={ user.firstName }
                 userLastname={ user.lastName }

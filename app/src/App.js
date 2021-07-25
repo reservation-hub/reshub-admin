@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { Router, Route,Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { silentLogin } from './store/actions/authAction'
+
 import PrivateRoute from './utils/routes/PrivateRoute'
+import PublicRoute from './utils/routes/PublicRoute'
 import Home from './pages/home/Home'
 import Error from './pages/error/Error'
 import history from './utils/history'
@@ -24,12 +26,19 @@ const  App = () => {
   return (
     <Router history={ history }>
       <Switch>
-        <PrivateRoute exact path='/' component={ Home }/>
+        {/* public */}
+        <PublicRoute exact path='/' component={ Home }/>
+
+        {/* only not logged in */}
         <Route path='/auth' component={ Login } /> 
+
+        {/* only admin */}
         <PrivateRoute path='/pre' component={ Prefecture }/>
         <PrivateRoute path='/city' component={ Cities } />
         <PrivateRoute path='/salon' component={ Salon }/>
         <PrivateRoute path='/users' component={ Users } />
+
+        {/* has error */}
         <Route component={ Error } />
       </Switch>
     </Router>
