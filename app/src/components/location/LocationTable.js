@@ -50,4 +50,4 @@ const LocationTable = ({
   )
 }
 
-export default LocationTable
+export default React.memo(LocationTable)

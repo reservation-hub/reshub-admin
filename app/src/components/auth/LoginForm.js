@@ -79,4 +79,4 @@ const LoginForm = ({
   )
 }
 
-export default React.memo(LoginForm)
+export default LoginForm

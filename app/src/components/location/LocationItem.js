@@ -21,4 +21,4 @@ const LocationItem = ({
   )
 }
 
-export default LocationItem
+export default React.memo(LocationItem)
