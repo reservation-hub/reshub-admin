@@ -1,5 +1,9 @@
 import { createTheme } from '@material-ui/core/styles'
 
+//-----------------------------------------------------------
+// reshub-adminのメインテーマとなるスタイルをしてする
+//-----------------------------------------------------------
+
 const theme = createTheme({
   maincolor: '#669999',
   subcolor: '#fff',

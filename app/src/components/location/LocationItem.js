@@ -1,19 +1,24 @@
+import React from 'react'
+
 import { 
   TableRow,
   TableCell  
 } from '@material-ui/core'
 
-const PrefectureItem = ({ preName, preNo }) => {
+const LocationItem = ({
+  locationNo,
+  locationName
+}) => {
   return (
     <TableRow>
       <TableCell>
-        { preNo }
+        { locationNo }
       </TableCell>
       <TableCell>
-        { preName }
+        { locationName }
       </TableCell>
     </TableRow>
   )
 }
 
-export default PrefectureItem
+export default LocationItem

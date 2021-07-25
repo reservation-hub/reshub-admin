@@ -1,5 +1,5 @@
 import React from 'react'
-import PrefectureItem from './PrefectureItem'
+
 import {
   Paper, 
   Table,
@@ -9,32 +9,37 @@ import {
   TableCell,
   Typography  
 } from '@material-ui/core'
+import LocationItem from './LocationItem'
 
-const PrefectureList = ({ prefecture }) => {
-
+const LocationTable = ({
+  tableTitle,
+  tableColumnIndex,
+  tableColumnName,
+  data
+}) => {
   return (
     <Paper>
       <Typography variant='h4'>
-        県一覧
+        { tableTitle }
       </Typography>
       <Table>
         <TableHead>
           <TableRow>
             <TableCell>
-              No
+              { tableColumnIndex }
             </TableCell>
             <TableCell>
-              県
+              { tableColumnName }
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          { prefecture && prefecture.data.map(
-            (pre, index) => (
-              <PrefectureItem 
-                key={ index } 
-                preNo={ pre.id } 
-                preName={ pre.name } 
+          { data && data.map(
+            (data, index) => (
+              <LocationItem 
+                key={ index }
+                locationNo={ data.id }
+                locationName={ data.name }
               />
             )
           ) }
@@ -44,4 +49,4 @@ const PrefectureList = ({ prefecture }) => {
   )
 }
 
-export default PrefectureList
+export default LocationTable

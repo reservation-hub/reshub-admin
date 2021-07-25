@@ -7,6 +7,7 @@ import axios from 'axios'
 // apiサーバーの基準になるUrl
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
+// axiosのインスタンス生成
 const instance = axios.create({
   withCredentials: true,
   baseURL: BASE_URL

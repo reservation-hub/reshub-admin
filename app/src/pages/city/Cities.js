@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import LocationTable from '../../components/location/LocationTable'
 import { getCity } from '../../store/actions/locationAction'
-import CityList from '../../components/city/CityList'
 
 const Cities = () => {
 
@@ -14,7 +14,12 @@ const Cities = () => {
 
   return (
     <main>
-      <CityList cities={ location } />
+      <LocationTable 
+        tableTitle='市区町村一覧'
+        tableColumnIndex='No'
+        tableColumnName='市区町村'
+        data={ location && location.data }
+      />
     </main>
   )
 }

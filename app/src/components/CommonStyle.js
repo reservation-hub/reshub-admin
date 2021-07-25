@@ -1,5 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles'
 
+//-----------------------------------------------------------
+// reshub-adminの共通のスタイルをしてする
+//-----------------------------------------------------------
+
 const CommonStyle = makeStyles(theme => ({
   boxCenter: {
     position: 'absolute',
