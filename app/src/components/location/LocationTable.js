@@ -1,14 +1,15 @@
 import React from 'react'
 
 import {
-  Paper, 
   Table,
   TableHead, 
   TableBody, 
   TableRow,
   TableCell,
-  Typography  
+  Typography
 } from '@material-ui/core'
+import { StyledPaper } from '../CommonStyle'
+
 import LocationItem from './LocationItem'
 
 const LocationTable = ({
@@ -18,7 +19,7 @@ const LocationTable = ({
   data
 }) => {
   return (
-    <Paper>
+    <StyledPaper elevation={ 0 }>
       <Typography variant='h4'>
         { tableTitle }
       </Typography>
@@ -45,7 +46,7 @@ const LocationTable = ({
           ) }
         </TableBody>
       </Table>
-    </Paper>
+    </StyledPaper>
   )
 }
 

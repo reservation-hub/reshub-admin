@@ -1,8 +1,18 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { Paper } from '@material-ui/core'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
 
 //-----------------------------------------------------------
 // reshub-adminの共通のスタイルをしてする
 //-----------------------------------------------------------
+
+export const StyledPaper = withStyles(theme => ({
+  root: {
+    width: '1120px',
+    margin: '0 auto',
+    justifyContent: 'center',
+    boxSahdow: 'none'
+  }
+}))(Paper)
 
 const CommonStyle = makeStyles(theme => ({
   boxCenter: {

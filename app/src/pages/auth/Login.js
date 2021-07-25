@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import store from '../../store/store'
 import { loginStart, googleLogin } from '../../store/actions/authAction'
 
 import useInput from '../../utils/useInput'
@@ -13,7 +13,11 @@ const Login = () => {
 
   const loginCss = LoginStyle()
   const commonCss = CommonStyle()
-  const dispatch = useDispatch()
+
+  const classes = {
+    loginCss,
+    commonCss
+  }
 
   const [value, setValue] = useInput({
     email: '', password: ''
@@ -21,19 +25,19 @@ const Login = () => {
 
   const onSubmit = useCallback(e => {
     e.preventDefault()
-    dispatch(loginStart(value.email, value.password))
-  }, [dispatch, value.email, value.password])
+    store.dispatch(loginStart(value.email, value.password))
+  }, [value.email, value.password])
 
   const googleHandler = useCallback(
     response => {
-      dispatch(googleLogin(response))
-    }, [dispatch]
+      store.dispatch(googleLogin(response))
+    }, []
   )
   
   return(
     <main className={ loginCss.pageRoot }>
       <section className={ commonCss.boxCenter }>
-        <LoginSelectHeader/>
+        <LoginSelectHeader />
         <LoginForm 
           value={ value } 
           setValue={ setValue } 
@@ -42,7 +46,7 @@ const Login = () => {
           loginCss={ loginCss }
           commonCss={ commonCss }
         />
-        <LoginSelectFooter/>
+        <LoginSelectFooter />
       </section>
     </main>
   ) 

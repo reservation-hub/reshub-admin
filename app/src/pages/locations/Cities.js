@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import LocationTable from '../../components/location/LocationTable'
 import { getCity } from '../../store/actions/locationAction'
+import store from '../../store/store'
+import LocationTable from '../../components/location/LocationTable'
 
 const Cities = () => {
 
-  const dispatch = useDispatch()
-  const { location } = useSelector(state => state.location)
+  const { location } = store.useSelector(state => state.location)
 
   useEffect(() => {
-    dispatch(getCity())
-  }, [dispatch])
+    store.dispatch(getCity())
+  }, [])
 
   return (
     <main>

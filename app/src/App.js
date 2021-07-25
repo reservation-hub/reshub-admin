@@ -5,13 +5,14 @@ import { silentLogin } from './store/actions/authAction'
 
 import PrivateRoute from './utils/routes/PrivateRoute'
 import PublicRoute from './utils/routes/PublicRoute'
+import Cookies from 'js-cookie'
+import history from './utils/history'
+
 import Home from './pages/home/Home'
 import Error from './pages/error/Error'
-import history from './utils/history'
 import Login from './pages/auth/Login'
-import Prefecture from './pages/prefecture/Prefecture'
-import Cities from './pages/city/Cities'
-import Cookies from 'js-cookie'
+import Prefecture from './pages/locations/Prefecture'
+import Cities from './pages/locations/Cities'
 import Users from './pages/user/Users'
 import Salon from './pages/shop/Salon'
 
