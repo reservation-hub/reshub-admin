@@ -59,9 +59,7 @@ const LoginForm = ({
                 render={renderProps => (
                   <button 
                     onClick={ renderProps.onClick } 
-                    className={ 
-                      `${ loginCss.socialRoot } ${　loginCss.socialButton }` 
-                    }
+                    className={ loginCss.socialRoot }
                   >
                     <div className='google-icon'>
                       <FcGoogle />

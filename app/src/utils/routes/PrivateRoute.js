@@ -6,8 +6,8 @@ const PrivateRoute = ({ children, ...rest }) => {
 
   const { isAuthenticated, user } = useSelector(state => state.auth)
 
-  const isAdmin = user => user.roles.findIndex(role => role.name === 'admin') !== -1
-
+  const isAdmin = user => user.roles.findIndex(role => role.role.name === 'admin') !== -1
+  
   return (
     <>
       { isAuthenticated && 
