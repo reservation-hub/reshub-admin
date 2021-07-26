@@ -41,7 +41,7 @@ const CommonStyle = makeStyles(theme => ({
     fontSize: '.85rem',
     border: `1px solid ${ theme.palette.primary.main }`,
     borderRadius: '.25rem',
-    backgroundColor: theme.subcolor,
+    backgroundColor: theme.palette.secondary.main,
     cursor: 'pointer',
     color: '#999',
     transition: 'all .5s ease 0s',

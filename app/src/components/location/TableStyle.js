@@ -24,7 +24,8 @@ export const StyledTableHead = withStyles(theme => ({
 const LocationStyle = makeStyles(theme => ({
   tableHeadCell: {
     color: theme.palette.theadFontColor.main,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: '1rem'
   },
   tableBodyCell: {
     color: theme.palette.tbodyFontColor.main,

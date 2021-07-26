@@ -26,7 +26,10 @@ const PrivateRoute = ({ children, ...rest }) => {
             { children }
           </Route>
         ) : (
-          <Redirect to='/auth' />
+          <Redirect to={{
+            pathname: '/auth',
+            state: { error: 'アクセス権限がございません。' }
+          }} />
       ) }
     </>
   )
