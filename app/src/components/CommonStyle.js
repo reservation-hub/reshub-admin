@@ -1,6 +1,35 @@
-import { makeStyles } from '@material-ui/core/styles'
+import {
+  Paper
+} from '@material-ui/core'
+
+import {
+  makeStyles,
+  withStyles
+} from '@material-ui/core/styles'
+
+//-----------------------------------------------------------
+// reshub-adminの共通のスタイルをしてする
+//-----------------------------------------------------------
+
+export const StyledPaper = withStyles(theme => ({
+  root: {
+    width: '1120px',
+    margin: '0 auto',
+    justifyContent: 'center',
+    boxSahdow: 'none',
+    background: theme.palette.secondary.main
+  }
+}))(Paper)
 
 const CommonStyle = makeStyles(theme => ({
+  mainBackground: {
+    position: 'relative',
+    background: theme.palette.background.main
+  },
+  loginSelectBackground: {
+    position: 'relative',
+    background: theme.palette.primary.main
+  },
   boxCenter: {
     position: 'absolute',
     top: '25%',
@@ -10,7 +39,7 @@ const CommonStyle = makeStyles(theme => ({
   },
   buttonRoot: {
     fontSize: '.85rem',
-    border: `1px solid ${ theme.maincolor }`,
+    border: `1px solid ${ theme.palette.primary.main }`,
     borderRadius: '.25rem',
     backgroundColor: theme.subcolor,
     cursor: 'pointer',
@@ -19,7 +48,7 @@ const CommonStyle = makeStyles(theme => ({
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     '&:hover': {
       color: '#fafafa',
-      backgroundColor: theme.maincolor,
+      backgroundColor: theme.palette.primary.main,
       transition: 'all .5s ease 0s',
       transform: 'translateY(0.2rem)'
     }

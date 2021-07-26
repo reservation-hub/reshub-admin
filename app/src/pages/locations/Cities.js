@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCity } from '../../store/actions/locationAction'
-import CityList from '../../components/city/CityList'
+
+import LocationTable from '../../components/location/LocationTable'
+import CommonStyle from '../../components/CommonStyle'
 
 const Cities = () => {
+
+  const classes = CommonStyle()
 
   const dispatch = useDispatch()
   const { location } = useSelector(state => state.location)
@@ -13,8 +17,13 @@ const Cities = () => {
   }, [dispatch])
 
   return (
-    <main>
-      <CityList cities={ location } />
+    <main className={ classes.mainBackground }>
+      <LocationTable 
+        tableTitle='市区町村一覧'
+        tableColumnIndex='No'
+        tableColumnName='市区町村'
+        data={ location && location.data }
+      />
     </main>
   )
 }

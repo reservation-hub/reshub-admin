@@ -16,9 +16,9 @@ const Users = () => {
 
   return (
     <main>
-      <Route exact path='/users' component={ () => <UserList
-        users={ users.data }
-      /> } />
+      <Route exact path='/users'>
+        <UserList users={ users.data } />
+      </Route>
       <Route path='/users/:id' component={ Profile } />
     </main>
   )
