@@ -35,7 +35,7 @@ const Login = () => {
   )
   
   return(
-    <main className={ loginCss.pageRoot }>
+    <main className={ classes.commonCss.loginSelectBackground }>
       <section className={ commonCss.boxCenter }>
         <LoginSelectHeader />
         <LoginForm 

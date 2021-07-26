@@ -7,14 +7,21 @@ import {
 
 const LocationItem = ({
   locationNo,
-  locationName
+  locationName,
+  classes
 }) => {
+
   return (
     <TableRow>
-      <TableCell>
+      <TableCell
+        style={{ width: '76px', padding: '0', textAlign: 'center' }}
+        className={ classes.tableBodyCell }
+      >
         { locationNo }
       </TableCell>
-      <TableCell>
+      <TableCell
+        className={ classes.tableBodyCell }
+      >
         { locationName }
       </TableCell>
     </TableRow>

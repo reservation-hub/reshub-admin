@@ -5,17 +5,25 @@ import { createTheme } from '@material-ui/core/styles'
 //-----------------------------------------------------------
 
 const theme = createTheme({
-  maincolor: '#669999',
-  subcolor: '#fff',
-  theadColor: '#e5e5e5',
-  theadFontColor: '#ABB0AD',
-  tableFontColor: '#94B8B8',
+  sectionWidth: '1120px',
   palette: {
     primary: {
       main: '#669999'
     },
     secondary: {
-      main: '#999999'
+      main: '#fff'
+    },
+    background: {
+      main: '#F0F5F5'
+    },
+    thead: {
+      main: '#E5E5E5'
+    },
+    theadFontColor: {
+      main: '#ABB0AD'
+    },
+    tbodyFontColor: {
+      main: '#94B8B8'
     }
   }
 })

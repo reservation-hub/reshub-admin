@@ -1,16 +1,21 @@
 import React from 'react'
 
 import {
-  Table,
-  TableHead, 
   TableBody, 
   TableRow,
   TableCell,
   Typography
 } from '@material-ui/core'
-import { StyledPaper } from '../CommonStyle'
+import LocationStyle, {
+  StyledTable,
+  StyledTableHead
+} from './TableStyle'
+import {
+  StyledPaper
+} from '../CommonStyle'
 
 import LocationItem from './LocationItem'
+
 
 const LocationTable = ({
   tableTitle,
@@ -18,22 +23,34 @@ const LocationTable = ({
   tableColumnName,
   data
 }) => {
+
+  const classes = LocationStyle()
+
   return (
     <StyledPaper elevation={ 0 }>
-      <Typography variant='h4'>
+      <Typography
+        variant='h4'
+        color='primary'
+        className={ classes.tableHeader }
+      >
         { tableTitle }
       </Typography>
-      <Table>
-        <TableHead>
+      <StyledTable>
+        <StyledTableHead>
           <TableRow>
-            <TableCell>
+            <TableCell
+              style={{ width: '76px', padding: '0', textAlign: 'center' }}
+              className={ classes.tableHeadCell }
+            >
               { tableColumnIndex }
             </TableCell>
-            <TableCell>
+            <TableCell
+              className={ classes.tableHeadCell }
+            >
               { tableColumnName }
             </TableCell>
           </TableRow>
-        </TableHead>
+        </StyledTableHead>
         <TableBody>
           { data && data.map(
             (data, index) => (
@@ -41,11 +58,12 @@ const LocationTable = ({
                 key={ index }
                 locationNo={ data.id }
                 locationName={ data.name }
+                classes={ classes }
               />
             )
           ) }
         </TableBody>
-      </Table>
+      </StyledTable>
     </StyledPaper>
   )
 }
