@@ -6,10 +6,10 @@ import {
   loginStart,
   googleLogin
 } from '../../store/actions/authAction'
+import { useDispatch } from 'react-redux'
 import { Alert } from '@material-ui/lab'
 import { Collapse } from '@material-ui/core'
 
-import store from '../../store/store'
 import useInput from '../../utils/useInput'
 import LoginForm from '../../components/auth/LoginForm'
 import LoginSelectHeader from '../../components/common/LoginSelectHeader'
@@ -17,10 +17,12 @@ import LoginSelectFooter from '../../components/common/LoginSelectFooter'
 import LoginStyle from '../../components/auth/LoginStyle'
 import CommonStyle from '../../components/CommonStyle'
 
+
 const Login = ({ location }) => {
 
   const loginCss = LoginStyle()
   const commonCss = CommonStyle()
+  const dispatch = useDispatch()
 
   const classes = {
     loginCss,
@@ -39,14 +41,14 @@ const Login = ({ location }) => {
   const onSubmit = useCallback(
     e => {
       e.preventDefault()
-      store.dispatch(loginStart(value.email, value.password))
-    }, [value.email, value.password]
+      dispatch(loginStart(value.email, value.password))
+    }, [dispatch,value.email, value.password]
   )
 
   const googleHandler = useCallback(
     response => {
-      store.dispatch(googleLogin(response))
-    }, []
+      dispatch(googleLogin(response))
+    }, [dispatch]
   )
   
   return(

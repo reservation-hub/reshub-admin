@@ -2,11 +2,14 @@ import {
   Table,
   TableHead
 } from '@material-ui/core'
-
 import {
   makeStyles,
   withStyles
 } from '@material-ui/core/styles'
+
+//-----------------------------------------------------------
+// reshub-adminのテーブルのデフォルトスタイルを指定する
+//-----------------------------------------------------------
 
 export const StyledTable = withStyles(theme => ({
   root: {

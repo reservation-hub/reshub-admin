@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core/styles'
 
 //-----------------------------------------------------------
-// reshub-adminの共通のスタイルをしてする
+// reshub-adminの共通のスタイルを指定する
 //-----------------------------------------------------------
 
 export const StyledPaper = withStyles(theme => ({
