@@ -2,11 +2,14 @@ import {
   Table,
   TableHead
 } from '@material-ui/core'
-
 import {
   makeStyles,
   withStyles
 } from '@material-ui/core/styles'
+
+//-----------------------------------------------------------
+// reshub-adminのテーブルのデフォルトスタイルを指定する
+//-----------------------------------------------------------
 
 export const StyledTable = withStyles(theme => ({
   root: {
@@ -24,7 +27,8 @@ export const StyledTableHead = withStyles(theme => ({
 const LocationStyle = makeStyles(theme => ({
   tableHeadCell: {
     color: theme.palette.theadFontColor.main,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: '1rem'
   },
   tableBodyCell: {
     color: theme.palette.tbodyFontColor.main,

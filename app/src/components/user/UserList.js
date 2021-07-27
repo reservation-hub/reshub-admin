@@ -9,6 +9,7 @@ import {
   Typography  
 } from '@material-ui/core'
 import UserItem from './UserItem'
+import Modal from '../modal/Modal'
 
 const UserList = ({ users }) => {
   return (
@@ -16,6 +17,7 @@ const UserList = ({ users }) => {
       <Typography variant='h4'>
         ユーザー一覧
       </Typography>
+      <Modal />
       <Table>
         <TableHead>
           <TableRow>

@@ -5,7 +5,7 @@ const LoginStyle = makeStyles(theme => ({
     height: '302px',
     padding: '1.5rem',
     borderRadius: '.5rem',
-    backgroundColor: theme.subcolor
+    backgroundColor: theme.palette.secondary.main
   },
   input: {
     '& label': {
@@ -29,11 +29,12 @@ const LoginStyle = makeStyles(theme => ({
     fontSize: '.85rem',
     border: `1px solid #999`,
     borderRadius: '.25rem',
-    backgroundColor: theme.subcolor,
+    backgroundColor: theme.palette.secondary.main,
     cursor: 'pointer',
     color: '#999',
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     '&:hover': {
+      color: theme.palette.primary.main,
       backgroundColor: 'rgba(250, 250, 250, 0.3)',
       transition: 'all .5s ease 0s',
       transform: 'translateY(0.2rem)'

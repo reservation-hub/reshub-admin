@@ -1,7 +1,7 @@
 import { createTheme } from '@material-ui/core/styles'
 
 //-----------------------------------------------------------
-// reshub-adminのメインテーマとなるスタイルをしてする
+// reshub-adminのメインテーマとなるスタイルを指定する
 //-----------------------------------------------------------
 
 const theme = createTheme({
@@ -11,7 +11,7 @@ const theme = createTheme({
       main: '#669999'
     },
     secondary: {
-      main: '#fff'
+      main: '#FFFFFF'
     },
     background: {
       main: '#F0F5F5'
