@@ -1,31 +1,48 @@
-import { Link } from 'react-router-dom'
-import { 
+import React from 'react'
+
+import {
   TableRow,
   TableCell  
 } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 const UserItem = ({
   userId,
-  userNo,
-  userFirstname,
-  userLastname,
-  userEmail
+  userEmail,
+  kanjiName,
+  kanaName,
+  gender,
+  role
 }) => {
+
   return (
     <TableRow>
       <TableCell>
-        { userNo + 1 }
+        { userId }
       </TableCell>
       <TableCell>
         <Link to={ `/users/${ userId }` }>
-          { userFirstname } { userLastname }
+          { userEmail }
         </Link>
       </TableCell>
       <TableCell>
-        { userEmail }
+        { kanjiName }
+      </TableCell>
+      <TableCell>
+        { kanaName }
+      </TableCell>
+      <TableCell>
+        {  }
+      </TableCell>
+      <TableCell>
+        { gender }
+      </TableCell>
+      <TableCell>
+        { role }
       </TableCell>
     </TableRow>
   )
+
 }
 
-export default UserItem
+export default React.memo(UserItem)

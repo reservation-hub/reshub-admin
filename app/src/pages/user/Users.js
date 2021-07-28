@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
-import { Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { Route } from 'react-router-dom'
 import { fetchUserList } from '../../store/actions/userAction'
+
 import UserList from '../../components/user/UserList'
 import Profile from './Profile'
 
 const Users = () => {
 
   const dispatch = useDispatch()
-  const { users } = useSelector(state => state.user)
+  const { users, loading } = useSelector(state => state.user)
   
   useEffect(() => {
     dispatch(fetchUserList())
@@ -16,6 +17,7 @@ const Users = () => {
 
   return (
     <main>
+      { loading && <span>locading ...</span> }
       <Route exact path='/users'>
         <UserList users={ users.data } />
       </Route>

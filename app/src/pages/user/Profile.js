@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOneUser } from '../../store/actions/userAction'
+
 import ProfileItem from '../../components/user/ProfileItem'
 
 const Profile = ({ match }) => {
@@ -15,16 +16,14 @@ const Profile = ({ match }) => {
 
   return (
     <main>
-      { user && user.map(
-        (user, index) => (
-          <ProfileItem
-            key={ index } 
-            userFirstname={ user.firstName }
-            userLastname={ user.lastName }
-            userEmail={ user.email }
-          />
-        )
-      ) }
+      <ProfileItem
+        userEmail={user.email}
+        kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
+        kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
+        userName={ user.username }
+        gender={ user.gender }
+        role={ user.roles && user.roles.map(r => r.name) }
+      />
     </main>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {
   Paper, 
   Table,
@@ -8,10 +9,12 @@ import {
   TableCell,
   Typography  
 } from '@material-ui/core'
+
 import UserItem from './UserItem'
 import Modal from '../modal/Modal'
 
 const UserList = ({ users }) => {
+
   return (
     <Paper>
       <Typography variant='h4'>
@@ -25,23 +28,36 @@ const UserList = ({ users }) => {
               No
             </TableCell>
             <TableCell>
-              お名前
+              メールアドレス
             </TableCell>
             <TableCell>
-              メールアドレス
+              氏名(漢字)
+            </TableCell>
+            <TableCell>
+              氏名(カナ)
+            </TableCell>
+            <TableCell>
+              生年月日
+            </TableCell>
+            <TableCell>
+              性別
+            </TableCell>
+            <TableCell>
+              アクセス権限
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           { users && users.map(
-            (user, index) => (
-              <UserItem 
+            user => (
+              <UserItem
                 key={ user.id }
                 userId={ user.id }
-                userNo={ index }
-                userFirstname={ user.firstName }
-                userLastname={ user.lastName }
                 userEmail={ user.email }
+                kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
+                kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
+                gender={ user.gender }
+                role={ user && user.roles.map(r => r.name) }
               />
             )
           ) }
@@ -49,6 +65,7 @@ const UserList = ({ users }) => {
       </Table>
     </Paper>
   )
+
 }
 
-export default UserList
+export default React.memo(UserList)

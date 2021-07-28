@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { 
   Grid,
   Container,
@@ -12,13 +13,12 @@ const LoginForm = ({
   setValue, 
   onSubmit, 
   googleHandler,
-  loginCss,
-  commonCss 
+  classes
 }) => {
 
   return (
     <Container maxWidth='sm'>
-      <Container className={ loginCss.formBox }>
+      <Container className={ classes.loginCss.formBox }>
         <form onSubmit={ onSubmit }>
           <TextField 
             label='メールアドレス'
@@ -28,7 +28,7 @@ const LoginForm = ({
             value={ value.email }
             onChange={ setValue }
             style={{ margin: '1.115rem 0 1rem 0' }}
-            className={ loginCss.input }
+            className={ classes.loginCss.input }
             fullWidth
           />
           <TextField 
@@ -39,13 +39,13 @@ const LoginForm = ({
             placeholder='パスワードを入力してください'
             value={ value.password }
             onChange={ setValue }
-            className={ loginCss.input }
+            className={ classes.loginCss.input }
             fullWidth
           />
           <Grid container>
             <Grid item xs={ 12 }>
               <button
-                className={ `${ commonCss.buttonRoot } ${　loginCss.loginButton　}` }
+                className={ `${ classes.commonCss.buttonRoot } ${　classes.loginCss.loginButton　}` }
               >
                 ログイン
               </button>
@@ -59,7 +59,7 @@ const LoginForm = ({
                 render={renderProps => (
                   <button 
                     onClick={ renderProps.onClick } 
-                    className={ loginCss.socialRoot }
+                    className={ classes.loginCss.socialRoot }
                   >
                     <div className='google-icon'>
                       <FcGoogle />
