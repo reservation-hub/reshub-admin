@@ -6,10 +6,12 @@ import {
   loginStart,
   googleLogin
 } from '../../store/actions/authAction'
-import { useDispatch } from 'react-redux'
 import { Alert } from '@material-ui/lab'
-import { Collapse } from '@material-ui/core'
+import { useDispatch } from 'react-redux'
+import { Slide } from '@material-ui/core'
+import { AiOutlineClose } from 'react-icons/ai'
 
+import history from '../../utils/history'
 import useInput from '../../utils/useInput'
 import LoginForm from '../../components/auth/LoginForm'
 import LoginSelectHeader from '../../components/common/LoginSelectHeader'
@@ -20,29 +22,27 @@ import CommonStyle from '../../components/CommonStyle'
 
 const Login = ({ location }) => {
 
+  const [errorState, setErrorState] = useState(true)
+  const [value, setValue] = useInput({ email: '', password: '' })
+
+  const dispatch = useDispatch()
   const loginCss = LoginStyle()
   const commonCss = CommonStyle()
-  const dispatch = useDispatch()
-
   const classes = {
     loginCss,
     commonCss
   }
 
-  const [close, setClose] = useState(true)
-  const closeErorrTap = () => {
-    setClose(false)
+  const clearError = () => {
+    setErrorState(false)
+    history.replace()
   }
-
-  const [value, setValue] = useInput({
-    email: '', password: ''
-  })
 
   const onSubmit = useCallback(
     e => {
       e.preventDefault()
       dispatch(loginStart(value.email, value.password))
-    }, [dispatch,value.email, value.password]
+    }, [dispatch, value.email, value.password]
   )
 
   const googleHandler = useCallback(
@@ -53,31 +53,28 @@ const Login = ({ location }) => {
   
   return(
     <main className={ classes.commonCss.loginSelectBackground }>
-
       { location.state && location.state.error &&
-        <Collapse in={ close }>
+        <Slide in={ errorState }>
           <Alert
-            variant="filled"
-            severity="error"
+            severity='error'
             action={
-              <button onClick={() => setClose(false)}>
-                x
-              </button>
+              <span onClick={() => clearError()}>
+                <AiOutlineClose />
+              </span>
             }
           >
             <strong> { location.state.error } </strong>
           </Alert>
-        </Collapse>
+        </Slide>
       }
-      <section className={ commonCss.boxCenter }>
+      <section className={ classes.commonCss.boxCenter }>
         <LoginSelectHeader />
         <LoginForm 
-          value={ value } 
+          value={ value }
           setValue={ setValue } 
           onSubmit={ onSubmit } 
           googleHandler={ googleHandler }
-          loginCss={ loginCss }
-          commonCss={ commonCss }
+          classes={ classes }
         />
         <LoginSelectFooter />
       </section>
