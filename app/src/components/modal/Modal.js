@@ -1,43 +1,26 @@
-import React, { useState } from 'react'
-import { 
-  Modal,
-  Fade,
-  Backdrop
+import React from 'react'
+import {
+  Dialog
  } from '@material-ui/core'
 
-const ModalOverlay = () => {
-  
-  const [modalOpen, setModalOpen] = useState(false)  
-  
-  const modalOpenHandler = () => {
-    setModalOpen(true)
-  }
-  
-  const modalCloseHandler = () => {
-    setModalOpen(false)
-  }
-  
+const ModalOverlay = ({
+  children,
+  modalOpen,
+  modalCloseHandler,
+  modalOpenHandler
+}) => {
   return (
-    <>
+    <div>
       <button onClick={ modalOpenHandler }>
         open modal
       </button>
-      <Modal
+      <Dialog
         open={ modalOpen }
         onClose={ modalCloseHandler }
-        closeAfterTransition
-        BackdropComponent={ Backdrop }
-        BackdropProps={{
-          timeout: 500,
-        }}
       >
-        <Fade in={ modalOpen }>
-          <div>
-            <p>hello?</p>
-          </div>
-        </Fade>
-      </Modal>
-    </>
+        { children }
+      </Dialog>
+    </div>
   )
 }
 

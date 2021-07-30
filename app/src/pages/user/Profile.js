@@ -13,7 +13,7 @@ const Profile = ({ match }) => {
   useEffect(() => {
     dispatch(getOneUser(id))
   }, [dispatch, id])
-
+  // TODO スタイルを指定
   return (
     <main>
       <ProfileItem
