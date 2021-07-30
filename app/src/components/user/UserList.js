@@ -7,20 +7,33 @@ import {
   TableBody, 
   TableRow,
   TableCell,
-  Typography  
+  Typography,
+  Fade
 } from '@material-ui/core'
 
 import UserItem from './UserItem'
-import Modal from '../modal/Modal'
+import ModalOverlay from '../modal/Modal'
+import ModalUserForm from '../modal/ModalForm'
 
-const UserList = ({ users }) => {
-
+const UserList = ({
+  users,
+  modalOpenHandler,
+  modalCloseHandler,
+  modalOpen
+}) => {
+  // TODO スタイルを指定
   return (
     <Paper>
       <Typography variant='h4'>
         ユーザー一覧
       </Typography>
-      <Modal />
+      <ModalOverlay
+        modalOpen={ modalOpen }
+        modalCloseHandler={ modalCloseHandler }
+        modalOpenHandler={ modalOpenHandler }
+      >
+        <ModalUserForm />
+      </ModalOverlay>
       <Table>
         <TableHead>
           <TableRow>
