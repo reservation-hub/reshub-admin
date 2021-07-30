@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 
-const useInput = (initalValue) => {
+const useInput = (initalValue: string | object) => {
   
   const [input, setInput] = useState(initalValue)
   

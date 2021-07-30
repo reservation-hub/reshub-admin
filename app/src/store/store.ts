@@ -11,6 +11,12 @@ import logger from 'redux-logger'
 import setAuthToken from '../utils/setAuthToken'
 import Cookies from 'js-cookie'
 
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
+  }
+}
+
 const persistConfig = {
   key: 'root',
   storage,

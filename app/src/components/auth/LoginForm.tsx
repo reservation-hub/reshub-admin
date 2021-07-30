@@ -1,6 +1,8 @@
-import React from 'react'
-
-import { 
+import React, {
+  ChangeEventHandler,
+  FormEventHandler
+} from 'react'
+import {
   Grid,
   Container,
   TextField
@@ -8,13 +10,21 @@ import {
 import { FcGoogle } from 'react-icons/fc'
 import { GoogleLogin } from 'react-google-login'
 
+interface LoginProps {
+  value: string | object,
+  setValue: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onSubmit: FormEventHandler<HTMLFormElement>,
+  googleHandler: Function,
+  classes?: any
+}
+
 const LoginForm = ({ 
-  value, 
+  value,
   setValue, 
   onSubmit, 
   googleHandler,
   classes
-}) => {
+}: LoginProps) => {
 
   return (
     <Container maxWidth='sm'>
@@ -55,7 +65,6 @@ const LoginForm = ({
                 clientId={ process.env.REACT_APP_GOOGLE_CLIENT_ID }
                 onSuccess={ googleHandler }
                 onFailure={ googleHandler }
-                approvalPrompt='force'
                 render={renderProps => (
                   <button 
                     onClick={ renderProps.onClick } 
