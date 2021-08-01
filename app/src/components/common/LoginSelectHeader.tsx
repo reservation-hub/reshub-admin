@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { 
   Container,
   Typography
@@ -8,8 +9,7 @@ const LoginSelectHeader = () => {
   return (
     <Container 
       maxWidth='sm'
-      align='right' 
-      style={{ marginBottom: '1rem', color: '#fff' }}
+      style={{ marginBottom: '1rem', color: '#fff', textAlign: 'right' }}
     >
       <Typography variant='h4'>
         Reshub-Admin

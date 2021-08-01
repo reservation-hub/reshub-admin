@@ -39,11 +39,11 @@ export const getUsers = async () => await instance.get(
 //-----------------------------------------------
 
 //　お店データを一つだけGETする
-export const getOneShop = async id => await instance.get(
+export const getOneShop = async (id: number) => await instance.get(
   `/shops/${ id }`
 )
 
-export const getOneUsers = async id => await instance.get(
+export const getOneUsers = async (id: number) => await instance.get(
   `/users/${ id }`
 )
 
@@ -52,42 +52,42 @@ export const getOneUsers = async id => await instance.get(
 //-----------------------------------------------
 
 // add Shop data
-export const addShop = async shopData => await instance.post(
+export const addShop = async (shopData: object) => await instance.post(
   `/shops`, { ...shopData }
 )
 
 // patch Shop data
-export const patchShop = async (id, shopData) => await instance.patch(
+export const patchShop = async (id: number, shopData: object) => await instance.patch(
   `/shops/${ id }`, { ...shopData }
 )
 
 // put Shop data
-export const putShop = async (id, shopData) => await instance.put(
+export const putShop = async (id: number, shopData: object) => await instance.put(
   `/shops/${ id }`, { ...shopData }
 )
 
 // delete Shop data
-export const deleteShop = async id => await instance.delete(
+export const deleteShop = async (id: number) => await instance.delete(
   `/shops/${ id }`
 )
 
 // ユーザー追加
-export const addUser = async userData => await instance.post(
+export const addUser = async (userData: object) => await instance.post(
   `/users`, { ...userData }
 )
 
 // ユーザー修正
-export const patchUser = async (id, userData) => await instance.patch(
+export const patchUser = async (id: number, userData: object) => await instance.patch(
   `/users/${ id }`, { ...userData }
 )
 
 // ユーザー修正
-export const putUser = async (id, userData) => await instance.put(
+export const putUser = async (id: number, userData: object) => await instance.put(
   `/users/${ id }`, { ...userData }
 )
 
 // ユーザー削除
-export const deleteUser = async id => await instance.delete(
+export const deleteUser = async (id: number) => await instance.delete(
   `/users/${ id }`
 )
 
@@ -95,12 +95,14 @@ export const deleteUser = async id => await instance.delete(
 // authenticate
 //-----------------------------------------------
 
-export const localLogin = async (email, password) => await instance.post(
-  `/auth/login`, { email, password }
+export const localLogin = async (
+  email: string, password: string) => await instance.post(
+    `/auth/login`, { email, password }
 )
 
-export const googleLogin = async (provider, tokenId) => await instance.post(
-  `/auth/google`, { tokenId, provider }
+export const googleLogin = async (
+  provider: string, tokenId: string) => await instance.post(
+    `/auth/google`, { tokenId, provider }
 )
 
 export const silentRefresh = async () => await instance.post(

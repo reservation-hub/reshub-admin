@@ -11,7 +11,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { GoogleLogin } from 'react-google-login'
 
 interface LoginProps {
-  value: any
+  value?: any
   setValue: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
   onSubmit: FormEventHandler<HTMLFormElement>,
   googleHandler: (response: any) => void,
@@ -62,7 +62,7 @@ const LoginForm = ({
             </Grid>
             <Grid item xs={ 12 }>
               <GoogleLogin 
-                clientId={ `${ process.env.REACT_APP_GOOGLE_CLIENT_ID }` }
+                clientId={ process.env.REACT_APP_GOOGLE_CLIENT_ID }
                 onSuccess={ googleHandler }
                 onFailure={ googleHandler }
                 render={renderProps => (

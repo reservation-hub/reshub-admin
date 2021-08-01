@@ -1,6 +1,6 @@
 import instance from './api'
 
-const setAuthToken = token => {
+const setAuthToken = (token: string) => {
   if (token) {
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
   } else {

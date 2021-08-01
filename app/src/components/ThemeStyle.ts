@@ -13,7 +13,7 @@ const theme = createTheme({
     secondary: {
       main: '#FFFFFF'
     },
-    background: {
+    background: palette {
       main: '#F0F5F5'
     },
     thead: {

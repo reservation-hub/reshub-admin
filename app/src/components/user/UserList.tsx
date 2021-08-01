@@ -7,13 +7,13 @@ import {
   TableBody, 
   TableRow,
   TableCell,
-  Typography,
-  Fade
+  Typography
 } from '@material-ui/core'
 
 import UserItem from './UserItem'
 import ModalOverlay from '../modal/Modal'
 import ModalUserForm from '../modal/ModalForm'
+
 
 const UserList = ({
   users,

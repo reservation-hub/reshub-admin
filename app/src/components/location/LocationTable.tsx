@@ -16,6 +16,12 @@ import {
 
 import LocationItem from './LocationItem'
 
+import { TableColumn } from '../../utils/interface/interface'
+
+interface LocationTable {
+  tableTitle: string
+  tableColumnIndex: TableColumn
+}
 
 const LocationTable = ({
   tableTitle,
