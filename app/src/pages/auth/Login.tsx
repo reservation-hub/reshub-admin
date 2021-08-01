@@ -22,8 +22,9 @@ import CommonStyle from '../../components/CommonStyle'
 
 const Login = ({ location }) => {
 
-  const [errorState, setErrorState] = useState(true)
-  const [value, setValue] = useInput({ email: '', password: '' })
+  const [errorState, setErrorState] = useState<boolean>(true)
+  // @ts-ignore
+  const { value, setValue } = useInput({ email: '', password: '' })
 
   const dispatch = useDispatch()
   const loginCss = LoginStyle()
@@ -33,13 +34,13 @@ const Login = ({ location }) => {
     commonCss
   }
 
-  const clearError = () => {
+  const clearError = (): void => {
     setErrorState(false)
     history.replace('/auth')
   }
 
   const onSubmit = useCallback(
-    e => {
+    (e: React.ChangeEvent) => {
       e.preventDefault()
       dispatch(loginStart(value.email, value.password))
     }, [dispatch, value.email, value.password]
@@ -50,7 +51,7 @@ const Login = ({ location }) => {
       dispatch(googleLogin(response))
     }, [dispatch]
   )
-  
+
   return(
     <main className={ classes.commonCss.loginSelectBackground }>
       { location.state && location.state.error &&

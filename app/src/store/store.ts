@@ -2,9 +2,14 @@
 // redux create sotre modules
 //----------------------------------
 
-import { createStore, applyMiddleware, compose } from 'redux'
+import {
+  createStore,
+  applyMiddleware,
+  compose
+} from 'redux'
 import { rootReducer } from './reducers/rootReducer'
 import { persistReducer } from 'redux-persist'
+
 import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
@@ -28,7 +33,7 @@ const enhancedReducer = persistReducer(persistConfig, rootReducer)
 const middleware = process.env.NODE_ENV !== 'production' ? [thunk, logger] : [thunk]
 
 const composeEnhancer = 
-  (process.env.NODE_ENV !== 'production' && 
+  (process.env.NODE_ENV !== 'production' &&
     typeof window !== 'undefined' &&
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
     
