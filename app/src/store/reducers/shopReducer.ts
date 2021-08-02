@@ -18,7 +18,7 @@ const initialState = {
   shop: []
 }
 
-export const shopReducer = (state = initialState, action) => {
+export const shopReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SHOP_FETCH_SUCCESS:
       return { 
@@ -44,13 +44,13 @@ export const shopReducer = (state = initialState, action) => {
         loading: false, 
         shops: [ action.payload ] 
       }
-    case SHOP_DELETE_SUCCESS:
-      return {
-        ...state,
-        shops: state.shop.filter(
-          res => res._id !== action.payload
-          )
-      }
+    // case SHOP_DELETE_SUCCESS:
+    //   return {
+    //     ...state,
+    //     shops: state.shop.filter(
+    //       res => res.id !== action.payload
+    //       )
+    //   }
     case SHOP_REQUEST_FAILURE:
       return action.payload || state
     default:

@@ -12,6 +12,11 @@ import {
   USER_REQUEST_FAILURE,
   LOGOUT_REQUEST_SUCCESS,
 } from '../types/authTypes'
+import { RootState } from '../store'
+import { GoogleLoginResponse } from 'react-google-login'
+import { User } from '../../utils/interface/interface'
+import { ThunkAction } from 'redux-thunk'
+import { Action } from 'redux'
 
 //ユーザーのリクエストをスタートするアクション
 const loginRequestStart = () => {
@@ -20,7 +25,7 @@ const loginRequestStart = () => {
   }
 }
 
-const fetchUser = user => {
+const fetchUser = (user: User) => {
   return {
     type: USER_REQUEST_SUCCESS,
     payload: user
@@ -28,87 +33,91 @@ const fetchUser = user => {
 }
 
 //ユーザーのリクエストが失敗の時に実行するアクション
-const loginRequestFailure = err => {
+const loginRequestFailure = (err: string) => {
   return {
     type: USER_REQUEST_FAILURE,
-    payload: err
+    payload: { err }
   }
 }
 
 // refresh tokenをサーバーに投げてユーザー情報をもらってくるアクション
-export const silentLogin = () => async dispatch => {
+export const silentLogin = (): 
+  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
 
-  try {
-    const user = await apiEndpoint.silentRefresh()
-    const token = user.data.token
-    
-    Cookies.set('refreshToken', token)
-    setAuthToken(Cookies.get('refreshToken'))
-    
-    dispatch(fetchUser(user.data.user))
-  } catch (e) {
-    dispatch(loginRequestFailure(e.response.data))
-  }
+    try {
+      const user = await apiEndpoint.silentRefresh()
+      const token = user.data.token
+      
+      Cookies.set('refreshToken', token)
+      setAuthToken(Cookies.get('refreshToken'))
+      
+      dispatch(fetchUser(user.data.user))
+    } catch (e: any) {
+      dispatch(loginRequestFailure(e.response.data))
+    }
 
 }
 
 // localログインを実行するアクション
-export const loginStart = (email, password) => async dispatch => {
+export const loginStart = (email: string, password: string): 
+  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
 
-  dispatch(loginRequestStart())
-  try {
-    const user = await apiEndpoint.localLogin(email, password)
-    const token = user.data.token
-    
-    Cookies.set('refreshToken', token)
-    setAuthToken(token)
+    dispatch(loginRequestStart())
+    try {
+      const user = await apiEndpoint.localLogin(email, password)
+      const token = user.data.token
+      
+      Cookies.set('refreshToken', token)
+      setAuthToken(token)
 
-    dispatch(fetchUser(user.data.user))
+      dispatch(fetchUser(user.data.user))
 
-    history.push('/')
-  } catch (e) {
-    dispatch(loginRequestFailure(e.response.data))
-  }
-
+      history.push('/')
+    } catch (e: any) {
+      dispatch(loginRequestFailure(e.response.data))
+    }
 }
 
 // googelログインを実行するアクション
-export const googleLogin = googleResponse => async (dispatch) => {
+export const googleLogin = (googleResponse: GoogleLoginResponse): 
+  ThunkAction<void, RootState, null, Action<any>> => 
+    async dispatch => {
 
-  const provider = 'google'
+      const provider = 'google'
 
-  try {
-    const user = await apiEndpoint.googleLogin(provider, googleResponse.tokenId)
-    console.log(user)
-    const token = user.data.token
+      try {
+        const user = await apiEndpoint.googleLogin(provider, googleResponse.tokenId)
+        console.log(user)
+        const token = user.data.token
 
-    Cookies.set('refreshToken', token)
-    setAuthToken(token)
+        Cookies.set('refreshToken', token)
+        setAuthToken(token)
 
-    dispatch(fetchUser(user.data.user))
+        dispatch(fetchUser(user.data.user))
 
-    history.push('/')
-  } catch (e) {
-    dispatch(loginRequestFailure(e.response.data))
-  }
-  
+        history.push('/')
+      } catch (e: any) {
+        dispatch(loginRequestFailure(e.response))
+      }
+
 }
 
 //　ログアウトを実行するアクション
-export const logout = () => async dispatch => {
+export const logout = (): 
+  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
 
-  try {
-    const message = await apiEndpoint.logout()    
-    Cookies.remove('refreshToken')
+    try {
+      const message = await apiEndpoint.logout()    
+      Cookies.remove('refreshToken')
 
-    dispatch({
-      type: LOGOUT_REQUEST_SUCCESS,
-      payload: message
-    })
+      dispatch({
+        type: LOGOUT_REQUEST_SUCCESS,
+        payload: message
+      })
 
-    history.push('/')
-  } catch (e) {
-    dispatch(loginRequestFailure(e.response.data))
-  }
+      history.push('/')
+    } catch (e: any) {
+      dispatch(loginRequestFailure(e.response.data))
+    }
 
 }

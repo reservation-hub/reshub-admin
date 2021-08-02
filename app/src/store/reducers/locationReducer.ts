@@ -10,9 +10,7 @@ const initialState = {
   location: null
 }
 
-export const locationReducer = (
-  state = initialState, action
-) => {
+export const locationReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case LOCATION_REQUEST_SUCCESS:
       return { 

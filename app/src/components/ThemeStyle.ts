@@ -4,8 +4,22 @@ import { createTheme } from '@material-ui/core/styles'
 // reshub-adminのメインテーマとなるスタイルを指定する
 //-----------------------------------------------------------
 
+declare module '@material-ui/core/styles/createPalette' {
+  interface PaletteOptions {
+    adBgColor?: PaletteColorOptions
+    adTheadColor?: PaletteColorOptions
+    adThFontColor?: PaletteColorOptions
+    adTbFontColor?:PaletteColorOptions
+  }
+  interface Palette {
+    adBgColor: PaletteColor
+    adTheadColor: PaletteColor
+    adThFontColor: PaletteColor
+    adTbFontColor: PaletteColor
+  }
+}
+
 const theme = createTheme({
-  sectionWidth: '1120px',
   palette: {
     primary: {
       main: '#669999'
@@ -13,16 +27,16 @@ const theme = createTheme({
     secondary: {
       main: '#FFFFFF'
     },
-    background: palette {
+    adBgColor: {
       main: '#F0F5F5'
     },
-    thead: {
+    adTheadColor: {
       main: '#E5E5E5'
     },
-    theadFontColor: {
+    adThFontColor: {
       main: '#ABB0AD'
     },
-    tbodyFontColor: {
+    adTbFontColor: {
       main: '#94B8B8'
     }
   }

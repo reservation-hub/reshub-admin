@@ -28,7 +28,7 @@ const CommonStyle = makeStyles((theme: Theme) =>
   createStyles({
     mainBackground: {
       position: 'relative',
-      background: theme.palette.background.main
+      background: theme.palette.adBgColor.main
     },
     loginSelectBackground: {
       position: 'relative',

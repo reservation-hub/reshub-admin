@@ -3,6 +3,7 @@
 //----------------------------------
 
 import { 
+  AuthState,
   LOGOUT_REQUEST_SUCCESS,
   USER_REQUEST_FAILURE, 
   USER_REQUEST_SUCCESS 
@@ -12,10 +13,10 @@ const initialState = {
   loading: true,
   isAuthenticated: false,
   user: {},
-  err: null
+  err: undefined
 }
 
-export const authReducer =  (state = initialState, action) => {
+export const authReducer =  (state = initialState, action: any) => {
   switch (action.type) {
     case USER_REQUEST_SUCCESS:
       return { 

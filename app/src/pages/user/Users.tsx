@@ -5,11 +5,12 @@ import { fetchUserList } from '../../store/actions/userAction'
 
 import UserList from '../../components/user/UserList'
 import Profile from './Profile'
+import { RootState } from '../../store/store'
 
 const Users = () => {
 
   const dispatch = useDispatch()
-  const { users, loading } = useSelector(state => state.user)
+  const { users, loading } = useSelector((state: RootState) => state.user)
   const [modalOpen, setModalOpen] = useState(false)
 
   const modalOpenHandler = () => {

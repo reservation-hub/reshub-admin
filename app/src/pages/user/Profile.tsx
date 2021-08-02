@@ -3,15 +3,22 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getOneUser } from '../../store/actions/userAction'
 
 import ProfileItem from '../../components/user/ProfileItem'
+import { RouteComponentProps } from 'react-router-dom'
+import { RootState } from '../../store/store'
 
-const Profile = ({ match }) => {
+interface MatchParams {
+  id: string
+}
 
-  const id = match.params.id
+const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
+
+  const { id } = match.params
+  const convertId: number = +id
   const dispatch = useDispatch()
-  const { user } = useSelector(state => state.user)
+  const { user } = useSelector((state: RootState) => state.user)
 
   useEffect(() => {
-    dispatch(getOneUser(id))
+    dispatch(getOneUser(convertId))
   }, [dispatch, id])
   // TODO スタイルを指定
   return (
@@ -20,9 +27,8 @@ const Profile = ({ match }) => {
         userEmail={user.email}
         kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
         kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
-        userName={ user.username }
         gender={ user.gender }
-        role={ user.roles && user.roles.map(r => r.name) }
+        role={ user.roles && user.roles.map((r: any) => r.name) }
       />
     </main>
   )

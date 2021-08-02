@@ -16,11 +16,11 @@ import {
 
 import LocationItem from './LocationItem'
 
-import { TableColumn } from '../../utils/interface/interface'
-
 interface LocationTable {
   tableTitle: string
-  tableColumnIndex: TableColumn
+  tableColumnIndex: string
+  tableColumnName: string
+  data: any
 }
 
 const LocationTable = ({
@@ -28,7 +28,7 @@ const LocationTable = ({
   tableColumnIndex,
   tableColumnName,
   data
-}) => {
+}: LocationTable) => {
 
   const classes = LocationStyle()
 
@@ -59,7 +59,7 @@ const LocationTable = ({
         </StyledTableHead>
         <TableBody>
           { data && data.map(
-            (data, index) => (
+            (data: any, index: number) => (
               <LocationItem 
                 key={ index }
                 locationNo={ data.id }

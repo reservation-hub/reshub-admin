@@ -4,13 +4,14 @@ import { getPrefecture } from '../../store/actions/locationAction'
 
 import LocationTable from '../../components/location/LocationTable'
 import CommonStyle from '../../components/CommonStyle'
+import { RootState } from '../../store/store'
 
 const Prefecture = () => {
 
   const classes = CommonStyle()
 
   const dispatch = useDispatch()
-  const { location } = useSelector(state => state.location)
+  const { location } = useSelector((state: RootState) => state.location)
 
   useEffect(() => {
     dispatch(getPrefecture())

@@ -14,13 +14,19 @@ import UserItem from './UserItem'
 import ModalOverlay from '../modal/Modal'
 import ModalUserForm from '../modal/ModalForm'
 
+interface UserListProps {
+  users: any
+  modalOpenHandler: () => void
+  modalCloseHandler: () => void
+  modalOpen: boolean
+}
 
 const UserList = ({
   users,
   modalOpenHandler,
   modalCloseHandler,
   modalOpen
-}) => {
+}: UserListProps) => {
   // TODO スタイルを指定
   return (
     <Paper>
@@ -62,7 +68,7 @@ const UserList = ({
         </TableHead>
         <TableBody>
           { users && users.map(
-            user => (
+            (user: any) => (
               <UserItem
                 key={ user.id }
                 userId={ user.id }
@@ -70,7 +76,7 @@ const UserList = ({
                 kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
                 kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
                 gender={ user.gender }
-                role={ user && user.roles.map(r => r.name) }
+                role={ user && user.roles.map((r: any) => r.name) }
               />
             )
           ) }

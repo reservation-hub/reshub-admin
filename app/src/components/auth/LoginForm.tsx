@@ -7,14 +7,19 @@ import {
   Container,
   TextField
 } from '@material-ui/core'
+import { 
+  GoogleLogin, 
+  GoogleLoginResponse, 
+  GoogleLoginResponseOffline,
+} from 'react-google-login'
 import { FcGoogle } from 'react-icons/fc'
-import { GoogleLogin } from 'react-google-login'
+
 
 interface LoginProps {
   value?: any
   setValue: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
   onSubmit: FormEventHandler<HTMLFormElement>,
-  googleHandler: (response: any) => void,
+  googleHandler: (response: GoogleLoginResponse | GoogleLoginResponseOffline) => void,
   classes?: any
 }
 

@@ -6,6 +6,15 @@ import {
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
+interface UserItemProps {
+  userId: number,
+  userEmail: string
+  kanjiName: string
+  kanaName: string
+  gender: string
+  role: string
+}
+
 const UserItem = ({
   userId,
   userEmail,
@@ -13,7 +22,7 @@ const UserItem = ({
   kanaName,
   gender,
   role
-}) => {
+}: UserItemProps) => {
   // TODO スタイルを指定
   return (
     <TableRow>

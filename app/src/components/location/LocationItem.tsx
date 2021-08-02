@@ -5,11 +5,17 @@ import {
   TableCell  
 } from '@material-ui/core'
 
+interface lcItemProps {
+  locationNo: number,
+  locationName: string,
+  classes: any
+}
+
 const LocationItem = ({
   locationNo,
   locationName,
   classes
-}) => {
+}: lcItemProps) => {
 
   return (
     <TableRow>

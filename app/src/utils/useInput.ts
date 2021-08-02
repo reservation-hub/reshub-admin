@@ -2,20 +2,20 @@ import { useState, useCallback, ChangeEvent } from 'react'
 
 const useInput = <T>(initialState: T) => {
 
-  const [state, setState] = useState<T>(initialState)
+  const [input, setInput] = useState<T>(initialState)
 
-  const onChangeHandler = useCallback(
+  const ChangeHandler = useCallback(
     (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
       const { name, value } = e.target
-      setState({
-        ...state,
+      setInput({
+        ...input,
         [name]: value,
       })
-    }, [state],
+    }, [input],
   )
 
 
-  return { state, onChangeHandler }
+  return { input, ChangeHandler }
 }
 
 export default useInput

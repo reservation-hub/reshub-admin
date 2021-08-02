@@ -6,8 +6,14 @@ import {
   loginStart,
   googleLogin
 } from '../../store/actions/authAction'
-import { Alert } from '@material-ui/lab'
+import { 
+  GoogleLoginResponse, 
+  GoogleLoginResponseOffline 
+} from 'react-google-login'
 import { useDispatch } from 'react-redux'
+import { RouteComponentProps } from 'react-router-dom'
+
+import { Alert } from '@material-ui/lab'
 import { Slide } from '@material-ui/core'
 import { AiOutlineClose } from 'react-icons/ai'
 
@@ -19,12 +25,14 @@ import LoginSelectFooter from '../../components/common/LoginSelectFooter'
 import LoginStyle from '../../components/auth/LoginStyle'
 import CommonStyle from '../../components/CommonStyle'
 
+interface LocationParams {
+  error: string
+}
 
-const Login = ({ location }) => {
+const Login = ({ location }: RouteComponentProps<LocationParams>) => {
 
   const [errorState, setErrorState] = useState<boolean>(true)
-  // @ts-ignore
-  const { value, setValue } = useInput({ email: '', password: '' })
+  const { input, ChangeHandler } = useInput({ email: '', password: '' })
 
   const dispatch = useDispatch()
   const loginCss = LoginStyle()
@@ -40,21 +48,21 @@ const Login = ({ location }) => {
   }
 
   const onSubmit = useCallback(
-    (e: React.ChangeEvent) => {
+    (e: any) => {
       e.preventDefault()
-      dispatch(loginStart(value.email, value.password))
-    }, [dispatch, value.email, value.password]
+      dispatch(loginStart(input.email, input.password))
+    }, [dispatch, input.email, input.password]
   )
 
   const googleHandler = useCallback(
-    response => {
+    (response) => {
       dispatch(googleLogin(response))
     }, [dispatch]
   )
 
   return(
     <main className={ classes.commonCss.loginSelectBackground }>
-      { location.state && location.state.error &&
+      {/* { location.state && location.state.error &&
         <Slide in={ errorState }>
           <Alert
             severity='error'
@@ -67,12 +75,12 @@ const Login = ({ location }) => {
             <strong> { location.state.error } </strong>
           </Alert>
         </Slide>
-      }
+      } */}
       <section className={ classes.commonCss.boxCenter }>
         <LoginSelectHeader />
         <LoginForm 
-          value={ value }
-          setValue={ setValue } 
+          value={ input }
+          setValue={ ChangeHandler } 
           onSubmit={ onSubmit } 
           googleHandler={ googleHandler }
           classes={ classes }

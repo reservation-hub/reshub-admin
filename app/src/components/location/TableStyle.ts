@@ -3,7 +3,9 @@ import {
   TableHead
 } from '@material-ui/core'
 import {
+  createStyles,
   makeStyles,
+  Theme,
   withStyles
 } from '@material-ui/core/styles'
 
@@ -11,33 +13,35 @@ import {
 // reshub-adminのテーブルのデフォルトスタイルを指定する
 //-----------------------------------------------------------
 
-export const StyledTable = withStyles(theme => ({
+export const StyledTable = withStyles((theme: Theme) => ({
   root: {
     width: '100%',
     height: '654px'
   }
 }))(Table)
 
-export const StyledTableHead = withStyles(theme => ({
+export const StyledTableHead = withStyles((theme: Theme) => ({
   root: {
-    background: theme.palette.thead.main
+    background: theme.palette.adTheadColor.main
   }
 }))(TableHead)
 
-const LocationStyle = makeStyles(theme => ({
-  tableHeadCell: {
-    color: theme.palette.theadFontColor.main,
-    fontWeight: 'bold',
-    fontSize: '1rem'
-  },
-  tableBodyCell: {
-    color: theme.palette.tbodyFontColor.main,
-    borderTop: `1px solid ${ theme.palette.thead.main }`,
-    borderBottom: 'none'
-  },
-  tableHeader: {
-    paddingLeft: '1rem'
+const LocationStyle = makeStyles((theme: Theme) => 
+  createStyles({
+    tableHeadCell: {
+      color: theme.palette.adThFontColor.main,
+      fontWeight: 'bold',
+      fontSize: '1rem'
+    },
+    tableBodyCell: {
+      color: theme.palette.adTbFontColor.main,
+      borderTop: `1px solid ${ theme.palette.adTheadColor.main }`,
+      borderBottom: 'none'
+    },
+    tableHeader: {
+      paddingLeft: '1rem'
+    }
   }
-}))
+))
 
 export default LocationStyle
