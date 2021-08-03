@@ -3,14 +3,14 @@
 //----------------------------------
 
 import { combineReducers } from 'redux'
-import { authReducer } from './authReducer'
+import auth from './authReducer'
 import { shopReducer } from './shopReducer'
 import { userReducer } from './userReducer'
-import { locationReducer } from './locationReducer'
+import location from './locationReducer'
 
 export const rootReducer = combineReducers({
-    auth: authReducer,
+    auth,
     shop: shopReducer,
     user: userReducer,
-    location: locationReducer
+    location
   })

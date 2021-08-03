@@ -1,4 +1,11 @@
-export interface User {
+export interface Role {
+  id: number
+  name: string
+  description: string
+  slug: string
+}
+
+export interface User extends Role{
 
   id: number,
   username?: string,
@@ -14,13 +21,8 @@ export interface User {
 
 }
 
-export interface Role {
+export interface LocationData {
   id: number
   name: string
-  description: string
   slug: string
-}
-
-export interface Location {
-  
 }

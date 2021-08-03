@@ -1,4 +1,5 @@
 import React, {
+  FormEvent,
   useCallback,
   useState
 } from 'react'
@@ -6,10 +7,6 @@ import {
   loginStart,
   googleLogin
 } from '../../store/actions/authAction'
-import { 
-  GoogleLoginResponse, 
-  GoogleLoginResponseOffline 
-} from 'react-google-login'
 import { useDispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
 
@@ -22,14 +19,15 @@ import useInput from '../../utils/useInput'
 import LoginForm from '../../components/auth/LoginForm'
 import LoginSelectHeader from '../../components/common/LoginSelectHeader'
 import LoginSelectFooter from '../../components/common/LoginSelectFooter'
+
 import LoginStyle from '../../components/auth/LoginStyle'
 import CommonStyle from '../../components/CommonStyle'
 
-interface LocationParams {
-  error: string
+interface LocationState {
+  falied?: string
 }
 
-const Login = ({ location }: RouteComponentProps<LocationParams>) => {
+const Login = ({ location }: RouteComponentProps<LocationState>) => {
 
   const [errorState, setErrorState] = useState<boolean>(true)
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
@@ -44,11 +42,13 @@ const Login = ({ location }: RouteComponentProps<LocationParams>) => {
 
   const clearError = (): void => {
     setErrorState(false)
-    history.replace('/auth')
+    setTimeout(() => {
+      history.replace('/authReducer')
+    }, 100)
   }
 
   const onSubmit = useCallback(
-    (e: any) => {
+    (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       dispatch(loginStart(input.email, input.password))
     }, [dispatch, input.email, input.password]
@@ -62,7 +62,7 @@ const Login = ({ location }: RouteComponentProps<LocationParams>) => {
 
   return(
     <main className={ classes.commonCss.loginSelectBackground }>
-      {/* { location.state && location.state.error &&
+      { location.state &&
         <Slide in={ errorState }>
           <Alert
             severity='error'
@@ -72,10 +72,10 @@ const Login = ({ location }: RouteComponentProps<LocationParams>) => {
               </span>
             }
           >
-            <strong> { location.state.error } </strong>
+            <strong>アクセス権限がございません。</strong>
           </Alert>
         </Slide>
-      } */}
+      }
       <section className={ classes.commonCss.boxCenter }>
         <LoginSelectHeader />
         <LoginForm 

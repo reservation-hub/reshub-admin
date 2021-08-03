@@ -2,7 +2,6 @@
 // redux action お店情報管理関数
 //----------------------------------
 
-import apiEndpoint from '../../utils/api/apiEndpoint'
 import { 
   SHOP_FETCH_SUCCESS,
   SHOP_GET_SUCCESS,
@@ -12,6 +11,8 @@ import {
   SHOP_REQUEST_FAILURE, 
   SHOP_REQUEST_START 
 } from '../types/shopTypes'
+
+import apiEndpoint from '../../utils/api/apiEndpoint'
 
 // リクエストを始まる
 const shopRequestStart = () => {

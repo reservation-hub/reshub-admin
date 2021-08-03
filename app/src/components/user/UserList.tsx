@@ -9,13 +9,15 @@ import {
   TableCell,
   Typography
 } from '@material-ui/core'
+import { User } from "../../interface/interface"
 
 import UserItem from './UserItem'
 import ModalOverlay from '../modal/Modal'
 import ModalUserForm from '../modal/ModalForm'
 
+
 interface UserListProps {
-  users: any
+  users: User[]
   modalOpenHandler: () => void
   modalCloseHandler: () => void
   modalOpen: boolean
@@ -68,7 +70,7 @@ const UserList = ({
         </TableHead>
         <TableBody>
           { users && users.map(
-            (user: any) => (
+            (user: User) => (
               <UserItem
                 key={ user.id }
                 userId={ user.id }
@@ -76,7 +78,7 @@ const UserList = ({
                 kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
                 kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
                 gender={ user.gender }
-                role={ user && user.roles.map((r: any) => r.name) }
+                role={ user.roles.map(r => r.name) }
               />
             )
           ) }

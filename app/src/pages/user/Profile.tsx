@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux'
+import { RouteComponentProps } from 'react-router-dom'
+import { RootState } from '../../store/store'
 import { getOneUser } from '../../store/actions/userAction'
 
 import ProfileItem from '../../components/user/ProfileItem'
-import { RouteComponentProps } from 'react-router-dom'
-import { RootState } from '../../store/store'
+
 
 interface MatchParams {
   id: string
@@ -19,7 +23,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
 
   useEffect(() => {
     dispatch(getOneUser(convertId))
-  }, [dispatch, id])
+  }, [dispatch, convertId])
   // TODO スタイルを指定
   return (
     <main>

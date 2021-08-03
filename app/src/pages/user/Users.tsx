@@ -1,23 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, {
+  useEffect,
+  useState
+} from 'react'
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux'
 import { Route } from 'react-router-dom'
+import { RootState } from '../../store/store'
 import { fetchUserList } from '../../store/actions/userAction'
 
 import UserList from '../../components/user/UserList'
 import Profile from './Profile'
-import { RootState } from '../../store/store'
+
 
 const Users = () => {
 
   const dispatch = useDispatch()
   const { users, loading } = useSelector((state: RootState) => state.user)
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState<boolean>(false)
 
-  const modalOpenHandler = () => {
+  const modalOpenHandler = (): void => {
     setModalOpen(true)
   }
 
-  const modalCloseHandler = () => {
+  const modalCloseHandler = (): void => {
     setModalOpen(false)
   }
 
@@ -25,9 +32,10 @@ const Users = () => {
     dispatch(fetchUserList())
   }, [dispatch])
 
+  if (loading) return <span>loading...</span>
+
   return (
     <main>
-      { loading && <span>locading ...</span> }
       <Route exact path='/users'>
         <UserList
           users={ users.data }

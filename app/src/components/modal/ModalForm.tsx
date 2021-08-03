@@ -3,7 +3,6 @@ import React from 'react'
 import {
   TextField,
   Select,
-  MenuItem,
   InputLabel,
   Input
 } from '@material-ui/core'

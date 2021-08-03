@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPrefecture } from '../../store/actions/locationAction'
+import { RootState } from '../../store/store'
 
 import LocationTable from '../../components/location/LocationTable'
 import CommonStyle from '../../components/CommonStyle'
-import { RootState } from '../../store/store'
+
 
 const Prefecture = () => {
 
@@ -23,7 +24,7 @@ const Prefecture = () => {
         tableTitle='都道府県一覧'
         tableColumnIndex='No'
         tableColumnName='都道府県'
-        data={ location && location.data }
+        data={ location['data'] }
       />
     </main>
   )

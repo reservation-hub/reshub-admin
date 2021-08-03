@@ -3,7 +3,6 @@ import {
   TableHead
 } from '@material-ui/core'
 import {
-  createStyles,
   makeStyles,
   Theme,
   withStyles
@@ -26,22 +25,20 @@ export const StyledTableHead = withStyles((theme: Theme) => ({
   }
 }))(TableHead)
 
-const LocationStyle = makeStyles((theme: Theme) => 
-  createStyles({
-    tableHeadCell: {
-      color: theme.palette.adThFontColor.main,
-      fontWeight: 'bold',
-      fontSize: '1rem'
-    },
-    tableBodyCell: {
-      color: theme.palette.adTbFontColor.main,
-      borderTop: `1px solid ${ theme.palette.adTheadColor.main }`,
-      borderBottom: 'none'
-    },
-    tableHeader: {
-      paddingLeft: '1rem'
-    }
+const LocationStyle = makeStyles((theme: Theme) => ({
+  tableHeadCell: {
+    color: theme.palette.adThFontColor.main,
+    fontWeight: 'bold',
+    fontSize: '1rem'
+  },
+  tableBodyCell: {
+    color: theme.palette.adTbFontColor.main,
+    borderTop: `1px solid ${ theme.palette.adTheadColor.main }`,
+    borderBottom: 'none'
+  },
+  tableHeader: {
+    paddingLeft: '1rem'
   }
-))
+}))
 
 export default LocationStyle

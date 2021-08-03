@@ -17,6 +17,7 @@ const ModalOverlay = ({
   modalCloseHandler,
   modalOpenHandler
 }: ModalProps) => {
+
   return (
     <div>
       <button onClick={ modalOpenHandler }>
@@ -30,6 +31,7 @@ const ModalOverlay = ({
       </Dialog>
     </div>
   )
+
 }
 
 export default ModalOverlay

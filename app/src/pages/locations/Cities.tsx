@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux'
 import { getCity } from '../../store/actions/locationAction'
+import { RootState } from '../../store/store'
 
 import LocationTable from '../../components/location/LocationTable'
 import CommonStyle from '../../components/CommonStyle'
-import { RootState } from '../../store/store'
+
+
 
 const Cities = () => {
 
@@ -23,7 +28,7 @@ const Cities = () => {
         tableTitle='市区町村一覧'
         tableColumnIndex='No'
         tableColumnName='市区町村'
-        data={ location && location.data }
+        data={ location['data'] }
       />
     </main>
   )

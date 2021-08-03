@@ -3,7 +3,7 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
-import { User } from '../interface/interface'
+import { User } from '../../interface/interface'
 
 
 // only admin
@@ -18,7 +18,7 @@ const PrivateRoute = ({ children, ...rest }: any) => {
   const { isAuthenticated } = useSelector((state: RootState) => state.auth)
 
   const isAdmin = (user: User) => user.roles.findIndex(role => role.name === 'admin') !== -1
-  
+
   return (
     <>
       { isAuthenticated && 
@@ -30,8 +30,8 @@ const PrivateRoute = ({ children, ...rest }: any) => {
           </Route>
         ) : (
           <Redirect to={{
-            pathname: '/auth',
-            state: { error: 'アクセス権限がございません。' }
+            pathname: '/authReducer',
+            state: { falied: 'アクセス権限がございません。' }
           }} />
       ) }
     </>

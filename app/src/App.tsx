@@ -31,7 +31,7 @@ const  App = () => {
         <PublicRoute exact path='/' component={ Home }/>
 
         {/* only not logged in */}
-        <Route path='/auth' component={ Login } /> 
+        <Route path='/auth' component={ Login } />
 
         {/* only admin */}
         <PrivateRoute path='/pre' component={ Prefecture }/>

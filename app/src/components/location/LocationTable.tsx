@@ -10,17 +10,17 @@ import LocationStyle, {
   StyledTable,
   StyledTableHead
 } from './TableStyle'
-import {
-  StyledPaper
-} from '../CommonStyle'
+import { StyledPaper } from '../CommonStyle'
+import { LocationData } from "../../interface/interface"
 
 import LocationItem from './LocationItem'
 
-interface LocationTable {
+
+interface LocationTableProps {
   tableTitle: string
   tableColumnIndex: string
   tableColumnName: string
-  data: any
+  data: LocationData[]
 }
 
 const LocationTable = ({
@@ -28,7 +28,7 @@ const LocationTable = ({
   tableColumnIndex,
   tableColumnName,
   data
-}: LocationTable) => {
+}: LocationTableProps) => {
 
   const classes = LocationStyle()
 
@@ -60,7 +60,7 @@ const LocationTable = ({
         <TableBody>
           { data && data.map(
             (data: any, index: number) => (
-              <LocationItem 
+              <LocationItem
                 key={ index }
                 locationNo={ data.id }
                 locationName={ data.name }

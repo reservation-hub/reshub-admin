@@ -12,7 +12,7 @@ interface UserItemProps {
   kanjiName: string
   kanaName: string
   gender: string
-  role: string
+  role: string | string[]
 }
 
 const UserItem = ({

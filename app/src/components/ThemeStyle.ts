@@ -1,4 +1,6 @@
 import { createTheme } from '@material-ui/core/styles'
+import { PaletteColor } from "@material-ui/core/styles/createPalette"
+import { PaletteColorOptions } from "@material-ui/core"
 
 //-----------------------------------------------------------
 // reshub-adminのメインテーマとなるスタイルを指定する

@@ -6,12 +6,15 @@ import {
   LOCATION_REQUEST_START,
   LOCATION_REQUEST_SUCCESS
 } from '../types/locationTypes'
+
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { RootState } from '../store'
+import { LocationData } from "../../interface/interface"
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
+
 
 const locationReqStart = () => {
   return {
@@ -19,7 +22,7 @@ const locationReqStart = () => {
   }
 }
 
-const fetchLocation = (location: Location) => {
+const fetchLocation = (location: LocationData) => {
   return {
     type: LOCATION_REQUEST_SUCCESS,
     payload: location
@@ -29,7 +32,7 @@ const fetchLocation = (location: Location) => {
 
 // エリア情報を読んでくる
 export const getArea = (): 
-  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
   
   dispatch(locationReqStart())
   try {
@@ -43,7 +46,7 @@ export const getArea = ():
 
 // 県情報を読んでくる
 export const getPrefecture = ():
-  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
 
     dispatch(locationReqStart())
     try {
@@ -57,7 +60,7 @@ export const getPrefecture = ():
 
 // 市区町村情報を読んでくる
 export const getCity = ():
-  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
 
     dispatch(locationReqStart())
     try {
@@ -68,3 +71,7 @@ export const getCity = ():
     }
 
 }
+
+export type LocationAction =
+  | ReturnType<typeof locationReqStart>
+  | ReturnType<typeof fetchLocation>

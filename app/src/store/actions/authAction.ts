@@ -14,35 +14,27 @@ import {
 } from '../types/authTypes'
 import { RootState } from '../store'
 import { GoogleLoginResponse } from 'react-google-login'
-import { User } from '../../utils/interface/interface'
+import { User } from '../../interface/interface'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 
 //ユーザーのリクエストをスタートするアクション
-const loginRequestStart = () => {
-  return { 
-    type: USER_REQUEST_START 
-  }
-}
+const loginRequestStart = () => ({ type: USER_REQUEST_START })
 
-const fetchUser = (user: User) => {
-  return {
-    type: USER_REQUEST_SUCCESS,
-    payload: user
-  }
-}
+const fetchUser = (user: User[]) => ({
+  type: USER_REQUEST_SUCCESS,
+  payload: user
+})
 
 //ユーザーのリクエストが失敗の時に実行するアクション
-const loginRequestFailure = (err: string) => {
-  return {
-    type: USER_REQUEST_FAILURE,
-    payload: { err }
-  }
-}
+const loginRequestFailure = (err: string) => ({
+  type: USER_REQUEST_FAILURE,
+  payload: { err }
+})
 
 // refresh tokenをサーバーに投げてユーザー情報をもらってくるアクション
 export const silentLogin = (): 
-  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
 
     try {
       const user = await apiEndpoint.silentRefresh()
@@ -60,7 +52,7 @@ export const silentLogin = ():
 
 // localログインを実行するアクション
 export const loginStart = (email: string, password: string): 
-  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
 
     dispatch(loginRequestStart())
     try {
@@ -80,7 +72,7 @@ export const loginStart = (email: string, password: string):
 
 // googelログインを実行するアクション
 export const googleLogin = (googleResponse: GoogleLoginResponse): 
-  ThunkAction<void, RootState, null, Action<any>> => 
+  ThunkAction<void, RootState, null, Action> =>
     async dispatch => {
 
       const provider = 'google'
@@ -97,14 +89,14 @@ export const googleLogin = (googleResponse: GoogleLoginResponse):
 
         history.push('/')
       } catch (e: any) {
-        dispatch(loginRequestFailure(e.response))
+        dispatch(loginRequestFailure(e.response.data))
       }
 
 }
 
 //　ログアウトを実行するアクション
 export const logout = (): 
-  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
 
     try {
       const message = await apiEndpoint.logout()    
@@ -121,3 +113,8 @@ export const logout = ():
     }
 
 }
+
+export type AuthAction =
+  | ReturnType<typeof loginRequestStart>
+  | ReturnType<typeof fetchUser>
+  | ReturnType<typeof loginRequestFailure>

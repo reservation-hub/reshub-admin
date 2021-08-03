@@ -34,7 +34,7 @@ const userRequestFailure = (err: string) => {
 }
 
 export const fetchUserList = (): 
-  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
 
   dispatch(userRequestStart())
   try {
@@ -51,7 +51,7 @@ export const fetchUserList = ():
 }
 
 export const getOneUser = (id: number): 
-  ThunkAction<void, RootState, null, Action<any>> => async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
 
   dispatch(userRequestStart())
   try {

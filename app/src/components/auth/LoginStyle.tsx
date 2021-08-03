@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, Theme } from '@material-ui/core/styles'
 
-const LoginStyle = makeStyles(theme => ({
+const LoginStyle = makeStyles((theme: Theme) => ({
   formBox: {
     height: '302px',
     padding: '1.5rem',

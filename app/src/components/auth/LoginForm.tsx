@@ -16,7 +16,7 @@ import { FcGoogle } from 'react-icons/fc'
 
 
 interface LoginProps {
-  value?: any
+  value: { email: string, password: string }
   setValue: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
   onSubmit: FormEventHandler<HTMLFormElement>,
   googleHandler: (response: GoogleLoginResponse | GoogleLoginResponseOffline) => void,
