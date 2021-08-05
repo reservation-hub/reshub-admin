@@ -30,8 +30,8 @@ const PrivateRoute = ({ children, ...rest }: any) => {
           </Route>
         ) : (
           <Redirect to={{
-            pathname: '/authReducer',
-            state: { falied: 'アクセス権限がございません。' }
+            pathname: '/auth',
+            state: { failed: 'アクセス権限がございません。' }
           }} />
       ) }
     </>

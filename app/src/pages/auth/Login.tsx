@@ -24,11 +24,11 @@ import LoginStyle from '../../components/auth/LoginStyle'
 import CommonStyle from '../../components/CommonStyle'
 
 interface LocationState {
-  falied?: string
+  failed?: string
 }
 
 const Login = ({ location }: RouteComponentProps<LocationState>) => {
-
+  console.log(location)
   const [errorState, setErrorState] = useState<boolean>(true)
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
 
@@ -43,7 +43,7 @@ const Login = ({ location }: RouteComponentProps<LocationState>) => {
   const clearError = (): void => {
     setErrorState(false)
     setTimeout(() => {
-      history.replace('/authReducer')
+      history.replace('/auth')
     }, 100)
   }
 

@@ -28,7 +28,7 @@ const PublicRoute = ({ children, ...rest }: any) => {
           { children }
         </Route>
       ) : (
-        <Redirect to='/authReducer' />
+        <Redirect to='/auth' />
       ) }
     </>
   )

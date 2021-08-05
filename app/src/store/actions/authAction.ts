@@ -72,25 +72,23 @@ export const loginStart = (email: string, password: string):
 
 // googelログインを実行するアクション
 export const googleLogin = (googleResponse: GoogleLoginResponse): 
-  ThunkAction<void, RootState, null, Action> =>
-    async dispatch => {
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
 
-      const provider = 'google'
+  const provider = 'google'
 
-      try {
-        const user = await apiEndpoint.googleLogin(provider, googleResponse.tokenId)
-        console.log(user)
-        const token = user.data.token
+  try {
+    const user = await apiEndpoint.googleLogin(provider, googleResponse.tokenId)
+    const token = user.data.token
 
-        Cookies.set('refreshToken', token)
-        setAuthToken(token)
+    Cookies.set('refreshToken', token)
+    setAuthToken(token)
 
-        dispatch(fetchUser(user.data.user))
+    dispatch(fetchUser(user.data.user))
 
-        history.push('/')
-      } catch (e: any) {
-        dispatch(loginRequestFailure(e.response.data))
-      }
+    history.push('/')
+  } catch (e: any) {
+    dispatch(loginRequestFailure(e.response.data))
+  }
 
 }
 
@@ -107,7 +105,7 @@ export const logout = ():
         payload: message
       })
 
-      history.push('/')
+      history.push('/auth')
     } catch (e: any) {
       dispatch(loginRequestFailure(e.response.data))
     }
