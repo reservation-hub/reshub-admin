@@ -7,22 +7,17 @@ import {
 interface ModalProps {
   children: React.ReactNode
   modalOpen: boolean
-  modalOpenHandler: () => void
   modalCloseHandler: () => void
 }
 
 const ModalOverlay = ({
   children,
   modalOpen,
-  modalCloseHandler,
-  modalOpenHandler
+  modalCloseHandler
 }: ModalProps) => {
 
   return (
     <div>
-      <button onClick={ modalOpenHandler }>
-        open modal
-      </button>
       <Dialog
         open={ modalOpen }
         onClose={ modalCloseHandler }

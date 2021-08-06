@@ -50,9 +50,7 @@ const LocationTable = ({
             >
               { tableColumnIndex }
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell } >
               { tableColumnName }
             </TableCell>
           </TableRow>

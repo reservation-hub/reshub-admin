@@ -7,7 +7,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import { RootState } from '../../store/store'
 import { getOneUser } from '../../store/actions/userAction'
 
-import ProfileItem from '../../components/user/ProfileItem'
+import ProfileItem from '../../components/user/profile/ProfileItem'
 
 
 interface MatchParams {
