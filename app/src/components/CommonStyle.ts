@@ -19,7 +19,7 @@ export const StyledPaper = withStyles((theme: Theme) => ({
     margin: '0 auto',
     justifyContent: 'center',
     boxSahdow: 'none',
-    background: theme.palette.secondary.main
+    // background: theme.palette.secondary.main
   }
 }))(Paper)
 
@@ -54,6 +54,11 @@ const CommonStyle = makeStyles((theme: Theme) => ({
       transition: 'all .5s ease 0s',
       transform: 'translateY(0.2rem)'
     }
+  },
+  appBarHeader: {
+    paddingLeft: '1rem',
+    paddingRight: '1rem',
+    background: theme.palette.adBgColor.main
   }
 }))
 

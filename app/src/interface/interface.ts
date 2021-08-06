@@ -5,7 +5,7 @@ export interface Role {
   slug: string
 }
 
-export interface User extends Role{
+export interface User extends Role {
 
   id: number,
   username?: string,

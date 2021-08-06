@@ -13,6 +13,7 @@ interface UserItemProps {
   kanaName: string
   gender: string
   role: string | string[]
+  classes: any
 }
 
 const UserItem = ({
@@ -21,32 +22,36 @@ const UserItem = ({
   kanjiName,
   kanaName,
   gender,
-  role
+  role,
+  classes
 }: UserItemProps) => {
   // TODO スタイルを指定
   return (
     <TableRow>
-      <TableCell>
+      <TableCell
+        style={{ width: '76px', padding: '0', textAlign: 'center' }}
+        className={ classes.tableBodyCell }
+      >
         { userId }
       </TableCell>
-      <TableCell>
+      <TableCell className={ classes.tableBodyCell } >
         <Link to={ `/users/${ userId }` }>
           { userEmail }
         </Link>
       </TableCell>
-      <TableCell>
+      <TableCell className={ classes.tableBodyCell } >
         { kanjiName }
       </TableCell>
-      <TableCell>
+      <TableCell className={ classes.tableBodyCell } >
         { kanaName }
       </TableCell>
-      <TableCell>
+      <TableCell className={ classes.tableBodyCell } >
         {  }
       </TableCell>
-      <TableCell>
+      <TableCell className={ classes.tableBodyCell } >
         { gender }
       </TableCell>
-      <TableCell>
+      <TableCell className={ classes.tableBodyCell } >
         { role }
       </TableCell>
     </TableRow>

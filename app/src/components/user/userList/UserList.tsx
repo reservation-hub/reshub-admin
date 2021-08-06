@@ -1,19 +1,21 @@
 import React from 'react'
 
+import TableStyle, {
+  StyledTable,
+  StyledTableHead
+} from '../../location/TableStyle'
 import {
-  Paper, 
-  Table,
-  TableHead, 
   TableBody, 
   TableRow,
   TableCell,
-  Typography
 } from '@material-ui/core'
-import { User } from "../../interface/interface"
+import { StyledPaper } from '../../CommonStyle'
+import { User } from "../../../interface/interface"
 
 import UserItem from './UserItem'
-import ModalOverlay from '../modal/Modal'
-import ModalUserForm from '../modal/ModalForm'
+import ModalOverlay from '../../modal/ModalOverlay'
+import ModalUserForm from '../../modal/ModalUserForm'
+import ListTopBar from './ListTopBar'
 
 
 interface UserListProps {
@@ -30,44 +32,53 @@ const UserList = ({
   modalOpen
 }: UserListProps) => {
   // TODO スタイルを指定
+  const classes = TableStyle()
   return (
-    <Paper>
-      <Typography variant='h4'>
-        ユーザー一覧
-      </Typography>
-      <ModalOverlay
-        modalOpen={ modalOpen }
-        modalCloseHandler={ modalCloseHandler }
+    <StyledPaper elevation={ 0 } >
+      <ListTopBar
         modalOpenHandler={ modalOpenHandler }
-      >
-        <ModalUserForm />
-      </ModalOverlay>
-      <Table>
-        <TableHead>
+      />
+      <StyledTable>
+        <StyledTableHead>
           <TableRow>
-            <TableCell>
+            <TableCell
+              style={{ width: '76px', padding: '0', textAlign: 'center' }}
+              className={ classes.tableHeadCell }
+            >
               No
             </TableCell>
-            <TableCell>
+            <TableCell
+              className={ classes.tableHeadCell }
+            >
               メールアドレス
             </TableCell>
-            <TableCell>
+            <TableCell
+              className={ classes.tableHeadCell }
+            >
               氏名(漢字)
             </TableCell>
-            <TableCell>
+            <TableCell
+              className={ classes.tableHeadCell }
+            >
               氏名(カナ)
             </TableCell>
-            <TableCell>
+            <TableCell
+              className={ classes.tableHeadCell }
+            >
               生年月日
             </TableCell>
-            <TableCell>
+            <TableCell
+              className={ classes.tableHeadCell }
+            >
               性別
             </TableCell>
-            <TableCell>
+            <TableCell
+              className={ classes.tableHeadCell }
+            >
               アクセス権限
             </TableCell>
           </TableRow>
-        </TableHead>
+        </StyledTableHead>
         <TableBody>
           { users && users.map(
             (user: User) => (
@@ -79,12 +90,19 @@ const UserList = ({
                 kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
                 gender={ user.gender }
                 role={ user.roles.map(r => r.name) }
+                classes={ classes }
               />
             )
           ) }
         </TableBody>
-      </Table>
-    </Paper>
+      </StyledTable>
+      <ModalOverlay
+        modalOpen={ modalOpen }
+        modalCloseHandler={ modalCloseHandler }
+      >
+        <ModalUserForm />
+      </ModalOverlay>
+    </StyledPaper>
   )
 
 }

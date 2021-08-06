@@ -25,9 +25,7 @@ const LocationItem = ({
       >
         { locationNo }
       </TableCell>
-      <TableCell
-        className={ classes.tableBodyCell }
-      >
+      <TableCell className={ classes.tableBodyCell } >
         { locationName }
       </TableCell>
     </TableRow>
