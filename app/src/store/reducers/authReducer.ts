@@ -33,14 +33,14 @@ const authReducer =  (state = initialState, action: AuthAction) => {
         isAuthenticated: false,
         err: action.payload || {}
       }
-    // case LOGOUT_REQUEST_SUCCESS:
-    //   localStorage.removeItem('persist:root')
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     isAuthenticated: false,
-    //     user: {}
-    //   }
+    case LOGOUT_REQUEST_SUCCESS:
+      localStorage.removeItem('persist:root')
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: false,
+        user: {}
+      }
     default:
       return state
   }

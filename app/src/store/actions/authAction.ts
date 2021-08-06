@@ -29,7 +29,12 @@ const fetchUser = (user: User[]) => ({
 //ユーザーのリクエストが失敗の時に実行するアクション
 const loginRequestFailure = (err: string) => ({
   type: USER_REQUEST_FAILURE,
-  payload: { err }
+  payload: err
+})
+
+const logoutSuccess = (msg: string) => ({
+  type: LOGOUT_REQUEST_SUCCESS,
+  payload: msg
 })
 
 // refresh tokenをサーバーに投げてユーザー情報をもらってくるアクション
@@ -100,10 +105,7 @@ export const logout = ():
       const message = await apiEndpoint.logout()    
       Cookies.remove('refreshToken')
 
-      dispatch({
-        type: LOGOUT_REQUEST_SUCCESS,
-        payload: message
-      })
+      dispatch(logoutSuccess(message.data))
 
       history.push('/auth')
     } catch (e: any) {
@@ -116,3 +118,4 @@ export type AuthAction =
   | ReturnType<typeof loginRequestStart>
   | ReturnType<typeof fetchUser>
   | ReturnType<typeof loginRequestFailure>
+  | ReturnType<typeof logoutSuccess>
