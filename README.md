@@ -11,6 +11,7 @@ aliasの実行と環境変数のアップデート
 ```
 $ source aliases.sh
 $ admin-init
+$ ent-init
 ```
 
 -------------------------------
@@ -20,25 +21,25 @@ $ admin-init
 * admin画面のコンテナー起動
 
 ```
-$ rhadmin
+$ rh-ad
 ```
 
 * admin画面のコンテナー停止
 
 ```
-$ addown
+$ ad-down
 ```
 
 * 実行中のコンテナーのbashに接続
 
 ```
-$ adbash
+$ ad-bash
 ```
 
 * ログの確認
 
 ```
-$ adlog
+$ ad-log
 ```
 
 -------------------------------

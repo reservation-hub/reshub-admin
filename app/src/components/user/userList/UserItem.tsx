@@ -11,7 +11,7 @@ interface UserItemProps {
   userEmail: string
   kanjiName: string
   kanaName: string
-  gender: string
+  gender: string | null | undefined
   role: string | string[]
   classes: any
 }

@@ -10,7 +10,6 @@ import LocationTable from '../../components/location/LocationTable'
 import CommonStyle from '../../components/CommonStyle'
 
 
-
 const Cities = () => {
 
   const classes = CommonStyle()

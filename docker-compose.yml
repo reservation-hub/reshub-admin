@@ -14,7 +14,7 @@ services:
       - reshub-deploy/.env.dev
     image: reshub-admin
     ports:
-      - 8080:3000
+      - "8080:3000"
     volumes:
       - ./app:/app
     tty: true

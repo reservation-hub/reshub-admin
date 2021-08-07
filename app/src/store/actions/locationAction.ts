@@ -7,10 +7,15 @@ import {
   LOCATION_REQUEST_SUCCESS
 } from '../types/locationTypes'
 
+import {
+  Area,
+  Prefecture,
+  City
+} from '../../entities/Location'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { RootState } from '../store'
-import { LocationData } from "../../interface/interface"
+
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
@@ -22,7 +27,7 @@ const locationReqStart = () => {
   }
 }
 
-const fetchLocation = (location: LocationData) => {
+const fetchLocation = (location: Area | Prefecture | City) => {
   return {
     type: LOCATION_REQUEST_SUCCESS,
     payload: location

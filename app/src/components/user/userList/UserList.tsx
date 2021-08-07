@@ -10,7 +10,7 @@ import {
   TableCell,
 } from '@material-ui/core'
 import { StyledPaper } from '../../CommonStyle'
-import { User } from "../../../interface/interface"
+import { User } from '../../../entities/User'
 
 import UserItem from './UserItem'
 import ModalOverlay from '../../modal/ModalOverlay'

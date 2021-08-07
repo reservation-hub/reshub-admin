@@ -14,7 +14,7 @@ import {
 } from '../types/authTypes'
 import { RootState } from '../store'
 import { GoogleLoginResponse } from 'react-google-login'
-import { User } from '../../interface/interface'
+import { User } from '../../entities/User'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 

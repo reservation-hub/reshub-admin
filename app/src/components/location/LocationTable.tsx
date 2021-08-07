@@ -6,12 +6,16 @@ import {
   TableCell,
   Typography
 } from '@material-ui/core'
+import {
+  Area,
+  City,
+  Prefecture
+} from '../../entities/Location'
 import LocationStyle, {
   StyledTable,
   StyledTableHead
 } from './TableStyle'
 import { StyledPaper } from '../CommonStyle'
-import { LocationData } from "../../interface/interface"
 
 import LocationItem from './LocationItem'
 
@@ -20,7 +24,7 @@ interface LocationTableProps {
   tableTitle: string
   tableColumnIndex: string
   tableColumnName: string
-  data: LocationData[]
+  data: Area[] | Prefecture[] | City[]
 }
 
 const LocationTable = ({
@@ -57,7 +61,7 @@ const LocationTable = ({
         </StyledTableHead>
         <TableBody>
           { data && data.map(
-            (data: any, index: number) => (
+            (data, index: number) => (
               <LocationItem
                 key={ index }
                 locationNo={ data.id }
