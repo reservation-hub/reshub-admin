@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { Route } from 'react-router-dom'
@@ -18,15 +18,6 @@ const Users = () => {
   const classes = CommonStyle()
   const { users, loading } = useSelector((state: RootState) => state.user)
   const { open, openModal, closeModal } = useModal(false)
-  // const [modalOpen, setModalOpen] = useState<boolean>(false)
-  //
-  // const modalOpenHandler = (): void => {
-  //   setModalOpen(true)
-  // }
-  //
-  // const modalCloseHandler = (): void => {
-  //   setModalOpen(false)
-  // }
 
   useEffect(() => {
     dispatch(fetchUserList())
