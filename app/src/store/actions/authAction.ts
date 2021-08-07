@@ -2,21 +2,23 @@
 // redux action ユーザー印証管理関数
 //----------------------------------
 
-import apiEndpoint from '../../utils/api/apiEndpoint'
-import setAuthToken from '../../utils/setAuthToken'
-import history from '../../utils/history'
-import Cookies from 'js-cookie'
 import { 
   USER_REQUEST_START, 
   USER_REQUEST_SUCCESS, 
   USER_REQUEST_FAILURE,
   LOGOUT_REQUEST_SUCCESS,
 } from '../types/authTypes'
+
 import { RootState } from '../store'
 import { GoogleLoginResponse } from 'react-google-login'
 import { User } from '../../entities/User'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
+
+import apiEndpoint from '../../utils/api/apiEndpoint'
+import setAuthToken from '../../utils/setAuthToken'
+import history from '../../utils/history'
+import Cookies from 'js-cookie'
 
 //ユーザーのリクエストをスタートするアクション
 const loginRequestStart = () => ({ type: USER_REQUEST_START })

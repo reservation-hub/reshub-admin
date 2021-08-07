@@ -9,7 +9,7 @@ import {
   SHOP_FETCH_SUCCESS, 
   SHOP_GET_SUCCESS, 
   SHOP_REQUEST_FAILURE 
-} from "../types/shopTypes"
+} from '../types/shopTypes'
 
 
 const initialState = {

@@ -7,15 +7,10 @@ import {
   LOCATION_REQUEST_SUCCESS
 } from '../types/locationTypes'
 
-import {
-  Area,
-  Prefecture,
-  City
-} from '../../entities/Location'
+import { Area, Prefecture, City } from '../../entities/Location'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { RootState } from '../store'
-
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'

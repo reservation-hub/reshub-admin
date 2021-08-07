@@ -1,11 +1,6 @@
-import React, {
-  useEffect,
-  useState
-} from 'react'
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux'
+import React, { useEffect, useState } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { RootState } from '../../store/store'
 import { fetchUserList } from '../../store/actions/userAction'

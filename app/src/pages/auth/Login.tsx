@@ -1,12 +1,6 @@
-import React, {
-  FormEvent,
-  useCallback,
-  useState
-} from 'react'
-import {
-  loginStart,
-  googleLogin
-} from '../../store/actions/authAction'
+import React, { FormEvent, useCallback, useState } from 'react'
+
+import { loginStart, googleLogin } from '../../store/actions/authAction'
 import { useDispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
 

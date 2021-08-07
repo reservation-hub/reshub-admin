@@ -1,8 +1,6 @@
 import React from 'react'
 
-import {
-  Dialog
- } from '@material-ui/core'
+import { Dialog } from '@material-ui/core'
 
 interface ModalProps {
   children: React.ReactNode

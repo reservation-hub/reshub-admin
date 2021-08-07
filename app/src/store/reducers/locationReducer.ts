@@ -3,7 +3,8 @@
 //----------------------------------
 
 import { LOCATION_REQUEST_SUCCESS } from '../types/locationTypes'
-import { LocationAction } from "../actions/locationAction";
+
+import { LocationAction } from '../actions/locationAction'
 
 const initialState = {
   loading: true,

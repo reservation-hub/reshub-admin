@@ -1,17 +1,7 @@
-import React, {
-  ChangeEventHandler,
-  FormEventHandler
-} from 'react'
-import {
-  Grid,
-  Container,
-  TextField
-} from '@material-ui/core'
-import { 
-  GoogleLogin, 
-  GoogleLoginResponse, 
-  GoogleLoginResponseOffline,
-} from 'react-google-login'
+import React, { ChangeEventHandler, FormEventHandler } from 'react'
+
+import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
+import { Grid, Container, TextField } from '@material-ui/core'
 import { FcGoogle } from 'react-icons/fc'
 
 

@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  TableRow,
-  TableCell  
-} from '@material-ui/core'
+import { TableRow, TableCell } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 interface UserItemProps {
