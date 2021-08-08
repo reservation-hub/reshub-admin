@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  TableRow,
-  TableCell  
-} from '@material-ui/core'
+import { TableRow, TableCell } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 interface UserItemProps {
@@ -11,7 +8,7 @@ interface UserItemProps {
   userEmail: string
   kanjiName: string
   kanaName: string
-  gender: string
+  gender: string | null | undefined
   role: string | string[]
   classes: any
 }

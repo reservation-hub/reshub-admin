@@ -7,8 +7,8 @@ import {
   LOGOUT_REQUEST_SUCCESS,
   USER_REQUEST_FAILURE,
   USER_REQUEST_SUCCESS
-} from "../types/authTypes"
-import { AuthAction } from "../actions/authAction";
+} from '../types/authTypes'
+import { AuthAction } from '../actions/authAction'
 
 const initialState: AuthState = {
   loading: true,

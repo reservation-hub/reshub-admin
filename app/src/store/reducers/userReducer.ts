@@ -9,7 +9,7 @@ import {
   USERS_EDIT_SUCCESS,
   USERS_DELETE_SUCCESS,
   USERS_REQUEST_FAILURE
-} from "../types/usersType"
+} from '../types/usersType'
 
 
 const initialState = {

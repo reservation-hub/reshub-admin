@@ -2,13 +2,11 @@
 // redux reducer エリア情報管理
 //----------------------------------
 
-import {
-  LOCATION_REQUEST_SUCCESS,
-  LocationState
-} from '../types/locationTypes'
-import { LocationAction } from "../actions/locationAction";
+import { LOCATION_REQUEST_SUCCESS } from '../types/locationTypes'
 
-const initialState: LocationState = {
+import { LocationAction } from '../actions/locationAction'
+
+const initialState = {
   loading: true,
   location: []
 }

@@ -1,16 +1,9 @@
 import React from 'react'
 
-import TableStyle, {
-  StyledTable,
-  StyledTableHead
-} from '../../location/TableStyle'
-import {
-  TableBody, 
-  TableRow,
-  TableCell,
-} from '@material-ui/core'
+import { TableBody, TableRow, TableCell, } from '@material-ui/core'
+import TableStyle, { StyledTable, StyledTableHead } from '../../location/TableStyle'
 import { StyledPaper } from '../../CommonStyle'
-import { User } from "../../../interface/interface"
+import { User } from '../../../entities/User'
 
 import UserItem from './UserItem'
 import ModalOverlay from '../../modal/ModalOverlay'

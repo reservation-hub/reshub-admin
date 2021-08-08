@@ -1,12 +1,6 @@
 import React from 'react'
 
-import {
-  TextField,
-  Select,
-  InputLabel,
-  Input,
-  Container
-} from '@material-ui/core'
+import { TextField, Select, InputLabel, Input, Container } from '@material-ui/core'
 
 const ModalUserForm = () => {
   // todo モーダルフォーム作成

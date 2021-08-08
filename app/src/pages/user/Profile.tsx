@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux'
+
+import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
 import { RootState } from '../../store/store'
 import { getOneUser } from '../../store/actions/userAction'

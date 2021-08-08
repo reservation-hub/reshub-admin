@@ -1,13 +1,5 @@
-import {
-  Paper
-} from '@material-ui/core'
-
-import {
-  makeStyles,
-  withStyles,
-  Theme
-} from '@material-ui/core/styles'
-
+import { makeStyles, withStyles, Theme } from '@material-ui/core/styles'
+import { Paper } from '@material-ui/core'
 
 //-----------------------------------------------------------
 // reshub-adminの共通のスタイルを指定する

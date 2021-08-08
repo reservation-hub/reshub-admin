@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux'
+
+import { useDispatch, useSelector } from 'react-redux'
 import { getCity } from '../../store/actions/locationAction'
 import { RootState } from '../../store/store'
 
 import LocationTable from '../../components/location/LocationTable'
 import CommonStyle from '../../components/CommonStyle'
-
 
 
 const Cities = () => {

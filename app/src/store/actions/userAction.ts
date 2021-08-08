@@ -11,10 +11,10 @@ import {
   USERS_DELETE_SUCCESS,
   USERS_REQUEST_FAILURE
  } from '../types/usersType'
+
 import { RootState } from '../store'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
- 
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
