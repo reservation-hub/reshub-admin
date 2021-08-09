@@ -11,8 +11,8 @@ import { AiOutlineClose } from 'react-icons/ai'
 import history from '../../utils/history'
 import useInput from '../../utils/useInput'
 import LoginForm from '../../components/auth/LoginForm'
-import LoginSelectHeader from '../../components/common/LoginSelectHeader'
-import LoginSelectFooter from '../../components/common/LoginSelectFooter'
+import LoginSelectHeader from '../../components/common/loginSelect/LoginSelectHeader'
+import LoginSelectFooter from '../../components/common/loginSelect/LoginSelectFooter'
 
 import LoginStyle from '../../components/auth/LoginStyle'
 import CommonStyle from '../../components/CommonStyle'
@@ -22,7 +22,7 @@ interface LocationState {
 }
 
 const Login = ({ location }: RouteComponentProps<LocationState>) => {
-  console.log(location)
+
   const [errorState, setErrorState] = useState<boolean>(true)
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
 
@@ -61,7 +61,7 @@ const Login = ({ location }: RouteComponentProps<LocationState>) => {
           <Alert
             severity='error'
             action={
-              <span onClick={() => clearError()}>
+              <span onClick={ () => clearError() } >
                 <AiOutlineClose />
               </span>
             }

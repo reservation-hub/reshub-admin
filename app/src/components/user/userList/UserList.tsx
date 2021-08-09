@@ -28,9 +28,7 @@ const UserList = ({
   const classes = TableStyle()
   return (
     <StyledPaper elevation={ 0 } >
-      <ListTopBar
-        modalOpenHandler={ modalOpenHandler }
-      />
+      <ListTopBar modalOpenHandler={ modalOpenHandler } />
       <StyledTable>
         <StyledTableHead>
           <TableRow>
@@ -40,34 +38,22 @@ const UserList = ({
             >
               No
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               メールアドレス
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               氏名(漢字)
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               氏名(カナ)
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               生年月日
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               性別
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               アクセス権限
             </TableCell>
           </TableRow>
@@ -89,10 +75,7 @@ const UserList = ({
           ) }
         </TableBody>
       </StyledTable>
-      <ModalOverlay
-        modalOpen={ modalOpen }
-        modalCloseHandler={ modalCloseHandler }
-      >
+      <ModalOverlay modalOpen={ modalOpen } modalCloseHandler={ modalCloseHandler }>
         <ModalUserForm />
       </ModalOverlay>
     </StyledPaper>

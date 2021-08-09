@@ -13,18 +13,13 @@ const ModalOverlay = ({
   modalOpen,
   modalCloseHandler
 }: ModalProps) => {
-
   return (
     <div>
-      <Dialog
-        open={ modalOpen }
-        onClose={ modalCloseHandler }
-      >
+      <Dialog open={ modalOpen } onClose={ modalCloseHandler } >
         { children }
       </Dialog>
     </div>
   )
-
 }
 
 export default ModalOverlay

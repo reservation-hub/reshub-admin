@@ -6,14 +6,14 @@ const ModalUserForm = () => {
   // todo モーダルフォーム作成
   return (
     <Container>
-      <form>
+      <form className='user-create-form'>
         <TextField
             label='メールアドレス'
             name='email'
             autoComplete='off'
             fullWidth
         />
-        <div>
+        <div className='user-name-kanji'>
           <TextField
               label='性'
               name='name'
@@ -25,7 +25,7 @@ const ModalUserForm = () => {
               autoComplete='off'
           />
         </div>
-        <div>
+        <div className='user-name-kana'>
           <TextField
               label='セイ'
               name='name'
@@ -43,11 +43,11 @@ const ModalUserForm = () => {
             autoComplete='off'
             fullWidth
         />
-        <div>
+        <div className='user-gender'>
           <input type="button" value='男性'/>
           <input type="button" value='女性'/>
         </div>
-        <div>
+        <div className='user-birthday'>
           <TextField
               label='年'
               name='date'
@@ -64,12 +64,14 @@ const ModalUserForm = () => {
               autoComplete='off'
           />
         </div>
-        <InputLabel htmlFor='select-label' >権限</InputLabel>
-        <Select name="role" input={ <Input id='select-label' /> }>
-          <option value="admin">admin</option>
-          <option value="salon staff">salon staff</option>
-        </Select>
-        <button>この情報で登録</button>
+        <div className='access-role'>
+          <InputLabel htmlFor='select-label' >権限</InputLabel>
+          <Select name="role" input={ <Input id='select-label' /> } >
+            <option value="admin">admin</option>
+            <option value="salon staff">salon staff</option>
+          </Select>
+        </div>
+        <button disabled >この情報で登録</button>
       </form>
     </Container>
   )
