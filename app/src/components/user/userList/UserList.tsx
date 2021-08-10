@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEventHandler, FormEvent } from 'react'
 
 import { TableBody, TableRow, TableCell, } from '@material-ui/core'
 import TableStyle, { StyledTable, StyledTableHead } from '../../location/TableStyle'
@@ -6,23 +6,17 @@ import { StyledPaper } from '../../CommonStyle'
 import { User } from '../../../entities/User'
 
 import UserItem from './UserItem'
-import ModalOverlay from '../../modal/ModalOverlay'
-import ModalUserForm from '../../modal/ModalUserForm'
 import ListTopBar from './ListTopBar'
 
 
 interface UserListProps {
   users: User[]
   modalOpenHandler: () => void
-  modalCloseHandler: () => void
-  modalOpen: boolean
 }
 
 const UserList = ({
   users,
-  modalOpenHandler,
-  modalCloseHandler,
-  modalOpen
+  modalOpenHandler
 }: UserListProps) => {
   // TODO スタイルを指定
   const classes = TableStyle()
@@ -75,9 +69,6 @@ const UserList = ({
           ) }
         </TableBody>
       </StyledTable>
-      <ModalOverlay modalOpen={ modalOpen } modalCloseHandler={ modalCloseHandler }>
-        <ModalUserForm />
-      </ModalOverlay>
     </StyledPaper>
   )
 
