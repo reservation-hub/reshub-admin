@@ -12,12 +12,11 @@ import Profile from './Profile'
 import useInput from '../../utils/useInput'
 import ModalUserForm from '../../components/modal/ModalUserForm'
 import ModalOverlay from '../../components/modal/ModalOverlay'
-import CommonStyle from '../../components/CommonStyle'
+import MainTemplate from '../../components/common/MainTemplate'
 
 const Users = () => {
 
   const dispatch = useDispatch()
-  const classes = CommonStyle()
   const { users, loading } = useSelector((state: RootState) => state.user)
   const { open, openModal, closeModal } = useModal(false)
   const { input, ChangeHandler } = useInput({
@@ -50,7 +49,7 @@ const Users = () => {
     ).format('YYYY-MM-DD'),
     roleIds: [Number(input.role)]
   }
-  console.log(body)
+
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -65,7 +64,7 @@ const Users = () => {
   if (loading) return <span>loading...</span>
 
   return (
-    <main className={ classes.mainBackground }>
+    <MainTemplate>
       <ModalOverlay
         modalOpen={ open }
         modalCloseHandler={ closeModal }
@@ -79,7 +78,7 @@ const Users = () => {
         />
       </Route>
       <Route path='/users/:id' component={ Profile } />
-    </main>
+    </MainTemplate>
   )
 }
 
