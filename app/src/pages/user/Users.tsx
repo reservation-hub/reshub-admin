@@ -45,15 +45,16 @@ const Users = () => {
     lastNameKana: input.lastnameKana,
     gender: input.gender,
     birthday: moment(
-      `${ input.birthdayY }/${ input.birthdayM }/${ input.birthdayD }`
-    ).format("YYYY-MM-DD"),
+      `${ input.birthdayY }/${ input.birthdayM }/${ input.birthdayD }`,
+      'YYYY-MM-DD'
+    ).format('YYYY-MM-DD'),
     roleIds: [Number(input.role)]
   }
-
+  console.log(body)
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      dispatch(addUser(body))
+      // dispatch(addUser(body))
     }, [dispatch, addUser, body]
   )
 

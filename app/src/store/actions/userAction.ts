@@ -59,7 +59,7 @@ export const getOneUser = (id: number):
     const res = await apiEndpoint.getOneUsers(id)
     dispatch({
       type: USERS_GET_SUCCESS,
-      payload: res.data.data
+      payload: res.data
     })
   } catch (e: any) {
     const error = e.response.data
