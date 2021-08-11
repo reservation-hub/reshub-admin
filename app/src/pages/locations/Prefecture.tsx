@@ -6,6 +6,7 @@ import { RootState } from '../../store/store'
 
 import LocationTable from '../../components/location/LocationTable'
 import CommonStyle from '../../components/CommonStyle'
+import MainTemplate from '../../components/common/MainTemplate'
 
 
 const Prefecture = () => {
@@ -20,14 +21,14 @@ const Prefecture = () => {
   }, [dispatch])
 
   return (
-    <main className={ classes.mainBackground }>
+    <MainTemplate>
       <LocationTable 
         tableTitle='都道府県一覧'
         tableColumnIndex='No'
         tableColumnName='都道府県'
         data={ location['data'] }
       />
-    </main>
+    </MainTemplate>
   )
 }
 
