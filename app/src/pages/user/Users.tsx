@@ -23,6 +23,7 @@ const Users = () => {
   const { input, ChangeHandler } = useInput({
     email: '',
     password: '',
+    confirm: '',
     firstnameKanji: '',
     lastnameKanji: '',
     firstnameKana: '',
@@ -31,12 +32,13 @@ const Users = () => {
     birthdayY: '',
     birthdayM: '',
     birthdayD: '',
-    role: ''
+    role: ['']
   })
 
   const body = {
     email: input.email,
     password: input.password,
+    confirm: input.confirm,
     firstNameKanji: input.firstnameKanji,
     lastNameKanji: input.lastnameKanji,
     firstNameKana: input.firstnameKana,
@@ -45,7 +47,7 @@ const Users = () => {
     birthday: moment(
       `${ input.birthdayY }/${ input.birthdayM }/${ input.birthdayD }`
     ).format("YYYY-MM-DD"),
-    roleIds: input.role
+    roleIds: [Number(input.role)]
   }
 
   const onSubmit = useCallback(
@@ -63,7 +65,10 @@ const Users = () => {
 
   return (
     <main className={ classes.mainBackground }>
-      <ModalOverlay modalOpen={ open } modalCloseHandler={ closeModal }>
+      <ModalOverlay
+        modalOpen={ open }
+        modalCloseHandler={ closeModal }
+        modalTitle='ユーザー登録' >
         <ModalUserForm input={ input } setValue={ ChangeHandler } onSubmit={ onSubmit } />
       </ModalOverlay>
       <Route exact path='/users'>

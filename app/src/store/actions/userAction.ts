@@ -46,6 +46,7 @@ export const fetchUserList = ():
   } catch (e: any) {
     const error = e.response.data
     dispatch(userRequestFailure(error))
+    history.push('/error')
   }
 
 }
@@ -75,14 +76,13 @@ export const addUser = (userData: object):
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.addUser(userData)
-    console.log(res)
-    // dispatch({
-    //   type: USERS_ADD_SUCCESS,
-    //   payload: res.data
-    // })
+    dispatch({
+      type: USERS_ADD_SUCCESS,
+      payload: res.data
+    })
   } catch (e) {
-    // const error = e.response.data
-    dispatch(userRequestFailure(e))
+    const error = e.response.data
+    dispatch(userRequestFailure(error))
   }
 
 }

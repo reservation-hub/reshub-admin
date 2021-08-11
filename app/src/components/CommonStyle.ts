@@ -10,8 +10,7 @@ export const StyledPaper = withStyles((theme: Theme) => ({
     width: '1120px',
     margin: '0 auto',
     justifyContent: 'center',
-    boxSahdow: 'none',
-    // background: theme.palette.secondary.main
+    boxSahdow: 'none'
   }
 }))(Paper)
 
