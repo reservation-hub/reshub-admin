@@ -2,5 +2,5 @@
 	path = reshub-deploy
 	url = git@github.com:reservation-hub/reshub-deploy.git
 [submodule "app/src/entities"]
-    path = app/src/entities
-    url = git@github.com:reservation-hub/entities.git
+	path = app/src/entities
+	url = git@github.com:reservation-hub/entities.git
