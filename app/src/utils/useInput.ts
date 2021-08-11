@@ -14,7 +14,6 @@ const useInput = <T>(initialState: T) => {
     }, [input],
   )
 
-
   return { input, ChangeHandler }
 }
 

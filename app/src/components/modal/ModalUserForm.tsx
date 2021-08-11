@@ -1,75 +1,161 @@
 import React from 'react'
 
-import { TextField, Select, InputLabel, Input, Container } from '@material-ui/core'
+import { Select, InputLabel, Container, MenuItem } from '@material-ui/core'
+import ModalFormStyle, { ModalInput, ModalSelect } from './ModalFormStyle'
+import { modalFormProps } from './_PropsType'
 
-const ModalUserForm = () => {
-  // todo モーダルフォーム作成
+const ModalUserForm = ({
+  input,
+  setValue,
+  onSubmit
+}: modalFormProps) => {
+
+  const classes = ModalFormStyle()
+
   return (
-    <Container>
-      <form>
-        <TextField
+    <Container className={ classes.modalContainer }>
+      <form onSubmit={ onSubmit } className='modalInputForm'>
+        <div className='inputBox'>
+          <ModalInput
             label='メールアドレス'
             name='email'
             autoComplete='off'
             fullWidth
-        />
-        <div>
-          <TextField
+            variant='outlined'
+            value={ input.email }
+            onChange={ setValue }
+          />
+        </div>
+        <div className='flexBetweenDiv'>
+          <ModalInput
               label='性'
-              name='name'
+              name='firstnameKanji'
               autoComplete='off'
+              variant='outlined'
+              className='inputSize'
+              value={ input.firstnameKanji }
+              onChange={ setValue }
           />
-          <TextField
+          <ModalInput
               label='名'
-              name='name'
+              name='lastnameKanji'
               autoComplete='off'
+              variant='outlined'
+              className='inputSize'
+              value={ input.lastnameKanji }
+              onChange={ setValue }
           />
         </div>
-        <div>
-          <TextField
+        <div className='flexBetweenDiv'>
+          <ModalInput
               label='セイ'
-              name='name'
+              name='firstnameKana'
               autoComplete='off'
+              variant='outlined'
+              className='inputSize'
+              value={ input.firstnameKana }
+              onChange={ setValue }
           />
-          <TextField
+          <ModalInput
               label='メイ'
-              name='name'
+              name='lastnameKana'
               autoComplete='off'
+              variant='outlined'
+              className='inputSize'
+              value={ input.lastnameKana }
+              onChange={ setValue }
           />
         </div>
-        <TextField
+        <div className='inputBox'>
+          <ModalInput
             label='パスワード'
             name='password'
+            type='password'
             autoComplete='off'
             fullWidth
-        />
-        <div>
-          <input type="button" value='男性'/>
-          <input type="button" value='女性'/>
+            variant='outlined'
+            value={ input.password }
+            onChange={ setValue }
+          />
         </div>
-        <div>
-          <TextField
+        <div className='inputBox'>
+          <ModalInput
+            label='パスワード確認'
+            name='confirm'
+            type='password'
+            autoComplete='off'
+            fullWidth
+            variant='outlined'
+            value={ input.confirm }
+            onChange={ setValue }
+          />
+        </div>
+        <div className='genderRadio'>
+          <input
+            type="radio"
+            id="gender-male"
+            name="gender"
+            value='male'
+            onChange={ setValue }
+          />
+          <label htmlFor='gender-male'>男性</label>
+          <input
+            type="radio"
+            id="gender-female"
+            name="gender"
+            value='female'
+            onChange={ setValue }
+          />
+          <label htmlFor='gender-female'>女性</label>
+        </div>
+        <div className='flexBetweenDiv'>
+          <ModalInput
               label='年'
-              name='date'
+              name='birthdayY'
               autoComplete='off'
+              variant='outlined'
+              className='birthday'
+              value={ input.birthdayY }
+              onChange={ setValue }
           />
-          <TextField
+          <ModalInput
               label='月'
-              name='date'
+              name='birthdayM'
               autoComplete='off'
+              variant='outlined'
+              className='birthdayMD'
+              value={ input.birthdayM }
+              onChange={ setValue }
           />
-          <TextField
+          <ModalInput
               label='日'
-              name='date'
+              name='birthdayD'
               autoComplete='off'
+              variant='outlined'
+              className='birthdayMD'
+              value={ input.birthdayD }
+              onChange={ setValue }
           />
         </div>
-        <InputLabel htmlFor='select-label' >権限</InputLabel>
-        <Select name="role" input={ <Input id='select-label' /> }>
-          <option value="admin">admin</option>
-          <option value="salon staff">salon staff</option>
-        </Select>
-        <button>この情報で登録</button>
+        <div className='inputBox'>
+          <ModalSelect variant="outlined" >
+            <InputLabel id="roles-select-outlined-label">
+              権限
+            </InputLabel>
+            <Select
+              labelId="roles-select-outlined-label"
+              id="roles-select-outlined"
+              label="権限"
+              name='role'
+              value={ input.role }
+              onChange={ setValue }
+            >
+              <MenuItem value='1'>admin</MenuItem>
+              <MenuItem value='2'>salon staff</MenuItem>
+            </Select>
+          </ModalSelect>
+        </div>
+        <button className={ classes.submitButton } >この情報で登録</button>
       </form>
     </Container>
   )

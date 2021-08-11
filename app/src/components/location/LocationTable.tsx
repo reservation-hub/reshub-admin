@@ -60,8 +60,8 @@ const LocationTable = ({
           </TableRow>
         </StyledTableHead>
         <TableBody>
-          { data && data.map(
-            (data, index: number) => (
+          { data && data.map((
+            data, index: number) => (
               <LocationItem
                 key={ index }
                 locationNo={ data.id }

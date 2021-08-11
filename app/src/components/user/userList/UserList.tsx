@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEventHandler, FormEvent } from 'react'
 
 import { TableBody, TableRow, TableCell, } from '@material-ui/core'
 import TableStyle, { StyledTable, StyledTableHead } from '../../location/TableStyle'
@@ -6,31 +6,23 @@ import { StyledPaper } from '../../CommonStyle'
 import { User } from '../../../entities/User'
 
 import UserItem from './UserItem'
-import ModalOverlay from '../../modal/ModalOverlay'
-import ModalUserForm from '../../modal/ModalUserForm'
 import ListTopBar from './ListTopBar'
 
 
 interface UserListProps {
   users: User[]
   modalOpenHandler: () => void
-  modalCloseHandler: () => void
-  modalOpen: boolean
 }
 
 const UserList = ({
   users,
-  modalOpenHandler,
-  modalCloseHandler,
-  modalOpen
+  modalOpenHandler
 }: UserListProps) => {
   // TODO スタイルを指定
   const classes = TableStyle()
   return (
     <StyledPaper elevation={ 0 } >
-      <ListTopBar
-        modalOpenHandler={ modalOpenHandler }
-      />
+      <ListTopBar modalOpenHandler={ modalOpenHandler } />
       <StyledTable>
         <StyledTableHead>
           <TableRow>
@@ -40,34 +32,22 @@ const UserList = ({
             >
               No
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               メールアドレス
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               氏名(漢字)
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               氏名(カナ)
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               生年月日
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               性別
             </TableCell>
-            <TableCell
-              className={ classes.tableHeadCell }
-            >
+            <TableCell className={ classes.tableHeadCell }>
               アクセス権限
             </TableCell>
           </TableRow>
@@ -89,12 +69,6 @@ const UserList = ({
           ) }
         </TableBody>
       </StyledTable>
-      <ModalOverlay
-        modalOpen={ modalOpen }
-        modalCloseHandler={ modalCloseHandler }
-      >
-        <ModalUserForm />
-      </ModalOverlay>
     </StyledPaper>
   )
 

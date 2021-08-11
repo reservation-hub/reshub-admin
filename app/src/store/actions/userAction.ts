@@ -46,6 +46,7 @@ export const fetchUserList = ():
   } catch (e: any) {
     const error = e.response.data
     dispatch(userRequestFailure(error))
+    history.push('/error')
   }
 
 }
@@ -68,35 +69,23 @@ export const getOneUser = (id: number):
 
 }
 
-// export const addUser = (
-//   firstName: string,
-//   lastName: string,
-//   email: string,
-//   username: string,
-//   password: string 
-// ) => async dispatch => {
+export const addUser = (userData: object):
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
+  console.log(userData)
 
-//   const userData = {
-//     firstName,
-//     lastName,
-//     email,
-//     username,
-//     password 
-//   } 
+  dispatch(userRequestStart())
+  try {
+    const res = await apiEndpoint.addUser(userData)
+    dispatch({
+      type: USERS_ADD_SUCCESS,
+      payload: res.data
+    })
+  } catch (e) {
+    const error = e.response.data
+    dispatch(userRequestFailure(error))
+  }
 
-//   dispatch(userRequestStart())
-//   try {
-//     const res = await apiEndpoint.addUser(userData)
-//     dispatch({
-//       type: USERS_ADD_SUCCESS,
-//       payload: res.data
-//     })
-//   } catch (e) {
-//     const error = e.response.data
-//     dispatch(userRequestFailure(error)) 
-//   }
-
-// }
+}
 
 // export const patchUser = (
 //   id: number,
