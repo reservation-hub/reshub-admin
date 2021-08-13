@@ -3,6 +3,7 @@ import React from 'react'
 import { Grid, Typography } from '@material-ui/core'
 
 import CommonStyle from '../../CommonStyle'
+import CustomButton from '../../common/atoms/CustomButton'
 
 interface ListTopBarProps {
   modalOpenHandler: () => void
@@ -24,9 +25,11 @@ const ListTopBar = ({ modalOpenHandler }: ListTopBarProps) => {
       </Grid>
       <Grid item>
         {/* 実装予定 */}
-        <button>並び替え</button>
-        <button>絞り込み</button>
-        <button onClick={ modalOpenHandler }>ユーザー追加</button>
+        <CustomButton>並び替え</CustomButton>
+        <CustomButton>絞り込み</CustomButton>
+        <CustomButton onClick={ modalOpenHandler }>
+          ユーザー追加
+        </CustomButton>
       </Grid>
     </Grid>
   )

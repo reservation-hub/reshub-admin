@@ -22,6 +22,17 @@ export const StyledHeader = withStyles((theme: Theme) => ({
       height: '100%',
       paddingLeft: '3.5rem',
       paddingRight: '3.5rem'
+    },
+    '& .logout-button': {
+      width: '6.875rem',
+      height: '2.188rem',
+      filter: 'none',
+      color: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: 'rgba(250, 250, 250, 0.3)',
+        transition: 'all .5s ease 0s',
+        transform: 'translateY(0.2rem)'
+      }
     }
   }
 }))(AppBar)

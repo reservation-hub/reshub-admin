@@ -4,6 +4,8 @@ import { Grid, Typography } from '@material-ui/core'
 import { HeaderProps } from './_PropsType'
 import { StyledHeader } from '../CommonStyle'
 
+import CustomButton from './atoms/CustomButton'
+
 const Header = ({ onLogout }: HeaderProps) => {
 
   return (
@@ -20,9 +22,12 @@ const Header = ({ onLogout }: HeaderProps) => {
           </Typography>
         </Grid>
         <Grid item>
-          <button onClick={ onLogout }>
+          <CustomButton
+            onClick={ onLogout }
+            className='logout-button'
+          >
             Logout
-          </button>
+          </CustomButton>
         </Grid>
       </Grid>
     </StyledHeader>

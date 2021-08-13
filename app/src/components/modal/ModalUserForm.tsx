@@ -3,6 +3,7 @@ import React from 'react'
 import { Select, InputLabel, Container, MenuItem } from '@material-ui/core'
 import ModalFormStyle, { ModalInput, ModalSelect } from './ModalFormStyle'
 import { modalFormProps } from './_PropsType'
+import CustomButton from '../common/atoms/CustomButton'
 
 const ModalUserForm = ({
   input,
@@ -155,7 +156,9 @@ const ModalUserForm = ({
             </Select>
           </ModalSelect>
         </div>
-        <button className={ classes.submitButton } >この情報で登録</button>
+        <CustomButton className={ classes.submitButton } >
+          この情報で登録
+        </CustomButton>
       </form>
     </Container>
   )
