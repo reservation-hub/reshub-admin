@@ -31,7 +31,7 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     bottom: '25%'
   },
   buttonRoot: {
-    fontSize: '.85rem',
+    fontSize: '1rem',
     border: `1px solid ${ theme.palette.primary.main }`,
     borderRadius: '.25rem',
     backgroundColor: theme.palette.secondary.main,
@@ -40,7 +40,7 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     transition: 'all .5s ease 0s',
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     '&:hover': {
-      color: '#fafafa',
+      color: theme.palette.secondary.main,
       backgroundColor: theme.palette.primary.main,
       transition: 'all .5s ease 0s',
       transform: 'translateY(0.2rem)'

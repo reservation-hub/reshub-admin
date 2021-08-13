@@ -8,7 +8,6 @@ import { getOneUser } from '../../store/actions/userAction'
 import ProfileItem from '../../components/user/profile/ProfileItem'
 import MainTemplate from '../../components/common/MainTemplate'
 
-
 interface MatchParams {
   id: string
 }
@@ -27,7 +26,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   return (
     <MainTemplate>
       <ProfileItem
-        userEmail={user.email}
+        userEmail={ user.email }
         kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
         kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
         gender={ user.gender }
