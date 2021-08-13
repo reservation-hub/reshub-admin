@@ -14,14 +14,18 @@ const PublicRoute = ({ children, ...rest }: any) => {
   // でないと、ログイン画面へリダイレクトする
   //-----------------------------------------------------------
   
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth)
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.auth
+  )
 
-  const isUser = (user: User) => user.roles.findIndex(role => role.name === 'admin' || 'salon staff') !== -1
+  const isUser =
+    (user: User) =>
+      user.roles.findIndex(role => role.name === 'admin' || 'salon staff') !== -1
 
   return (
     <>
       { isAuthenticated &&
-      isUser ? (
+      isUser(user) ? (
         <Route
           { ...rest }
         >

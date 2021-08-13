@@ -15,14 +15,18 @@ const PrivateRoute = ({ children, ...rest }: any) => {
   // でないと、ログイン画面へリダイレクトする
   //-----------------------------------------------------------
 
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth)
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.auth
+  )
 
-  const isAdmin = (user: User) => user.roles.findIndex(role => role.name === 'admin') !== -1
+  const isAdmin =
+    (user: User) =>
+      user.roles.findIndex(role => role.name === 'admin') !== -1
 
   return (
     <>
       { isAuthenticated && 
-        isAdmin ? (
+        isAdmin(user) ? (
           <Route 
             { ...rest }
           >
