@@ -15,6 +15,8 @@ import Prefecture from './pages/locations/Prefecture'
 import Cities from './pages/locations/Cities'
 import Users from './pages/user/Users'
 import Salon from './pages/shop/Salon'
+import SalonDashboard from './pages/dashboards/salon/SalonDashboard'
+
 
 const  App = () => {
      
@@ -29,12 +31,12 @@ const  App = () => {
       <Switch>
         {/* public */}
         <PublicRoute exact path='/' component={ Home }/>
+        <PublicRoute path='/salon_dashboard' component={ SalonDashboard } />
 
         {/* only not logged in */}
         <Route path='/auth' component={ Login } />
 
         {/* only admin */}
-        <PrivateRoute path='/dashboard' />
         <PrivateRoute path='/pre' component={ Prefecture }/>
         <PrivateRoute path='/city' component={ Cities } />
         <PrivateRoute path='/salon' component={ Salon }/>

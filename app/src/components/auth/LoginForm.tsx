@@ -3,6 +3,7 @@ import React, { ChangeEventHandler, FormEventHandler } from 'react'
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 import { Grid, Container, TextField } from '@material-ui/core'
 import { FcGoogle } from 'react-icons/fc'
+import CustomButton from '../common/atoms/CustomButton'
 
 
 interface LoginProps {
@@ -49,11 +50,11 @@ const LoginForm = ({
           />
           <Grid container>
             <Grid item xs={ 12 }>
-              <button
+              <CustomButton
                 className={ `${ classes.commonCss.buttonRoot } loginButton` }
               >
                 ログイン
-              </button>
+              </CustomButton>
             </Grid>
             <Grid item xs={ 12 }>
               <GoogleLogin 
@@ -61,7 +62,7 @@ const LoginForm = ({
                 onSuccess={ googleHandler }
                 onFailure={ googleHandler }
                 render={renderProps => (
-                  <button 
+                  <CustomButton
                     onClick={ renderProps.onClick } 
                     className='socialRoot'
                   >
@@ -71,7 +72,7 @@ const LoginForm = ({
                     <span className='button-text'>
                       googleでログイン
                     </span>
-                  </button>
+                  </CustomButton>
                   )
                 }
               />

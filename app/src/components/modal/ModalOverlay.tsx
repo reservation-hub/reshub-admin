@@ -2,7 +2,9 @@ import React from 'react'
 
 import { Dialog, Typography } from '@material-ui/core'
 import { ModalProps } from './_PropsType'
+
 import ModalFormStyle from './ModalFormStyle'
+import CustomButton from '../common/atoms/CustomButton'
 
 const ModalOverlay = ({
   children,
@@ -20,9 +22,9 @@ const ModalOverlay = ({
           <Typography variant='h5' color='secondary'>
             { modalTitle }
           </Typography>
-          <button onClick={ modalCloseHandler }>
+          <CustomButton onClick={ modalCloseHandler }>
             閉じる
-          </button>
+          </CustomButton>
         </div>
         { children }
       </Dialog>
