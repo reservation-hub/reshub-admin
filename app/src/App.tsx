@@ -34,13 +34,14 @@ const  App = () => {
         <Route path='/auth' component={ Login } />
 
         {/* only admin */}
+        <PrivateRoute path='/dashboard' />
         <PrivateRoute path='/pre' component={ Prefecture }/>
         <PrivateRoute path='/city' component={ Cities } />
         <PrivateRoute path='/salon' component={ Salon }/>
         <PrivateRoute path='/users' component={ Users } />
 
         {/* has error */}
-        <Route component={ Error } />
+        <Route path='*' component={ Error } />
       </Switch>
     </Router>
   )

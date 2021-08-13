@@ -5,13 +5,9 @@ import { getPrefecture } from '../../store/actions/locationAction'
 import { RootState } from '../../store/store'
 
 import LocationTable from '../../components/location/LocationTable'
-import CommonStyle from '../../components/CommonStyle'
 import MainTemplate from '../../components/common/MainTemplate'
 
-
 const Prefecture = () => {
-
-  const classes = CommonStyle()
 
   const dispatch = useDispatch()
   const { location } = useSelector((state: RootState) => state.location)
@@ -22,7 +18,7 @@ const Prefecture = () => {
 
   return (
     <MainTemplate>
-      <LocationTable 
+      <LocationTable
         tableTitle='都道府県一覧'
         tableColumnIndex='No'
         tableColumnName='都道府県'
