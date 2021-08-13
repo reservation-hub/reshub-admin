@@ -32,8 +32,8 @@ const LoginForm = ({
             placeholder='メールアドレスを入力してください'
             value={ value.email }
             onChange={ setValue }
-            style={{ margin: '1.115rem 0 1rem 0' }}
-            className={ classes.loginCss.input }
+            style={{ margin: '1.115rem 0 .5rem 0' }}
+            className='inputBox'
             fullWidth
           />
           <TextField 
@@ -44,13 +44,13 @@ const LoginForm = ({
             placeholder='パスワードを入力してください'
             value={ value.password }
             onChange={ setValue }
-            className={ classes.loginCss.input }
+            className='inputBox'
             fullWidth
           />
           <Grid container>
             <Grid item xs={ 12 }>
               <button
-                className={ `${ classes.commonCss.buttonRoot } ${　classes.loginCss.loginButton　}` }
+                className={ `${ classes.commonCss.buttonRoot } loginButton` }
               >
                 ログイン
               </button>
@@ -63,7 +63,7 @@ const LoginForm = ({
                 render={renderProps => (
                   <button 
                     onClick={ renderProps.onClick } 
-                    className={ classes.loginCss.socialRoot }
+                    className='socialRoot'
                   >
                     <div className='google-icon'>
                       <FcGoogle />
