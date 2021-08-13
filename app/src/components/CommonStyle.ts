@@ -1,5 +1,5 @@
 import { makeStyles, withStyles, Theme } from '@material-ui/core/styles'
-import { Paper } from '@material-ui/core'
+import { AppBar, Paper } from '@material-ui/core'
 
 //-----------------------------------------------------------
 // reshub-adminの共通のスタイルを指定する
@@ -14,8 +14,22 @@ export const StyledPaper = withStyles((theme: Theme) => ({
   }
 }))(Paper)
 
+export const StyledHeader = withStyles((theme: Theme) => ({
+  root: {
+    height: '4.375rem',
+    boxShadow: 'none',
+    '& .header-items': {
+      height: '100%',
+      paddingLeft: '3.5rem',
+      paddingRight: '3.5rem'
+    }
+  }
+}))(AppBar)
+
 const CommonStyle = makeStyles((theme: Theme) => ({
   mainBackground: {
+    width: '100%',
+    paddingTop: '5rem',
     position: 'relative',
     background: theme.palette.adBgColor.main
   },
