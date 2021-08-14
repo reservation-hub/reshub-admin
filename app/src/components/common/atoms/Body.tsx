@@ -1,8 +1,10 @@
 import React from 'react'
-import { TableCell, TableRow } from '@material-ui/core'
+
+import { TableRow } from '@material-ui/core'
 import { BodyProps } from '../_PropsType'
 import { StyledTableCell } from '../TableStyle'
 import { Role } from '../../../entities/Role'
+
 import moment from 'moment'
 
 const Body = ({

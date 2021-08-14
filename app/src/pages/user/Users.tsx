@@ -53,7 +53,7 @@ const Users = () => {
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      // dispatch(addUser(body))
+      dispatch(addUser(body))
     }, [dispatch, addUser, body]
   )
 
