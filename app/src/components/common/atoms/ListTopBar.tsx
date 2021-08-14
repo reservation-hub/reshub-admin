@@ -1,15 +1,12 @@
 import React from 'react'
 
 import { Grid, Typography } from '@material-ui/core'
+import { ListTopBarProps } from '../../user/_PropsType'
 
 import CommonStyle from '../../CommonStyle'
-import CustomButton from '../../common/atoms/CustomButton'
+import CustomButton from './CustomButton'
 
-interface ListTopBarProps {
-  modalOpenHandler: () => void
-}
-
-const ListTopBar = ({ modalOpenHandler }: ListTopBarProps) => {
+const ListTopBar = ({ title, modalOpenHandler }: ListTopBarProps) => {
   const classes = CommonStyle()
   return (
     <Grid
@@ -20,7 +17,7 @@ const ListTopBar = ({ modalOpenHandler }: ListTopBarProps) => {
     >
       <Grid item>
         <Typography color='primary' variant='h4'>
-          ユーザー一覧
+          { title }
         </Typography>
       </Grid>
       <Grid item>

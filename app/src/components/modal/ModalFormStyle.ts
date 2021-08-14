@@ -5,7 +5,7 @@ import { FormControl, TextField } from '@material-ui/core'
 // reshhub-adminのモーダル画面のデフォルトスタイル
 //-----------------------------------------------------------
 
-export const ModalInput = withStyles(( theme: Theme ) => ({
+export const ModalInput = withStyles((theme: Theme) => ({
   root: {
     '& .MuiInputBase-root': {
       fontSize: '.9rem'
@@ -114,9 +114,8 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
     background: theme.palette.primary.main,
     color: '#fff',
     fontSize: '1.2rem',
-    boxShadow: '10px 10px',
     border: 'none',
-    cursor: 'pointer'
+    // filter: 'none'
   }
 }))
 

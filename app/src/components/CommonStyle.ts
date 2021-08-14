@@ -7,10 +7,10 @@ import { AppBar, Paper } from '@material-ui/core'
 
 export const StyledPaper = withStyles((theme: Theme) => ({
   root: {
-    width: '1120px',
+    width: '77.778%',
     margin: '0 auto',
     justifyContent: 'center',
-    boxSahdow: 'none'
+    boxShadow: 'none'
   }
 }))(Paper)
 
@@ -72,8 +72,7 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     }
   },
   appBarHeader: {
-    paddingLeft: '1rem',
-    paddingRight: '1rem',
+    padding: '0 1rem 1rem 1rem',
     background: theme.palette.adBgColor.main
   }
 }))

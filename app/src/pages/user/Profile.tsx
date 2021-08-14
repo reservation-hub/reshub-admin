@@ -6,7 +6,6 @@ import { RootState } from '../../store/store'
 import { getOneUser } from '../../store/actions/userAction'
 
 import ProfileItem from '../../components/user/profile/ProfileItem'
-import MainTemplate from '../../components/common/MainTemplate'
 
 interface MatchParams {
   id: string
@@ -24,15 +23,13 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   }, [dispatch, convertId])
   // TODO スタイルを指定
   return (
-    <MainTemplate>
-      <ProfileItem
-        userEmail={ user.email }
-        kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
-        kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
-        gender={ user.gender }
-        role={ user.roles && user.roles.map((r: any) => r.name) }
-      />
-    </MainTemplate>
+    <ProfileItem
+      userEmail={ user.email }
+      kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
+      kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
+      gender={ user.gender }
+      role={ user.roles && user.roles.map((r: any) => r.name) }
+    />
   )
 }
 

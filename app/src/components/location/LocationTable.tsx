@@ -14,7 +14,7 @@ import {
 import LocationStyle, {
   StyledTable,
   StyledTableHead
-} from './TableStyle'
+} from '../common/TableStyle'
 import { StyledPaper } from '../CommonStyle'
 
 import LocationItem from './LocationItem'

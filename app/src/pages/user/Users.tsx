@@ -12,7 +12,7 @@ import Profile from './Profile'
 import useInput from '../../utils/useInput'
 import ModalUserForm from '../../components/modal/ModalUserForm'
 import ModalOverlay from '../../components/modal/ModalOverlay'
-import MainTemplate from '../../components/common/MainTemplate'
+import MainTemplate from '../../components/common/layout/MainTemplate'
 
 const Users = () => {
 

@@ -5,7 +5,7 @@ import { getPrefecture } from '../../store/actions/locationAction'
 import { RootState } from '../../store/store'
 
 import LocationTable from '../../components/location/LocationTable'
-import MainTemplate from '../../components/common/MainTemplate'
+import MainTemplate from '../../components/common/layout/MainTemplate'
 
 const Prefecture = () => {
 

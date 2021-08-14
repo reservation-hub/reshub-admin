@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { Grid, Typography } from '@material-ui/core'
-import { HeaderProps } from './_PropsType'
-import { StyledHeader } from '../CommonStyle'
+import { HeaderProps } from '../_PropsType'
+import { StyledHeader } from '../../CommonStyle'
 
-import CustomButton from './atoms/CustomButton'
+import CustomButton from '../atoms/CustomButton'
 
 const Header = ({ onLogout }: HeaderProps) => {
 
