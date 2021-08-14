@@ -4,3 +4,6 @@
 [submodule "app/src/entities"]
 	path = app/src/entities
 	url = git@github.com:reservation-hub/entities.git
+[submodule "app/src/utils/api/request-response-types"]
+	path = app/src/utils/api/request-response-types
+	url = git@github.com:reservation-hub/request-response-types.git
