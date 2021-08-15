@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { User } from '../../entities/User'
 import { Shop } from '../../entities/Shop'
 
@@ -24,4 +25,9 @@ export type TableProps = {
 export type BodyProps = {
   index: number
   data: User & Shop
+}
+
+export type H1Props = {
+  children: React.ReactNode
+  className?: string
 }

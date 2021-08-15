@@ -33,7 +33,7 @@ const LoginForm = ({
             placeholder='メールアドレスを入力してください'
             value={ value.email }
             onChange={ setValue }
-            style={{ margin: '1.115rem 0 .5rem 0' }}
+            style={{ margin: '.5rem 0 2rem 0' }}
             className='inputBox'
             fullWidth
           />
