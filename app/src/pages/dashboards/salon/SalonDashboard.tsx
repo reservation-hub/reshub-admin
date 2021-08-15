@@ -2,9 +2,9 @@ import React from 'react'
 
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
-
-import MainTemplate from '../../../components/common/MainTemplate'
 import { User } from '../../../entities/User'
+
+import MainTemplate from '../../../components/common/layout/MainTemplate'
 import AdminDashboard from '../../../components/dashboards/AdminDashboard'
 import ShopDashboard from '../../../components/dashboards/salon/Shopdashboard'
 

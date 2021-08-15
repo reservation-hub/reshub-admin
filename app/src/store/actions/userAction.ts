@@ -80,6 +80,7 @@ export const addUser = (userData: object):
       type: USERS_ADD_SUCCESS,
       payload: res.data
     })
+    history.replace('/users')
   } catch (e) {
     const error = e.response.data
     dispatch(userRequestFailure(error))

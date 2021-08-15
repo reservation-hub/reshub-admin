@@ -11,12 +11,9 @@ import history from './utils/history'
 import Home from './pages/home/Home'
 import Error from './pages/error/Error'
 import Login from './pages/auth/Login'
-import Prefecture from './pages/locations/Prefecture'
-import Cities from './pages/locations/Cities'
 import Users from './pages/user/Users'
 import Salon from './pages/shop/Salon'
 import SalonDashboard from './pages/dashboards/salon/SalonDashboard'
-
 
 const  App = () => {
      
@@ -37,8 +34,6 @@ const  App = () => {
         <Route path='/auth' component={ Login } />
 
         {/* only admin */}
-        <PrivateRoute path='/pre' component={ Prefecture }/>
-        <PrivateRoute path='/city' component={ Cities } />
         <PrivateRoute path='/salon' component={ Salon }/>
         <PrivateRoute path='/users' component={ Users } />
 
