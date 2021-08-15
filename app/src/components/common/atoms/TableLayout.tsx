@@ -46,4 +46,4 @@ const TableLayout = ({
 
 }
 
-export default TableLayout
+export default React.memo(TableLayout)

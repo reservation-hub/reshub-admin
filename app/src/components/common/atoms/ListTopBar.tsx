@@ -19,7 +19,7 @@ const ListTopBar = ({ title, modalOpenHandler }: ListTopBarProps) => {
       <Grid item>
         <H1 className='item-header'>{ title }</H1>
       </Grid>
-      <Grid item justifyContent='space-between' className='item-button'>
+      <Grid item className='item-button'>
         {/* 実装予定 */}
         <CustomButton>並び替え</CustomButton>
         <CustomButton>絞り込み</CustomButton>
