@@ -18,15 +18,17 @@ const ModalOverlay = ({
   return (
     <div>
       <Dialog open={ modalOpen } onClose={ modalCloseHandler } >
-        <div className={ classes.modalHeader }>
-          <Typography variant='h5' color='secondary'>
-            { modalTitle }
-          </Typography>
-          <CustomButton onClick={ modalCloseHandler }>
-            閉じる
-          </CustomButton>
+        <div className={ classes.modalContainer }>
+          <div className={ classes.modalHeader }>
+            <Typography variant='h4' color='secondary'>
+              { modalTitle }
+            </Typography>
+            <CustomButton onClick={ modalCloseHandler }>
+              閉じる
+            </CustomButton>
+          </div>
+          { children }
         </div>
-        { children }
       </Dialog>
     </div>
   )

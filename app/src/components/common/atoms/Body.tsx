@@ -17,7 +17,7 @@ const Body = ({
   ).format('YYYY-MM-DD')
 
   return (
-    <TableRow style={{ height: '3.75rem' }}>
+    <TableRow style={{ height: '6rem' }}>
       <StyledTableCell className='table-index'>
         { index }
       </StyledTableCell>

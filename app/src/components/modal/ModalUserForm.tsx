@@ -14,7 +14,7 @@ const ModalUserForm = ({
   const classes = ModalFormStyle()
 
   return (
-    <Container className={ classes.modalContainer }>
+    <React.Fragment>
       <form onSubmit={ onSubmit } className='modalInputForm'>
         <div className='inputBox'>
           <ModalInput
@@ -99,7 +99,7 @@ const ModalUserForm = ({
             value='male'
             onChange={ setValue }
           />
-          <label htmlFor='gender-male'>男性</label>
+          <label htmlFor='gender-male' className='inputSize'>男性</label>
           <input
             type="radio"
             id="gender-female"
@@ -107,7 +107,7 @@ const ModalUserForm = ({
             value='female'
             onChange={ setValue }
           />
-          <label htmlFor='gender-female'>女性</label>
+          <label htmlFor='gender-female' className='inputSize'>女性</label>
         </div>
         <div className='flexBetweenDiv'>
           <ModalInput
@@ -148,6 +148,7 @@ const ModalUserForm = ({
               id="roles-select-outlined"
               label="権限"
               name='role'
+              style={{ fontSize: '1.6rem' }}
               value={ input.role }
               onChange={ setValue }
             >
@@ -160,7 +161,7 @@ const ModalUserForm = ({
           この情報で登録
         </CustomButton>
       </form>
-    </Container>
+    </React.Fragment>
   )
 
 }

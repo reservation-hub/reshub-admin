@@ -4,6 +4,9 @@ import { PaletteColorOptions } from "@material-ui/core"
 
 //-----------------------------------------------------------
 // reshub-adminのメインテーマとなるスタイルを指定する
+// すべてのサイズはpxではなく％かremで指定すること
+// ex ) fontSize: '15px' => fontSize: '1.5rem'
+// 1rem = 10pxで計算できる。
 //-----------------------------------------------------------
 
 declare module '@material-ui/core/styles/createPalette' {
@@ -22,6 +25,31 @@ declare module '@material-ui/core/styles/createPalette' {
 }
 
 const theme = createTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          margin: '0',
+          padding: '0',
+          fontSize: '62.5%',
+          fontFamily: '-apple-system, sans-serif, "メイリオ"',
+          height: '100vh',
+        },
+        body: {
+          height: '100%',
+          '& #reshub-root-page': {
+            height: '100%',
+            '& input': {
+              fontSize: '1.6rem',
+            },
+            '& label': {
+              fontSize: '1.6rem',
+            }
+          }
+        }
+      }
+    }
+  },
   palette: {
     primary: {
       main: '#669999'

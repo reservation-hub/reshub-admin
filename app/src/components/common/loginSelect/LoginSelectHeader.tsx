@@ -1,14 +1,16 @@
 import React from 'react'
 
-import { Container, Typography } from '@material-ui/core'
+import { Container } from '@material-ui/core'
+
+import H1 from '../atoms/H1'
 
 const LoginSelectHeader = () => {
   return (
     <Container
       maxWidth='sm'
-      style={{ marginBottom: '1rem', color: '#fff', textAlign: 'right' }}
+      style={{ marginBottom: '1.5rem', color: '#fff', textAlign: 'right' }}
     >
-      <Typography variant='h4'>Reshub-Admin</Typography>
+      <H1>Reshub-Admin</H1>
     </Container>
   )
 }

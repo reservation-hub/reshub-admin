@@ -26,7 +26,8 @@ export const StyledTableCell = withStyles((theme: Theme) => ({
   root: {
     color: theme.palette.adTbFontColor.main,
     borderTop: `1px solid ${ theme.palette.adTheadColor.main }`,
-    borderBottom: 'none'
+    borderBottom: 'none',
+    fontSize: '1.4rem'
   }
 }))(TableCell)
 
@@ -34,12 +35,7 @@ const LocationStyle = makeStyles((theme: Theme) => ({
   tableHeadCell: {
     color: theme.palette.adThFontColor.main,
     fontWeight: 'bold',
-    fontSize: '1rem'
-  },
-  tableBodyCell: {
-    color: theme.palette.adTbFontColor.main,
-    borderTop: `1px solid ${ theme.palette.adTheadColor.main }`,
-    borderBottom: 'none'
+    fontSize: '1.8rem'
   },
   tableHeader: {
     paddingLeft: '1rem'

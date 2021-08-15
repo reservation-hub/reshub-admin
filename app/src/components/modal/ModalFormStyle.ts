@@ -8,13 +8,16 @@ import { FormControl, TextField } from '@material-ui/core'
 export const ModalInput = withStyles((theme: Theme) => ({
   root: {
     '& .MuiInputBase-root': {
-      fontSize: '.9rem'
+      fontSize: '1.6rem'
     },
     '& .MuiOutlinedInput-root': {
-      height: '2.4rem'
+      height: '4rem',
+    },
+    '& .MuiFormLabel-root': {
+      fontSize: '1.6rem'
     },
     '& .MuiOutlinedInput-input': {
-      padding: '.65rem'
+      padding: '1.25rem'
     },
     '& .MuiInputLabel-outlined': {
       transform: 'translate(14px, 14px) scale(1)'
@@ -27,39 +30,51 @@ export const ModalInput = withStyles((theme: Theme) => ({
 
 export const ModalSelect = withStyles((theme: Theme) => ({
   root: {
-    width: '11.25rem',
+    width: '18rem',
+    height: '4rem',
+    '& .MuiInputBase-root': {
+      fontSize: '1.6rem',
+      width: '19.1rem',
+      height: '4rem'
+    },
+    '& .MuiFormLabel-root': {
+      fontSize: '1.6rem'
+    },
     '& .MuiOutlinedInput-input': {
-      padding: '.65rem'
+      padding: '1.25rem'
     },
     '& .MuiInputLabel-outlined': {
       transform: 'translate(14px, 14px) scale(1)'
     },
     '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
       transform: 'translate(13px, -3px) scale(0.80)',
+    },
+    '& .MuiSelect-icon': {
+      top: 'calc(50% - 8px)'
     }
   }
 }))(FormControl)
 
 const ModalFormStyle = makeStyles((theme: Theme) => ({
   modalContainer: {
-    width: '500px',
-    height: '550px',
+    width: '50rem',
+    height: '60rem',
     '& .modalInputForm': {
-      margin: '1rem auto',
-      width: '450px',
-      height: '435px',
+      margin: '3rem auto',
+      width: '45rem',
+      height: '46.5rem',
       '& .inputBox': {
-        marginTop: '1rem'
+        marginTop: '1.5rem'
       },
       '& .flexBetweenDiv': {
-        marginTop: '1rem',
+        marginTop: '1.5rem',
         display: 'flex',
         justifyContent: 'space-between',
         '& .birthdayY': {
-          width: '11.25rem'
+          width: '18rem'
         },
         '& .birthdayMD': {
-          width: '7.313rem'
+          width: '11.7rem'
         }
       },
       '& .genderRadio': {
@@ -73,13 +88,12 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
             fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
             display: 'inlineBlock',
             cursor: 'pointer',
-            height: '2.362rem',
-            width: '13.3rem',
+            height: '4rem',
             border: '1px solid rgba(0, 0, 0, 0.23)',
             borderRadius: '4px',
-            lineHeight: '2.5rem',
+            lineHeight: '4rem',
             textAlign: 'center',
-            fontSize: '1rem',
+            fontSize: '1.6rem',
             color: 'rgba(0, 0, 0, 0.54)',
             '&:hover': {
               color: theme.palette.secondary.main,
@@ -95,27 +109,28 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
       }
     },
     '& .inputSize': {
-      width: '13.3rem'
+      width: '21.5rem'
+    },
+    '& .MuiMenuItem-root': {
+      fontSize: '1.6rem'
     }
   },
   modalHeader: {
-    height: '3.75rem',
-    marginBottom: '.5rem',
-    padding: '0 1.6rem',
+    height: '6rem',
+    padding: '0 2.5rem',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     background: theme.palette.primary.main
   },
   submitButton: {
-    width: '28.125rem',
-    height: '2.813rem',
+    width: '45rem',
+    height: '4.5rem',
     marginTop: '1.5rem',
     background: theme.palette.primary.main,
     color: '#fff',
-    fontSize: '1.2rem',
+    fontSize: '1.6rem',
     border: 'none',
-    // filter: 'none'
   }
 }))
 
