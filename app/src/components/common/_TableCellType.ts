@@ -1,5 +1,3 @@
-import { User } from '../../entities/User'
-
 export const UserCell: { key: number, value: string }[] = [
   { key: 1, value: 'No' },
   { key: 2, value: 'メールアドレス' },
@@ -19,7 +17,3 @@ export const SalonCell: { key: number, value: string }[] = [
   { key: 6, value: '登録スタイリスト数' },
   { key: 7, value: '電話番号' },
 ]
-
-export const Users: { Users: User[] } = {
-  Users: []
-}
