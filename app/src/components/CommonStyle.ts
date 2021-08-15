@@ -16,7 +16,7 @@ export const StyledPaper = withStyles((theme: Theme) => ({
 
 export const StyledHeader = withStyles((theme: Theme) => ({
   root: {
-    height: '4.375rem',
+    height: '7.5rem',
     boxShadow: 'none',
     '& .header-items': {
       height: '100%',
@@ -24,8 +24,8 @@ export const StyledHeader = withStyles((theme: Theme) => ({
       paddingRight: '3.5rem'
     },
     '& .logout-button': {
-      width: '6.875rem',
-      height: '2.188rem',
+      width: '11rem',
+      height: '3.5rem',
       filter: 'none',
       color: theme.palette.primary.main,
       '&:hover': {
@@ -40,11 +40,14 @@ export const StyledHeader = withStyles((theme: Theme) => ({
 const CommonStyle = makeStyles((theme: Theme) => ({
   mainBackground: {
     width: '100%',
-    paddingTop: '5rem',
+    height: '90%',
+    paddingTop: '7.5rem',
     position: 'relative',
     background: theme.palette.adBgColor.main
   },
   loginSelectBackground: {
+    width: '100%',
+    height: '100%',
     position: 'relative',
     background: theme.palette.primary.main
   },
@@ -56,13 +59,16 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     bottom: '25%'
   },
   buttonRoot: {
-    fontSize: '1rem',
+    width: '11rem',
+    height: '3.5rem',
+    fontSize: '1.6rem',
     border: `1px solid ${ theme.palette.primary.main }`,
-    borderRadius: '.25rem',
+    borderRadius: '.5rem',
     backgroundColor: theme.palette.secondary.main,
     cursor: 'pointer',
     color: '#999',
     transition: 'all .5s ease 0s',
+    lineHeight: 'unset',
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     '&:hover': {
       color: theme.palette.secondary.main,
@@ -72,8 +78,15 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     }
   },
   appBarHeader: {
-    padding: '0 1rem 1rem 1rem',
-    background: theme.palette.adBgColor.main
+    padding: '0 1.5rem 1.5rem 1.5rem',
+    background: theme.palette.adBgColor.main,
+    '& .item-header': {
+      color: theme.palette.primary.main
+    },
+    '& .item-button': {
+      width: '35rem',
+      display: 'flex'
+    }
   }
 }))
 

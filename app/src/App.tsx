@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Router, Route,Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { silentLogin } from './store/actions/authAction'
+import { CssBaseline } from '@material-ui/core'
 
 import PrivateRoute from './utils/routes/PrivateRoute'
 import PublicRoute from './utils/routes/PublicRoute'
@@ -25,6 +26,7 @@ const  App = () => {
 
   return (
     <Router history={ history }>
+      <CssBaseline />
       <Switch>
         {/* public */}
         <PublicRoute exact path='/' component={ Home }/>

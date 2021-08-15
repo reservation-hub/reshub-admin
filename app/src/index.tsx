@@ -7,9 +7,6 @@ import { Provider } from 'react-redux'
 import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ThemeProvider } from '@material-ui/core/styles'
-import { CssBaseline } from '@material-ui/core'
-import './index.css'
-
 
 const persistor = persistStore(store)
 
@@ -18,7 +15,6 @@ ReactDOM.render(
     <Provider store={ store }>
       <PersistGate loading={ null } persistor={ persistor } >
         <ThemeProvider theme={ theme }>
-          <CssBaseline />
           <App />
         </ThemeProvider>
       </PersistGate>

@@ -18,7 +18,7 @@ const TableLayout = ({
   return (
     <StyledTable>
       <StyledTableHead>
-        <TableRow>
+        <TableRow style={{ height: '5.5rem' }}>
           { cell && Object.values(cell).map(
             (value) => (
                 <TableCell

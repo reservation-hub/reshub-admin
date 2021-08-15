@@ -2,8 +2,8 @@ import { makeStyles, Theme } from '@material-ui/core/styles'
 
 const LoginStyle = makeStyles((theme: Theme) => ({
   formBox: {
-    height: '302px',
-    padding: '1.5rem',
+    height: '30.2rem',
+    padding: '3rem',
     borderRadius: '.5rem',
     backgroundColor: theme.palette.secondary.main,
     '& .inputBox': {
@@ -16,18 +16,18 @@ const LoginStyle = makeStyles((theme: Theme) => ({
     },
     '& .loginButton': {
       width: '100%',
-      height: '35px',
-      marginTop: '1.115rem',
-      marginBottom: '1.5rem',
+      height: '3.5rem',
+      marginTop: '2.5rem',
+      marginBottom: '2.5rem',
     },
     '& .socialRoot': {
       width: '100%',
-      height: '32px',
+      height: '3.2rem',
       display: 'flex',
       alignItems: 'center',
       fontSize: '1rem',
       border: `1px solid #999`,
-      borderRadius: '.25rem',
+      borderRadius: '.5rem',
       backgroundColor: theme.palette.secondary.main,
       cursor: 'pointer',
       color: '#999',
@@ -46,7 +46,8 @@ const LoginStyle = makeStyles((theme: Theme) => ({
       },
       '& .button-text': {
         paddingRight: '1.5rem',
-        width: '100%'
+        width: '100%',
+        fontSize: '1.4rem'
       }
     }
   }

@@ -2,11 +2,11 @@ import { makeStyles, Theme } from '@material-ui/core/styles'
 
 const PageSelectStyle = makeStyles((theme: Theme) => ({
   selectBox: {
-    height: '151px',
+    height: '15.1rem',
     background: theme.palette.secondary.main,
     borderRadius: '1rem',
     textAlign: 'center',
-    fontSize: '1.5rem',
+    fontSize: '2.8rem',
     '& .link-button': {
       width: '100%',
       height: '100%',

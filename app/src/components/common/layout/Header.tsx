@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { Grid, Typography } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import { HeaderProps } from '../_PropsType'
 import { StyledHeader } from '../../CommonStyle'
 
 import CustomButton from '../atoms/CustomButton'
+import H1 from '../atoms/H1'
 
 const Header = ({ onLogout }: HeaderProps) => {
 
@@ -17,9 +18,7 @@ const Header = ({ onLogout }: HeaderProps) => {
         className='header-items'
       >
         <Grid item>
-          <Typography variant='h4'>
-            ReshHub-admin
-          </Typography>
+          <H1>ReshHub-admin</H1>
         </Grid>
         <Grid item>
           <CustomButton
