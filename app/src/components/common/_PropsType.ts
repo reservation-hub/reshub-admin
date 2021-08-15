@@ -15,6 +15,7 @@ export type ButtonProps = {
   children?: React.ReactNode
   onClick?: () => void
   className?: string | undefined
+  disabled?: boolean
 }
 
 export type TableProps = {

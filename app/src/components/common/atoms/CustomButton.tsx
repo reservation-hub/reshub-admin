@@ -5,7 +5,8 @@ import CommonStyle from '../../CommonStyle'
 const CustomButton = ({
   children,
   onClick,
-  className
+  className,
+  disabled,
 }: ButtonProps) => {
 
   const classes = CommonStyle()
@@ -13,6 +14,7 @@ const CustomButton = ({
   return (
     <button
       onClick={ onClick }
+      disabled={disabled}
       className={
         `${ className } ${ classes.buttonRoot }`
         || classes.buttonRoot
