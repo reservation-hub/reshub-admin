@@ -6,8 +6,10 @@ import { logout } from '../../../store/actions/authAction'
 
 import CommonStyle, { StyledPaper } from '../../CommonStyle'
 import Header from './Header'
+import NavBar from '../atoms/NavBar'
 
-const MainTemplate = ({ children }: MainTemplateProps) => {
+
+const MainTemplate = ({ children }: MainTemplateProps ) => {
 
   const classes = CommonStyle()
   const dispatch = useDispatch()
@@ -21,7 +23,8 @@ const MainTemplate = ({ children }: MainTemplateProps) => {
   return (
     <React.Fragment>
       <Header onLogout={ onLogout } />
-      <aside>
+      <aside className={ classes.sideBar }>
+        <NavBar />
       </aside>
       <main className={ classes.mainBackground }>
         <StyledPaper elevation={ 0 }>
@@ -33,4 +36,4 @@ const MainTemplate = ({ children }: MainTemplateProps) => {
 
 }
 
-export default MainTemplate
+export default React.memo(MainTemplate)

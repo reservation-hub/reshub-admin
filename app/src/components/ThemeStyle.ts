@@ -25,6 +25,10 @@ declare module '@material-ui/core/styles/createPalette' {
 }
 
 const theme = createTheme({
+  typography: {
+    htmlFontSize: 10,
+    fontSize: 14
+  },
   overrides: {
     MuiCssBaseline: {
       '@global': {
@@ -38,6 +42,7 @@ const theme = createTheme({
         body: {
           height: '100%',
           '& #reshub-root-page': {
+            background: '#F0F5F5',
             height: '100%',
             '& input': {
               fontSize: '1.6rem',

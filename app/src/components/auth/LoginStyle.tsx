@@ -25,7 +25,6 @@ const LoginStyle = makeStyles((theme: Theme) => ({
       height: '3.2rem',
       display: 'flex',
       alignItems: 'center',
-      fontSize: '1rem',
       border: `1px solid #999`,
       borderRadius: '.5rem',
       backgroundColor: theme.palette.secondary.main,

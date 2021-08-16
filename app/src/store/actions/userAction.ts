@@ -44,8 +44,6 @@ export const fetchUserList = ():
       payload: res.data
     })
   } catch (e: any) {
-    const error = e.response.data
-    dispatch(userRequestFailure(error))
     history.push('/error')
   }
 
@@ -62,8 +60,6 @@ export const getOneUser = (id: number):
       payload: res.data
     })
   } catch (e: any) {
-    const error = e.response.data
-    dispatch(userRequestFailure(error))
     history.push('/error')
   }
 

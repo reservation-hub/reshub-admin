@@ -7,8 +7,7 @@ import { AppBar, Paper } from '@material-ui/core'
 
 export const StyledPaper = withStyles((theme: Theme) => ({
   root: {
-    width: '77.778%',
-    margin: '0 auto',
+    width: '100%',
     justifyContent: 'center',
     boxShadow: 'none'
   }
@@ -20,8 +19,7 @@ export const StyledHeader = withStyles((theme: Theme) => ({
     boxShadow: 'none',
     '& .header-items': {
       height: '100%',
-      paddingLeft: '3.5rem',
-      paddingRight: '3.5rem'
+      padding: '0 3.5rem 0 3.5rem'
     },
     '& .logout-button': {
       width: '11rem',
@@ -39,17 +37,53 @@ export const StyledHeader = withStyles((theme: Theme) => ({
 
 const CommonStyle = makeStyles((theme: Theme) => ({
   mainBackground: {
-    width: '100%',
-    height: '90%',
-    paddingTop: '7.5rem',
+    width: '82.5%',
+    margin: '5.5rem 3.5rem 0',
     position: 'relative',
-    background: theme.palette.adBgColor.main
   },
   loginSelectBackground: {
     width: '100%',
     height: '100%',
     position: 'relative',
     background: theme.palette.primary.main
+  },
+  sideBar: {
+    width: '18rem',
+    height: '92.1%',
+    float: 'right',
+    background: theme.palette.primary.main,
+    '& span': {
+      fontSize: '2.2rem'
+    },
+    '& .nav-wrapper': {
+      margin: '3rem 0 1rem 0',
+      textAlign: 'center',
+      fontSize: '2.4rem',
+      '& .user-profile-link': {
+        color: theme.palette.secondary.main,
+        '& .user-name': {
+          margin: '0'
+        },
+        '& svg': {
+          width: '8rem',
+          height: '8rem'
+        }
+      }
+    },
+    '& a': {
+      zIndex: '10',
+      textDecoration: 'none',
+      color: theme.palette.secondary.main,
+      '& .nav-items': {
+        borderBottom: '1px solid'
+      }
+    },
+    '& .active': {
+      color: theme.palette.primary.main,
+      '& div': {
+        background: theme.palette.secondary.main,
+      }
+    }
   },
   boxCenter: {
     position: 'absolute',
@@ -61,7 +95,6 @@ const CommonStyle = makeStyles((theme: Theme) => ({
   buttonRoot: {
     width: '11rem',
     height: '3.5rem',
-    fontSize: '1.6rem',
     border: `1px solid ${ theme.palette.primary.main }`,
     borderRadius: '.5rem',
     backgroundColor: theme.palette.secondary.main,
@@ -85,7 +118,8 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     },
     '& .item-button': {
       width: '35rem',
-      display: 'flex'
+      display: 'flex',
+      justifyContent: 'space-between'
     }
   }
 }))

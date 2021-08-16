@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { UserCell } from '../../common/_TableCellType'
+import { UserCell } from '../../common/_Constants'
 import { User } from '../../../entities/User'
 
 import ListTopBar from '../../common/atoms/ListTopBar'

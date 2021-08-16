@@ -13,7 +13,7 @@ function Home() {
 	  <main className={ classes.loginSelectBackground }>
       <section
         className={ classes.boxCenter }
-        style={{ top: '35%' }}
+        style={{ top: '33%' }}
       >
         <LoginSelectHeader />
         <PageSelect />

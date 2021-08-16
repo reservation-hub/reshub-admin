@@ -7,14 +7,8 @@ import { FormControl, TextField } from '@material-ui/core'
 
 export const ModalInput = withStyles((theme: Theme) => ({
   root: {
-    '& .MuiInputBase-root': {
-      fontSize: '1.6rem'
-    },
     '& .MuiOutlinedInput-root': {
       height: '4rem',
-    },
-    '& .MuiFormLabel-root': {
-      fontSize: '1.6rem'
     },
     '& .MuiOutlinedInput-input': {
       padding: '1.25rem'
@@ -33,7 +27,6 @@ export const ModalSelect = withStyles((theme: Theme) => ({
     width: '18rem',
     height: '4rem',
     '& .MuiInputBase-root': {
-      fontSize: '1.6rem',
       width: '19.1rem',
       height: '4rem'
     },
@@ -93,7 +86,6 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
             borderRadius: '4px',
             lineHeight: '4rem',
             textAlign: 'center',
-            fontSize: '1.6rem',
             color: 'rgba(0, 0, 0, 0.54)',
             '&:hover': {
               color: theme.palette.secondary.main,
@@ -110,9 +102,6 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
     },
     '& .inputSize': {
       width: '21.5rem'
-    },
-    '& .MuiMenuItem-root': {
-      fontSize: '1.6rem'
     }
   },
   modalHeader: {
@@ -129,7 +118,6 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
     marginTop: '1.5rem',
     background: theme.palette.primary.main,
     color: '#fff',
-    fontSize: '1.6rem',
     border: 'none',
   }
 }))

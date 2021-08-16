@@ -9,11 +9,13 @@ import {
   USER_REQUEST_SUCCESS
 } from '../types/authTypes'
 import { AuthAction } from '../actions/authAction'
+import { User } from '../../entities/User'
 
-const initialState: AuthState = {
+
+const initialState: AuthState<User> = {
   loading: true,
   isAuthenticated: false,
-  user: {},
+  user: [],
   err: undefined
 }
 

@@ -17,3 +17,7 @@ export const SalonCell: { key: number, value: string }[] = [
   { key: 6, value: '登録スタイリスト数' },
   { key: 7, value: '電話番号' },
 ]
+
+export const NavMenu: string[] = [
+  'ダッシュボード', 'ユーザー一覧', 'サロン一覧'
+]
