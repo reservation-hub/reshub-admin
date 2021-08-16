@@ -29,9 +29,9 @@ const NavBar = () => {
             <NavLink
               key={ index }
               to={
-                `${ value === 'ダッシュボード'
+                `${ index === 0
                   ? '/salon_dashboard'
-                  : value === 'ユーザー一覧'
+                  : index === 1
                   ? '/users' : '/salon'
                 }`
               }

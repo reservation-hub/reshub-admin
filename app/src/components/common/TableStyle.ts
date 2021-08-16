@@ -27,7 +27,8 @@ export const StyledTableCell = withStyles((theme: Theme) => ({
     color: theme.palette.adTbFontColor.main,
     borderTop: `1px solid ${ theme.palette.adTheadColor.main }`,
     borderBottom: 'none',
-    fontSize: '1.4rem'
+    fontSize: '1.4rem',
+    cursor: 'pointer'
   }
 }))(TableCell)
 

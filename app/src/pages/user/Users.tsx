@@ -92,7 +92,7 @@ const Users = () => {
       </ModalOverlay>
       <Route exact path='/users'>
         <UserList
-          users={ users.data }
+          users={ users.values }
           modalOpenHandler={ openModal }
         />
       </Route>

@@ -18,7 +18,7 @@ const initialState = {
   user: []
 }
 
-export const userReducer = (state = initialState, action: any) => {
+const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case USERS_FETCH_SUCCESS:
       return { 
@@ -44,16 +44,18 @@ export const userReducer = (state = initialState, action: any) => {
         loading: false, 
         users: [ action.payload ] 
       }
-    // case USERS_DELETE_SUCCESS:
-    //   return {
-    //     ...state,
-    //     users: state.user.filter(
-    //       res => res.id !== action.payload
-    //       )
-    //   }
+    case USERS_DELETE_SUCCESS:
+      return {
+        ...state,
+        users: state.user.filter(
+          res => res['id'] !== action.payload
+          )
+      }
     case USERS_REQUEST_FAILURE:
       return action.payload || state
     default:
       return state
   }
 }
+
+export default userReducer

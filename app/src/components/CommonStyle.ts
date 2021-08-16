@@ -65,8 +65,8 @@ const CommonStyle = makeStyles((theme: Theme) => ({
           margin: '0'
         },
         '& svg': {
-          width: '8rem',
-          height: '8rem'
+          width: '6rem',
+          height: '6rem'
         }
       }
     },

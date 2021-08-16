@@ -20,7 +20,7 @@ export type ButtonProps = {
 
 export type TableProps = {
   cell: object
-  data: User[] | Shop[]
+  data?: User[] | Shop[]
 }
 
 export type BodyProps = {

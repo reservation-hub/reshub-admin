@@ -6,6 +6,7 @@ import { StyledTableCell } from '../TableStyle'
 import { Role } from '../../../entities/Role'
 
 import moment from 'moment'
+import history from '../../../utils/history'
 
 const Body = ({
   index,
@@ -17,7 +18,11 @@ const Body = ({
   ).format('YYYY-MM-DD')
 
   return (
-    <TableRow style={{ height: '6rem' }}>
+    <TableRow
+      style={{ height: '6rem' }}
+      hover
+      onClick={() => history.push(`/users/${ index }`)}
+    >
       <StyledTableCell className='table-index'>
         { index }
       </StyledTableCell>
@@ -34,10 +39,10 @@ const Body = ({
         { data.birthday === null ? '-' : birthday || '-'}
       </StyledTableCell>
       <StyledTableCell>
-        { data.gender === null ? '-' : data.gender }
+        { data.gender === null ? '-' : data.gender || '-' }
       </StyledTableCell>
       <StyledTableCell>
-        { data.roles.map((r: Role) => r.name) || data.phoneNumber }
+        { data.roles && data.roles.map((r: Role) => r.name) || data.phoneNumber }
       </StyledTableCell>
     </TableRow>
   )

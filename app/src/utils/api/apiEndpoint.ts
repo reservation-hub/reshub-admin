@@ -1,4 +1,6 @@
 import instance from './index'
+import { updateShopQuery } from './request-response-types/ShopService'
+import { insertUserFromAdminQuery } from './request-response-types/UserService'
 
 //-----------------------------------------------
 // get method
@@ -14,23 +16,12 @@ export const getShop = async () => await instance.get(
   `/shops`
 )
 
-// エリアデータをGETする
-export const getArea = async () => await instance.get(
-  `/area`
-) 
-
-// prefectureデータをGETする
-export const getPrefecture = async () => await instance.get(
-  `/prefectures`
-)
-
-// citisデータをGETする
-export const getCities = async () => await instance.get(
-  `/cities`
-)
-
 export const getUsers = async () => await instance.get(
   `/users`
+)
+
+export const getDashboard = async () => await instance.get(
+  '/dashboard/salon'
 )
 
 
@@ -57,13 +48,8 @@ export const addShop = async (shopData: object) => await instance.post(
 )
 
 // patch Shop data
-export const patchShop = async (id: number, shopData: object) => await instance.patch(
-  `/shops/${ id }`, { ...shopData }
-)
-
-// put Shop data
-export const putShop = async (id: number, shopData: object) => await instance.put(
-  `/shops/${ id }`, { ...shopData }
+export const patchShop = async (shopData: updateShopQuery) => await instance.patch(
+  `/shops/${ shopData.id }`, { ...shopData }
 )
 
 // delete Shop data
@@ -72,17 +58,12 @@ export const deleteShop = async (id: number) => await instance.delete(
 )
 
 // ユーザー追加
-export const addUser = async (userData: object) => await instance.post(
+export const addUser = async (userData: insertUserFromAdminQuery) => await instance.post(
   `/users`, { ...userData }
 )
 
 // ユーザー修正
 export const patchUser = async (id: number, userData: object) => await instance.patch(
-  `/users/${ id }`, { ...userData }
-)
-
-// ユーザー修正
-export const putUser = async (id: number, userData: object) => await instance.put(
   `/users/${ id }`, { ...userData }
 )
 
@@ -116,19 +97,14 @@ export const logout = async () => await instance.get(
 const apiEndpoint = {
   fetchAll,
   getShop,
-  getArea,
-  getPrefecture,
-  getCities,
   getUsers,
   getOneShop,
   getOneUsers,
   addShop,
   patchShop,
-  putShop,
   deleteShop,
   addUser,
   patchUser,
-  putUser,
   deleteUser,
   localLogin,
   googleLogin,

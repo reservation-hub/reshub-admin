@@ -18,7 +18,7 @@ const initialState = {
   shop: []
 }
 
-export const shopReducer = (state = initialState, action: any) => {
+const shopReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SHOP_FETCH_SUCCESS:
       return { 
@@ -57,3 +57,5 @@ export const shopReducer = (state = initialState, action: any) => {
       return state
   }
 }
+
+export default shopReducer

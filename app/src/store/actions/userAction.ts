@@ -19,7 +19,6 @@ import { ThunkAction } from 'redux-thunk'
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
 import { insertUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
-import { IUserFormInput } from '../../components/modal/_PropsType'
 
 
 const userRequestStart = () => {
@@ -67,7 +66,7 @@ export const getOneUser = (id: number):
 
 }
 
-export const addUser = (userData: object):
+export const addUser = (userData: insertUserFromAdminQuery):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   console.log(userData)
 
