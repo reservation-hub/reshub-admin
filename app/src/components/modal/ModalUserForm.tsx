@@ -1,21 +1,28 @@
 import React from 'react'
-
-import { Select, InputLabel, Container, MenuItem } from '@material-ui/core'
+import { Select, InputLabel, MenuItem, FormHelperText, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core'
 import ModalFormStyle, { ModalInput, ModalSelect } from './ModalFormStyle'
-import { modalFormProps } from './_PropsType'
 import CustomButton from '../common/atoms/CustomButton'
+import { UserModalForm } from './_PropsType'
+import { useFormik } from 'formik'
 
-const ModalUserForm = ({
-  input,
-  setValue,
-  onSubmit
-}: modalFormProps) => {
-
+const ModalUserForm: UserModalForm = ({
+  onSubmit,
+  validation,
+  formInitialState,
+}) => {
   const classes = ModalFormStyle()
+
+  const formik = useFormik({
+    initialValues: formInitialState,
+    validationSchema: validation,
+    onSubmit: values => {
+      onSubmit(values)
+    },
+  })
 
   return (
     <React.Fragment>
-      <form onSubmit={ onSubmit } className='modalInputForm'>
+      <form onSubmit={ formik.handleSubmit } className='modalInputForm'>
         <div className='inputBox'>
           <ModalInput
             label='メールアドレス'
@@ -23,48 +30,65 @@ const ModalUserForm = ({
             autoComplete='off'
             fullWidth
             variant='outlined'
-            value={ input.email }
-            onChange={ setValue }
+            value={ formik.values.email }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
         </div>
-        <div className='flexBetweenDiv'>
-          <ModalInput
+        <div className='inputBox'>
+          <div className='flexBetweenDiv'>
+            <ModalInput
               label='性'
-              name='firstnameKanji'
+              name='lastNameKanji'
               autoComplete='off'
               variant='outlined'
               className='inputSize'
-              value={ input.firstnameKanji }
-              onChange={ setValue }
-          />
-          <ModalInput
+              value={ formik.values.lastNameKanji }
+              onChange={ formik.handleChange }
+              onBlur={ formik.handleBlur }
+              error={formik.touched.lastNameKanji && Boolean(formik.errors.lastNameKanji)}
+              helperText={formik.touched.lastNameKanji && formik.errors.lastNameKanji}
+            />
+            <ModalInput
               label='名'
-              name='lastnameKanji'
+              name='firstNameKanji'
               autoComplete='off'
               variant='outlined'
               className='inputSize'
-              value={ input.lastnameKanji }
-              onChange={ setValue }
-          />
+              value={ formik.values.firstNameKanji }
+              onChange={ formik.handleChange }
+              onBlur={ formik.handleBlur }
+              error={formik.touched.firstNameKanji && Boolean(formik.errors.firstNameKanji)}
+              helperText={formik.touched.firstNameKanji && formik.errors.firstNameKanji}
+            />
+          </div>
         </div>
         <div className='flexBetweenDiv'>
           <ModalInput
-              label='セイ'
-              name='firstnameKana'
-              autoComplete='off'
-              variant='outlined'
-              className='inputSize'
-              value={ input.firstnameKana }
-              onChange={ setValue }
+            label='セイ'
+            name='lastNameKana'
+            autoComplete='off'
+            variant='outlined'
+            className='inputSize'
+            value={ formik.values.lastNameKana }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.lastNameKana && Boolean(formik.errors.lastNameKana)}
+            helperText={formik.touched.lastNameKana && formik.errors.lastNameKana}
           />
           <ModalInput
-              label='メイ'
-              name='lastnameKana'
-              autoComplete='off'
-              variant='outlined'
-              className='inputSize'
-              value={ input.lastnameKana }
-              onChange={ setValue }
+            label='メイ'
+            name='firstNameKana'
+            autoComplete='off'
+            variant='outlined'
+            className='inputSize'
+            value={ formik.values.firstNameKana  }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.firstNameKana && Boolean(formik.errors.firstNameKana)}
+            helperText={formik.touched.firstNameKana && formik.errors.firstNameKana}
           />
         </div>
         <div className='inputBox'>
@@ -75,8 +99,11 @@ const ModalUserForm = ({
             autoComplete='off'
             fullWidth
             variant='outlined'
-            value={ input.password }
-            onChange={ setValue }
+            value={ formik.values.password }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
         </div>
         <div className='inputBox'>
@@ -87,77 +114,97 @@ const ModalUserForm = ({
             autoComplete='off'
             fullWidth
             variant='outlined'
-            value={ input.confirm }
-            onChange={ setValue }
+            value={ formik.values.confirm }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.confirm && Boolean(formik.errors.confirm)}
+            helperText={formik.touched.confirm && formik.errors.confirm}
           />
         </div>
         <div className='genderRadio'>
-          <input
-            type="radio"
-            id="gender-male"
-            name="gender"
-            value='male'
-            onChange={ setValue }
-          />
-          <label htmlFor='gender-male' className='inputSize'>男性</label>
-          <input
-            type="radio"
-            id="gender-female"
-            name="gender"
-            value='female'
-            onChange={ setValue }
-          />
-          <label htmlFor='gender-female' className='inputSize'>女性</label>
+        <FormControl component="fieldset" className='genderRadio'>
+          <FormLabel component="legend" error={formik.touched.gender && Boolean(formik.errors.gender)}>性別</FormLabel>
+          <RadioGroup
+            aria-label="gender"
+            row
+            name='gender'
+            value={ formik.values.gender }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            >
+            <FormControlLabel value="male" control={<Radio color={'primary'} />} label="男性" />
+            <FormControlLabel value="female" control={<Radio color={'primary'} />} label="女性" />
+          </RadioGroup>
+          <FormHelperText error={formik.touched.gender && Boolean(formik.errors.gender)}>
+            {formik.touched.gender && Boolean(formik.errors.gender) ? '選んでください' : ''}
+          </FormHelperText>
+        </FormControl>
         </div>
         <div className='flexBetweenDiv'>
           <ModalInput
-              label='年'
-              name='birthdayY'
-              autoComplete='off'
-              variant='outlined'
-              className='birthday'
-              value={ input.birthdayY }
-              onChange={ setValue }
+            label='年'
+            name='birthdayY'
+            autoComplete='off'
+            variant='outlined'
+            className='birthday'
+            value={ formik.values.birthdayY }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.birthdayY && Boolean(formik.errors.birthdayY)}
+            helperText={formik.touched.birthdayY && formik.errors.birthdayY}
           />
           <ModalInput
-              label='月'
-              name='birthdayM'
-              autoComplete='off'
-              variant='outlined'
-              className='birthdayMD'
-              value={ input.birthdayM }
-              onChange={ setValue }
+            label='月'
+            name='birthdayM'
+            autoComplete='off'
+            variant='outlined'
+            className='birthdayMD'
+            value={ formik.values.birthdayM }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.birthdayM && Boolean(formik.errors.birthdayM)}
+            helperText={formik.touched.birthdayM && formik.errors.birthdayM}
           />
           <ModalInput
-              label='日'
-              name='birthdayD'
-              autoComplete='off'
-              variant='outlined'
-              className='birthdayMD'
-              value={ input.birthdayD }
-              onChange={ setValue }
+            label='日'
+            name='birthdayD'
+            autoComplete='off'
+            variant='outlined'
+            className='birthdayMD'
+            value={ formik.values.birthdayD }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.birthdayD && Boolean(formik.errors.birthdayD)}
+            helperText={formik.touched.birthdayD && formik.errors.birthdayD}
           />
         </div>
         <div className='inputBox'>
-          <ModalSelect variant="outlined" >
-            <InputLabel id="roles-select-outlined-label">
+          <ModalSelect variant="outlined"
+          >
+            <InputLabel id="roles-select-outlined-label" error={formik.touched.role && Boolean(formik.errors.role)}>
               権限
             </InputLabel>
             <Select
               labelId="roles-select-outlined-label"
               id="roles-select-outlined"
-              label="権限"
               name='role'
+              label='権限'
               style={{ fontSize: '1.6rem' }}
-              value={ input.role }
-              onChange={ setValue }
+              value={ formik.values.role }
+              onChange={ formik.handleChange }
+              onBlur={ formik.handleBlur }
+              error={formik.touched.role && Boolean(formik.errors.role)}
             >
+              {/* TODO: ここはapiからroleのリストを取得してここで使うようにするのが適切 */}
               <MenuItem value='1'>admin</MenuItem>
               <MenuItem value='2'>salon staff</MenuItem>
             </Select>
+            <FormHelperText error={formik.touched.role && Boolean(formik.errors.role)}>
+              {Boolean(formik.errors.role) && formik.touched.role ? formik.errors.role : ''}
+            </FormHelperText>
           </ModalSelect>
         </div>
-        <CustomButton className={ classes.submitButton } >
+        <CustomButton className={ classes.submitButton }>
           この情報で登録
         </CustomButton>
       </form>

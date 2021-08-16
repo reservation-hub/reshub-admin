@@ -5,14 +5,17 @@ import CommonStyle from '../../CommonStyle'
 const CustomButton = ({
   children,
   onClick,
-  className
+  className,
+  disabled,
 }: ButtonProps) => {
 
   const classes = CommonStyle()
 
   return (
     <button
+      type='submit'
       onClick={ onClick }
+      disabled={disabled}
       className={
         `${ className } ${ classes.buttonRoot }`
         || classes.buttonRoot

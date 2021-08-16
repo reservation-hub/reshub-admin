@@ -1,4 +1,5 @@
-import React, { ChangeEventHandler, FormEventHandler } from 'react'
+import React from 'react'
+import { schema } from '../../pages/user/Users'
 
 export type ModalProps = {
   children: React.ReactNode
@@ -6,22 +7,32 @@ export type ModalProps = {
   modalCloseHandler: () => void
   modalTitle: string
 }
-
-export type modalFormProps = {
-  input: {
-    email: string
-    password: string
-    confirm: string
-    firstnameKanji: string
-    lastnameKanji: string
-    firstnameKana: string
-    lastnameKana: string
-    gender: string
-    birthdayY: string
-    birthdayM: string
-    birthdayD: string
-    role: string[] | string
-  }
-  setValue: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement | { value: unknown }>
-  onSubmit: FormEventHandler<HTMLFormElement>
+export interface IModalFormProps {
+  validation: object,
+  onSubmit: any
+  formInitialState: object
 }
+
+export type ModalForm = (props: IModalFormProps) => JSX.Element
+
+export interface IUserFormInput {
+  email: string
+  lastNameKanji: string
+  firstNameKanji: string
+  lastNameKana: string
+  firstNameKana: string
+  password: string
+  confirm: string
+  gender: string
+  birthdayY: string
+  birthdayM: string
+  birthdayD: string
+  role: string
+}
+
+interface UserModalFormProps extends IModalFormProps {
+  validation: typeof schema
+  formInitialState: IUserFormInput
+}
+
+export type UserModalForm = (props: UserModalFormProps) => JSX.Element

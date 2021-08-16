@@ -75,29 +75,6 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        '& input[type=radio]': {
-          display: 'none',
-          '& + label': {
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-            display: 'inlineBlock',
-            cursor: 'pointer',
-            height: '4rem',
-            border: '1px solid rgba(0, 0, 0, 0.23)',
-            borderRadius: '4px',
-            lineHeight: '4rem',
-            textAlign: 'center',
-            color: 'rgba(0, 0, 0, 0.54)',
-            '&:hover': {
-              color: theme.palette.secondary.main,
-              background: theme.palette.primary.main,
-              transition: 'all .5s ease 0s'
-            },
-          },
-        },
-        '& input[type=radio]:checked + label': {
-          background: theme.palette.primary.main,
-          color: theme.palette.secondary.main
-        }
       }
     },
     '& .inputSize': {
