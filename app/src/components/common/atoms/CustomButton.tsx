@@ -13,6 +13,7 @@ const CustomButton = ({
 
   return (
     <button
+      type='submit'
       onClick={ onClick }
       disabled={disabled}
       className={

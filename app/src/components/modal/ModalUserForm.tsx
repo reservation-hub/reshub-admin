@@ -1,277 +1,207 @@
 import React from 'react'
-import { ChangeEventHandler, FormEvent, useCallback } from 'react'
-import { Select, InputLabel, MenuItem, FormHelperText } from '@material-ui/core'
-import moment from 'moment'
-import { useForm } from "react-hook-form"
+import { Select, InputLabel, MenuItem, FormHelperText, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core'
 import ModalFormStyle, { ModalInput, ModalSelect } from './ModalFormStyle'
 import CustomButton from '../common/atoms/CustomButton'
-import useInput from '../../utils/useInput'
+import { UserModalForm } from './_PropsType'
+import { useFormik } from 'formik'
 
-interface IUserFormInput {
-  email: string
-  lastNameKanji: string
-  firstNameKanji: string
-  lastNameKana: string
-  firstNameKana: string
-  password: string
-  confirm: string
-  gender: string
-  birthdayY: string
-  birthdayM: string
-  birthdayD: string
-  role: string
-}
-
-const ModalUserForm = () => {
-  const { register, setError, formState: { errors } } = useForm<IUserFormInput>({mode: 'onBlur'})
+const ModalUserForm: UserModalForm = ({
+  onSubmit,
+  setValue,
+  validation,
+  formInitialState,
+}) => {
   const classes = ModalFormStyle()
-  const { input, ChangeHandler } = useInput({
-    email: '',
-    password: '',
-    confirm: '',
-    firstNameKanji: '',
-    lastNameKanji: '',
-    firstNameKana: '',
-    lastNameKana: '',
-    gender: '',
-    birthdayY: '',
-    birthdayM: '',
-    birthdayD: '',
-    role: ['']
+
+  const formik = useFormik({
+    initialValues: formInitialState,
+    validationSchema: validation,
+    onSubmit: values => {
+      onSubmit(values)
+    },
   })
-
-  const body = {
-    email: input.email,
-    password: input.password,
-    confirm: input.confirm,
-    firstNameKanji: input.firstNameKanji,
-    lastNameKanji: input.lastNameKanji,
-    firstNameKana: input.firstNameKana,
-    lastNameKana: input.lastNameKana,
-    gender: input.gender,
-    birthday: moment(
-      `${ input.birthdayY }/${ input.birthdayM }/${ input.birthdayD }`,
-      'YYYY-MM-DD'
-    ).format('YYYY-MM-DD'),
-    roleIds: [Number(input.role)]
-  }
-
-  const onSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      console.log(body)
-      // dispatch(addUser(body))
-    }, []
-  )
 
   return (
     <React.Fragment>
-      <form onSubmit={ onSubmit } className='modalInputForm'>
+      <form onSubmit={ formik.handleSubmit } className='modalInputForm'>
         <div className='inputBox'>
           <ModalInput
-            {...register('email', {
-              required: "入力してください",
-              pattern: {
-                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: '正しいメールを入力してください'
-              } 
-            })}
             label='メールアドレス'
             name='email'
             autoComplete='off'
             fullWidth
             variant='outlined'
-            value={ input.email }
-            error={ !!errors.email }
-            helperText={ errors.email?.message }
-            onChange={ ChangeHandler }
+            value={ formik.values.email }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
         </div>
         <div className='inputBox'>
           <div className='flexBetweenDiv'>
             <ModalInput
-              {...register('firstNameKanji', { required: '入力してください' })}
               label='性'
-              name='firstNameKanji'
-              autoComplete='off'
-              variant='outlined'
-              className='inputSize'
-              error={ !!errors.firstNameKanji }
-              helperText={ errors.firstNameKanji?.message }
-              value={ input.firstNameKanji }
-              onChange={ ChangeHandler }
-            />
-            <ModalInput
-              {...register('lastNameKanji', { required: '入力してください' })}
-              label='名'
               name='lastNameKanji'
               autoComplete='off'
               variant='outlined'
               className='inputSize'
-              error={ !!errors.lastNameKanji }
-              helperText={ errors.lastNameKanji?.message }
-              value={ input.lastNameKanji }
-              onChange={ ChangeHandler }
+              value={ formik.values.lastNameKanji }
+              onChange={ formik.handleChange }
+              onBlur={ formik.handleBlur }
+              error={formik.touched.lastNameKanji && Boolean(formik.errors.lastNameKanji)}
+              helperText={formik.touched.lastNameKanji && formik.errors.lastNameKanji}
+            />
+            <ModalInput
+              label='名'
+              name='firstNameKanji'
+              autoComplete='off'
+              variant='outlined'
+              className='inputSize'
+              value={ formik.values.firstNameKanji }
+              onChange={ formik.handleChange }
+              onBlur={ formik.handleBlur }
+              error={formik.touched.firstNameKanji && Boolean(formik.errors.firstNameKanji)}
+              helperText={formik.touched.firstNameKanji && formik.errors.firstNameKanji}
             />
           </div>
         </div>
         <div className='flexBetweenDiv'>
           <ModalInput
-            {...register('firstNameKana', {
-              required: '入力してください',
-              pattern: {
-                value: /^[\u30A0-\u30FF]+$/,
-                message: 'カタカナで入力してください'
-              }
-            })}
             label='セイ'
-            name='firstNameKana'
-            autoComplete='off'
-            variant='outlined'
-            className='inputSize'
-            error={ !!errors.firstNameKana }
-            helperText={ errors.firstNameKana?.message }
-            value={ input.firstNameKana }
-            onChange={ ChangeHandler }
-          />
-          <ModalInput
-            {...register('lastNameKana', {
-              required: '入力してください',
-              pattern: {
-                value: /^[\u30A0-\u30FF]+$/,
-                message: 'カタカナで入力してください'
-              }
-            })}
-            label='メイ'
             name='lastNameKana'
             autoComplete='off'
             variant='outlined'
             className='inputSize'
-            error={ !!errors.lastNameKana }
-            helperText={ errors.lastNameKana?.message }
-            value={ input.lastNameKana }
-            onChange={ ChangeHandler }
+            value={ formik.values.lastNameKana }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.lastNameKana && Boolean(formik.errors.lastNameKana)}
+            helperText={formik.touched.lastNameKana && formik.errors.lastNameKana}
+          />
+          <ModalInput
+            label='メイ'
+            name='firstNameKana'
+            autoComplete='off'
+            variant='outlined'
+            className='inputSize'
+            value={ formik.values.firstNameKana  }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.firstNameKana && Boolean(formik.errors.firstNameKana)}
+            helperText={formik.touched.firstNameKana && formik.errors.firstNameKana}
           />
         </div>
         <div className='inputBox'>
           <ModalInput
-            {...register('password', { required: '入力してください' })}
             label='パスワード'
             name='password'
             type='password'
             autoComplete='off'
             fullWidth
             variant='outlined'
-            error={ !!errors.password }
-            helperText={ errors.password?.message }
-            value={ input.password }
-            onChange={ ChangeHandler }
+            value={ formik.values.password }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
         </div>
         <div className='inputBox'>
           <ModalInput
-            {...register('confirm', { required: '入力してください' })}
             label='パスワード確認'
             name='confirm'
             type='password'
             autoComplete='off'
             fullWidth
             variant='outlined'
-            error={ !!errors.confirm }
-            helperText={ errors.confirm?.message }
-            value={ input.confirm }
-            onChange={ ChangeHandler }
+            value={ formik.values.confirm }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.confirm && Boolean(formik.errors.confirm)}
+            helperText={formik.touched.confirm && formik.errors.confirm}
           />
         </div>
         <div className='genderRadio'>
-          <input
-            type="radio"
-            id="gender-male"
-            name="gender"
-            value='male'
-            onChange={ ChangeHandler }
-          />
-          <label htmlFor='gender-male' className='inputSize'>男性</label>
-          <input
-            type="radio"
-            id="gender-female"
-            name="gender"
-            value='female'
-            onChange={ ChangeHandler }
-          />
-          <label htmlFor='gender-female' className='inputSize'>女性</label>
+        <FormControl component="fieldset" className='genderRadio'>
+          <FormLabel component="legend">性別</FormLabel>
+          <RadioGroup
+            aria-label="gender"
+            row
+            name='gender'
+            value={ formik.values.gender }
+            onChange={ formik.handleChange }
+            >
+            <FormControlLabel value="male" control={<Radio color={'primary'} />} label="男性" />
+            <FormControlLabel value="female" control={<Radio color={'primary'} />} label="女性" />
+          </RadioGroup>
+        </FormControl>
         </div>
         <div className='flexBetweenDiv'>
           <ModalInput
-            {...register('birthdayY', { required: '入力してください' })}
             label='年'
             name='birthdayY'
             autoComplete='off'
             variant='outlined'
             className='birthday'
-            error={ !!errors.birthdayY }
-            helperText={ errors.birthdayY?.message }
-            value={ input.birthdayY }
-            onChange={ ChangeHandler }
+            value={ formik.values.birthdayY }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.birthdayY && Boolean(formik.errors.birthdayY)}
+            helperText={formik.touched.birthdayY && formik.errors.birthdayY}
           />
           <ModalInput
-            {...register('birthdayM', { required: '入力してください' })}
             label='月'
             name='birthdayM'
             autoComplete='off'
             variant='outlined'
             className='birthdayMD'
-            error={ !!errors.birthdayM }
-            helperText={ errors.birthdayM?.message }
-            value={ input.birthdayM }
-            onChange={ ChangeHandler }
+            value={ formik.values.birthdayM }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.birthdayM && Boolean(formik.errors.birthdayM)}
+            helperText={formik.touched.birthdayM && formik.errors.birthdayM}
           />
           <ModalInput
-            {...register('birthdayD', { required: '入力してください' })}
             label='日'
             name='birthdayD'
             autoComplete='off'
             variant='outlined'
             className='birthdayMD'
-            error={ !!errors.birthdayD }
-            helperText={ errors.birthdayD?.message }
-            value={ input.birthdayD }
-            onChange={ ChangeHandler }
+            value={ formik.values.birthdayD }
+            onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
+            error={formik.touched.birthdayD && Boolean(formik.errors.birthdayD)}
+            helperText={formik.touched.birthdayD && formik.errors.birthdayD}
           />
         </div>
         <div className='inputBox'>
           <ModalSelect variant="outlined"
           >
-            <InputLabel id="roles-select-outlined-label" error={ !!errors.role }>
+            <InputLabel id="roles-select-outlined-label" error={formik.touched.role && Boolean(formik.errors.role)}>
               権限
             </InputLabel>
             <Select
-              {...register('role', { required: '選んでください' })}
               labelId="roles-select-outlined-label"
               id="roles-select-outlined"
               name='role'
+              label='権限'
               style={{ fontSize: '1.6rem' }}
-              value={ input.role }
-              error={ !!errors.role }
-              onChange={ ChangeHandler as ChangeEventHandler<{ name?: string | undefined, value: unknown}>}
-              onBlur={(data) => {
-                console.log(data.target.value.length)
-                if (!data.target.value[0]) {
-                  setError('role', {
-                    type: 'required',
-                    message: '選んでください'
-                  }) 
-                }
-              }}
+              value={ formik.values.role }
+              onChange={ formik.handleChange }
+              onBlur={ formik.handleBlur }
+              error={formik.touched.role && Boolean(formik.errors.role)}
             >
               {/* TODO: ここはapiからroleのリストを取得してここで使うようにするのが適切 */}
               <MenuItem value='1'>admin</MenuItem>
               <MenuItem value='2'>salon staff</MenuItem>
             </Select>
-            <FormHelperText style={{color: 'red'}}>{ errors.role?.message }</FormHelperText>
+            <FormHelperText error={formik.touched.role && Boolean(formik.errors.role)}>
+              {Boolean(formik.errors.role) && formik.touched.role ? formik.errors.role : ''}
+            </FormHelperText>
           </ModalSelect>
         </div>
-        <CustomButton className={ classes.submitButton } disabled={Object.keys(errors).length > 0 }>
+        <CustomButton className={ classes.submitButton }>
           この情報で登録
         </CustomButton>
       </form>
