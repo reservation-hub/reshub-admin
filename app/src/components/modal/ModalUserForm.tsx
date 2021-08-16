@@ -7,7 +7,6 @@ import { useFormik } from 'formik'
 
 const ModalUserForm: UserModalForm = ({
   onSubmit,
-  setValue,
   validation,
   formInitialState,
 }) => {
@@ -124,17 +123,21 @@ const ModalUserForm: UserModalForm = ({
         </div>
         <div className='genderRadio'>
         <FormControl component="fieldset" className='genderRadio'>
-          <FormLabel component="legend">性別</FormLabel>
+          <FormLabel component="legend" error={formik.touched.gender && Boolean(formik.errors.gender)}>性別</FormLabel>
           <RadioGroup
             aria-label="gender"
             row
             name='gender'
             value={ formik.values.gender }
             onChange={ formik.handleChange }
+            onBlur={ formik.handleBlur }
             >
             <FormControlLabel value="male" control={<Radio color={'primary'} />} label="男性" />
             <FormControlLabel value="female" control={<Radio color={'primary'} />} label="女性" />
           </RadioGroup>
+          <FormHelperText error={formik.touched.gender && Boolean(formik.errors.gender)}>
+            {formik.touched.gender && Boolean(formik.errors.gender) ? '選んでください' : ''}
+          </FormHelperText>
         </FormControl>
         </div>
         <div className='flexBetweenDiv'>

@@ -1,11 +1,10 @@
-import React, { FormEvent, useCallback, useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { RootState } from '../../store/store'
 import { addUser, fetchUserList } from '../../store/actions/userAction'
 import { useModal } from '../../utils/useModal'
-import useInput from '../../utils/useInput'
 import UserList from '../../components/user/userList/UserList'
 import Profile from './Profile'
 import ModalUserForm from '../../components/modal/ModalUserForm'
@@ -21,12 +20,12 @@ export const schema = yup.object({
   confirm: yup.string().required('入力してください'),
   firstNameKanji: yup.string().required('入力してください'),
   lastNameKanji: yup.string().required('入力してください'),
-  firstNameKana: yup.string().required('入力してください'),
-  lastNameKana: yup.string().required('入力してください'),
+  firstNameKana: yup.string().matches(/^[\u30A0-\u30FF]+$/, 'カタカナで入力してください').required('入力してください'),
+  lastNameKana: yup.string().matches(/^[\u30A0-\u30FF]+$/, 'カタカナで入力してください').required('入力してください'),
   gender: yup.string().required('入力してください'),
-  birthdayY: yup.string().required('入力してください'),
-  birthdayM: yup.string().required('入力してください'),
-  birthdayD: yup.string().required('入力してください'),
+  birthdayY: yup.string().matches(/^(19|20)\d\d$/, '1900から2099の入力でお願いします').required('入力してください'),
+  birthdayM: yup.string().matches(/^0[1-9]|1[0-2]$/, '01から12の入力でお願いします').required('入力してください'),
+  birthdayD: yup.string().matches(/^0[1-9]|[12]\d|3[01]$/, '01から31の入力でお願いします').required('入力してください'),
   role: yup.string().required('入力してください'),
 })
 
@@ -52,26 +51,25 @@ const Users = () => {
   const { users, loading } = useSelector((state: RootState) => state.user)
   const { open, openModal, closeModal } = useModal(false)
   const formInitialState = {
-    email: '1test@test.com',
-    password: 'testtest',
-    confirm: 'testtest',
-    firstNameKanji: 'eugene',
-    lastNameKanji: 'eugene',
-    firstNameKana: 'eugene',
-    lastNameKana: 'eugene',
-    gender: 'male',
-    birthdayY: '1991',
-    birthdayM: '08',
-    birthdayD: '29',
-    role: '1'
+    email: '',
+    password: '',
+    confirm: '',
+    firstNameKanji: '',
+    lastNameKanji: '',
+    firstNameKana: '',
+    lastNameKana: '',
+    gender: '',
+    birthdayY: '',
+    birthdayM: '',
+    birthdayD: '',
+    role: ''
   }
-  const { input, ChangeHandler } = useInput(formInitialState)
 
   const onSubmit = useCallback(
     (e: IUserFormInput) => {
       const query = createAddUserQuery(e)
       dispatch(addUser(query))
-    }, [dispatch, input]
+    }, [dispatch]
   )
 
   useEffect(() => {
@@ -88,7 +86,6 @@ const Users = () => {
         modalTitle='ユーザー登録' >
         <ModalUserForm 
           onSubmit={ onSubmit }
-          setValue={ ChangeHandler }
           validation={schema}
           formInitialState={formInitialState}
         />

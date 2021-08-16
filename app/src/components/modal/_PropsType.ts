@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react'
+import React from 'react'
 import { schema } from '../../pages/user/Users'
 
 export type ModalProps = {
@@ -9,7 +9,6 @@ export type ModalProps = {
 }
 export interface IModalFormProps {
   validation: object,
-  setValue: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement | { value: unknown }>
   onSubmit: any
   formInitialState: object
 }
