@@ -93,6 +93,7 @@ const ModalFormStyle = makeStyles((theme: Theme) => ( {
     width: '45rem',
     height: '4.5rem',
     marginTop: '1.5rem',
+    marginBottom: '1.5rem',
     background: theme.palette.primary.main,
     color: '#fff',
     border: 'none'

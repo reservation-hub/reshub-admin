@@ -1,15 +1,7 @@
 import React from 'react'
-import {
-  Select,
-  InputLabel,
-  MenuItem,
-  FormHelperText,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-  FormControl,
-  FormLabel
-} from '@material-ui/core'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
+import { Select, InputLabel, MenuItem, FormHelperText, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@material-ui/core'
 import ModalFormStyle, { ModalInput, ModalSelect } from './ModalFormStyle'
 import CustomButton from '../common/atoms/CustomButton'
 import { UserModalForm } from './_PropsType'
@@ -29,7 +21,7 @@ const ModalUserForm: UserModalForm = ({
       onSubmit(values)
     }
   })
-  
+  const { err } = useSelector((state: RootState) => state.user)
   return (
     <React.Fragment>
       <form onSubmit={ formik.handleSubmit } className='modalInputForm'>
@@ -215,6 +207,7 @@ const ModalUserForm: UserModalForm = ({
             </FormHelperText>
           </ModalSelect>
         </div>
+        <span>{err?.error?.message}</span>
         <CustomButton className={ classes.submitButton }>
           この情報で登録
         </CustomButton>

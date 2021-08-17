@@ -33,7 +33,7 @@ export interface IUserFormInput {
 
 interface UserModalFormProps extends IModalFormProps {
   validation: typeof schema
-  formInitialState: IUserFormInput
+  formInitialState: IUserFormInput,
 }
 
 export type UserModalForm = (props: UserModalFormProps) => JSX.Element

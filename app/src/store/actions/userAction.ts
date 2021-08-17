@@ -68,8 +68,6 @@ export const getOneUser = (id: number):
 
 export const addUser = (userData: insertUserFromAdminQuery):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
-  console.log(userData)
-  
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.addUser(userData)

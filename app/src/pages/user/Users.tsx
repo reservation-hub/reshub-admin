@@ -51,20 +51,21 @@ const Users = () => {
   
   const dispatch = useDispatch()
   const { users, loading } = useSelector((state: RootState) => state.user)
+  const state = useSelector((state: RootState) => state.user)
   const { open, openModal, closeModal } = useModal(false)
   const formInitialState = {
-    email: '',
-    password: '',
-    confirm: '',
-    firstNameKanji: '',
-    lastNameKanji: '',
-    firstNameKana: '',
-    lastNameKana: '',
-    gender: '',
-    birthdayY: '',
-    birthdayM: '',
-    birthdayD: '',
-    role: ''
+    email: '19d2030010sy@edu.tech.ac.jp',
+    password: 'testtest',
+    confirm: 'testtest',
+    firstNameKanji: 'eugene',
+    lastNameKanji: 'sinamban',
+    firstNameKana: 'ユージン',
+    lastNameKana: 'シナンバン',
+    gender: 'male',
+    birthdayY: '1991',
+    birthdayM: '08',
+    birthdayD: '29',
+    role: '1'
   }
   
   const onSubmit = useCallback(
