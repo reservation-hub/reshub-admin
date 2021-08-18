@@ -3,46 +3,38 @@ import React from 'react'
 import TableStyle, { StyledTable, StyledTableHead } from '../TableStyle'
 import { TableBody, TableCell, TableRow } from '@material-ui/core'
 import { TableProps } from '../_PropsType'
-import { Shop } from '../../../entities/Shop'
-import { User } from '../../../entities/User'
-
-import Body from './Body'
 
 const TableLayout = ({
-  cell,
-  data
+	children,
+	cell
 }: TableProps) => {
 
-  const classes = TableStyle()
+	const classes = TableStyle()
 
-  return (
-    <StyledTable>
-      <StyledTableHead>
-        <TableRow style={{ height: '5.5rem' }}>
-          { cell && Object.values(cell).map(
-            (value) => (
-                <TableCell
-                  key={ value.key }
-                  className={ value.key === 1
-                    ? `${ classes.tableHeadCell } table-index`
-                    : classes.tableHeadCell
-                  }
-                >
-                  { value.value }
-                </TableCell>
-              )
-          ) }
-        </TableRow>
-      </StyledTableHead>
-      <TableBody>
-        { data && Object.values(data).map(
-          (data: User & Shop, index: number) => (
-            <Body key={ index } index={ data.id } data={ data } />
-          )
-        ) }
-      </TableBody>
-    </StyledTable>
-  )
+	return (
+		<StyledTable>
+			<StyledTableHead>
+				<TableRow style={ { height: '5.5rem' } }>
+					{ cell && Object.entries(cell).map(
+						(value: [string, string], index: number) => (
+							<TableCell
+								key={ index }
+								className={ value[1] === 'No'
+									? `${ classes.tableHeadCell } table-index`
+									: classes.tableHeadCell
+								}
+							>
+								{ value[1] }
+							</TableCell>
+						)
+					) }
+				</TableRow>
+			</StyledTableHead>
+			<TableBody>
+				{ children }
+			</TableBody>
+		</StyledTable>
+	)
 
 }
 

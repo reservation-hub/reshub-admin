@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Router, Route,Switch } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { silentLogin } from './store/actions/authAction'
 import { CssBaseline } from '@material-ui/core'
@@ -16,34 +16,34 @@ import Users from './pages/user/Users'
 import Salon from './pages/shop/Salon'
 import SalonDashboard from './pages/dashboards/salon/SalonDashboard'
 
-const  App = () => {
-     
-  const dispatch = useDispatch()
+const App = () => {
 
-  useEffect(() => {
-    if (Cookies.get('refreshToken')) dispatch(silentLogin())
-  }, [dispatch])
+	const dispatch = useDispatch()
 
-  return (
-    <Router history={ history }>
-      <CssBaseline />
-      <Switch>
-        {/* public */}
-        <PublicRoute exact path='/' component={ Home }/>
-        <PublicRoute path='/salon_dashboard' component={ SalonDashboard } />
+	useEffect(() => {
+		if (Cookies.get('refreshToken')) dispatch(silentLogin())
+	}, [dispatch])
 
-        {/* only not logged in */}
-        <Route path='/auth' component={ Login } />
+	return (
+		<Router history={ history }>
+			<CssBaseline />
+			<Switch>
+				{/* public */ }
+				<PublicRoute exact path='/' component={ Home } />
+				<PublicRoute path='/salon_dashboard' component={ SalonDashboard } />
 
-        {/* only admin */}
-        <PrivateRoute path='/salon' component={ Salon }/>
-        <PrivateRoute path='/users' component={ Users } />
+				{/* only not logged in */ }
+				<Route path='/auth' component={ Login } />
 
-        {/* has error */}
-        <Route path='*' component={ Error } />
-      </Switch>
-    </Router>
-  )
+				{/* only admin */ }
+				<PrivateRoute path='/salon' component={ Salon } />
+				<PrivateRoute path='/users' component={ Users } />
+
+				{/* has error */ }
+				<Route component={ Error } />
+			</Switch>
+		</Router>
+	)
 }
 
 export default App

@@ -1,25 +1,20 @@
-import { DASHBOARD_REQUEST_START, DASHBOARD_REQUEST_SUCCESS } from '../types/dashboardTypes'
-import { AppDispatch, RootState, typedAction } from '../store'
-import { Shop } from '../../entities/Shop'
-import { User } from '../../entities/User'
+import { DASHBOARD_REQUEST_START, DASHBOARD_REQUEST_SUCCESS, DashBoardResponseType } from '../types/dashboardTypes'
+import { RootState, typedAction } from '../store'
 import { getDashboard } from '../../utils/api/apiEndpoint'
+import { ThunkAction } from 'redux-thunk'
 
 import history from '../../utils/history'
-
-export type dataType = {
-  data: { user: User[], shop: Shop[] }
-}
 
 const dashboardRequestStart = () => {
   return typedAction(DASHBOARD_REQUEST_START)
 }
 
-const dashboardRequestSuccess = (data: dataType) => {
+const dashboardRequestSuccess = (data: DashBoardResponseType) => {
   return typedAction(DASHBOARD_REQUEST_SUCCESS, data)
 }
 
-export const fetchDashboard = () =>
-  async (dispatch: AppDispatch, getState: () => RootState) => {
+export const fetchDashboard = ():
+  ThunkAction<void, RootState, null, DashboardAction> => async dispatch => {
 
   dispatch(dashboardRequestStart())
   try {
@@ -32,5 +27,6 @@ export const fetchDashboard = () =>
 }
 
 export type DashboardAction =
-  ReturnType<typeof dashboardRequestStart
-    | typeof dashboardRequestSuccess>
+  ReturnType<
+    typeof dashboardRequestStart | typeof dashboardRequestSuccess
+    >

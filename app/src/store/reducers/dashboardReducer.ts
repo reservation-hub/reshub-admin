@@ -1,14 +1,15 @@
-import { DASHBOARD_REQUEST_SUCCESS } from '../types/dashboardTypes'
-import { dataType } from '../actions/dashboardAction'
+import { DASHBOARD_REQUEST_SUCCESS, DashBoardResponseType, DashBoardState } from '../types/dashboardTypes'
+import { DashboardAction } from '../actions/dashboardAction'
 
-const initialState = {
+
+const initialState: DashBoardState = {
   loading: true,
-  data: {} as dataType
+  data: {} as DashBoardResponseType
 }
 
 const dashboardReducer = (
   state= initialState,
-  action: any
+  action: DashboardAction
 ) => {
   switch (action.type) {
     case DASHBOARD_REQUEST_SUCCESS:

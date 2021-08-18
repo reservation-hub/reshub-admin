@@ -15,10 +15,11 @@ import {
 import { RootState } from '../store'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
+import { insertUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
-import { insertUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
+
 
 
 const userRequestStart = () => {

@@ -12,10 +12,10 @@ import { AuthAction } from '../actions/authAction'
 import { User } from '../../entities/User'
 
 
-const initialState: AuthState<User> = {
+const initialState: AuthState = {
   loading: true,
   isAuthenticated: false,
-  user: [],
+  user: [] as User[],
   err: undefined
 }
 

@@ -1,7 +1,5 @@
-import { User } from '../../entities/User'
-import { Shop } from '../../entities/Shop'
+import { DashBoardResponseType } from '../../store/types/dashboardTypes'
 
 export type AdminDashboardProps = {
-  user?: User[]
-  shop?: Shop[]
+  data: DashBoardResponseType
 }

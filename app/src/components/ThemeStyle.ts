@@ -37,7 +37,7 @@ const theme = createTheme({
           padding: '0',
           fontSize: '62.5%',
           fontFamily: '-apple-system, sans-serif, "メイリオ"',
-          height: '100vh',
+          height: '100%',
         },
         body: {
           height: '100%',
