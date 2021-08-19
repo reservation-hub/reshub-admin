@@ -2,13 +2,13 @@
 // redux お店状態管理 reducer
 //----------------------------------
 
-import { 
-  SHOP_ADD_SUCCESS, 
-  SHOP_DELETE_SUCCESS, 
-  SHOP_EDIT_SUCCESS, 
-  SHOP_FETCH_SUCCESS, 
-  SHOP_GET_SUCCESS, 
-  SHOP_REQUEST_FAILURE 
+import {
+  SHOP_ADD_SUCCESS,
+  SHOP_DELETE_SUCCESS,
+  SHOP_EDIT_SUCCESS,
+  SHOP_FETCH_SUCCESS,
+  SHOP_GET_SUCCESS,
+  SHOP_REQUEST_FAILURE
 } from '../types/shopTypes'
 
 
@@ -21,28 +21,28 @@ const initialState = {
 const shopReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SHOP_FETCH_SUCCESS:
-      return { 
-        ...state, 
-        loading:false, 
-        shops: action.payload 
+      return {
+        ...state,
+        loading:false,
+        shops: action.payload
       }
     case SHOP_GET_SUCCESS:
-      return { 
-        ...state, 
-        loading:false, 
-        shop: action.payload 
+      return {
+        ...state,
+        loading:false,
+        shop: action.payload
       }
     case SHOP_ADD_SUCCESS:
-      return { 
-        ...state, 
-        loading:false, 
-        shops: [ action.payload ] 
+      return {
+        ...state,
+        loading:false,
+        shops: [ action.payload ]
       }
     case SHOP_EDIT_SUCCESS:
-      return { 
-        ...state, 
-        loading: false, 
-        shops: [ action.payload ] 
+      return {
+        ...state,
+        loading: false,
+        shops: [ action.payload ]
       }
     // case SHOP_DELETE_SUCCESS:
     //   return {

@@ -12,7 +12,7 @@ import H1 from '../common/atoms/H1'
 const AdminDashboard = ({
 	data
 }: AdminDashboardProps) => {
-
+	
 	return (
 		<Grid container>
 			<H1 color='primary'>ダッシュボード</H1>
@@ -31,7 +31,7 @@ const AdminDashboard = ({
 			</Grid>
 		</Grid>
 	)
-
+	
 }
 
 export default AdminDashboard

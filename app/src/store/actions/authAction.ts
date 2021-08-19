@@ -2,9 +2,9 @@
 // redux action ユーザー印証管理関数
 //----------------------------------
 
-import { 
-  USER_REQUEST_START, 
-  USER_REQUEST_SUCCESS, 
+import {
+  USER_REQUEST_START,
+  USER_REQUEST_SUCCESS,
   USER_REQUEST_FAILURE,
   LOGOUT_REQUEST_SUCCESS,
 } from '../types/authTypes'
@@ -40,16 +40,16 @@ const logoutSuccess = (msg: string) => ({
 })
 
 // refresh tokenをサーバーに投げてユーザー情報をもらってくるアクション
-export const silentLogin = (): 
+export const silentLogin = ():
   ThunkAction<void, RootState, null, Action> => async dispatch => {
 
     try {
       const user = await apiEndpoint.silentRefresh()
       const token = user.data.token
-      
+
       Cookies.set('refreshToken', token)
       setAuthToken(Cookies.get('refreshToken'))
-      
+
       dispatch(fetchUser(user.data.user))
     } catch (e: any) {
       dispatch(loginRequestFailure(e.response.data))
@@ -58,14 +58,14 @@ export const silentLogin = ():
 }
 
 // localログインを実行するアクション
-export const loginStart = (email: string, password: string): 
+export const loginStart = (email: string, password: string):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
 
     dispatch(loginRequestStart())
     try {
       const user = await apiEndpoint.localLogin(email, password)
       const token = user.data.token
-      
+
       Cookies.set('refreshToken', token)
       setAuthToken(token)
 
@@ -78,7 +78,7 @@ export const loginStart = (email: string, password: string):
 }
 
 // googelログインを実行するアクション
-export const googleLogin = (googleResponse: GoogleLoginResponse): 
+export const googleLogin = (googleResponse: GoogleLoginResponse):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
 
   const provider = 'google'
@@ -100,11 +100,11 @@ export const googleLogin = (googleResponse: GoogleLoginResponse):
 }
 
 //　ログアウトを実行するアクション
-export const logout = (): 
+export const logout = ():
   ThunkAction<void, RootState, null, Action> => async dispatch => {
 
     try {
-      const message = await apiEndpoint.logout()    
+      const message = await apiEndpoint.logout()
       Cookies.remove('refreshToken')
 
       dispatch(logoutSuccess(message.data))

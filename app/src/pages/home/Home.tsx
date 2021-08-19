@@ -7,20 +7,20 @@ import CommonStyle from '../../components/CommonStyle'
 
 function Home() {
 
-  const classes = CommonStyle()
+	const classes = CommonStyle()
 
-	return(
-	  <main className={ classes.loginSelectBackground }>
-      <section
-        className={ classes.boxCenter }
-        style={{ top: '33%' }}
-      >
-        <LoginSelectHeader />
-        <PageSelect />
-        <LoginSelectFooter />
-      </section>
-    </main>
-  )
+	return (
+		<main className={ classes.loginSelectBackground }>
+			<section
+				className={ classes.boxCenter }
+				style={ { top: '33%' } }
+			>
+				<LoginSelectHeader />
+				<PageSelect />
+				<LoginSelectFooter />
+			</section>
+		</main>
+	)
 }
 
 export default Home

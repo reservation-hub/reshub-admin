@@ -7,6 +7,6 @@ const ListItem = () => {
     <>
     <p>item表示</p>
     </>
-  ) 
+  )
 }
 export default ListItem

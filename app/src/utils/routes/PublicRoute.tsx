@@ -13,7 +13,7 @@ const PublicRoute = ({ children, ...rest }: any) => {
   // 行こうとしている経路へ移動させる
   // でないと、ログイン画面へリダイレクトする
   //-----------------------------------------------------------
-  
+
   const { isAuthenticated, user } = useSelector(
     (state: RootState) => state.auth
   )

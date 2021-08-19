@@ -25,9 +25,9 @@ const PrivateRoute = ({ children, ...rest }: any) => {
 
   return (
     <>
-      { isAuthenticated && 
+      { isAuthenticated &&
         isAdmin(user) ? (
-          <Route 
+          <Route
             { ...rest }
           >
             { children }

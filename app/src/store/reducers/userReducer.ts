@@ -2,7 +2,7 @@
 // redux ユーザー状態管理 reducer
 //----------------------------------
 
-import { 
+import {
   USERS_FETCH_SUCCESS,
   USERS_GET_SUCCESS,
   USERS_ADD_SUCCESS,
@@ -21,28 +21,28 @@ const initialState = {
 const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case USERS_FETCH_SUCCESS:
-      return { 
-        ...state, 
-        loading:false, 
-        users: action.payload 
+      return {
+        ...state,
+        loading:false,
+        users: action.payload
       }
     case USERS_GET_SUCCESS:
-      return { 
-        ...state, 
-        loading:false, 
-        user: action.payload 
+      return {
+        ...state,
+        loading:false,
+        user: action.payload
       }
     case USERS_ADD_SUCCESS:
-      return { 
-        ...state, 
-        loading:false, 
-        users: [ action.payload ] 
+      return {
+        ...state,
+        loading:false,
+        users: [ action.payload ]
       }
     case USERS_EDIT_SUCCESS:
-      return { 
-        ...state, 
-        loading: false, 
-        users: [ action.payload ] 
+      return {
+        ...state,
+        loading: false,
+        users: [ action.payload ]
       }
     case USERS_DELETE_SUCCESS:
       return {

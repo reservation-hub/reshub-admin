@@ -2,7 +2,7 @@
 // redux ユーザー状態管理 action
 //----------------------------------
 
-import { 
+import {
   USERS_REQUEST_START,
   USERS_FETCH_SUCCESS,
   USERS_GET_SUCCESS,
@@ -35,7 +35,7 @@ const userRequestFailure = (err: string) => {
   }
 }
 
-export const fetchUserList = (): 
+export const fetchUserList = ():
   ThunkAction<void, RootState, null, Action> => async dispatch => {
 
   dispatch(userRequestStart())
@@ -51,7 +51,7 @@ export const fetchUserList = ():
 
 }
 
-export const getOneUser = (id: number): 
+export const getOneUser = (id: number):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
 
   dispatch(userRequestStart())
