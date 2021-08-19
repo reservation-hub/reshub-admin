@@ -12,12 +12,12 @@ const ModalOverlay = ({
   modalCloseHandler,
   modalTitle
 }: ModalProps) => {
-
+  
   const classes = ModalFormStyle()
-
+  
   return (
     <div>
-      <Dialog open={ modalOpen } onClose={ modalCloseHandler } >
+      <Dialog open={ modalOpen } onClose={ modalCloseHandler }>
         <div className={ classes.modalContainer }>
           <div className={ classes.modalHeader }>
             <Typography variant='h4' color='secondary'>

@@ -5,15 +5,15 @@ import { AppBar, Paper } from '@material-ui/core'
 // reshub-adminの共通のスタイルを指定する
 //-----------------------------------------------------------
 
-export const StyledPaper = withStyles((theme: Theme) => ({
+export const StyledPaper = withStyles((theme: Theme) => ( {
   root: {
     width: '100%',
     justifyContent: 'center',
     boxShadow: 'none'
   }
-}))(Paper)
+} ))(Paper)
 
-export const StyledHeader = withStyles((theme: Theme) => ({
+export const StyledHeader = withStyles((theme: Theme) => ( {
   root: {
     height: '7.5rem',
     boxShadow: 'none',
@@ -33,13 +33,13 @@ export const StyledHeader = withStyles((theme: Theme) => ({
       }
     }
   }
-}))(AppBar)
+} ))(AppBar)
 
-const CommonStyle = makeStyles((theme: Theme) => ({
+const CommonStyle = makeStyles((theme: Theme) => ( {
   mainBackground: {
     width: '82.5%',
     margin: '5.5rem 3.5rem 0',
-    position: 'relative',
+    position: 'relative'
   },
   loginSelectBackground: {
     width: '100%',
@@ -81,7 +81,7 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     '& .active': {
       color: theme.palette.primary.main,
       '& div': {
-        background: theme.palette.secondary.main,
+        background: theme.palette.secondary.main
       }
     }
   },
@@ -122,6 +122,6 @@ const CommonStyle = makeStyles((theme: Theme) => ({
       justifyContent: 'space-between'
     }
   }
-}))
+} ))
 
 export default CommonStyle

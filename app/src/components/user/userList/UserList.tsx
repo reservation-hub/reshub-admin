@@ -9,23 +9,23 @@ import Body from '../../common/atoms/Body'
 import UserItems from './items'
 
 const UserList = ({
-	users,
-	modalOpenHandler
+  users,
+  modalOpenHandler
 }: UserListProps) => {
-
-	return (
-		<>
-			<ListTopBar title='ユーザー一覧' modalOpenHandler={ modalOpenHandler } />
-			<TableLayout cell={ UserCell } data={ users }>
-				{ users?.map((value, index) => (
-					<Body key={ index } index={ value.id } data={ users }>
-						<UserItems user={ value } />
-					</Body>
-				)) }
-			</TableLayout>
-		</>
-	)
-
+  
+  return (
+    <>
+      <ListTopBar title='ユーザー一覧' modalOpenHandler={ modalOpenHandler } />
+      <TableLayout cell={ UserCell } data={ users }>
+        { users?.map((value, index) => (
+          <Body key={ index } index={ value.id } data={ users }>
+            <UserItems user={ value } />
+          </Body>
+        )) }
+      </TableLayout>
+    </>
+  )
+  
 }
 
 export default UserList

@@ -21,7 +21,7 @@ const LoginForm = ({
   googleHandler,
   classes
 }: LoginProps) => {
-
+  
   return (
     <Container maxWidth='sm'>
       <Container className={ classes.loginCss.formBox }>
@@ -33,7 +33,7 @@ const LoginForm = ({
             placeholder='メールアドレスを入力してください'
             value={ value.email }
             onChange={ setValue }
-            style={{ margin: '.5rem 0 2rem 0' }}
+            style={ { margin: '.5rem 0 2rem 0' } }
             className='inputBox'
             fullWidth
           />
@@ -61,7 +61,7 @@ const LoginForm = ({
                 clientId={ process.env.REACT_APP_GOOGLE_CLIENT_ID }
                 onSuccess={ googleHandler }
                 onFailure={ googleHandler }
-                render={renderProps => (
+                render={ renderProps => (
                   <CustomButton
                     onClick={ renderProps.onClick }
                     className='socialRoot'
@@ -73,7 +73,7 @@ const LoginForm = ({
                       googleでログイン
                     </span>
                   </CustomButton>
-                  )
+                )
                 }
               />
             </Grid>

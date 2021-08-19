@@ -20,7 +20,7 @@ const ListTopBar = ({ title, modalOpenHandler }: ListTopBarProps) => {
         <H1 className='item-header'>{ title }</H1>
       </Grid>
       <Grid item className='item-button'>
-        {/* 実装予定 */}
+        {/* 実装予定 */ }
         <CustomButton>並び替え</CustomButton>
         <CustomButton>絞り込み</CustomButton>
         <CustomButton onClick={ modalOpenHandler }>

@@ -19,7 +19,7 @@ const initialState: AuthState = {
   err: undefined
 }
 
-const authReducer =  (state = initialState, action: AuthAction) => {
+const authReducer = (state = initialState, action: AuthAction) => {
   switch (action.type) {
     case USER_REQUEST_SUCCESS:
       return {

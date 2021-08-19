@@ -9,8 +9,8 @@ import user from './userReducer'
 import dashboard from './dashboardReducer'
 
 export const rootReducer = combineReducers({
-    auth,
-    shop,
-    user,
-    dashboard
-  })
+  auth,
+  shop,
+  user,
+  dashboard
+})

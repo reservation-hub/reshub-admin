@@ -17,33 +17,33 @@ import Salon from './pages/shop/Salon'
 import SalonDashboard from './pages/dashboards/salon/SalonDashboard'
 
 const App = () => {
-
-	const dispatch = useDispatch()
-
-	useEffect(() => {
-		if (Cookies.get('refreshToken')) dispatch(silentLogin())
-	}, [dispatch])
-
-	return (
-		<Router history={ history }>
-			<CssBaseline />
-			<Switch>
-				{/* public */ }
-				<PublicRoute exact path='/' component={ Home } />
-				<PublicRoute path='/salon_dashboard' component={ SalonDashboard } />
-
-				{/* only not logged in */ }
-				<Route path='/auth' component={ Login } />
-
-				{/* only admin */ }
-				<PrivateRoute path='/salon' component={ Salon } />
-				<PrivateRoute path='/users' component={ Users } />
-
-				{/* has error */ }
-				<Route component={ Error } />
-			</Switch>
-		</Router>
-	)
+  
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    if (Cookies.get('refreshToken')) dispatch(silentLogin())
+  }, [dispatch])
+  
+  return (
+    <Router history={ history }>
+      <CssBaseline />
+      <Switch>
+        {/* public */ }
+        <PublicRoute exact path='/' component={ Home } />
+        <PublicRoute path='/salon_dashboard' component={ SalonDashboard } />
+        
+        {/* only not logged in */ }
+        <Route path='/auth' component={ Login } />
+        
+        {/* only admin */ }
+        <PrivateRoute path='/salon' component={ Salon } />
+        <PrivateRoute path='/users' component={ Users } />
+        
+        {/* has error */ }
+        <Route component={ Error } />
+      </Switch>
+    </Router>
+  )
 }
 
 export default App

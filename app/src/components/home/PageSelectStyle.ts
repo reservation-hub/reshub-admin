@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
-const PageSelectStyle = makeStyles((theme: Theme) => ({
+const PageSelectStyle = makeStyles((theme: Theme) => ( {
   selectBox: {
     height: '15.1rem',
     background: theme.palette.secondary.main,
@@ -19,8 +19,8 @@ const PageSelectStyle = makeStyles((theme: Theme) => ({
         transition: 'all .5s ease'
       }
     }
-
+    
   }
-}))
+} ))
 
 export default PageSelectStyle

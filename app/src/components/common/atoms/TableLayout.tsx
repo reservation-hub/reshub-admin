@@ -5,37 +5,37 @@ import { TableBody, TableCell, TableRow } from '@material-ui/core'
 import { TableProps } from '../_PropsType'
 
 const TableLayout = ({
-	children,
-	cell
+  children,
+  cell
 }: TableProps) => {
-
-	const classes = TableStyle()
-
-	return (
-		<StyledTable>
-			<StyledTableHead>
-				<TableRow style={ { height: '5.5rem' } }>
-					{ cell && Object.entries(cell).map(
-						(value: [string, string], index: number) => (
-							<TableCell
-								key={ index }
-								className={ value[1] === 'No'
-									? `${ classes.tableHeadCell } table-index`
-									: classes.tableHeadCell
-								}
-							>
-								{ value[1] }
-							</TableCell>
-						)
-					) }
-				</TableRow>
-			</StyledTableHead>
-			<TableBody>
-				{ children }
-			</TableBody>
-		</StyledTable>
-	)
-
+  
+  const classes = TableStyle()
+  
+  return (
+    <StyledTable>
+      <StyledTableHead>
+        <TableRow style={ { height: '5.5rem' } }>
+          { cell && Object.entries(cell).map(
+            (value: [string, string], index: number) => (
+              <TableCell
+                key={ index }
+                className={ value[1] === 'No'
+                  ? `${ classes.tableHeadCell } table-index`
+                  : classes.tableHeadCell
+                }
+              >
+                { value[1] }
+              </TableCell>
+            )
+          ) }
+        </TableRow>
+      </StyledTableHead>
+      <TableBody>
+        { children }
+      </TableBody>
+    </StyledTable>
+  )
+  
 }
 
 export default React.memo(TableLayout)

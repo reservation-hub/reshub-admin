@@ -15,7 +15,7 @@ const dashboardRequestSuccess = (data: DashBoardResponseType) => {
 
 export const fetchDashboard = ():
   ThunkAction<void, RootState, null, DashboardAction> => async dispatch => {
-
+  
   dispatch(dashboardRequestStart())
   try {
     const res = await getDashboard()
@@ -23,10 +23,8 @@ export const fetchDashboard = ():
   } catch (e) {
     history.push('/error')
   }
-
+  
 }
 
 export type DashboardAction =
-  ReturnType<
-    typeof dashboardRequestStart | typeof dashboardRequestSuccess
-    >
+  ReturnType<typeof dashboardRequestStart | typeof dashboardRequestSuccess>

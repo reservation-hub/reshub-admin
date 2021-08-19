@@ -23,33 +23,33 @@ const userReducer = (state = initialState, action: any) => {
     case USERS_FETCH_SUCCESS:
       return {
         ...state,
-        loading:false,
+        loading: false,
         users: action.payload
       }
     case USERS_GET_SUCCESS:
       return {
         ...state,
-        loading:false,
+        loading: false,
         user: action.payload
       }
     case USERS_ADD_SUCCESS:
       return {
         ...state,
-        loading:false,
-        users: [ action.payload ]
+        loading: false,
+        users: [action.payload]
       }
     case USERS_EDIT_SUCCESS:
       return {
         ...state,
         loading: false,
-        users: [ action.payload ]
+        users: [action.payload]
       }
     case USERS_DELETE_SUCCESS:
       return {
         ...state,
         users: state.user.filter(
           res => res['id'] !== action.payload
-          )
+        )
       }
     case USERS_REQUEST_FAILURE:
       return action.payload || state

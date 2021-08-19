@@ -33,9 +33,9 @@ const enhancedReducer = persistReducer(persistConfig, rootReducer)
 const middleware = process.env.NODE_ENV !== 'production' ? [thunk, logger] : [thunk]
 
 const composeEnhancer =
-  (process.env.NODE_ENV !== 'production' &&
+  ( process.env.NODE_ENV !== 'production' &&
     typeof window !== 'undefined' &&
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ) || compose
 
 const store = createStore(
   enhancedReducer, composeEnhancer(applyMiddleware(...middleware))

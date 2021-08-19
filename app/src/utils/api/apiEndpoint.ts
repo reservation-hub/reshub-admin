@@ -78,12 +78,12 @@ export const deleteUser = async (id: number) => await instance.delete(
 
 export const localLogin = async (
   email: string, password: string) => await instance.post(
-    `/auth/login`, { email, password }
+  `/auth/login`, { email, password }
 )
 
 export const googleLogin = async (
   provider: string, tokenId: string) => await instance.post(
-    `/auth/google`, { tokenId, provider }
+  `/auth/google`, { tokenId, provider }
 )
 
 export const silentRefresh = async () => await instance.post(

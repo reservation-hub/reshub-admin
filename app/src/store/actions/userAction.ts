@@ -10,7 +10,7 @@ import {
   USERS_EDIT_SUCCESS,
   USERS_DELETE_SUCCESS,
   USERS_REQUEST_FAILURE
- } from '../types/usersType'
+} from '../types/usersType'
 
 import { RootState } from '../store'
 import { Action } from 'redux'
@@ -19,7 +19,6 @@ import { insertUserFromAdminQuery } from '../../utils/api/request-response-types
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
-
 
 
 const userRequestStart = () => {
@@ -37,7 +36,7 @@ const userRequestFailure = (err: string) => {
 
 export const fetchUserList = ():
   ThunkAction<void, RootState, null, Action> => async dispatch => {
-
+  
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.getUsers()
@@ -48,12 +47,12 @@ export const fetchUserList = ():
   } catch (e: any) {
     history.push('/error')
   }
-
+  
 }
 
 export const getOneUser = (id: number):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
-
+  
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.getOneUsers(id)
@@ -64,13 +63,13 @@ export const getOneUser = (id: number):
   } catch (e: any) {
     history.push('/error')
   }
-
+  
 }
 
 export const addUser = (userData: insertUserFromAdminQuery):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   console.log(userData)
-
+  
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.addUser(userData)
@@ -83,7 +82,7 @@ export const addUser = (userData: insertUserFromAdminQuery):
     const error = e.response.data
     dispatch(userRequestFailure(error))
   }
-
+  
 }
 
 // export const patchUser = (

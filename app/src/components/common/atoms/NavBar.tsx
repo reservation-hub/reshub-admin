@@ -8,9 +8,9 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 
 const NavBar = () => {
-
+  
   const { user } = useSelector((state: RootState) => state.auth)
-
+  
   return (
     <React.Fragment>
       <div className='nav-wrapper'>
@@ -32,7 +32,7 @@ const NavBar = () => {
                 `${ index === 0
                   ? '/salon_dashboard'
                   : index === 1
-                  ? '/users' : '/salon'
+                    ? '/users' : '/salon'
                 }`
               }
               activeClassName='active'

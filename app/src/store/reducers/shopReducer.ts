@@ -23,26 +23,26 @@ const shopReducer = (state = initialState, action: any) => {
     case SHOP_FETCH_SUCCESS:
       return {
         ...state,
-        loading:false,
+        loading: false,
         shops: action.payload
       }
     case SHOP_GET_SUCCESS:
       return {
         ...state,
-        loading:false,
+        loading: false,
         shop: action.payload
       }
     case SHOP_ADD_SUCCESS:
       return {
         ...state,
-        loading:false,
-        shops: [ action.payload ]
+        loading: false,
+        shops: [action.payload]
       }
     case SHOP_EDIT_SUCCESS:
       return {
         ...state,
         loading: false,
-        shops: [ action.payload ]
+        shops: [action.payload]
       }
     // case SHOP_DELETE_SUCCESS:
     //   return {

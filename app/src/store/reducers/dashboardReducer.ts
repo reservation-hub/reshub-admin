@@ -8,7 +8,7 @@ const initialState: DashBoardState = {
 }
 
 const dashboardReducer = (
-  state= initialState,
+  state = initialState,
   action: DashboardAction
 ) => {
   switch (action.type) {

@@ -10,31 +10,31 @@ import AdminDashboard from '../../../components/dashboards/AdminDashboard'
 import ShopDashboard from '../../../components/dashboards/salon/Shopdashboard'
 
 const SalonDashboard = () => {
-
-	const { user, data } = useSelector(
-		(state: RootState) => ( {
-			user: state.auth['user'],
-			data: state.dashboard.data
-
-		} ), shallowEqual
-	)
-	const dispatch = useDispatch()
-	const authCheck = (user: User) => user.roles.findIndex(r => r.name === 'admin') !== -1
-
-	useEffect(() => {
-		dispatch(fetchDashboard())
-	}, [dispatch])
-
-	return (
-		<MainTemplate>
-			{ authCheck(user)
-				? <AdminDashboard
-					data={ data }
-				/>
-				: <ShopDashboard />
-			}
-		</MainTemplate>
-	)
+  
+  const { user, data } = useSelector(
+    (state: RootState) => ( {
+      user: state.auth['user'],
+      data: state.dashboard.data
+      
+    } ), shallowEqual
+  )
+  const dispatch = useDispatch()
+  const authCheck = (user: User) => user.roles.findIndex(r => r.name === 'admin') !== -1
+  
+  useEffect(() => {
+    dispatch(fetchDashboard())
+  }, [dispatch])
+  
+  return (
+    <MainTemplate>
+      { authCheck(user)
+        ? <AdminDashboard
+          data={ data }
+        />
+        : <ShopDashboard />
+      }
+    </MainTemplate>
+  )
 }
 
 export default SalonDashboard

@@ -6,21 +6,21 @@ import LoginSelectFooter from '../../components/common/loginSelect/LoginSelectFo
 import CommonStyle from '../../components/CommonStyle'
 
 function Home() {
-
-	const classes = CommonStyle()
-
-	return (
-		<main className={ classes.loginSelectBackground }>
-			<section
-				className={ classes.boxCenter }
-				style={ { top: '33%' } }
-			>
-				<LoginSelectHeader />
-				<PageSelect />
-				<LoginSelectFooter />
-			</section>
-		</main>
-	)
+  
+  const classes = CommonStyle()
+  
+  return (
+    <main className={ classes.loginSelectBackground }>
+      <section
+        className={ classes.boxCenter }
+        style={ { top: '33%' } }
+      >
+        <LoginSelectHeader />
+        <PageSelect />
+        <LoginSelectFooter />
+      </section>
+    </main>
+  )
 }
 
 export default Home

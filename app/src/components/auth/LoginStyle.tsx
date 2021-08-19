@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
-const LoginStyle = makeStyles((theme: Theme) => ({
+const LoginStyle = makeStyles((theme: Theme) => ( {
   formBox: {
     height: '30.2rem',
     padding: '3rem',
@@ -18,7 +18,7 @@ const LoginStyle = makeStyles((theme: Theme) => ({
       width: '100%',
       height: '3.5rem',
       marginTop: '2.5rem',
-      marginBottom: '2.5rem',
+      marginBottom: '2.5rem'
     },
     '& .socialRoot': {
       width: '100%',
@@ -50,6 +50,6 @@ const LoginStyle = makeStyles((theme: Theme) => ({
       }
     }
   }
-}))
+} ))
 
 export default LoginStyle
