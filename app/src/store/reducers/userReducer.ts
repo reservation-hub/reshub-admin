@@ -8,14 +8,15 @@ import {
   USERS_ADD_SUCCESS,
   USERS_EDIT_SUCCESS,
   USERS_DELETE_SUCCESS,
-  USERS_REQUEST_FAILURE
+  USERS_REQUEST_FAILURE, UsersState
 } from '../types/usersType'
+import { User } from '../../entities/User'
 
 
-const initialState = {
+const initialState: UsersState = {
   loading: true,
-  users: {},
-  user: []
+  users: {} as User[],
+  user: [] as User[]
 }
 
 const userReducer = (state = initialState, action: any) => {
@@ -36,19 +37,19 @@ const userReducer = (state = initialState, action: any) => {
       return {
         ...state,
         loading: false,
-        users: [action.payload]
+        user: [action.payload]
       }
     case USERS_EDIT_SUCCESS:
       return {
         ...state,
         loading: false,
-        users: [action.payload]
+        user: [action.payload]
       }
     case USERS_DELETE_SUCCESS:
       return {
         ...state,
-        users: state.user.filter(
-          res => res['id'] !== action.payload
+        user: state.user.filter(
+          res => res.id !== action.payload
         )
       }
     case USERS_REQUEST_FAILURE:

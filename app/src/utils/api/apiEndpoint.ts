@@ -1,6 +1,7 @@
 import instance from './index'
-import { updateShopQuery } from './request-response-types/ShopService'
-import { insertUserFromAdminQuery } from './request-response-types/UserService'
+import { insertShopQuery, updateShopQuery } from './request-response-types/ShopService'
+import { insertUserFromAdminQuery, updateUserFromAdminQuery } from './request-response-types/UserService'
+import { localAuthenticationQuery } from './request-response-types/AuthService'
 
 //-----------------------------------------------
 // get method
@@ -43,7 +44,7 @@ export const getOneUsers = async (id: number) => await instance.get(
 //-----------------------------------------------
 
 // add Shop data
-export const addShop = async (shopData: object) => await instance.post(
+export const addShop = async (shopData: insertShopQuery) => await instance.post(
   `/shops`, { ...shopData }
 )
 
@@ -63,8 +64,8 @@ export const addUser = async (userData: insertUserFromAdminQuery) => await insta
 )
 
 // ユーザー修正
-export const patchUser = async (id: number, userData: object) => await instance.patch(
-  `/users/${ id }`, { ...userData }
+export const patchUser = async (userData: updateUserFromAdminQuery) => await instance.patch(
+  `/users/${ userData.id }`, { ...userData }
 )
 
 // ユーザー削除
@@ -76,9 +77,8 @@ export const deleteUser = async (id: number) => await instance.delete(
 // authenticate
 //-----------------------------------------------
 
-export const localLogin = async (
-  email: string, password: string) => await instance.post(
-  `/auth/login`, { email, password }
+export const localLogin = async (formData: localAuthenticationQuery) => await instance.post(
+  `/auth/login`, { email: formData.email, password: formData.password }
 )
 
 export const googleLogin = async (

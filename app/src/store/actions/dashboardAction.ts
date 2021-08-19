@@ -27,4 +27,5 @@ export const fetchDashboard = ():
 }
 
 export type DashboardAction =
-  ReturnType<typeof dashboardRequestStart | typeof dashboardRequestSuccess>
+  | ReturnType<typeof dashboardRequestStart>
+  | ReturnType<typeof dashboardRequestSuccess>

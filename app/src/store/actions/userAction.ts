@@ -4,34 +4,29 @@
 
 import {
   USERS_REQUEST_START,
-  USERS_FETCH_SUCCESS,
-  USERS_GET_SUCCESS,
-  USERS_ADD_SUCCESS,
-  USERS_EDIT_SUCCESS,
-  USERS_DELETE_SUCCESS,
-  USERS_REQUEST_FAILURE
+  USERS_REQUEST_FAILURE,
+  USERS_REQUEST_SUCCESS, USERS_EDIT_SUCCESS, USERS_DELETE_SUCCESS
 } from '../types/usersType'
 
-import { RootState } from '../store'
+import { RootState, typedAction } from '../store'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
-import { insertUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
+import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
+import { User } from '../../entities/User'
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
 
-
 const userRequestStart = () => {
-  return {
-    type: USERS_REQUEST_START
-  }
+  return typedAction(USERS_REQUEST_START)
+}
+
+const userRequestSuccess = (data: User[]) => {
+  return typedAction(USERS_REQUEST_SUCCESS, data)
 }
 
 const userRequestFailure = (err: string) => {
-  return {
-    type: USERS_REQUEST_FAILURE,
-    payload: { err }
-  }
+  return typedAction(USERS_REQUEST_FAILURE, err)
 }
 
 export const fetchUserList = ():
@@ -40,10 +35,7 @@ export const fetchUserList = ():
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.getUsers()
-    dispatch({
-      type: USERS_FETCH_SUCCESS,
-      payload: res.data
-    })
+    dispatch(userRequestSuccess(res.data))
   } catch (e: any) {
     history.push('/error')
   }
@@ -56,10 +48,7 @@ export const getOneUser = (id: number):
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.getOneUsers(id)
-    dispatch({
-      type: USERS_GET_SUCCESS,
-      payload: res.data
-    })
+    dispatch(userRequestSuccess(res.data))
   } catch (e: any) {
     history.push('/error')
   }
@@ -73,10 +62,7 @@ export const addUser = (userData: insertUserFromAdminQuery):
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.addUser(userData)
-    dispatch({
-      type: USERS_ADD_SUCCESS,
-      payload: res.data
-    })
+    dispatch(userRequestSuccess(res.data))
     history.replace('/users')
   } catch (e) {
     const error = e.response.data
@@ -85,79 +71,29 @@ export const addUser = (userData: insertUserFromAdminQuery):
   
 }
 
-// export const patchUser = (
-//   id: number,
-//   firstName: string,
-//   lastName: string,
-//   email: string,
-//   username: string,
-//   password: string 
-// ) => async dispatch => {
+export const patchUser = (userData: updateUserFromAdminQuery):
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
+  
+  dispatch(userRequestStart())
+  try {
+    const res = await apiEndpoint.patchUser(userData)
+    dispatch(typedAction(USERS_EDIT_SUCCESS, res.data))
+  } catch (e) {
+    const error = e.response.data
+    dispatch(userRequestFailure(error))
+  }
+  
+}
 
-//   const userData = {
-//     firstName,
-//     lastName,
-//     email,
-//     username,
-//     password 
-//   } 
-
-//   dispatch(userRequestStart())
-//   try {
-//     const res = await apiEndpoint.patchUser(id, userData)
-//     dispatch({
-//       type: USERS_EDIT_SUCCESS,
-//       payload: res.data
-//     })
-//   } catch (e) {
-//     const error = e.response.data
-//     dispatch(userRequestFailure(error)) 
-//   }
-
-// }
-
-// export const putUser = (
-//   id,
-//   firstName,
-//   lastName,
-//   email,
-//   username,
-//   password 
-// ) => async dispatch => {
-
-//   const userData = {
-//     firstName,
-//     lastName,
-//     email,
-//     username,
-//     password 
-//   } 
-
-//   dispatch(userRequestStart())
-//   try {
-//     const res = await apiEndpoint.putUser(id, userData)
-//     dispatch({
-//       type: USERS_EDIT_SUCCESS,
-//       payload: res.data
-//     })
-//   } catch (e) {
-//     const error = e.response.data
-//     dispatch(userRequestFailure(error)) 
-//   }
-
-// }
-
-// export const deleteUser = id => async dispatch => {
-
-//   dispatch(userRequestStart())
-//   try {
-//     const res = await apiEndpoint.deleteUser(id)
-//     dispatch({
-//       type: USERS_DELETE_SUCCESS,
-//       payload: res.data
-//     })
-//   } catch (e) {
-//     const error = e.response.data
-//     dispatch(userRequestFailure(error)) 
-//   }
-// }
+export const deleteUser = (id: number):
+  ThunkAction<void, RootState, null, Action> => async dispatch => {
+  
+  dispatch(userRequestStart())
+  try {
+    const res = await apiEndpoint.deleteUser(id)
+    dispatch(typedAction(USERS_DELETE_SUCCESS, res.data))
+  } catch (e) {
+    const error = e.response.data
+    dispatch(userRequestFailure(error))
+  }
+}

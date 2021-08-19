@@ -46,16 +46,10 @@ if (token) {
   setAuthToken(token)
 }
 
-export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
 
 export function typedAction<T extends string>(type: T): { type: T }
-export function typedAction<T extends string, P extends any>(
-  type: T,
-  payload: P
-): { type: T; payload: P }
-export function typedAction(type: string, payload?: any) {
-  return { type, payload }
-}
+export function typedAction<T extends string, P extends any>(type: T, payload: P): { type: T; payload: P }
+export function typedAction(type: string, payload?: any) { return { type, payload } }
 
 export default store

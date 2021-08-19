@@ -10,12 +10,13 @@ import {
   SHOP_GET_SUCCESS,
   SHOP_REQUEST_FAILURE
 } from '../types/shopTypes'
+import { Shop } from '../../entities/Shop'
 
 
 const initialState = {
   loading: true,
-  shops: {},
-  shop: []
+  shops: {} as Shop,
+  shop: [] as Shop[]
 }
 
 const shopReducer = (state = initialState, action: any) => {
@@ -44,13 +45,13 @@ const shopReducer = (state = initialState, action: any) => {
         loading: false,
         shops: [action.payload]
       }
-    // case SHOP_DELETE_SUCCESS:
-    //   return {
-    //     ...state,
-    //     shops: state.shop.filter(
-    //       res => res.id !== action.payload
-    //       )
-    //   }
+    case SHOP_DELETE_SUCCESS:
+      return {
+        ...state,
+        shops: state.shop.filter(
+          res => res.id !== action.payload
+        )
+      }
     case SHOP_REQUEST_FAILURE:
       return action.payload || state
     default:
