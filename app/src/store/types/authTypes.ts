@@ -11,9 +11,9 @@ export const USER_REQUEST_FAILURE = 'USER_REQUEST_FAILURE' as const
 
 export const LOGOUT_REQUEST_SUCCESS = 'LOGOUT_REQUEST_SUCCESS' as const
 
-export type AuthState<User> = {
+export type AuthState = {
   isAuthenticated: boolean
   loading: boolean
-  user: User[]
+  user: {}
   err?: { err: string }
 }

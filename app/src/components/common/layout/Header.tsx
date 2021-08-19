@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { Grid } from '@material-ui/core'
-import { HeaderProps } from '../_PropsType'
+import { MainTemplateProps } from '../_PropsType'
 import { StyledHeader } from '../../CommonStyle'
 
 import CustomButton from '../atoms/CustomButton'
 import H1 from '../atoms/H1'
 
-const Header = ({ onLogout }: HeaderProps) => {
-
+const Header = ({ onLogout }: MainTemplateProps) => {
+  
   return (
     <StyledHeader position='static'>
       <Grid

@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom'
 import PageSelectStyle from './PageSelectStyle'
 
 const PageSelect = () => {
-
+  
   const classes = PageSelectStyle()
-
+  
   return (
     <Container maxWidth='sm'>
       <Grid
         container
-        justifyContent="space-between"
-        alignItems="center"
+        justifyContent='space-between'
+        alignItems='center'
         className={ classes.selectBox }
       >
         <Grid item xs={ 6 } className='salon'>

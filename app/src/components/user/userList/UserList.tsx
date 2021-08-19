@@ -1,28 +1,31 @@
 import React from 'react'
 
 import { UserCell } from '../../common/_Constants'
-import { User } from '../../../entities/User'
+import { UserListProps } from '../_PropsType'
 
 import ListTopBar from '../../common/atoms/ListTopBar'
 import TableLayout from '../../common/atoms/TableLayout'
-
-interface UserListProps {
-  users: User[]
-  modalOpenHandler: () => void
-}
+import Body from '../../common/atoms/Body'
+import UserItems from './items'
 
 const UserList = ({
   users,
   modalOpenHandler
 }: UserListProps) => {
-
+  
   return (
-    <React.Fragment>
+    <>
       <ListTopBar title='ユーザー一覧' modalOpenHandler={ modalOpenHandler } />
-      <TableLayout cell={ UserCell } data={ users } />
-    </React.Fragment>
+      <TableLayout cell={ UserCell } data={ users }>
+        { users?.map((value, index) => (
+          <Body key={ index } index={ value.id } data={ users }>
+            <UserItems user={ value } />
+          </Body>
+        )) }
+      </TableLayout>
+    </>
   )
-
+  
 }
 
-export default React.memo(UserList)
+export default UserList

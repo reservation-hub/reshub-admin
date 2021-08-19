@@ -8,7 +8,7 @@ const ShopDashboard = () => {
         this is salon dashboard
       </Grid>
       <Grid item>
-
+      
       </Grid>
     </Grid>
   )

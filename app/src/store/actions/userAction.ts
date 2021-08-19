@@ -2,7 +2,7 @@
 // redux ユーザー状態管理 action
 //----------------------------------
 
-import { 
+import {
   USERS_REQUEST_START,
   USERS_FETCH_SUCCESS,
   USERS_GET_SUCCESS,
@@ -10,16 +10,15 @@ import {
   USERS_EDIT_SUCCESS,
   USERS_DELETE_SUCCESS,
   USERS_REQUEST_FAILURE
- } from '../types/usersType'
+} from '../types/usersType'
 
 import { RootState } from '../store'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
+import { insertUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
-import { insertUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
-import { IUserFormInput } from '../../components/modal/_PropsType'
 
 
 const userRequestStart = () => {
@@ -35,9 +34,9 @@ const userRequestFailure = (err: string) => {
   }
 }
 
-export const fetchUserList = (): 
+export const fetchUserList = ():
   ThunkAction<void, RootState, null, Action> => async dispatch => {
-
+  
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.getUsers()
@@ -48,12 +47,12 @@ export const fetchUserList = ():
   } catch (e: any) {
     history.push('/error')
   }
-
+  
 }
 
-export const getOneUser = (id: number): 
+export const getOneUser = (id: number):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
-
+  
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.getOneUsers(id)
@@ -64,13 +63,13 @@ export const getOneUser = (id: number):
   } catch (e: any) {
     history.push('/error')
   }
-
+  
 }
 
-export const addUser = (userData: object):
+export const addUser = (userData: insertUserFromAdminQuery):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   console.log(userData)
-
+  
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.addUser(userData)
@@ -83,7 +82,7 @@ export const addUser = (userData: object):
     const error = e.response.data
     dispatch(userRequestFailure(error))
   }
-
+  
 }
 
 // export const patchUser = (

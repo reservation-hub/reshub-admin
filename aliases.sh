@@ -1,5 +1,5 @@
 alias admin-init="git submodule update --init reshub-deploy"
-alias ent-init="git submodule update --init entities"
+alias ent-init="git submodule update --init app/src/entities"
 
 alias rh-ad="docker-compose build && docker-compose up"
 alias ad-down="docker-compose down"

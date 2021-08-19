@@ -12,12 +12,12 @@ interface MatchParams {
 }
 
 const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
-
+  
   const { id } = match.params
   const convertId: number = +id
   const dispatch = useDispatch()
   const { user } = useSelector((state: RootState) => state.user)
-
+  
   useEffect(() => {
     dispatch(getOneUser(convertId))
   }, [dispatch, convertId])
@@ -25,8 +25,8 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   return (
     <ProfileItem
       userEmail={ user.email }
-      kanjiName={ `${user.firstNameKanji} ${user.lastNameKanji}` }
-      kanaName={ `${user.firstNameKana} ${user.lastNameKana}` }
+      kanjiName={ `${ user.firstNameKanji } ${ user.lastNameKanji }` }
+      kanaName={ `${ user.firstNameKana } ${ user.lastNameKana }` }
       gender={ user.gender }
       role={ user.roles && user.roles.map((r: any) => r.name) }
     />

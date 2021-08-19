@@ -1,47 +1,41 @@
 import React from 'react'
 
 import { TableRow } from '@material-ui/core'
-import { BodyProps } from '../_PropsType'
-import { StyledTableCell } from '../TableStyle'
-import { Role } from '../../../entities/Role'
+import { User } from '../../../entities/User'
+import { Shop } from '../../../entities/Shop'
+import { DashboardShop } from '../../../store/types/dashboardTypes'
+import { TableProps } from '../_PropsType'
 
-import moment from 'moment'
+import history from '../../../utils/history'
 
 const Body = ({
+  children,
   index,
   data
-}: BodyProps) => {
-
-  const birthday = moment(
-    `${ data.birthday }`, 'YYYY-MM-DD'
-  ).format('YYYY-MM-DD')
-
+}: TableProps) => {
+  
+  const userMail = data?.map((u: User) => u.email)
+  const salonName = data?.map((s: DashboardShop) => s.name)
+  
+  // Todo 今は if else　で処理しているが、未来には　switch　で処理する
+  const linkPage = (data: User[] | DashboardShop[] | Shop[] | undefined) => {
+    if (userMail && index !== undefined) {
+      return history.push(`/users/${ index }`)
+    } else if (salonName && index !== undefined) return history.push(`/shop/${ index }`)
+    return history.push('/error')
+  }
+  
   return (
-    <TableRow style={{ height: '6rem' }}>
-      <StyledTableCell className='table-index'>
-        { index }
-      </StyledTableCell>
-      <StyledTableCell>
-        { data.email || data.name }
-      </StyledTableCell>
-      <StyledTableCell>
-        { `${ data.firstNameKanji } ${ data.lastNameKanji }` || '-' }
-      </StyledTableCell>
-      <StyledTableCell>
-        { `${ data.firstNameKana } ${ data.lastNameKana }` || data.address  }
-      </StyledTableCell>
-      <StyledTableCell>
-        { data.birthday === null ? '-' : birthday || '-'}
-      </StyledTableCell>
-      <StyledTableCell>
-        { data.gender === null ? '-' : data.gender }
-      </StyledTableCell>
-      <StyledTableCell>
-        { data.roles.map((r: Role) => r.name) || data.phoneNumber }
-      </StyledTableCell>
+    <TableRow
+      style={ { height: '6rem' } }
+      hover
+      onClick={ () => linkPage(data) }
+    >
+      { children }
     </TableRow>
   )
-
+  
 }
 
 export default Body
+

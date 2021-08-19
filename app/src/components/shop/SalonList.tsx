@@ -7,9 +7,9 @@ import SalonListItem from './SalonListItem'
 // } from '../../store/reducers/shopReducer'
 
 const List = () => {
-  return(
+  return (
     <>
-    <SalonListItem />
+      <SalonListItem />
     </>
   )
 }

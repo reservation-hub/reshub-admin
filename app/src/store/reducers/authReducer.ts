@@ -12,18 +12,18 @@ import { AuthAction } from '../actions/authAction'
 import { User } from '../../entities/User'
 
 
-const initialState: AuthState<User> = {
+const initialState: AuthState = {
   loading: true,
   isAuthenticated: false,
-  user: [],
+  user: [] as User[],
   err: undefined
 }
 
-const authReducer =  (state = initialState, action: AuthAction) => {
+const authReducer = (state = initialState, action: AuthAction) => {
   switch (action.type) {
     case USER_REQUEST_SUCCESS:
-      return { 
-        ...state, 
+      return {
+        ...state,
         loading: false,
         isAuthenticated: true,
         user: action.payload

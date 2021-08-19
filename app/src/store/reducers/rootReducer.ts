@@ -4,13 +4,13 @@
 
 import { combineReducers } from 'redux'
 import auth from './authReducer'
-import { shopReducer } from './shopReducer'
-import { userReducer } from './userReducer'
-import location from './locationReducer'
+import shop from './shopReducer'
+import user from './userReducer'
+import dashboard from './dashboardReducer'
 
 export const rootReducer = combineReducers({
-    auth,
-    shop: shopReducer,
-    user: userReducer,
-    location
-  })
+  auth,
+  shop,
+  user,
+  dashboard
+})

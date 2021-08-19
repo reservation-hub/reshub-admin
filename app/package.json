@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "dayjs": "^1.10.6",
     "formik": "^2.2.9",
     "js-cookie": "^2.2.1",
     "moment": "^2.29.1",

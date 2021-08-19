@@ -9,17 +9,17 @@ import Header from './Header'
 import NavBar from '../atoms/NavBar'
 
 
-const MainTemplate = ({ children }: MainTemplateProps ) => {
-
+const MainTemplate = ({ children }: MainTemplateProps) => {
+  
   const classes = CommonStyle()
   const dispatch = useDispatch()
-
+  
   const onLogout = useCallback(
     () => {
       dispatch(logout())
     }, [dispatch]
   )
-
+  
   return (
     <React.Fragment>
       <Header onLogout={ onLogout } />
@@ -33,7 +33,7 @@ const MainTemplate = ({ children }: MainTemplateProps ) => {
       </main>
     </React.Fragment>
   )
-
+  
 }
 
 export default React.memo(MainTemplate)

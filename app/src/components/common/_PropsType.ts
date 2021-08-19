@@ -1,14 +1,8 @@
 import React from 'react'
 
-import { User } from '../../entities/User'
-import { Shop } from '../../entities/Shop'
-
 export type MainTemplateProps = {
-  children: React.ReactNode
-}
-
-export type HeaderProps = {
-  onLogout: () => void
+  children?: React.ReactNode
+  onLogout?: () => void
 }
 
 export type ButtonProps = {
@@ -19,16 +13,20 @@ export type ButtonProps = {
 }
 
 export type TableProps = {
-  cell: object
-  data: User[] | Shop[]
-}
-
-export type BodyProps = {
-  index: number
-  data: User & Shop
+  cell?: object
+  data?: any[]
+  children?: React.ReactNode
+  index?: number
 }
 
 export type H1Props = {
   children: React.ReactNode
   className?: string
+  color?: 'initial'
+    | 'inherit'
+    | 'primary'
+    | 'secondary'
+    | 'textPrimary'
+    | 'textSecondary'
+    | 'error'
 }

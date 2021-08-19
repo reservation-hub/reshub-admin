@@ -2,11 +2,11 @@ import React from 'react'
 
 const ListItem = () => {
   //表示させたい項目
-
-  return(
+  
+  return (
     <>
-    <p>item表示</p>
+      <p>item表示</p>
     </>
-  ) 
+  )
 }
 export default ListItem

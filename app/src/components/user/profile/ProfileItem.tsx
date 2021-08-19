@@ -14,8 +14,8 @@ const ProfileItem = ({
   kanaName,
   gender,
   role
- }: UserItemProps) => {
-
+}: UserItemProps) => {
+  
   return (
     <div>
       <span>{ userEmail }</span><br />

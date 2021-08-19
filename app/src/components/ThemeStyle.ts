@@ -1,6 +1,6 @@
 import { createTheme } from '@material-ui/core/styles'
-import { PaletteColor } from "@material-ui/core/styles/createPalette"
-import { PaletteColorOptions } from "@material-ui/core"
+import { PaletteColor } from '@material-ui/core/styles/createPalette'
+import { PaletteColorOptions } from '@material-ui/core'
 
 //-----------------------------------------------------------
 // reshub-adminのメインテーマとなるスタイルを指定する
@@ -14,8 +14,9 @@ declare module '@material-ui/core/styles/createPalette' {
     adBgColor?: PaletteColorOptions
     adTheadColor?: PaletteColorOptions
     adThFontColor?: PaletteColorOptions
-    adTbFontColor?:PaletteColorOptions
+    adTbFontColor?: PaletteColorOptions
   }
+  
   interface Palette {
     adBgColor: PaletteColor
     adTheadColor: PaletteColor
@@ -37,7 +38,7 @@ const theme = createTheme({
           padding: '0',
           fontSize: '62.5%',
           fontFamily: '-apple-system, sans-serif, "メイリオ"',
-          height: '100vh',
+          height: '100%'
         },
         body: {
           height: '100%',
@@ -45,10 +46,10 @@ const theme = createTheme({
             background: '#F0F5F5',
             height: '100%',
             '& input': {
-              fontSize: '1.6rem',
+              fontSize: '1.6rem'
             },
             '& label': {
-              fontSize: '1.6rem',
+              fontSize: '1.6rem'
             }
           }
         }

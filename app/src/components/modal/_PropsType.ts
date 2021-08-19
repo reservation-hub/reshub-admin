@@ -7,6 +7,7 @@ export type ModalProps = {
   modalCloseHandler: () => void
   modalTitle: string
 }
+
 export interface IModalFormProps {
   validation: object,
   onSubmit: any

@@ -5,10 +5,10 @@ import { FormControl, TextField } from '@material-ui/core'
 // reshhub-adminのモーダル画面のデフォルトスタイル
 //-----------------------------------------------------------
 
-export const ModalInput = withStyles((theme: Theme) => ({
+export const ModalInput = withStyles((theme: Theme) => ( {
   root: {
     '& .MuiOutlinedInput-root': {
-      height: '4rem',
+      height: '4rem'
     },
     '& .MuiOutlinedInput-input': {
       padding: '1.25rem'
@@ -17,12 +17,12 @@ export const ModalInput = withStyles((theme: Theme) => ({
       transform: 'translate(14px, 14px) scale(1)'
     },
     '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
-      transform: 'translate(13px, -3px) scale(0.80)',
+      transform: 'translate(13px, -3px) scale(0.80)'
     }
   }
-}))(TextField)
+} ))(TextField)
 
-export const ModalSelect = withStyles((theme: Theme) => ({
+export const ModalSelect = withStyles((theme: Theme) => ( {
   root: {
     width: '18rem',
     height: '4rem',
@@ -40,15 +40,15 @@ export const ModalSelect = withStyles((theme: Theme) => ({
       transform: 'translate(14px, 14px) scale(1)'
     },
     '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
-      transform: 'translate(13px, -3px) scale(0.80)',
+      transform: 'translate(13px, -3px) scale(0.80)'
     },
     '& .MuiSelect-icon': {
       top: 'calc(50% - 8px)'
     }
   }
-}))(FormControl)
+} ))(FormControl)
 
-const ModalFormStyle = makeStyles((theme: Theme) => ({
+const ModalFormStyle = makeStyles((theme: Theme) => ( {
   modalContainer: {
     width: '50rem',
     height: '60rem',
@@ -74,7 +74,7 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
         paddingTop: '1rem',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'center'
       }
     },
     '& .inputSize': {
@@ -95,8 +95,8 @@ const ModalFormStyle = makeStyles((theme: Theme) => ({
     marginTop: '1.5rem',
     background: theme.palette.primary.main,
     color: '#fff',
-    border: 'none',
+    border: 'none'
   }
-}))
+} ))
 
 export default ModalFormStyle
