@@ -90,13 +90,13 @@ export const deleteUser = async (id: number) => await instance.delete(
 // menu追加・修正・削除
 //-----------------------------------------------
 export const addMenu = async (menuData: insertMenuItemQuery) => await instance.post(
-  `/${ menuData.shopId }/menu`, { ...menuData }
+  `/shops/${ menuData.shopId }/menu`, { ...menuData }
 )
 export const patchMenu = async (menuData: updateMenuItemQuery) => await instance.patch(
-  `${ menuData.shopId }/menu/${ menuData.menuItemId }`, { ...menuData }
+  `/shops/${ menuData.shopId }/menu/${ menuData.menuItemId }`, { ...menuData }
 )
 export const deleteMenu = async (shopId: number, menuId: number) => await instance.delete(
-  `${ shopId }/menu/${ menuId }`
+  `/shops/${ shopId }/menu/${ menuId }`
 )
 
 //-----------------------------------------------
@@ -116,13 +116,13 @@ export const cancelReservation = async (id: number) => await instance.delete(
 // スタイリスト追加・修正・削除
 //-----------------------------------------------
 export const addStylist = async (stylistData: insertStylistQuery) => await instance.post(
-  `${ stylistData.shopId }/stylists`, { ...stylistData }
+  `/shops/${ stylistData.shopId }/stylists`, { ...stylistData }
 )
 export const patchStylist = async (stylistData: updateStylistQuery) => await instance.patch(
-  `${ stylistData.shopId }/stylists/${ stylistData.stylistId }`, { ...stylistData }
+  `/shops/${ stylistData.shopId }/stylists/${ stylistData.stylistId }`, { ...stylistData }
 )
 export const deleteStylist = async (shopId: number, stylistId: number) => await instance.delete(
-  `${ shopId }/stylists/${ stylistId }`
+  `/shops/${ shopId }/stylists/${ stylistId }`
 )
 
 //-----------------------------------------------
