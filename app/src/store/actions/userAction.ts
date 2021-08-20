@@ -5,13 +5,13 @@
 import {
   USERS_REQUEST_START,
   USERS_REQUEST_FAILURE,
-  USERS_REQUEST_SUCCESS, USERS_EDIT_SUCCESS, USERS_DELETE_SUCCESS
+  USERS_REQUEST_SUCCESS, USERS_EDIT_SUCCESS, USERS_DELETE_SUCCESS, USERS_ADD_SUCCESS
 } from '../types/usersType'
 
 import { RootState, typedAction } from '../store'
+import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
-import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
 import { User } from '../../entities/User'
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
@@ -23,6 +23,18 @@ const userRequestStart = () => {
 
 const userRequestSuccess = (data: User[]) => {
   return typedAction(USERS_REQUEST_SUCCESS, data)
+}
+
+const userAddSuccess = (data: User) => {
+  return typedAction(USERS_ADD_SUCCESS, data)
+}
+
+const userPatchSuccess = (data: User) => {
+  return typedAction(USERS_EDIT_SUCCESS, data)
+}
+
+const userDeleteSuccess = (msg: string) => {
+  return typedAction(USERS_DELETE_SUCCESS, msg)
 }
 
 const userRequestFailure = (err: string) => {
@@ -62,7 +74,7 @@ export const addUser = (userData: insertUserFromAdminQuery):
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.addUser(userData)
-    dispatch(userRequestSuccess(res.data))
+    dispatch(userAddSuccess(res.data))
     history.replace('/users')
   } catch (e) {
     const error = e.response.data
@@ -77,7 +89,7 @@ export const patchUser = (userData: updateUserFromAdminQuery):
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.patchUser(userData)
-    dispatch(typedAction(USERS_EDIT_SUCCESS, res.data))
+    dispatch(userPatchSuccess(res.data))
   } catch (e) {
     const error = e.response.data
     dispatch(userRequestFailure(error))
@@ -91,9 +103,17 @@ export const deleteUser = (id: number):
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.deleteUser(id)
-    dispatch(typedAction(USERS_DELETE_SUCCESS, res.data))
+    dispatch(userDeleteSuccess(res.data))
   } catch (e) {
     const error = e.response.data
     dispatch(userRequestFailure(error))
   }
 }
+
+export type UserAction =
+  | ReturnType<typeof userRequestStart>
+  | ReturnType<typeof userRequestSuccess>
+  | ReturnType<typeof userAddSuccess>
+  | ReturnType<typeof userPatchSuccess>
+  | ReturnType<typeof userDeleteSuccess>
+  | ReturnType<typeof userRequestFailure>

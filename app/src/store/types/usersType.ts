@@ -27,5 +27,6 @@ export const USERS_REQUEST_FAILURE = 'USERS_REQUEST_FAILURE' as const
 export type UsersState = {
   loading: boolean
   users: {}
-  user: User[]
+  user: User[],
+  msg: string,
 }

@@ -3,24 +3,42 @@
 //----------------------------------
 
 import {
-  SHOP_FETCH_SUCCESS,
-  SHOP_GET_SUCCESS,
   SHOP_ADD_SUCCESS,
   SHOP_DELETE_SUCCESS,
   SHOP_EDIT_SUCCESS,
   SHOP_REQUEST_FAILURE,
-  SHOP_REQUEST_START
+  SHOP_REQUEST_START, SHOP_REQUEST_SUCCESS
 } from '../types/shopTypes'
 
-import apiEndpoint from '../../utils/api/apiEndpoint'
 import { RootState, typedAction } from '../store'
+import { insertShopQuery, updateShopQuery } from '../../utils/api/request-response-types/ShopService'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
-import { insertShopQuery, updateShopQuery } from '../../utils/api/request-response-types/ShopService'
+import { Shop } from '../../entities/Shop'
+
+import apiEndpoint from '../../utils/api/apiEndpoint'
+import history from '../../utils/history'
+
 
 // リクエストを始まる
 const shopRequestStart = () => {
   return typedAction(SHOP_REQUEST_START)
+}
+
+const shopRequestSuccess = (data: Shop[]) => {
+  return typedAction(SHOP_REQUEST_SUCCESS, data)
+}
+
+const shopAddSuccess = (data: Shop) => {
+  return typedAction(SHOP_ADD_SUCCESS, data)
+}
+
+const shopPatchSuccess = (data: Shop) => {
+  return typedAction(SHOP_EDIT_SUCCESS, data)
+}
+
+const shopDeleteSuccess = (data: Shop) => {
+  return typedAction(SHOP_DELETE_SUCCESS, data)
 }
 
 //　リクエストが失敗したらこっち
@@ -35,9 +53,9 @@ export const fetchShopList = ():
   dispatch(shopRequestStart())
   try {
     const res = await apiEndpoint.getShop()
-    dispatch(typedAction(SHOP_FETCH_SUCCESS, res.data))
+    dispatch(shopRequestSuccess(res.data))
   } catch (e) {
-    dispatch(shopRequestFailure(e))
+    history.push('/error')
   }
   
 }
@@ -49,9 +67,9 @@ export const getOneShop = (id: number):
   dispatch(shopRequestStart())
   try {
     const res = await apiEndpoint.getOneShop(id)
-    dispatch(typedAction(SHOP_GET_SUCCESS, res.data))
+    dispatch(shopRequestSuccess(res.data))
   } catch (e) {
-    dispatch(shopRequestFailure(e))
+    history.push('/error')
   }
   
 }
@@ -63,7 +81,7 @@ export const addShop = (shopData: insertShopQuery):
   dispatch(shopRequestStart())
   try {
     const res = await apiEndpoint.addShop(shopData)
-    dispatch(typedAction(SHOP_ADD_SUCCESS, res.data))
+    dispatch(shopAddSuccess(res.data))
   } catch (e) {
     dispatch(shopRequestFailure(e))
   }
@@ -77,7 +95,7 @@ export const editShopData = (shopData: updateShopQuery):
   dispatch(shopRequestStart())
   try {
     const res = await apiEndpoint.patchShop(shopData)
-    dispatch(typedAction(SHOP_EDIT_SUCCESS, res.data))
+    dispatch(shopPatchSuccess(res.data))
   } catch (e) {
     dispatch(shopRequestFailure(e))
   }
@@ -91,9 +109,17 @@ export const deleteShopData = (id: number):
   dispatch(shopRequestStart())
   try {
     const res = await apiEndpoint.deleteShop(id)
-    dispatch(typedAction(SHOP_DELETE_SUCCESS, res.data))
+    dispatch(shopDeleteSuccess(res.data))
   } catch (e) {
     dispatch(shopRequestFailure(e))
   }
   
 }
+
+export type ShopAction =
+  | ReturnType<typeof shopRequestStart>
+  | ReturnType<typeof shopRequestSuccess>
+  | ReturnType<typeof shopAddSuccess>
+  | ReturnType<typeof shopPatchSuccess>
+  | ReturnType<typeof shopDeleteSuccess>
+  | ReturnType<typeof shopRequestFailure>
