@@ -62,13 +62,8 @@ export const loginStart = (email: string, password: string):
   
   dispatch(loginRequestStart())
   
-  const body = {
-    email: email,
-    password: password
-  }
-  
   try {
-    const user = await apiEndpoint.localLogin(body)
+    const user = await apiEndpoint.localLogin({ email: email, password: password })
     const token = user.data.token
     
     Cookies.set('refreshToken', token)
