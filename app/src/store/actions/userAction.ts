@@ -5,7 +5,10 @@
 import {
   USERS_REQUEST_START,
   USERS_REQUEST_FAILURE,
-  USERS_REQUEST_SUCCESS, USERS_EDIT_SUCCESS, USERS_DELETE_SUCCESS, USERS_ADD_SUCCESS
+  USERS_REQUEST_SUCCESS,
+  USERS_EDIT_SUCCESS,
+  USERS_DELETE_SUCCESS,
+  USERS_ADD_SUCCESS, USERS_GET_SUCCESS
 } from '../types/usersType'
 
 import { RootState, typedAction } from '../store'
@@ -16,13 +19,21 @@ import { User } from '../../entities/User'
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '../../utils/api/request-response-types/ServiceCommonTypes'
 
 const userRequestStart = () => {
   return typedAction(USERS_REQUEST_START)
 }
 
-const userRequestSuccess = (data: User[]) => {
+const userRequestSuccess = (data: fetchModelsWithTotalCountResponse<modelResponse<User>>) => {
   return typedAction(USERS_REQUEST_SUCCESS, data)
+}
+
+const userGetSuccess = (data: User) => {
+  return typedAction(USERS_GET_SUCCESS, data)
 }
 
 const userAddSuccess = (data: User) => {
@@ -60,7 +71,7 @@ export const getOneUser = (id: number):
   dispatch(userRequestStart())
   try {
     const res = await apiEndpoint.getOneUsers(id)
-    dispatch(userRequestSuccess(res.data))
+    dispatch(userGetSuccess(res.data))
   } catch (e: any) {
     history.push('/error')
   }
@@ -113,6 +124,7 @@ export const deleteUser = (id: number):
 export type UserAction =
   | ReturnType<typeof userRequestStart>
   | ReturnType<typeof userRequestSuccess>
+  | ReturnType<typeof userGetSuccess>
   | ReturnType<typeof userAddSuccess>
   | ReturnType<typeof userPatchSuccess>
   | ReturnType<typeof userDeleteSuccess>

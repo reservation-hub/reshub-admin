@@ -7,7 +7,7 @@ import CommonStyle from '../../CommonStyle'
 import CustomButton from './CustomButton'
 import H1 from './H1'
 
-const ListTopBar = ({ title, modalOpenHandler }: ListTopBarProps) => {
+const ListTopBar = ({ title, modalOpenHandler, type, onDelete }: ListTopBarProps) => {
   const classes = CommonStyle()
   return (
     <Grid
@@ -21,10 +21,22 @@ const ListTopBar = ({ title, modalOpenHandler }: ListTopBarProps) => {
       </Grid>
       <Grid item className='item-button'>
         {/* 実装予定 */ }
-        <CustomButton>並び替え</CustomButton>
-        <CustomButton>絞り込み</CustomButton>
+        { type === 'users' && 'salon' ? (
+          <>
+            <CustomButton>並び替え</CustomButton>
+            <CustomButton>絞り込み</CustomButton>
+          </>
+        ) : (
+          <CustomButton onClick={ onDelete }>
+            削除
+          </CustomButton>
+        ) }
         <CustomButton onClick={ modalOpenHandler }>
-          ユーザー追加
+          { type === 'profile' ? 'プロフィール設定'
+            : type === 'users' ? 'ユーザー追加'
+              : type === 'salon' ? 'サロン追加'
+                : 'サロン編集'
+          }
         </CustomButton>
       </Grid>
     </Grid>

@@ -15,7 +15,7 @@ import { User } from '../../entities/User'
 const initialState: AuthState = {
   loading: true,
   isAuthenticated: false,
-  user: [] as User[],
+  user: {} as User[],
   err: undefined
 }
 

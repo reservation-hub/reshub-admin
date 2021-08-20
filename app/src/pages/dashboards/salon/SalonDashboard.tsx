@@ -28,9 +28,7 @@ const SalonDashboard = () => {
   return (
     <MainTemplate>
       { authCheck(user)
-        ? <AdminDashboard
-          data={ data }
-        />
+        ? <AdminDashboard data={ data } />
         : <ShopDashboard />
       }
     </MainTemplate>

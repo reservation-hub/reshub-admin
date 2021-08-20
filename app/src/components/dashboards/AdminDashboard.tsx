@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core'
 import { AdminDashboardProps } from './_PropsType'
 
 import TableLayout from '../common/atoms/TableLayout'
-import UserItems from '../user/userList/items'
+import UserItems from '../user/userlist/UserItems'
 import Body from '../common/atoms/Body'
 import H1 from '../common/atoms/H1'
 
@@ -19,7 +19,7 @@ const AdminDashboard = ({
       <Grid item style={ { width: '100%' } }>
         <TableLayout cell={ UserCell }>
           { data?.user?.users.map((value, index) => (
-            <Body data={ data?.user?.users } key={ index }>
+            <Body data={ data?.user?.users } key={ index } index={ value.id }>
               <UserItems user={ value } />
             </Body>
           )) }
