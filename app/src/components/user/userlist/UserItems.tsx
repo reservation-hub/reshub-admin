@@ -1,13 +1,9 @@
 import React from 'react'
 import { StyledTableCell } from '../../common/TableStyle'
 import { UserListProps } from '../_PropsType'
-import dayjs from 'dayjs'
+import birthday from '../../../utils/birthday'
 
 const UserItems = ({ user }: UserListProps) => {
-  
-  const birthday = dayjs(
-    `${ user?.birthday }`, 'YYYY-MM-DD'
-  ).format('YYYY-MM-DD')
   
   const role = user?.roles.map(r => r.name)
   
@@ -26,7 +22,10 @@ const UserItems = ({ user }: UserListProps) => {
         { `${ user?.firstNameKana } ${ user?.lastNameKana }` }
       </StyledTableCell>
       <StyledTableCell>
-        { birthday === 'Invalid Date' ? '-' : birthday }
+        { birthday(user?.birthday) === 'Invalid Date'
+          ? '-'
+          : birthday(user?.birthday)
+        }
       </StyledTableCell>
       <StyledTableCell>
         { user?.gender ?? '-' }

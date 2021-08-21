@@ -2,6 +2,8 @@
 // redux action types ユーザー 
 //----------------------------------
 
+import { User } from '../../entities/User'
+
 // ユーザーのリクエストをスタートする
 export const USER_REQUEST_START = 'USER_REQUEST_START' as const
 // ユーザーのリクエストが成功した場合
@@ -14,6 +16,6 @@ export const LOGOUT_REQUEST_SUCCESS = 'LOGOUT_REQUEST_SUCCESS' as const
 export type AuthState = {
   isAuthenticated: boolean
   loading: boolean
-  user: {}
+  user: User[]
   err?: { err: string }
 }
