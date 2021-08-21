@@ -14,7 +14,7 @@ import ModalUserForm from '../../components/modal/ModalUserForm'
 import ModalOverlay from '../../components/modal/ModalOverlay'
 import MainTemplate from '../../components/common/layout/MainTemplate'
 import * as yup from 'yup'
-import birthday from '../../utils/birthday'
+import dayjs from 'dayjs'
 
 export const schema = yup.object({
   email: yup.string().email('正しいメールアドレスを入力してください'),
@@ -40,9 +40,9 @@ const createAddUserQuery = (params: IUserFormInput): insertUserFromAdminQuery =>
   firstNameKana: params.firstNameKana,
   lastNameKana: params.lastNameKana,
   gender: params.gender,
-  birthday: birthday(
+  birthday: dayjs(
     `${ params.birthdayY }/${ params.birthdayM }/${ params.birthdayD }`
-  ),
+  ).format('YYYY-MM-DD'),
   roleIds: [Number(params.role)]
 } )
 

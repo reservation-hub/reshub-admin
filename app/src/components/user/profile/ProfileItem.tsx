@@ -6,13 +6,15 @@ import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
 
 import ListTopBar from '../../common/atoms/ListTopBar'
-import birthday from '../../../utils/birthday'
+import useBirthday from '../../../utils/useBirthday'
 
 const ProfileItem = ({
   user,
   modalOpenHandler,
   subModalHandler
 }: UserListProps) => {
+  
+  const birthday = useBirthday(user?.birthday)
   
   return (
     <StyledPaper>
@@ -55,9 +57,9 @@ const ProfileItem = ({
             <strong>生年月日</strong>
           </dt>
           <dl>{
-            birthday(user?.birthday) === 'Invalid Date'
+            birthday === 'Invalid Date'
               ? '-'
-              : birthday(user?.birthday)
+              : birthday
           }</dl>
         </Grid>
         <Grid item>
