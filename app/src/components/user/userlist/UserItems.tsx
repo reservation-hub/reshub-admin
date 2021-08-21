@@ -1,11 +1,15 @@
 import React from 'react'
+
 import { StyledTableCell } from '../../common/TableStyle'
 import { UserListProps } from '../_PropsType'
-import birthday from '../../../utils/birthday'
+
+import useRole from '../../../utils/useRole'
+import useBirthday from '../../../utils/useBirthday'
 
 const UserItems = ({ user }: UserListProps) => {
   
-  const role = user?.roles.map(r => r.name)
+  const birthday = useBirthday(user?.birthday)
+  const role = useRole(user?.roles)
   
   return (
     <>
@@ -22,9 +26,9 @@ const UserItems = ({ user }: UserListProps) => {
         { `${ user?.firstNameKana } ${ user?.lastNameKana }` }
       </StyledTableCell>
       <StyledTableCell>
-        { birthday(user?.birthday) === 'Invalid Date'
+        { birthday === 'Invalid Date'
           ? '-'
-          : birthday(user?.birthday)
+          : birthday
         }
       </StyledTableCell>
       <StyledTableCell>

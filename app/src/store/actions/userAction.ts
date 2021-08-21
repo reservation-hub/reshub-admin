@@ -115,6 +115,7 @@ export const deleteUser = (id: number):
   try {
     const res = await apiEndpoint.deleteUser(id)
     dispatch(userDeleteSuccess(res.data))
+    history.push('/users')
   } catch (e) {
     const error = e.response.data
     dispatch(userRequestFailure(error))
