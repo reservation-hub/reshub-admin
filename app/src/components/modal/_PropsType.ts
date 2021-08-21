@@ -8,6 +8,12 @@ export type ModalProps = {
   modalTitle: string
 }
 
+export type AlertProps = {
+  modalCloseHandler: () => void
+  onDelete?: () => void
+  alertText: string
+}
+
 export interface IModalFormProps {
   validation: object,
   onSubmit: any

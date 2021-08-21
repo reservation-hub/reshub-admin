@@ -7,7 +7,7 @@ import CommonStyle from '../../CommonStyle'
 import CustomButton from './CustomButton'
 import H1 from './H1'
 
-const ListTopBar = ({ title, modalOpenHandler, type, onDelete }: ListTopBarProps) => {
+const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopBarProps) => {
   const classes = CommonStyle()
   return (
     <Grid
@@ -27,7 +27,7 @@ const ListTopBar = ({ title, modalOpenHandler, type, onDelete }: ListTopBarProps
             <CustomButton>絞り込み</CustomButton>
           </>
         ) : (
-          <CustomButton onClick={ onDelete }>
+          <CustomButton onClick={ subModalHandler }>
             削除
           </CustomButton>
         ) }

@@ -8,12 +8,12 @@ export type ListTopBarProps = {
   title: string
   type?: string
   modalOpenHandler?: () => void
-  onDelete?: () => void
+  subModalHandler?: () => void
 }
 
 export type UserListProps = {
   users?: User[]
   user?: User
   modalOpenHandler?: () => void
-  onDelete?: () => void
+  subModalHandler?: () => void
 }

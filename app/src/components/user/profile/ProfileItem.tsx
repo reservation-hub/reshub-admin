@@ -11,7 +11,7 @@ import birthday from '../../../utils/birthday'
 const ProfileItem = ({
   user,
   modalOpenHandler,
-  onDelete
+  subModalHandler
 }: UserListProps) => {
   
   return (
@@ -20,7 +20,7 @@ const ProfileItem = ({
         title='ユーザー詳細'
         type='profile'
         modalOpenHandler={ modalOpenHandler }
-        onDelete={ onDelete }
+        subModalHandler={ subModalHandler }
       />
       <Grid container style={ { display: 'grid' } }>
         <Grid item>
