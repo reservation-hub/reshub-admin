@@ -1,17 +1,17 @@
 import React from 'react'
 import { schema } from '../../pages/user/Users'
 
-export type ModalProps = {
-  children: React.ReactNode
+export type ModalOverlayProps = {
+  children?: React.ReactNode
   modalOpen: boolean
-  modalCloseHandler: () => void
-  modalTitle: string
+  modalCloseHandler?: () => void
 }
 
-export type AlertProps = {
+export type ModalProps = {
   modalCloseHandler: () => void
   onDelete?: () => void
-  alertText: string
+  alertText?: string
+  modalTitle?: string
 }
 
 export interface IModalFormProps {

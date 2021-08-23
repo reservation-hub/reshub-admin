@@ -10,6 +10,7 @@ import { useModal } from '../../utils/useModal'
 import ProfileItem from '../../components/user/profile/ProfileItem'
 import ModalOverlay from '../../components/modal/ModalOverlay'
 import ModalAlert from '../../components/modal/ModalAlert'
+import FormHeader from '../../components/modal/FormHeader'
 
 const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   
@@ -18,23 +19,8 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   const convertId: number = Number(id)
   const dispatch = useDispatch()
   
-  const [modalStat, setModalStat] = useState<string>('')
-  const { open, openModal, closeModal } = useModal(false)
-  
-  const deleteModalOpen = useCallback(
-    () => {
-      setModalStat('deleteModal')
-      openModal()
-    }, [openModal]
-  )
-  
-  const modalCloseHandler = useCallback(
-    () => {
-      setModalStat('')
-      closeModal()
-    },
-    [closeModal]
-  )
+  const deleteModal = useModal(false, 'delete')
+  const formModal = useModal(false, 'form')
   
   const onDelete = useCallback(
     () => {
@@ -45,33 +31,35 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   useEffect(() => {
     dispatch(getOneUser(convertId))
   }, [dispatch, convertId])
+  
   // TODO スタイルを指定
   return (
     <>
-      { modalStat === 'deleteModal'
-        ? <ModalOverlay
-          modalOpen={ open }
-          modalCloseHandler={ modalCloseHandler }
-          modalTitle='gaga'
-        >
-          <ModalAlert
-            modalCloseHandler={ modalCloseHandler }
-            alertText='本当にこのユーザーを削除しますか？'
-            onDelete={ onDelete }
-          />
-        </ModalOverlay>
-        : <ModalOverlay
-          modalOpen={ open }
-          modalCloseHandler={ closeModal }
-          modalTitle='ユーザ編集'
-        >
-          test
-        </ModalOverlay>
+      { deleteModal.modalStat === 'delete'
+      && <ModalOverlay
+        modalOpen={ deleteModal.open }
+        modalCloseHandler={ deleteModal.closeModal }
+      >
+        <ModalAlert
+          modalCloseHandler={ deleteModal.closeModal }
+          alertText='本当にこのユーザーを削除しますか？'
+          onDelete={ onDelete }
+        />
+      </ModalOverlay>
+      }
+      { formModal.modalStat === 'form'
+      && <ModalOverlay
+        modalOpen={ formModal.open }
+        modalCloseHandler={ formModal.closeModal }
+      >
+        <FormHeader modalTitle='test' modalCloseHandler={ formModal.closeModal } />
+        test
+      </ModalOverlay>
       }
       <ProfileItem
         user={ user }
-        modalOpenHandler={ openModal }
-        subModalHandler={ deleteModalOpen }
+        modalOpenHandler={ formModal.openModal }
+        subModalHandler={ deleteModal.openModal }
       />
     </>
   )

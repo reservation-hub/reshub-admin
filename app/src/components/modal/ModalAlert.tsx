@@ -1,12 +1,12 @@
 import React from 'react'
 import CustomButton from '../common/atoms/CustomButton'
-import { AlertProps } from './_PropsType'
+import { ModalProps } from './_PropsType'
 
 const ModalAlert = ({
   alertText,
   modalCloseHandler,
   onDelete
-}: AlertProps) => {
+}: ModalProps) => {
   return (
     <div>
       <span>{ alertText }</span>
