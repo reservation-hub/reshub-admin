@@ -15,6 +15,8 @@ import ModalOverlay from '../../components/modal/ModalOverlay'
 import MainTemplate from '../../components/common/layout/MainTemplate'
 import * as yup from 'yup'
 import dayjs from 'dayjs'
+import Loading from '../../components/common/atoms/loading'
+import FormHeader from '../../components/modal/FormHeader'
 
 export const schema = yup.object({
   email: yup.string().email('正しいメールアドレスを入力してください'),
@@ -50,7 +52,8 @@ const Users = () => {
   
   const dispatch = useDispatch()
   const { users, loading } = useSelector((state: RootState) => state.user)
-  const { open, openModal, closeModal } = useModal(false)
+  const { open, openModal, closeModal } = useModal(false, 'form')
+  
   const formInitialState = {
     email: '',
     password: '',
@@ -78,15 +81,15 @@ const Users = () => {
     dispatch(fetchUserList())
   }, [dispatch])
   
-  if (loading) return <span>loading...</span>
+  if (loading) return <Loading />
   
   return (
     <MainTemplate>
       <ModalOverlay
         modalOpen={ open }
         modalCloseHandler={ closeModal }
-        modalTitle='ユーザー登録'
       >
+        <FormHeader modalCloseHandler={ closeModal } modalTitle='ユーザー登録' />
         <ModalUserForm
           onSubmit={ onSubmit }
           validation={ schema }
