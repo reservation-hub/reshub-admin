@@ -35,7 +35,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   // TODO スタイルを指定
   return (
     <>
-      { deleteModal.modalStat === 'delete'
+      { deleteModal.modalType === 'delete'
       && <ModalOverlay
         modalOpen={ deleteModal.open }
         modalCloseHandler={ deleteModal.closeModal }
@@ -47,7 +47,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
         />
       </ModalOverlay>
       }
-      { formModal.modalStat === 'form'
+      { formModal.modalType === 'form'
       && <ModalOverlay
         modalOpen={ formModal.open }
         modalCloseHandler={ formModal.closeModal }

@@ -1,20 +1,20 @@
 import { useCallback, useState } from 'react'
 
-export const useModal = (initialState: boolean, modalState: string) => {
+export const useModal = (initialState: boolean, type: string) => {
   const [open, setModalState] = useState<boolean>(initialState)
-  const [modalStat, setModalStat] = useState<string>(modalState)
+  const [modalType, setModalType] = useState<string>(type)
   
   const openModal = useCallback(
     () => {
-      setModalStat(modalState)
+      setModalType(type)
       setModalState(true)
-    }, [modalState])
+    }, [type])
   
   const closeModal = useCallback(
     (): void => {
-      setModalStat('')
+      setModalType('')
       setModalState(false)
     }, [])
   
-  return { open, openModal, closeModal, modalStat }
+  return { open, openModal, closeModal, modalType }
 }
