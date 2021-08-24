@@ -4,9 +4,9 @@ import App from './App'
 import store from './store/store'
 import theme from './components/ThemeStyle'
 import { Provider } from 'react-redux'
+import { ThemeProvider } from '@material-ui/core/styles'
 import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
-import { ThemeProvider } from '@material-ui/core/styles'
 
 const persistor = persistStore(store)
 

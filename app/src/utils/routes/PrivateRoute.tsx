@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { User } from '../../entities/User'
 
-
 // only admin
 const PrivateRoute = ({ children, ...rest }: any) => {
   

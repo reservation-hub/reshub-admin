@@ -19,13 +19,14 @@ import apiEndpoint from '../../utils/api/apiEndpoint'
 import setAuthToken from '../../utils/setAuthToken'
 import history from '../../utils/history'
 import Cookies from 'js-cookie'
+import dayjs from 'dayjs'
 
 //ユーザーのリクエストをスタートするアクション
 const loginRequestStart = () => {
   return typedAction(USER_REQUEST_START)
 }
 
-const fetchUser = (user: User[]) => {
+const fetchUser = (user: User) => {
   return typedAction(USER_REQUEST_SUCCESS, user)
 }
 
@@ -46,11 +47,13 @@ export const silentLogin = ():
     const user = await apiEndpoint.silentRefresh()
     const token = user.data.token
     
-    Cookies.set('refreshToken', token)
-    setAuthToken(Cookies.get('refreshToken'))
+    Cookies.set('refreshToken', token, { expires: 365 })
+    setAuthToken(token)
     
     dispatch(fetchUser(user.data.user))
+    history.push('/')
   } catch (e: any) {
+    console.log(e.response)
     dispatch(loginRequestFailure(e.response.data))
   }
   
@@ -61,23 +64,21 @@ export const loginStart = (email: string, password: string):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   
   dispatch(loginRequestStart())
-  
   try {
     const user = await apiEndpoint.localLogin({ email, password })
     const token = user.data.token
     
-    Cookies.set('refreshToken', token)
+    Cookies.set('refreshToken', token, { expires: 365 })
     setAuthToken(token)
     
     dispatch(fetchUser(user.data.user))
-    
     history.push('/')
   } catch (e: any) {
     dispatch(loginRequestFailure(e.response.data))
   }
 }
 
-// googelログインを実行するアクション
+// googleログインを実行するアクション
 export const googleLogin = (googleResponse: GoogleLoginResponse):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   
@@ -87,11 +88,10 @@ export const googleLogin = (googleResponse: GoogleLoginResponse):
     const user = await apiEndpoint.googleLogin(provider, googleResponse.tokenId)
     const token = user.data.token
     
-    Cookies.set('refreshToken', token)
+    Cookies.set('refreshToken', token, { expires: 365 })
     setAuthToken(token)
     
     dispatch(fetchUser(user.data.user))
-    
     history.push('/')
   } catch (e: any) {
     dispatch(loginRequestFailure(e.response.data))
@@ -102,8 +102,8 @@ export const googleLogin = (googleResponse: GoogleLoginResponse):
 //　ログアウトを実行するアクション
 export const logout = ():
   ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
   try {
+    setAuthToken(Cookies.get('refreshToken'))
     const message = await apiEndpoint.logout()
     Cookies.remove('refreshToken')
     
@@ -111,6 +111,7 @@ export const logout = ():
     
     history.push('/auth')
   } catch (e: any) {
+    console.log(e.response)
     dispatch(loginRequestFailure(e.response.data))
   }
   

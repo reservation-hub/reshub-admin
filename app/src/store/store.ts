@@ -13,8 +13,7 @@ import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
-import setAuthToken from '../utils/setAuthToken'
-import Cookies from 'js-cookie'
+
 
 declare global {
   interface Window {
@@ -41,10 +40,6 @@ const store = createStore(
   enhancedReducer, composeEnhancer(applyMiddleware(...middleware))
 )
 
-const token = Cookies.get('refreshToken')
-if (token) {
-  setAuthToken(token)
-}
 
 export type RootState = ReturnType<typeof store.getState>
 

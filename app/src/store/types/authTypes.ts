@@ -16,6 +16,6 @@ export const LOGOUT_REQUEST_SUCCESS = 'LOGOUT_REQUEST_SUCCESS' as const
 export type AuthState = {
   isAuthenticated: boolean
   loading: boolean
-  user: User[]
-  err?: { err: string }
+  user: User
+  err?: string
 }

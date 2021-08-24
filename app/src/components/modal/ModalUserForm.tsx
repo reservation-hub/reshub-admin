@@ -207,8 +207,9 @@ const ModalUserForm: UserModalForm = ({
               error={ formik.touched.role && Boolean(formik.errors.role) }
             >
               {/* TODO: ここはapiからroleのリストを取得してここで使うようにするのが適切 */ }
-              <MenuItem value='1'>admin</MenuItem>
-              <MenuItem value='2'>salon staff</MenuItem>
+              <MenuItem value='1'>client</MenuItem>
+              <MenuItem value='2'>admin</MenuItem>
+              <MenuItem value='3'>salon staff</MenuItem>
             </Select>
             <FormHelperText error={ formik.touched.role && Boolean(formik.errors.role) }>
               { Boolean(formik.errors.role) && formik.touched.role ? formik.errors.role : '' }

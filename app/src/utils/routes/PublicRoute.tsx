@@ -32,7 +32,11 @@ const PublicRoute = ({ children, ...rest }: any) => {
           { children }
         </Route>
       ) : (
-        <Redirect to='/auth' />
+        <Redirect to={ {
+          pathname: '/auth',
+          state: { failed: 'アクセス権限がございません。' }
+        } }
+        />
       ) }
     </>
   )
