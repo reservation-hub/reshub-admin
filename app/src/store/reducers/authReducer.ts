@@ -6,7 +6,6 @@ import {
   AuthState,
   LOGOUT_REQUEST_SUCCESS,
   USER_REQUEST_FAILURE,
-  USER_REQUEST_START,
   USER_REQUEST_SUCCESS
 } from '../types/authTypes'
 import { AuthAction } from '../actions/authAction'
