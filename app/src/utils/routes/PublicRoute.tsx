@@ -4,6 +4,8 @@ import { Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { User } from '../../entities/User'
+import Loading from '../../components/common/atoms/loading'
+import Cookies from 'js-cookie'
 
 // admin and salon staff
 const PublicRoute = ({ children, ...rest }: any) => {
@@ -14,13 +16,21 @@ const PublicRoute = ({ children, ...rest }: any) => {
   // でないと、ログイン画面へリダイレクトする
   //-----------------------------------------------------------
   
-  const { isAuthenticated, user } = useSelector(
+  const { isAuthenticated, user, loading } = useSelector(
     (state: RootState) => state.auth
   )
   
   const isUser =
     (user: User) =>
       user.roles.findIndex(role => role.name === 'admin' || 'salon staff') !== -1
+  
+  if (!Cookies.get('refreshToken')) {
+    return <Redirect to={ {
+      pathname: '/auth',
+      state: { failed: 'アクセス権限がございません。' }
+    } }
+    />
+  } else if (loading) return <Loading />
   
   return (
     <>
@@ -32,7 +42,11 @@ const PublicRoute = ({ children, ...rest }: any) => {
           { children }
         </Route>
       ) : (
-        <Redirect to='/auth' />
+        <Redirect to={ {
+          pathname: '/auth',
+          state: { failed: 'アクセス権限がございません。' }
+        } }
+        />
       ) }
     </>
   )

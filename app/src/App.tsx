@@ -15,14 +15,22 @@ import Login from './pages/auth/Login'
 import Users from './pages/user/Users'
 import Salon from './pages/shop/Salon'
 import SalonDashboard from './pages/dashboards/salon/SalonDashboard'
+import setAuthToken from './utils/setAuthToken'
 
 const App = () => {
   
   const dispatch = useDispatch()
   
+  const token: string = Cookies.get('refreshToken') ?? ''
+  setAuthToken(token)
+  
   useEffect(() => {
-    if (Cookies.get('refreshToken')) dispatch(silentLogin())
-  }, [dispatch])
+    if (token) {
+      dispatch(silentLogin())
+    } else if (!Cookies.get('refreshToken')) {
+      Cookies.remove('authToken')
+    }
+  }, [dispatch, token])
   
   return (
     <Router history={ history }>

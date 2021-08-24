@@ -25,7 +25,7 @@ const loginRequestStart = () => {
   return typedAction(USER_REQUEST_START)
 }
 
-const fetchUser = (user: User[]) => {
+const fetchUser = (user: User) => {
   return typedAction(USER_REQUEST_SUCCESS, user)
 }
 
@@ -45,12 +45,13 @@ export const silentLogin = ():
   try {
     const user = await apiEndpoint.silentRefresh()
     const token = user.data.token
-    
+    console.log(user)
     Cookies.set('refreshToken', token)
-    setAuthToken(Cookies.get('refreshToken'))
+    setAuthToken(token)
     
     dispatch(fetchUser(user.data.user))
   } catch (e: any) {
+    console.log(e.response)
     dispatch(loginRequestFailure(e.response.data))
   }
   
@@ -61,7 +62,6 @@ export const loginStart = (email: string, password: string):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   
   dispatch(loginRequestStart())
-  
   try {
     const user = await apiEndpoint.localLogin({ email, password })
     const token = user.data.token
@@ -77,7 +77,7 @@ export const loginStart = (email: string, password: string):
   }
 }
 
-// googelログインを実行するアクション
+// googleログインを実行するアクション
 export const googleLogin = (googleResponse: GoogleLoginResponse):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   

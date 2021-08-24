@@ -23,7 +23,9 @@ const SalonDashboard = () => {
   const authCheck = (user: User) => user.roles.findIndex(r => r.name === 'admin') !== -1
   
   useEffect(() => {
-    dispatch(fetchDashboard())
+    if (authCheck(user)) {
+      dispatch(fetchDashboard())
+    }
   }, [dispatch])
   
   if (loading) return <Loading />
