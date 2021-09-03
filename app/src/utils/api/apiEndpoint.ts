@@ -28,8 +28,8 @@ export const fetchAll = async () => await instance.get(
 export const getShop = async () => await instance.get(
   `/shops`
 )
-export const getUsers = async () => await instance.get(
-  `/users`
+export const getUsers = async (page: number) => await instance.get(
+  `/users?page=${ page }`
 )
 export const getDashboard = async () => await instance.get(
   '/dashboard/salon'

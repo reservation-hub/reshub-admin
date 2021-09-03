@@ -1,12 +1,14 @@
 import React from 'react'
 
 import { CircularProgress } from '@material-ui/core'
+import { StyledPaper } from '../../CommonStyle'
 
 const Loading = () => {
   return (
-    <div>
+    <StyledPaper>
+      <span>しばらくお待ち下さい。</span>
       <CircularProgress />
-    </div>
+    </StyledPaper>
   )
 }
 

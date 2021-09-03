@@ -52,12 +52,12 @@ const userRequestFailure = (err: string) => {
   return typedAction(USERS_REQUEST_FAILURE, err)
 }
 
-export const fetchUserList = ():
+export const fetchUserList = (page: number):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   
   dispatch(userRequestStart())
   try {
-    const res = await apiEndpoint.getUsers()
+    const res = await apiEndpoint.getUsers(page)
     dispatch(userRequestSuccess(res.data))
   } catch (e: any) {
     history.push('/error')

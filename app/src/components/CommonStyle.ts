@@ -9,7 +9,8 @@ export const StyledPaper = withStyles((theme: Theme) => ( {
   root: {
     width: '100%',
     justifyContent: 'center',
-    boxShadow: 'none'
+    boxShadow: 'none',
+    backgroundColor: theme.palette.adBgColor.main
   }
 } ))(Paper)
 
@@ -49,7 +50,7 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
   },
   sideBar: {
     width: '18rem',
-    height: '92.1%',
+    height: '100%',
     float: 'right',
     background: theme.palette.primary.main,
     '& span': {
@@ -83,8 +84,25 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
       '& div': {
         background: theme.palette.secondary.main
       }
+    },
+    '& footer': {
+      margin: '.55rem',
+      display: 'flex',
+      alignItems: 'center',
+      position: 'absolute',
+      bottom: '0',
+      '& span': {
+        height: '2rem',
+        marginRight: '.4rem',
+        color: theme.palette.secondary.main,
+        fontSize: '1.4rem',
+        '& a > svg': {
+          height: '2rem'
+        }
+      }
     }
-  },
+  }
+  ,
   boxCenter: {
     position: 'absolute',
     top: '25%',
@@ -120,6 +138,35 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
       width: '35rem',
       display: 'flex',
       justifyContent: 'space-between'
+    }
+  },
+  pagingBox: {
+    '& .paging-container': {
+      padding: '0',
+      display: 'flex',
+      justifyContent: 'center',
+      listStyle: 'none',
+      '& li': {
+        marginLeft: '.5rem',
+        marginRight: '.5rem',
+        border: `1px solid ${ theme.palette.primary.main }`,
+        borderRadius: '.25rem',
+        color: '#ABB0AD',
+        textAlign: 'center',
+        cursor: 'pointer',
+        fontWeight: '600',
+        height: '4rem',
+        lineHeight: '4rem',
+        background: theme.palette.secondary.main,
+        '& a': {
+          width: '4rem',
+          display: 'inline-block'
+        }
+      },
+      '& .active': {
+        background: theme.palette.primary.main,
+        color: theme.palette.secondary.main
+      }
     }
   }
 } ))
