@@ -21,7 +21,7 @@ const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopB
       </Grid>
       <Grid item className='item-button'>
         {/* 実装予定 */ }
-        { type === 'users' && 'salon' ? (
+        { type === 'users' || 'salon' ? (
           <>
             <CustomButton>並び替え</CustomButton>
             <CustomButton>絞り込み</CustomButton>

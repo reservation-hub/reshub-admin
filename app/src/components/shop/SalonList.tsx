@@ -1,16 +1,28 @@
 import React from 'react'
-import { useState } from 'react'
-import SalonListItem from './SalonListItem'
+import ListTopBar from '../common/atoms/ListTopBar'
+import { UserListProps } from '../user/_PropsType'
+import TableLayout from '../common/atoms/TableLayout'
+import { SalonCell } from '../common/_Constants'
+import Body from '../common/atoms/Body'
+import SalonItem from './SalonItem'
 
-// import {
-//   SHOP_FETCH_SUCCESS,
-// } from '../../store/reducers/shopReducer'
 
-const List = () => {
+const SalonList = ({
+  shops,
+  modalOpenHandler
+}: UserListProps) => {
+  console.log(shops)
   return (
     <>
-      <SalonListItem />
+      <ListTopBar title='サロン一覧' type='salon' modalOpenHandler={ modalOpenHandler } />
+      <TableLayout cell={ SalonCell } data={ shops }>
+        { shops?.map((value, index) => (
+          <Body key={ index } index={ value.id } data={ shops }>
+            <SalonItem shop={ value } />
+          </Body>
+        )) }
+      </TableLayout>
     </>
   )
 }
-export default List
+export default SalonList

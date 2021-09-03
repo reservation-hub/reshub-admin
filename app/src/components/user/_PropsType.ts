@@ -1,4 +1,5 @@
 import { User } from '../../entities/User'
+import { Shop } from '../../entities/Shop'
 
 export interface MatchParams {
   id: string
@@ -16,4 +17,6 @@ export type UserListProps = {
   user?: User
   modalOpenHandler?: () => void
   subModalHandler?: () => void
+  shops?: Shop[]
+  shop?: Shop
 }

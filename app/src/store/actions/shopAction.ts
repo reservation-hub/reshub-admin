@@ -5,7 +5,7 @@
 import {
   SHOP_ADD_SUCCESS,
   SHOP_DELETE_SUCCESS,
-  SHOP_EDIT_SUCCESS,
+  SHOP_EDIT_SUCCESS, SHOP_GET_SUCCESS,
   SHOP_REQUEST_FAILURE,
   SHOP_REQUEST_START, SHOP_REQUEST_SUCCESS
 } from '../types/shopTypes'
@@ -18,6 +18,10 @@ import { Shop } from '../../entities/Shop'
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '../../utils/api/request-response-types/ServiceCommonTypes'
 
 
 // リクエストを始まる
@@ -25,8 +29,12 @@ const shopRequestStart = () => {
   return typedAction(SHOP_REQUEST_START)
 }
 
-const shopRequestSuccess = (data: Shop[]) => {
+const shopRequestSuccess = (data: fetchModelsWithTotalCountResponse<modelResponse<Shop>>) => {
   return typedAction(SHOP_REQUEST_SUCCESS, data)
+}
+
+const shopGetSuccess = (data: Shop) => {
+  return typedAction(SHOP_GET_SUCCESS, data)
 }
 
 const shopAddSuccess = (data: Shop) => {
@@ -37,8 +45,8 @@ const shopPatchSuccess = (data: Shop) => {
   return typedAction(SHOP_EDIT_SUCCESS, data)
 }
 
-const shopDeleteSuccess = (data: Shop) => {
-  return typedAction(SHOP_DELETE_SUCCESS, data)
+const shopDeleteSuccess = (msg: string) => {
+  return typedAction(SHOP_DELETE_SUCCESS, msg)
 }
 
 //　リクエストが失敗したらこっち
@@ -47,12 +55,12 @@ const shopRequestFailure = (err: string) => {
 }
 
 //　全てのお店データを読み込む
-export const fetchShopList = ():
+export const fetchShopList = (page: number):
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   
   dispatch(shopRequestStart())
   try {
-    const res = await apiEndpoint.getShop()
+    const res = await apiEndpoint.getShop(page)
     dispatch(shopRequestSuccess(res.data))
   } catch (e) {
     history.push('/error')
@@ -119,6 +127,7 @@ export const deleteShopData = (id: number):
 export type ShopAction =
   | ReturnType<typeof shopRequestStart>
   | ReturnType<typeof shopRequestSuccess>
+  | ReturnType<typeof shopGetSuccess>
   | ReturnType<typeof shopAddSuccess>
   | ReturnType<typeof shopPatchSuccess>
   | ReturnType<typeof shopDeleteSuccess>

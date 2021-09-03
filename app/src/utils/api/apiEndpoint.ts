@@ -25,7 +25,7 @@ import { localAuthenticationQuery } from './request-response-types/AuthService'
 export const fetchAll = async () => await instance.get(
   `/`
 )
-export const getShop = async () => await instance.get(
+export const getShop = async (page: number) => await instance.get(
   `/shops`
 )
 export const getUsers = async (page: number) => await instance.get(
