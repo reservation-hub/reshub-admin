@@ -19,7 +19,6 @@ import apiEndpoint from '../../utils/api/apiEndpoint'
 import setAuthToken from '../../utils/setAuthToken'
 import history from '../../utils/history'
 import Cookies from 'js-cookie'
-import dayjs from 'dayjs'
 
 //ユーザーのリクエストをスタートするアクション
 const loginRequestStart = () => {
@@ -47,7 +46,7 @@ export const silentLogin = ():
     const user = await apiEndpoint.silentRefresh()
     const token = user.data.token
     
-    Cookies.set('refreshToken', token, { expires: 365 })
+    Cookies.set('sessionToken', token, { expires: 1 })
     setAuthToken(token)
     
     dispatch(fetchUser(user.data.user))
@@ -68,7 +67,7 @@ export const loginStart = (email: string, password: string):
     const user = await apiEndpoint.localLogin({ email, password })
     const token = user.data.token
     
-    Cookies.set('refreshToken', token, { expires: 365 })
+    Cookies.set('sessionToken', token, { expires: 1 })
     setAuthToken(token)
     
     dispatch(fetchUser(user.data.user))
@@ -88,7 +87,7 @@ export const googleLogin = (googleResponse: GoogleLoginResponse):
     const user = await apiEndpoint.googleLogin(provider, googleResponse.tokenId)
     const token = user.data.token
     
-    Cookies.set('refreshToken', token, { expires: 365 })
+    Cookies.set('sessionToken', token, { expires: 1 })
     setAuthToken(token)
     
     dispatch(fetchUser(user.data.user))
@@ -103,9 +102,9 @@ export const googleLogin = (googleResponse: GoogleLoginResponse):
 export const logout = ():
   ThunkAction<void, RootState, null, Action> => async dispatch => {
   try {
-    setAuthToken(Cookies.get('refreshToken'))
+    setAuthToken(Cookies.get('sessionToken'))
     const message = await apiEndpoint.logout()
-    Cookies.remove('refreshToken')
+    Cookies.remove('sessionToken')
     
     dispatch(logoutSuccess(message.data))
     
