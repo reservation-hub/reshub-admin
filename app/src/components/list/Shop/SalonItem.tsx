@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyledTableCell } from '../common/TableStyle'
-import { UserListProps } from '../user/_PropsType'
+import { StyledTableCell } from '../../common/TableStyle'
+import { UserListProps } from '../../user/_PropsType'
 import { TableRow } from '@material-ui/core'
-import history from '../../utils/history'
+import history from '../../../utils/history'
 
 const SalonItem = ({
   shop

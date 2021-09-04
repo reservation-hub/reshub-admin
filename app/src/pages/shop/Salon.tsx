@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import SalonList from '../../components/shop/SalonList'
+import SalonList from '../../components/list/Shop/SalonList'
 import MainTemplate from '../../components/common/layout/MainTemplate'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchShopList } from '../../store/actions/shopAction'
@@ -11,6 +11,8 @@ import Paginate from '../../components/common/atoms/Paginate'
 import { Route } from 'react-router-dom'
 import Detail from './Detail'
 import Loading from '../../components/common/atoms/loading'
+import history from '../../utils/history'
+import ModalAlert from '../../components/modal/ModalAlert'
 
 const Salon = () => {
   
@@ -36,7 +38,12 @@ const Salon = () => {
         </>
       }
       <ModalOverlay modalOpen={ open } modalCloseHandler={ closeModal }>
-        test
+        <ModalAlert
+          modalCloseHandler={ closeModal }
+          modalHandler={ () => history.push('/form/salon') }
+          alertText='サロンの登録画面に移動しますか？'
+          buttonText='移動'
+        />
       </ModalOverlay>
     </MainTemplate>
   )

@@ -7,7 +7,6 @@ import { AppBar, Paper } from '@material-ui/core'
 
 export const StyledPaper = withStyles((theme: Theme) => ( {
   root: {
-    width: '100%',
     justifyContent: 'center',
     boxShadow: 'none',
     backgroundColor: theme.palette.adBgColor.main

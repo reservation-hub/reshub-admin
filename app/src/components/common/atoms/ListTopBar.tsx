@@ -22,23 +22,18 @@ const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopB
       </Grid>
       <Grid item className='item-button'>
         {/* 実装予定 */ }
-        { type === HeaderType.LIST && (
+        { type === HeaderType.LIST ? (
           <>
             <CustomButton>並び替え</CustomButton>
             <CustomButton>絞り込み</CustomButton>
           </>
-        ) }
-        { type === HeaderType.DETAIL && (
+        ) : (
           <CustomButton onClick={ subModalHandler }>
             削除
           </CustomButton>
         ) }
         <CustomButton onClick={ modalOpenHandler }>
-          { type === 'profile' ? 'プロフィール設定'
-            : type === 'users' ? 'ユーザー追加'
-              : type === 'salon' ? 'サロン追加'
-                : 'サロン編集'
-          }
+          { type === HeaderType.LIST ? '新規登録' : '編集' }
         </CustomButton>
       </Grid>
     </Grid>

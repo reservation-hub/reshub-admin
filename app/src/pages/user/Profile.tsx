@@ -43,7 +43,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
         <ModalAlert
           modalCloseHandler={ deleteModal.closeModal }
           alertText='本当にこのユーザーを削除しますか？'
-          onDelete={ onDelete }
+          modalHandler={ onDelete }
         />
       </ModalOverlay>
       }

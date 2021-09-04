@@ -49,6 +49,28 @@ export const ModalSelect = withStyles((theme: Theme) => ( {
 } ))(FormControl)
 
 const ModalFormStyle = makeStyles((theme: Theme) => ( {
+  Container: {
+    width: '40rem',
+    height: '15rem',
+    display: 'grid',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& .font-2': {
+      fontSize: '2rem'
+    },
+    '& .flexbox': {
+      display: 'flex'
+    },
+    '& .space-between': {
+      justifyContent: 'space-between'
+    },
+    '& .color-primary': {
+      color: theme.palette.adThFontColor.main
+    },
+    '& .font-w-600': {
+      fontWeight: '600'
+    }
+  },
   modalContainer: {
     width: '50rem',
     height: '60rem',

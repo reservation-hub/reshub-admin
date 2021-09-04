@@ -7,7 +7,8 @@ import { deleteShopData, getOneShop } from '../../store/actions/shopAction'
 import { useModal } from '../../utils/useModal'
 import ModalOverlay from '../../components/modal/ModalOverlay'
 import ModalAlert from '../../components/modal/ModalAlert'
-import DetailItem from '../../components/shop/DetailItem'
+import DetailItem from '../../components/detail/shop/DetailItem'
+import history from '../../utils/history'
 
 const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   
@@ -17,7 +18,6 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   const dispatch = useDispatch()
   
   const deleteModal = useModal(false, 'delete')
-  const formModal = useModal(false, 'form')
   
   const onDelete = useCallback(
     () => {
@@ -41,14 +41,14 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
         <ModalAlert
           modalCloseHandler={ deleteModal.closeModal }
           alertText=''
-          onDelete={ onDelete }
+          modalHandler={ onDelete }
         />
       </ModalOverlay>
       }
       
       <DetailItem
         shop={ shop }
-        modalOpenHandler={ formModal.openModal }
+        modalOpenHandler={ () => history.push(`/form/salon/${ id }`) }
         subModalHandler={ deleteModal.openModal }
       />
     </>
