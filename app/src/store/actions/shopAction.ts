@@ -14,7 +14,6 @@ import { RootState, typedAction } from '../store'
 import { insertShopQuery, updateShopQuery } from '../../utils/api/request-response-types/ShopService'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
-import { Shop } from '../../entities/Shop'
 
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
@@ -22,6 +21,7 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '../../utils/api/request-response-types/ServiceCommonTypes'
+import { Shop, ShopList } from '../../Model/ShopResponse'
 
 
 // リクエストを始まる
@@ -29,7 +29,7 @@ const shopRequestStart = () => {
   return typedAction(SHOP_REQUEST_START)
 }
 
-const shopRequestSuccess = (data: fetchModelsWithTotalCountResponse<modelResponse<Shop>>) => {
+const shopRequestSuccess = (data: fetchModelsWithTotalCountResponse<modelResponse<ShopList>>) => {
   return typedAction(SHOP_REQUEST_SUCCESS, data)
 }
 
@@ -75,7 +75,7 @@ export const getOneShop = (id: number):
   dispatch(shopRequestStart())
   try {
     const res = await apiEndpoint.getOneShop(id)
-    dispatch(shopRequestSuccess(res.data))
+    dispatch(shopGetSuccess(res.data))
   } catch (e) {
     history.push('/error')
   }

@@ -11,17 +11,17 @@ import {
   SHOP_REQUEST_SUCCESS,
   ShopState
 } from '../types/shopTypes'
-import { Shop } from '../../entities/Shop'
 import { ShopAction } from '../actions/shopAction'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '../../utils/api/request-response-types/ServiceCommonTypes'
+import { Shop, ShopList } from '../../Model/ShopResponse'
 
 
 const initialState: ShopState = {
   loading: true,
-  shops: {} as fetchModelsWithTotalCountResponse<modelResponse<Shop>>,
+  shops: {} as fetchModelsWithTotalCountResponse<modelResponse<ShopList>>,
   shop: {} as Shop,
   msg: ''
 }

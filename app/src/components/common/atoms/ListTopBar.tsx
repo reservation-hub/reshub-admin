@@ -6,6 +6,7 @@ import { ListTopBarProps } from '../../user/_PropsType'
 import CommonStyle from '../../CommonStyle'
 import CustomButton from './CustomButton'
 import H1 from './H1'
+import { HeaderType } from '../_Constants'
 
 const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopBarProps) => {
   const classes = CommonStyle()
@@ -21,12 +22,13 @@ const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopB
       </Grid>
       <Grid item className='item-button'>
         {/* 実装予定 */ }
-        { type === 'users' || 'salon' ? (
+        { type === HeaderType.LIST && (
           <>
             <CustomButton>並び替え</CustomButton>
             <CustomButton>絞り込み</CustomButton>
           </>
-        ) : (
+        ) }
+        { type === HeaderType.DETAIL && (
           <CustomButton onClick={ subModalHandler }>
             削除
           </CustomButton>

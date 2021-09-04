@@ -4,11 +4,11 @@
 
 
 //　お店情報のリクエストをスタートする
-import { Shop } from '../../entities/Shop'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '../../utils/api/request-response-types/ServiceCommonTypes'
+import { Shop, ShopList } from '../../Model/ShopResponse'
 
 export const SHOP_REQUEST_START = 'SHOP_REQUEST_START' as const
 // お店情報のリクエスト成功
@@ -26,7 +26,7 @@ export const SHOP_REQUEST_FAILURE = 'SHOP_REQUEST_FAILURE' as const
 
 export type ShopState = {
   loading: boolean
-  shops: fetchModelsWithTotalCountResponse<modelResponse<Shop>>
+  shops: fetchModelsWithTotalCountResponse<modelResponse<ShopList>>
   shop: Shop
   msg: string
 }

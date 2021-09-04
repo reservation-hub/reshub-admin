@@ -7,6 +7,7 @@ import { FaRegUserCircle } from 'react-icons/fa'
 
 import ListTopBar from '../../common/atoms/ListTopBar'
 import useBirthday from '../../../utils/useBirthday'
+import { HeaderType } from '../../common/_Constants'
 
 const ProfileItem = ({
   user,
@@ -20,7 +21,7 @@ const ProfileItem = ({
     <StyledPaper>
       <ListTopBar
         title='ユーザー詳細'
-        type='profile'
+        type={ HeaderType.DETAIL }
         modalOpenHandler={ modalOpenHandler }
         subModalHandler={ subModalHandler }
       />

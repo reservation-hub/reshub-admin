@@ -92,7 +92,7 @@ const Users = () => {
               users={ users.values }
               modalOpenHandler={ openModal }
             />
-            <Paginate page={ page } totalPage={ users.totalCount } setPage={ setPage } perPage={ 10 } />
+            <Paginate totalPage={ users.totalCount } setPage={ setPage } />
           </Route>
           <Route path='/users/:id' component={ Profile } />
         </>

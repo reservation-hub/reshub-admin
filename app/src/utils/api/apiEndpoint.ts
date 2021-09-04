@@ -26,7 +26,7 @@ export const fetchAll = async () => await instance.get(
   `/`
 )
 export const getShop = async (page: number) => await instance.get(
-  `/shops`
+  `/shops?page=${ page }`
 )
 export const getUsers = async (page: number) => await instance.get(
   `/users?page=${ page }`

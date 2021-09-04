@@ -4,7 +4,6 @@ import { PaginateProps } from '../_PropsType'
 import CommonStyle from '../../CommonStyle'
 
 const Paginate = ({
-  page,
   totalPage,
   setPage
 }: PaginateProps) => {

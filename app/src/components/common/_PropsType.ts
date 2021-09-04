@@ -32,8 +32,6 @@ export type H1Props = {
 }
 
 export type PaginateProps = {
-  page: number,
-  perPage: any,
   totalPage: number
   setPage: React.Dispatch<React.SetStateAction<number>>
 }
