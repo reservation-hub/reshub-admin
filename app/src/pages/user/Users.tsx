@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { Route } from 'react-router-dom'
@@ -17,6 +17,7 @@ import * as yup from 'yup'
 import dayjs from 'dayjs'
 import Loading from '../../components/common/atoms/loading'
 import FormHeader from '../../components/modal/FormHeader'
+import Paginate from '../../components/common/atoms/Paginate'
 
 export const schema = yup.object({
   email: yup.string().email('正しいメールアドレスを入力してください'),
@@ -51,6 +52,7 @@ const createAddUserQuery = (params: IUserFormInput): insertUserFromAdminQuery =>
 const Users = () => {
   
   const dispatch = useDispatch()
+  const [page, setPage] = useState<number>(1)
   const { users, loading } = useSelector((state: RootState) => state.user)
   const { open, openModal, closeModal } = useModal(false, 'form')
   
@@ -78,13 +80,23 @@ const Users = () => {
   )
   
   useEffect(() => {
-    dispatch(fetchUserList())
-  }, [dispatch])
-  
-  if (loading) return <Loading />
+    dispatch(fetchUserList(page))
+  }, [page, dispatch])
   
   return (
     <MainTemplate>
+      { loading ? <Loading />
+        : <>
+          <Route exact path='/users'>
+            <UserList
+              users={ users.values }
+              modalOpenHandler={ openModal }
+            />
+            <Paginate page={ page } totalPage={ users.totalCount } setPage={ setPage } perPage={ 10 } />
+          </Route>
+          <Route path='/users/:id' component={ Profile } />
+        </>
+      }
       <ModalOverlay
         modalOpen={ open }
         modalCloseHandler={ closeModal }
@@ -96,13 +108,6 @@ const Users = () => {
           formInitialState={ formInitialState }
         />
       </ModalOverlay>
-      <Route exact path='/users'>
-        <UserList
-          users={ users.values }
-          modalOpenHandler={ openModal }
-        />
-      </Route>
-      <Route path='/users/:id' component={ Profile } />
     </MainTemplate>
   )
 }

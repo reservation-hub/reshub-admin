@@ -8,6 +8,7 @@ import { Table, TableCell, TableHead } from '@material-ui/core'
 export const StyledTable = withStyles((theme: Theme) => ( {
   root: {
     width: '100%',
+    background: theme.palette.secondary.main,
     '& .table-index': {
       width: '76px',
       padding: '0',

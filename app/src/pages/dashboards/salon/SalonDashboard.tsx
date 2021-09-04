@@ -28,13 +28,12 @@ const SalonDashboard = () => {
     }
   }, [dispatch])
   
-  if (loading) return <Loading />
-  
   return (
     <MainTemplate>
-      { authCheck(user)
-        ? <AdminDashboard data={ data } />
-        : <ShopDashboard />
+      { loading ? <Loading />
+        : authCheck(user)
+          ? <AdminDashboard data={ data } />
+          : <ShopDashboard />
       }
     </MainTemplate>
   )

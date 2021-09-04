@@ -6,6 +6,7 @@ import { NavMenu } from '../_Constants'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
+import { AiOutlineGithub } from 'react-icons/all'
 
 const NavBar = () => {
   
@@ -44,6 +45,16 @@ const NavBar = () => {
           )) }
         </List>
       </div>
+      <footer>
+        <span>
+          Copyright 2021Reshub
+        </span>
+        <span>
+          <a href='https://github.com/reservation-hub'>
+            <AiOutlineGithub />
+          </a>
+        </span>
+      </footer>
     </React.Fragment>
   )
 }

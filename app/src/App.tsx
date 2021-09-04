@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Router, Route, Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { logout, silentLogin } from './store/actions/authAction'
+import { silentLogin } from './store/actions/authAction'
 import { CssBaseline } from '@material-ui/core'
 
 import PrivateRoute from './utils/routes/PrivateRoute'
