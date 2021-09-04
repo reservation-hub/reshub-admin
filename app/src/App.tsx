@@ -21,17 +21,18 @@ const App = () => {
   
   const dispatch = useDispatch()
   
-  const token: string = Cookies.get('refreshToken') ?? ''
+  const sessionToken: string = Cookies.get('sessionToken') ?? ''
   const authToken: string = Cookies.get('authToken') ?? ''
-  setAuthToken(token)
+  const refreshToken: string = Cookies.get('refreshToken') ?? ''
+  setAuthToken(sessionToken)
   
   useEffect(() => {
-    if (!authToken && token) {
+    if (!authToken && !sessionToken && refreshToken) {
       dispatch(silentLogin())
     } else if (!authToken) {
       history.push('/auth', { error: 'error' })
     }
-  }, [dispatch, token, authToken])
+  }, [dispatch, sessionToken, authToken, refreshToken])
   
   return (
     <Router history={ history }>
