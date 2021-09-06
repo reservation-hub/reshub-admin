@@ -1,3 +1,3 @@
 export type FormType = {
-  formTitle?: string
+  title?: string
 }

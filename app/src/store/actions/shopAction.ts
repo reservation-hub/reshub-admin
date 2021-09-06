@@ -90,6 +90,7 @@ export const addShop = (shopData: insertShopQuery):
   try {
     const res = await apiEndpoint.addShop(shopData)
     dispatch(shopAddSuccess(res.data))
+    history.push('/salon')
   } catch (e) {
     dispatch(shopRequestFailure(e))
   }
@@ -104,6 +105,7 @@ export const editShopData = (shopData: updateShopQuery):
   try {
     const res = await apiEndpoint.patchShop(shopData)
     dispatch(shopPatchSuccess(res.data))
+    history.push('/salon')
   } catch (e) {
     dispatch(shopRequestFailure(e))
   }
