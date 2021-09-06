@@ -22,6 +22,7 @@ import DaysChecker from '../common/atoms/DaysChecker'
 const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
   
   const classes = FormStyle()
+  const dispatch = useDispatch()
   
   const startAt = useTimePicker(0)
   const endAt = useTimePicker(0)
@@ -30,14 +31,12 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
   const sPref = useSelect('')
   const sCity = useSelect('')
   
-  
   const { input, ChangeHandler } = useInput({
     name: '', address: '', phoneNumber: ''
   })
   
   const { checked, changeHandler } = useCheckBox([])
   
-  const dispatch = useDispatch()
   const { areas, area, prefecture } = useSelector((state: RootState) => state.location)
   
   const values = {
@@ -74,7 +73,7 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
     () => {
       dispatch(addShop(shopData))
     },
-    [dispatch, match.params.id, shopData]
+    [dispatch, shopData]
   )
   
   useEffect(() => {
@@ -119,7 +118,7 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
             />
           </div>
           <div className='input-box'>
-            <span>地駅</span>
+            <span className='font-16'>地域</span>
             <LocationPicker
               values={ values }
               area={ sArea }
@@ -128,11 +127,11 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
             />
           </div>
           <div className='input-box'>
-            <span>営業日</span>
+            <span className='font-16'>営業日</span>
             <DaysChecker inputHandler={ changeHandler } />
           </div>
           <div className='input-box'>
-            <span>営業時間</span>
+            <span className='font-16'>営業時間</span>
             <div className='display-flex justify-between'>
               <TimePicker
                 hh={ startAt.hour }
