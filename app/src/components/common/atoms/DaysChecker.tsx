@@ -4,10 +4,12 @@ import { PickerProps } from '../_PropsType'
 
 const DaysChecker = ({ inputHandler }: PickerProps) => {
   return (
-    <div className='display-flex'>
+    <div className='display-flex justify-between'>
       { days.map((value, index) => (
-        <div key={ index }>
-          <label htmlFor='checkbox'>{ value.value }</label>
+        <div key={ index } className='checkbox'>
+          <label htmlFor='checkbox' className='font-2'>
+            { value.value }
+          </label>
           <input
             id='checkbox'
             type='checkbox'

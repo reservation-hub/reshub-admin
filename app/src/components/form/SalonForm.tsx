@@ -107,49 +107,6 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
           </div>
           <div className='input-box'>
             <StyledInput
-              label='住所'
-              autoComplete='off'
-              placeholder='住所を入力してください。'
-              fullWidth
-              variant='outlined'
-              name='address'
-              value={ input.address }
-              onChange={ ChangeHandler }
-            />
-          </div>
-          <div className='input-box'>
-            <span className='font-16'>地域</span>
-            <LocationPicker
-              values={ values }
-              area={ sArea }
-              pref={ sPref }
-              city={ sCity }
-            />
-          </div>
-          <div className='input-box'>
-            <span className='font-16'>営業日</span>
-            <DaysChecker inputHandler={ changeHandler } />
-          </div>
-          <div className='input-box'>
-            <span className='font-16'>営業時間</span>
-            <div className='display-flex justify-between'>
-              <TimePicker
-                hh={ startAt.hour }
-                mm={ startAt.minute }
-                selectHandler={ startAt.changeHandler }
-                classes='w-15 font-16'
-              />
-              <span> - </span>
-              <TimePicker
-                hh={ endAt.hour }
-                mm={ endAt.minute }
-                selectHandler={ endAt.changeHandler }
-                classes='w-15 font-16'
-              />
-            </div>
-          </div>
-          <div className='input-box'>
-            <StyledInput
               label='電話番号'
               autoComplete='off'
               placeholder='電話番号を入力してください。'
@@ -161,7 +118,53 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
             />
           </div>
           <div className='input-box'>
-            ここは画像？
+            <StyledInput
+              label='住所'
+              autoComplete='off'
+              placeholder='住所を入力してください。'
+              fullWidth
+              variant='outlined'
+              name='address'
+              value={ input.address }
+              onChange={ ChangeHandler }
+            />
+          </div>
+          <div className='input-box'>
+            <LocationPicker
+              values={ values }
+              area={ sArea }
+              pref={ sPref }
+              city={ sCity }
+            />
+          </div>
+          <div className='input-box'>
+            <div className='label'>
+              <span className='font-16'>営業日</span>
+            </div>
+            <DaysChecker inputHandler={ changeHandler } />
+          </div>
+          <div className='input-box'>
+            <div className='label'>
+              <span className='font-16'>営業時間</span>
+            </div>
+            <div className='display-flex justify-between align-center'>
+              <TimePicker
+                hh={ startAt.hour }
+                mm={ startAt.minute }
+                selectHandler={ startAt.changeHandler }
+                classes='w-13 font-16 h-4'
+              />
+              <span> - </span>
+              <TimePicker
+                hh={ endAt.hour }
+                mm={ endAt.minute }
+                selectHandler={ endAt.changeHandler }
+                classes='w-13 font-16 h-4'
+              />
+            </div>
+          </div>
+          <div className='input-box'>
+            <CustomButton>画像登録になる</CustomButton>
           </div>
           <div className='input-box'>
             <TextField

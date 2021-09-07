@@ -62,16 +62,28 @@ const theme = createTheme({
               justifyContent: 'space-between'
             },
             '& .align-center': {
-              alignItem: 'center'
+              alignItems: 'center'
             },
             '& .text-center': {
               textAlign: 'center'
             },
-            '& .w-15': {
+            '& .w-13': {
               width: '13rem'
+            },
+            '& .w-18': {
+              width: '18rem'
+            },
+            '& .h-4': {
+              height: '4rem'
+            },
+            '& .mar-1': {
+              marginRight: '1rem'
             },
             '& .font-16': {
               fontSize: '1.6rem'
+            },
+            '& .font-2': {
+              fontSize: '2rem'
             }
           }
         }

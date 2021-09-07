@@ -1,5 +1,7 @@
 import { Theme, withStyles } from '@material-ui/core/styles'
-import { makeStyles, TextField } from '@material-ui/core'
+import FormControl from '@material-ui/core/FormControl'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import TextField from '@material-ui/core/TextField'
 
 export const StyledInput = withStyles((theme: Theme) => ( {
   root: {
@@ -18,6 +20,17 @@ export const StyledInput = withStyles((theme: Theme) => ( {
   }
 } ))(TextField)
 
+export const StyledContr = withStyles((theme: Theme) => ( {
+  root: {
+    '& .MuiInputLabel-formControl': {
+      transform: 'translate(14px, 14px) scale(1)'
+    },
+    '& .MuiInputLabel-shrink': {
+      transform: 'translate(13px, -3px) scale(0.80)'
+    }
+  }
+} ))(FormControl)
+
 const FormStyle = makeStyles((theme: Theme) => ( {
   container: {
     padding: '2rem',
@@ -35,6 +48,12 @@ const FormStyle = makeStyles((theme: Theme) => ( {
         background: theme.palette.primary.main,
         color: '#fff',
         border: 'none'
+      },
+      '& .label': {
+        marginBottom: '.5rem',
+        paddingLeft: '1rem',
+        color: 'rgba(0, 0, 0, 0.54)',
+        fontWeight: '400'
       }
     }
   }
