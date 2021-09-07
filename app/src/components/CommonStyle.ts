@@ -49,8 +49,10 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
   },
   sideBar: {
     width: '18rem',
-    height: '100%',
-    float: 'right',
+    position: 'absolute',
+    right: '0',
+    bottom: '0',
+    top: '7rem',
     background: theme.palette.primary.main,
     '& span': {
       fontSize: '2.2rem'

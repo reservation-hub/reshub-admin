@@ -99,7 +99,7 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
     },
     [dispatch, match.params.id, shopData.insertData, shopData.updateData]
   )
-  console.log(match.params.id)
+  
   useEffect(() => {
     dispatch(getArea())
     if (sArea.option) {

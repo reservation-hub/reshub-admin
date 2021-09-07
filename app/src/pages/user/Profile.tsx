@@ -11,6 +11,7 @@ import ProfileItem from '../../components/user/profile/ProfileItem'
 import ModalOverlay from '../../components/modal/ModalOverlay'
 import ModalAlert from '../../components/modal/ModalAlert'
 import FormHeader from '../../components/modal/FormHeader'
+import history from '../../utils/history'
 
 const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   
@@ -19,8 +20,8 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   const convertId: number = Number(id)
   const dispatch = useDispatch()
   
-  const deleteModal = useModal(false, 'delete')
   const formModal = useModal(false, 'form')
+  const deleteModal = useModal(false, 'delete')
   
   const onDelete = useCallback(
     () => {
@@ -35,25 +36,30 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   // TODO スタイルを指定
   return (
     <>
-      { deleteModal.modalType === 'delete'
-      && <ModalOverlay
+      { formModal.modalType === 'form' &&
+      <ModalOverlay
+        modalOpen={ formModal.open }
+        modalCloseHandler={ formModal.closeModal }
+      >
+        <ModalAlert
+          modalCloseHandler={ formModal.closeModal }
+          modalHandler={ () => history.push(`/form/user/${ id }`, { user }) }
+          alertText='ユーザー編集に移動しますか？'
+          buttonText='移動'
+        />
+      </ModalOverlay>
+      }
+      { deleteModal.modalType === 'delete' &&
+      <ModalOverlay
         modalOpen={ deleteModal.open }
         modalCloseHandler={ deleteModal.closeModal }
       >
         <ModalAlert
           modalCloseHandler={ deleteModal.closeModal }
-          alertText='本当にこのユーザーを削除しますか？'
           modalHandler={ onDelete }
+          alertText='このユーザーを削除しますか？'
+          buttonText='削除'
         />
-      </ModalOverlay>
-      }
-      { formModal.modalType === 'form'
-      && <ModalOverlay
-        modalOpen={ formModal.open }
-        modalCloseHandler={ formModal.closeModal }
-      >
-        <FormHeader modalTitle='test' modalCloseHandler={ formModal.closeModal } />
-        test
       </ModalOverlay>
       }
       <ProfileItem

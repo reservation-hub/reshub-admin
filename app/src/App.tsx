@@ -16,7 +16,7 @@ import Users from './pages/user/Users'
 import Salon from './pages/shop/Salon'
 import SalonDashboard from './pages/dashboards/salon/SalonDashboard'
 import setAuthToken from './utils/setAuthToken'
-import SalonForms from './pages/form/SalonForms'
+import Forms from './pages/form/Forms'
 
 const App = () => {
   
@@ -49,7 +49,7 @@ const App = () => {
         {/* only admin */ }
         <PrivateRoute path='/salon' component={ Salon } />
         <PrivateRoute path='/users' component={ Users } />
-        <PrivateRoute path='/form' component={ SalonForms } />
+        <PrivateRoute path='/form' component={ Forms } />
         
         {/* has error */ }
         <Route component={ Error } />

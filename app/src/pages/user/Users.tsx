@@ -18,6 +18,8 @@ import dayjs from 'dayjs'
 import Loading from '../../components/common/atoms/loading'
 import FormHeader from '../../components/modal/FormHeader'
 import Paginate from '../../components/common/atoms/Paginate'
+import ModalAlert from '../../components/modal/ModalAlert'
+import history from '../../utils/history'
 
 export const schema = yup.object({
   email: yup.string().email('正しいメールアドレスを入力してください'),
@@ -101,11 +103,11 @@ const Users = () => {
         modalOpen={ open }
         modalCloseHandler={ closeModal }
       >
-        <FormHeader modalCloseHandler={ closeModal } modalTitle='ユーザー登録' />
-        <ModalUserForm
-          onSubmit={ onSubmit }
-          validation={ schema }
-          formInitialState={ formInitialState }
+        <ModalAlert
+          modalCloseHandler={ closeModal }
+          modalHandler={ () => history.push('/form/user') }
+          alertText='ユーザー登録画面に移動しますか？'
+          buttonText='移動'
         />
       </ModalOverlay>
     </MainTemplate>
