@@ -26,7 +26,7 @@ const Paginate = ({
         previousLabel={ '<' }
         nextLabel={ '>' }
         activeClassName={ 'active' }
-        containerClassName={ 'paging-container' }
+        containerClassName={ 'paging-container justify-center display-flex' }
         onPageChange={ pageChangeHandler }
       />
     </div>

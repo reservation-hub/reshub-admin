@@ -20,7 +20,7 @@ const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopB
       <Grid item>
         <H1 className='item-header'>{ title }</H1>
       </Grid>
-      <Grid item className='item-button'>
+      <Grid item className='item-button justify-between display-flex'>
         {/* 実装予定 */ }
         { type === HeaderType.LIST ? (
           <>

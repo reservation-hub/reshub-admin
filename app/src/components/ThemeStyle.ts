@@ -51,6 +51,27 @@ const theme = createTheme({
             },
             '& label': {
               fontSize: '1.6rem'
+            },
+            '& .display-flex': {
+              display: 'flex'
+            },
+            '& .justify-center': {
+              justifyContent: 'center'
+            },
+            '& .justify-between': {
+              justifyContent: 'space-between'
+            },
+            '& .align-center': {
+              alignItem: 'center'
+            },
+            '& .text-center': {
+              textAlign: 'center'
+            },
+            '& .w-15': {
+              width: '13rem'
+            },
+            '& .font-16': {
+              fontSize: '1.6rem'
             }
           }
         }

@@ -1,5 +1,6 @@
 import { ChangeEvent, useCallback, useState } from 'react'
 import dayjs from 'dayjs'
+import { TIME_PICKER_TIME_TYPE } from '../components/common/_Constants'
 
 export const useTimePicker = (initialState: number) => {
   const [hour, setHour] = useState<number>(initialState)
@@ -14,10 +15,10 @@ export const useTimePicker = (initialState: number) => {
       const target = e.target as HTMLSelectElement
       
       switch (target.name) {
-        case 'hour':
+        case TIME_PICKER_TIME_TYPE.HOUR:
           setHour(Number(target.value))
           break
-        case 'minute':
+        case TIME_PICKER_TIME_TYPE.MINUTE:
           setMinute(Number(target.value))
           break
       }

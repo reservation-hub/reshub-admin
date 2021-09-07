@@ -26,19 +26,7 @@ const FormStyle = makeStyles((theme: Theme) => ( {
     '& .form-box': {
       marginTop: '2rem',
       '& .input-box': {
-        marginBottom: '2rem',
-        '& .display-flex': {
-          display: 'flex'
-        },
-        '& .justify-between': {
-          justifyContent: 'space-between'
-        },
-        '& .w-15': {
-          width: '13rem'
-        },
-        '& .font-16': {
-          fontSize: '1.6rem'
-        }
+        marginBottom: '2rem'
       },
       '& .submit-button': {
         width: '56rem',

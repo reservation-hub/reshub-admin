@@ -57,7 +57,6 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
     },
     '& .nav-wrapper': {
       margin: '3rem 0 1rem 0',
-      textAlign: 'center',
       fontSize: '2.4rem',
       '& .user-profile-link': {
         color: theme.palette.secondary.main,
@@ -86,8 +85,6 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
     },
     '& footer': {
       margin: '.55rem',
-      display: 'flex',
-      alignItems: 'center',
       position: 'absolute',
       bottom: '0',
       '& span': {
@@ -134,16 +131,12 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
       color: theme.palette.primary.main
     },
     '& .item-button': {
-      width: '35rem',
-      display: 'flex',
-      justifyContent: 'space-between'
+      width: '35rem'
     }
   },
   pagingBox: {
     '& .paging-container': {
       padding: '0',
-      display: 'flex',
-      justifyContent: 'center',
       listStyle: 'none',
       '& li': {
         marginLeft: '.5rem',
