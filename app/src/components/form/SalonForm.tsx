@@ -45,35 +45,57 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
     city: prefecture.cities
   }
   
-  const shopData: insertShopQuery = useMemo(() => {
-    return {
-      name: input.name,
-      address: input.address,
-      phoneNumber: input.phoneNumber,
-      startTime: startAt.HHmm,
-      endTime: endAt.HHmm,
-      areaId: Number(sArea.option),
-      prefectureId: Number(sPref.option),
-      cityId: Number(sCity.option),
-      days: checked
-    }
-  }, [
-    checked,
-    endAt.HHmm,
-    input.address,
-    input.name,
-    input.phoneNumber,
-    sArea.option,
-    sCity.option,
-    sPref.option,
-    startAt.HHmm
-  ])
+  const shopData: { insertData: insertShopQuery, updateData: updateShopQuery }
+    = useMemo(() => {
+      const insertData: insertShopQuery = {
+        name: input.name,
+        address: input.address,
+        phoneNumber: input.phoneNumber,
+        startTime: startAt.HHmm,
+        endTime: endAt.HHmm,
+        areaId: Number(sArea.option),
+        prefectureId: Number(sPref.option),
+        cityId: Number(sCity.option),
+        days: checked
+      }
+      const updateData: updateShopQuery = {
+        id: Number(match.params.id),
+        params: {
+          name: input.name,
+          address: input.address,
+          phoneNumber: input.phoneNumber,
+          startTime: startAt.HHmm,
+          endTime: endAt.HHmm,
+          areaId: Number(sArea.option),
+          prefectureId: Number(sPref.option),
+          cityId: Number(sCity.option),
+          days: checked
+        }
+      }
+      return { insertData, updateData }
+    },
+    [
+      checked,
+      endAt.HHmm,
+      input.address,
+      input.name,
+      input.phoneNumber,
+      match.params.id,
+      sArea.option,
+      sCity.option,
+      sPref.option,
+      startAt.HHmm
+    ])
   
   const onSubmit = useCallback(
     () => {
-      dispatch(addShop(shopData))
+      if (match.params.id) {
+        dispatch(editShopData(shopData.updateData))
+      } else {
+        dispatch(addShop(shopData.insertData))
+      }
     },
-    [dispatch, shopData]
+    [dispatch, match.params.id, shopData.insertData, shopData.updateData]
   )
   
   useEffect(() => {
