@@ -7,6 +7,7 @@ import { AdminDashboardProps } from './_PropsType'
 import TableLayout from '../common/atoms/TableLayout'
 import UserItems from '../user/userlist/UserItems'
 import H1 from '../common/atoms/H1'
+import SalonItem from '../list/Shop/SalonItem'
 
 const AdminDashboard = ({
   data
@@ -23,8 +24,11 @@ const AdminDashboard = ({
         </TableLayout>
       </Grid>
       <Grid item style={ { width: '100%' } }>
-        <TableLayout cell={ SalonCell } />
-        {/* TODO サロンページ待ち	*/ }
+        <TableLayout cell={ SalonCell }>
+          { data?.shop?.shopData.map((value, index) => (
+            <SalonItem shop={ value } key={ index } />
+          )) }
+        </TableLayout>
       </Grid>
     </Grid>
   )

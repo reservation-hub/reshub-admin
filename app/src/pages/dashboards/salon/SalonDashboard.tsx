@@ -26,7 +26,7 @@ const SalonDashboard = () => {
     if (authCheck(user)) {
       dispatch(fetchDashboard())
     }
-  }, [dispatch])
+  }, [dispatch, user])
   
   return (
     <MainTemplate>
