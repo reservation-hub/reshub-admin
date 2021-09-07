@@ -5,6 +5,8 @@ import { UserListProps } from '../_PropsType'
 
 import useRole from '../../../utils/useRole'
 import useBirthday from '../../../utils/useBirthday'
+import { TableRow } from '@material-ui/core'
+import history from '../../../utils/history'
 
 const UserItems = ({ user }: UserListProps) => {
   
@@ -12,7 +14,11 @@ const UserItems = ({ user }: UserListProps) => {
   const role = useRole(user?.roles)
   
   return (
-    <>
+    <TableRow
+      style={ { height: '6rem' } }
+      hover
+      onClick={ () => history.push(`/users/${ user?.id }`) }
+    >
       <StyledTableCell>
         { user?.id }
       </StyledTableCell>
@@ -37,7 +43,7 @@ const UserItems = ({ user }: UserListProps) => {
       <StyledTableCell>
         { role }
       </StyledTableCell>
-    </>
+    </TableRow>
   )
 }
 

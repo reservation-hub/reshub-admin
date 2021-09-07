@@ -4,7 +4,6 @@ import { PaginateProps } from '../_PropsType'
 import CommonStyle from '../../CommonStyle'
 
 const Paginate = ({
-  page,
   totalPage,
   setPage
 }: PaginateProps) => {
@@ -27,7 +26,7 @@ const Paginate = ({
         previousLabel={ '<' }
         nextLabel={ '>' }
         activeClassName={ 'active' }
-        containerClassName={ 'paging-container' }
+        containerClassName={ 'paging-container justify-center display-flex' }
         onPageChange={ pageChangeHandler }
       />
     </div>

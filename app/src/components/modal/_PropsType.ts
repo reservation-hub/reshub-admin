@@ -9,9 +9,10 @@ export type ModalOverlayProps = {
 
 export type ModalProps = {
   modalCloseHandler: () => void
-  onDelete?: () => void
   alertText?: string
   modalTitle?: string
+  modalHandler?: () => void
+  buttonText?: string
 }
 
 export interface IModalFormProps {

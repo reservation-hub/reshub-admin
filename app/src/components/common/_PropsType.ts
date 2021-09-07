@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { ChangeEventHandler } from 'react'
+import { Area, City, Prefecture } from '../../entities/Location'
 
 export type MainTemplateProps = {
   children?: React.ReactNode
@@ -32,8 +33,18 @@ export type H1Props = {
 }
 
 export type PaginateProps = {
-  page: number,
-  perPage: any,
   totalPage: number
   setPage: React.Dispatch<React.SetStateAction<number>>
+}
+
+export type PickerProps = {
+  hh?: number
+  mm?: number
+  selectHandler?: ChangeEventHandler<{ value: unknown }>
+  inputHandler?: ChangeEventHandler<HTMLInputElement>
+  values?: { areas: Area[], pref: Prefecture[], city: City[] }
+  area?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
+  pref?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
+  city?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
+  classes?: string
 }

@@ -14,7 +14,7 @@ const NavBar = () => {
   
   return (
     <React.Fragment>
-      <div className='nav-wrapper'>
+      <div className='nav-wrapper text-center'>
         <Link to={ `/users/${ user['id'] }` }>
           <div className='user-profile-link'>
             <FaRegUserCircle />
@@ -45,7 +45,7 @@ const NavBar = () => {
           )) }
         </List>
       </div>
-      <footer>
+      <footer className='display-flex align-center'>
         <span>
           Copyright 2021Reshub
         </span>

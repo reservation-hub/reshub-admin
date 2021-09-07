@@ -6,6 +6,7 @@ import { ListTopBarProps } from '../../user/_PropsType'
 import CommonStyle from '../../CommonStyle'
 import CustomButton from './CustomButton'
 import H1 from './H1'
+import { HeaderType } from '../_Constants'
 
 const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopBarProps) => {
   const classes = CommonStyle()
@@ -19,9 +20,9 @@ const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopB
       <Grid item>
         <H1 className='item-header'>{ title }</H1>
       </Grid>
-      <Grid item className='item-button'>
+      <Grid item className='item-button justify-between display-flex'>
         {/* 実装予定 */ }
-        { type === 'users' && 'salon' ? (
+        { type === HeaderType.LIST ? (
           <>
             <CustomButton>並び替え</CustomButton>
             <CustomButton>絞り込み</CustomButton>
@@ -32,11 +33,7 @@ const ListTopBar = ({ title, modalOpenHandler, type, subModalHandler }: ListTopB
           </CustomButton>
         ) }
         <CustomButton onClick={ modalOpenHandler }>
-          { type === 'profile' ? 'プロフィール設定'
-            : type === 'users' ? 'ユーザー追加'
-              : type === 'salon' ? 'サロン追加'
-                : 'サロン編集'
-          }
+          { type === HeaderType.LIST ? '新規登録' : '編集' }
         </CustomButton>
       </Grid>
     </Grid>

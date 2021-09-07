@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Dialog } from '@material-ui/core'
+import Dialog from '@material-ui/core/Dialog'
 import { ModalOverlayProps } from './_PropsType'
 
 const ModalOverlay = ({

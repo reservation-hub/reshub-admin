@@ -5,8 +5,7 @@ import {
   insertStylistQuery,
   updateMenuItemQuery,
   updateShopQuery,
-  updateStylistQuery,
-  upsertScheduleQuery
+  updateStylistQuery
 } from './request-response-types/ShopService'
 import {
   insertReservationQuery,
@@ -25,8 +24,8 @@ import { localAuthenticationQuery } from './request-response-types/AuthService'
 export const fetchAll = async () => await instance.get(
   `/`
 )
-export const getShop = async () => await instance.get(
-  `/shops`
+export const getShop = async (page: number) => await instance.get(
+  `/shops?page=${ page }`
 )
 export const getUsers = async (page: number) => await instance.get(
   `/users?page=${ page }`
@@ -52,6 +51,21 @@ export const getOneReservation = async (id: number) => await instance.get(
 export const getOneStylist = async (id: number) => await instance.get(
   `/stylists/${ id }`
 )
+export const getArea = async () => await instance.get(
+  '/areas'
+)
+export const getOneArea = async (id: number) => await instance.get(
+  `/areas/${ id }`
+)
+export const getPrefecture = async () => await instance.get(
+  '/prefectures'
+)
+export const getOnePref = async (id: number) => await instance.get(
+  `/prefectures/${ id }`
+)
+export const getCity = async () => await instance.get(
+  '/cities'
+)
 
 //-----------------------------------------------
 // Crud method
@@ -63,11 +77,8 @@ export const getOneStylist = async (id: number) => await instance.get(
 export const addShop = async (shopData: insertShopQuery) => await instance.post(
   `/shops`, { ...shopData }
 )
-export const createSchedule = async (schedule: upsertScheduleQuery) => await instance.post(
-  `/shops/${ schedule.shopId }/schedule`, { ...schedule }
-)
 export const patchShop = async (shopData: updateShopQuery) => await instance.patch(
-  `/shops/${ shopData.id }`, { ...shopData }
+  `/shops/${ shopData.id }`, { ...shopData.params }
 )
 export const deleteShop = async (id: number) => await instance.delete(
   `/shops/${ id }`
@@ -172,7 +183,11 @@ const apiEndpoint = {
   createReservation,
   patchReservation,
   cancelReservation,
-  createSchedule,
+  getArea,
+  getPrefecture,
+  getCity,
+  getOneArea,
+  getOnePref,
   instance
 }
 

@@ -51,6 +51,39 @@ const theme = createTheme({
             },
             '& label': {
               fontSize: '1.6rem'
+            },
+            '& .display-flex': {
+              display: 'flex'
+            },
+            '& .justify-center': {
+              justifyContent: 'center'
+            },
+            '& .justify-between': {
+              justifyContent: 'space-between'
+            },
+            '& .align-center': {
+              alignItems: 'center'
+            },
+            '& .text-center': {
+              textAlign: 'center'
+            },
+            '& .w-13': {
+              width: '13rem'
+            },
+            '& .w-18': {
+              width: '18rem'
+            },
+            '& .h-4': {
+              height: '4rem'
+            },
+            '& .mar-1': {
+              marginRight: '1rem'
+            },
+            '& .font-16': {
+              fontSize: '1.6rem'
+            },
+            '& .font-2': {
+              fontSize: '2rem'
             }
           }
         }
