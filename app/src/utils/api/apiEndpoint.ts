@@ -78,7 +78,7 @@ export const addShop = async (shopData: insertShopQuery) => await instance.post(
   `/shops`, { ...shopData }
 )
 export const patchShop = async (shopData: updateShopQuery) => await instance.patch(
-  `/shops/${ shopData.id }`, { ...shopData }
+  `/shops/${ shopData.id }`, { ...shopData.params }
 )
 export const deleteShop = async (id: number) => await instance.delete(
   `/shops/${ id }`

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { FormEvent, useCallback, useEffect, useMemo } from 'react'
 import CustomButton from '../common/atoms/CustomButton'
 import FormStyle, { StyledInput } from './FormStyle'
 import Container from '@material-ui/core/Container'
@@ -89,7 +89,8 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
     ])
   
   const onSubmit = useCallback(
-    () => {
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
       if (match.params.id) {
         dispatch(editShopData(shopData.updateData))
       } else {
@@ -98,7 +99,7 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
     },
     [dispatch, match.params.id, shopData.insertData, shopData.updateData]
   )
-  
+  console.log(match.params.id)
   useEffect(() => {
     dispatch(getArea())
     if (sArea.option) {
