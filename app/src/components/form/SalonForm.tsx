@@ -45,6 +45,7 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
     city: prefecture.cities
   }
   
+  // todo 後はこっちをhooksとかにする
   const shopData: { insertData: insertShopQuery, updateData: updateShopQuery }
     = useMemo(() => {
       const insertData: insertShopQuery = {
