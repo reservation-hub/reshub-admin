@@ -1,5 +1,6 @@
 import React from 'react'
 import { schema } from '../../pages/user/Users'
+import { FormikHelpers } from 'formik'
 
 export type ModalOverlayProps = {
   children?: React.ReactNode
@@ -17,7 +18,7 @@ export type ModalProps = {
 
 export interface IModalFormProps {
   validation: object,
-  onSubmit: any
+  onSubmit: (values: IUserFormInput, formikHelpers: FormikHelpers<IUserFormInput>) => ( void | Promise<any> )
   formInitialState: object
 }
 

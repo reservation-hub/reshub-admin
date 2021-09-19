@@ -20,31 +20,30 @@ import { insertShopQuery, updateShopQuery } from '../../utils/api/request-respon
 import DaysChecker from '../common/atoms/DaysChecker'
 
 const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
-  
+
   const classes = FormStyle()
   const dispatch = useDispatch()
-  
+
   const startAt = useTimePicker(0)
   const endAt = useTimePicker(0)
-  
+
   const sArea = useSelect('')
   const sPref = useSelect('')
   const sCity = useSelect('')
-  
   const { input, ChangeHandler } = useInput({
     name: '', address: '', phoneNumber: ''
   })
-  
+
   const { checked, changeHandler } = useCheckBox([])
-  
+
   const { areas, area, prefecture } = useSelector((state: RootState) => state.location)
-  
+
   const values = {
     areas: areas.values,
     pref: area.prefectures,
     city: prefecture.cities
   }
-  
+
   // todo 後はこっちをhooksとかにする
   const shopData: { insertData: insertShopQuery, updateData: updateShopQuery }
     = useMemo(() => {
@@ -87,7 +86,7 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
       sPref.option,
       startAt.HHmm
     ])
-  
+
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -99,7 +98,7 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
     },
     [dispatch, match.params.id, shopData.insertData, shopData.updateData]
   )
-  
+
   useEffect(() => {
     dispatch(getArea())
     if (sArea.option) {
@@ -109,51 +108,51 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
       dispatch(getOnePref(Number(sPref.option)))
     }
   }, [dispatch, sArea.option, sPref.option])
-  
+
   return (
-    <Container maxWidth='sm' className={ classes.container }>
+    <Container maxWidth="sm" className={ classes.container }>
       <Header
         title={ match.params.id ? 'サロン編集' : 'サロン新規登録' }
       />
-      <div className='form-box'>
+      <div className="form-box">
         <form onSubmit={ onSubmit }>
-          <div className='input-box'>
+          <div className="input-box">
             <StyledInput
-              label='サロン名'
-              autoComplete='off'
-              placeholder='サロン名を入力してください。'
+              label="サロン名"
+              autoComplete="off"
+              placeholder="サロン名を入力してください。"
               fullWidth
-              variant='outlined'
-              name='name'
+              variant="outlined"
+              name="name"
               value={ input.name }
               onChange={ ChangeHandler }
             />
           </div>
-          <div className='input-box'>
+          <div className="input-box">
             <StyledInput
-              label='電話番号'
-              autoComplete='off'
-              placeholder='電話番号を入力してください。'
+              label="電話番号"
+              autoComplete="off"
+              placeholder="電話番号を入力してください。"
               fullWidth
-              variant='outlined'
-              name='phoneNumber'
+              variant="outlined"
+              name="phoneNumber"
               value={ input.phoneNumber }
               onChange={ ChangeHandler }
             />
           </div>
-          <div className='input-box'>
+          <div className="input-box">
             <StyledInput
-              label='住所'
-              autoComplete='off'
-              placeholder='住所を入力してください。'
+              label="住所"
+              autoComplete="off"
+              placeholder="住所を入力してください。"
               fullWidth
-              variant='outlined'
-              name='address'
+              variant="outlined"
+              name="address"
               value={ input.address }
               onChange={ ChangeHandler }
             />
           </div>
-          <div className='input-box'>
+          <div className="input-box">
             <LocationPicker
               values={ values }
               area={ sArea }
@@ -161,46 +160,46 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
               city={ sCity }
             />
           </div>
-          <div className='input-box'>
-            <div className='label'>
-              <span className='font-16'>営業日</span>
+          <div className="input-box">
+            <div className="label">
+              <span className="font-16">営業日</span>
             </div>
-            <DaysChecker inputHandler={ changeHandler } />
+            <DaysChecker inputHandler={ changeHandler }/>
           </div>
-          <div className='input-box'>
-            <div className='label'>
-              <span className='font-16'>営業時間</span>
+          <div className="input-box">
+            <div className="label">
+              <span className="font-16">営業時間</span>
             </div>
-            <div className='display-flex justify-between align-center'>
+            <div className="display-flex justify-between align-center">
               <TimePicker
                 hh={ startAt.hour }
                 mm={ startAt.minute }
                 selectHandler={ startAt.changeHandler }
-                classes='w-13 font-16 h-4'
+                classes="w-13 font-16 h-4"
               />
               <span> - </span>
               <TimePicker
                 hh={ endAt.hour }
                 mm={ endAt.minute }
                 selectHandler={ endAt.changeHandler }
-                classes='w-13 font-16 h-4'
+                classes="w-13 font-16 h-4"
               />
             </div>
           </div>
-          <div className='input-box'>
+          <div className="input-box">
             <CustomButton>画像登録になる</CustomButton>
           </div>
-          <div className='input-box'>
+          <div className="input-box">
             <TextField
-              label='詳細'
-              autoComplete='off'
+              label="詳細"
+              autoComplete="off"
               fullWidth
               multiline
               rows={ 4 }
-              variant='outlined'
+              variant="outlined"
             />
           </div>
-          <CustomButton className='submit-button'>
+          <CustomButton className="submit-button">
             登録
           </CustomButton>
         </form>

@@ -4,17 +4,17 @@ import { InputLabel, MenuItem, Select } from '@material-ui/core'
 import { Roles } from '../_Constants'
 import { PickerProps } from '../_PropsType'
 
-const RoleSelector = ({ role }: PickerProps) => {
+const RoleSelector = ({ option, selectHandler }: PickerProps) => {
   return (
     <div>
       <StyledContr>
-        <InputLabel id='role'>権限</InputLabel>
+        <InputLabel id="role">権限</InputLabel>
         <Select
-          name='role'
-          variant='outlined'
-          value={ role?.option }
-          onChange={ role?.changeHandler }
-          className='w-18 h-4'
+          name="role"
+          variant="outlined"
+          value={ option }
+          onChange={ selectHandler }
+          className="w-18 h-4"
         >
           { Roles.map((value, index) => (
             <MenuItem key={ index } value={ value.id }>{ value.value }</MenuItem>
