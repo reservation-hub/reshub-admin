@@ -1,10 +1,9 @@
-import React, { FormEvent, useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
 import MainTemplate from '../../components/common/layout/MainTemplate'
 import UserForm from '../../components/form/UserForm'
 import { useDispatch } from 'react-redux'
-import { TFormState } from '../../components/form/PropsType'
-import { useSelect } from '../../utils/useSelect'
+import { TFormState } from '../../components/form/_PropsType'
 import useInput from '../../utils/useInput'
 import useValidation from '../../utils/useValidation'
 import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
@@ -14,7 +13,7 @@ import { addUser, patchUser } from '../../store/actions/userAction'
 const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
 
   const dispatch = useDispatch()
-  const sRole = useSelect('')
+  const user = location.state?.user
 
   const validationSchema = {
     email: false,
@@ -26,27 +25,22 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   }
 
   const { input, ChangeHandler } = useInput({
-    email: '',
+    email: user ? String(location.state?.user?.email) : '',
     password: '',
     confirm: '',
     username: '',
-    firstNameKanji: '',
-    lastNameKanji: '',
-    firstNameKana: '',
-    lastNameKana: '',
-    birthdayY: '',
-    birthdayM: '',
-    birthdayD: '',
-    gender: '',
-    role: sRole.option
+    firstNameKanji: user ? String(location.state?.user?.firstNameKanji) : '',
+    lastNameKanji: user ? String(location.state?.user?.lastNameKanji) : '',
+    firstNameKana: user ? String(location.state?.user?.firstNameKana) : '',
+    lastNameKana: user ? String(location.state?.user?.lastNameKana) : '',
+    birthdayY: user ? String(dayjs(location.state?.user?.birthday).year()) : '',
+    birthdayM: user ? String(dayjs(location.state?.user?.birthday).month()) : '',
+    birthdayD: user ? String(dayjs(location.state?.user?.birthday).day()) : '',
+    gender: user ? String(location.state?.user?.gender) : '',
+    role: ''
   })
 
-  const changeHandlers = {
-    changeHandler: ChangeHandler,
-    selectHandler: sRole.changeHandler
-  }
-
-  const { validation, error, setError } = useValidation(input, validationSchema)
+  const { validation, error } = useValidation(input, validationSchema)
 
   const userData: { insertData: insertUserFromAdminQuery, updateData: updateUserFromAdminQuery }
     = useMemo(() => {
@@ -58,12 +52,13 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       lastNameKanji: input.lastNameKanji,
       firstNameKana: input.firstNameKana,
       lastNameKana: input.lastNameKana,
-      roleIds: [Number(sRole.option)],
+      roleIds: [Number(input.role)],
       gender: input.gender,
       birthday: dayjs(
         `${ input.birthdayY }/${ input.birthdayM }/${ input.birthdayD }`
       ).format('YYYY-MM-DD')
     }
+
     const updateData: updateUserFromAdminQuery = {
       id: location.state?.user ? Number(location.state.user?.id) : 0,
       params: {
@@ -72,55 +67,46 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
         lastNameKanji: input.lastNameKanji,
         firstNameKana: input.firstNameKana,
         lastNameKana: input.lastNameKana,
-        roleIds: [Number(sRole.option)],
+        roleIds: [Number(input.role)],
         gender: input.gender,
         birthday: dayjs(
           `${ input.birthdayY }/${ input.birthdayM }/${ input.birthdayD }`
         ).format('YYYY-MM-DD')
       }
     }
+
     return { insertData, updateData }
   }, [
     input,
-    sRole,
     location.state
   ])
 
-  const onSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+  const submitHandler = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      if (input.password !== input.confirm) {
-        setError((error) => ( { ...error, duplicated: true } ))
+      validation(input, input.password, input.confirm)
+      if (location.state?.user) {
+        dispatch(patchUser(userData.updateData))
       } else {
-        setError((error) => ( { ...error, duplicated: false } ))
-      }
-      try {
-        validation(input)
-        if (location.state?.user) {
-          dispatch(patchUser(userData.updateData))
-        } else {
-          dispatch(addUser(userData.insertData))
-        }
-      } catch (e) {
-        console.log(e)
+        dispatch(addUser(userData.insertData))
       }
     }, [
       dispatch,
       input,
       userData,
       location.state,
-      validation,
-      setError
+      validation
     ]
   )
+
   return (
     <MainTemplate>
       <Route exact path="/">
         <UserForm
           formState={ location.state }
           formValue={ input }
-          onSubmit={ onSubmit }
-          changeHandlers={ changeHandlers }
+          submitHandler={ submitHandler }
+          changeHandler={ ChangeHandler }
           error={ error }
         />
       </Route>
@@ -128,8 +114,8 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
         <UserForm
           formState={ location.state }
           formValue={ input }
-          onSubmit={ onSubmit }
-          changeHandlers={ changeHandlers }
+          submitHandler={ submitHandler }
+          changeHandler={ ChangeHandler }
           error={ error }
         />
       </Route>

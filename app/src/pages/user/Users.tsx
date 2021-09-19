@@ -1,47 +1,17 @@
 import { useEffect, useState } from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { RootState } from '../../store/store'
 import { fetchUserList } from '../../store/actions/userAction'
 import { useModal } from '../../utils/useModal'
-import { IUserFormInput } from '../../components/modal/_PropsType'
-import { insertUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
-
 import UserList from '../../components/user/userlist/UserList'
 import Profile from './Profile'
 import ModalOverlay from '../../components/modal/ModalOverlay'
 import MainTemplate from '../../components/common/layout/MainTemplate'
-import * as yup from 'yup'
-import dayjs from 'dayjs'
 import Loading from '../../components/common/atoms/loading'
 import Paginate from '../../components/common/atoms/Paginate'
 import ModalAlert from '../../components/modal/ModalAlert'
 import history from '../../utils/history'
-
-export const schema = yup.object({
-  email: yup.string().email('正しいメールアドレスを入力してください'),
-  firstNameKana: yup.string().matches(/^[\u30A0-\u30FF]+$/, 'カタカナで入力してください'),
-  lastNameKana: yup.string().matches(/^[\u30A0-\u30FF]+$/, 'カタカナで入力してください'),
-  birthdayY: yup.string().matches(/^(19|20)\d\d$/, '1900から2099の入力でお願いします'),
-  birthdayM: yup.string().matches(/^0[1-9]|1[0-2]$/, '01から12の入力でお願いします'),
-  birthdayD: yup.string().matches(/^0[1-9]|[12]\d|3[01]$/, '01から31の入力でお願いします')
-})
-
-const createAddUserQuery = (params: IUserFormInput): insertUserFromAdminQuery => ( {
-  email: params.email,
-  password: params.password,
-  confirm: params.confirm,
-  firstNameKanji: params.firstNameKanji,
-  lastNameKanji: params.lastNameKanji,
-  firstNameKana: params.firstNameKana,
-  lastNameKana: params.lastNameKana,
-  gender: params.gender,
-  birthday: dayjs(
-    `${ params.birthdayY }/${ params.birthdayM }/${ params.birthdayD }`
-  ).format('YYYY-MM-DD'),
-  roleIds: [Number(params.role)]
-} )
 
 const Users = () => {
 

@@ -20,7 +20,7 @@ export const StyledInput = withStyles((theme: Theme) => ( {
   }
 } ))(TextField)
 
-export const StyledContr = withStyles((theme: Theme) => ( {
+export const StyledControl = withStyles((theme: Theme) => ( {
   root: {
     '& .MuiInputLabel-formControl': {
       transform: 'translate(14px, 14px) scale(1)'
@@ -39,7 +39,41 @@ const FormStyle = makeStyles((theme: Theme) => ( {
     '& .form-box': {
       marginTop: '2rem',
       '& .input-box': {
-        marginBottom: '2rem'
+        marginBottom: '2rem',
+        display: 'flex',
+        justifyContent: 'space-between'
+      },
+      '& .kanji-kana-name': {
+        width: '27rem'
+      },
+      '& .genderRadio': {
+        '& input[type=radio]': {
+          display: 'none',
+          '& + label': {
+            padding: '.65rem',
+            cursor: 'pointer',
+            width: '17.5rem',
+            border: '1px solid rgba(0, 0, 0, 0.23)',
+            borderRadius: '4px',
+            lineHeight: '2.5rem',
+            textAlign: 'center',
+            fontSize: '1rem',
+            color: 'rgba(0, 0, 0, 0.54)',
+            '&:hover': {
+              color: theme.palette.secondary.main,
+              background: theme.palette.primary.main,
+              transition: 'all .5s ease 0s'
+            }
+          }
+        },
+        '& input[type=radio]:checked + label': {
+          background: theme.palette.primary.main,
+          color: theme.palette.secondary.main
+        }
+      },
+      '& .birthday': {
+        width: '17.5rem',
+        height: '4rem'
       },
       '& .submit-button': {
         width: '56rem',
@@ -47,6 +81,14 @@ const FormStyle = makeStyles((theme: Theme) => ( {
         marginTop: '.5rem',
         background: theme.palette.primary.main,
         color: '#fff',
+        border: 'none'
+      },
+      '& .disabled-button': {
+        width: '56rem',
+        height: '4.5rem',
+        marginTop: '.5rem',
+        background: 'rgba(102, 153, 153, 0.5)',
+        color: theme.palette.secondary.main,
         border: 'none'
       },
       '& .label': {

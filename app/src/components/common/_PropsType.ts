@@ -48,4 +48,9 @@ export type PickerProps = {
   pref?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
   city?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
   classes?: string
+  id?: string
+  name?: string
+  from?: number
+  to?: number
+  label?: string
 }

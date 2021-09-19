@@ -3,41 +3,34 @@ import Container from '@material-ui/core/Container'
 import Header from './Header'
 import FormStyle, { StyledInput } from './FormStyle'
 import CustomButton from '../common/atoms/CustomButton'
-import { IUserForm } from './PropsType'
+import { IUserForm } from './_PropsType'
 import { VALIDATION_TEXT } from '../../constants/FormValid'
 import RoleSelector from '../common/atoms/RoleSelector'
+import DayPicker from '../common/atoms/DayPicker'
+import dayjs from 'dayjs'
 
 const UserForm = ({
-  onSubmit,
+  submitHandler,
   formState,
   formValue,
-  changeHandlers,
+  changeHandler,
   error
 }: IUserForm) => {
+  
   const classes = FormStyle()
-  let disabled = false
+  let disabled: boolean = false
 
-  if (
-    formValue.email.length === 0 ||
-    formValue.username.length === 0 ||
-    formValue.password.length === 0 ||
-    formValue.confirm.length === 0 ||
-    formValue.firstNameKanji.length === 0 ||
-    formValue.lastNameKanji.length === 0 ||
-    formValue.firstNameKana.length === 0 ||
-    formValue.lastNameKana.length === 0 ||
-    formValue.gender.length === 0
-  ) {
-    disabled = true
+  for (const value of Object.values(formValue)) {
+    disabled = value.length === 0
   }
 
   return (
     <Container maxWidth="sm" className={ classes.container }>
       <Header
-        title={ formState?.user ? 'ユーザー編集' : '新規登録' }
+        title={ formState?.user ? `${ formState.user.email }編集` : '新規登録' }
       />
       <div className="form-box">
-        <form onSubmit={ onSubmit }>
+        <form onSubmit={ submitHandler }>
           <div className="input-box">
             <StyledInput
               label="メールアドレス"
@@ -46,9 +39,10 @@ const UserForm = ({
               fullWidth
               variant="outlined"
               name="email"
+              value={ formValue.email }
               error={ error.email }
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
+              onChange={ changeHandler }
+              onBlur={ changeHandler }
               helperText={
                 error.email &&
                 VALIDATION_TEXT.EMAIL
@@ -63,7 +57,7 @@ const UserForm = ({
               fullWidth
               variant="outlined"
               name="username"
-              onChange={ changeHandlers.changeHandler }
+              onChange={ changeHandler }
             />
           </div>
           <div className="input-box">
@@ -73,8 +67,10 @@ const UserForm = ({
               placeholder="お名前（名字）を入力してください。"
               variant="outlined"
               name="firstNameKanji"
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
+              className="kanji-kana-name"
+              value={ formValue.firstNameKanji }
+              onChange={ changeHandler }
+              onBlur={ changeHandler }
             />
             <StyledInput
               label="名"
@@ -82,8 +78,10 @@ const UserForm = ({
               placeholder="お名前を入力してください。"
               variant="outlined"
               name="lastNameKanji"
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
+              className="kanji-kana-name"
+              value={ formValue.lastNameKanji }
+              onChange={ changeHandler }
+              onBlur={ changeHandler }
             />
           </div>
           <div className="input-box">
@@ -93,9 +91,11 @@ const UserForm = ({
               placeholder="お名前（名字）を入力してください。"
               variant="outlined"
               name="firstNameKana"
+              className="kanji-kana-name"
+              value={ formValue.firstNameKana }
               error={ error.firstNameKana }
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
+              onChange={ changeHandler }
+              onBlur={ changeHandler }
               helperText={
                 error.firstNameKana &&
                 VALIDATION_TEXT.KANA_NAME
@@ -107,89 +107,129 @@ const UserForm = ({
               placeholder="お名前を入力してください。"
               variant="outlined"
               name="lastNameKana"
+              className="kanji-kana-name"
+              value={ formValue.lastNameKana }
               error={ error.lastNameKana }
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
+              onChange={ changeHandler }
+              onBlur={ changeHandler }
               helperText={
                 error.lastNameKana &&
                 VALIDATION_TEXT.KANA_NAME
               }
             />
           </div>
-          <div className="input-box">
-            <StyledInput
-              label="パスワード"
-              autoComplete="off"
-              placeholder="パスワードを入力してください。"
-              fullWidth
-              variant="outlined"
-              name="password"
-              type="password"
-              error={ error.password || error.duplicated }
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
-              helperText={
-                error.password &&
-                VALIDATION_TEXT.PASSWORD
-              }
+          {
+            !formState?.user &&
+            <>
+              <div className="input-box">
+                <StyledInput
+                  label="パスワード"
+                  autoComplete="off"
+                  placeholder="パスワードを入力してください。"
+                  fullWidth
+                  variant="outlined"
+                  name="password"
+                  type="password"
+                  error={ error.password || error.duplicated }
+                  onChange={ changeHandler }
+                  onBlur={ changeHandler }
+                  helperText={
+                    error.password &&
+                    VALIDATION_TEXT.PASSWORD
+                  }
+                />
+              </div>
+              <div className="input-box">
+                <StyledInput
+                  label="パスワード確認"
+                  autoComplete="off"
+                  placeholder="確認用パスワードを入力してください。"
+                  fullWidth
+                  variant="outlined"
+                  name="confirm"
+                  type="password"
+                  error={ error.confirm || error.duplicated }
+                  onChange={ changeHandler }
+                  onBlur={ changeHandler }
+                  helperText={
+                    error.confirm &&
+                    VALIDATION_TEXT.PASSWORD
+                  }
+                />
+              </div>
+            </>
+          }
+          <div className="input-box genderRadio">
+            <input
+              type="radio"
+              id="genderMale"
+              name="gender"
+              value="male"
+              onChange={ changeHandler }
             />
+            <label htmlFor="genderMale">男性</label>
+            <input
+              type="radio"
+              id="genderFemale"
+              name="gender"
+              value="female"
+              onChange={ changeHandler }
+            />
+            <label htmlFor="genderFemale">女性</label>
+            <input
+              type="radio"
+              id="genderOther"
+              name="gender"
+              value="other"
+              onChange={ changeHandler }
+            />
+            <label htmlFor="genderOther">その他</label>
           </div>
           <div className="input-box">
-            <StyledInput
-              label="パスワード確認"
-              autoComplete="off"
-              placeholder="確認用パスワードを入力してください。"
-              fullWidth
-              variant="outlined"
-              name="confirm"
-              type="password"
-              error={ error.confirm || error.duplicated }
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
-              helperText={
-                error.confirm &&
-                VALIDATION_TEXT.PASSWORD
-              }
-            />
-          </div>
-          <div className="input-box">
-            <StyledInput
+            <DayPicker
+              id="year"
               label="年"
               name="birthdayY"
-              autoComplete="off"
-              variant="outlined"
-              className="birthday"
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
+              classes="birthday"
+              selectHandler={ changeHandler }
+              from={ 1900 }
+              to={ dayjs().year() }
+              option={ formValue.birthdayY }
             />
-            <StyledInput
+            <DayPicker
+              id="month"
               label="月"
               name="birthdayM"
-              autoComplete="off"
-              variant="outlined"
-              className="birthdayMD"
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
+              classes="birthday"
+              selectHandler={ changeHandler }
+              from={ 1 }
+              to={ 12 }
+              option={ formValue.birthdayM }
             />
-            <StyledInput
+            <DayPicker
+              id="day"
               label="日"
               name="birthdayD"
-              autoComplete="off"
-              variant="outlined"
-              className="birthdayMD"
-              onChange={ changeHandlers.changeHandler }
-              onBlur={ changeHandlers.changeHandler }
+              classes="birthday"
+              selectHandler={ changeHandler }
+              from={ 1 }
+              to={ 31 }
+              option={ formValue.birthdayD }
             />
           </div>
           <div className="input-box">
             <RoleSelector
               option={ formValue.role }
-              selectHandler={ changeHandlers.selectHandler }
+              selectHandler={ changeHandler }
             />
           </div>
           { error.duplicated && VALIDATION_TEXT.DUPLICATED }
           <CustomButton
-            className="submit-button"
+            className={
+              disabled ?
+                'disabled-button' :
+                'submit-button'
+            }
             disabled={ disabled }
           >
             登録

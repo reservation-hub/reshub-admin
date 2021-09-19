@@ -10,11 +10,14 @@ export type TValid = {
   duplicated?: boolean
 }
 
-const useValidation = <T>(initialValues: T, validationValues: TValid) => {
+const useValidation = <T>(
+  initialValues: T,
+  validationValues: TValid
+) => {
   const [error, setError] = useState<TValid>(validationValues)
 
   const validation = useCallback(
-    (name: T) => {
+    (name: T, value1, value2) => {
       for (const [key, value] of Object.entries(name)) {
         switch (key) {
           case VALID_TYPE.EMAIL:
@@ -23,28 +26,28 @@ const useValidation = <T>(initialValues: T, validationValues: TValid) => {
             } else {
               setError((error) => ( { ...error, email: false } ))
             }
-            continue
+            break
           case VALID_TYPE.PASSWORD:
             if (!VALID_REGEX.PASSWORD.test(value)) {
               setError((error) => ( { ...error, password: true } ))
             } else {
               setError((error) => ( { ...error, password: false } ))
             }
-            continue
+            break
           case VALID_TYPE.CONFIRM:
             if (!VALID_REGEX.CONFIRM.test(value)) {
               setError((error) => ( { ...error, confirm: true } ))
             } else {
               setError((error) => ( { ...error, confirm: false } ))
             }
-            continue
+            break
           case VALID_TYPE.FIRST_NAME_KANA:
             if (!VALID_REGEX.KANA_NAME.test(value)) {
               setError((error) => ( { ...error, firstNameKana: true } ))
             } else {
               setError((error) => ( { ...error, firstNameKana: false } ))
             }
-            continue
+            break
           case VALID_TYPE.LAST_NAME_KANA:
             if (!VALID_REGEX.KANA_NAME.test(value)) {
               setError((error) => ( { ...error, lastNameKana: true } ))
@@ -54,15 +57,18 @@ const useValidation = <T>(initialValues: T, validationValues: TValid) => {
             break
           default:
             setError((error) => ( { ...error } ))
+            break
         }
       }
-      if (error) {
-        throw new Error('error')
+      if (value1 !== value2) {
+        setError((error) => ( { ...error, duplicated: true } ))
+      } else {
+        setError((error) => ( { ...error, duplicated: false } ))
       }
-    }, [error]
+    }, []
   )
 
-  return { validation, error, setError }
+  return { validation, error }
 }
 
 export default useValidation

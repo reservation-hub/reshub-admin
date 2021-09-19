@@ -91,7 +91,7 @@ export const addUser = async (userData: insertUserFromAdminQuery) => await insta
   `/users`, { ...userData }
 )
 export const patchUser = async (userData: updateUserFromAdminQuery) => await instance.patch(
-  `/users/${ userData.id }`, { ...userData }
+  `/users/${ userData.id }`, { ...userData.params }
 )
 export const deleteUser = async (id: number) => await instance.delete(
   `/users/${ id }`

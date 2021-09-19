@@ -48,7 +48,7 @@ export const ModalSelect = withStyles((theme: Theme) => ( {
   }
 } ))(FormControl)
 
-const ModalFormStyle = makeStyles((theme: Theme) => ( {
+const ModalStyle = makeStyles((theme: Theme) => ( {
   Container: {
     width: '40rem',
     height: '15rem',
@@ -121,4 +121,4 @@ const ModalFormStyle = makeStyles((theme: Theme) => ( {
   }
 } ))
 
-export default ModalFormStyle
+export default ModalStyle
