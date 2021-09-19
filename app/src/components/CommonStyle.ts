@@ -38,7 +38,7 @@ export const StyledHeader = withStyles((theme: Theme) => ( {
 const CommonStyle = makeStyles((theme: Theme) => ( {
   mainBackground: {
     width: '82.5%',
-    margin: '5.5rem 3.5rem 0',
+    margin: '5.5rem 22rem 0',
     position: 'relative'
   },
   loginSelectBackground: {
@@ -49,8 +49,10 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
   },
   sideBar: {
     width: '18rem',
-    height: '100%',
-    float: 'right',
+    position: 'absolute',
+    left: '0',
+    bottom: '0',
+    top: '7rem',
     background: theme.palette.primary.main,
     '& span': {
       fontSize: '2.2rem'

@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomButton from '../common/atoms/CustomButton'
 import { ModalProps } from './_PropsType'
-import ModalFormStyle from './ModalFormStyle'
+import ModalStyle from './ModalStyle'
 
 const ModalAlert = ({
   alertText,
@@ -9,15 +9,15 @@ const ModalAlert = ({
   modalHandler,
   buttonText
 }: ModalProps) => {
-  
-  const classes = ModalFormStyle()
-  
+
+  const classes = ModalStyle()
+
   return (
     <div className={ classes.Container }>
-      <div className='font-2 color-primary font-w-600'>
+      <div className="font-2 color-primary font-w-600">
         <span>{ alertText }</span>
       </div>
-      <div className='flexbox space-between'>
+      <div className="flexbox space-between">
         <CustomButton onClick={ modalHandler }>{ buttonText }</CustomButton>
         <CustomButton onClick={ modalCloseHandler }>戻る</CustomButton>
       </div>

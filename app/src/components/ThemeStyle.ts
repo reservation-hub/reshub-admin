@@ -16,7 +16,7 @@ declare module '@material-ui/core/styles/createPalette' {
     adThFontColor?: PaletteColorOptions
     adTbFontColor?: PaletteColorOptions
   }
-  
+
   interface Palette {
     adBgColor: PaletteColor
     adTheadColor: PaletteColor
@@ -38,11 +38,13 @@ const theme = createTheme({
           padding: '0',
           fontSize: '62.5%',
           fontFamily: '-apple-system, sans-serif, "メイリオ"',
-          height: '100%',
-          overflow: 'hidden'
+          height: '100%'
         },
         body: {
           height: '100%',
+          '& iframe': {
+            display: 'none'
+          },
           '& #reshub-root-page': {
             background: '#F0F5F5',
             height: '100%',

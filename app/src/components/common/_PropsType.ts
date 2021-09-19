@@ -40,6 +40,7 @@ export type PaginateProps = {
 export type PickerProps = {
   hh?: number
   mm?: number
+  option?: string
   selectHandler?: ChangeEventHandler<{ value: unknown }>
   inputHandler?: ChangeEventHandler<HTMLInputElement>
   values?: { areas: Area[], pref: Prefecture[], city: City[] }
@@ -47,4 +48,9 @@ export type PickerProps = {
   pref?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
   city?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
   classes?: string
+  id?: string
+  name?: string
+  from?: number
+  to?: number
+  label?: string
 }

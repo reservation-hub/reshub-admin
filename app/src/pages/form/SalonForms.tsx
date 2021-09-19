@@ -1,13 +1,15 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, RouteComponentProps } from 'react-router-dom'
 import SalonForm from '../../components/form/SalonForm'
 import MainTemplate from '../../components/common/layout/MainTemplate'
+import { MatchParams } from '../../components/user/_PropsType'
 
-const SalonForms = () => {
+const SalonForms = ({ location }: RouteComponentProps<MatchParams>) => {
+  console.log(location)
   return (
     <MainTemplate>
-      <Route exact path='/form/salon' component={ SalonForm } />
-      <Route path='/form/salon/:id' component={ SalonForm } />
+      <Route exact path="/" component={ SalonForm }/>
+      <Route path="/:id" component={ SalonForm }/>
     </MainTemplate>
   )
 }

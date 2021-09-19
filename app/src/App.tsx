@@ -17,16 +17,17 @@ import Salon from './pages/shop/Salon'
 import SalonDashboard from './pages/dashboards/salon/SalonDashboard'
 import setAuthToken from './utils/setAuthToken'
 import SalonForms from './pages/form/SalonForms'
+import UserForms from './pages/form/UserForms'
 
 const App = () => {
-  
+
   const dispatch = useDispatch()
-  
+
   const sessionToken: string = Cookies.get('sessionToken') ?? ''
   const authToken: string = Cookies.get('authToken') ?? ''
   const refreshToken: string = Cookies.get('refreshToken') ?? ''
   setAuthToken(sessionToken)
-  
+
   useEffect(() => {
     if (!authToken && !sessionToken && refreshToken) {
       dispatch(silentLogin())
@@ -34,25 +35,26 @@ const App = () => {
       history.push('/auth', { error: 'error' })
     }
   }, [dispatch, sessionToken, authToken, refreshToken])
-  
+
   return (
     <Router history={ history }>
-      <CssBaseline />
+      <CssBaseline/>
       <Switch>
         {/* public */ }
-        <PublicRoute exact path='/' component={ Home } />
-        <PublicRoute path='/salon_dashboard' component={ SalonDashboard } />
-        
+        <PublicRoute exact path="/" component={ Home }/>
+        <PublicRoute path="/salon_dashboard" component={ SalonDashboard }/>
+
         {/* only not logged in */ }
-        <Route path='/auth' component={ Login } />
-        
+        <Route path="/auth" component={ Login }/>
+
         {/* only admin */ }
-        <PrivateRoute path='/salon' component={ Salon } />
-        <PrivateRoute path='/users' component={ Users } />
-        <PrivateRoute path='/form' component={ SalonForms } />
-        
+        <PrivateRoute path="/salon" component={ Salon }/>
+        <PrivateRoute path="/users" component={ Users }/>
+        <PrivateRoute path="/form/salon" component={ SalonForms }/>
+        <PrivateRoute path="/form/user" component={ UserForms }/>
+
         {/* has error */ }
-        <Route component={ Error } />
+        <Route component={ Error }/>
       </Switch>
     </Router>
   )
