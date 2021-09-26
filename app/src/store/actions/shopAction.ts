@@ -1,7 +1,6 @@
 //----------------------------------
 // redux action お店情報管理関数
 //----------------------------------
-
 import {
   SHOP_ADD_SUCCESS,
   SHOP_DELETE_SUCCESS,
@@ -10,20 +9,15 @@ import {
   SHOP_REQUEST_FAILURE,
   SHOP_REQUEST_START,
   SHOP_REQUEST_SUCCESS
-} from '../types/shopTypes'
-
-import { RootState, typedAction } from '../store'
-import { insertShopQuery, updateShopQuery } from '../../utils/api/request-response-types/ShopService'
+} from '@store/types/shopTypes'
+import { RootState, typedAction } from '@store/store'
+import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
-
-import apiEndpoint from '../../utils/api/apiEndpoint'
-import history from '../../utils/history'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '../../utils/api/request-response-types/ServiceCommonTypes'
-import { Shop, ShopList } from '../../Model/ShopResponse'
+import apiEndpoint from '@utils/api/apiEndpoint'
+import history from '@utils/history'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { Shop, ShopList } from '@Model/ShopResponse'
 
 // リクエストを始まる
 const shopRequestStart = () => {

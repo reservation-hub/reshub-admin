@@ -1,7 +1,6 @@
 //----------------------------------
 // redux お店状態管理 reducer
 //----------------------------------
-
 import {
   SHOP_ADD_SUCCESS,
   SHOP_DELETE_SUCCESS,
@@ -10,13 +9,10 @@ import {
   SHOP_REQUEST_FAILURE,
   SHOP_REQUEST_SUCCESS,
   ShopState
-} from '../types/shopTypes'
-import { ShopAction } from '../actions/shopAction'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '../../utils/api/request-response-types/ServiceCommonTypes'
-import { Shop, ShopList } from '../../Model/ShopResponse'
+} from '@store/types/shopTypes'
+import { ShopAction } from '@store/actions/shopAction'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { Shop, ShopList } from '@Model/ShopResponse'
 
 const initialState: ShopState = {
   loading: true,

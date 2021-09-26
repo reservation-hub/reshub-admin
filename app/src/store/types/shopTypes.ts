@@ -1,13 +1,8 @@
 //----------------------------------
 // redux action types お店管理
 //----------------------------------
-
-//　お店情報のリクエストをスタートする
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '../../utils/api/request-response-types/ServiceCommonTypes'
-import { Shop, ShopList } from '../../Model/ShopResponse'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { Shop, ShopList } from '@Model/ShopResponse'
 
 export const SHOP_REQUEST_START = 'SHOP_REQUEST_START' as const
 // お店情報のリクエスト成功

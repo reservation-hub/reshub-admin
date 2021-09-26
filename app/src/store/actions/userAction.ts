@@ -1,7 +1,6 @@
 //----------------------------------
 // redux ユーザー状態管理 action
 //----------------------------------
-
 import {
   USERS_ADD_SUCCESS,
   USERS_DELETE_SUCCESS,
@@ -10,20 +9,15 @@ import {
   USERS_REQUEST_FAILURE,
   USERS_REQUEST_START,
   USERS_REQUEST_SUCCESS
-} from '../types/usersType'
-
-import { RootState, typedAction } from '../store'
-import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
+} from '@store/types/usersType'
+import { RootState, typedAction } from '@store/store'
+import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '@utils/api/request-response-types/UserService'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
-import { User } from '../../entities/User'
-
+import { User } from '@entity/User'
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '../../utils/api/request-response-types/ServiceCommonTypes'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 
 const userRequestStart = () => {
   return typedAction(USERS_REQUEST_START)

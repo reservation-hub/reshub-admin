@@ -1,23 +1,20 @@
 //----------------------------------
 // redux action ユーザー印証管理関数
 //----------------------------------
-
 import {
   LOGOUT_REQUEST_SUCCESS,
   USER_REQUEST_FAILURE,
   USER_REQUEST_START,
   USER_REQUEST_SUCCESS
-} from '../types/authTypes'
-
-import { RootState, typedAction } from '../store'
+} from '@store/types/authTypes'
+import { RootState, typedAction } from '@store/store'
 import { GoogleLoginResponse } from 'react-google-login'
-import { User } from '../../entities/User'
+import { User } from '@entity/User'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
-
-import apiEndpoint from '../../utils/api/apiEndpoint'
-import setAuthToken from '../../utils/setAuthToken'
-import history from '../../utils/history'
+import apiEndpoint from '@utils/api/apiEndpoint'
+import setAuthToken from '@utils/setAuthToken'
+import history from '@utils/history'
 import Cookies from 'js-cookie'
 
 //ユーザーのリクエストをスタートするアクション

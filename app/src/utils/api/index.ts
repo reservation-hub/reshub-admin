@@ -1,7 +1,6 @@
 //----------------------------------
 // api default settings
 //----------------------------------
-
 import axios, { AxiosInstance } from 'axios'
 
 // apiサーバーの基準になるUrl

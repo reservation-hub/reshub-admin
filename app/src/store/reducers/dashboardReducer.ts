@@ -1,5 +1,5 @@
-import { DASHBOARD_REQUEST_SUCCESS, DashBoardResponseType, DashBoardState } from '../types/dashboardTypes'
-import { DashboardAction } from '../actions/dashboardAction'
+import { DASHBOARD_REQUEST_SUCCESS, DashBoardResponseType, DashBoardState } from '@store/types/dashboardTypes'
+import { DashboardAction } from '@store/actions/dashboardAction'
 
 const initialState: DashBoardState = {
   loading: true,

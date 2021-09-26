@@ -1,9 +1,8 @@
 import React from 'react'
-
 import { Redirect, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/store'
-import { User } from '../../entities/User'
+import { RootState } from '@store/store'
+import { User } from '@entity/User'
 
 // admin and salon staff
 const PublicRoute = ({ children, ...rest }: any) => {
