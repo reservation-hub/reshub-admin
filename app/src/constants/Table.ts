@@ -1,4 +1,4 @@
-export const UserCell: {} = {
+export const USER_CELL: Record<string, any> = {
   No: 'No',
   email: 'メールアドレス',
   kanjiName: '氏名（漢字）',
@@ -8,7 +8,7 @@ export const UserCell: {} = {
   role: 'アクセス権限'
 }
 
-export const SalonCell: {} = {
+export const SALON_CELL: Record<string, any> = {
   No: 'No',
   name: 'サロン名',
   stars: '評点',

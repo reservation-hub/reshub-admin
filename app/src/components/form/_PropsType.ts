@@ -31,6 +31,13 @@ export type TSalonInput = {
   days: number[]
 }
 
+export type TChangeHandle = {
+  input: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  check?: ChangeEventHandler<HTMLInputElement>
+  startAt?: (e: ChangeEvent<HTMLSelectElement>) => void
+  endAt?: (e: ChangeEvent<HTMLSelectElement>) => void
+}
+
 export type TFormState = {
   user?: User
   shop?: Shop
@@ -41,7 +48,7 @@ export interface IUserFormProps {
   submitHandler: FormEventHandler<HTMLFormElement>
   formValue: TUserInput
   formState?: TFormState
-  changeHandler: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  changeHandler: TChangeHandle
   error: TValid
 }
 
@@ -49,32 +56,7 @@ export interface ISalonFormProps {
   submitHandler: FormEventHandler<HTMLFormElement>
   formValue: TSalonInput
   formState?: TFormState
-  changeHandler: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-  checkHandler: ChangeEventHandler<HTMLInputElement>
-  startAt: {
-    hour: number
-    minute: number
-    HHmm: string
-    changeHandler: (e: ChangeEvent<HTMLSelectElement>) => void
-  }
-  endAt: {
-    hour: number
-    minute: number
-    HHmm: string
-    changeHandler: (e: ChangeEvent<HTMLSelectElement>) => void
-  }
-  selectArea: {
-    option: string
-    changeHandler: (e: ChangeEvent<{ value: unknown }>) => void
-  }
-  selectPref: {
-    option: string
-    changeHandler: (e: ChangeEvent<{ value: unknown }>) => void
-  }
-  selectCity: {
-    option: string
-    changeHandler: (e: ChangeEvent<{ value: unknown }>) => void
-  }
+  changeHandlers: TChangeHandle
 }
 
 export interface IFormType {

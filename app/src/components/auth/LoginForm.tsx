@@ -1,20 +1,11 @@
-import React, { ChangeEventHandler, FormEventHandler } from 'react'
-import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
+import React from 'react'
+import { GoogleLogin } from 'react-google-login'
 import TextField from '@material-ui/core/TextField'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { FcGoogle } from 'react-icons/fc'
 import CustomButton from '@components/common/atoms/CustomButton'
-
-interface LoginProps {
-  value: { email: string; password: string }
-  setValue: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-  onSubmit: FormEventHandler<HTMLFormElement>
-  googleHandler: (
-    response: GoogleLoginResponse | GoogleLoginResponseOffline
-  ) => void
-  classes?: any
-}
+import { IAuthFormProps } from '@components/auth/_PropsType'
 
 const LoginForm = ({
   value,
@@ -22,7 +13,7 @@ const LoginForm = ({
   onSubmit,
   googleHandler,
   classes
-}: LoginProps) => {
+}: IAuthFormProps) => {
   return (
     <Container maxWidth='sm'>
       <Container className={classes.loginCss.formBox}>

@@ -1,5 +1,7 @@
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
-import { Table, TableCell, TableHead } from '@material-ui/core'
+import Table from '@material-ui/core/Table'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
 
 //-----------------------------------------------------------
 // reshub-adminのテーブルのデフォルトスタイルを指定する

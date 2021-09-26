@@ -2,11 +2,10 @@ import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
 import SalonForm from '@components/form/SalonForm'
 import MainTemplate from '@components/common/layout/MainTemplate'
-import { TFormState, TSalonInput } from '@components/form/_PropsType'
+import { TChangeHandle, TFormState, TSalonInput } from '@components/form/_PropsType'
 import { useDispatch } from 'react-redux'
 import useInput from '@utils/useInput'
 import { useTimePicker } from '@utils/useTimePicker'
-import { useSelect } from '@utils/useSelect'
 import { useCheckBox } from '@utils/useCheckBox'
 import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
 import { addShop, editShopData } from '@store/actions/shopAction'
@@ -19,39 +18,37 @@ const SalonForms = ({
 
   const startAt = useTimePicker(0)
   const endAt = useTimePicker(0)
-  const areaSelector = useSelect(shop ? String(shop.area?.id) : '')
-  const prefSelector = useSelect(shop ? String(shop.prefecture?.id) : '')
-  const citySelector = useSelect(shop ? String(shop.city?.id) : '')
-  const { checked, changeHandler } = useCheckBox([])
+  const { checked, changeHandler } = useCheckBox(shop?.schedule?.days ?? [])
 
   const { input, ChangeHandler } = useInput({
-    name: '',
-    address: '',
-    phoneNumber: ''
+    name: shop?.name ?? '',
+    address: shop?.address ?? '',
+    phoneNumber: shop?.phoneNumber ?? '',
+    areaId: String(shop?.area?.id) ?? '',
+    prefectureId: String(shop?.prefecture?.id) ?? '',
+    cityId: String(shop?.city?.id) ?? ''
   })
+
+  const changeHandlers = {
+    input: ChangeHandler,
+    check: changeHandler,
+    startAt: startAt.changeHandler,
+    endAt: endAt.changeHandler
+  } as TChangeHandle
 
   const form = useMemo(() => {
     return {
-      name: shop ? shop?.name : input.name,
-      address: shop ? shop?.address : input.address,
-      phoneNumber: shop ? shop?.phoneNumber : input.phoneNumber,
-      cityId: citySelector.option,
-      prefectureId: prefSelector.option,
-      areaId: areaSelector.option,
+      name: input.name,
+      address: input.address,
+      phoneNumber: input.phoneNumber,
+      cityId: input.cityId,
+      prefectureId: input.prefectureId,
+      areaId: input.areaId,
       startTime: { hour: String(startAt.hour), minute: String(startAt.minute) },
       endTime: { hour: String(endAt.hour), minute: String(endAt.minute) },
-      days: shop ? shop?.schedule?.days : checked
+      days: checked
     } as TSalonInput
-  }, [
-    shop,
-    input,
-    startAt,
-    endAt,
-    citySelector,
-    prefSelector,
-    areaSelector,
-    checked
-  ])
+  }, [shop, input, startAt, endAt, checked])
 
   const shopData: { insertData: insertShopQuery; updateData: updateShopQuery } =
     useMemo(() => {
@@ -102,13 +99,7 @@ const SalonForms = ({
           submitHandler={onSubmit}
           formState={location.state}
           formValue={form}
-          changeHandler={ChangeHandler}
-          selectArea={areaSelector}
-          selectPref={prefSelector}
-          selectCity={citySelector}
-          startAt={startAt}
-          endAt={endAt}
-          checkHandler={changeHandler}
+          changeHandlers={changeHandlers}
         />
       </Route>
       <Route path='/:id'>
@@ -116,13 +107,7 @@ const SalonForms = ({
           submitHandler={onSubmit}
           formState={location.state}
           formValue={form}
-          changeHandler={ChangeHandler}
-          selectArea={areaSelector}
-          selectPref={prefSelector}
-          selectCity={citySelector}
-          startAt={startAt}
-          endAt={endAt}
-          checkHandler={changeHandler}
+          changeHandlers={changeHandlers}
         />
       </Route>
     </MainTemplate>

@@ -1,25 +1,31 @@
 import React from 'react'
-import { StyledControl } from '@components/form/FormStyle'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
-import { Roles } from '../_Constants'
-import { IPickerProps } from '../_PropsType'
+import { StyledControl } from '@components/form/FormStyle'
+import { IPickerProps } from '@components/common/_PropsType'
 
-const RoleSelector = ({ option, selectHandler }: IPickerProps) => {
+const Selector = ({
+  id,
+  label,
+  name,
+  option,
+  selectHandler,
+  data
+}: IPickerProps) => {
   return (
     <StyledControl>
-      <InputLabel id='role'>権限</InputLabel>
+      <InputLabel id={id}>{label}</InputLabel>
       <Select
-        name='role'
-        variant='outlined'
+        name={name}
         value={option}
         onChange={selectHandler}
         className='w-18 h-4'
+        variant='outlined'
       >
-        {Roles.map((value, index) => (
+        {data?.map((value, index) => (
           <MenuItem key={index} value={value.id}>
-            {value.value}
+            {value.name}
           </MenuItem>
         ))}
       </Select>
@@ -27,4 +33,4 @@ const RoleSelector = ({ option, selectHandler }: IPickerProps) => {
   )
 }
 
-export default RoleSelector
+export default Selector

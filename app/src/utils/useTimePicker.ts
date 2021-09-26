@@ -1,6 +1,6 @@
 import { ChangeEvent, useCallback, useState } from 'react'
 import dayjs from 'dayjs'
-import { TIME_PICKER_TIME_TYPE } from '@components/common/_Constants'
+import { TIME_PICKER_TIME_TYPE } from '@constants/Time'
 
 export const useTimePicker = (initialState: number) => {
   const [hour, setHour] = useState<number>(initialState)

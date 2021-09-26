@@ -1,5 +1,6 @@
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
-import { AppBar, Paper } from '@material-ui/core'
+import AppBar from '@material-ui/core/AppBar'
+import Paper from '@material-ui/core/Paper'
 
 //-----------------------------------------------------------
 // reshub-adminの共通のスタイルを指定する

@@ -7,23 +7,17 @@ import TimePicker from '../common/atoms/TimePicker'
 import { useDispatch, useSelector } from 'react-redux'
 import { getArea, getOneCity, getOnePref } from '@store/actions/LocationAction'
 import { RootState } from '@store/store'
-import LocationPicker from '@components/common/atoms/LocationPicker'
 import Header from './Header'
 import { ISalonFormProps } from './_PropsType'
-import { days } from '@components/common/_Constants'
 import CheckBox from '@components/common/atoms/CheckBox'
+import Selector from '@components/common/atoms/Selector'
+import { Days } from '@constants/Days'
 
 const SalonForm = ({
   submitHandler,
   formValue,
   formState,
-  changeHandler,
-  startAt,
-  endAt,
-  selectArea,
-  selectPref,
-  selectCity,
-  checkHandler
+  changeHandlers
 }: ISalonFormProps) => {
   const classes = FormStyle()
   const dispatch = useDispatch()
@@ -37,18 +31,18 @@ const SalonForm = ({
     areas: area.values,
     pref: prefecture.prefectures,
     city: city.cities,
-    days: days
+    days: Days
   }
 
   useEffect(() => {
     dispatch(getArea())
-    if (selectArea.option) {
-      dispatch(getOnePref(Number(selectArea.option)))
+    if (formValue.areaId) {
+      dispatch(getOnePref(Number(formValue.areaId)))
     }
-    if (selectPref.option) {
-      dispatch(getOneCity(Number(selectPref.option)))
+    if (formValue.prefectureId) {
+      dispatch(getOneCity(Number(formValue.prefectureId)))
     }
-  }, [dispatch, selectArea.option, selectPref.option])
+  }, [dispatch, formValue.areaId, formValue.prefectureId])
 
   return (
     <Container maxWidth='sm' className={classes.container}>
@@ -64,7 +58,7 @@ const SalonForm = ({
               variant='outlined'
               name='name'
               value={formValue.name}
-              onChange={changeHandler}
+              onChange={changeHandlers.input}
             />
           </div>
           <div className='input-box'>
@@ -76,7 +70,7 @@ const SalonForm = ({
               variant='outlined'
               name='phoneNumber'
               value={formValue.phoneNumber}
-              onChange={changeHandler}
+              onChange={changeHandlers.input}
             />
           </div>
           <div className='input-box'>
@@ -88,15 +82,33 @@ const SalonForm = ({
               variant='outlined'
               name='address'
               value={formValue.address}
-              onChange={changeHandler}
+              onChange={changeHandlers.input}
             />
           </div>
-          <div className='input-box'>
-            <LocationPicker
-              data={data}
-              area={selectArea}
-              pref={selectPref}
-              city={selectCity}
+          <div className='input-box display-flex'>
+            <Selector
+              id='area'
+              name='areaId'
+              option={formValue.areaId}
+              selectHandler={changeHandlers.input}
+              data={data.areas}
+              label='エリア'
+            />
+            <Selector
+              id='pref'
+              name='prefectureId'
+              option={formValue.prefectureId}
+              selectHandler={changeHandlers.input}
+              data={data.pref}
+              label='都道府県'
+            />
+            <Selector
+              id='city'
+              name='cityId'
+              option={formValue.cityId}
+              selectHandler={changeHandlers.input}
+              data={data.city}
+              label='市区町村'
             />
           </div>
           <div className='input-box'>
@@ -104,8 +116,8 @@ const SalonForm = ({
               <span className='font-16'>営業日</span>
             </div>
             <CheckBox
-              inputHandler={checkHandler}
-              data={data}
+              inputHandler={changeHandlers.check}
+              data={Days}
               checkedData={formValue.days}
             />
           </div>
@@ -117,14 +129,14 @@ const SalonForm = ({
               <TimePicker
                 hh={Number(formValue.startTime.hour)}
                 mm={Number(formValue.startTime.minute)}
-                selectHandler={startAt.changeHandler}
+                selectHandler={changeHandlers.startAt}
                 classes='w-13 font-16 h-4'
               />
               <span> - </span>
               <TimePicker
                 hh={Number(formValue.endTime.hour)}
                 mm={Number(formValue.endTime.minute)}
-                selectHandler={endAt.changeHandler}
+                selectHandler={changeHandlers.endAt}
                 classes='w-13 font-16 h-4'
               />
             </div>

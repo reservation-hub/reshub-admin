@@ -46,12 +46,12 @@ const shopDeleteSuccess = (msg: string) => {
   return typedAction(SHOP_DELETE_SUCCESS, msg)
 }
 
-//　リクエストが失敗したらこっち
+// リクエストが失敗したらこっち
 const shopRequestFailure = (err: string) => {
   return typedAction(SHOP_REQUEST_FAILURE, err)
 }
 
-//　全てのお店データを読み込む
+// 全てのお店データを読み込む
 export const fetchShopList =
   (page: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
@@ -64,7 +64,7 @@ export const fetchShopList =
     }
   }
 
-//　お店データを一つだけ読み込む
+// お店データを一つだけ読み込む
 export const getOneShop =
   (id: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
@@ -77,7 +77,7 @@ export const getOneShop =
     }
   }
 
-//　お店データを追加する
+// お店データを追加する
 export const addShop =
   (shopData: insertShopQuery): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
@@ -91,7 +91,7 @@ export const addShop =
     }
   }
 
-//　お店のデータを編集する
+// お店のデータを編集する
 export const editShopData =
   (shopData: updateShopQuery): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
@@ -105,7 +105,7 @@ export const editShopData =
     }
   }
 
-//　お店のデータを削除する
+// お店のデータを削除する
 export const deleteShopData =
   (id: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {

@@ -100,7 +100,7 @@ export const googleLogin =
     }
   }
 
-//　ログアウトを実行するアクション
+// ログアウトを実行するアクション
 export const logout =
   (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
     try {

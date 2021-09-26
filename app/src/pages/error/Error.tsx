@@ -7,7 +7,7 @@ const Error = () => {
     <MainTemplate>
       <StyledPaper>
         <h2>404</h2>
-        <p>Sorry, the page you're looking con not found.</p>
+        <p>コンテンツがありません。</p>
       </StyledPaper>
     </MainTemplate>
   )
