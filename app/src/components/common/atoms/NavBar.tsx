@@ -5,20 +5,20 @@ import { NavLink, Link } from 'react-router-dom'
 import { NavMenu } from '../_Constants'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../../store/store'
+import { RootState } from '@store/store'
 import { AiOutlineGithub } from 'react-icons/all'
 
 const NavBar = () => {
-  
+
   const { user } = useSelector((state: RootState) => state.auth)
-  
+
   return (
     <React.Fragment>
-      <div className='nav-wrapper text-center'>
+      <div className="nav-wrapper text-center">
         <Link to={ `/users/${ user['id'] }` }>
-          <div className='user-profile-link'>
-            <FaRegUserCircle />
-            <p className='user-name'>
+          <div className="user-profile-link">
+            <FaRegUserCircle/>
+            <p className="user-name">
               { user['username'] || 'Admin' }
             </p>
           </div>
@@ -36,22 +36,22 @@ const NavBar = () => {
                     ? '/users' : '/salon'
                 }`
               }
-              activeClassName='active'
+              activeClassName="active"
             >
-              <ListItem button className='nav-items'>
-                <ListItemText primary={ value } />
+              <ListItem button className="nav-items">
+                <ListItemText primary={ value }/>
               </ListItem>
             </NavLink>
           )) }
         </List>
       </div>
-      <footer className='display-flex align-center'>
+      <footer className="display-flex align-center">
         <span>
           Copyright 2021Reshub
         </span>
         <span>
-          <a href='https://github.com/reservation-hub'>
-            <AiOutlineGithub />
+          <a href="https://github.com/reservation-hub">
+            <AiOutlineGithub/>
           </a>
         </span>
       </footer>
