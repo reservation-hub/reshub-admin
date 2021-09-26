@@ -13,7 +13,8 @@ const PageSelect = () => {
         container
         justifyContent='space-between'
         alignItems='center'
-        className={classes.selectBox}>
+        className={classes.selectBox}
+      >
         <Grid item xs={6} className='salon'>
           <Link to='/salon_dashboard' className='link-button'>
             サロン

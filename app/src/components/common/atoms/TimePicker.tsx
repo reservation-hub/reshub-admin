@@ -12,7 +12,8 @@ const TimePicker = ({ hh, mm, selectHandler, classes }: IPickerProps) => {
         name='hour'
         onChange={selectHandler}
         className={classes}
-        variant='outlined'>
+        variant='outlined'
+      >
         {useRange(0, 23).map((hour, index) => (
           <MenuItem key={index} value={hour}>
             {String(hour).padStart(2, '0')}
@@ -25,7 +26,8 @@ const TimePicker = ({ hh, mm, selectHandler, classes }: IPickerProps) => {
         name='minute'
         onChange={selectHandler}
         className={classes}
-        variant='outlined'>
+        variant='outlined'
+      >
         {useRange(0, 50, 10).map((minute, index) => (
           <MenuItem key={index} value={minute}>
             {String(minute).padStart(2, '0')}

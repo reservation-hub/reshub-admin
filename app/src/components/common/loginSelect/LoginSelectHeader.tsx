@@ -6,7 +6,8 @@ const LoginSelectHeader = () => {
   return (
     <Container
       maxWidth='sm'
-      style={{ marginBottom: '1.5rem', color: '#fff', textAlign: 'right' }}>
+      style={{ marginBottom: '1.5rem', color: '#fff', textAlign: 'right' }}
+    >
       <H1>Reshub-Admin</H1>
     </Container>
   )

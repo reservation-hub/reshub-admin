@@ -32,7 +32,8 @@ const NavBar = () => {
                   ? '/users'
                   : '/salon'
               }`}
-              activeClassName='active'>
+              activeClassName='active'
+            >
               <ListItem button className='nav-items'>
                 <ListItemText primary={value} />
               </ListItem>

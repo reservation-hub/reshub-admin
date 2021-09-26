@@ -19,7 +19,8 @@ const TableLayout = ({ children, cell }: ITableProps) => {
                     value[1] === 'No'
                       ? `${classes.tableHeadCell} table-index`
                       : classes.tableHeadCell
-                  }>
+                  }
+                >
                   {value[1]}
                 </TableCell>
               )

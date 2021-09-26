@@ -8,7 +8,8 @@ const H1 = ({ color, children, className }: IH1Props) => {
       variant='h1'
       color={color}
       style={{ fontSize: '3.2rem', fontWeight: 'bold' }}
-      className={className}>
+      className={className}
+    >
       {children}
     </Typography>
   )

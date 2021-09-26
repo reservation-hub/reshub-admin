@@ -12,7 +12,8 @@ const Header = ({ onLogout }: IMainTemplateProps) => {
         container
         alignItems='center'
         justifyContent='space-between'
-        className='header-items'>
+        className='header-items'
+      >
         <Grid item>
           <H1>ResHub-admin</H1>
         </Grid>
