@@ -3,7 +3,7 @@ import { Route, RouteComponentProps } from 'react-router-dom'
 import MainTemplate from '../../components/common/layout/MainTemplate'
 import UserForm from '../../components/form/UserForm'
 import { useDispatch } from 'react-redux'
-import { TFormState } from '../../components/form/_PropsType'
+import { TFormState, TUserInput } from '../../components/form/_PropsType'
 import useInput from '../../utils/useInput'
 import useValidation from '../../utils/useValidation'
 import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '../../utils/api/request-response-types/UserService'
@@ -25,76 +25,89 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   }
 
   const { input, ChangeHandler } = useInput({
-    email: user ? String(location.state?.user?.email) : '',
+    email: '',
     password: '',
     confirm: '',
     username: '',
-    firstNameKanji: user ? String(location.state?.user?.firstNameKanji) : '',
-    lastNameKanji: user ? String(location.state?.user?.lastNameKanji) : '',
-    firstNameKana: user ? String(location.state?.user?.firstNameKana) : '',
-    lastNameKana: user ? String(location.state?.user?.lastNameKana) : '',
-    birthdayY: user ? String(dayjs(location.state?.user?.birthday).year()) : '',
-    birthdayM: user ? String(dayjs(location.state?.user?.birthday).month()) : '',
-    birthdayD: user ? String(dayjs(location.state?.user?.birthday).day()) : '',
-    gender: user ? String(location.state?.user?.gender) : '',
+    firstNameKanji: '',
+    lastNameKanji: '',
+    firstNameKana: '',
+    lastNameKana: '',
+    birthdayY: '',
+    birthdayM: '',
+    birthdayD: '',
+    gender: '',
     role: ''
   })
 
-  const { validation, error } = useValidation(input, validationSchema)
+  const form = useMemo(() => {
+    return {
+      email: user ? String(user?.email) : input.email,
+      password: input.password,
+      confirm: input.confirm,
+      username: input.username,
+      firstNameKanji: user ? String(user?.firstNameKanji) : input.firstNameKanji,
+      lastNameKanji: user ? String(user?.lastNameKanji) : input.lastNameKanji,
+      firstNameKana: user ? String(user?.firstNameKana) : input.firstNameKana,
+      lastNameKana: user ? String(user?.lastNameKana) : input.lastNameKana,
+      birthdayY: user ? String(dayjs(user?.birthday).year()) : input.birthdayY,
+      birthdayM: user ? String(dayjs(user?.birthday).format('M')) : input.birthdayM,
+      birthdayD: user ? String(dayjs(user?.birthday).format('D')) : input.birthdayD,
+      gender: user ? String(user?.gender) : input.gender,
+      role: input.role
+    } as TUserInput
+  }, [input, user])
+  
+  const { validation, error } = useValidation(form, validationSchema)
 
   const userData: { insertData: insertUserFromAdminQuery, updateData: updateUserFromAdminQuery }
     = useMemo(() => {
     const insertData: insertUserFromAdminQuery = {
-      email: input.email,
-      password: input.password,
-      confirm: input.confirm,
-      firstNameKanji: input.firstNameKanji,
-      lastNameKanji: input.lastNameKanji,
-      firstNameKana: input.firstNameKana,
-      lastNameKana: input.lastNameKana,
-      roleIds: [Number(input.role)],
-      gender: input.gender,
+      email: form.email,
+      password: form.password,
+      confirm: form.confirm,
+      firstNameKanji: form.firstNameKanji,
+      lastNameKanji: form.lastNameKanji,
+      firstNameKana: form.firstNameKana,
+      lastNameKana: form.lastNameKana,
+      roleIds: [Number(form.role)],
+      gender: form.gender,
       birthday: dayjs(
-        `${ input.birthdayY }/${ input.birthdayM }/${ input.birthdayD }`
+        `${ form.birthdayY }/${ form.birthdayM }/${ form.birthdayD }`
       ).format('YYYY-MM-DD')
     }
-
     const updateData: updateUserFromAdminQuery = {
-      id: location.state?.user ? Number(location.state.user?.id) : 0,
+      id: Number(user?.id),
       params: {
-        email: input.email,
-        firstNameKanji: input.firstNameKanji,
-        lastNameKanji: input.lastNameKanji,
-        firstNameKana: input.firstNameKana,
-        lastNameKana: input.lastNameKana,
-        roleIds: [Number(input.role)],
-        gender: input.gender,
+        email: form.email,
+        firstNameKanji: form.firstNameKanji,
+        lastNameKanji: form.lastNameKanji,
+        firstNameKana: form.firstNameKana,
+        lastNameKana: form.lastNameKana,
+        roleIds: [Number(form.role)],
+        gender: form.gender,
         birthday: dayjs(
-          `${ input.birthdayY }/${ input.birthdayM }/${ input.birthdayD }`
+          `${ form.birthdayY }/${ form.birthdayM }/${ form.birthdayD }`
         ).format('YYYY-MM-DD')
       }
     }
-
     return { insertData, updateData }
-  }, [
-    input,
-    location.state
-  ])
+  }, [form, user])
 
   const submitHandler = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      validation(input, input.password, input.confirm)
-      if (location.state?.user) {
+      validation(form, form.password, form.confirm)
+      if (user) {
         dispatch(patchUser(userData.updateData))
       } else {
         dispatch(addUser(userData.insertData))
       }
     }, [
       dispatch,
-      input,
+      form,
       userData,
-      location.state,
+      user,
       validation
     ]
   )
@@ -104,7 +117,7 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       <Route exact path="/">
         <UserForm
           formState={ location.state }
-          formValue={ input }
+          formValue={ form }
           submitHandler={ submitHandler }
           changeHandler={ ChangeHandler }
           error={ error }
@@ -113,7 +126,7 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       <Route path="/:id">
         <UserForm
           formState={ location.state }
-          formValue={ input }
+          formValue={ form }
           submitHandler={ submitHandler }
           changeHandler={ ChangeHandler }
           error={ error }

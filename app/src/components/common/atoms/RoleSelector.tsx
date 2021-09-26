@@ -1,10 +1,12 @@
 import React from 'react'
 import { StyledControl } from '../../form/FormStyle'
-import { InputLabel, MenuItem, Select } from '@material-ui/core'
+import Select from '@material-ui/core/Select'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
 import { Roles } from '../_Constants'
-import { PickerProps } from '../_PropsType'
+import { IPickerProps } from '../_PropsType'
 
-const RoleSelector = ({ option, selectHandler }: PickerProps) => {
+const RoleSelector = ({ option, selectHandler }: IPickerProps) => {
   return (
     <StyledControl>
       <InputLabel id="role">権限</InputLabel>

@@ -1,33 +1,32 @@
 import React from 'react'
 
 import { StyledPaper } from '../../CommonStyle'
-import { UserListProps } from '../_PropsType'
 import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
-
 import ListTopBar from '../../common/atoms/ListTopBar'
 import useBirthday from '../../../utils/useBirthday'
 import { HeaderType } from '../../common/_Constants'
+import { IDetailProps } from '../_PropsType'
 
 const ProfileItem = ({
   user,
   modalOpenHandler,
   subModalHandler
-}: UserListProps) => {
-  
+}: IDetailProps) => {
+
   const birthday = useBirthday(user?.birthday)
-  
+
   return (
     <StyledPaper>
       <ListTopBar
-        title='ユーザー詳細'
+        title="ユーザー詳細"
         type={ HeaderType.DETAIL }
         modalOpenHandler={ modalOpenHandler }
         subModalHandler={ subModalHandler }
       />
       <Grid container style={ { display: 'grid' } }>
         <Grid item>
-          <FaRegUserCircle />
+          <FaRegUserCircle/>
         </Grid>
         <Grid item>
           <dt>

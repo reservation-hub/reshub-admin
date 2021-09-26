@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container'
 import Header from './Header'
 import FormStyle, { StyledInput } from './FormStyle'
 import CustomButton from '../common/atoms/CustomButton'
-import { IUserForm } from './_PropsType'
+import { IUserFormProps } from './_PropsType'
 import { VALIDATION_TEXT } from '../../constants/FormValid'
 import RoleSelector from '../common/atoms/RoleSelector'
 import DayPicker from '../common/atoms/DayPicker'
@@ -15,15 +15,14 @@ const UserForm = ({
   formValue,
   changeHandler,
   error
-}: IUserForm) => {
-  
+}: IUserFormProps) => {
+
   const classes = FormStyle()
   let disabled: boolean = false
 
   for (const value of Object.values(formValue)) {
     disabled = value.length === 0
   }
-
   return (
     <Container maxWidth="sm" className={ classes.container }>
       <Header
@@ -60,7 +59,7 @@ const UserForm = ({
               onChange={ changeHandler }
             />
           </div>
-          <div className="input-box">
+          <div className="input-box display-flex">
             <StyledInput
               label="性"
               autoComplete="off"
@@ -84,7 +83,7 @@ const UserForm = ({
               onBlur={ changeHandler }
             />
           </div>
-          <div className="input-box">
+          <div className="input-box display-flex">
             <StyledInput
               label="セイ"
               autoComplete="off"
@@ -159,7 +158,7 @@ const UserForm = ({
               </div>
             </>
           }
-          <div className="input-box genderRadio">
+          <div className="input-box genderRadio display-flex">
             <input
               type="radio"
               id="genderMale"
@@ -185,7 +184,7 @@ const UserForm = ({
             />
             <label htmlFor="genderOther">その他</label>
           </div>
-          <div className="input-box">
+          <div className="input-box display-flex">
             <DayPicker
               id="year"
               label="年"

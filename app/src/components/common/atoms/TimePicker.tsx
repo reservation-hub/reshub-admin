@@ -1,19 +1,19 @@
 import React from 'react'
 import { useRange } from '../../../utils/useRange'
-import { PickerProps } from '../_PropsType'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
+import { IPickerProps } from '../_PropsType'
 
-const TimePicker = ({ hh, mm, selectHandler, classes }: PickerProps) => {
-  
+const TimePicker = ({ hh, mm, selectHandler, classes }: IPickerProps) => {
+
   return (
     <>
       <Select
         value={ hh }
-        name='hour'
+        name="hour"
         onChange={ selectHandler }
         className={ classes }
-        variant='outlined'
+        variant="outlined"
       >
         { useRange(0, 23).map((hour, index) => (
           <MenuItem key={ index } value={ hour }>
@@ -24,10 +24,10 @@ const TimePicker = ({ hh, mm, selectHandler, classes }: PickerProps) => {
       <span>:</span>
       <Select
         value={ mm }
-        name='minute'
+        name="minute"
         onChange={ selectHandler }
         className={ classes }
-        variant='outlined'
+        variant="outlined"
       >
         { useRange(0, 50, 10).map((minute, index) => (
           <MenuItem key={ index } value={ minute }>

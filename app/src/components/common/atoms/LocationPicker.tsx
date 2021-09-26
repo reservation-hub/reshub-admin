@@ -1,11 +1,11 @@
 import React from 'react'
-import { PickerProps } from '../_PropsType'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputLabel from '@material-ui/core/InputLabel'
 import { StyledControl } from '../../form/FormStyle'
+import { IPickerProps } from '../_PropsType'
 
-const LocationPicker = ({ area, pref, city, values }: PickerProps) => {
+const LocationPicker = ({ area, pref, city, data }: IPickerProps) => {
 
   return (
     <div className="display-flex">
@@ -14,14 +14,14 @@ const LocationPicker = ({ area, pref, city, values }: PickerProps) => {
           <InputLabel id="area">エリア</InputLabel>
           <Select
             value={ area?.option }
-            name="area"
+            name="areaId"
             onChange={ area?.changeHandler }
             className="w-18 h-4"
             variant="outlined"
             label="エリア"
             labelId="area"
           >
-            { values?.areas?.map((value, index) => (
+            { data?.areas?.map((value, index) => (
               <MenuItem key={ index } value={ value.id }>{ value.name }</MenuItem>
             )) }
           </Select>
@@ -32,14 +32,14 @@ const LocationPicker = ({ area, pref, city, values }: PickerProps) => {
           <InputLabel id="pref">都道府県</InputLabel>
           <Select
             value={ pref?.option }
-            name="pref"
+            name="prefectureId"
             onChange={ pref?.changeHandler }
             className="w-18 h-4"
             variant="outlined"
             label="都道府県"
             labelId="pref"
           >
-            { values?.pref?.map((value, index) => (
+            { data?.pref?.map((value, index) => (
               <MenuItem key={ index } value={ value.id }>{ value.name }</MenuItem>
             )) }
           </Select>
@@ -50,14 +50,14 @@ const LocationPicker = ({ area, pref, city, values }: PickerProps) => {
           <InputLabel id="city">市区町村</InputLabel>
           <Select
             value={ city?.option }
-            name="city"
+            name="cityId"
             onChange={ city?.changeHandler }
             className="w-18 h-4"
             variant="outlined"
             label="市区町村"
             labelId="city"
           >
-            { values?.city?.map((value, index) => (
+            { data?.city?.map((value, index) => (
               <MenuItem key={ index } value={ value.id }>{ value.name }</MenuItem>
             )) }
           </Select>

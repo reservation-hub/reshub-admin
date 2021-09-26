@@ -1,28 +1,29 @@
 import React from 'react'
 import ReactPaginate from 'react-paginate'
-import { PaginateProps } from '../_PropsType'
+import { IPaginateProps } from '../_PropsType'
 import CommonStyle from '../../CommonStyle'
 
 const Paginate = ({
   totalPage,
-  setPage
-}: PaginateProps) => {
-  
+  setPage,
+  page
+}: IPaginateProps) => {
+
   const classes = CommonStyle()
-  
+
   const pageChangeHandler = (data: any | number[]): void => {
     let pageNum = data['selected']
-    console.log(pageNum)
     setPage(pageNum + 1)
   }
-  
+
   return (
     <div className={ classes.pagingBox }>
       <ReactPaginate
-        marginPagesDisplayed={ 0 }
+        marginPagesDisplayed={ 10 }
         pageCount={ Math.ceil(totalPage / 10) }
         pageRangeDisplayed={ 10 }
-        breakLabel={ '' }
+        breakLabel={ '...' }
+        initialPage={ Number(page) - 1 }
         previousLabel={ '<' }
         nextLabel={ '>' }
         activeClassName={ 'active' }

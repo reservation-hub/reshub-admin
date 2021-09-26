@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser, getOneUser } from '../../store/actions/userAction'
 import { RouteComponentProps } from 'react-router-dom'
 import { RootState } from '../../store/store'
-import { MatchParams } from '../../components/user/_PropsType'
 import { useModal } from '../../utils/useModal'
-
-import ProfileItem from '../../components/user/profile/ProfileItem'
+import ProfileItem from '../../components/detail/User/ProfileItem'
 import ModalOverlay from '../../components/modal/ModalOverlay'
 import ModalAlert from '../../components/modal/ModalAlert'
 import history from '../../utils/history'
+import { MatchParams } from '../../components/common/_PropsType'
 
 const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
 
@@ -19,7 +18,6 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   const convertId: number = Number(id)
   const dispatch = useDispatch()
 
-  const formModal = useModal(false, 'form')
   const deleteModal = useModal(false, 'delete')
 
   const onDelete = useCallback(
@@ -35,19 +33,6 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   // TODO スタイルを指定
   return (
     <>
-      { formModal.modalType === 'form' &&
-      <ModalOverlay
-        modalOpen={ formModal.open }
-        modalCloseHandler={ formModal.closeModal }
-      >
-        <ModalAlert
-          modalCloseHandler={ formModal.closeModal }
-          modalHandler={ () => history.push(`/form/user/${ id }`, { user }) }
-          alertText="ユーザー編集に移動しますか？"
-          buttonText="移動"
-        />
-      </ModalOverlay>
-      }
       { deleteModal.modalType === 'delete' &&
       <ModalOverlay
         modalOpen={ deleteModal.open }
@@ -63,7 +48,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
       }
       <ProfileItem
         user={ user }
-        modalOpenHandler={ formModal.openModal }
+        modalOpenHandler={ () => history.push(`/form/user/${ id }`, { user }) }
         subModalHandler={ deleteModal.openModal }
       />
     </>

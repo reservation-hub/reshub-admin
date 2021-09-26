@@ -1,8 +1,10 @@
 import React from 'react'
-import { InputLabel, MenuItem, Select } from '@material-ui/core'
+import Select from '@material-ui/core/Select'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
 import { useRange } from '../../../utils/useRange'
 import { StyledControl } from '../../form/FormStyle'
-import { PickerProps } from '../_PropsType'
+import { IPickerProps } from '../_PropsType'
 
 const DayPicker = ({
   option,
@@ -13,7 +15,7 @@ const DayPicker = ({
   to,
   label,
   id
-}: PickerProps) => {
+}: IPickerProps) => {
   return (
     <StyledControl>
       <InputLabel id={ id }>

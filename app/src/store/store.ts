@@ -9,11 +9,9 @@ import {
 } from 'redux'
 import { rootReducer } from './reducers/rootReducer'
 import { persistReducer } from 'redux-persist'
-
 import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
-
 
 declare global {
   interface Window {
@@ -24,7 +22,7 @@ declare global {
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth']
+  whitelist: ['auth', 'user', 'shop']
 }
 
 const enhancedReducer = persistReducer(persistConfig, rootReducer)
@@ -45,6 +43,8 @@ export type RootState = ReturnType<typeof store.getState>
 
 export function typedAction<T extends string>(type: T): { type: T }
 export function typedAction<T extends string, P extends any>(type: T, payload: P): { type: T; payload: P }
-export function typedAction(type: string, payload?: any) { return { type, payload } }
+export function typedAction(type: string, payload?: any) {
+  return { type, payload }
+}
 
 export default store

@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyledPaper } from '../../CommonStyle'
-import { UserListProps } from '../../user/_PropsType'
 import ListTopBar from '../../common/atoms/ListTopBar'
 import { HeaderType } from '../../common/_Constants'
+import { IDetailProps } from '../_PropsType'
 
 const DetailItem = ({
   shop,
   modalOpenHandler,
   subModalHandler
-}: UserListProps) => {
+}: IDetailProps) => {
   return (
     <StyledPaper>
       <ListTopBar

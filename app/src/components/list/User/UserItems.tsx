@@ -1,18 +1,17 @@
 import React from 'react'
 
 import { StyledTableCell } from '../../common/TableStyle'
-import { UserListProps } from '../_PropsType'
-
 import useRole from '../../../utils/useRole'
 import useBirthday from '../../../utils/useBirthday'
 import { TableRow } from '@material-ui/core'
 import history from '../../../utils/history'
+import { IDetailProps } from '../../detail/_PropsType'
 
-const UserItems = ({ user }: UserListProps) => {
-  
+const UserItems = ({ user }: IDetailProps) => {
+
   const birthday = useBirthday(user?.birthday)
   const role = useRole(user?.roles)
-  
+
   return (
     <TableRow
       style={ { height: '6rem' } }

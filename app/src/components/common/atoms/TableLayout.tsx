@@ -2,15 +2,12 @@ import React from 'react'
 
 import TableStyle, { StyledTable, StyledTableHead } from '../TableStyle'
 import { TableBody, TableCell, TableRow } from '@material-ui/core'
-import { TableProps } from '../_PropsType'
+import { ITableProps } from '../_PropsType'
 
-const TableLayout = ({
-  children,
-  cell
-}: TableProps) => {
-  
+const TableLayout = ({ children, cell }: ITableProps) => {
+
   const classes = TableStyle()
-  
+
   return (
     <StyledTable>
       <StyledTableHead>
@@ -35,7 +32,7 @@ const TableLayout = ({
       </TableBody>
     </StyledTable>
   )
-  
+
 }
 
 export default React.memo(TableLayout)

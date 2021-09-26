@@ -1,13 +1,11 @@
 import React from 'react'
 import { StyledTableCell } from '../../common/TableStyle'
-import { UserListProps } from '../../user/_PropsType'
 import { TableRow } from '@material-ui/core'
 import history from '../../../utils/history'
+import { IDetailProps } from '../../detail/_PropsType'
 
-const SalonItem = ({
-  shop
-}: UserListProps) => {
-  
+const SalonItem = ({ shop }: IDetailProps) => {
+
   return (
     <TableRow
       style={ { height: '6rem' } }
@@ -37,6 +35,6 @@ const SalonItem = ({
       </StyledTableCell>
     </TableRow>
   )
-  
+
 }
 export default React.memo(SalonItem)

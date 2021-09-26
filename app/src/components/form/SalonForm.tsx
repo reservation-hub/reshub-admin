@@ -1,121 +1,65 @@
-import React, { FormEvent, useCallback, useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import CustomButton from '../common/atoms/CustomButton'
 import FormStyle, { StyledInput } from './FormStyle'
 import Container from '@material-ui/core/Container'
 import TextField from '@material-ui/core/TextField'
-import { RouteComponentProps } from 'react-router-dom'
-import { MatchParams } from '../user/_PropsType'
 import TimePicker from '../common/atoms/TimePicker'
-import { useTimePicker } from '../../utils/useTimePicker'
 import { useDispatch, useSelector } from 'react-redux'
-import { getArea, getOneArea, getOnePref } from '../../store/actions/LocationAction'
+import { getArea, getOneCity, getOnePref } from '../../store/actions/LocationAction'
 import { RootState } from '../../store/store'
 import LocationPicker from '../common/atoms/LocationPicker'
-import { useSelect } from '../../utils/useSelect'
 import Header from './Header'
-import useInput from '../../utils/useInput'
-import { addShop, editShopData } from '../../store/actions/shopAction'
-import { useCheckBox } from '../../utils/useCheckBox'
-import { insertShopQuery, updateShopQuery } from '../../utils/api/request-response-types/ShopService'
-import DaysChecker from '../common/atoms/DaysChecker'
+import { ISalonFormProps } from './_PropsType'
+import { days } from '../common/_Constants'
+import CheckBox from '../common/atoms/CheckBox'
 
-const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
+const SalonForm = ({
+  submitHandler,
+  formValue,
+  formState,
+  changeHandler,
+  startAt,
+  endAt,
+  selectArea,
+  selectPref,
+  selectCity,
+  checkHandler
+}: ISalonFormProps) => {
 
   const classes = FormStyle()
   const dispatch = useDispatch()
+  let disabled: boolean = false
 
-  const startAt = useTimePicker(0)
-  const endAt = useTimePicker(0)
+  const {
+    area,
+    prefecture,
+    city
+  } = useSelector((state: RootState) => state.location)
 
-  const sArea = useSelect('')
-  const sPref = useSelect('')
-  const sCity = useSelect('')
-  const { input, ChangeHandler } = useInput({
-    name: '', address: '', phoneNumber: ''
-  })
-
-  const { checked, changeHandler } = useCheckBox([])
-
-  const { areas, area, prefecture } = useSelector((state: RootState) => state.location)
-
-  const values = {
-    areas: areas.values,
-    pref: area.prefectures,
-    city: prefecture.cities
+  const data = {
+    areas: area.values,
+    pref: prefecture.prefectures,
+    city: city.cities,
+    days: days
   }
-
-  // todo 後はこっちをhooksとかにする
-  const shopData: { insertData: insertShopQuery, updateData: updateShopQuery }
-    = useMemo(() => {
-      const insertData: insertShopQuery = {
-        name: input.name,
-        address: input.address,
-        phoneNumber: input.phoneNumber,
-        startTime: startAt.HHmm,
-        endTime: endAt.HHmm,
-        areaId: Number(sArea.option),
-        prefectureId: Number(sPref.option),
-        cityId: Number(sCity.option),
-        days: checked
-      }
-      const updateData: updateShopQuery = {
-        id: Number(match.params.id),
-        params: {
-          name: input.name,
-          address: input.address,
-          phoneNumber: input.phoneNumber,
-          startTime: startAt.HHmm,
-          endTime: endAt.HHmm,
-          areaId: Number(sArea.option),
-          prefectureId: Number(sPref.option),
-          cityId: Number(sCity.option),
-          days: checked
-        }
-      }
-      return { insertData, updateData }
-    },
-    [
-      checked,
-      endAt.HHmm,
-      input.address,
-      input.name,
-      input.phoneNumber,
-      match.params.id,
-      sArea.option,
-      sCity.option,
-      sPref.option,
-      startAt.HHmm
-    ])
-
-  const onSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      if (match.params.id) {
-        dispatch(editShopData(shopData.updateData))
-      } else {
-        dispatch(addShop(shopData.insertData))
-      }
-    },
-    [dispatch, match.params.id, shopData.insertData, shopData.updateData]
-  )
-
+  
   useEffect(() => {
     dispatch(getArea())
-    if (sArea.option) {
-      dispatch(getOneArea(Number(sArea.option)))
+    if (selectArea.option) {
+      dispatch(getOnePref(Number(selectArea.option)))
     }
-    if (sPref.option) {
-      dispatch(getOnePref(Number(sPref.option)))
+    if (selectPref.option) {
+      dispatch(getOneCity(Number(selectPref.option)))
     }
-  }, [dispatch, sArea.option, sPref.option])
+  }, [dispatch, selectArea.option, selectPref.option])
 
   return (
     <Container maxWidth="sm" className={ classes.container }>
       <Header
-        title={ match.params.id ? 'サロン編集' : 'サロン新規登録' }
+        title={ formState?.shop?.id ? 'サロン編集' : 'サロン新規登録' }
       />
       <div className="form-box">
-        <form onSubmit={ onSubmit }>
+        <form onSubmit={ submitHandler }>
           <div className="input-box">
             <StyledInput
               label="サロン名"
@@ -124,8 +68,8 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
               fullWidth
               variant="outlined"
               name="name"
-              value={ input.name }
-              onChange={ ChangeHandler }
+              value={ formValue.name }
+              onChange={ changeHandler }
             />
           </div>
           <div className="input-box">
@@ -136,8 +80,8 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
               fullWidth
               variant="outlined"
               name="phoneNumber"
-              value={ input.phoneNumber }
-              onChange={ ChangeHandler }
+              value={ formValue.phoneNumber }
+              onChange={ changeHandler }
             />
           </div>
           <div className="input-box">
@@ -148,23 +92,27 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
               fullWidth
               variant="outlined"
               name="address"
-              value={ input.address }
-              onChange={ ChangeHandler }
+              value={ formValue.address }
+              onChange={ changeHandler }
             />
           </div>
           <div className="input-box">
             <LocationPicker
-              values={ values }
-              area={ sArea }
-              pref={ sPref }
-              city={ sCity }
+              data={ data }
+              area={ selectArea }
+              pref={ selectPref }
+              city={ selectCity }
             />
           </div>
           <div className="input-box">
             <div className="label">
               <span className="font-16">営業日</span>
             </div>
-            <DaysChecker inputHandler={ changeHandler }/>
+            <CheckBox
+              inputHandler={ checkHandler }
+              data={ data }
+              checkedData={ formValue.days }
+            />
           </div>
           <div className="input-box">
             <div className="label">
@@ -172,15 +120,15 @@ const SalonForm = ({ match }: RouteComponentProps<MatchParams>) => {
             </div>
             <div className="display-flex justify-between align-center">
               <TimePicker
-                hh={ startAt.hour }
-                mm={ startAt.minute }
+                hh={ Number(formValue.startTime.hour) }
+                mm={ Number(formValue.startTime.minute) }
                 selectHandler={ startAt.changeHandler }
                 classes="w-13 font-16 h-4"
               />
               <span> - </span>
               <TimePicker
-                hh={ endAt.hour }
-                mm={ endAt.minute }
+                hh={ Number(formValue.endTime.hour) }
+                mm={ Number(formValue.endTime.minute) }
                 selectHandler={ endAt.changeHandler }
                 classes="w-13 font-16 h-4"
               />

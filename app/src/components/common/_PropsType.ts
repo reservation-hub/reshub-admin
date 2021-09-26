@@ -1,26 +1,30 @@
-import React, { ChangeEventHandler } from 'react'
+import React from 'react'
 import { Area, City, Prefecture } from '../../entities/Location'
 
-export type MainTemplateProps = {
+export type MatchParams = {
+  id: string
+}
+
+export interface IMainTemplateProps {
   children?: React.ReactNode
   onLogout?: () => void
 }
 
-export type ButtonProps = {
+export interface IButtonProps {
   children?: React.ReactNode
   onClick?: () => void
   className?: string | undefined
   disabled?: boolean
 }
 
-export type TableProps = {
+export interface ITableProps {
   cell?: object
   data?: any[]
   children?: React.ReactNode
   index?: number
 }
 
-export type H1Props = {
+export interface IH1Props {
   children: React.ReactNode
   className?: string
   color?: 'initial'
@@ -32,18 +36,22 @@ export type H1Props = {
     | 'error'
 }
 
-export type PaginateProps = {
+export interface IPaginateProps {
   totalPage: number
   setPage: React.Dispatch<React.SetStateAction<number>>
+  page?: string | number | null
 }
 
-export type PickerProps = {
-  hh?: number
-  mm?: number
-  option?: string
-  selectHandler?: ChangeEventHandler<{ value: unknown }>
-  inputHandler?: ChangeEventHandler<HTMLInputElement>
-  values?: { areas: Area[], pref: Prefecture[], city: City[] }
+export interface IPickerProps {
+  selectHandler?: React.ChangeEventHandler<{ value: unknown }>
+  inputHandler?: React.ChangeEventHandler<HTMLInputElement>
+  data?: {
+    days: { id: number, value: string }[],
+    areas: Area[],
+    pref: Prefecture[],
+    city: City[]
+  }
+  checkedData?: number[]
   area?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
   pref?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
   city?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
@@ -53,4 +61,14 @@ export type PickerProps = {
   from?: number
   to?: number
   label?: string
+  hh?: number
+  mm?: number
+  option?: string
+}
+
+export interface ITopBarProps {
+  title: string
+  type?: string
+  modalOpenHandler?: () => void
+  subModalHandler?: () => void
 }

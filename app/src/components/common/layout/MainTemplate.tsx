@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { MainTemplateProps } from '../_PropsType'
+import { IMainTemplateProps } from '../_PropsType'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../../store/actions/authAction'
 
@@ -9,22 +9,22 @@ import Header from './Header'
 import NavBar from '../atoms/NavBar'
 
 
-const MainTemplate = ({ children }: MainTemplateProps) => {
-  
+const MainTemplate = ({ children }: IMainTemplateProps) => {
+
   const classes = CommonStyle()
   const dispatch = useDispatch()
-  
+
   const onLogout = useCallback(
     () => {
       dispatch(logout())
     }, [dispatch]
   )
-  
+
   return (
     <React.Fragment>
-      <Header onLogout={ onLogout } />
+      <Header onLogout={ onLogout }/>
       <aside className={ classes.sideBar }>
-        <NavBar />
+        <NavBar/>
       </aside>
       <main className={ classes.mainBackground }>
         <StyledPaper elevation={ 0 }>
@@ -33,7 +33,7 @@ const MainTemplate = ({ children }: MainTemplateProps) => {
       </main>
     </React.Fragment>
   )
-  
+
 }
 
 export default React.memo(MainTemplate)
