@@ -8,8 +8,8 @@ const ModalOverlay = ({
   modalCloseHandler
 }: ModalOverlayProps) => {
   return (
-    <Dialog open={ modalOpen } onClose={ modalCloseHandler }>
-      { children }
+    <Dialog open={modalOpen} onClose={modalCloseHandler}>
+      {children}
     </Dialog>
   )
 }

@@ -1,4 +1,4 @@
-import { useState, useCallback, ChangeEvent } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 
 const useInput = <T>(initialState: T) => {
   const [input, setInput] = useState<T>(initialState)
@@ -10,7 +10,8 @@ const useInput = <T>(initialState: T) => {
         ...input,
         [name]: value
       })
-    }, [input]
+    },
+    [input]
   )
 
   return { input, ChangeHandler }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { IButtonProps } from '../_PropsType'
-import CommonStyle from '../../CommonStyle'
+import CommonStyle from '@components/CommonStyle'
 
 const CustomButton = ({
   children,
@@ -8,23 +8,18 @@ const CustomButton = ({
   className,
   disabled
 }: IButtonProps) => {
-
   const classes = CommonStyle()
 
   return (
     <button
-      type="submit"
-      onClick={ onClick }
-      disabled={ disabled }
-      className={
-        `${ className } ${ classes.buttonRoot }`
-        || classes.buttonRoot
-      }
+      type='submit'
+      onClick={onClick}
+      disabled={disabled}
+      className={`${className} ${classes.buttonRoot}` || classes.buttonRoot}
     >
-      { children || 'button' }
+      {children || 'button'}
     </button>
   )
-
 }
 
 export default CustomButton

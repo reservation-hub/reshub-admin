@@ -1,5 +1,5 @@
 //----------------------------------
-// api default settings 
+// api default settings
 //----------------------------------
 
 import axios, { AxiosInstance } from 'axios'

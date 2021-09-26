@@ -1,4 +1,4 @@
-import { City, Prefecture } from '../entities/Location'
+import { City, Prefecture } from '@entity/Location'
 
 export type PrefResponse = {
   id: number

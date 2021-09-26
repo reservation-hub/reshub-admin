@@ -1,5 +1,5 @@
-import { User } from '../../entities/User'
-import { ShopList } from '../../Model/ShopResponse'
+import { User } from '@entity/User'
+import { ShopList } from '@Model/ShopResponse'
 
 export interface IListProps {
   users?: User[]

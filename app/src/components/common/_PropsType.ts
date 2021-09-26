@@ -1,5 +1,5 @@
 import React from 'react'
-import { Area, City, Prefecture } from '../../entities/Location'
+import { Area, City, Prefecture } from '@entity/Location'
 
 export type MatchParams = {
   id: string
@@ -27,7 +27,8 @@ export interface ITableProps {
 export interface IH1Props {
   children: React.ReactNode
   className?: string
-  color?: 'initial'
+  color?:
+    | 'initial'
     | 'inherit'
     | 'primary'
     | 'secondary'
@@ -46,15 +47,24 @@ export interface IPickerProps {
   selectHandler?: React.ChangeEventHandler<{ value: unknown }>
   inputHandler?: React.ChangeEventHandler<HTMLInputElement>
   data?: {
-    days: { id: number, value: string }[],
-    areas: Area[],
-    pref: Prefecture[],
+    days: { id: number; value: string }[]
+    areas: Area[]
+    pref: Prefecture[]
     city: City[]
   }
   checkedData?: number[]
-  area?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
-  pref?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
-  city?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
+  area?: {
+    option: string
+    changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void
+  }
+  pref?: {
+    option: string
+    changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void
+  }
+  city?: {
+    option: string
+    changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void
+  }
   classes?: string
   id?: string
   name?: string

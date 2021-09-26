@@ -5,3 +5,5 @@ yarn.lock
 
 public/*
 node_modules/*
+src/entities/*
+src/utils/api/request-response-types/*

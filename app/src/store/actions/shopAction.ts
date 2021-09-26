@@ -5,9 +5,11 @@
 import {
   SHOP_ADD_SUCCESS,
   SHOP_DELETE_SUCCESS,
-  SHOP_EDIT_SUCCESS, SHOP_GET_SUCCESS,
+  SHOP_EDIT_SUCCESS,
+  SHOP_GET_SUCCESS,
   SHOP_REQUEST_FAILURE,
-  SHOP_REQUEST_START, SHOP_REQUEST_SUCCESS
+  SHOP_REQUEST_START,
+  SHOP_REQUEST_SUCCESS
 } from '../types/shopTypes'
 
 import { RootState, typedAction } from '../store'
@@ -23,13 +25,14 @@ import {
 } from '../../utils/api/request-response-types/ServiceCommonTypes'
 import { Shop, ShopList } from '../../Model/ShopResponse'
 
-
 // リクエストを始まる
 const shopRequestStart = () => {
   return typedAction(SHOP_REQUEST_START)
 }
 
-const shopRequestSuccess = (data: fetchModelsWithTotalCountResponse<modelResponse<ShopList>>) => {
+const shopRequestSuccess = (
+  data: fetchModelsWithTotalCountResponse<modelResponse<ShopList>>
+) => {
   return typedAction(SHOP_REQUEST_SUCCESS, data)
 }
 
@@ -55,76 +58,71 @@ const shopRequestFailure = (err: string) => {
 }
 
 //　全てのお店データを読み込む
-export const fetchShopList = (page: number):
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
-  dispatch(shopRequestStart())
-  try {
-    const res = await apiEndpoint.getShop(page)
-    dispatch(shopRequestSuccess(res.data))
-  } catch (e) {
-    history.push('/error')
+export const fetchShopList =
+  (page: number): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(shopRequestStart())
+    try {
+      const res = await apiEndpoint.getShop(page)
+      dispatch(shopRequestSuccess(res.data))
+    } catch (e) {
+      history.push('/error')
+    }
   }
-  
-}
 
 //　お店データを一つだけ読み込む
-export const getOneShop = (id: number):
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
-  dispatch(shopRequestStart())
-  try {
-    const res = await apiEndpoint.getOneShop(id)
-    dispatch(shopGetSuccess(res.data))
-  } catch (e) {
-    history.push('/error')
+export const getOneShop =
+  (id: number): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(shopRequestStart())
+    try {
+      const res = await apiEndpoint.getOneShop(id)
+      dispatch(shopGetSuccess(res.data))
+    } catch (e) {
+      history.push('/error')
+    }
   }
-  
-}
 
 //　お店データを追加する
-export const addShop = (shopData: insertShopQuery):
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
-  dispatch(shopRequestStart())
-  try {
-    const res = await apiEndpoint.addShop(shopData)
-    dispatch(shopAddSuccess(res.data))
-    history.push('/salon')
-  } catch (e) {
-    dispatch(shopRequestFailure(e))
+export const addShop =
+  (shopData: insertShopQuery): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(shopRequestStart())
+    try {
+      const res = await apiEndpoint.addShop(shopData)
+      dispatch(shopAddSuccess(res.data))
+      history.push('/salon')
+    } catch (e) {
+      dispatch(shopRequestFailure(e))
+    }
   }
-  
-}
 
 //　お店のデータを編集する
-export const editShopData = (shopData: updateShopQuery):
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
-  dispatch(shopRequestStart())
-  try {
-    const res = await apiEndpoint.patchShop(shopData)
-    dispatch(shopPatchSuccess(res.data))
-    history.push('/salon')
-  } catch (e) {
-    dispatch(shopRequestFailure(e))
+export const editShopData =
+  (shopData: updateShopQuery): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(shopRequestStart())
+    try {
+      const res = await apiEndpoint.patchShop(shopData)
+      dispatch(shopPatchSuccess(res.data))
+      history.push('/salon')
+    } catch (e) {
+      dispatch(shopRequestFailure(e))
+    }
   }
-  
-}
 
 //　お店のデータを削除する
-export const deleteShopData = (id: number):
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
-  dispatch(shopRequestStart())
-  try {
-    const res = await apiEndpoint.deleteShop(id)
-    dispatch(shopDeleteSuccess(res.data))
-  } catch (e) {
-    dispatch(shopRequestFailure(e))
+export const deleteShopData =
+  (id: number): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(shopRequestStart())
+    try {
+      const res = await apiEndpoint.deleteShop(id)
+      dispatch(shopDeleteSuccess(res.data))
+    } catch (e) {
+      dispatch(shopRequestFailure(e))
+    }
   }
-  
-}
 
 export type ShopAction =
   | ReturnType<typeof shopRequestStart>

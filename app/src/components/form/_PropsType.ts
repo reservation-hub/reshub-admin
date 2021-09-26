@@ -1,7 +1,7 @@
-import { User } from '../../entities/User'
-import { Shop } from '../../entities/Shop'
+import { User } from '@entity/User'
+import { Shop } from '@entity/Shop'
 import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
-import { TValid } from '../../utils/useValidation'
+import { TValid } from '@utils/useValidation'
 
 export type TUserInput = {
   email: string
@@ -26,8 +26,8 @@ export type TSalonInput = {
   cityId: string
   prefectureId: string
   areaId: string
-  startTime: { hour: string, minute: string }
-  endTime: { hour: string, minute: string }
+  startTime: { hour: string; minute: string }
+  endTime: { hour: string; minute: string }
   days: number[]
 }
 
@@ -37,7 +37,7 @@ export type TFormState = {
 }
 
 export interface IUserFormProps {
-  validation?: object,
+  validation?: object
   submitHandler: FormEventHandler<HTMLFormElement>
   formValue: TUserInput
   formState?: TFormState
@@ -51,11 +51,30 @@ export interface ISalonFormProps {
   formState?: TFormState
   changeHandler: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
   checkHandler: ChangeEventHandler<HTMLInputElement>
-  startAt: { hour: number, minute: number, HHmm: string, changeHandler: (e: ChangeEvent<HTMLSelectElement>) => void }
-  endAt: { hour: number, minute: number, HHmm: string, changeHandler: (e: ChangeEvent<HTMLSelectElement>) => void }
-  selectArea: { option: string, changeHandler: (e: ChangeEvent<{ value: unknown }>) => void }
-  selectPref: { option: string, changeHandler: (e: ChangeEvent<{ value: unknown }>) => void }
-  selectCity: { option: string, changeHandler: (e: ChangeEvent<{ value: unknown }>) => void }
+  startAt: {
+    hour: number
+    minute: number
+    HHmm: string
+    changeHandler: (e: ChangeEvent<HTMLSelectElement>) => void
+  }
+  endAt: {
+    hour: number
+    minute: number
+    HHmm: string
+    changeHandler: (e: ChangeEvent<HTMLSelectElement>) => void
+  }
+  selectArea: {
+    option: string
+    changeHandler: (e: ChangeEvent<{ value: unknown }>) => void
+  }
+  selectPref: {
+    option: string
+    changeHandler: (e: ChangeEvent<{ value: unknown }>) => void
+  }
+  selectCity: {
+    option: string
+    changeHandler: (e: ChangeEvent<{ value: unknown }>) => void
+  }
 }
 
 export interface IFormType {

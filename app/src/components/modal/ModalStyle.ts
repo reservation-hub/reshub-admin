@@ -1,11 +1,12 @@
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
-import { FormControl, TextField } from '@material-ui/core'
+import TextField from '@material-ui/core/TextField'
+import FormControl from '@material-ui/core/FormControl'
 
 //-----------------------------------------------------------
 // reshhub-adminのモーダル画面のデフォルトスタイル
 //-----------------------------------------------------------
 
-export const ModalInput = withStyles((theme: Theme) => ( {
+export const ModalInput = withStyles((theme: Theme) => ({
   root: {
     '& .MuiOutlinedInput-root': {
       height: '4rem'
@@ -20,9 +21,9 @@ export const ModalInput = withStyles((theme: Theme) => ( {
       transform: 'translate(13px, -3px) scale(0.80)'
     }
   }
-} ))(TextField)
+}))(TextField)
 
-export const ModalSelect = withStyles((theme: Theme) => ( {
+export const ModalSelect = withStyles((theme: Theme) => ({
   root: {
     width: '18rem',
     height: '4rem',
@@ -46,9 +47,9 @@ export const ModalSelect = withStyles((theme: Theme) => ( {
       top: 'calc(50% - 8px)'
     }
   }
-} ))(FormControl)
+}))(FormControl)
 
-const ModalStyle = makeStyles((theme: Theme) => ( {
+const ModalStyle = makeStyles((theme: Theme) => ({
   Container: {
     width: '40rem',
     height: '15rem',
@@ -119,6 +120,6 @@ const ModalStyle = makeStyles((theme: Theme) => ( {
     color: '#fff',
     border: 'none'
   }
-} ))
+}))
 
 export default ModalStyle

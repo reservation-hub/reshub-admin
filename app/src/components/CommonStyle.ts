@@ -1,19 +1,19 @@
-import { makeStyles, withStyles, Theme } from '@material-ui/core/styles'
+import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
 import { AppBar, Paper } from '@material-ui/core'
 
 //-----------------------------------------------------------
 // reshub-adminの共通のスタイルを指定する
 //-----------------------------------------------------------
 
-export const StyledPaper = withStyles((theme: Theme) => ( {
+export const StyledPaper = withStyles((theme: Theme) => ({
   root: {
     justifyContent: 'center',
     boxShadow: 'none',
     backgroundColor: theme.palette.adBgColor.main
   }
-} ))(Paper)
+}))(Paper)
 
-export const StyledHeader = withStyles((theme: Theme) => ( {
+export const StyledHeader = withStyles((theme: Theme) => ({
   root: {
     height: '7.5rem',
     boxShadow: 'none',
@@ -33,9 +33,9 @@ export const StyledHeader = withStyles((theme: Theme) => ( {
       }
     }
   }
-} ))(AppBar)
+}))(AppBar)
 
-const CommonStyle = makeStyles((theme: Theme) => ( {
+const CommonStyle = makeStyles((theme: Theme) => ({
   mainBackground: {
     width: '82.5%',
     margin: '5.5rem 22rem 0',
@@ -99,8 +99,7 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
         }
       }
     }
-  }
-  ,
+  },
   boxCenter: {
     position: 'absolute',
     top: '25%',
@@ -111,7 +110,7 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
   buttonRoot: {
     width: '11rem',
     height: '3.5rem',
-    border: `1px solid ${ theme.palette.primary.main }`,
+    border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: '.5rem',
     backgroundColor: theme.palette.secondary.main,
     cursor: 'pointer',
@@ -143,7 +142,7 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
       '& li': {
         marginLeft: '.5rem',
         marginRight: '.5rem',
-        border: `1px solid ${ theme.palette.primary.main }`,
+        border: `1px solid ${theme.palette.primary.main}`,
         borderRadius: '.25rem',
         color: '#ABB0AD',
         textAlign: 'center',
@@ -163,6 +162,6 @@ const CommonStyle = makeStyles((theme: Theme) => ( {
       }
     }
   }
-} ))
+}))
 
 export default CommonStyle

@@ -2,11 +2,7 @@
 // redux create sotre modules
 //----------------------------------
 
-import {
-  createStore,
-  applyMiddleware,
-  compose
-} from 'redux'
+import { applyMiddleware, compose, createStore } from 'redux'
 import { rootReducer } from './reducers/rootReducer'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
@@ -27,22 +23,27 @@ const persistConfig = {
 
 const enhancedReducer = persistReducer(persistConfig, rootReducer)
 
-const middleware = process.env.NODE_ENV !== 'production' ? [thunk, logger] : [thunk]
+const middleware =
+  process.env.NODE_ENV !== 'production' ? [thunk, logger] : [thunk]
 
 const composeEnhancer =
-  ( process.env.NODE_ENV !== 'production' &&
+  (process.env.NODE_ENV !== 'production' &&
     typeof window !== 'undefined' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ) || compose
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose
 
 const store = createStore(
-  enhancedReducer, composeEnhancer(applyMiddleware(...middleware))
+  enhancedReducer,
+  composeEnhancer(applyMiddleware(...middleware))
 )
-
 
 export type RootState = ReturnType<typeof store.getState>
 
 export function typedAction<T extends string>(type: T): { type: T }
-export function typedAction<T extends string, P extends any>(type: T, payload: P): { type: T; payload: P }
+export function typedAction<T extends string, P extends any>(
+  type: T,
+  payload: P
+): { type: T; payload: P }
 export function typedAction(type: string, payload?: any) {
   return { type, payload }
 }

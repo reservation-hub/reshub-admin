@@ -1,6 +1,6 @@
 import React from 'react'
-import MainTemplate from '../../components/common/layout/MainTemplate'
-import { StyledPaper } from '../../components/CommonStyle'
+import MainTemplate from '@components/common/layout/MainTemplate'
+import { StyledPaper } from '@components/CommonStyle'
 
 const Error = () => {
   return (

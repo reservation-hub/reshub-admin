@@ -4,11 +4,12 @@
 
 import {
   USERS_ADD_SUCCESS,
-  USERS_EDIT_SUCCESS,
   USERS_DELETE_SUCCESS,
+  USERS_EDIT_SUCCESS,
+  USERS_GET_SUCCESS,
   USERS_REQUEST_FAILURE,
-  UsersState,
-  USERS_REQUEST_SUCCESS, USERS_GET_SUCCESS
+  USERS_REQUEST_SUCCESS,
+  UsersState
 } from '../types/usersType'
 import {
   fetchModelsWithTotalCountResponse,
@@ -24,10 +25,7 @@ const initialState: UsersState = {
   msg: ''
 }
 
-const userReducer = (
-  state = initialState,
-  action: UserAction
-) => {
+const userReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
     case USERS_REQUEST_SUCCESS:
       return {

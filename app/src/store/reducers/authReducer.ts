@@ -1,16 +1,10 @@
 //----------------------------------
-// redux reducer ユーザー印証 
+// redux reducer ユーザー印証
 //----------------------------------
 
-import {
-  AuthState,
-  LOGOUT_REQUEST_SUCCESS,
-  USER_REQUEST_FAILURE,
-  USER_REQUEST_SUCCESS
-} from '../types/authTypes'
+import { AuthState, LOGOUT_REQUEST_SUCCESS, USER_REQUEST_FAILURE, USER_REQUEST_SUCCESS } from '../types/authTypes'
 import { AuthAction } from '../actions/authAction'
 import { User } from '../../entities/User'
-
 
 const initialState: AuthState = {
   loading: true,

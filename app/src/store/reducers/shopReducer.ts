@@ -18,7 +18,6 @@ import {
 } from '../../utils/api/request-response-types/ServiceCommonTypes'
 import { Shop, ShopList } from '../../Model/ShopResponse'
 
-
 const initialState: ShopState = {
   loading: true,
   shops: {} as fetchModelsWithTotalCountResponse<modelResponse<ShopList>>,
@@ -26,10 +25,7 @@ const initialState: ShopState = {
   msg: ''
 }
 
-const shopReducer = (
-  state = initialState,
-  action: ShopAction
-) => {
+const shopReducer = (state = initialState, action: ShopAction) => {
   switch (action.type) {
     case SHOP_REQUEST_SUCCESS:
       return {

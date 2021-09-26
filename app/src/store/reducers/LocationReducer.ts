@@ -1,9 +1,4 @@
-import {
-  GET_AREA_SUCCESS,
-  GET_CITY_SUCCESS,
-  GET_PREF_SUCCESS,
-  LocationState
-} from '../types/LocationTypes'
+import { GET_AREA_SUCCESS, GET_CITY_SUCCESS, GET_PREF_SUCCESS, LocationState } from '../types/LocationTypes'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
@@ -18,10 +13,7 @@ const initialState: LocationState = {
   city: {} as CityResponse
 }
 
-const locationReducer = (
-  state = initialState,
-  action: LocationAction
-) => {
+const locationReducer = (state = initialState, action: LocationAction) => {
   switch (action.type) {
     case GET_AREA_SUCCESS:
       return {

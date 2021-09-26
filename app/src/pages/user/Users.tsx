@@ -16,7 +16,9 @@ import { MatchParams } from '../../components/common/_PropsType'
 
 const Users = ({ match }: RouteComponentProps<MatchParams>) => {
   const dispatch = useDispatch()
-  const currentPage = localStorage.getItem('currentPage') ? localStorage.getItem('currentPage') : 1
+  const currentPage = localStorage.getItem('currentPage')
+    ? localStorage.getItem('currentPage')
+    : 1
   const [page, setPage] = useState<number>(Number(currentPage))
   localStorage.setItem('currentPage', String(page))
 
@@ -29,31 +31,31 @@ const Users = ({ match }: RouteComponentProps<MatchParams>) => {
 
   return (
     <MainTemplate>
-      { loading ? <Loading/>
-        : <>
-          <Route exact path="/users">
-            <UserList
-              users={ users.values }
-              modalOpenHandler={ openModal }
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Route exact path='/users'>
+            <UserList users={users.values} modalOpenHandler={openModal} />
+            <Paginate
+              totalPage={users.totalCount}
+              setPage={setPage}
+              page={currentPage}
             />
-            <Paginate totalPage={ users.totalCount } setPage={ setPage } page={ currentPage }/>
           </Route>
-          <Route path="/users/:id" component={ Profile }/>
+          <Route path='/users/:id' component={Profile} />
         </>
-      }
-      <ModalOverlay
-        modalOpen={ open }
-        modalCloseHandler={ closeModal }
-      >
+      )}
+      <ModalOverlay modalOpen={open} modalCloseHandler={closeModal}>
         <ModalAlert
-          modalCloseHandler={ closeModal }
-          modalHandler={ () => history.push('/form/user') }
-          alertText="ユーザー登録画面に移動しますか？"
-          buttonText="移動"
+          modalCloseHandler={closeModal}
+          modalHandler={() => history.push('/form/user')}
+          alertText='ユーザー登録画面に移動しますか？'
+          buttonText='移動'
         />
       </ModalOverlay>
     </MainTemplate>
   )
 }
 
-export default Users 
+export default Users

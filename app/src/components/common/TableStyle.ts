@@ -5,7 +5,7 @@ import { Table, TableCell, TableHead } from '@material-ui/core'
 // reshub-adminのテーブルのデフォルトスタイルを指定する
 //-----------------------------------------------------------
 
-export const StyledTable = withStyles((theme: Theme) => ( {
+export const StyledTable = withStyles((theme: Theme) => ({
   root: {
     width: '100%',
     background: theme.palette.secondary.main,
@@ -15,25 +15,25 @@ export const StyledTable = withStyles((theme: Theme) => ( {
       textAlign: 'center'
     }
   }
-} ))(Table)
+}))(Table)
 
-export const StyledTableHead = withStyles((theme: Theme) => ( {
+export const StyledTableHead = withStyles((theme: Theme) => ({
   root: {
     background: theme.palette.adTheadColor.main
   }
-} ))(TableHead)
+}))(TableHead)
 
-export const StyledTableCell = withStyles((theme: Theme) => ( {
+export const StyledTableCell = withStyles((theme: Theme) => ({
   root: {
     color: theme.palette.adTbFontColor.main,
-    borderTop: `1px solid ${ theme.palette.adTheadColor.main }`,
+    borderTop: `1px solid ${theme.palette.adTheadColor.main}`,
     borderBottom: 'none',
     fontSize: '1.4rem',
     cursor: 'pointer'
   }
-} ))(TableCell)
+}))(TableCell)
 
-const LocationStyle = makeStyles((theme: Theme) => ( {
+const LocationStyle = makeStyles((theme: Theme) => ({
   tableHeadCell: {
     color: theme.palette.adThFontColor.main,
     fontWeight: 'bold',
@@ -42,6 +42,6 @@ const LocationStyle = makeStyles((theme: Theme) => ( {
   tableHeader: {
     paddingLeft: '1rem'
   }
-} ))
+}))
 
 export default LocationStyle

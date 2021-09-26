@@ -1,12 +1,9 @@
 //----------------------------------
-// redux action types お店管理 
+// redux action types お店管理
 //----------------------------------
 
-import { User } from '../../entities/User'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '../../utils/api/request-response-types/ServiceCommonTypes'
+import { User } from '@entity/User'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 
 export const USERS_REQUEST_START = 'USERS_REQUEST_START' as const
 
@@ -27,6 +24,6 @@ export const USERS_REQUEST_FAILURE = 'USERS_REQUEST_FAILURE' as const
 export type UsersState = {
   loading: boolean
   users: fetchModelsWithTotalCountResponse<modelResponse<User>>
-  user: User,
-  msg: string,
+  user: User
+  msg: string
 }

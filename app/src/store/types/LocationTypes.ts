@@ -1,9 +1,6 @@
-import { Area } from '../../entities/Location'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '../../utils/api/request-response-types/ServiceCommonTypes'
-import { CityResponse, PrefResponse } from '../../Model/LocationResponse'
+import { Area } from '@entity/Location'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { CityResponse, PrefResponse } from '@Model/LocationResponse'
 
 export const GET_CITY_SUCCESS = 'GET_CITY_SUCCESS' as const
 

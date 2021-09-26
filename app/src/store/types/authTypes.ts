@@ -1,8 +1,8 @@
 //----------------------------------
-// redux action types ユーザー 
+// redux action types ユーザー
 //----------------------------------
 
-import { User } from '../../entities/User'
+import { User } from '@entity/User'
 
 // ユーザーのリクエストをスタートする
 export const USER_REQUEST_START = 'USER_REQUEST_START' as const

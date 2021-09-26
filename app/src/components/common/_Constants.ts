@@ -1,8 +1,10 @@
 export const NavMenu: string[] = [
-  'ダッシュボード', 'ユーザー一覧', 'サロン一覧'
+  'ダッシュボード',
+  'ユーザー一覧',
+  'サロン一覧'
 ]
 
-export const days: { id: number, value: string }[] = [
+export const days: { id: number; value: string }[] = [
   { id: 1, value: '月' },
   { id: 2, value: '火' },
   { id: 3, value: '水' },
@@ -12,7 +14,7 @@ export const days: { id: number, value: string }[] = [
   { id: 7, value: '日' }
 ]
 
-export const Roles: { id: number, value: string, slug: string }[] = [
+export const Roles: { id: number; value: string; slug: string }[] = [
   { id: 1, value: 'client', slug: 'client' },
   { id: 2, value: 'admin', slug: 'admin' },
   { id: 3, value: 'shop staff', slug: 'shop staff' }
