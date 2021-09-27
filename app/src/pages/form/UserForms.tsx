@@ -24,41 +24,35 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   }
 
   const { input, ChangeHandler } = useInput({
-    email: '',
+    email: user?.email ?? '',
     password: '',
     confirm: '',
     username: '',
-    firstNameKanji: '',
-    lastNameKanji: '',
-    firstNameKana: '',
-    lastNameKana: '',
-    birthdayY: '',
-    birthdayM: '',
-    birthdayD: '',
-    gender: '',
-    role: ''
+    firstNameKanji: user?.firstNameKanji ?? '',
+    lastNameKanji: user?.lastNameKanji ?? '',
+    firstNameKana: user?.firstNameKana ?? '',
+    lastNameKana: user?.lastNameKana ?? '',
+    birthdayY: String(dayjs(user?.birthday).year()) ?? '',
+    birthdayM: String(dayjs(user?.birthday).format('M')) ?? '',
+    birthdayD: String(dayjs(user?.birthday).format('D')) ?? '',
+    gender: user?.gender ?? '',
+    role: user?.roles.map((r) => r.id) ?? ''
   })
 
   const form = useMemo(() => {
     return {
-      email: user ? String(user?.email) : input.email,
+      email: input.email,
       password: input.password,
       confirm: input.confirm,
       username: input.username,
-      firstNameKanji: user
-        ? String(user?.firstNameKanji)
-        : input.firstNameKanji,
-      lastNameKanji: user ? String(user?.lastNameKanji) : input.lastNameKanji,
-      firstNameKana: user ? String(user?.firstNameKana) : input.firstNameKana,
-      lastNameKana: user ? String(user?.lastNameKana) : input.lastNameKana,
-      birthdayY: user ? String(dayjs(user?.birthday).year()) : input.birthdayY,
-      birthdayM: user
-        ? String(dayjs(user?.birthday).format('M'))
-        : input.birthdayM,
-      birthdayD: user
-        ? String(dayjs(user?.birthday).format('D'))
-        : input.birthdayD,
-      gender: user ? String(user?.gender) : input.gender,
+      firstNameKanji: input.firstNameKanji,
+      lastNameKanji: input.lastNameKanji,
+      firstNameKana: input.firstNameKana,
+      lastNameKana: input.lastNameKana,
+      birthdayY: input.birthdayY,
+      birthdayM: input.birthdayM,
+      birthdayD: input.birthdayD,
+      gender: input.gender,
       role: input.role
     } as TUserInput
   }, [input, user])

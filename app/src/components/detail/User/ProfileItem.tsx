@@ -41,7 +41,7 @@ const ProfileItem = ({
         </Grid>
         <Grid item>
           <dt>
-            <strong>お名前（漢字）</strong>
+            <strong>お名前</strong>
           </dt>
           <dl>
             {user?.firstNameKanji} {user?.lastNameKanji}
@@ -49,7 +49,7 @@ const ProfileItem = ({
         </Grid>
         <Grid item>
           <dt>
-            <strong>お名前（カナ）</strong>
+            <strong>カナ</strong>
           </dt>
           <dl>
             {user?.firstNameKana} {user?.lastNameKana}
