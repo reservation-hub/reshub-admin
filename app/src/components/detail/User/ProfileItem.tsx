@@ -1,31 +1,29 @@
 import React from 'react'
 
-import { StyledPaper } from '../../CommonStyle'
-import { UserListProps } from '../_PropsType'
+import { StyledPaper } from '@components/CommonStyle'
 import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
-
-import ListTopBar from '../../common/atoms/ListTopBar'
-import useBirthday from '../../../utils/useBirthday'
-import { HeaderType } from '../../common/_Constants'
+import ListTopBar from '@components/common/atoms/ListTopBar'
+import useBirthday from '@utils/useBirthday'
+import { HeaderType } from '@components/common/_Constants'
+import { IDetailProps } from '@components/detail/_PropsType'
 
 const ProfileItem = ({
   user,
   modalOpenHandler,
   subModalHandler
-}: UserListProps) => {
-  
+}: IDetailProps) => {
   const birthday = useBirthday(user?.birthday)
-  
+
   return (
     <StyledPaper>
       <ListTopBar
         title='ユーザー詳細'
-        type={ HeaderType.DETAIL }
-        modalOpenHandler={ modalOpenHandler }
-        subModalHandler={ subModalHandler }
+        type={HeaderType.DETAIL}
+        modalOpenHandler={modalOpenHandler}
+        subModalHandler={subModalHandler}
       />
-      <Grid container style={ { display: 'grid' } }>
+      <Grid container style={{ display: 'grid' }}>
         <Grid item>
           <FaRegUserCircle />
         </Grid>
@@ -33,47 +31,47 @@ const ProfileItem = ({
           <dt>
             <strong>メールアドレス</strong>
           </dt>
-          <dl>{ user?.email }</dl>
+          <dl>{user?.email}</dl>
         </Grid>
         <Grid item>
           <dt>
             <strong>ユーザーネーム</strong>
           </dt>
-          <dl>{ user?.username ?? 'ユーザーネームを設定してくだい。' }</dl>
+          <dl>{user?.username ?? 'ユーザーネームを設定してくだい。'}</dl>
         </Grid>
         <Grid item>
           <dt>
-            <strong>お名前（漢字）</strong>
+            <strong>お名前</strong>
           </dt>
-          <dl>{ user?.firstNameKanji } { user?.lastNameKanji }</dl>
+          <dl>
+            {user?.firstNameKanji} {user?.lastNameKanji}
+          </dl>
         </Grid>
         <Grid item>
           <dt>
-            <strong>お名前（カナ）</strong>
+            <strong>カナ</strong>
           </dt>
-          <dl>{ user?.firstNameKana } { user?.lastNameKana }</dl>
+          <dl>
+            {user?.firstNameKana} {user?.lastNameKana}
+          </dl>
         </Grid>
         <Grid item>
           <dt>
             <strong>生年月日</strong>
           </dt>
-          <dl>{
-            birthday === 'Invalid Date'
-              ? '-'
-              : birthday
-          }</dl>
+          <dl>{birthday === 'Invalid Date' ? '-' : birthday}</dl>
         </Grid>
         <Grid item>
           <dt>
             <strong>性別</strong>
           </dt>
-          <dl>{ user?.gender === '0' ? '男性' : '女性' }</dl>
+          <dl>{user?.gender === '0' ? '男性' : '女性'}</dl>
         </Grid>
         <Grid item>
           <dt>
             <strong>アクセス権限</strong>
           </dt>
-          <dl>{ user?.roles?.map(r => r.name) }</dl>
+          <dl>{user?.roles?.map((r) => r.name)}</dl>
         </Grid>
       </Grid>
     </StyledPaper>

@@ -1,23 +1,20 @@
 //----------------------------------
 // redux action ユーザー印証管理関数
 //----------------------------------
-
 import {
-  USER_REQUEST_START,
-  USER_REQUEST_SUCCESS,
+  LOGOUT_REQUEST_SUCCESS,
   USER_REQUEST_FAILURE,
-  LOGOUT_REQUEST_SUCCESS
-} from '../types/authTypes'
-
-import { RootState, typedAction } from '../store'
+  USER_REQUEST_START,
+  USER_REQUEST_SUCCESS
+} from '@store/types/authTypes'
+import { RootState, typedAction } from '@store/store'
 import { GoogleLoginResponse } from 'react-google-login'
-import { User } from '../../entities/User'
+import { User } from '@entity/User'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
-
-import apiEndpoint from '../../utils/api/apiEndpoint'
-import setAuthToken from '../../utils/setAuthToken'
-import history from '../../utils/history'
+import apiEndpoint from '@utils/api/apiEndpoint'
+import setAuthToken from '@utils/setAuthToken'
+import history from '@utils/history'
 import Cookies from 'js-cookie'
 
 //ユーザーのリクエストをスタートするアクション
@@ -39,82 +36,86 @@ const logoutSuccess = (msg: string) => {
 }
 
 // refresh tokenをサーバーに投げてユーザー情報をもらってくるアクション
-export const silentLogin = ():
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
-  try {
-    const user = await apiEndpoint.silentRefresh()
-    const token = user.data.token
-    
-    Cookies.set('sessionToken', token, { expires: 1 })
-    setAuthToken(token)
-    
-    dispatch(fetchUser(user.data.user))
-    history.push('/')
-  } catch (e: any) {
-    console.log(e.response)
-    dispatch(loginRequestFailure(e.response.data))
+export const silentLogin =
+  (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
+    try {
+      const user = await apiEndpoint.silentRefresh()
+      const token = user.data.token
+
+      Cookies.set('sessionToken', token, { expires: 1 })
+      setAuthToken(token)
+
+      dispatch(fetchUser(user.data.user))
+      history.push('/')
+    } catch (e: any) {
+      console.log(e.response)
+      dispatch(loginRequestFailure(e.response.data))
+    }
   }
-  
-}
 
 // localログインを実行するアクション
-export const loginStart = (email: string, password: string):
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
-  dispatch(loginRequestStart())
-  try {
-    const user = await apiEndpoint.localLogin({ email, password })
-    const token = user.data.token
-    
-    Cookies.set('sessionToken', token, { expires: 1 })
-    setAuthToken(token)
-    
-    dispatch(fetchUser(user.data.user))
-    history.push('/')
-  } catch (e: any) {
-    dispatch(loginRequestFailure(e.response.data))
+export const loginStart =
+  (
+    email: string,
+    password: string
+  ): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(loginRequestStart())
+    try {
+      const user = await apiEndpoint.localLogin({ email, password })
+      const token = user.data.token
+
+      Cookies.set('sessionToken', token, { expires: 1 })
+      setAuthToken(token)
+
+      dispatch(fetchUser(user.data.user))
+      history.push('/')
+    } catch (e: any) {
+      dispatch(loginRequestFailure(e.response.data))
+    }
   }
-}
 
 // googleログインを実行するアクション
-export const googleLogin = (googleResponse: GoogleLoginResponse):
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  
-  const provider = 'google'
-  
-  try {
-    const user = await apiEndpoint.googleLogin(provider, googleResponse.tokenId)
-    const token = user.data.token
-    
-    Cookies.set('sessionToken', token, { expires: 1 })
-    setAuthToken(token)
-    
-    dispatch(fetchUser(user.data.user))
-    history.push('/')
-  } catch (e: any) {
-    dispatch(loginRequestFailure(e.response.data))
-  }
-  
-}
+export const googleLogin =
+  (
+    googleResponse: GoogleLoginResponse
+  ): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    const provider = 'google'
 
-//　ログアウトを実行するアクション
-export const logout = ():
-  ThunkAction<void, RootState, null, Action> => async dispatch => {
-  try {
-    setAuthToken(Cookies.get('sessionToken'))
-    const message = await apiEndpoint.logout()
-    Cookies.remove('sessionToken')
-    
-    dispatch(logoutSuccess(message.data))
-    
-    history.push('/auth')
-  } catch (e: any) {
-    console.log(e.response)
-    dispatch(loginRequestFailure(e.response.data))
+    try {
+      const user = await apiEndpoint.googleLogin(
+        provider,
+        googleResponse.tokenId
+      )
+      const token = user.data.token
+
+      Cookies.set('sessionToken', token, { expires: 1 })
+      setAuthToken(token)
+
+      dispatch(fetchUser(user.data.user))
+      history.push('/')
+    } catch (e: any) {
+      dispatch(loginRequestFailure(e.response.data))
+    }
   }
-  
-}
+
+// ログアウトを実行するアクション
+export const logout =
+  (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
+    try {
+      setAuthToken(Cookies.get('sessionToken'))
+      const message = await apiEndpoint.logout()
+      Cookies.remove('sessionToken')
+
+      dispatch(logoutSuccess(message.data))
+
+      history.push('/auth')
+    } catch (e: any) {
+      console.log(e.response)
+      dispatch(loginRequestFailure(e.response.data))
+    }
+  }
 
 export type AuthAction =
   | ReturnType<typeof loginRequestStart>

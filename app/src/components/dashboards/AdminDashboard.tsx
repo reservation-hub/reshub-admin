@@ -1,38 +1,32 @@
 import React from 'react'
-
-import { SalonCell, UserCell } from '../common/_Constants'
-import { Grid } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
 import { AdminDashboardProps } from './_PropsType'
+import TableLayout from '@components/common/atoms/TableLayout'
+import UserItems from '@components/list/User/UserItems'
+import H1 from '@components/common/atoms/H1'
+import SalonItem from '@components/list/Shop/SalonItem'
+import { SALON_CELL, USER_CELL } from '@constants/Table'
 
-import TableLayout from '../common/atoms/TableLayout'
-import UserItems from '../user/userlist/UserItems'
-import H1 from '../common/atoms/H1'
-import SalonItem from '../list/Shop/SalonItem'
-
-const AdminDashboard = ({
-  data
-}: AdminDashboardProps) => {
-  
+const AdminDashboard = ({ data }: AdminDashboardProps) => {
   return (
     <Grid container>
       <H1 color='primary'>ダッシュボード</H1>
-      <Grid item style={ { width: '100%' } }>
-        <TableLayout cell={ UserCell }>
-          { data?.user?.users.map((value, index) => (
-            <UserItems user={ value } key={ index } />
-          )) }
+      <Grid item style={{ width: '100%' }}>
+        <TableLayout cell={USER_CELL}>
+          {data?.user?.users.map((value, index) => (
+            <UserItems user={value} key={index} />
+          ))}
         </TableLayout>
       </Grid>
-      <Grid item style={ { width: '100%' } }>
-        <TableLayout cell={ SalonCell }>
-          { data?.shop?.shopData.map((value, index) => (
-            <SalonItem shop={ value } key={ index } />
-          )) }
+      <Grid item style={{ width: '100%' }}>
+        <TableLayout cell={SALON_CELL}>
+          {data?.shop?.shopData.map((value, index) => (
+            <SalonItem shop={value} key={index} />
+          ))}
         </TableLayout>
       </Grid>
     </Grid>
   )
-  
 }
 
 export default AdminDashboard

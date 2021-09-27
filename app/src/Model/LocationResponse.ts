@@ -1,13 +1,13 @@
-import { City, Prefecture } from '../entities/Location'
+import { City, Prefecture } from '@entity/Location'
 
-export type AreaResponse = {
+export type PrefResponse = {
   id: number
   slug: string
   name: string
   prefectures: Prefecture[]
 }
 
-export type PrefResponse = {
+export type CityResponse = {
   id: number
   slug: string
   name: string

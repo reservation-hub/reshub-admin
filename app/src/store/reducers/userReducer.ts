@@ -1,21 +1,18 @@
 //----------------------------------
 // redux ユーザー状態管理 reducer
 //----------------------------------
-
 import {
   USERS_ADD_SUCCESS,
-  USERS_EDIT_SUCCESS,
   USERS_DELETE_SUCCESS,
+  USERS_EDIT_SUCCESS,
+  USERS_GET_SUCCESS,
   USERS_REQUEST_FAILURE,
-  UsersState,
-  USERS_REQUEST_SUCCESS, USERS_GET_SUCCESS
-} from '../types/usersType'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '../../utils/api/request-response-types/ServiceCommonTypes'
-import { User } from '../../entities/User'
-import { UserAction } from '../actions/userAction'
+  USERS_REQUEST_SUCCESS,
+  UsersState
+} from '@store/types/usersType'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { User } from '@entity/User'
+import { UserAction } from '@store/actions/userAction'
 
 const initialState: UsersState = {
   loading: true,
@@ -24,10 +21,7 @@ const initialState: UsersState = {
   msg: ''
 }
 
-const userReducer = (
-  state = initialState,
-  action: UserAction
-) => {
+const userReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
     case USERS_REQUEST_SUCCESS:
       return {

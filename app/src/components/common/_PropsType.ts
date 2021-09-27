@@ -1,29 +1,36 @@
-import React, { ChangeEventHandler } from 'react'
-import { Area, City, Prefecture } from '../../entities/Location'
+import React from 'react'
+import { Area, City, Prefecture } from '@entity/Location'
+import { Role } from '@entity/Role'
+import { TDays } from '@constants/Days'
 
-export type MainTemplateProps = {
+export type MatchParams = {
+  id: string
+}
+
+export interface IMainTemplateProps {
   children?: React.ReactNode
   onLogout?: () => void
 }
 
-export type ButtonProps = {
+export interface IButtonProps {
   children?: React.ReactNode
   onClick?: () => void
   className?: string | undefined
   disabled?: boolean
 }
 
-export type TableProps = {
+export interface ITableProps {
   cell?: object
   data?: any[]
   children?: React.ReactNode
   index?: number
 }
 
-export type H1Props = {
+export interface IH1Props {
   children: React.ReactNode
   className?: string
-  color?: 'initial'
+  color?:
+    | 'initial'
     | 'inherit'
     | 'primary'
     | 'secondary'
@@ -32,25 +39,32 @@ export type H1Props = {
     | 'error'
 }
 
-export type PaginateProps = {
+export interface IPaginateProps {
   totalPage: number
   setPage: React.Dispatch<React.SetStateAction<number>>
+  page?: string | number | null
 }
 
-export type PickerProps = {
-  hh?: number
-  mm?: number
-  option?: string
-  selectHandler?: ChangeEventHandler<{ value: unknown }>
-  inputHandler?: ChangeEventHandler<HTMLInputElement>
-  values?: { areas: Area[], pref: Prefecture[], city: City[] }
-  area?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
-  pref?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
-  city?: { option: string, changeHandler: (e: React.ChangeEvent<{ value: unknown }>) => void }
+export interface IPickerProps {
+  selectHandler?: React.ChangeEventHandler<{ value: unknown }>
+  inputHandler?: React.ChangeEventHandler<HTMLInputElement>
+  checkedData?: number[]
   classes?: string
   id?: string
   name?: string
   from?: number
   to?: number
   label?: string
+  hh?: number
+  mm?: number
+  option?: string
+  variant?: 'filled' | 'standard' | 'outlined' | undefined
+  data?: Area[] | Prefecture[] | City[] | Role[] | TDays[]
+}
+
+export interface ITopBarProps {
+  title: string
+  type?: string
+  modalOpenHandler?: () => void
+  subModalHandler?: () => void
 }

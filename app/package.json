@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.3.0",
     "@material-ui/core": "^4.11.4",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@testing-library/jest-dom": "^5.11.4",
@@ -10,9 +11,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "dayjs": "^1.10.6",
-    "formik": "^2.2.9",
     "js-cookie": "^2.2.1",
-    "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
@@ -20,19 +19,21 @@
     "react-paginate": "^7.1.3",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
+    "react-router-redux": "^4.0.8",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
-    "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "web-vitals": "^1.0.1",
-    "yup": "^0.32.9"
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject",
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check .",
+    "lint": "eslint src/**/*.{ts,tsx}"
   },
   "eslintConfig": {
     "extends": [
@@ -59,11 +60,19 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-paginate": "^7.1.1",
     "@types/react-router-dom": "^5.1.8",
+    "@types/react-router-redux": "^5.0.19",
     "@types/redux-logger": "^3.0.9",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
+    "craco-alias": "^3.0.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-config-react": "^1.1.7",
-    "prettier": "^2.3.2",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "prettier": "^2.4.1",
+    "redux-logger": "^3.0.6",
     "typescript": "^4.3.5"
   }
 }

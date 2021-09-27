@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from '@material-ui/core/styles'
 
-const LoginStyle = makeStyles((theme: Theme) => ( {
+const LoginStyle = makeStyles((theme: Theme) => ({
   formBox: {
     height: '30.2rem',
     padding: '3rem',
@@ -11,7 +11,7 @@ const LoginStyle = makeStyles((theme: Theme) => ( {
         color: '#999'
       },
       '& .MuiInput-underline:before': {
-        borderBottom: `1px solid ${ theme.palette.primary.main }`
+        borderBottom: `1px solid ${theme.palette.primary.main}`
       }
     },
     '& .loginButton': {
@@ -50,6 +50,6 @@ const LoginStyle = makeStyles((theme: Theme) => ( {
       }
     }
   }
-} ))
+}))
 
 export default LoginStyle

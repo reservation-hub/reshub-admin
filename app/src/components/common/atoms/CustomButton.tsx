@@ -1,30 +1,25 @@
 import React from 'react'
-import { ButtonProps } from '../_PropsType'
-import CommonStyle from '../../CommonStyle'
+import { IButtonProps } from '../_PropsType'
+import CommonStyle from '@components/CommonStyle'
 
 const CustomButton = ({
   children,
   onClick,
   className,
-  disabled,
-}: ButtonProps) => {
-
+  disabled
+}: IButtonProps) => {
   const classes = CommonStyle()
 
   return (
     <button
       type='submit'
-      onClick={ onClick }
+      onClick={onClick}
       disabled={disabled}
-      className={
-        `${ className } ${ classes.buttonRoot }`
-        || classes.buttonRoot
-      }
+      className={`${className} ${classes.buttonRoot}` || classes.buttonRoot}
     >
-      { children || 'button' }
+      {children || 'button'}
     </button>
   )
-
 }
 
 export default CustomButton
