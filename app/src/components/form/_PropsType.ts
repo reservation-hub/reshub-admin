@@ -44,7 +44,7 @@ export type TFormState = {
 }
 
 export interface IUserFormProps {
-  validation?: object
+  validation?: Record<string, any>
   submitHandler: FormEventHandler<HTMLFormElement>
   formValue: TUserInput
   formState?: TFormState
