@@ -1,11 +1,8 @@
 //----------------------------------
 // redux action types お店管理
 //----------------------------------
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
-import { Shop, ShopList } from '@Model/ShopResponse'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { TShop, TShopList } from '@Model/ShopResponse'
 
 export const SHOP_REQUEST_START = 'SHOP_REQUEST_START' as const
 // お店情報のリクエスト成功
@@ -23,7 +20,7 @@ export const SHOP_REQUEST_FAILURE = 'SHOP_REQUEST_FAILURE' as const
 
 export type ShopState = {
   loading: boolean
-  shops: fetchModelsWithTotalCountResponse<modelResponse<ShopList>>
-  shop: Shop
+  shops: fetchModelsWithTotalCountResponse<modelResponse<TShopList>>
+  shop: TShop
   msg: string
 }

@@ -1,9 +1,14 @@
 import { Area, City, Prefecture } from '@entity/Location'
 import { Menu } from '@entity/Menu'
 import { Stylist } from '@entity/Stylist'
-import { ShopSchedule } from '@entity/Shop'
 
-export type ShopList = {
+export type TShopSchedule = {
+  days: number[]
+  endTime: string
+  startTime: string
+}
+
+export type TShopList = {
   id: number
   name?: string | null
   address?: string | null
@@ -15,7 +20,7 @@ export type ShopList = {
   stylistCount?: number | null
 }
 
-export type Shop = {
+export type TShop = {
   id: number
   name?: string | null
   address?: string | null
@@ -24,6 +29,6 @@ export type Shop = {
   prefecture?: Prefecture | null
   city?: City | null
   menu?: Menu | null
-  schedule?: ShopSchedule
+  schedule?: TShopSchedule
   stylists?: Stylist[] | null
 }

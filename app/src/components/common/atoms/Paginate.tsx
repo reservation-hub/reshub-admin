@@ -1,18 +1,46 @@
 import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { IPaginateProps } from '../_PropsType'
-import CommonStyle from '@components/CommonStyle'
+import { makeStyles } from '@material-ui/core/styles'
+
+const classes = makeStyles((theme) => ({
+  root: {
+    '& .paging-container': {
+      padding: '0',
+      listStyle: 'none',
+      '& li': {
+        marginLeft: '.5rem',
+        marginRight: '.5rem',
+        border: `1px solid ${theme.palette.primary.main}`,
+        borderRadius: '.25rem',
+        color: '#ABB0AD',
+        textAlign: 'center',
+        cursor: 'pointer',
+        fontWeight: '600',
+        height: '4rem',
+        lineHeight: '4rem',
+        background: theme.palette.secondary.main,
+        '& a': {
+          width: '4rem',
+          display: 'inline-block'
+        }
+      },
+      '& .active': {
+        background: theme.palette.primary.main,
+        color: theme.palette.secondary.main
+      }
+    }
+  }
+}))
 
 const Paginate = ({ totalPage, setPage, page }: IPaginateProps) => {
-  const classes = CommonStyle()
-
   const pageChangeHandler = (data: any | number[]): void => {
     const pageNum = data['selected']
     setPage(pageNum + 1)
   }
 
   return (
-    <div className={classes.pagingBox}>
+    <div className={classes().root}>
       <ReactPaginate
         marginPagesDisplayed={10}
         pageCount={Math.ceil(totalPage / 10)}

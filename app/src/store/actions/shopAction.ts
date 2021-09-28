@@ -11,19 +11,13 @@ import {
   SHOP_REQUEST_SUCCESS
 } from '@store/types/shopTypes'
 import { RootState, typedAction } from '@store/store'
-import {
-  insertShopQuery,
-  updateShopQuery
-} from '@utils/api/request-response-types/ShopService'
+import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/history'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
-import { Shop, ShopList } from '@Model/ShopResponse'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { TShop, TShopList } from '@Model/ShopResponse'
 
 // リクエストを始まる
 const shopRequestStart = () => {
@@ -31,20 +25,20 @@ const shopRequestStart = () => {
 }
 
 const shopRequestSuccess = (
-  data: fetchModelsWithTotalCountResponse<modelResponse<ShopList>>
+  data: fetchModelsWithTotalCountResponse<modelResponse<TShopList>>
 ) => {
   return typedAction(SHOP_REQUEST_SUCCESS, data)
 }
 
-const shopGetSuccess = (data: Shop) => {
+const shopGetSuccess = (data: TShop) => {
   return typedAction(SHOP_GET_SUCCESS, data)
 }
 
-const shopAddSuccess = (data: Shop) => {
+const shopAddSuccess = (data: TShop) => {
   return typedAction(SHOP_ADD_SUCCESS, data)
 }
 
-const shopPatchSuccess = (data: Shop) => {
+const shopPatchSuccess = (data: TShop) => {
   return typedAction(SHOP_EDIT_SUCCESS, data)
 }
 

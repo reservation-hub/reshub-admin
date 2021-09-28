@@ -146,33 +146,6 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     '& .item-button': {
       width: '35rem'
     }
-  },
-  pagingBox: {
-    '& .paging-container': {
-      padding: '0',
-      listStyle: 'none',
-      '& li': {
-        marginLeft: '.5rem',
-        marginRight: '.5rem',
-        border: `1px solid ${theme.palette.primary.main}`,
-        borderRadius: '.25rem',
-        color: '#ABB0AD',
-        textAlign: 'center',
-        cursor: 'pointer',
-        fontWeight: '600',
-        height: '4rem',
-        lineHeight: '4rem',
-        background: theme.palette.secondary.main,
-        '& a': {
-          width: '4rem',
-          display: 'inline-block'
-        }
-      },
-      '& .active': {
-        background: theme.palette.primary.main,
-        color: theme.palette.secondary.main
-      }
-    }
   }
 }))
 

@@ -2,9 +2,9 @@ import React from 'react'
 import { StyledTableCell } from '@components/common/TableStyle'
 import TableRow from '@material-ui/core/TableRow'
 import history from '@utils/history'
-import { IDetailProps } from '@components/detail/_PropsType'
+import { IListProps } from '@components/list/_PropsType'
 
-const SalonItem = ({ shop }: IDetailProps) => {
+const SalonItem = ({ shop }: IListProps) => {
   return (
     <TableRow
       style={{ height: '6rem' }}
