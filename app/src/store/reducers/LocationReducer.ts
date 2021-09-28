@@ -1,5 +1,13 @@
-import { GET_AREA_SUCCESS, GET_CITY_SUCCESS, GET_PREF_SUCCESS, LocationState } from '@store/types/LocationTypes'
-import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  GET_AREA_SUCCESS,
+  GET_CITY_SUCCESS,
+  GET_PREF_SUCCESS,
+  LocationState
+} from '@store/types/LocationTypes'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { Area } from '@entity/Location'
 import { LocationAction } from '@store/actions/LocationAction'
 import { CityResponse, PrefResponse } from '@Model/LocationResponse'

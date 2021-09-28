@@ -1,4 +1,8 @@
-import { DASHBOARD_REQUEST_SUCCESS, DashBoardResponseType, DashBoardState } from '@store/types/dashboardTypes'
+import {
+  DASHBOARD_REQUEST_SUCCESS,
+  DashBoardResponseType,
+  DashBoardState
+} from '@store/types/dashboardTypes'
 import { DashboardAction } from '@store/actions/dashboardAction'
 
 const initialState: DashBoardState = {
