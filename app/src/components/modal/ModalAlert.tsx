@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomButton from '@components/common/atoms/CustomButton'
-import { ModalProps } from './_PropsType'
+import { IModalProps } from './_PropsType'
 import ModalStyle from './ModalStyle'
 
 const ModalAlert = ({
@@ -8,7 +8,7 @@ const ModalAlert = ({
   modalCloseHandler,
   modalHandler,
   buttonText
-}: ModalProps) => {
+}: IModalProps) => {
   const classes = ModalStyle()
 
   return (
