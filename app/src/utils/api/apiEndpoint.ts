@@ -7,8 +7,14 @@ import {
   updateShopQuery,
   updateStylistQuery
 } from './request-response-types/ShopService'
-import { insertReservationQuery, updateReservationQuery } from './request-response-types/ReservationService'
-import { insertUserFromAdminQuery, updateUserFromAdminQuery } from './request-response-types/UserService'
+import {
+  insertReservationQuery,
+  updateReservationQuery
+} from './request-response-types/ReservationService'
+import {
+  insertUserFromAdminQuery,
+  updateUserFromAdminQuery
+} from './request-response-types/UserService'
 import { localAuthenticationQuery } from './request-response-types/AuthService'
 
 //-----------------------------------------------
