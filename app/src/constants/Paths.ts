@@ -35,7 +35,7 @@ export const PUBLIC_PATHS: TRouter[] = [
 ]
 
 export const COMMON_PATHS: TRouter[] = [
-  { path: '/login', exact: true, component: Login },
+  { path: '/auth', exact: true, component: Login },
   { path: '*', exact: false, component: Error }
 ]
 

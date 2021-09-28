@@ -1,14 +1,7 @@
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
+import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { Area } from '@entity/Location'
 import { RootState, typedAction } from '@store/store'
-import {
-  GET_AREA_SUCCESS,
-  GET_CITY_SUCCESS,
-  GET_PREF_SUCCESS
-} from '@store/types/LocationTypes'
+import { GET_AREA_SUCCESS, GET_CITY_SUCCESS, GET_PREF_SUCCESS } from '@store/types/LocationTypes'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@/utils/api/apiEndpoint'
@@ -32,7 +25,7 @@ const getOnePrefSuccess = (data: CityResponse) => {
 export const getArea =
   (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
     try {
-      const res = await apiEndpoint.getArea()
+      const res = await apiEndpoint.location.getAreas()
       dispatch(areaReqSuccess(res.data))
     } catch (e) {
       history.push('/error')
@@ -43,7 +36,7 @@ export const getOnePref =
   (id: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     try {
-      const res = await apiEndpoint.getOneArea(id)
+      const res = await apiEndpoint.location.getArea(id)
       dispatch(getOneAreaSuccess(res.data))
     } catch (e) {
       history.push('/error')
@@ -54,7 +47,7 @@ export const getOneCity =
   (id: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     try {
-      const res = await apiEndpoint.getOnePref(id)
+      const res = await apiEndpoint.location.getPrefecture(id)
       dispatch(getOnePrefSuccess(res.data))
     } catch (e) {
       history.push('/error')
