@@ -5,8 +5,8 @@ import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
 import ListTopBar from '@components/common/atoms/ListTopBar'
 import useBirthday from '@utils/useBirthday'
-import { HeaderType } from '@components/common/_Constants'
 import { IDetailProps } from '@components/detail/_PropsType'
+import { HEADER_TYPE } from '@constants/Common'
 
 const ProfileItem = ({
   user,
@@ -19,7 +19,7 @@ const ProfileItem = ({
     <StyledPaper>
       <ListTopBar
         title='ユーザー詳細'
-        type={HeaderType.DETAIL}
+        type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}
       />

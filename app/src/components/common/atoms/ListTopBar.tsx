@@ -1,10 +1,10 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
 import CommonStyle from '@components/CommonStyle'
 import CustomButton from './CustomButton'
 import H1 from './H1'
-import { HeaderType } from '../_Constants'
 import { ITopBarProps } from '../_PropsType'
+import { HEADER_TYPE } from '@constants/Common'
 
 const ListTopBar = ({
   title,
@@ -25,7 +25,7 @@ const ListTopBar = ({
       </Grid>
       <Grid item className='item-button justify-between display-flex'>
         {/* 実装予定 */}
-        {type === HeaderType.LIST ? (
+        {type === HEADER_TYPE.LIST ? (
           <>
             <CustomButton>並び替え</CustomButton>
             <CustomButton>絞り込み</CustomButton>
@@ -34,7 +34,7 @@ const ListTopBar = ({
           <CustomButton onClick={subModalHandler}>削除</CustomButton>
         )}
         <CustomButton onClick={modalOpenHandler}>
-          {type === HeaderType.LIST ? '新規登録' : '編集'}
+          {type === HEADER_TYPE.LIST ? '新規登録' : '編集'}
         </CustomButton>
       </Grid>
     </Grid>

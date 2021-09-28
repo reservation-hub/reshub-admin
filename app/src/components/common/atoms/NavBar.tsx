@@ -1,11 +1,13 @@
 import React from 'react'
-import { List, ListItem, ListItemText } from '@material-ui/core'
+import ListItemText from '@material-ui/core/ListItemText'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 import { Link, NavLink } from 'react-router-dom'
-import { NavMenu } from '../_Constants'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store/store'
-import { AiOutlineGithub } from 'react-icons/all'
+import { AiOutlineGithub } from 'react-icons/ai'
+import { NAV_MENU } from '@constants/Paths'
 
 const NavBar = () => {
   const { user } = useSelector((state: RootState) => state.auth)
@@ -13,29 +15,19 @@ const NavBar = () => {
   return (
     <React.Fragment>
       <div className='nav-wrapper text-center'>
-        <Link to={`/users/${user['id']}`}>
+        <Link to={`/users/${user.id}`}>
           <div className='user-profile-link'>
             <FaRegUserCircle />
-            <p className='user-name'>{user['username'] || 'Admin'}</p>
+            <p className='user-name'>{user.username || 'Admin'}</p>
           </div>
         </Link>
       </div>
       <div>
         <List>
-          {NavMenu.map((value: string, index: number) => (
-            <NavLink
-              key={index}
-              to={`${
-                index === 0
-                  ? '/salon_dashboard'
-                  : index === 1
-                  ? '/users'
-                  : '/salon'
-              }`}
-              activeClassName='active'
-            >
+          {NAV_MENU.map((value, index) => (
+            <NavLink key={index} to={value.path} activeClassName='active'>
               <ListItem button className='nav-items'>
-                <ListItemText primary={value} />
+                <ListItemText primary={value.value} />
               </ListItem>
             </NavLink>
           ))}

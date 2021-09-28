@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from '@material-ui/core'
+import Container from '@material-ui/core/Container'
 import H1 from '@/components/common/atoms/H1'
 
 const LoginSelectFooter = () => {
