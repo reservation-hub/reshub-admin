@@ -1,7 +1,10 @@
 //-----------------------------------------------
 // menu
 //-----------------------------------------------
-import { insertMenuItemQuery, updateMenuItemQuery } from '@utils/api/request-response-types/ShopService'
+import {
+  insertMenuItemQuery,
+  updateMenuItemQuery
+} from '@utils/api/request-response-types/ShopService'
 import instance from '@utils/api'
 
 export const createMenu = async (menuData: insertMenuItemQuery) =>

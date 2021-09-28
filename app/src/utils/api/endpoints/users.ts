@@ -2,7 +2,10 @@
 // users
 //-----------------------------------------------
 import instance from '@utils/api'
-import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '@utils/api/request-response-types/UserService'
+import {
+  insertUserFromAdminQuery,
+  updateUserFromAdminQuery
+} from '@utils/api/request-response-types/UserService'
 
 export const getUsers = async (page: number) =>
   await instance.get(`/users?page=${page}`)

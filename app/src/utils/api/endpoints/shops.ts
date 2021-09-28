@@ -2,7 +2,10 @@
 // shops
 //-----------------------------------------------
 import instance from '@utils/api'
-import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
+import {
+  insertShopQuery,
+  updateShopQuery
+} from '@utils/api/request-response-types/ShopService'
 
 export const getShops = async (page: number) =>
   await instance.get(`/shops?page=${page}`)
