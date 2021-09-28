@@ -1,12 +1,8 @@
 import React from 'react'
 
-export type ModalOverlayProps = {
+export interface IModalProps {
   children?: React.ReactNode
-  modalOpen: boolean
-  modalCloseHandler?: () => void
-}
-
-export type ModalProps = {
+  modalOpen?: boolean
   modalCloseHandler: () => void
   alertText?: string
   modalTitle?: string

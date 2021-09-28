@@ -39,7 +39,7 @@ const logoutSuccess = (msg: string) => {
 export const silentLogin =
   (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
     try {
-      const user = await apiEndpoint.silentRefresh()
+      const user = await apiEndpoint.authenticated.silentRefresh()
       const token = user.data.token
 
       Cookies.set('sessionToken', token, { expires: 1 })
@@ -62,7 +62,10 @@ export const loginStart =
   async (dispatch) => {
     dispatch(loginRequestStart())
     try {
-      const user = await apiEndpoint.localLogin({ email, password })
+      const user = await apiEndpoint.authenticated.localLogin({
+        email,
+        password
+      })
       const token = user.data.token
 
       Cookies.set('sessionToken', token, { expires: 1 })
@@ -84,7 +87,7 @@ export const googleLogin =
     const provider = 'google'
 
     try {
-      const user = await apiEndpoint.googleLogin(
+      const user = await apiEndpoint.authenticated.googleLogin(
         provider,
         googleResponse.tokenId
       )
@@ -105,8 +108,9 @@ export const logout =
   (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
     try {
       setAuthToken(Cookies.get('sessionToken'))
-      const message = await apiEndpoint.logout()
+      const message = await apiEndpoint.authenticated.logout()
       Cookies.remove('sessionToken')
+      Cookies.remove('refreshToken')
 
       dispatch(logoutSuccess(message.data))
 

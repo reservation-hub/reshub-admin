@@ -3,10 +3,17 @@ import { Route, RouteComponentProps } from 'react-router-dom'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import UserForm from '@components/form/UserForm'
 import { useDispatch } from 'react-redux'
-import { TChangeHandle, TFormState, TUserInput } from '@components/form/_PropsType'
+import {
+  TChangeHandle,
+  TFormState,
+  TUserInput
+} from '@components/form/_PropsType'
 import useInput from '@utils/useInput'
 import useValidation from '@utils/useValidation'
-import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '@utils/api/request-response-types/UserService'
+import {
+  insertUserFromAdminQuery,
+  updateUserFromAdminQuery
+} from '@utils/api/request-response-types/UserService'
 import dayjs from 'dayjs'
 import { addUser, patchUser } from '@store/actions/userAction'
 

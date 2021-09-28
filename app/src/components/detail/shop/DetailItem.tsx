@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyledPaper } from '@components/CommonStyle'
 import ListTopBar from '@components/common/atoms/ListTopBar'
-import { HeaderType } from '@components/common/_Constants'
 import { IDetailProps } from '../_PropsType'
+import { HEADER_TYPE } from '@constants/Common'
 
 const DetailItem = ({
   shop,
@@ -13,7 +13,7 @@ const DetailItem = ({
     <StyledPaper>
       <ListTopBar
         title={`${shop?.name}の詳細`}
-        type={HeaderType.DETAIL}
+        type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}
       />

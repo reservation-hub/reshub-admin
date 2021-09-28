@@ -1,11 +1,10 @@
 import React from 'react'
-
-import { HeaderType } from '@components/common/_Constants'
 import ListTopBar from '@components/common/atoms/ListTopBar'
 import TableLayout from '@components/common/atoms/TableLayout'
 import UserItems from './UserItems'
 import { USER_CELL } from '@constants/Table'
 import { IListProps } from '../_PropsType'
+import { HEADER_TYPE } from '@constants/Common'
 
 const UserList = ({ users, modalOpenHandler }: IListProps) => {
   return (
@@ -13,7 +12,7 @@ const UserList = ({ users, modalOpenHandler }: IListProps) => {
       <ListTopBar
         title='ユーザー一覧'
         modalOpenHandler={modalOpenHandler}
-        type={HeaderType.LIST}
+        type={HEADER_TYPE.LIST}
       />
       <TableLayout cell={USER_CELL} data={users}>
         {users?.map((value, index) => (

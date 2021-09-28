@@ -1,6 +1,8 @@
 import React from 'react'
 import TableStyle, { StyledTable, StyledTableHead } from '../TableStyle'
-import { TableBody, TableCell, TableRow } from '@material-ui/core'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableRow from '@material-ui/core/TableRow'
 import { ITableProps } from '../_PropsType'
 
 const TableLayout = ({ children, cell }: ITableProps) => {

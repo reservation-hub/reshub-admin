@@ -1,6 +1,7 @@
 import { makeStyles, Theme, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Paper from '@material-ui/core/Paper'
+import Alert from '@material-ui/lab/Alert'
 
 //-----------------------------------------------------------
 // reshub-adminの共通のスタイルを指定する
@@ -35,6 +36,16 @@ export const StyledHeader = withStyles((theme: Theme) => ({
     }
   }
 }))(AppBar)
+
+export const StyledAlert = withStyles(() => ({
+  root: {
+    position: 'absolute',
+    top: '5rem',
+    right: '.5rem',
+    width: '35rem',
+    background: 'rgb(189, 86, 66, 0.7)'
+  }
+}))(Alert)
 
 const CommonStyle = makeStyles((theme: Theme) => ({
   mainBackground: {

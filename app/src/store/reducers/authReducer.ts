@@ -1,7 +1,12 @@
 //----------------------------------
 // redux reducer ユーザー印証
 //----------------------------------
-import { AuthState, LOGOUT_REQUEST_SUCCESS, USER_REQUEST_FAILURE, USER_REQUEST_SUCCESS } from '@store/types/authTypes'
+import {
+  AuthState,
+  LOGOUT_REQUEST_SUCCESS,
+  USER_REQUEST_FAILURE,
+  USER_REQUEST_SUCCESS
+} from '@store/types/authTypes'
 import { AuthAction } from '@store/actions/authAction'
 import { User } from '@entity/User'
 

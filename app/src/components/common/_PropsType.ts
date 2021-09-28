@@ -20,7 +20,7 @@ export interface IButtonProps {
 }
 
 export interface ITableProps {
-  cell?: object
+  cell?: Record<string, any>
   data?: any[]
   children?: React.ReactNode
   index?: number

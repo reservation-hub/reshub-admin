@@ -1,4 +1,8 @@
-import { DASHBOARD_REQUEST_START, DASHBOARD_REQUEST_SUCCESS, DashBoardResponseType } from '@store/types/dashboardTypes'
+import {
+  DASHBOARD_REQUEST_START,
+  DASHBOARD_REQUEST_SUCCESS,
+  DashBoardResponseType
+} from '@store/types/dashboardTypes'
 import { RootState, typedAction } from '@store/store'
 import { ThunkAction } from 'redux-thunk'
 import apiEndpoint from '@utils/api/apiEndpoint'

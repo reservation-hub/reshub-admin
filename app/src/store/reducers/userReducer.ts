@@ -10,7 +10,10 @@ import {
   USERS_REQUEST_SUCCESS,
   UsersState
 } from '@store/types/usersType'
-import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { User } from '@entity/User'
 import { UserAction } from '@store/actions/userAction'
 

@@ -11,12 +11,18 @@ import {
   SHOP_REQUEST_SUCCESS
 } from '@store/types/shopTypes'
 import { RootState, typedAction } from '@store/store'
-import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
+import {
+  insertShopQuery,
+  updateShopQuery
+} from '@utils/api/request-response-types/ShopService'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/history'
-import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { Shop, ShopList } from '@Model/ShopResponse'
 
 // リクエストを始まる
@@ -57,7 +63,7 @@ export const fetchShopList =
   async (dispatch) => {
     dispatch(shopRequestStart())
     try {
-      const res = await apiEndpoint.getShop(page)
+      const res = await apiEndpoint.shops.getShops(page)
       dispatch(shopRequestSuccess(res.data))
     } catch (e) {
       history.push('/error')
@@ -70,7 +76,7 @@ export const getOneShop =
   async (dispatch) => {
     dispatch(shopRequestStart())
     try {
-      const res = await apiEndpoint.getOneShop(id)
+      const res = await apiEndpoint.shops.getShop(id)
       dispatch(shopGetSuccess(res.data))
     } catch (e) {
       history.push('/error')
@@ -83,7 +89,7 @@ export const addShop =
   async (dispatch) => {
     dispatch(shopRequestStart())
     try {
-      const res = await apiEndpoint.addShop(shopData)
+      const res = await apiEndpoint.shops.createShop(shopData)
       dispatch(shopAddSuccess(res.data))
       history.push('/salon')
     } catch (e) {
@@ -97,7 +103,7 @@ export const editShopData =
   async (dispatch) => {
     dispatch(shopRequestStart())
     try {
-      const res = await apiEndpoint.patchShop(shopData)
+      const res = await apiEndpoint.shops.patchShop(shopData)
       dispatch(shopPatchSuccess(res.data))
       history.push('/salon')
     } catch (e) {
@@ -111,7 +117,7 @@ export const deleteShopData =
   async (dispatch) => {
     dispatch(shopRequestStart())
     try {
-      const res = await apiEndpoint.deleteShop(id)
+      const res = await apiEndpoint.shops.deleteShop(id)
       dispatch(shopDeleteSuccess(res.data))
     } catch (e) {
       dispatch(shopRequestFailure(e))

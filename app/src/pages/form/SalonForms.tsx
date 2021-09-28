@@ -2,12 +2,19 @@ import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
 import SalonForm from '@components/form/SalonForm'
 import MainTemplate from '@components/common/layout/MainTemplate'
-import { TChangeHandle, TFormState, TSalonInput } from '@components/form/_PropsType'
+import {
+  TChangeHandle,
+  TFormState,
+  TSalonInput
+} from '@components/form/_PropsType'
 import { useDispatch } from 'react-redux'
 import useInput from '@utils/useInput'
 import { useTimePicker } from '@utils/useTimePicker'
 import { useCheckBox } from '@utils/useCheckBox'
-import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
+import {
+  insertShopQuery,
+  updateShopQuery
+} from '@utils/api/request-response-types/ShopService'
 import { addShop, editShopData } from '@store/actions/shopAction'
 
 const SalonForms = ({

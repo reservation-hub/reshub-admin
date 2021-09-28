@@ -11,13 +11,19 @@ import {
   USERS_REQUEST_SUCCESS
 } from '@store/types/usersType'
 import { RootState, typedAction } from '@store/store'
-import { insertUserFromAdminQuery, updateUserFromAdminQuery } from '@utils/api/request-response-types/UserService'
+import {
+  insertUserFromAdminQuery,
+  updateUserFromAdminQuery
+} from '@utils/api/request-response-types/UserService'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { User } from '@entity/User'
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '../../utils/history'
-import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '@utils/api/request-response-types/ServiceCommonTypes'
 
 const userRequestStart = () => {
   return typedAction(USERS_REQUEST_START)
@@ -54,7 +60,7 @@ export const fetchUserList =
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
-      const res = await apiEndpoint.getUsers(page)
+      const res = await apiEndpoint.users.getUsers(page)
       dispatch(userRequestSuccess(res.data))
     } catch (e: any) {
       history.push('/error')
@@ -66,7 +72,7 @@ export const getOneUser =
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
-      const res = await apiEndpoint.getOneUsers(id)
+      const res = await apiEndpoint.users.getUser(id)
       dispatch(userGetSuccess(res.data))
     } catch (e: any) {
       history.push('/error')
@@ -82,7 +88,7 @@ export const addUser =
 
     dispatch(userRequestStart())
     try {
-      const res = await apiEndpoint.addUser(userData)
+      const res = await apiEndpoint.users.createUser(userData)
       dispatch(userAddSuccess(res.data))
       history.replace('/users')
     } catch (e) {
@@ -98,7 +104,7 @@ export const patchUser =
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
-      const res = await apiEndpoint.patchUser(userData)
+      const res = await apiEndpoint.users.patchUser(userData)
       dispatch(userPatchSuccess(res.data))
     } catch (e) {
       const error = e.response.data
@@ -111,7 +117,7 @@ export const deleteUser =
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
-      const res = await apiEndpoint.deleteUser(id)
+      const res = await apiEndpoint.users.deleteUser(id)
       dispatch(userDeleteSuccess(res.data))
       history.push('/users')
     } catch (e) {

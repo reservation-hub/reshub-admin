@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from '@material-ui/core'
+import Container from '@material-ui/core/Container'
 import H1 from '../atoms/H1'
 
 const LoginSelectHeader = () => {

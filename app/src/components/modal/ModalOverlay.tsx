@@ -1,14 +1,14 @@
 import React from 'react'
 import Dialog from '@material-ui/core/Dialog'
-import { ModalOverlayProps } from './_PropsType'
+import { IModalProps } from './_PropsType'
 
 const ModalOverlay = ({
   children,
   modalOpen,
   modalCloseHandler
-}: ModalOverlayProps) => {
+}: IModalProps) => {
   return (
-    <Dialog open={modalOpen} onClose={modalCloseHandler}>
+    <Dialog open={Boolean(modalOpen)} onClose={modalCloseHandler}>
       {children}
     </Dialog>
   )
