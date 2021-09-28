@@ -1,5 +1,8 @@
 import { ChangeEventHandler, FormEventHandler } from 'react'
-import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
+import {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline
+} from 'react-google-login'
 
 export type TAuthForm = {
   email: string

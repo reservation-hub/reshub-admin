@@ -2,7 +2,10 @@
 // reservation
 //-----------------------------------------------
 import instance from '@utils/api'
-import { insertReservationQuery, updateReservationQuery } from '@utils/api/request-response-types/ReservationService'
+import {
+  insertReservationQuery,
+  updateReservationQuery
+} from '@utils/api/request-response-types/ReservationService'
 
 export const getReservations = async () => await instance.get('reservations')
 

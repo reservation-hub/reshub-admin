@@ -2,7 +2,10 @@
 // stylist
 //-----------------------------------------------
 import instance from '@utils/api'
-import { insertStylistQuery, updateStylistQuery } from '@utils/api/request-response-types/ShopService'
+import {
+  insertStylistQuery,
+  updateStylistQuery
+} from '@utils/api/request-response-types/ShopService'
 
 export const getStylists = async () => await instance.get('/stylists')
 
