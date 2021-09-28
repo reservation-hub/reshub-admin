@@ -23,10 +23,10 @@ export type TRouter = {
 }
 
 export const PRIVATE_PATHS: TRouter[] = [
-  { path: '/salon', exact: true, component: Salon },
-  { path: '/users', exact: true, component: Users },
-  { path: '/form/salon', exact: true, component: SalonForms },
-  { path: '/form/user', exact: true, component: UserForms }
+  { path: '/salon', exact: false, component: Salon },
+  { path: '/users', exact: false, component: Users },
+  { path: '/form/salon', exact: false, component: SalonForms },
+  { path: '/form/user', exact: false, component: UserForms }
 ]
 
 export const PUBLIC_PATHS: TRouter[] = [
