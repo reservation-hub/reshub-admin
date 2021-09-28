@@ -11,12 +11,18 @@ import {
   SHOP_REQUEST_SUCCESS
 } from '@store/types/shopTypes'
 import { RootState, typedAction } from '@store/store'
-import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
+import {
+  insertShopQuery,
+  updateShopQuery
+} from '@utils/api/request-response-types/ShopService'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/history'
-import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { TShop, TShopList } from '@Model/ShopResponse'
 
 // リクエストを始まる

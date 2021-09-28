@@ -11,7 +11,10 @@ import {
   ShopState
 } from '@store/types/shopTypes'
 import { ShopAction } from '@store/actions/shopAction'
-import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { TShop, TShopList } from '@Model/ShopResponse'
 
 const initialState: ShopState = {

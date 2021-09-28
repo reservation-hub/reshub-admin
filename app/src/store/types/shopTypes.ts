@@ -1,7 +1,10 @@
 //----------------------------------
 // redux action types お店管理
 //----------------------------------
-import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { TShop, TShopList } from '@Model/ShopResponse'
 
 export const SHOP_REQUEST_START = 'SHOP_REQUEST_START' as const
