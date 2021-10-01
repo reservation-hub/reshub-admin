@@ -3,7 +3,7 @@ import FormControl from '@material-ui/core/FormControl'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import TextField from '@material-ui/core/TextField'
 
-export const StyledInput = withStyles((theme: Theme) => ({
+export const StyledInput = withStyles(() => ({
   root: {
     '& .MuiOutlinedInput-root': {
       height: '4rem'
@@ -20,7 +20,7 @@ export const StyledInput = withStyles((theme: Theme) => ({
   }
 }))(TextField)
 
-export const StyledControl = withStyles((theme: Theme) => ({
+export const StyledControl = withStyles(() => ({
   root: {
     '& .MuiInputLabel-formControl': {
       transform: 'translate(14px, 14px) scale(1)'
