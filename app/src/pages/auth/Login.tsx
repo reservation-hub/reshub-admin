@@ -9,7 +9,7 @@ import LoginForm from '@components/auth/LoginForm'
 import LoginSelectHeader from '@components/common/loginSelect/LoginSelectHeader'
 import LoginSelectFooter from '@components/common/loginSelect/LoginSelectFooter'
 import LoginStyle from '@components/auth/LoginStyle'
-import CommonStyle, { StyledAlert } from '@components/CommonStyle'
+import CommonStyle, { StyledAlert } from '@components/common/CommonStyle'
 import { VALIDATION_TEXT } from '@constants/FormValid'
 import Fade from '@material-ui/core/Fade'
 

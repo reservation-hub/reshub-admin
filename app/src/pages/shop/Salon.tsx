@@ -4,15 +4,13 @@ import MainTemplate from '@components/common/layout/MainTemplate'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
-import { useModal } from '@utils/useModal'
-import ModalOverlay from '@components/modal/ModalOverlay'
 import Paginate from '@components/common/atoms/Paginate'
-import { Route, RouteComponentProps } from 'react-router-dom'
+import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Detail from './Detail'
 import Loading from '@components/common/atoms/loading'
 import history from '@utils/history'
-import ModalAlert from '@components/modal/ModalAlert'
 import { MatchParams } from '@components/common/_PropsType'
+import Form from '@pages/shop/Form'
 
 const Salon = ({ match }: RouteComponentProps<MatchParams>) => {
   const dispatch = useDispatch()
@@ -24,7 +22,6 @@ const Salon = ({ match }: RouteComponentProps<MatchParams>) => {
   localStorage.setItem('currentPage', String(page))
 
   const { shops, loading } = useSelector((state: RootState) => state.shop)
-  const { open, openModal, closeModal } = useModal(false, 'form')
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchShopList(Number(currentPage)))
@@ -35,26 +32,22 @@ const Salon = ({ match }: RouteComponentProps<MatchParams>) => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <Switch>
           <Route exact path='/salon'>
-            <SalonList shops={shops.values} modalOpenHandler={openModal} />
+            <SalonList
+              shops={shops.values}
+              modalOpenHandler={() => history.push('/salon/form')}
+            />
             <Paginate
               totalPage={shops.totalCount}
               setPage={setPage}
               page={currentPage}
             />
           </Route>
+          <Route path='/salon/form' component={Form} />
           <Route path='/salon/:id' component={Detail} />
-        </>
+        </Switch>
       )}
-      <ModalOverlay modalOpen={open} modalCloseHandler={closeModal}>
-        <ModalAlert
-          modalCloseHandler={closeModal}
-          modalHandler={() => history.push('/form/salon')}
-          alertText='サロンの登録画面に移動しますか？'
-          buttonText='移動'
-        />
-      </ModalOverlay>
     </MainTemplate>
   )
 }

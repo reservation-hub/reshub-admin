@@ -44,7 +44,7 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
 
       <DetailItem
         shop={shop}
-        modalOpenHandler={() => history.push(`/form/salon/${id}`, { shop })}
+        modalOpenHandler={() => history.push(`/salon/form/${id}`, { shop })}
         subModalHandler={deleteModal.openModal}
       />
     </>

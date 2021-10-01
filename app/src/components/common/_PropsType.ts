@@ -67,4 +67,5 @@ export interface ITopBarProps {
   type?: string
   modalOpenHandler?: () => void
   subModalHandler?: () => void
+  children?: React.ReactNode
 }

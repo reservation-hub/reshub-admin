@@ -9,8 +9,7 @@ const classes = makeStyles((theme) => ({
       padding: '0',
       listStyle: 'none',
       '& li': {
-        marginLeft: '.5rem',
-        marginRight: '.5rem',
+        margin: '0 .5rem 0',
         border: `1px solid ${theme.palette.primary.main}`,
         borderRadius: '.25rem',
         color: '#ABB0AD',
@@ -45,12 +44,12 @@ const Paginate = ({ totalPage, setPage, page }: IPaginateProps) => {
         marginPagesDisplayed={10}
         pageCount={Math.ceil(totalPage / 10)}
         pageRangeDisplayed={10}
-        breakLabel={'...'}
+        breakLabel='...'
         initialPage={Number(page) - 1}
-        previousLabel={'<'}
-        nextLabel={'>'}
-        activeClassName={'active'}
-        containerClassName={'paging-container justify-center display-flex'}
+        previousLabel='<'
+        nextLabel='>'
+        activeClassName='active'
+        containerClassName='paging-container justify-center display-flex'
         onPageChange={pageChangeHandler}
       />
     </div>

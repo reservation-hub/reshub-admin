@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyledTableCell } from '@components/common/TableStyle'
 import TableRow from '@material-ui/core/TableRow'
 import history from '@utils/history'
 import { IListProps } from '@components/list/_PropsType'
+import { StyledTableCell } from '../ListStyle'
 
 const SalonItem = ({ shop }: IListProps) => {
   return (
@@ -15,8 +15,8 @@ const SalonItem = ({ shop }: IListProps) => {
       <StyledTableCell>{shop?.name}</StyledTableCell>
       <StyledTableCell>-</StyledTableCell>
       <StyledTableCell>{shop?.address ?? '-'}</StyledTableCell>
-      <StyledTableCell>{shop?.reservationCount ?? 0}</StyledTableCell>
-      <StyledTableCell>{shop?.stylistCount ?? 0}</StyledTableCell>
+      <StyledTableCell>{`${shop?.reservationCount ?? 0}件`}</StyledTableCell>
+      <StyledTableCell>{`${shop?.stylistCount ?? 0}件`}</StyledTableCell>
       <StyledTableCell>{shop?.phoneNumber ?? '-'}</StyledTableCell>
     </TableRow>
   )

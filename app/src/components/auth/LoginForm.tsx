@@ -42,11 +42,7 @@ const LoginForm = ({
           />
           <Grid container>
             <Grid item xs={12}>
-              <CustomButton
-                className={`${classes.commonCss.buttonRoot} loginButton`}
-              >
-                ログイン
-              </CustomButton>
+              <CustomButton className='loginButton'>ログイン</CustomButton>
             </Grid>
             <Grid item xs={12}>
               <GoogleLogin

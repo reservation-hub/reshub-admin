@@ -1,6 +1,4 @@
 import React from 'react'
-
-import { StyledPaper } from '@components/CommonStyle'
 import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
 import ListTopBar from '@components/common/atoms/ListTopBar'
@@ -16,7 +14,7 @@ const ProfileItem = ({
   const birthday = useBirthday(user?.birthday)
 
   return (
-    <StyledPaper>
+    <>
       <ListTopBar
         title='ユーザー詳細'
         type={HEADER_TYPE.DETAIL}
@@ -74,7 +72,7 @@ const ProfileItem = ({
           <dl>{user?.role.name}</dl>
         </Grid>
       </Grid>
-    </StyledPaper>
+    </>
   )
 }
 

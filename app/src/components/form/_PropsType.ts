@@ -1,7 +1,7 @@
 import { User } from '@entity/User'
-import { Shop } from '@entity/Shop'
 import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
 import { TValid } from '@utils/useValidation'
+import { TShop } from '@Model/ShopResponse'
 
 export type TUserInput = {
   email: string
@@ -41,7 +41,7 @@ export type TChangeHandle = {
 
 export type TFormState = {
   user?: User
-  shop?: Shop
+  shop?: TShop
 }
 
 export interface IUserFormProps {

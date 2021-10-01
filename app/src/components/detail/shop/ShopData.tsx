@@ -2,8 +2,10 @@ import React from 'react'
 import Box from '@material-ui/core/Box'
 import { IDetailProps } from '@components/detail/_PropsType'
 import { DataGrid } from '../_Style'
+import { useDays } from '@utils/useDays'
 
 const ShopData = ({ shop }: IDetailProps) => {
+  const days = useDays(shop?.schedule?.days)
   return (
     <DataGrid md={6} item>
       <Box className='row'>
@@ -20,11 +22,15 @@ const ShopData = ({ shop }: IDetailProps) => {
       </Box>
       <Box className='row'>
         <dt className='header'>営業日</dt>
-        <dd className='body'>{shop?.schedule?.days.join(' ・ ')}</dd>
+        <dd className='body'>{days?.join(' ・ ')}</dd>
       </Box>
       <Box className='row'>
         <dt className='header'>営業時間</dt>
-        <dd className='body'>{`${shop?.schedule?.startTime} - ${shop?.schedule?.endTime}`}</dd>
+        <dd className='body'>
+          {`${shop?.schedule?.startTime ?? ''}
+              - 
+            ${shop?.schedule?.endTime ?? ''}`}
+        </dd>
       </Box>
     </DataGrid>
   )

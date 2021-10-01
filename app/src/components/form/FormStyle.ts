@@ -40,7 +40,6 @@ const FormStyle = makeStyles((theme: Theme) => ({
       marginTop: '2rem',
       '& .input-box': {
         marginBottom: '2rem',
-        // display: 'flex',
         justifyContent: 'space-between'
       },
       '& .kanji-kana-name': {

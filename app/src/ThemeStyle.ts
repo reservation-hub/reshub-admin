@@ -1,4 +1,4 @@
-import { createTheme } from '@material-ui/core/styles'
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core/styles'
 import { PaletteColor } from '@material-ui/core/styles/createPalette'
 import { PaletteColorOptions } from '@material-ui/core'
 
@@ -25,7 +25,7 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
-const theme = createTheme({
+const theme = createMuiTheme({
   typography: {
     htmlFontSize: 10,
     fontSize: 14

@@ -45,7 +45,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
       )}
       <ProfileItem
         user={user}
-        modalOpenHandler={() => history.push(`/form/user/${id}`, { user })}
+        modalOpenHandler={() => history.push(`/users/form/${id}`, { user })}
         subModalHandler={deleteModal.openModal}
       />
     </>

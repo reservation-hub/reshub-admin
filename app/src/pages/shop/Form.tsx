@@ -1,40 +1,39 @@
 import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
 import SalonForm from '@components/form/SalonForm'
-import MainTemplate from '@components/common/layout/MainTemplate'
-import {
-  TChangeHandle,
-  TFormState,
-  TSalonInput
-} from '@components/form/_PropsType'
+import { TChangeHandle, TFormState, TSalonInput } from '@components/form/_PropsType'
 import { useDispatch } from 'react-redux'
 import useInput from '@utils/useInput'
 import { useTimePicker } from '@utils/useTimePicker'
 import { useCheckBox } from '@utils/useCheckBox'
-import {
-  insertShopQuery,
-  updateShopQuery
-} from '@utils/api/request-response-types/ShopService'
+import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
 import { addShop, editShopData } from '@store/actions/shopAction'
 
-const SalonForms = ({
-  location
-}: RouteComponentProps<any, any, TFormState>) => {
+const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
-  const shop = location.state?.shop
+  const startAt = useTimePicker('')
+  const endAt = useTimePicker('')
 
-  const startAt = useTimePicker(0)
-  const endAt = useTimePicker(0)
+  const shop = useMemo(() => {
+    return location?.state?.shop
+  }, [location])
+
   const { checked, changeHandler } = useCheckBox(shop?.schedule?.days ?? [])
 
   const { input, ChangeHandler } = useInput({
     name: shop?.name ?? '',
     address: shop?.address ?? '',
     phoneNumber: shop?.phoneNumber ?? '',
+<<<<<<< HEAD:app/src/pages/form/SalonForms.tsx
     areaId: String(shop?.area?.id) ?? '',
     prefectureId: String(shop?.prefecture?.id) ?? '',
     cityId: String(shop?.city?.id) ?? '',
     details: shop?.details ?? ''
+=======
+    areaId: shop?.area?.id ?? '',
+    prefectureId: shop?.prefecture?.id ?? '',
+    cityId: shop?.city?.id ?? ''
+>>>>>>> b564b49 (全体的に修正):app/src/pages/shop/Form.tsx
   })
 
   const changeHandlers = {
@@ -49,9 +48,9 @@ const SalonForms = ({
       name: input.name,
       address: input.address,
       phoneNumber: input.phoneNumber,
-      cityId: input.cityId,
-      prefectureId: input.prefectureId,
-      areaId: input.areaId,
+      cityId: String(input.cityId),
+      prefectureId: String(input.prefectureId),
+      areaId: String(input.areaId),
       startTime: { hour: String(startAt.hour), minute: String(startAt.minute) },
       endTime: { hour: String(endAt.hour), minute: String(endAt.minute) },
       days: checked,
@@ -104,7 +103,7 @@ const SalonForms = ({
   )
 
   return (
-    <MainTemplate>
+    <>
       <Route exact path='/'>
         <SalonForm
           submitHandler={onSubmit}
@@ -121,8 +120,8 @@ const SalonForms = ({
           changeHandlers={changeHandlers}
         />
       </Route>
-    </MainTemplate>
+    </>
   )
 }
 
-export default SalonForms
+export default Form
