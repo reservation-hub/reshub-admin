@@ -43,7 +43,7 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     birthdayM: String(dayjs(user?.birthday).format('M')) ?? '',
     birthdayD: String(dayjs(user?.birthday).format('D')) ?? '',
     gender: user?.gender ?? '',
-    role: user?.roles.map((r) => r.id) ?? ''
+    role: user?.role.id ?? ''
   })
 
   const form = useMemo(() => {
@@ -79,7 +79,7 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       lastNameKanji: form.lastNameKanji,
       firstNameKana: form.firstNameKana,
       lastNameKana: form.lastNameKana,
-      roleIds: [Number(form.role)],
+      roleId: Number(form.role),
       gender: form.gender,
       birthday: dayjs(
         `${form.birthdayY}/${form.birthdayM}/${form.birthdayD}`
@@ -93,7 +93,7 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
         lastNameKanji: form.lastNameKanji,
         firstNameKana: form.firstNameKana,
         lastNameKana: form.lastNameKana,
-        roleIds: [Number(form.role)],
+        roleId: Number(form.role),
         gender: form.gender,
         birthday: dayjs(
           `${form.birthdayY}/${form.birthdayM}/${form.birthdayD}`

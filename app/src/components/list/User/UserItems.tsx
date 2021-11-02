@@ -9,7 +9,7 @@ import { IDetailProps } from '@components/detail/_PropsType'
 
 const UserItems = ({ user }: IDetailProps) => {
   const birthday = useBirthday(user?.birthday)
-  const role = useRole(user?.roles)
+  const role = useRole(user?.role)
 
   return (
     <TableRow
