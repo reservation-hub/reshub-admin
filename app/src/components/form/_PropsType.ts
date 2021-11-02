@@ -29,6 +29,7 @@ export type TSalonInput = {
   startTime: { hour: string; minute: string }
   endTime: { hour: string; minute: string }
   days: number[]
+  details: string
 }
 
 export type TChangeHandle = {

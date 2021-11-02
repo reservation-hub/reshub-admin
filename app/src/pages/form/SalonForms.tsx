@@ -33,7 +33,8 @@ const SalonForms = ({
     phoneNumber: shop?.phoneNumber ?? '',
     areaId: String(shop?.area?.id) ?? '',
     prefectureId: String(shop?.prefecture?.id) ?? '',
-    cityId: String(shop?.city?.id) ?? ''
+    cityId: String(shop?.city?.id) ?? '',
+    details: shop?.details ?? ''
   })
 
   const changeHandlers = {
@@ -53,7 +54,8 @@ const SalonForms = ({
       areaId: input.areaId,
       startTime: { hour: String(startAt.hour), minute: String(startAt.minute) },
       endTime: { hour: String(endAt.hour), minute: String(endAt.minute) },
-      days: checked
+      days: checked,
+      details: input.details
     } as TSalonInput
   }, [shop, input, startAt, endAt, checked])
 
@@ -68,7 +70,8 @@ const SalonForms = ({
         areaId: Number(form.areaId),
         prefectureId: Number(form.prefectureId),
         cityId: Number(form.cityId),
-        days: form.days
+        days: form.days,
+        details: form.details
       }
       const updateData: updateShopQuery = {
         id: Number(shop?.id),
@@ -81,7 +84,8 @@ const SalonForms = ({
           areaId: Number(form.areaId),
           prefectureId: Number(form.prefectureId),
           cityId: Number(form.cityId),
-          days: form.days
+          days: form.days,
+          details: form.details
         }
       }
       return { insertData, updateData }

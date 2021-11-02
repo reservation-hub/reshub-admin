@@ -17,8 +17,9 @@ const PublicRoute = ({ children, ...rest }: any) => {
   )
 
   const isUser = (user: User) =>
-    user.roles.findIndex((role) => role.name === 'admin' || 'salon staff') !==
-    -1
+    user.role.name === 'admin' || user.role.name === 'shop_staff'
+
+  console.log(user)
 
   return (
     <>

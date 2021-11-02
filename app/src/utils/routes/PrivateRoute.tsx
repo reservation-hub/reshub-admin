@@ -16,8 +16,7 @@ const PrivateRoute = ({ children, ...rest }: any) => {
     (state: RootState) => state.auth
   )
 
-  const isAdmin = (user: User) =>
-    user.roles.findIndex((role) => role.name === 'admin') !== -1
+  const isAdmin = (user: User) => user.role.name === 'admin'
 
   return (
     <>

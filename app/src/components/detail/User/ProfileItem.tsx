@@ -71,7 +71,7 @@ const ProfileItem = ({
           <dt>
             <strong>アクセス権限</strong>
           </dt>
-          <dl>{user?.roles?.map((r) => r.name)}</dl>
+          <dl>{user?.role.name}</dl>
         </Grid>
       </Grid>
     </StyledPaper>

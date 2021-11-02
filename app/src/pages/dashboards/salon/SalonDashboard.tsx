@@ -18,8 +18,7 @@ const SalonDashboard = () => {
     shallowEqual
   )
   const dispatch = useDispatch()
-  const authCheck = (user: User) =>
-    user.roles.findIndex((r) => r.name === 'admin') !== -1
+  const authCheck = (user: User) => user.role.name === 'admin'
 
   useEffect(() => {
     if (authCheck(user)) {
