@@ -2,7 +2,7 @@ import React from 'react'
 import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
-import { useRange } from '@utils/useRange'
+import { useRange } from '@utils/hooks/useRange'
 import { StyledControl } from '@components/form/FormStyle'
 import { IPickerProps } from '../_PropsType'
 

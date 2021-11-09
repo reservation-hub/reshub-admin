@@ -8,19 +8,27 @@ import Profile from './Profile'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Loading from '@components/common/atoms/loading'
 import Paginate from '@components/common/atoms/Paginate'
-import history from '@utils/history'
+import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
 import Form from '@pages/user/Form'
+import { TCurrentPage } from '@components/list/_PropsType'
 
-const Users = ({ match }: RouteComponentProps<MatchParams>) => {
+const Users = ({
+  match,
+  location
+}: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
   const dispatch = useDispatch()
-  const currentPage = localStorage.getItem('currentPage')
-    ? localStorage.getItem('currentPage')
-    : 1
-  const [page, setPage] = useState<number>(Number(currentPage))
-  localStorage.setItem('currentPage', String(page))
-
+  const currentPage = location?.state?.currentPage
+  const [page, setPage] = useState<number>(currentPage)
   const { users, loading } = useSelector((state: RootState) => state.user)
+
+  const pageChangeHandler = (data: any | number[]) => {
+    const pageNum = data['selected']
+    setPage(pageNum + 1)
+    history.push(`/users?p=${pageNum + 1}`, {
+      currentPage: pageNum + 1
+    })
+  }
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchUserList(Number(currentPage)))
@@ -39,8 +47,8 @@ const Users = ({ match }: RouteComponentProps<MatchParams>) => {
             />
             <Paginate
               totalPage={users.totalCount}
-              setPage={setPage}
               page={currentPage}
+              pageChangeHandler={pageChangeHandler}
             />
           </Route>
           <Route path='/users/form' component={Form} />

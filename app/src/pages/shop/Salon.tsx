@@ -8,20 +8,27 @@ import Paginate from '@components/common/atoms/Paginate'
 import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Detail from './Detail'
 import Loading from '@components/common/atoms/loading'
-import history from '@utils/history'
+import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
 import Form from '@pages/shop/Form'
+import { TCurrentPage } from '@components/list/_PropsType'
 
-const Salon = ({ match }: RouteComponentProps<MatchParams>) => {
+const Salon = ({
+  match,
+  location
+}: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
   const dispatch = useDispatch()
-
-  const currentPage = localStorage.getItem('currentPage')
-    ? localStorage.getItem('currentPage')
-    : 1
-  const [page, setPage] = useState<number>(Number(currentPage))
-  localStorage.setItem('currentPage', String(page))
-
+  const currentPage = location?.state?.currentPage
+  const [page, setPage] = useState<number>(currentPage)
   const { shops, loading } = useSelector((state: RootState) => state.shop)
+
+  const pageChangeHandler = (data: any | number[]) => {
+    const pageNum = data['selected']
+    setPage(pageNum + 1)
+    history.push(`/salon?p=${pageNum + 1}`, {
+      currentPage: pageNum + 1
+    })
+  }
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchShopList(Number(currentPage)))
@@ -40,8 +47,8 @@ const Salon = ({ match }: RouteComponentProps<MatchParams>) => {
             />
             <Paginate
               totalPage={shops.totalCount}
-              setPage={setPage}
               page={currentPage}
+              pageChangeHandler={pageChangeHandler}
             />
           </Route>
           <Route path='/salon/form' component={Form} />

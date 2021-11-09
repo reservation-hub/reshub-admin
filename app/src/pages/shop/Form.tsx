@@ -3,9 +3,9 @@ import { Route, RouteComponentProps } from 'react-router-dom'
 import SalonForm from '@components/form/SalonForm'
 import { TChangeHandle, TFormState, TSalonInput } from '@components/form/_PropsType'
 import { useDispatch } from 'react-redux'
-import useInput from '@utils/useInput'
-import { useTimePicker } from '@utils/useTimePicker'
-import { useCheckBox } from '@utils/useCheckBox'
+import useInput from '@utils/hooks/useInput'
+import { useTimePicker } from '@utils/hooks/useTimePicker'
+import { useCheckBox } from '@utils/hooks/useCheckBox'
 import { insertShopQuery, updateShopQuery } from '@utils/api/request-response-types/ShopService'
 import { addShop, editShopData } from '@store/actions/shopAction'
 
@@ -24,16 +24,10 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     name: shop?.name ?? '',
     address: shop?.address ?? '',
     phoneNumber: shop?.phoneNumber ?? '',
-<<<<<<< HEAD:app/src/pages/form/SalonForms.tsx
     areaId: String(shop?.area?.id) ?? '',
     prefectureId: String(shop?.prefecture?.id) ?? '',
     cityId: String(shop?.city?.id) ?? '',
     details: shop?.details ?? ''
-=======
-    areaId: shop?.area?.id ?? '',
-    prefectureId: shop?.prefecture?.id ?? '',
-    cityId: shop?.city?.id ?? ''
->>>>>>> b564b49 (全体的に修正):app/src/pages/shop/Form.tsx
   })
 
   const changeHandlers = {

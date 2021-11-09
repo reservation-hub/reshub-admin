@@ -7,3 +7,7 @@ export interface IListProps {
   shops?: TShopList[]
   shop?: TShopList
 }
+
+export type TCurrentPage = {
+  currentPage: number
+}

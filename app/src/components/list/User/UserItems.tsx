@@ -1,9 +1,9 @@
 import React from 'react'
 
-import useRole from '@utils/useRole'
-import useBirthday from '@utils/useBirthday'
+import useRole from '@utils/hooks/useRole'
+import useBirthday from '@utils/hooks/useBirthday'
 import { TableRow } from '@material-ui/core'
-import history from '@utils/history'
+import history from '@utils/routes/history'
 import { IDetailProps } from '@components/detail/_PropsType'
 import { StyledTableCell } from '../ListStyle'
 

@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser, getOneUser } from '@store/actions/userAction'
 import { RouteComponentProps } from 'react-router-dom'
 import { RootState } from '@store/store'
-import { useModal } from '@utils/useModal'
+import { useModal } from '@utils/hooks/useModal'
 import ProfileItem from '@components/detail/User/ProfileItem'
 import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
-import history from '@utils/history'
+import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
 
 const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
@@ -17,7 +17,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   const convertId = Number(id)
   const dispatch = useDispatch()
 
-  const deleteModal = useModal(false, 'delete')
+  const { open, modalHandler } = useModal(false)
 
   const onDelete = useCallback(() => {
     dispatch(deleteUser(convertId))
@@ -30,23 +30,18 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   // TODO スタイルを指定
   return (
     <>
-      {deleteModal.modalType === 'delete' && (
-        <ModalOverlay
-          modalOpen={deleteModal.open}
-          modalCloseHandler={deleteModal.closeModal}
-        >
-          <ModalAlert
-            modalCloseHandler={deleteModal.closeModal}
-            modalHandler={onDelete}
-            alertText='このユーザーを削除しますか？'
-            buttonText='削除'
-          />
-        </ModalOverlay>
-      )}
+      <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
+        <ModalAlert
+          modalCloseHandler={modalHandler}
+          modalHandler={onDelete}
+          alertText='このユーザーを削除しますか？'
+          buttonText='削除'
+        />
+      </ModalOverlay>
       <ProfileItem
         user={user}
         modalOpenHandler={() => history.push(`/users/form/${id}`, { user })}
-        subModalHandler={deleteModal.openModal}
+        subModalHandler={modalHandler}
       />
     </>
   )

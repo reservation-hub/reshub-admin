@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@material-ui/core/Box'
 import { IDetailProps } from '@components/detail/_PropsType'
 import { DataGrid } from '../_Style'
-import { useDays } from '@utils/useDays'
+import { useDays } from '@utils/hooks/useDays'
 
 const ShopData = ({ shop }: IDetailProps) => {
   const days = useDays(shop?.schedule?.days)

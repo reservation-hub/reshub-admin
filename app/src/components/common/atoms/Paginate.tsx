@@ -2,6 +2,7 @@ import React from 'react'
 import ReactPaginate from 'react-paginate'
 import { IPaginateProps } from '../_PropsType'
 import { makeStyles } from '@material-ui/core/styles'
+import history from '@utils/routes/history'
 
 const classes = makeStyles((theme) => ({
   root: {
@@ -32,12 +33,7 @@ const classes = makeStyles((theme) => ({
   }
 }))
 
-const Paginate = ({ totalPage, setPage, page }: IPaginateProps) => {
-  const pageChangeHandler = (data: any | number[]): void => {
-    const pageNum = data['selected']
-    setPage(pageNum + 1)
-  }
-
+const Paginate = ({ totalPage, page, pageChangeHandler }: IPaginateProps) => {
   return (
     <div className={classes().root}>
       <ReactPaginate

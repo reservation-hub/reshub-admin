@@ -1,11 +1,18 @@
-import { fetchModelsWithTotalCountResponse, modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  fetchModelsWithTotalCountResponse,
+  modelResponse
+} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { Area } from '@entity/Location'
 import { RootState, typedAction } from '@store/store'
-import { GET_AREA_SUCCESS, GET_CITY_SUCCESS, GET_PREF_SUCCESS } from '@store/types/LocationTypes'
+import {
+  GET_AREA_SUCCESS,
+  GET_CITY_SUCCESS,
+  GET_PREF_SUCCESS
+} from '@store/types/LocationTypes'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@/utils/api/apiEndpoint'
-import history from '@/utils/history'
+import history from '@utils/routes/history'
 import { TCity, TPrefecture } from '@Model/LocationResponse'
 
 const areaReqSuccess = (

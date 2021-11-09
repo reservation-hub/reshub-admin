@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
 import ListTopBar from '@components/common/atoms/ListTopBar'
-import useBirthday from '@utils/useBirthday'
+import useBirthday from '@utils/hooks/useBirthday'
 import { IDetailProps } from '@components/detail/_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
 

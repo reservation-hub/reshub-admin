@@ -19,7 +19,7 @@ import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { User } from '@entity/User'
 import apiEndpoint from '../../utils/api/apiEndpoint'
-import history from '../../utils/history'
+import history from '@utils/routes/history'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse

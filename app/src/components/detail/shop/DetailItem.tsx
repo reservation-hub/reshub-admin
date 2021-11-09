@@ -5,6 +5,7 @@ import { HEADER_TYPE } from '@constants/Common'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import ShopData from '@components/detail/shop/ShopData'
+import CustomButton from '@components/common/atoms/CustomButton'
 
 const DetailItem = ({
   shop,
@@ -18,7 +19,9 @@ const DetailItem = ({
         type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}
-      />
+      >
+        <CustomButton>menu</CustomButton>
+      </ListTopBar>
       <Grid container justifyContent='space-between' alignItems='center'>
         <ShopData shop={shop} />
         <Grid md={5} item>

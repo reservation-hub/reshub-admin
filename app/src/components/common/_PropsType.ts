@@ -41,8 +41,8 @@ export interface IH1Props {
 
 export interface IPaginateProps {
   totalPage: number
-  setPage: React.Dispatch<React.SetStateAction<number>>
   page?: string | number | null
+  pageChangeHandler: (selectedItem: { selected: number }) => void
 }
 
 export interface IPickerProps {

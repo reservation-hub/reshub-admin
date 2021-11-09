@@ -13,8 +13,8 @@ import { User } from '@entity/User'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'
-import setAuthToken from '@utils/setAuthToken'
-import history from '@utils/history'
+import setAuthToken from '@utils/api/setAuthToken'
+import history from '@utils/routes/history'
 import Cookies from 'js-cookie'
 
 //ユーザーのリクエストをスタートするアクション
@@ -111,6 +111,7 @@ export const logout =
       const message = await apiEndpoint.authenticated.logout()
       Cookies.remove('sessionToken')
       Cookies.remove('refreshToken')
+      localStorage.clear()
 
       dispatch(logoutSuccess(message.data))
 

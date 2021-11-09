@@ -6,11 +6,12 @@ import UserItems from '@components/list/User/UserItems'
 import H1 from '@components/common/atoms/H1'
 import SalonItem from '@components/list/Shop/SalonItem'
 import { SALON_CELL, USER_CELL } from '@constants/Table'
+import ListTopBar from '@components/common/atoms/ListTopBar'
 
 const AdminDashboard = ({ data }: AdminDashboardProps) => {
   return (
     <Grid container>
-      <H1 color='primary'>ダッシュボード</H1>
+      <ListTopBar title='ダッシュボード' />
       <Grid item style={{ width: '100%' }}>
         <TableLayout cell={USER_CELL}>
           {data?.user?.users.map((value, index) => (

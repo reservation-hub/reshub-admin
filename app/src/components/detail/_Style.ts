@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid'
 export const DataGrid = withStyles((theme) => ({
   root: {
     borderBottom: `2px solid ${theme.palette.primary.main}`,
+    background: theme.palette.secondary.main,
     '& .row': {
       display: 'flex',
       '& .header, .body': {

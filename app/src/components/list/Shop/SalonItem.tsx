@@ -1,6 +1,6 @@
 import React from 'react'
 import TableRow from '@material-ui/core/TableRow'
-import history from '@utils/history'
+import history from '@utils/routes/history'
 import { IListProps } from '@components/list/_PropsType'
 import { StyledTableCell } from '../ListStyle'
 
