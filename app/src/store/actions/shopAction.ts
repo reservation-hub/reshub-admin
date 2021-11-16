@@ -120,7 +120,7 @@ export const deleteShopData =
     try {
       const res = await apiEndpoint.shops.deleteShop(id)
       dispatch(shopDeleteSuccess(res.data))
-      history.push({pathname: '/salon', state: { currentPage: 1 }})
+      history.push({ pathname: '/salon', state: { currentPage: 1 } })
     } catch (e: any) {
       dispatch(shopRequestFailure(e))
     }

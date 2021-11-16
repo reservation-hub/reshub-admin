@@ -120,7 +120,7 @@ export const deleteUser =
     try {
       const res = await apiEndpoint.users.deleteUser(id)
       dispatch(userDeleteSuccess(res.data))
-      history.push({pathname: '/users', state: { currentPage: 1 }})
+      history.push({ pathname: '/users', state: { currentPage: 1 } })
     } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
