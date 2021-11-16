@@ -9,7 +9,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: reshub-admin
     environment:
-      - COMMAND=${COMMAND:-start}
+      - COMMAND=${COMMAND:-dev}
     env_file:
       - reshub-deploy/.env.dev
     image: reshub-admin
