@@ -166,11 +166,14 @@ const SalonForm = ({
               multiline
               rows={4}
               variant='outlined'
+              name='details'
+              value={formValue.details}
+              onChange={changeHandlers.input}
             />
           </div>
           <CustomButton
             disabled={disabled}
-            className={disabled ? 'disabled-button' : 'submit-button'}
+            classes={disabled ? 'disabled-button' : 'submit-button'}
           >
             登録
           </CustomButton>

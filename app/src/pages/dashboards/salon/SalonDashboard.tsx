@@ -11,7 +11,7 @@ import Loading from '@components/common/atoms/loading'
 const SalonDashboard = () => {
   const { user, data, loading } = useSelector(
     (state: RootState) => ({
-      user: state.auth['user'],
+      user: state.auth.user,
       data: state.dashboard.data,
       loading: state.dashboard.loading
     }),

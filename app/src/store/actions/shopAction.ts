@@ -91,8 +91,9 @@ export const addShop =
     try {
       const res = await apiEndpoint.shops.createShop(shopData)
       dispatch(shopAddSuccess(res.data))
-      history.push('/salon')
-    } catch (e) {
+      // history.push(`/salon?p=${1}`)
+    } catch (e: any) {
+      console.log(e.response.data)
       dispatch(shopRequestFailure(e))
     }
   }
@@ -105,8 +106,8 @@ export const editShopData =
     try {
       const res = await apiEndpoint.shops.patchShop(shopData)
       dispatch(shopPatchSuccess(res.data))
-      history.push('/salon')
-    } catch (e) {
+      history.push(`/salon/${res.data.id}`)
+    } catch (e: any) {
       dispatch(shopRequestFailure(e))
     }
   }
@@ -119,7 +120,7 @@ export const deleteShopData =
     try {
       const res = await apiEndpoint.shops.deleteShop(id)
       dispatch(shopDeleteSuccess(res.data))
-    } catch (e) {
+    } catch (e: any) {
       dispatch(shopRequestFailure(e))
     }
   }

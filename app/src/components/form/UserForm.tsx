@@ -213,7 +213,7 @@ const UserForm = ({
           </div>
           {error.duplicated && VALIDATION_TEXT.DUPLICATED}
           <CustomButton
-            className={disabled ? 'disabled-button' : 'submit-button'}
+            classes={disabled ? 'disabled-button' : 'submit-button'}
             disabled={disabled}
           >
             登録

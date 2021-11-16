@@ -69,7 +69,7 @@ const ProfileItem = ({
           <dt>
             <strong>アクセス権限</strong>
           </dt>
-          <dl>{user?.role.name}</dl>
+          <dl>{user?.role?.name}</dl>
         </Grid>
       </Grid>
     </>

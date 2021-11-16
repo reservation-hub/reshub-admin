@@ -17,3 +17,9 @@ export const SALON_CELL: Record<string, any> = {
   stylistCount: '登録スタイリスト数',
   tell: '電話番号'
 }
+
+export const STYLELIST_CELL: Record<string, any> = {
+  No: 'No',
+  name: 'スタイリスト名',
+  reservationCount: '予約件数'
+}

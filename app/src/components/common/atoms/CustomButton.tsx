@@ -2,7 +2,7 @@ import React from 'react'
 import { IButtonProps } from '../_PropsType'
 import { makeStyles } from '@material-ui/core/styles'
 
-const classes = makeStyles((theme) => ({
+const buttonClasses = makeStyles((theme) => ({
   root: {
     width: '11rem',
     height: '3.5rem',
@@ -26,7 +26,7 @@ const classes = makeStyles((theme) => ({
 const CustomButton = ({
   children,
   onClick,
-  className,
+  classes,
   disabled
 }: IButtonProps) => {
   return (
@@ -34,7 +34,7 @@ const CustomButton = ({
       type='submit'
       onClick={onClick}
       disabled={disabled}
-      className={`${className} ${classes().root}` || classes().root}
+      className={`${classes} ${buttonClasses().root}` || buttonClasses().root}
     >
       {children || 'button'}
     </button>

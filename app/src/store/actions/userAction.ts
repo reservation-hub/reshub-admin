@@ -91,7 +91,7 @@ export const addUser =
       const res = await apiEndpoint.users.createUser(userData)
       dispatch(userAddSuccess(res.data))
       history.replace('/users')
-    } catch (e) {
+    } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
     }
@@ -106,7 +106,7 @@ export const patchUser =
     try {
       const res = await apiEndpoint.users.patchUser(userData)
       dispatch(userPatchSuccess(res.data))
-    } catch (e) {
+    } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
     }
@@ -120,7 +120,7 @@ export const deleteUser =
       const res = await apiEndpoint.users.deleteUser(id)
       dispatch(userDeleteSuccess(res.data))
       history.push('/users')
-    } catch (e) {
+    } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
     }

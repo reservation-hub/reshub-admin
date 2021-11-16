@@ -18,7 +18,7 @@ declare global {
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'user', 'shop']
+  whitelist: ['auth']
 }
 
 const enhancedReducer = persistReducer(persistConfig, rootReducer)

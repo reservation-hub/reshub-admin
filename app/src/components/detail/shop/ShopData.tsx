@@ -32,6 +32,10 @@ const ShopData = ({ shop }: IDetailProps) => {
             ${shop?.schedule?.endTime ?? ''}`}
         </dd>
       </Box>
+      <Box className='row'>
+        <dt className='header'>詳細</dt>
+        <dd className='body'>{shop?.details}</dd>
+      </Box>
     </DataGrid>
   )
 }

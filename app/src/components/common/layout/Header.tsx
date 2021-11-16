@@ -18,7 +18,7 @@ const Header = ({ onLogout }: IMainTemplateProps) => {
           <H1>ResHub-admin</H1>
         </Grid>
         <Grid item>
-          <CustomButton onClick={onLogout} className='logout-button'>
+          <CustomButton onClick={onLogout} classes='logout-button'>
             Logout
           </CustomButton>
         </Grid>

@@ -31,4 +31,5 @@ export type TShop = {
   menu?: Menu | null
   schedule?: TShopSchedule
   stylists?: Stylist[] | null
+  details?: string
 }

@@ -42,7 +42,7 @@ const LoginForm = ({
           />
           <Grid container>
             <Grid item xs={12}>
-              <CustomButton className='loginButton'>ログイン</CustomButton>
+              <CustomButton classes='loginButton'>ログイン</CustomButton>
             </Grid>
             <Grid item xs={12}>
               <GoogleLogin
@@ -52,7 +52,7 @@ const LoginForm = ({
                 render={(renderProps) => (
                   <CustomButton
                     onClick={renderProps.onClick}
-                    className='socialRoot'
+                    classes='socialRoot'
                   >
                     <div className='google-icon'>
                       <FcGoogle />
