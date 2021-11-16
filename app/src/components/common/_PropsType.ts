@@ -63,7 +63,6 @@ export interface ITopBarProps extends ClassesAndChildren {
   subModalHandler?: () => void
 }
 
-
 export interface ClassesAndChildren {
   children?: React.ReactNode
   classes?: string

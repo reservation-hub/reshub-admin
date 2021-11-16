@@ -17,15 +17,16 @@ const DetailItem = ({
   modalOpenHandler,
   subModalHandler
 }: IDetailProps) => {
-
   const styleList: {
-    id: number, name: string, reservationCount: number
+    id: number
+    name: string
+    reservationCount: number
   }[] = [
-    {id: 1, name: 'TEST', reservationCount: 1},
-    {id: 2, name: 'TEST', reservationCount: 1},
-    {id: 3, name: 'TEST', reservationCount: 1},
-    {id: 4, name: 'TEST', reservationCount: 1},
-    {id: 5, name: 'TEST', reservationCount: 1},
+    { id: 1, name: 'TEST', reservationCount: 1 },
+    { id: 2, name: 'TEST', reservationCount: 1 },
+    { id: 3, name: 'TEST', reservationCount: 1 },
+    { id: 4, name: 'TEST', reservationCount: 1 },
+    { id: 5, name: 'TEST', reservationCount: 1 }
   ]
 
   return (
@@ -45,15 +46,9 @@ const DetailItem = ({
             <TableLayout cell={STYLELIST_CELL}>
               {styleList.map((value, index) => (
                 <TableRow key={index}>
-                  <StyledTableCell>
-                    {value?.id}
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    {value?.name}
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    {value?.reservationCount}
-                  </StyledTableCell>
+                  <StyledTableCell>{value?.id}</StyledTableCell>
+                  <StyledTableCell>{value?.name}</StyledTableCell>
+                  <StyledTableCell>{value?.reservationCount}</StyledTableCell>
                 </TableRow>
               ))}
             </TableLayout>
