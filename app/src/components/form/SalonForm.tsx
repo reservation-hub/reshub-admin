@@ -21,7 +21,7 @@ const SalonForm = ({
 }: ISalonFormProps) => {
   const classes = FormStyle()
   const dispatch = useDispatch()
-  const disabled = false
+  let disabled = false
 
   const { area, prefecture, city } = useSelector(
     (state: RootState) => state.location
@@ -32,6 +32,20 @@ const SalonForm = ({
     pref: prefecture.prefectures,
     city: city.cities,
     days: Days
+  }
+
+  if (
+    formValue.name.length === 0 ||
+    formValue.address.length === 0 ||
+    formValue.phoneNumber.length === 0 ||
+    formValue.areaId.length === 0 ||
+    formValue.prefectureId.length === 0 ||
+    formValue.cityId.length === 0 ||
+    formValue.days.length === 0 ||
+    formValue.startTime.hour.length === 0 ||
+    formValue.endTime.hour.length === 0
+  ) {
+    disabled = !disabled
   }
 
   useEffect(() => {
@@ -152,9 +166,17 @@ const SalonForm = ({
               multiline
               rows={4}
               variant='outlined'
+              name='details'
+              value={formValue.details}
+              onChange={changeHandlers.input}
             />
           </div>
-          <CustomButton className='submit-button'>登録</CustomButton>
+          <CustomButton
+            disabled={disabled}
+            classes={disabled ? 'disabled-button' : 'submit-button'}
+          >
+            登録
+          </CustomButton>
         </form>
       </div>
     </Container>

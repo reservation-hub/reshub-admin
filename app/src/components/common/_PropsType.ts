@@ -7,28 +7,22 @@ export type MatchParams = {
   id: string
 }
 
-export interface IMainTemplateProps {
-  children?: React.ReactNode
+export interface IMainTemplateProps extends ClassesAndChildren {
   onLogout?: () => void
 }
 
-export interface IButtonProps {
-  children?: React.ReactNode
+export interface IButtonProps extends ClassesAndChildren {
   onClick?: () => void
-  className?: string | undefined
   disabled?: boolean
 }
 
-export interface ITableProps {
+export interface ITableProps extends ClassesAndChildren {
   cell?: Record<string, any>
   data?: any[]
-  children?: React.ReactNode
   index?: number
 }
 
-export interface IH1Props {
-  children: React.ReactNode
-  className?: string
+export interface IH1Props extends ClassesAndChildren {
   color?:
     | 'initial'
     | 'inherit'
@@ -41,8 +35,8 @@ export interface IH1Props {
 
 export interface IPaginateProps {
   totalPage: number
-  setPage: React.Dispatch<React.SetStateAction<number>>
   page?: string | number | null
+  pageChangeHandler: (selectedItem: { selected: number }) => void
 }
 
 export interface IPickerProps {
@@ -62,9 +56,14 @@ export interface IPickerProps {
   data?: Area[] | Prefecture[] | City[] | Role[] | TDays[]
 }
 
-export interface ITopBarProps {
+export interface ITopBarProps extends ClassesAndChildren {
   title: string
   type?: string
   modalOpenHandler?: () => void
   subModalHandler?: () => void
+}
+
+export interface ClassesAndChildren {
+  children?: React.ReactNode
+  classes?: string
 }

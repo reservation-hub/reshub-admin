@@ -1,6 +1,6 @@
 import React from 'react'
 import LoginSelectHeader from '@components/common/loginSelect/LoginSelectHeader'
-import CommonStyle from '@components/CommonStyle'
+import CommonStyle from '@components/common/CommonStyle'
 import PageSelect from '@components/home/PageSelect'
 import LoginSelectFooter from '@components/common/loginSelect/LoginSelectFooter'
 

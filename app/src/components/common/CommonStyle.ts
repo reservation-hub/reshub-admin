@@ -7,11 +7,11 @@ import Alert from '@material-ui/lab/Alert'
 // reshub-adminの共通のスタイルを指定する
 //-----------------------------------------------------------
 
-export const StyledPaper = withStyles((theme: Theme) => ({
+export const StyledPaper = withStyles(() => ({
   root: {
     justifyContent: 'center',
     boxShadow: 'none',
-    backgroundColor: theme.palette.adBgColor.main
+    background: 'none'
   }
 }))(Paper)
 
@@ -118,61 +118,6 @@ const CommonStyle = makeStyles((theme: Theme) => ({
     left: '25%',
     right: '25%',
     bottom: '25%'
-  },
-  buttonRoot: {
-    width: '11rem',
-    height: '3.5rem',
-    border: `1px solid ${theme.palette.primary.main}`,
-    borderRadius: '.5rem',
-    backgroundColor: theme.palette.secondary.main,
-    cursor: 'pointer',
-    color: '#999',
-    transition: 'all .5s ease 0s',
-    lineHeight: 'unset',
-    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-    '&:hover': {
-      color: theme.palette.secondary.main,
-      backgroundColor: theme.palette.primary.main,
-      transition: 'all .5s ease 0s',
-      transform: 'translateY(0.2rem)'
-    }
-  },
-  appBarHeader: {
-    padding: '0 1.5rem 1.5rem 1.5rem',
-    background: theme.palette.adBgColor.main,
-    '& .item-header': {
-      color: theme.palette.primary.main
-    },
-    '& .item-button': {
-      width: '35rem'
-    }
-  },
-  pagingBox: {
-    '& .paging-container': {
-      padding: '0',
-      listStyle: 'none',
-      '& li': {
-        marginLeft: '.5rem',
-        marginRight: '.5rem',
-        border: `1px solid ${theme.palette.primary.main}`,
-        borderRadius: '.25rem',
-        color: '#ABB0AD',
-        textAlign: 'center',
-        cursor: 'pointer',
-        fontWeight: '600',
-        height: '4rem',
-        lineHeight: '4rem',
-        background: theme.palette.secondary.main,
-        '& a': {
-          width: '4rem',
-          display: 'inline-block'
-        }
-      },
-      '& .active': {
-        background: theme.palette.primary.main,
-        color: theme.palette.secondary.main
-      }
-    }
   }
 }))
 

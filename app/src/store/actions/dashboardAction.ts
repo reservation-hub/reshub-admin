@@ -6,7 +6,7 @@ import {
 import { RootState, typedAction } from '@store/store'
 import { ThunkAction } from 'redux-thunk'
 import apiEndpoint from '@utils/api/apiEndpoint'
-import history from '@utils/history'
+import history from '@utils/routes/history'
 
 const dashboardRequestStart = () => {
   return typedAction(DASHBOARD_REQUEST_START)

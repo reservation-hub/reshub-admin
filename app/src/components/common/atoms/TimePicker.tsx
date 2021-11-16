@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRange } from '@utils/useRange'
+import { useRange } from '@utils/hooks/useRange'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import { IPickerProps } from '../_PropsType'

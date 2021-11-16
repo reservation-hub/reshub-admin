@@ -1,4 +1,4 @@
-import instance from './api'
+import instance from './index'
 
 const setAuthToken = (token: string | undefined) => {
   if (token) {

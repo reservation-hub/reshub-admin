@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { silentLogin } from '@store/actions/authAction'
 import Cookies from 'js-cookie'
-import setAuthToken from '@utils/setAuthToken'
 import RouterIndex from '@utils/routes/RouterIndex'
+import setAuthToken from '@utils/api/setAuthToken'
 
 const App = () => {
   const dispatch = useDispatch()

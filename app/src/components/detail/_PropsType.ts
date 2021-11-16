@@ -1,9 +1,9 @@
 import { User } from '@entity/User'
-import { ShopList } from '@Model/ShopResponse'
+import { TShop } from '@Model/ShopResponse'
 
 export interface IDetailProps {
   user?: User
   modalOpenHandler?: () => void
   subModalHandler?: () => void
-  shop?: ShopList
+  shop?: TShop
 }

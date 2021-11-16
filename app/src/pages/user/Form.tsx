@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
-import MainTemplate from '@components/common/layout/MainTemplate'
 import UserForm from '@components/form/UserForm'
 import { useDispatch } from 'react-redux'
 import {
@@ -8,8 +7,8 @@ import {
   TFormState,
   TUserInput
 } from '@components/form/_PropsType'
-import useInput from '@utils/useInput'
-import useValidation from '@utils/useValidation'
+import useInput from '@utils/hooks/useInput'
+import useValidation from '@utils/hooks/useValidation'
 import {
   insertUserFromAdminQuery,
   updateUserFromAdminQuery
@@ -17,9 +16,12 @@ import {
 import dayjs from 'dayjs'
 import { addUser, patchUser } from '@store/actions/userAction'
 
-const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
+const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
-  const user = location.state?.user
+
+  const user = useMemo(() => {
+    return location?.state?.user
+  }, [location])
 
   const validationSchema = {
     email: false,
@@ -117,7 +119,7 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   )
 
   return (
-    <MainTemplate>
+    <>
       <Route exact path='/'>
         <UserForm
           formState={location.state}
@@ -136,8 +138,8 @@ const UserForms = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           error={error}
         />
       </Route>
-    </MainTemplate>
+    </>
   )
 }
 
-export default UserForms
+export default Form

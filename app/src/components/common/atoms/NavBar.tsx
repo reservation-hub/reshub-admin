@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ListItemText from '@material-ui/core/ListItemText'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -25,7 +25,14 @@ const NavBar = () => {
       <div>
         <List>
           {NAV_MENU.map((value, index) => (
-            <NavLink key={index} to={value.path} activeClassName='active'>
+            <NavLink
+              key={index}
+              to={{
+                pathname: value.path,
+                state: { currentPage: 1 }
+              }}
+              activeClassName='active'
+            >
               <ListItem button className='nav-items'>
                 <ListItemText primary={value.value} />
               </ListItem>

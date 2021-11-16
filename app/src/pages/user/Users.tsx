@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Route, RouteComponentProps } from 'react-router-dom'
+import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import { RootState } from '@store/store'
 import { fetchUserList } from '@store/actions/userAction'
-import { useModal } from '@utils/useModal'
 import UserList from '@components/list/User/UserList'
 import Profile from './Profile'
-import ModalOverlay from '@components/modal/ModalOverlay'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Loading from '@components/common/atoms/loading'
 import Paginate from '@components/common/atoms/Paginate'
-import ModalAlert from '@components/modal/ModalAlert'
-import history from '@utils/history'
+import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
+import Form from '@pages/user/Form'
+import { TCurrentPage } from '@components/list/_PropsType'
 
-const Users = ({ match }: RouteComponentProps<MatchParams>) => {
+const Users = ({
+  match,
+  location
+}: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
   const dispatch = useDispatch()
-  const currentPage = localStorage.getItem('currentPage')
-    ? localStorage.getItem('currentPage')
-    : 1
-  const [page, setPage] = useState<number>(Number(currentPage))
-  localStorage.setItem('currentPage', String(page))
-
+  const currentPage = location?.state?.currentPage
+  const [page, setPage] = useState<number>(currentPage)
   const { users, loading } = useSelector((state: RootState) => state.user)
-  const { open, openModal, closeModal } = useModal(false, 'form')
+
+  const pageChangeHandler = (data: any | number[]) => {
+    const pageNum = data['selected']
+    setPage(pageNum + 1)
+    history.push(`/users?p=${pageNum + 1}`, {
+      currentPage: pageNum + 1
+    })
+  }
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchUserList(Number(currentPage)))
@@ -34,26 +39,22 @@ const Users = ({ match }: RouteComponentProps<MatchParams>) => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <Switch>
           <Route exact path='/users'>
-            <UserList users={users.values} modalOpenHandler={openModal} />
+            <UserList
+              users={users.values}
+              modalOpenHandler={() => history.push('/users/form')}
+            />
             <Paginate
               totalPage={users.totalCount}
-              setPage={setPage}
               page={currentPage}
+              pageChangeHandler={pageChangeHandler}
             />
           </Route>
+          <Route path='/users/form' component={Form} />
           <Route path='/users/:id' component={Profile} />
-        </>
+        </Switch>
       )}
-      <ModalOverlay modalOpen={open} modalCloseHandler={closeModal}>
-        <ModalAlert
-          modalCloseHandler={closeModal}
-          modalHandler={() => history.push('/form/user')}
-          alertText='ユーザー登録画面に移動しますか？'
-          buttonText='移動'
-        />
-      </ModalOverlay>
     </MainTemplate>
   )
 }

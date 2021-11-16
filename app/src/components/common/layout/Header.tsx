@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import { IMainTemplateProps } from '../_PropsType'
-import { StyledHeader } from '@/components/CommonStyle'
+import { StyledHeader } from '@components/common/CommonStyle'
 import CustomButton from '@/components/common/atoms/CustomButton'
 import H1 from '../atoms/H1'
 
@@ -18,7 +18,7 @@ const Header = ({ onLogout }: IMainTemplateProps) => {
           <H1>ResHub-admin</H1>
         </Grid>
         <Grid item>
-          <CustomButton onClick={onLogout} className='logout-button'>
+          <CustomButton onClick={onLogout} classes='logout-button'>
             Logout
           </CustomButton>
         </Grid>

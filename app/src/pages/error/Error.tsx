@@ -1,13 +1,15 @@
 import React from 'react'
 import MainTemplate from '@components/common/layout/MainTemplate'
-import { StyledPaper } from '@components/CommonStyle'
+import { StyledPaper } from '@components/common/CommonStyle'
 
 const Error = () => {
   return (
     <MainTemplate>
       <StyledPaper>
-        <h2>404</h2>
-        <p>コンテンツがありません。</p>
+        <div>
+          <h2>404</h2>
+          <p>コンテンツがありません</p>
+        </div>
       </StyledPaper>
     </MainTemplate>
   )

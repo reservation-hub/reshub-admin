@@ -1,10 +1,8 @@
 import React from 'react'
-
-import { StyledPaper } from '@components/CommonStyle'
 import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
 import ListTopBar from '@components/common/atoms/ListTopBar'
-import useBirthday from '@utils/useBirthday'
+import useBirthday from '@utils/hooks/useBirthday'
 import { IDetailProps } from '@components/detail/_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
 
@@ -16,7 +14,7 @@ const ProfileItem = ({
   const birthday = useBirthday(user?.birthday)
 
   return (
-    <StyledPaper>
+    <>
       <ListTopBar
         title='ユーザー詳細'
         type={HEADER_TYPE.DETAIL}
@@ -71,10 +69,10 @@ const ProfileItem = ({
           <dt>
             <strong>アクセス権限</strong>
           </dt>
-          <dl>{user?.role.name}</dl>
+          <dl>{user?.role?.name}</dl>
         </Grid>
       </Grid>
-    </StyledPaper>
+    </>
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import H1 from '@components/common/atoms/H1'
 import CustomButton from '@components/common/atoms/CustomButton'
-import history from '@utils/history'
+import history from '@utils/routes/history'
 import Grid from '@material-ui/core/Grid'
 import { IFormType } from './_PropsType'
 

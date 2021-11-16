@@ -1,10 +1,10 @@
 import React from 'react'
-import { StyledTableCell } from '@components/common/TableStyle'
 import TableRow from '@material-ui/core/TableRow'
-import history from '@utils/history'
-import { IDetailProps } from '@components/detail/_PropsType'
+import history from '@utils/routes/history'
+import { IListProps } from '@components/list/_PropsType'
+import { StyledTableCell } from '../ListStyle'
 
-const SalonItem = ({ shop }: IDetailProps) => {
+const SalonItem = ({ shop }: IListProps) => {
   return (
     <TableRow
       style={{ height: '6rem' }}
@@ -15,8 +15,8 @@ const SalonItem = ({ shop }: IDetailProps) => {
       <StyledTableCell>{shop?.name}</StyledTableCell>
       <StyledTableCell>-</StyledTableCell>
       <StyledTableCell>{shop?.address ?? '-'}</StyledTableCell>
-      <StyledTableCell>{shop?.reservationCount ?? 0}</StyledTableCell>
-      <StyledTableCell>{shop?.stylistCount ?? 0}</StyledTableCell>
+      <StyledTableCell>{`${shop?.reservationCount ?? 0}件`}</StyledTableCell>
+      <StyledTableCell>{`${shop?.stylistCount ?? 0}件`}</StyledTableCell>
       <StyledTableCell>{shop?.phoneNumber ?? '-'}</StyledTableCell>
     </TableRow>
   )

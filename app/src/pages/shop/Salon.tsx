@@ -4,27 +4,31 @@ import MainTemplate from '@components/common/layout/MainTemplate'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
-import { useModal } from '@utils/useModal'
-import ModalOverlay from '@components/modal/ModalOverlay'
 import Paginate from '@components/common/atoms/Paginate'
-import { Route, RouteComponentProps } from 'react-router-dom'
+import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Detail from './Detail'
 import Loading from '@components/common/atoms/loading'
-import history from '@utils/history'
-import ModalAlert from '@components/modal/ModalAlert'
+import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
+import Form from '@pages/shop/Form'
+import { TCurrentPage } from '@components/list/_PropsType'
 
-const Salon = ({ match }: RouteComponentProps<MatchParams>) => {
+const Salon = ({
+  match,
+  location
+}: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
   const dispatch = useDispatch()
-
-  const currentPage = localStorage.getItem('currentPage')
-    ? localStorage.getItem('currentPage')
-    : 1
-  const [page, setPage] = useState<number>(Number(currentPage))
-  localStorage.setItem('currentPage', String(page))
-
+  const currentPage = location?.state?.currentPage
+  const [page, setPage] = useState<number>(currentPage)
   const { shops, loading } = useSelector((state: RootState) => state.shop)
-  const { open, openModal, closeModal } = useModal(false, 'form')
+
+  const pageChangeHandler = (data: any | number[]) => {
+    const pageNum = data['selected']
+    setPage(pageNum + 1)
+    history.push(`/salon?p=${pageNum + 1}`, {
+      currentPage: pageNum + 1
+    })
+  }
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchShopList(Number(currentPage)))
@@ -35,26 +39,22 @@ const Salon = ({ match }: RouteComponentProps<MatchParams>) => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <Switch>
           <Route exact path='/salon'>
-            <SalonList shops={shops.values} modalOpenHandler={openModal} />
+            <SalonList
+              shops={shops.values}
+              modalOpenHandler={() => history.push('/salon/form')}
+            />
             <Paginate
               totalPage={shops.totalCount}
-              setPage={setPage}
               page={currentPage}
+              pageChangeHandler={pageChangeHandler}
             />
           </Route>
+          <Route path='/salon/form' component={Form} />
           <Route path='/salon/:id' component={Detail} />
-        </>
+        </Switch>
       )}
-      <ModalOverlay modalOpen={open} modalCloseHandler={closeModal}>
-        <ModalAlert
-          modalCloseHandler={closeModal}
-          modalHandler={() => history.push('/form/salon')}
-          alertText='サロンの登録画面に移動しますか？'
-          buttonText='移動'
-        />
-      </ModalOverlay>
     </MainTemplate>
   )
 }

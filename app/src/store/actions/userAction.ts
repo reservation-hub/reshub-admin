@@ -19,7 +19,7 @@ import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { User } from '@entity/User'
 import apiEndpoint from '../../utils/api/apiEndpoint'
-import history from '../../utils/history'
+import history from '@utils/routes/history'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
@@ -90,8 +90,8 @@ export const addUser =
     try {
       const res = await apiEndpoint.users.createUser(userData)
       dispatch(userAddSuccess(res.data))
-      history.replace('/users')
-    } catch (e) {
+      history.push({ pathname: '/users', state: { currentPage: 1 } })
+    } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
     }
@@ -106,7 +106,8 @@ export const patchUser =
     try {
       const res = await apiEndpoint.users.patchUser(userData)
       dispatch(userPatchSuccess(res.data))
-    } catch (e) {
+      history.push(`/users/${res.data.id}`)
+    } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
     }
@@ -119,8 +120,8 @@ export const deleteUser =
     try {
       const res = await apiEndpoint.users.deleteUser(id)
       dispatch(userDeleteSuccess(res.data))
-      history.push('/users')
-    } catch (e) {
+      history.push({ pathname: '/users', state: { currentPage: 1 } })
+    } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
     }

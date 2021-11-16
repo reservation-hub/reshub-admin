@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { IMainTemplateProps } from '../_PropsType'
 import { useDispatch } from 'react-redux'
 import { logout } from '@store/actions/authAction'
-import CommonStyle, { StyledPaper } from '../../CommonStyle'
+import CommonStyle, { StyledPaper } from '../CommonStyle'
 import Header from './Header'
 import NavBar from '@/components/common/atoms/NavBar'
 
