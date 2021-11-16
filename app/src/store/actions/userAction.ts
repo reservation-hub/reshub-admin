@@ -106,6 +106,7 @@ export const patchUser =
     try {
       const res = await apiEndpoint.users.patchUser(userData)
       dispatch(userPatchSuccess(res.data))
+      history.push(`/users/${res.data.id}`)
     } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
@@ -119,7 +120,7 @@ export const deleteUser =
     try {
       const res = await apiEndpoint.users.deleteUser(id)
       dispatch(userDeleteSuccess(res.data))
-      history.push('/users')
+      history.push({pathname: '/users', state: { currentPage: 1 }})
     } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
