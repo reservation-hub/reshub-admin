@@ -38,7 +38,7 @@ const ListTopBar = ({
       className={classes().root}
     >
       <Grid item>
-        <H1 className='item-header'>{title}</H1>
+        <H1 classes='item-header'>{title}</H1>
       </Grid>
       <Grid item className='item-button display-flex'>
         {/* 実装予定 */}

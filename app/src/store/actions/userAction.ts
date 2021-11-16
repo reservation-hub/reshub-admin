@@ -90,7 +90,7 @@ export const addUser =
     try {
       const res = await apiEndpoint.users.createUser(userData)
       dispatch(userAddSuccess(res.data))
-      history.replace('/users')
+      history.push({pathname: '/users', state: {currentPage: 1}})
     } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))
