@@ -14,11 +14,11 @@ const NavBar = () => {
 
   return (
     <React.Fragment>
-      <div className='nav-wrapper text-center'>
+      <div className='mt-[3rem] mb-[1rem] text-[2.4rem]'>
         <Link to={`/users/${user.id}`}>
-          <div className='user-profile-link'>
-            <FaRegUserCircle />
-            <p className='user-name'>{user.username || 'Admin'}</p>
+          <div className='text-center'>
+            <FaRegUserCircle className='w-[5rem] h-[5rem] mx-auto' />
+            <p className='m-0'>{user.username || 'Admin'}</p>
           </div>
         </Link>
       </div>
@@ -31,20 +31,20 @@ const NavBar = () => {
                 pathname: value.path,
                 state: { currentPage: 1 }
               }}
-              activeClassName='active'
+              activeClassName='bg-secondary-main'
             >
-              <ListItem button className='nav-items'>
+              <ListItem button className='text-[2.4rem]'>
                 <ListItemText primary={value.value} />
               </ListItem>
             </NavLink>
           ))}
         </List>
       </div>
-      <footer className='display-flex align-center'>
+      <footer className='flex items-center'>
         <span>Copyright 2021Reshub</span>
         <span>
           <a href='https://github.com/reservation-hub'>
-            <AiOutlineGithub />
+            <AiOutlineGithub className='w-[2rem] h-[2rem]' />
           </a>
         </span>
       </footer>

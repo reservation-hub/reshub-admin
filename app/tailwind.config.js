@@ -7,13 +7,13 @@ module.exports = {
       // color増えるかも？
       colors: {
         primary: {
-          DEFAULT: '#F2BDCD',
-          light: 'rgba(242, 189, 205, 0.5)',
+          DEFAULT: '#669999',
+          light: 'F0F5F5',
           dark: '#011627'
         },
         secondary: {
-          main: '#FDFFFC',
-          light: '#FEFEFE',
+          main: '#FFFFFF',
+          light: '#F0F5F5',
           dark: '#E5E5E5'
         },
         error: {
@@ -44,9 +44,6 @@ module.exports = {
       animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out'
       },
-      background: {
-        'main-img': 'url(https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1169&q=80)'
-      }
     }
   },
   variants: {

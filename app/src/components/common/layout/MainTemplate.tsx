@@ -15,15 +15,15 @@ const MainTemplate = ({ children }: IMainTemplateProps) => {
   }, [dispatch])
 
   return (
-    <React.Fragment>
+    <main className='w-full h-screen'>
       <Header onLogout={onLogout} />
-      <aside className={classes.sideBar}>
+      <aside className='absolute h-full bg-primary text-secondary-main'>
         <NavBar />
       </aside>
-      <main className={classes.mainBackground}>
-        <StyledPaper elevation={0}>{children}</StyledPaper>
-      </main>
-    </React.Fragment>
+      <section className='w-[82.5%] mt-[5.5rem] ml-[20rem]'>
+        <StyledPaper>{children}</StyledPaper>
+      </section>
+    </main>
   )
 }
 
