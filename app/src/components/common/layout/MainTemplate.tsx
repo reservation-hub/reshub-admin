@@ -5,6 +5,7 @@ import { logout } from '@store/actions/authAction'
 import Header from './Header'
 import NavBar from '@/components/common/atoms/NavBar'
 import '@styles/template.css'
+import { Link } from 'react-router-dom'
 
 const MainTemplate = ({ children }: IMainTemplateProps) => {
   const dispatch = useDispatch()
@@ -15,7 +16,9 @@ const MainTemplate = ({ children }: IMainTemplateProps) => {
 
   return (
     <>
-      <Header onLogout={onLogout} />
+      <Link to='./salon_dashboard'>
+        <Header onLogout={onLogout} />
+      </Link>
       <aside className='bg-primary text-secondary-main'>
         <NavBar />
       </aside>
