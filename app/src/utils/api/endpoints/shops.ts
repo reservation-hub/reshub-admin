@@ -7,8 +7,8 @@ import {
   updateShopQuery
 } from '@utils/api/request-response-types/ShopService'
 
-export const getShops = async (page: number) =>
-  await instance.get(`/shops?page=${page}`)
+export const getShops = async (page: number, order: 'asc' | 'desc') =>
+  await instance.get(`/shops?page=${page}&order=${order}`)
 
 export const getShop = async (id: number) => await instance.get(`/shops/${id}`)
 

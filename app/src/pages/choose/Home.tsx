@@ -8,7 +8,7 @@ function Home() {
   const classes = CommonStyle()
 
   return (
-    <main className={classes.loginSelectBackground}>
+    <main className='w-full bg-primary h-full m-0'>
       <section className={classes.boxCenter} style={{ top: '33%' }}>
         <LoginSelectHeader />
         <PageSelect />

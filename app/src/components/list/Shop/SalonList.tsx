@@ -7,7 +7,7 @@ import { SALON_CELL } from '@constants/Table'
 import { HEADER_TYPE } from '@constants/Common'
 import CustomButton from '@components/common/atoms/CustomButton'
 
-const SalonList = ({ shops, modalOpenHandler }: IListProps) => {
+const SalonList = ({ shops, modalOpenHandler, order, correct }: IListProps) => {
   return (
     <>
       <SubHeader
@@ -15,7 +15,7 @@ const SalonList = ({ shops, modalOpenHandler }: IListProps) => {
         type={HEADER_TYPE.LIST}
         modalOpenHandler={modalOpenHandler}
       >
-        <CustomButton>並び替え</CustomButton>
+        <CustomButton onClick={() => order && order(!correct)}>並び替え</CustomButton>
         <CustomButton classes='ml-2'>絞り込み</CustomButton>
       </SubHeader>
       <TableLayout cell={SALON_CELL}>

@@ -51,7 +51,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   )
 
   return (
-    <main className={classes.commonCss.loginSelectBackground}>
+    <main className='w-full bg-primary h-full m-0'>
       {location.state && (
         <Fade in={errorState} timeout={1300}>
           <StyledAlert

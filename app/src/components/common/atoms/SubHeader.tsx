@@ -12,7 +12,7 @@ const SubHeader = ({
   children
 }: ITopBarProps) => {
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between mb-4'>
       <div>
         <H1 classes='text-primary'>{title}</H1>
       </div>
