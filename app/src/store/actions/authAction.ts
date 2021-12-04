@@ -9,7 +9,7 @@ import {
 } from '@store/types/authTypes'
 import { RootState, typedAction } from '@store/store'
 import { GoogleLoginResponse } from 'react-google-login'
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'

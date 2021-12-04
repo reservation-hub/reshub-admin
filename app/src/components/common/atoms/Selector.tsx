@@ -24,7 +24,7 @@ const Selector = ({
         variant='outlined'
       >
         {data?.map((value, index) => (
-          <MenuItem key={index} value={value.id}>
+          <MenuItem key={index} value={value.slug}>
             {value.name}
           </MenuItem>
         ))}

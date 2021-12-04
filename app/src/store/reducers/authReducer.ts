@@ -8,7 +8,7 @@ import {
   USER_REQUEST_SUCCESS
 } from '@store/types/authTypes'
 import { AuthAction } from '@store/actions/authAction'
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 
 const initialState: AuthState = {
   loading: true,

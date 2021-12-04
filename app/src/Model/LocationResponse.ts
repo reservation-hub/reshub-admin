@@ -1,4 +1,4 @@
-import { City, Prefecture } from '@entity/Location'
+import { City, Prefecture } from '@entities/Location'
 
 export type TPrefecture = {
   id: number

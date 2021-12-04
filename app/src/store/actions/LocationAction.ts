@@ -2,7 +2,7 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { Area } from '@entity/Location'
+import { Area } from '@entities/Location'
 import { RootState, typedAction } from '@store/store'
 import {
   GET_AREA_SUCCESS,

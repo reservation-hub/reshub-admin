@@ -1,4 +1,4 @@
-import { Area } from '@entity/Location'
+import { Area } from '@entities/Location'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse

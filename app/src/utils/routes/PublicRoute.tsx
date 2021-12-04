@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store/store'
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 import { VALIDATION_TEXT } from '@constants/FormValid'
 
 /**

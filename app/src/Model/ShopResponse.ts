@@ -1,6 +1,6 @@
-import { Area, City, Prefecture } from '@entity/Location'
-import { Menu } from '@entity/Menu'
-import { Stylist } from '@entity/Stylist'
+import { Area, City, Prefecture } from '@entities/Location'
+import { Menu } from '@entities/Menu'
+import { Stylist } from '@entities/Stylist'
 
 export type TShopSchedule = {
   days: number[]

@@ -17,7 +17,7 @@ import {
 } from '@utils/api/request-response-types/UserService'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 import apiEndpoint from '../../utils/api/apiEndpoint'
 import history from '@utils/routes/history'
 import {

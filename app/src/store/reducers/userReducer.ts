@@ -14,7 +14,7 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 import { UserAction } from '@store/actions/userAction'
 
 const initialState: UsersState = {
