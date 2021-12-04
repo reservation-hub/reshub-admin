@@ -1,5 +1,5 @@
 import React from 'react'
-import ListTopBar from '@components/common/atoms/ListTopBar'
+import SubHeader from '@/components/common/atoms/SubHeader'
 import TableLayout from '@components/common/atoms/TableLayout'
 import SalonItem from './SalonItem'
 import { IListProps } from '../_PropsType'
@@ -10,14 +10,14 @@ import CustomButton from '@components/common/atoms/CustomButton'
 const SalonList = ({ shops, modalOpenHandler }: IListProps) => {
   return (
     <>
-      <ListTopBar
+      <SubHeader
         title='サロン一覧'
         type={HEADER_TYPE.LIST}
         modalOpenHandler={modalOpenHandler}
       >
         <CustomButton>並び替え</CustomButton>
-        <CustomButton>絞り込み</CustomButton>
-      </ListTopBar>
+        <CustomButton classes='ml-2'>絞り込み</CustomButton>
+      </SubHeader>
       <TableLayout cell={SALON_CELL}>
         {shops?.map((value, index) => (
           <SalonItem shop={value} key={index} />

@@ -3,15 +3,14 @@ import Grid from '@material-ui/core/Grid'
 import { AdminDashboardProps } from './_PropsType'
 import TableLayout from '@components/common/atoms/TableLayout'
 import UserItems from '@components/list/User/UserItems'
-import H1 from '@components/common/atoms/H1'
 import SalonItem from '@components/list/Shop/SalonItem'
 import { SALON_CELL, USER_CELL } from '@constants/Table'
-import ListTopBar from '@components/common/atoms/ListTopBar'
+import SubHeader from '@/components/common/atoms/SubHeader'
 
 const AdminDashboard = ({ data }: AdminDashboardProps) => {
   return (
     <Grid container>
-      <ListTopBar title='ダッシュボード' />
+      <SubHeader title='ダッシュボード' type='dashboard' />
       <Grid item style={{ width: '100%' }}>
         <TableLayout cell={USER_CELL}>
           {data?.user?.users.map((value, index) => (

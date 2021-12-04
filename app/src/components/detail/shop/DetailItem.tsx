@@ -1,5 +1,5 @@
 import React from 'react'
-import ListTopBar from '@components/common/atoms/ListTopBar'
+import SubHeader from '@/components/common/atoms/SubHeader'
 import { IDetailProps } from '../_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
 import Grid from '@material-ui/core/Grid'
@@ -31,14 +31,14 @@ const DetailItem = ({
 
   return (
     <>
-      <ListTopBar
+      <SubHeader
         title={`${shop?.name}の詳細`}
         type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}
       >
         <CustomButton onClick={history.goBack}>戻る</CustomButton>
-      </ListTopBar>
+      </SubHeader>
       <Grid container justifyContent='space-between' alignItems='center'>
         <ShopData shop={shop} />
         <Grid md={5} item>
