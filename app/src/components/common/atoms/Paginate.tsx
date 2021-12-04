@@ -14,7 +14,7 @@ const Paginate = ({ totalPage, page, pageChangeHandler }: IPaginateProps) => {
       previousLabel='<'
       nextLabel='>'
       activeClassName='bg-primary text-secondary-main'
-      containerClassName='h-[4rem] w-[4rem] text-center leading-[4rem] flex mx-auto'
+      containerClassName='h-[4rem] w-[4rem] text-center leading-[4rem] flex'
       pageLinkClassName='w-[4rem] inline-block'
       previousLinkClassName='w-[4rem] inline-block'
       nextLinkClassName='w-[4rem] inline-block'

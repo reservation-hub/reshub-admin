@@ -9,7 +9,10 @@ import SubHeader from '@/components/common/atoms/SubHeader'
 const AdminDashboard = ({ data }: AdminDashboardProps) => {
   return (
     <section>
-      <SubHeader title='ダッシュボード' type='dashboard' />
+      <SubHeader title='ダッシュボード' type='dashboard'>
+        <div className='text-[1.6rem]'>ユーザー{data.user.totalCount}件</div>
+        <div className='text-[1.6rem]'>サロン {data.shop.totalCount}件</div>
+      </SubHeader>
       <TableLayout cell={USER_CELL}>
         {data?.user?.users.map((value, index) => (
           <UserItems user={value} key={index} />
