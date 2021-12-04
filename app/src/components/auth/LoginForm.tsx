@@ -15,57 +15,47 @@ const LoginForm = ({
   classes
 }: IAuthFormProps) => {
   return (
-    <Container maxWidth='sm'>
-      <Container className={classes.loginCss.formBox}>
-        <form onSubmit={onSubmit}>
-          <TextField
-            label='メールアドレス'
-            name='email'
-            autoComplete='off'
-            placeholder='メールアドレスを入力してください'
-            value={value.email}
-            onChange={setValue}
-            style={{ margin: '.5rem 0 2rem 0' }}
-            className='inputBox'
-            fullWidth
-          />
-          <TextField
-            label='パスワード'
-            name='password'
-            type='password'
-            autoComplete='off'
-            placeholder='パスワードを入力してください'
-            value={value.password}
-            onChange={setValue}
-            className='inputBox'
-            fullWidth
-          />
-          <Grid container>
-            <Grid item xs={12}>
-              <CustomButton classes='loginButton'>ログイン</CustomButton>
-            </Grid>
-            <Grid item xs={12}>
-              <GoogleLogin
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                onSuccess={googleHandler}
-                onFailure={googleHandler}
-                render={(renderProps) => (
-                  <CustomButton
-                    onClick={renderProps.onClick}
-                    classes='socialRoot'
-                  >
-                    <div className='google-icon'>
-                      <FcGoogle />
-                    </div>
-                    <span className='button-text'>googleでログイン</span>
-                  </CustomButton>
-                )}
-              />
-            </Grid>
-          </Grid>
-        </form>
-      </Container>
-    </Container>
+    <div className='w-[55rem] mx-auto p-[3rem] rounded-[.5rem] bg-secondary-main'>
+      <form onSubmit={onSubmit}>
+        <TextField
+          label='メールアドレス'
+          name='email'
+          autoComplete='off'
+          placeholder='メールアドレスを入力してください'
+          value={value.email}
+          onChange={setValue}
+          style={{ margin: '.5rem 0 2rem 0' }}
+          className='inputBox'
+          fullWidth
+        />
+        <TextField
+          label='パスワード'
+          name='password'
+          type='password'
+          autoComplete='off'
+          placeholder='パスワードを入力してください'
+          value={value.password}
+          onChange={setValue}
+          className='inputBox'
+          fullWidth
+        />
+        <CustomButton classes='w-[100%] mt-[2.5rem] mb-[2.5rem]'>ログイン</CustomButton>
+        <GoogleLogin
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+          onSuccess={googleHandler}
+          onFailure={googleHandler}
+          render={(renderProps) => (
+            <CustomButton
+              onClick={renderProps.onClick}
+              classes='w-[100%] flex items-center hover:bg-table-headerFont text-center'
+            >
+              <FcGoogle className='pt-[.25rem] pl-[.25rem] w-[2.5rem] h-[2.5rem]' />
+              <span className='button-text w-full pr-[1.5rem]'>googleでログイン</span>
+            </CustomButton>
+          )}
+        />
+      </form>
+    </div>
   )
 }
 

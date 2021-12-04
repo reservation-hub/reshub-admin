@@ -1,8 +1,8 @@
 import React from 'react'
-import LoginSelectHeader from '@components/common/loginSelect/LoginSelectHeader'
+import LoginSelectHeader from '@/components/common/choose/LoginSelectHeader'
 import CommonStyle from '@components/common/CommonStyle'
 import PageSelect from '@/components/choose/PageSelect'
-import LoginSelectFooter from '@components/common/loginSelect/LoginSelectFooter'
+import LoginSelectFooter from '@/components/common/choose/LoginSelectFooter'
 
 function Home() {
   const classes = CommonStyle()
