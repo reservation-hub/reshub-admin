@@ -59,7 +59,10 @@ const shopRequestFailure = (err: string) => {
 
 // 全てのお店データを読み込む
 export const fetchShopList =
-  (page: number, order: 'asc' | 'desc'): ThunkAction<void, RootState, null, Action> =>
+  (
+    page: number,
+    order: 'asc' | 'desc'
+  ): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(shopRequestStart())
     try {

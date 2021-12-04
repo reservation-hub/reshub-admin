@@ -31,7 +31,7 @@ const Salon = ({
       currentPage: pageNum + 1
     })
   }
- 
+
   useEffect(() => {
     if (match.isExact) dispatch(fetchShopList(Number(currentPage), order))
   }, [page, dispatch, currentPage, match.isExact])

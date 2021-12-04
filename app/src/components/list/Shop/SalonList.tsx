@@ -15,7 +15,9 @@ const SalonList = ({ shops, modalOpenHandler, order, correct }: IListProps) => {
         type={HEADER_TYPE.LIST}
         modalOpenHandler={modalOpenHandler}
       >
-        <CustomButton onClick={() => order && order(!correct)}>並び替え</CustomButton>
+        <CustomButton onClick={() => order && order(!correct)}>
+          並び替え
+        </CustomButton>
         <CustomButton classes='ml-2'>絞り込み</CustomButton>
       </SubHeader>
       <TableLayout cell={SALON_CELL}>
