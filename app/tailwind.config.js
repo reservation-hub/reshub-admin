@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#669999',
-          light: 'F0F5F5',
+          light: '#F0F5F5',
           dark: '#011627'
         },
         secondary: {
@@ -25,6 +25,11 @@ module.exports = {
           main: '#4CAF50',
           light: 'rgba(76, 175, 79, 0.5)',
           dark: '#459648'
+        },
+        table: {
+          header: '#E5E5E5',
+          headerFont: '#ABB0AD',
+          defaultFont: '#94B8B8'
         }
       },
       flex: { ...Array.from(Array(12 + 1)).map((_, i) => `${i} ${i} 0%`) }, // ex) flex-1(flex: 1 1 0%)

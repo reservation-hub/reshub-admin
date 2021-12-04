@@ -1,7 +1,4 @@
-import React, { useState } from 'react'
-import ListItemText from '@material-ui/core/ListItemText'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
+import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
@@ -22,29 +19,31 @@ const NavBar = () => {
           </div>
         </Link>
       </div>
-      <div>
-        <List>
-          {NAV_MENU.map((value, index) => (
+      <div className='grid mt-[3rem]'>
+        {NAV_MENU.map((value, index) => (
+          <>
             <NavLink
               key={index}
               to={{
                 pathname: value.path,
                 state: { currentPage: 1 }
               }}
-              activeClassName='bg-secondary-main'
+              className='p-[1rem]'
+              activeClassName='bg-secondary-main text-primary'
             >
-              <ListItem button className='text-[2.4rem]'>
-                <ListItemText primary={value.value} />
-              </ListItem>
+              <span className='text-[2.4rem]'> 
+                {value.value}
+              </span>
             </NavLink>
-          ))}
-        </List>
+            <hr className='w-full' />
+          </>
+        ))}
       </div>
-      <footer className='flex items-center'>
+      <footer className='flex items-center absolute bottom-[6rem]'>
         <span>Copyright 2021Reshub</span>
         <span>
           <a href='https://github.com/reservation-hub'>
-            <AiOutlineGithub className='w-[2rem] h-[2rem]' />
+            <AiOutlineGithub className='w-[3rem] h-[3rem] ml-5' />
           </a>
         </span>
       </footer>
