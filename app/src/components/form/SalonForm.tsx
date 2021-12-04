@@ -59,11 +59,11 @@ const SalonForm = ({
   }, [dispatch, formValue.areaId, formValue.prefectureId])
 
   return (
-    <Container maxWidth='sm' className={classes.container}>
+    <div className='p-[2rem] bg-secondary-main w-[60rem] mx-auto'>
       <Header title={formState?.shop?.id ? 'サロン編集' : 'サロン新規登録'} />
-      <div className='form-box'>
+      <div className='mt-[2rem]'>
         <form onSubmit={submitHandler}>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <StyledInput
               label='サロン名'
               autoComplete='off'
@@ -75,7 +75,7 @@ const SalonForm = ({
               onChange={changeHandlers.input}
             />
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <StyledInput
               label='電話番号'
               autoComplete='off'
@@ -87,7 +87,7 @@ const SalonForm = ({
               onChange={changeHandlers.input}
             />
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <StyledInput
               label='住所'
               autoComplete='off'
@@ -99,7 +99,7 @@ const SalonForm = ({
               onChange={changeHandlers.input}
             />
           </div>
-          <div className='input-box display-flex'>
+          <div className='mb-[2rem] flex justify-between'>
             <Selector
               id='area'
               name='areaId'
@@ -125,7 +125,7 @@ const SalonForm = ({
               label='市区町村'
             />
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <div className='label'>
               <span className='font-16'>営業日</span>
             </div>
@@ -135,11 +135,11 @@ const SalonForm = ({
               checkedData={formValue.days}
             />
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <div className='label'>
               <span className='font-16'>営業時間</span>
             </div>
-            <div className='display-flex justify-between align-center'>
+            <div className='flex justify-between items-center'>
               <TimePicker
                 hh={Number(formValue.startTime.hour)}
                 mm={Number(formValue.startTime.minute)}
@@ -155,10 +155,10 @@ const SalonForm = ({
               />
             </div>
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <CustomButton>画像登録になる</CustomButton>
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <TextField
               label='詳細'
               autoComplete='off'
@@ -173,13 +173,17 @@ const SalonForm = ({
           </div>
           <CustomButton
             disabled={disabled}
-            classes={disabled ? 'disabled-button' : 'submit-button'}
+            classes={
+              disabled
+                ? 'w-[56rem] h-[4.5rem] mt-[.5rem]'
+                : 'w-[56rem] h-[4.5rem] mt-[.5rem]'
+            }
           >
             登録
           </CustomButton>
         </form>
       </div>
-    </Container>
+    </div>
   )
 }
 
