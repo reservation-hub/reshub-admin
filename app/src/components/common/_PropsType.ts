@@ -18,7 +18,6 @@ export interface IButtonProps extends ClassesAndChildren {
 
 export interface ITableProps extends ClassesAndChildren {
   cell?: Record<string, any>
-  data?: any[]
   index?: number
 }
 

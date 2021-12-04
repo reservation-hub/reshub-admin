@@ -18,7 +18,7 @@ const SalonList = ({ shops, modalOpenHandler }: IListProps) => {
         <CustomButton>並び替え</CustomButton>
         <CustomButton>絞り込み</CustomButton>
       </ListTopBar>
-      <TableLayout cell={SALON_CELL} data={shops}>
+      <TableLayout cell={SALON_CELL}>
         {shops?.map((value, index) => (
           <SalonItem shop={value} key={index} />
         ))}

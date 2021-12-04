@@ -2,35 +2,27 @@ import React from 'react'
 
 import useRole from '@utils/hooks/useRole'
 import useBirthday from '@utils/hooks/useBirthday'
-import { TableRow } from '@material-ui/core'
 import history from '@utils/routes/history'
 import { IDetailProps } from '@components/detail/_PropsType'
-import { StyledTableCell } from '../ListStyle'
 
 const UserItems = ({ user }: IDetailProps) => {
   const birthday = useBirthday(user?.birthday)
   const role = useRole(user?.role)
-
   return (
-    <TableRow
-      style={{ height: '6rem' }}
-      hover
-      onClick={() => history.push(`/users/${user?.id}`)}
-    >
-      <StyledTableCell>{user?.id}</StyledTableCell>
-      <StyledTableCell>{user?.email}</StyledTableCell>
-      <StyledTableCell>
-        {`${user?.firstNameKanji} ${user?.lastNameKanji}`}
-      </StyledTableCell>
-      <StyledTableCell>
-        {`${user?.firstNameKana} ${user?.lastNameKana}`}
-      </StyledTableCell>
-      <StyledTableCell>
-        {birthday === 'Invalid Date' ? '-' : birthday}
-      </StyledTableCell>
-      <StyledTableCell>{user?.gender ?? '-'}</StyledTableCell>
-      <StyledTableCell>{role}</StyledTableCell>
-    </TableRow>
+    <>
+      <tr 
+        onClick={() => history.push(`/users/${user?.id}`)} 
+        className='text-[1.6rem] text-center hover:bg-secondary-dark border-b-2 h-[5rem]'
+      >
+        <td>{user?.id}</td>
+        <td>{user?.email}</td>
+        <td>{`${user?.firstNameKanji} ${user?.lastNameKanji}`}</td>
+        <td>{`${user?.firstNameKana} ${user?.lastNameKana}`}</td>
+        <td>{birthday === 'Invalid Date' ? '-' : birthday}</td>
+        <td>{user?.gender ?? '-'}</td>
+        <td>{role}</td>
+      </tr>
+    </>
   )
 }
 

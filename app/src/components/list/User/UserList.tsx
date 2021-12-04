@@ -7,7 +7,7 @@ import { IListProps } from '../_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
 import CustomButton from '@components/common/atoms/CustomButton'
 
-const UserList = ({ users, modalOpenHandler }: IListProps) => {
+const UserList = ({ users, modalOpenHandler }: IListProps) => {  
   return (
     <>
       <ListTopBar
@@ -18,7 +18,7 @@ const UserList = ({ users, modalOpenHandler }: IListProps) => {
         <CustomButton>並び替え</CustomButton>
         <CustomButton>絞り込み</CustomButton>
       </ListTopBar>
-      <TableLayout cell={USER_CELL} data={users}>
+      <TableLayout cell={USER_CELL}>
         {users?.map((value, index) => (
           <UserItems user={value} key={index} />
         ))}
