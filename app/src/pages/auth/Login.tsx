@@ -11,6 +11,7 @@ import LoginSelectFooter from '@/components/common/choose/LoginSelectFooter'
 import LoginStyle from '@components/auth/LoginStyle'
 import CommonStyle, { StyledAlert } from '@components/common/CommonStyle'
 import Fade from '@material-ui/core/Fade'
+import CenterBox from '@/components/common/layout/CenterBox'
 
 interface LocationState {
   failed?: string
@@ -66,7 +67,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
           </StyledAlert>
         </Fade>
       )}
-      <section className={classes.commonCss.boxCenter}>
+      <CenterBox>
         <LoginSelectHeader />
         <LoginForm
           value={input}
@@ -76,7 +77,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
           classes={classes}
         />
         <LoginSelectFooter />
-      </section>
+      </CenterBox>
     </main>
   )
 }

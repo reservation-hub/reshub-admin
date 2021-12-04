@@ -1,8 +1,6 @@
 import React from 'react'
 import { GoogleLogin } from 'react-google-login'
 import TextField from '@material-ui/core/TextField'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
 import { FcGoogle } from 'react-icons/fc'
 import CustomButton from '@components/common/atoms/CustomButton'
 import { IAuthFormProps } from '@components/auth/_PropsType'
@@ -11,8 +9,7 @@ const LoginForm = ({
   value,
   setValue,
   onSubmit,
-  googleHandler,
-  classes
+  googleHandler
 }: IAuthFormProps) => {
   return (
     <div className='w-[55rem] mx-auto p-[3rem] rounded-[.5rem] bg-secondary-main'>
@@ -39,7 +36,9 @@ const LoginForm = ({
           className='inputBox'
           fullWidth
         />
-        <CustomButton classes='w-[100%] mt-[2.5rem] mb-[2.5rem]'>ログイン</CustomButton>
+        <CustomButton classes='w-[100%] mt-[2.5rem] mb-[2.5rem]'>
+          ログイン
+        </CustomButton>
         <GoogleLogin
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
           onSuccess={googleHandler}
@@ -50,7 +49,9 @@ const LoginForm = ({
               classes='w-[100%] flex items-center hover:bg-table-headerFont text-center'
             >
               <FcGoogle className='pt-[.25rem] pl-[.25rem] w-[2.5rem] h-[2.5rem]' />
-              <span className='button-text w-full pr-[1.5rem]'>googleでログイン</span>
+              <span className='button-text w-full pr-[1.5rem]'>
+                googleでログイン
+              </span>
             </CustomButton>
           )}
         />
