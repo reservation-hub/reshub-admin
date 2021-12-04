@@ -30,9 +30,7 @@ const NavBar = () => {
               className='p-[1rem]'
               activeClassName='bg-secondary-main text-primary'
             >
-              <span className='text-[2.4rem]'> 
-                {value.value}
-              </span>
+              <span className='text-[2.4rem]'>{value.value}</span>
             </NavLink>
             <hr className='w-full' />
           </React.Fragment>

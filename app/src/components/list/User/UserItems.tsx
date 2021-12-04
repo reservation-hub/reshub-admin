@@ -10,8 +10,8 @@ const UserItems = ({ user }: IDetailProps) => {
   const role = useRole(user?.role)
   return (
     <>
-      <tr 
-        onClick={() => history.push(`/users/${user?.id}`)} 
+      <tr
+        onClick={() => history.push(`/users/${user?.id}`)}
         className='text-[1.6rem] text-center hover:bg-secondary-dark border-b-2 h-[5rem]'
       >
         <td>{user?.id}</td>

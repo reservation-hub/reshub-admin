@@ -7,14 +7,13 @@ const TableLayout = ({ children, cell, classes }: ITableProps) => {
     <table className={`${styled} ${classes}`}>
       <thead className='bg-table-header text-table-headerFont h-[6rem]'>
         <tr className='text-[2rem]'>
-          {cell && Object.values(cell).map((value, index: number) => (
-            <th key={index}>{value}</th>
-          ))}
+          {cell &&
+            Object.values(cell).map((value, index: number) => (
+              <th key={index}>{value}</th>
+            ))}
         </tr>
       </thead>
-      <tbody>
-        {children}
-      </tbody>
+      <tbody>{children}</tbody>
     </table>
   )
 }

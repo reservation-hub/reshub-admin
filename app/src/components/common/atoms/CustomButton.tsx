@@ -7,7 +7,8 @@ const CustomButton = ({
   classes,
   disabled
 }: IButtonProps) => {
-  const styled = 'w-[11rem] h-[3.5rem] corsor-pointer border bg-secondary-main text-primary rounded-[.5rem] hover:bg-primary hover:text-secondary-main filter drop-shadow'
+  const styled =
+    'w-[11rem] h-[3.5rem] corsor-pointer border bg-secondary-main text-primary rounded-[.5rem] hover:bg-primary hover:text-secondary-main filter drop-shadow'
 
   return (
     <button

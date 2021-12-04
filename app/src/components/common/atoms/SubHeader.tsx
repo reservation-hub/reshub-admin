@@ -17,15 +17,17 @@ const SubHeader = ({
         <H1 classes='text-primary'>{title}</H1>
       </div>
       <div>
-      {children}
-      {type === HEADER_TYPE.DETAIL && (
-        <CustomButton classes='ml-2' onClick={subModalHandler}>削除</CustomButton>
-      )}
-      {type !== HEADER_TYPE.DASHBOARD && (
-        <CustomButton classes='ml-2' onClick={modalOpenHandler}>
-          {type === HEADER_TYPE.LIST ? '新規登録' : '編集'}
-        </CustomButton>
-      )}
+        {children}
+        {type === HEADER_TYPE.DETAIL && (
+          <CustomButton classes='ml-2' onClick={subModalHandler}>
+            削除
+          </CustomButton>
+        )}
+        {type !== HEADER_TYPE.DASHBOARD && (
+          <CustomButton classes='ml-2' onClick={modalOpenHandler}>
+            {type === HEADER_TYPE.LIST ? '新規登録' : '編集'}
+          </CustomButton>
+        )}
       </div>
     </div>
   )

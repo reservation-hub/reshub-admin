@@ -23,7 +23,6 @@ const MainTemplate = ({ children }: IMainTemplateProps) => {
         {children}
       </main>
     </>
-    
   )
 }
 
