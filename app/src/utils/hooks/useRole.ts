@@ -1,4 +1,4 @@
-import { Role } from '@entity/Role'
+import { Role } from '@entities/Role'
 
 export const useRole = (r: Role | undefined) => {
   return r?.name

@@ -20,7 +20,7 @@
       "@styles/*": [
         "styles/*"
       ],
-      "@entity/*": [
+      "@entities/*": [
         "entities/*"
       ],
       "@Model/*": [

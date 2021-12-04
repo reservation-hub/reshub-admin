@@ -1,7 +1,7 @@
 //----------------------------------
 // redux action types お店管理
 //----------------------------------
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse

@@ -1,4 +1,4 @@
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 import { TShop } from '@Model/ShopResponse'
 
 export interface IDetailProps {

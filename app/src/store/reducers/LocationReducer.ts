@@ -8,7 +8,7 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { Area } from '@entity/Location'
+import { Area } from '@entities/Location'
 import { LocationAction } from '@store/actions/LocationAction'
 import { TCity, TPrefecture } from '@Model/LocationResponse'
 

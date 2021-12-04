@@ -1,4 +1,4 @@
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
 import { TValid } from '@utils/hooks/useValidation'
 import { TShop } from '@Model/ShopResponse'

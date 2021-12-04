@@ -1,6 +1,6 @@
 import React from 'react'
-import { Area, City, Prefecture } from '@entity/Location'
-import { Role } from '@entity/Role'
+import { Area, City, Prefecture } from '@entities/Location'
+import { Role } from '@entities/Role'
 import { TDays } from '@constants/Days'
 
 export type MatchParams = {

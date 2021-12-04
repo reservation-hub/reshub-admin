@@ -1,4 +1,4 @@
-import { User } from '@entity/User'
+import { User } from '@entities/User'
 import { TShopList } from '@Model/ShopResponse'
 
 export const DASHBOARD_REQUEST_START = 'DASHBOARD_REQUEST_START' as const
