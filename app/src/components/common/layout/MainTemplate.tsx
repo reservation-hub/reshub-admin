@@ -19,7 +19,7 @@ const MainTemplate = ({ children }: IMainTemplateProps) => {
       <aside className='bg-primary text-secondary-main'>
         <NavBar />
       </aside>
-      <main className='w-[80%] absolute top-[5rem] right-[1rem]'>
+      <main className='w-[80%] absolute top-[5rem] right-[1.5rem]'>
         {children}
       </main>
     </>

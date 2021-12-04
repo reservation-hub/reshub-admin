@@ -10,7 +10,7 @@ const NavBar = () => {
   const { user } = useSelector((state: RootState) => state.auth)
 
   return (
-    <React.Fragment>
+    <>
       <div className='mt-[3rem] mb-[1rem] text-[2.4rem]'>
         <Link to={`/users/${user.id}`}>
           <div className='text-center'>
@@ -21,9 +21,8 @@ const NavBar = () => {
       </div>
       <div className='grid mt-[3rem]'>
         {NAV_MENU.map((value, index) => (
-          <>
+          <React.Fragment key={index}>
             <NavLink
-              key={index}
               to={{
                 pathname: value.path,
                 state: { currentPage: 1 }
@@ -36,10 +35,10 @@ const NavBar = () => {
               </span>
             </NavLink>
             <hr className='w-full' />
-          </>
+          </React.Fragment>
         ))}
       </div>
-      <footer className='flex items-center absolute bottom-[6rem]'>
+      <footer className='flex items-center absolute bottom-[6rem] p-2'>
         <span>Copyright 2021Reshub</span>
         <span>
           <a href='https://github.com/reservation-hub'>
@@ -47,7 +46,7 @@ const NavBar = () => {
           </a>
         </span>
       </footer>
-    </React.Fragment>
+    </>
   )
 }
 

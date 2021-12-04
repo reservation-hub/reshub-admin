@@ -1,6 +1,6 @@
 :root {
   --header-height: 6rem;
-  --sidebar-width: 20rem;
+  --sidebar-width: 22.5rem;
   @apply h-screen;
 }
 
