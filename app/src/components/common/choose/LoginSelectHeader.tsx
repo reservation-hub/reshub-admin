@@ -1,15 +1,13 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
-import H1 from '../atoms/H1'
+import H1 from '@components/common/atoms/H1'
 
 const LoginSelectHeader = () => {
   return (
-    <Container
-      maxWidth='sm'
-      style={{ marginBottom: '1.5rem', color: '#fff', textAlign: 'right' }}
+    <div
+      className='w-[55rem] mx-auto mb-[1.5rme] text-secondary-light text-right'
     >
       <H1>Reshub-Admin</H1>
-    </Container>
+    </div>
   )
 }
 

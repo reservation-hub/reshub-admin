@@ -6,12 +6,12 @@ import { AiOutlineClose } from 'react-icons/ai'
 import history from '@utils/routes/history'
 import useInput from '@utils/hooks/useInput'
 import LoginForm from '@components/auth/LoginForm'
-import LoginSelectHeader from '@/components/common/choose/LoginSelectHeader'
-import LoginSelectFooter from '@/components/common/choose/LoginSelectFooter'
+import LoginSelectHeader from '@components/common/choose/LoginSelectHeader'
+import LoginSelectFooter from '@components/common/choose/LoginSelectFooter'
 import { StyledAlert } from '@components/common/CommonStyle'
 import Fade from '@material-ui/core/Fade'
-import CenterBox from '@/components/common/layout/CenterBox'
-import useValidation from '@/utils/hooks/useValidation'
+import CenterBox from '@components/common/layout/CenterBox'
+import useValidation from '@utils/hooks/useValidation'
 
 interface LocationState {
   failed?: string
