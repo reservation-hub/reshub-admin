@@ -17,7 +17,9 @@ const UserList = ({ users, modalOpenHandler, order, correct }: IListProps) => {
         type={HEADER_TYPE.LIST}
       >
         <InputFiled />
-        <CustomButton classes='ml-2' onClick={() => order && order(!correct)}>並び替え</CustomButton>
+        <CustomButton classes='ml-2' onClick={() => order && order(!correct)}>
+          並び替え
+        </CustomButton>
       </SubHeader>
       <TableLayout cell={USER_CELL}>
         {users?.map((value, index) => (

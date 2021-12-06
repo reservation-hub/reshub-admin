@@ -22,7 +22,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
   const validationSchema = { email: false, password: false }
   const { validation, error } = useValidation(input, validationSchema)
-  
+
   const dispatch = useDispatch()
 
   const clearError = (): void => {

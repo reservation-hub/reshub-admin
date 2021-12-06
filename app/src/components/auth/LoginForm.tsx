@@ -32,7 +32,7 @@ const LoginForm = ({
   setValue,
   onSubmit,
   googleHandler,
-  error,
+  error
 }: IAuthFormProps) => {
   let disabled = false
   for (const v of Object.values(value)) {
@@ -47,8 +47,9 @@ const LoginForm = ({
           autoComplete='off'
           placeholder='メールアドレスを入力してください'
           classes={
-            error?.email ? 'border border-error-main rounded-[.25rem]'
-            : 'border rounded-[.25rem]'
+            error?.email
+              ? 'border border-error-main rounded-[.25rem]'
+              : 'border rounded-[.25rem]'
           }
           value={value.email}
           onChange={setValue}
@@ -63,8 +64,9 @@ const LoginForm = ({
           placeholder='パスワードを入力してください'
           autoComplete='off'
           classes={
-            error?.password ? 'border border-error-main rounded-[.25rem]'
-            : 'border rounded-[.25rem]'
+            error?.password
+              ? 'border border-error-main rounded-[.25rem]'
+              : 'border rounded-[.25rem]'
           }
           value={value.password}
           onChange={setValue}

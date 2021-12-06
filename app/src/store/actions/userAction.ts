@@ -56,7 +56,10 @@ const userRequestFailure = (err: string) => {
 }
 
 export const fetchUserList =
-  (page: number, order: 'asc' | 'desc'): ThunkAction<void, RootState, null, Action> =>
+  (
+    page: number,
+    order: 'asc' | 'desc'
+  ): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
