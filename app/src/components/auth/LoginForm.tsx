@@ -38,6 +38,7 @@ const LoginForm = ({
   for (const v of Object.values(value)) {
     disabled = v.length === 0
   }
+
   return (
     <div className='w-[55rem] mx-auto p-[3rem] rounded-[.5rem] bg-secondary-main'>
       <form onSubmit={onSubmit}>
@@ -53,7 +54,6 @@ const LoginForm = ({
           }
           value={value.email}
           onChange={setValue}
-          onBlur={setValue}
           error={error?.email}
           errorTxt={VALIDATION_TEXT.EMAIL}
           fullWidth
@@ -101,4 +101,4 @@ const LoginForm = ({
   )
 }
 
-export default LoginForm
+export default React.memo(LoginForm)

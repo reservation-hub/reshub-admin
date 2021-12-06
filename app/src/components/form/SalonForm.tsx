@@ -190,4 +190,4 @@ const SalonForm = ({
   )
 }
 
-export default SalonForm
+export default React.memo(SalonForm)

@@ -230,4 +230,4 @@ const UserForm = ({
   )
 }
 
-export default UserForm
+export default React.memo(UserForm)
