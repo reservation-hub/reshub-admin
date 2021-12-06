@@ -1,8 +1,15 @@
 import React from 'react'
 import CustomButton from './CustomButton'
 import H1 from './H1'
-import { ITopBarProps } from '../_PropsType'
+import { ClassesAndChildren } from '@components/common/_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
+
+export interface ISubHeaderProps extends ClassesAndChildren {
+  title: string
+  type?: typeof HEADER_TYPE[keyof typeof HEADER_TYPE]
+  modalOpenHandler?: () => void
+  subModalHandler?: () => void
+}
 
 const SubHeader = ({
   title,
@@ -10,7 +17,7 @@ const SubHeader = ({
   type,
   subModalHandler,
   children
-}: ITopBarProps) => {
+}: ISubHeaderProps) => {
   return (
     <div className='flex justify-between mb-4'>
       <div>

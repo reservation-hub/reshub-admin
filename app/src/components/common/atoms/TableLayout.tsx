@@ -1,7 +1,12 @@
 import React from 'react'
-import { ITableProps } from '../_PropsType'
+import { ClassesAndChildren } from '@components/common/_PropsType'
 
-const TableLayout = ({ children, cell, classes }: ITableProps) => {
+export interface ITableProps extends ClassesAndChildren {
+  cell?: Record<string, any>
+  index?: number
+}
+
+function TableLayout({ children, cell, classes }: ITableProps) {
   const styled = 'w-full bg-secondary-main rounded-[.25rem] p-[10rem] mb-5'
   return (
     <table className={`${styled} ${classes}`}>

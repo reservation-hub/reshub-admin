@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react'
 import CustomButton from '@components/common/atoms/CustomButton'
 import FormStyle, { StyledInput } from './FormStyle'
-import Container from '@material-ui/core/Container'
 import TextField from '@material-ui/core/TextField'
 import TimePicker from '../common/atoms/TimePicker'
 import { useDispatch, useSelector } from 'react-redux'
 import { getArea, getOneCity, getOnePref } from '@store/actions/LocationAction'
 import { RootState } from '@store/store'
 import Header from './Header'
-import { ISalonFormProps } from './_PropsType'
 import CheckBox from '@components/common/atoms/CheckBox'
 import Selector from '@components/common/atoms/Selector'
 import { Days } from '@constants/Days'
+import { IFormProps, TSalonInput } from './_PropsType'
+
+export interface ISalonFormProps extends IFormProps {
+  formValue: TSalonInput
+}
 
 const SalonForm = ({
   submitHandler,

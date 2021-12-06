@@ -1,6 +1,5 @@
 import { User } from '@entities/User'
 import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
-import { TValid } from '@utils/hooks/useValidation'
 import { TShop } from '@Model/ShopResponse'
 
 export type TUserInput = {
@@ -32,7 +31,7 @@ export type TSalonInput = {
   details: string
 }
 
-export type TChangeHandle = {
+export type TChangeHandler = {
   input: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
   check?: ChangeEventHandler<HTMLInputElement>
   startAt?: (e: ChangeEvent<HTMLSelectElement>) => void
@@ -44,20 +43,10 @@ export type TFormState = {
   shop?: TShop
 }
 
-export interface IUserFormProps {
-  validation?: Record<string, any>
-  submitHandler: FormEventHandler<HTMLFormElement>
-  formValue: TUserInput
+export interface IFormProps {
+  changeHandlers: TChangeHandler
   formState?: TFormState
-  changeHandler: TChangeHandle
-  error: TValid
-}
-
-export interface ISalonFormProps {
   submitHandler: FormEventHandler<HTMLFormElement>
-  formValue: TSalonInput
-  formState?: TFormState
-  changeHandlers: TChangeHandle
 }
 
 export interface IFormType {

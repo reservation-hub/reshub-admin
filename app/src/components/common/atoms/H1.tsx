@@ -1,7 +1,7 @@
 import React from 'react'
-import { IH1Props } from '../_PropsType'
+import { ClassesAndChildren } from '../_PropsType'
 
-const H1 = ({ children, classes }: IH1Props) => {
+const H1 = ({ children, classes }: ClassesAndChildren) => {
   return <span className={`${classes} text-[3.2rem]`}>{children}</span>
 }
 

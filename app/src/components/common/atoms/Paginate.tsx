@@ -1,7 +1,12 @@
 import React from 'react'
 import ReactPaginate from 'react-paginate'
-import { IPaginateProps } from '../_PropsType'
 import '@styles/paginate.css'
+
+export interface IPaginateProps {
+  totalPage: number
+  page?: string | number | null
+  pageChangeHandler: (selectedItem: { selected: number }) => void
+}
 
 const Paginate = ({ totalPage, page, pageChangeHandler }: IPaginateProps) => {
   return (

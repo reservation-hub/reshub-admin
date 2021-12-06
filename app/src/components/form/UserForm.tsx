@@ -1,20 +1,26 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
 import Header from './Header'
 import FormStyle, { StyledInput } from './FormStyle'
 import CustomButton from '@components/common/atoms/CustomButton'
-import { IUserFormProps } from './_PropsType'
+import { IFormProps, TUserInput } from './_PropsType'
 import { VALIDATION_TEXT } from '@constants/FormValid'
 import DayPicker from '@components/common/atoms/DayPicker'
 import dayjs from 'dayjs'
 import Selector from '@components/common/atoms/Selector'
 import { ROLES } from '@constants/Roles'
+import { TValid } from '@/utils/hooks/useValidation'
+
+export interface IUserFormProps extends IFormProps {
+  validation?: Record<string, any>
+  formValue: TUserInput
+  error: TValid
+}
 
 const UserForm = ({
   submitHandler,
   formState,
   formValue,
-  changeHandler,
+  changeHandlers,
   error
 }: IUserFormProps) => {
   const classes = FormStyle()
@@ -25,7 +31,7 @@ const UserForm = ({
   }
 
   return (
-    <Container maxWidth='sm' className={classes.container}>
+    <div className={classes.container}>
       <Header
         title={formState?.user ? `${formState.user.email}編集` : '新規登録'}
       />
@@ -41,8 +47,8 @@ const UserForm = ({
               name='email'
               value={formValue.email}
               error={error.email}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
+              onChange={changeHandlers.input}
+              onBlur={changeHandlers.input}
               helperText={error.email && VALIDATION_TEXT.EMAIL}
             />
           </div>
@@ -54,7 +60,7 @@ const UserForm = ({
               fullWidth
               variant='outlined'
               name='username'
-              onChange={changeHandler.input}
+              onChange={changeHandlers.input}
             />
           </div>
           <div className='input-box display-flex'>
@@ -66,8 +72,8 @@ const UserForm = ({
               name='firstNameKanji'
               className='kanji-kana-name'
               value={formValue.firstNameKanji}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
+              onChange={changeHandlers.input}
+              onBlur={changeHandlers.input}
             />
             <StyledInput
               label='名'
@@ -77,8 +83,8 @@ const UserForm = ({
               name='lastNameKanji'
               className='kanji-kana-name'
               value={formValue.lastNameKanji}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
+              onChange={changeHandlers.input}
+              onBlur={changeHandlers.input}
             />
           </div>
           <div className='input-box display-flex'>
@@ -91,8 +97,8 @@ const UserForm = ({
               className='kanji-kana-name'
               value={formValue.firstNameKana}
               error={error.firstNameKana}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
+              onChange={changeHandlers.input}
+              onBlur={changeHandlers.input}
               helperText={error.firstNameKana && VALIDATION_TEXT.KANA_NAME}
             />
             <StyledInput
@@ -104,8 +110,8 @@ const UserForm = ({
               className='kanji-kana-name'
               value={formValue.lastNameKana}
               error={error.lastNameKana}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
+              onChange={changeHandlers.input}
+              onBlur={changeHandlers.input}
               helperText={error.lastNameKana && VALIDATION_TEXT.KANA_NAME}
             />
           </div>
@@ -121,8 +127,8 @@ const UserForm = ({
                   name='password'
                   type='password'
                   error={error.password || error.duplicated}
-                  onChange={changeHandler.input}
-                  onBlur={changeHandler.input}
+                  onChange={changeHandlers.input}
+                  onBlur={changeHandlers.input}
                   helperText={error.password && VALIDATION_TEXT.PASSWORD}
                 />
               </div>
@@ -136,8 +142,8 @@ const UserForm = ({
                   name='confirm'
                   type='password'
                   error={error.confirm || error.duplicated}
-                  onChange={changeHandler.input}
-                  onBlur={changeHandler.input}
+                  onChange={changeHandlers.input}
+                  onBlur={changeHandlers.input}
                   helperText={error.confirm && VALIDATION_TEXT.PASSWORD}
                 />
               </div>
@@ -149,7 +155,7 @@ const UserForm = ({
               id='genderMale'
               name='gender'
               value='male'
-              onChange={changeHandler.input}
+              onChange={changeHandlers.input}
             />
             <label htmlFor='genderMale'>男性</label>
             <input
@@ -157,7 +163,7 @@ const UserForm = ({
               id='genderFemale'
               name='gender'
               value='female'
-              onChange={changeHandler.input}
+              onChange={changeHandlers.input}
             />
             <label htmlFor='genderFemale'>女性</label>
             <input
@@ -165,7 +171,7 @@ const UserForm = ({
               id='genderOther'
               name='gender'
               value='other'
-              onChange={changeHandler.input}
+              onChange={changeHandlers.input}
             />
             <label htmlFor='genderOther'>その他</label>
           </div>
@@ -175,7 +181,7 @@ const UserForm = ({
               label='年'
               name='birthdayY'
               classes='birthday'
-              selectHandler={changeHandler.input}
+              selectHandler={changeHandlers.input}
               from={1900}
               to={dayjs().year()}
               option={formValue.birthdayY}
@@ -185,7 +191,7 @@ const UserForm = ({
               label='月'
               name='birthdayM'
               classes='birthday'
-              selectHandler={changeHandler.input}
+              selectHandler={changeHandlers.input}
               from={1}
               to={12}
               option={formValue.birthdayM}
@@ -195,7 +201,7 @@ const UserForm = ({
               label='日'
               name='birthdayD'
               classes='birthday'
-              selectHandler={changeHandler.input}
+              selectHandler={changeHandlers.input}
               from={1}
               to={31}
               option={formValue.birthdayD}
@@ -206,7 +212,7 @@ const UserForm = ({
               id='role'
               name='role'
               option={formValue.role}
-              selectHandler={changeHandler.input}
+              selectHandler={changeHandlers.input}
               data={ROLES}
               label='権限'
             />
@@ -220,7 +226,7 @@ const UserForm = ({
           </CustomButton>
         </form>
       </div>
-    </Container>
+    </div>
   )
 }
 
