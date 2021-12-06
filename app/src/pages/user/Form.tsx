@@ -3,7 +3,7 @@ import { Route, RouteComponentProps } from 'react-router-dom'
 import UserForm from '@components/form/UserForm'
 import { useDispatch } from 'react-redux'
 import {
-  TChangeHandle,
+  TChangeHandler,
   TFormState,
   TUserInput
 } from '@components/form/_PropsType'
@@ -67,7 +67,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   }, [input, user])
 
   const { validation, error } = useValidation(form, validationSchema)
-  const changeHandlers = { input: ChangeHandler } as TChangeHandle
+  const changeHandlers = { input: ChangeHandler } as TChangeHandler
 
   const userData: {
     insertData: insertUserFromAdminQuery
@@ -125,7 +125,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           formState={location.state}
           formValue={form}
           submitHandler={submitHandler}
-          changeHandler={changeHandlers}
+          changeHandlers={changeHandlers}
           error={error}
         />
       </Route>
@@ -134,7 +134,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           formState={location.state}
           formValue={form}
           submitHandler={submitHandler}
-          changeHandler={changeHandlers}
+          changeHandlers={changeHandlers}
           error={error}
         />
       </Route>

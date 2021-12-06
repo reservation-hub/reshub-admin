@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
 import SalonForm from '@components/form/SalonForm'
 import {
-  TChangeHandle,
+  TChangeHandler,
   TFormState,
   TSalonInput
 } from '@components/form/_PropsType'
@@ -42,7 +42,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     check: changeHandler,
     startAt: startAt.changeHandler,
     endAt: endAt.changeHandler
-  } as TChangeHandle
+  } as TChangeHandler
 
   const form = useMemo(() => {
     return {
