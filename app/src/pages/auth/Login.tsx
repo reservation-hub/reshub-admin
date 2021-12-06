@@ -8,7 +8,6 @@ import useInput from '@utils/hooks/useInput'
 import LoginForm from '@components/auth/LoginForm'
 import LoginSelectHeader from '@/components/common/choose/LoginSelectHeader'
 import LoginSelectFooter from '@/components/common/choose/LoginSelectFooter'
-import LoginStyle from '@components/auth/LoginStyle'
 import CommonStyle, { StyledAlert } from '@components/common/CommonStyle'
 import Fade from '@material-ui/core/Fade'
 import CenterBox from '@/components/common/layout/CenterBox'
@@ -22,12 +21,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
 
   const dispatch = useDispatch()
-  const loginCss = LoginStyle()
   const commonCss = CommonStyle()
-  const classes = {
-    loginCss,
-    commonCss
-  }
 
   const clearError = (): void => {
     setErrorState(false)
@@ -74,7 +68,6 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
           setValue={ChangeHandler}
           onSubmit={onSubmit}
           googleHandler={googleHandler}
-          classes={classes}
         />
         <LoginSelectFooter />
       </CenterBox>

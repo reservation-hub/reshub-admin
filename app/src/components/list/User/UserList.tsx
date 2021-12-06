@@ -1,12 +1,12 @@
 import React from 'react'
-import SubHeader from '@/components/common/atoms/SubHeader'
+import SubHeader from '@components/common/atoms/SubHeader'
 import TableLayout from '@components/common/atoms/TableLayout'
 import UserItems from './UserItems'
 import { USER_CELL } from '@constants/Table'
 import { IListProps } from '../_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
 import CustomButton from '@components/common/atoms/CustomButton'
-import Input from '@/components/common/atoms/input'
+import InputFiled from '@components/common/atoms/InputFiled'
 
 const UserList = ({ users, modalOpenHandler }: IListProps) => {
   return (
@@ -16,7 +16,7 @@ const UserList = ({ users, modalOpenHandler }: IListProps) => {
         modalOpenHandler={modalOpenHandler}
         type={HEADER_TYPE.LIST}
       >
-        <Input />
+        <InputFiled />
         <CustomButton classes='ml-2'>並び替え</CustomButton>
       </SubHeader>
       <TableLayout cell={USER_CELL}>

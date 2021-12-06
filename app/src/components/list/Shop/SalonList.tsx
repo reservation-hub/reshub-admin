@@ -6,7 +6,7 @@ import { IListProps } from '../_PropsType'
 import { SALON_CELL } from '@constants/Table'
 import { HEADER_TYPE } from '@constants/Common'
 import CustomButton from '@components/common/atoms/CustomButton'
-import Input from '@/components/common/atoms/input'
+import InputFiled from '@components/common/atoms/InputFiled'
 
 const SalonList = ({ shops, modalOpenHandler, order, correct }: IListProps) => {
   return (
@@ -16,7 +16,7 @@ const SalonList = ({ shops, modalOpenHandler, order, correct }: IListProps) => {
         type={HEADER_TYPE.LIST}
         modalOpenHandler={modalOpenHandler}
       >
-        <Input />
+        <InputFiled />
         <CustomButton classes='ml-2' onClick={() => order && order(!correct)}>
           並び替え
         </CustomButton>
