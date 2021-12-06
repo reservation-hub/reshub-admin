@@ -22,7 +22,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
   const validationSchema = { email: false, password: false }
   const { validation, error } = useValidation(input, validationSchema)
-
+  
   const dispatch = useDispatch()
 
   const clearError = (): void => {
@@ -36,7 +36,6 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       validation(input, input.email, input.password)
-      console.log(error)
       dispatch(loginStart(input.email, input.password))
     },
     [dispatch, input, validation]

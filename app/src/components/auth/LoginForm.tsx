@@ -24,6 +24,7 @@ export interface IAuthFormProps extends ClassesAndChildren {
     response: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => void
   error?: TValid
+  test?: Record<string, any>
 }
 
 const LoginForm = ({
@@ -31,7 +32,7 @@ const LoginForm = ({
   setValue,
   onSubmit,
   googleHandler,
-  error
+  error,
 }: IAuthFormProps) => {
   let disabled = false
   for (const v of Object.values(value)) {
@@ -45,7 +46,10 @@ const LoginForm = ({
           type='text'
           autoComplete='off'
           placeholder='メールアドレスを入力してください'
-          classes='border rounded-[.25rem]'
+          classes={
+            error?.email ? 'border border-error-main rounded-[.25rem]'
+            : 'border rounded-[.25rem]'
+          }
           value={value.email}
           onChange={setValue}
           onBlur={setValue}
@@ -58,7 +62,10 @@ const LoginForm = ({
           type='password'
           placeholder='パスワードを入力してください'
           autoComplete='off'
-          classes='border rounded-[.25rem]'
+          classes={
+            error?.password ? 'border border-error-main rounded-[.25rem]'
+            : 'border rounded-[.25rem]'
+          }
           value={value.password}
           onChange={setValue}
           error={error?.password}

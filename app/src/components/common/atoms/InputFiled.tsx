@@ -38,6 +38,7 @@ const InputFiled = ({
   onChange,
   onBlur
 }: IInputProps) => {
+  console.log(error)
   return (
     <div className='my-[2rem]'>
       <input
@@ -53,8 +54,6 @@ const InputFiled = ({
         className={
           fullWidth
             ? `${classes} text-[1.6rem] p-3 w-full focus:border-2 focus:border-primary`
-            : error
-            ? `${classes} text-[1.6rem] ring-2 ring-error-main p-3 focus:border-2 focus:border-primary`
             : `${classes} text-[1.6rem] p-3 focus:border-2 focus:border-primary`
         }
       />
