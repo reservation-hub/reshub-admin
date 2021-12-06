@@ -8,7 +8,7 @@ import { HEADER_TYPE } from '@constants/Common'
 import CustomButton from '@components/common/atoms/CustomButton'
 import InputFiled from '@components/common/atoms/InputFiled'
 
-const UserList = ({ users, modalOpenHandler }: IListProps) => {
+const UserList = ({ users, modalOpenHandler, order, correct }: IListProps) => {
   return (
     <>
       <SubHeader
@@ -17,7 +17,7 @@ const UserList = ({ users, modalOpenHandler }: IListProps) => {
         type={HEADER_TYPE.LIST}
       >
         <InputFiled />
-        <CustomButton classes='ml-2'>並び替え</CustomButton>
+        <CustomButton classes='ml-2' onClick={() => order && order(!correct)}>並び替え</CustomButton>
       </SubHeader>
       <TableLayout cell={USER_CELL}>
         {users?.map((value, index) => (

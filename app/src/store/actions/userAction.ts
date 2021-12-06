@@ -56,11 +56,11 @@ const userRequestFailure = (err: string) => {
 }
 
 export const fetchUserList =
-  (page: number): ThunkAction<void, RootState, null, Action> =>
+  (page: number, order: 'asc' | 'desc'): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
-      const res = await apiEndpoint.users.getUsers(page)
+      const res = await apiEndpoint.users.getUsers(page, order)
       dispatch(userRequestSuccess(res.data))
     } catch (e: any) {
       history.push('/error')

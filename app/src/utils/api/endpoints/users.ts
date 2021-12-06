@@ -7,8 +7,8 @@ import {
   updateUserFromAdminQuery
 } from '@utils/api/request-response-types/UserService'
 
-export const getUsers = async (page: number) =>
-  await instance.get(`/users?page=${page}`)
+export const getUsers = async (page: number, order: 'asc' | 'desc') =>
+  await instance.get(`/users?page=${page}&order=${order}`)
 
 export const getUser = async (id: number) => await instance.get(`/users/${id}`)
 
