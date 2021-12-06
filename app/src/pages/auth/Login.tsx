@@ -8,9 +8,10 @@ import useInput from '@utils/hooks/useInput'
 import LoginForm from '@components/auth/LoginForm'
 import LoginSelectHeader from '@/components/common/choose/LoginSelectHeader'
 import LoginSelectFooter from '@/components/common/choose/LoginSelectFooter'
-import CommonStyle, { StyledAlert } from '@components/common/CommonStyle'
+import { StyledAlert } from '@components/common/CommonStyle'
 import Fade from '@material-ui/core/Fade'
 import CenterBox from '@/components/common/layout/CenterBox'
+import useValidation from '@/utils/hooks/useValidation'
 
 interface LocationState {
   failed?: string
@@ -19,9 +20,10 @@ interface LocationState {
 const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const [errorState, setErrorState] = useState<boolean>(true)
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
+  const validationSchema = { email: false, password: false }
+  const { validation, error } = useValidation(input, validationSchema)
 
   const dispatch = useDispatch()
-  const commonCss = CommonStyle()
 
   const clearError = (): void => {
     setErrorState(false)
@@ -33,9 +35,11 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
+      validation(input, input.email, input.password)
+      console.log(error)
       dispatch(loginStart(input.email, input.password))
     },
-    [dispatch, input.email, input.password]
+    [dispatch, input, validation]
   )
 
   const googleHandler = useCallback(
@@ -68,6 +72,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
           setValue={ChangeHandler}
           onSubmit={onSubmit}
           googleHandler={googleHandler}
+          error={error}
         />
         <LoginSelectFooter />
       </CenterBox>

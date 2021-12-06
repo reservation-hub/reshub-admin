@@ -20,6 +20,7 @@ export interface IInputProps extends ClassesAndChildren {
   errorTxt?: string
   fullWidth?: boolean
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }
 
 const InputFiled = ({
@@ -34,10 +35,11 @@ const InputFiled = ({
   error,
   errorTxt,
   fullWidth,
-  onChange
+  onChange,
+  onBlur
 }: IInputProps) => {
   return (
-    <>
+    <div className='my-[2rem]'>
       <input
         type={type}
         id={id}
@@ -47,16 +49,21 @@ const InputFiled = ({
         required={required}
         name={name}
         onChange={onChange}
+        onBlur={onBlur}
         className={
-          fullWidth ?
-            `${classes} text-[1.6rem] p-3 w-full focus:border-2 focus:border-primary` :
-          error ?
-            `${classes} text-[1.6rem] border-error-main p-3 focus:border-2 focus:border-primary` 
+          fullWidth
+            ? `${classes} text-[1.6rem] p-3 w-full focus:border-2 focus:border-primary`
+            : error
+            ? `${classes} text-[1.6rem] ring-2 ring-error-main p-3 focus:border-2 focus:border-primary`
             : `${classes} text-[1.6rem] p-3 focus:border-2 focus:border-primary`
         }
       />
-      {error && <span>{errorTxt}</span>}
-    </>
+      {error && (
+        <span className='text-error-main pl-[.5rem] mt-[1rem] text-[1.6rem]'>
+          {errorTxt}
+        </span>
+      )}
+    </div>
   )
 }
 
