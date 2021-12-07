@@ -18,7 +18,7 @@ const CheckBox = ({ onChange, data, checkedData }: ICheckBoxProps) => {
             name={value.name}
             onChange={onChange}
           />
-          <label htmlFor={`check-${value.id}`} className='labels'>
+          <label htmlFor={`check-${value.id}`} className='labels text-[1.6rem]'>
             {value.name}
           </label>
         </div>

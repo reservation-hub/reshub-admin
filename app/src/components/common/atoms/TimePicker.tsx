@@ -13,7 +13,7 @@ const TimePicker = ({ hh, mm, onChange, classes }: ITimePickerProps) => {
       <select
         name='hour'
         id='hour'
-        className={`${classes} w-full p-3 rounded-[.25rem] border`}
+        className={`${classes} w-full p-3 rounded-[.25rem] border text-[1.6rem]`}
         value={hh}
         onChange={onChange}
       >
@@ -27,7 +27,7 @@ const TimePicker = ({ hh, mm, onChange, classes }: ITimePickerProps) => {
       <select
         name='hour'
         id='minute'
-        className={`${classes} w-full p-3 rounded-[.25rem] border`}
+        className={`${classes} w-full p-3 rounded-[.25rem] border text-[1.6rem]`}
         value={mm}
         onChange={onChange}
       >
