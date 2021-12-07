@@ -8,8 +8,8 @@ import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline
 } from 'react-google-login'
-import { TValid } from '@/utils/hooks/useValidation'
 import { VALIDATION_TEXT } from '@/constants/FormValid'
+import ErrorMessage from '../common/atoms/ErrorMessage'
 
 export type TAuthForm = {
   email: string
@@ -24,7 +24,6 @@ export interface IAuthFormProps extends ClassesAndChildren {
     response: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => void
   error?: Record<string, any>
-  test?: Record<string, any>
 }
 
 const LoginForm = ({
@@ -34,12 +33,10 @@ const LoginForm = ({
   googleHandler,
   error
 }: IAuthFormProps) => {
-  const hasError = error?.error?.keys?.find((key: Record<string, any>) => key)
   let disabled = false
   for (const v of Object.values(value)) {
     disabled = v.length === 0
   }
-  console.log('test', hasError)
   return (
     <div className='w-[55rem] mx-auto p-[3rem] rounded-[.5rem] bg-secondary-main'>
       <form onSubmit={onSubmit}>
@@ -49,13 +46,13 @@ const LoginForm = ({
           autoComplete='off'
           placeholder='メールアドレスを入力してください'
           classes={
-            hasError === 'email'
+            error?.email
               ? 'border border-error-main rounded-[.25rem]'
               : 'border rounded-[.25rem]'
           }
           value={value.email}
           onChange={setValue}
-          error={hasError === 'email'}
+          error={error?.email}
           errorTxt={VALIDATION_TEXT.EMAIL}
           fullWidth
         />
@@ -75,6 +72,7 @@ const LoginForm = ({
           errorTxt={VALIDATION_TEXT.PASSWORD}
           fullWidth
         />
+        {error?.invalid && <ErrorMessage text={VALIDATION_TEXT.INVALID_ERROR} />}
         <CustomButton
           classes='min-w-full mt-[.5rem] mb-[1.5rem]'
           disabled={disabled}

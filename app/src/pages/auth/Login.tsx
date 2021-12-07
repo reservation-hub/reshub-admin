@@ -11,7 +11,6 @@ import LoginSelectFooter from '@components/common/choose/LoginSelectFooter'
 import { StyledAlert } from '@components/common/CommonStyle'
 import Fade from '@material-ui/core/Fade'
 import CenterBox from '@components/common/layout/CenterBox'
-import useValidation from '@utils/hooks/useValidation'
 import { RootState } from '@/store/store'
 
 interface LocationState {
@@ -21,9 +20,13 @@ interface LocationState {
 const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const [errorState, setErrorState] = useState<boolean>(true)
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
-  const validationSchema = { email: false, password: false }
-  const { validation, error } = useValidation(input, validationSchema)
-  const {err} = useSelector((state: RootState) => state.auth)
+  const { err } = useSelector((state: RootState) => state.auth)
+
+  const hasError = {
+    email: err?.error?.keys?.includes('email'),
+    password: err?.error?.keys?.includes('password'),
+    invalid: err?.error?.message === 'Invalid query params'
+  }
 
   const dispatch = useDispatch()
 
@@ -37,11 +40,9 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      console.log(Boolean(err))
-      validation(input, input.email, input.password)
       dispatch(loginStart(input.email, input.password))
     },
-    [dispatch, input, validation]
+    [dispatch, input]
   )
 
   const googleHandler = useCallback(
@@ -74,7 +75,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
           setValue={ChangeHandler}
           onSubmit={onSubmit}
           googleHandler={googleHandler}
-          error={err}
+          error={hasError}
         />
         <LoginSelectFooter />
       </CenterBox>

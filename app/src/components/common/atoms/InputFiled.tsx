@@ -1,5 +1,6 @@
 import React from 'react'
 import { ClassesAndChildren } from '../_PropsType'
+import ErrorMessage from './ErrorMessage'
 
 const INPUT_TYPE = {
   TEXT: 'text',
@@ -58,9 +59,7 @@ const InputFiled = ({
         }
       />
       {error && (
-        <span className='text-error-main pl-[.5rem] mt-[1rem] text-[1.6rem]'>
-          {errorTxt}
-        </span>
+        <ErrorMessage text={errorTxt} />
       )}
     </div>
   )
