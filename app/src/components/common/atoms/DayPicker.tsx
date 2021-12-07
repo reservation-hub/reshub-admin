@@ -18,7 +18,8 @@ const DayPicker = ({
   id,
   onChange
 }: IDaySelectProps) => {
-  const select = 'p-[1rem] m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none'
+  const select =
+    'p-[1rem] m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none'
   return (
     <div className={`${classes} grid`}>
       {label && (
