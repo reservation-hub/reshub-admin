@@ -6,8 +6,6 @@ import ShopData from '@components/detail/shop/ShopData'
 import CustomButton from '@components/common/atoms/CustomButton'
 import TableLayout from '@/components/common/atoms/TableLayout'
 import { STYLELIST_CELL } from '@/constants/Table'
-import { TableRow } from '@material-ui/core'
-import { StyledTableCell } from '@/components/list/ListStyle'
 import history from '@/utils/routes/history'
 
 const DetailItem = ({
@@ -42,11 +40,10 @@ const DetailItem = ({
         <div className='w-[55rem] h-full'>
           <TableLayout cell={STYLELIST_CELL}>
             {styleList.map((value, index) => (
-              <TableRow key={index}>
-                <StyledTableCell>{value?.id}</StyledTableCell>
-                <StyledTableCell>{value?.name}</StyledTableCell>
-                <StyledTableCell>{value?.reservationCount}</StyledTableCell>
-              </TableRow>
+              // TODO ここはかりなので後から作成
+              <tr key={index}>
+                <td>{value.id}</td>
+              </tr>
             ))}
           </TableLayout>
         </div>
