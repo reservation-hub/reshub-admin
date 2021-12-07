@@ -8,9 +8,17 @@ import shop from './shopReducer'
 import user from './userReducer'
 import dashboard from './dashboardReducer'
 import location from './LocationReducer'
+import storage from 'redux-persist/lib/storage'
+import persistReducer from 'redux-persist/es/persistReducer'
+
+export const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['isAuthenticated', 'user']
+}
 
 export const rootReducer = combineReducers({
-  auth,
+  auth: persistReducer(authPersistConfig, auth),
   shop,
   user,
   dashboard,

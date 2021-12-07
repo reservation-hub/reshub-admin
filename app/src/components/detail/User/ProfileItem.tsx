@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
-import ListTopBar from '@components/common/atoms/ListTopBar'
+import SubHeader from '@/components/common/atoms/SubHeader'
 import useBirthday from '@utils/hooks/useBirthday'
 import { IDetailProps } from '@components/detail/_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
@@ -15,7 +15,7 @@ const ProfileItem = ({
 
   return (
     <>
-      <ListTopBar
+      <SubHeader
         title='ユーザー詳細'
         type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}

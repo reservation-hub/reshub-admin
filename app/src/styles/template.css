@@ -1,0 +1,22 @@
+:root {
+  --header-height: 6rem;
+  --sidebar-width: 22.5rem;
+  @apply h-screen;
+}
+
+header {
+  height: var(--header-height);
+  @apply fixed w-full z-10;
+}
+
+aside {
+  width: var(--sidebar-width);
+  top: var(--header-height);
+  @apply fixed h-screen;
+}
+
+main {
+  margin-left: var(--sidebar-width);
+  padding-top: calc(var(--header-height) + 1rem);
+  @apply flex-1 h-auto;
+}

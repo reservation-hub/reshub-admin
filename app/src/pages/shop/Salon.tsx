@@ -21,9 +21,11 @@ const Salon = ({
   const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
   const { shops, loading } = useSelector((state: RootState) => state.shop)
+  const [correct, setCorrect] = useState<boolean>(true)
+  const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
 
-  const pageChangeHandler = (data: any | number[]) => {
-    const pageNum = data['selected']
+  const pageChangeHandler = (data: Record<string, any>) => {
+    const pageNum: number = data['selected']
     setPage(pageNum + 1)
     history.push(`/salon?p=${pageNum + 1}`, {
       currentPage: pageNum + 1
@@ -31,8 +33,8 @@ const Salon = ({
   }
 
   useEffect(() => {
-    if (match.isExact) dispatch(fetchShopList(Number(currentPage)))
-  }, [page, dispatch, currentPage, match.isExact])
+    if (match.isExact) dispatch(fetchShopList(Number(currentPage), order))
+  }, [page, dispatch, currentPage, match.isExact, order])
 
   return (
     <MainTemplate>
@@ -43,6 +45,8 @@ const Salon = ({
           <Route exact path='/salon'>
             <SalonList
               shops={shops.values}
+              order={setCorrect}
+              correct={correct}
               modalOpenHandler={() => history.push('/salon/form')}
             />
             <Paginate

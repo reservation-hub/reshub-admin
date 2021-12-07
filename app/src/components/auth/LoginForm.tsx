@@ -1,72 +1,97 @@
 import React from 'react'
 import { GoogleLogin } from 'react-google-login'
-import TextField from '@material-ui/core/TextField'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
 import { FcGoogle } from 'react-icons/fc'
 import CustomButton from '@components/common/atoms/CustomButton'
-import { IAuthFormProps } from '@components/auth/_PropsType'
+import InputFiled from '../common/atoms/InputFiled'
+import { ClassesAndChildren } from '../common/_PropsType'
+import {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline
+} from 'react-google-login'
+import { VALIDATION_TEXT } from '@/constants/FormValid'
+import ErrorMessage from '../common/atoms/ErrorMessage'
+
+export type TAuthForm = {
+  email: string
+  password: string
+}
+
+export interface IAuthFormProps extends ClassesAndChildren {
+  value: TAuthForm
+  setValue: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onSubmit: React.FormEventHandler<HTMLFormElement>
+  googleHandler: (
+    response: GoogleLoginResponse | GoogleLoginResponseOffline
+  ) => void
+  error?: Record<string, any>
+}
 
 const LoginForm = ({
   value,
   setValue,
   onSubmit,
   googleHandler,
-  classes
+  error
 }: IAuthFormProps) => {
+  let disabled = false
+  for (const v of Object.values(value)) {
+    disabled = v.length === 0
+  }
   return (
-    <Container maxWidth='sm'>
-      <Container className={classes.loginCss.formBox}>
-        <form onSubmit={onSubmit}>
-          <TextField
-            label='メールアドレス'
-            name='email'
-            autoComplete='off'
-            placeholder='メールアドレスを入力してください'
-            value={value.email}
-            onChange={setValue}
-            style={{ margin: '.5rem 0 2rem 0' }}
-            className='inputBox'
-            fullWidth
-          />
-          <TextField
-            label='パスワード'
-            name='password'
-            type='password'
-            autoComplete='off'
-            placeholder='パスワードを入力してください'
-            value={value.password}
-            onChange={setValue}
-            className='inputBox'
-            fullWidth
-          />
-          <Grid container>
-            <Grid item xs={12}>
-              <CustomButton classes='loginButton'>ログイン</CustomButton>
-            </Grid>
-            <Grid item xs={12}>
-              <GoogleLogin
-                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                onSuccess={googleHandler}
-                onFailure={googleHandler}
-                render={(renderProps) => (
-                  <CustomButton
-                    onClick={renderProps.onClick}
-                    classes='socialRoot'
-                  >
-                    <div className='google-icon'>
-                      <FcGoogle />
-                    </div>
-                    <span className='button-text'>googleでログイン</span>
-                  </CustomButton>
-                )}
-              />
-            </Grid>
-          </Grid>
-        </form>
-      </Container>
-    </Container>
+    <div className='w-[55rem] mx-auto p-[3rem] rounded-[.5rem] bg-secondary-main'>
+      <form onSubmit={onSubmit}>
+        <InputFiled
+          name='email'
+          type='text'
+          autoComplete='off'
+          placeholder='メールアドレスを入力してください'
+          classes='my-[1.5rem]'
+          value={value.email}
+          onChange={setValue}
+          error={error?.email}
+          errorTxt={VALIDATION_TEXT.EMAIL}
+          fullWidth
+        />
+        <InputFiled
+          name='password'
+          type='password'
+          placeholder='パスワードを入力してください'
+          autoComplete='off'
+          classes='my-[1.5rem]'
+          value={value.password}
+          onChange={setValue}
+          error={error?.password}
+          errorTxt={VALIDATION_TEXT.PASSWORD}
+          fullWidth
+        />
+        {error?.invalid && (
+          <ErrorMessage text={VALIDATION_TEXT.INVALID_ERROR} />
+        )}
+        <CustomButton
+          classes='min-w-full mt-[.5rem] mb-[1.5rem]'
+          disabled={disabled}
+        >
+          ログイン
+        </CustomButton>
+        <GoogleLogin
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+          onSuccess={googleHandler}
+          onFailure={googleHandler}
+          render={(renderProps) => (
+            <CustomButton
+              onClick={renderProps.onClick}
+              classes='min-w-full flex items-center text-center'
+            >
+              <FcGoogle className='pt-[.25rem] pl-[.25rem] w-[2.5rem] h-[2.5rem]' />
+              <span className='button-text w-full pr-[1.5rem]'>
+                googleでログイン
+              </span>
+            </CustomButton>
+          )}
+        />
+      </form>
+    </div>
   )
 }
 
-export default LoginForm
+export default React.memo(LoginForm)

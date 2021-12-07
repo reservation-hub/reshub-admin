@@ -2,12 +2,12 @@ import React, { useCallback } from 'react'
 import { IMainTemplateProps } from '../_PropsType'
 import { useDispatch } from 'react-redux'
 import { logout } from '@store/actions/authAction'
-import CommonStyle, { StyledPaper } from '../CommonStyle'
 import Header from './Header'
 import NavBar from '@/components/common/atoms/NavBar'
+import '@styles/template.css'
+import { Link } from 'react-router-dom'
 
 const MainTemplate = ({ children }: IMainTemplateProps) => {
-  const classes = CommonStyle()
   const dispatch = useDispatch()
 
   const onLogout = useCallback(() => {
@@ -15,15 +15,17 @@ const MainTemplate = ({ children }: IMainTemplateProps) => {
   }, [dispatch])
 
   return (
-    <React.Fragment>
-      <Header onLogout={onLogout} />
-      <aside className={classes.sideBar}>
+    <>
+      <Link to='./salon_dashboard'>
+        <Header onLogout={onLogout} />
+      </Link>
+      <aside className='bg-primary text-secondary-main'>
         <NavBar />
       </aside>
-      <main className={classes.mainBackground}>
-        <StyledPaper elevation={0}>{children}</StyledPaper>
+      <main className='w-[80%] absolute top-[5rem] right-[1.5rem]'>
+        {children}
       </main>
-    </React.Fragment>
+    </>
   )
 }
 

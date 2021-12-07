@@ -27,7 +27,7 @@ const fetchUser = (user: User) => {
 }
 
 //ユーザーのリクエストが失敗の時に実行するアクション
-const loginRequestFailure = (err: string) => {
+const loginRequestFailure = (err: Record<string, any>) => {
   return typedAction(USER_REQUEST_FAILURE, err)
 }
 

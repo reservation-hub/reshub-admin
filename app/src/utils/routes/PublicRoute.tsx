@@ -23,8 +23,6 @@ const PublicRoute = ({ children, ...rest }: any) => {
   const isUser = (user: User) =>
     user.role.name === 'admin' || user.role.name === 'shop_staff'
 
-  console.log(user)
-
   return (
     <>
       {isAuthenticated && isUser(user) ? (

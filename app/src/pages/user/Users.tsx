@@ -21,9 +21,11 @@ const Users = ({
   const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
   const { users, loading } = useSelector((state: RootState) => state.user)
+  const [correct, setCorrect] = useState<boolean>(true)
+  const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
 
-  const pageChangeHandler = (data: any | number[]) => {
-    const pageNum = data['selected']
+  const pageChangeHandler = (data: Record<string, any>) => {
+    const pageNum: number = data['selected']
     setPage(pageNum + 1)
     history.push(`/users?p=${pageNum + 1}`, {
       currentPage: pageNum + 1
@@ -31,8 +33,8 @@ const Users = ({
   }
 
   useEffect(() => {
-    if (match.isExact) dispatch(fetchUserList(Number(currentPage)))
-  }, [page, dispatch, currentPage, match.isExact])
+    if (match.isExact) dispatch(fetchUserList(Number(currentPage), order))
+  }, [page, dispatch, currentPage, match.isExact, correct])
 
   return (
     <MainTemplate>
@@ -43,6 +45,8 @@ const Users = ({
           <Route exact path='/users'>
             <UserList
               users={users.values}
+              order={setCorrect}
+              correct={correct}
               modalOpenHandler={() => history.push('/users/form')}
             />
             <Paginate
@@ -59,4 +63,4 @@ const Users = ({
   )
 }
 
-export default Users
+export default React.memo(Users)

@@ -17,11 +17,10 @@ declare global {
 
 const persistConfig = {
   key: 'root',
+  timeout: 500,
   storage,
-  whitelist: ['auth']
+  blacklist: ['auth', 'dashboard', 'location', 'shop', 'user']
 }
-
-const enhancedReducer = persistReducer(persistConfig, rootReducer)
 
 const middleware =
   process.env.NODE_ENV !== 'production' ? [thunk, logger] : [thunk]
@@ -31,6 +30,8 @@ const composeEnhancer =
     typeof window !== 'undefined' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose
+
+const enhancedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = createStore(
   enhancedReducer,

@@ -18,5 +18,7 @@ export const VALIDATION_TEXT = {
   PASSWORD: '英数字を含む８文字以上で入力してください。',
   KANA_NAME: 'カタカナで入力してください。',
   DUPLICATED: 'パスワードが一致していません。',
-  AUTHENTICATED_ERROR: '権限がありません。'
+  AUTHENTICATED_ERROR: '権限がありません。',
+  INVALID_ERROR:
+    'メールアドレスかパスワードが伴っています。 もう一度ご確認の上、再度お試しください。'
 } as const

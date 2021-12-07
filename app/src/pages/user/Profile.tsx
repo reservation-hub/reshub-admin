@@ -47,4 +47,4 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   )
 }
 
-export default Profile
+export default React.memo(Profile)

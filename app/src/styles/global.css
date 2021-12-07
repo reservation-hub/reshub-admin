@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply m-0;
+  font-size: 62.5%;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+.labels {
+  @apply w-full p-[.5rem] inline-block bg-secondary-main border cursor-pointer text-center rounded-[.25rem];
+}
+
+input[type=checkbox]:checked + .labels {
+  @apply bg-primary text-secondary-main;
+}
+
+
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio] + .labels {
+  @apply p-[.65rem] cursor-pointer w-[17.5rem] border rounded-[.25rem] text-center hover:text-secondary-main hover:bg-primary
+}
+
+input[type=radio]:checked + .labels {
+  @apply bg-primary text-secondary-main
+}

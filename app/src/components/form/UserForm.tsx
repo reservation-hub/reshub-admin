@@ -1,23 +1,31 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
 import Header from './Header'
-import FormStyle, { StyledInput } from './FormStyle'
 import CustomButton from '@components/common/atoms/CustomButton'
-import { IUserFormProps } from './_PropsType'
+import { IFormProps, TUserInput } from './_PropsType'
 import { VALIDATION_TEXT } from '@constants/FormValid'
 import DayPicker from '@components/common/atoms/DayPicker'
 import dayjs from 'dayjs'
 import Selector from '@components/common/atoms/Selector'
 import { ROLES } from '@constants/Roles'
+import { TValid } from '@/utils/hooks/useValidation'
+import InputFiled from '@components/common/atoms/InputFiled'
+import RadioButton from '@components/common/atoms/RadioButton'
+import ErrorMessage from '@components/common/atoms/ErrorMessage'
+import { GENDER_TYPE } from '@constants/Gender'
+
+export interface IUserFormProps extends IFormProps {
+  validation?: Record<string, any>
+  formValue: TUserInput
+  error: TValid
+}
 
 const UserForm = ({
   submitHandler,
   formState,
   formValue,
-  changeHandler,
+  changeHandlers,
   error
 }: IUserFormProps) => {
-  const classes = FormStyle()
   let disabled = false
 
   for (const value of Object.values(formValue)) {
@@ -25,203 +33,170 @@ const UserForm = ({
   }
 
   return (
-    <Container maxWidth='sm' className={classes.container}>
+    <div className='w-[60rem] mx-auto bg-secondary-main p-[3rem] rounded-[.5rem]'>
       <Header
         title={formState?.user ? `${formState.user.email}編集` : '新規登録'}
       />
-      <div className='form-box'>
+      <div className='mt-4'>
         <form onSubmit={submitHandler}>
-          <div className='input-box'>
-            <StyledInput
-              label='メールアドレス'
-              autoComplete='off'
-              placeholder='メールアドレスを入力してください。'
-              fullWidth
-              variant='outlined'
-              name='email'
-              value={formValue.email}
-              error={error.email}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
-              helperText={error.email && VALIDATION_TEXT.EMAIL}
-            />
-          </div>
-          <div className='input-box'>
-            <StyledInput
-              label='ユーザーネーム'
-              autoComplete='off'
-              placeholder='ユーザーネームを入力してください。'
-              fullWidth
-              variant='outlined'
-              name='username'
-              onChange={changeHandler.input}
-            />
-          </div>
-          <div className='input-box display-flex'>
-            <StyledInput
+          <InputFiled
+            id='email'
+            label='メールアドレス'
+            autoComplete='off'
+            placeholder='メールアドレスを入力してください。'
+            classes='my-3'
+            name='email'
+            value={formValue.email}
+            onChange={changeHandlers.input}
+            error={error.email}
+            errorTxt={VALIDATION_TEXT.EMAIL}
+            fullWidth
+          />
+          <InputFiled
+            id='username'
+            label='ユーザーネーム'
+            autoComplete='off'
+            placeholder='ユーザーネームを入力してください。'
+            name='username'
+            classes='my-3'
+            value={formValue.username}
+            onChange={changeHandlers.input}
+            fullWidth
+          />
+          <div className='flex justify-between w-full my-3'>
+            <InputFiled
               label='性'
+              id='firstNameKanji'
+              name='firstNameKanji'
               autoComplete='off'
               placeholder='お名前（名字）を入力してください。'
-              variant='outlined'
-              name='firstNameKanji'
-              className='kanji-kana-name'
+              classes='w-[25.5rem]'
               value={formValue.firstNameKanji}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
+              onChange={changeHandlers.input}
             />
-            <StyledInput
+            <InputFiled
               label='名'
+              id='lastNameKanji'
+              name='lastNameKanji'
               autoComplete='off'
               placeholder='お名前を入力してください。'
-              variant='outlined'
-              name='lastNameKanji'
-              className='kanji-kana-name'
+              classes='w-[25.5rem]'
               value={formValue.lastNameKanji}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
+              onChange={changeHandlers.input}
             />
           </div>
-          <div className='input-box display-flex'>
-            <StyledInput
+          <div className='flex justify-between w-full my-3'>
+            <InputFiled
               label='セイ'
+              id='firstNameKana'
+              name='firstNameKana'
               autoComplete='off'
               placeholder='お名前（名字）を入力してください。'
-              variant='outlined'
-              name='firstNameKana'
-              className='kanji-kana-name'
+              classes='w-[25.5rem]'
               value={formValue.firstNameKana}
-              error={error.firstNameKana}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
-              helperText={error.firstNameKana && VALIDATION_TEXT.KANA_NAME}
+              onChange={changeHandlers.input}
             />
-            <StyledInput
+            <InputFiled
               label='メイ'
+              id='lastNameKana'
+              name='lastNameKana'
               autoComplete='off'
               placeholder='お名前を入力してください。'
-              variant='outlined'
-              name='lastNameKana'
-              className='kanji-kana-name'
+              classes='w-[25.5rem]'
               value={formValue.lastNameKana}
-              error={error.lastNameKana}
-              onChange={changeHandler.input}
-              onBlur={changeHandler.input}
-              helperText={error.lastNameKana && VALIDATION_TEXT.KANA_NAME}
+              onChange={changeHandlers.input}
             />
           </div>
           {!formState?.user && (
             <>
-              <div className='input-box'>
-                <StyledInput
-                  label='パスワード'
-                  autoComplete='off'
-                  placeholder='パスワードを入力してください。'
-                  fullWidth
-                  variant='outlined'
-                  name='password'
-                  type='password'
-                  error={error.password || error.duplicated}
-                  onChange={changeHandler.input}
-                  onBlur={changeHandler.input}
-                  helperText={error.password && VALIDATION_TEXT.PASSWORD}
-                />
-              </div>
-              <div className='input-box'>
-                <StyledInput
-                  label='パスワード確認'
-                  autoComplete='off'
-                  placeholder='確認用パスワードを入力してください。'
-                  fullWidth
-                  variant='outlined'
-                  name='confirm'
-                  type='password'
-                  error={error.confirm || error.duplicated}
-                  onChange={changeHandler.input}
-                  onBlur={changeHandler.input}
-                  helperText={error.confirm && VALIDATION_TEXT.PASSWORD}
-                />
-              </div>
+              <InputFiled
+                id='password'
+                label='パスワード'
+                autoComplete='off'
+                placeholder='パスワードを入力してください。'
+                name='password'
+                type='password'
+                classes='my-3'
+                error={error.password || error.duplicated}
+                onChange={changeHandlers.input}
+                errorTxt={VALIDATION_TEXT.PASSWORD}
+                fullWidth
+              />
+              <InputFiled
+                id='confirm'
+                label='パスワード確認'
+                autoComplete='off'
+                placeholder='確認用パスワードを入力してください。'
+                name='confirm'
+                type='password'
+                classes='my-3'
+                error={error.confirm || error.duplicated}
+                onChange={changeHandlers.input}
+                errorTxt={VALIDATION_TEXT.PASSWORD}
+                fullWidth
+              />
             </>
           )}
-          <div className='input-box genderRadio display-flex'>
-            <input
-              type='radio'
-              id='genderMale'
-              name='gender'
-              value='male'
-              onChange={changeHandler.input}
-            />
-            <label htmlFor='genderMale'>男性</label>
-            <input
-              type='radio'
-              id='genderFemale'
-              name='gender'
-              value='female'
-              onChange={changeHandler.input}
-            />
-            <label htmlFor='genderFemale'>女性</label>
-            <input
-              type='radio'
-              id='genderOther'
-              name='gender'
-              value='other'
-              onChange={changeHandler.input}
-            />
-            <label htmlFor='genderOther'>その他</label>
-          </div>
-          <div className='input-box display-flex'>
+          <RadioButton
+            data={GENDER_TYPE}
+            id='gender'
+            name='gender'
+            label='性別'
+            classes='my-3'
+            onChange={changeHandlers.input}
+          />
+          <div className='w-full flex justify-between my-3'>
             <DayPicker
               id='year'
               label='年'
               name='birthdayY'
-              classes='birthday'
-              selectHandler={changeHandler.input}
+              classes='w-[17.5rem]'
+              onChange={changeHandlers.input}
               from={1900}
               to={dayjs().year()}
-              option={formValue.birthdayY}
+              value={formValue.birthdayY}
             />
             <DayPicker
               id='month'
               label='月'
               name='birthdayM'
-              classes='birthday'
-              selectHandler={changeHandler.input}
+              classes='w-[17.5rem]'
+              onChange={changeHandlers.input}
               from={1}
               to={12}
-              option={formValue.birthdayM}
+              value={formValue.birthdayM}
             />
             <DayPicker
               id='day'
               label='日'
               name='birthdayD'
-              classes='birthday'
-              selectHandler={changeHandler.input}
+              classes='w-[17.5rem]'
+              onChange={changeHandlers.input}
               from={1}
               to={31}
-              option={formValue.birthdayD}
+              value={formValue.birthdayD}
             />
           </div>
           <div className='input-box'>
             <Selector
               id='role'
               name='role'
-              option={formValue.role}
-              selectHandler={changeHandler.input}
+              value={formValue.role}
+              onChange={changeHandlers.input}
               data={ROLES}
               label='権限'
             />
           </div>
-          {error.duplicated && VALIDATION_TEXT.DUPLICATED}
-          <CustomButton
-            classes={disabled ? 'disabled-button' : 'submit-button'}
-            disabled={disabled}
-          >
+          {error.duplicated && (
+            <ErrorMessage text={VALIDATION_TEXT.DUPLICATED} />
+          )}
+          <CustomButton classes='min-w-full min-h-[4.5rem]' disabled={disabled}>
             登録
           </CustomButton>
         </form>
       </div>
-    </Container>
+    </div>
   )
 }
 
-export default UserForm
+export default React.memo(UserForm)

@@ -5,21 +5,14 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { StyledControl } from '@components/form/FormStyle'
 import { IPickerProps } from '@components/common/_PropsType'
 
-const Selector = ({
-  id,
-  label,
-  name,
-  option,
-  selectHandler,
-  data
-}: IPickerProps) => {
+const Selector = ({ id, label, name, value, onChange, data }: IPickerProps) => {
   return (
     <StyledControl>
       <InputLabel id={id}>{label}</InputLabel>
       <Select
         name={name}
-        value={option}
-        onChange={selectHandler}
+        value={value}
+        onChange={onChange}
         className='w-18 h-4'
         variant='outlined'
       >

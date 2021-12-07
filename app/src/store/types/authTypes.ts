@@ -17,5 +17,5 @@ export type AuthState = {
   isAuthenticated: boolean
   loading: boolean
   user: User
-  err?: string
+  err?: Record<string, any>
 }

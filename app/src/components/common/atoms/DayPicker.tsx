@@ -1,39 +1,49 @@
 import React from 'react'
-import Select from '@material-ui/core/Select'
-import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
 import { useRange } from '@utils/hooks/useRange'
-import { StyledControl } from '@components/form/FormStyle'
 import { IPickerProps } from '../_PropsType'
+import { AiOutlineArrowDown } from 'react-icons/ai'
+
+export interface IDaySelectProps extends IPickerProps {
+  from: number
+  to: number
+}
 
 const DayPicker = ({
-  option,
+  value,
   name,
-  selectHandler,
   classes,
   from,
   to,
   label,
-  id
-}: IPickerProps) => {
+  id,
+  onChange
+}: IDaySelectProps) => {
+  const select =
+    'p-[1rem] m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none'
   return (
-    <StyledControl>
-      <InputLabel id={id}>{label}</InputLabel>
-      <Select
-        value={option}
-        name={name}
-        onChange={selectHandler}
-        onBlur={selectHandler}
-        className={classes}
-        variant='outlined'
-      >
-        {useRange(from as number, to as number).map((value, index) => (
-          <MenuItem key={index} value={value}>
-            {String(value)}
-          </MenuItem>
-        ))}
-      </Select>
-    </StyledControl>
+    <div className={`${classes} grid`}>
+      {label && (
+        <label htmlFor={id} className='text-table-headerFont'>
+          {label}
+        </label>
+      )}
+      <div className='flex'>
+        <select
+          name={name}
+          id={id}
+          onChange={onChange}
+          value={value}
+          className={select}
+        >
+          {useRange(from as number, to as number).map((value, index) => (
+            <option key={index} value={value}>
+              {String(value)}
+            </option>
+          ))}
+        </select>
+        <AiOutlineArrowDown className='self-center ml-[-2.8rem]' />
+      </div>
+    </div>
   )
 }
 

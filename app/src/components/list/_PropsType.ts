@@ -6,6 +6,8 @@ export interface IListProps {
   modalOpenHandler?: () => void
   shops?: TShopList[]
   shop?: TShopList
+  order?: React.Dispatch<React.SetStateAction<boolean>>
+  correct?: boolean
 }
 
 export type TCurrentPage = {

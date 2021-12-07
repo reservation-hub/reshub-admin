@@ -56,11 +56,14 @@ const userRequestFailure = (err: string) => {
 }
 
 export const fetchUserList =
-  (page: number): ThunkAction<void, RootState, null, Action> =>
+  (
+    page: number,
+    order: 'asc' | 'desc'
+  ): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
-      const res = await apiEndpoint.users.getUsers(page)
+      const res = await apiEndpoint.users.getUsers(page, order)
       dispatch(userRequestSuccess(res.data))
     } catch (e: any) {
       history.push('/error')
@@ -70,7 +73,7 @@ export const fetchUserList =
 export const getOneUser =
   (id: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
-    dispatch(userRequestStart())
+    // dispatch(userRequestStart())
     try {
       const res = await apiEndpoint.users.getUser(id)
       dispatch(userGetSuccess(res.data))
@@ -84,8 +87,6 @@ export const addUser =
     userData: insertUserFromAdminQuery
   ): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
-    console.log(userData)
-
     dispatch(userRequestStart())
     try {
       const res = await apiEndpoint.users.createUser(userData)

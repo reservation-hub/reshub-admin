@@ -1,29 +1,17 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
 import { IMainTemplateProps } from '../_PropsType'
-import { StyledHeader } from '@components/common/CommonStyle'
 import CustomButton from '@/components/common/atoms/CustomButton'
 import H1 from '../atoms/H1'
 
 const Header = ({ onLogout }: IMainTemplateProps) => {
+  const styled =
+    'w-full h-[6rem] top-0 bg-primary flex justify-between items-center text-secondary-main p-4'
+
   return (
-    <StyledHeader position='static'>
-      <Grid
-        container
-        alignItems='center'
-        justifyContent='space-between'
-        className='header-items'
-      >
-        <Grid item>
-          <H1>ResHub-admin</H1>
-        </Grid>
-        <Grid item>
-          <CustomButton onClick={onLogout} classes='logout-button'>
-            Logout
-          </CustomButton>
-        </Grid>
-      </Grid>
-    </StyledHeader>
+    <header className={styled}>
+      <H1>Reshub-admin</H1>
+      <CustomButton onClick={onLogout}>Logout</CustomButton>
+    </header>
   )
 }
 

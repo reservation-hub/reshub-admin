@@ -1,7 +1,4 @@
-import React, { useState } from 'react'
-import ListItemText from '@material-ui/core/ListItemText'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
+import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
@@ -13,42 +10,41 @@ const NavBar = () => {
   const { user } = useSelector((state: RootState) => state.auth)
 
   return (
-    <React.Fragment>
-      <div className='nav-wrapper text-center'>
+    <>
+      <div className='mt-[3rem] mb-[1rem] text-[2.4rem]'>
         <Link to={`/users/${user.id}`}>
-          <div className='user-profile-link'>
-            <FaRegUserCircle />
-            <p className='user-name'>{user.username || 'Admin'}</p>
+          <div className='text-center'>
+            <FaRegUserCircle className='w-[5rem] h-[5rem] mx-auto' />
+            <p className='m-0'>{user.username || 'Admin'}</p>
           </div>
         </Link>
       </div>
-      <div>
-        <List>
-          {NAV_MENU.map((value, index) => (
+      <div className='grid mt-[3rem]'>
+        {NAV_MENU.map((value, index) => (
+          <React.Fragment key={index}>
             <NavLink
-              key={index}
               to={{
                 pathname: value.path,
                 state: { currentPage: 1 }
               }}
-              activeClassName='active'
+              className='p-[1rem]'
+              activeClassName='bg-secondary-main text-primary'
             >
-              <ListItem button className='nav-items'>
-                <ListItemText primary={value.value} />
-              </ListItem>
+              <span className='text-[2.4rem]'>{value.value}</span>
             </NavLink>
-          ))}
-        </List>
+            <hr className='w-full' />
+          </React.Fragment>
+        ))}
       </div>
-      <footer className='display-flex align-center'>
+      <footer className='flex items-center absolute bottom-[6rem] p-2'>
         <span>Copyright 2021Reshub</span>
         <span>
           <a href='https://github.com/reservation-hub'>
-            <AiOutlineGithub />
+            <AiOutlineGithub className='w-[3rem] h-[3rem] ml-5' />
           </a>
         </span>
       </footer>
-    </React.Fragment>
+    </>
   )
 }
 

@@ -1,4 +1,5 @@
 export const HEADER_TYPE = {
   LIST: 'list',
-  DETAIL: 'detail'
+  DETAIL: 'detail',
+  DASHBOARD: 'dashboard'
 } as const

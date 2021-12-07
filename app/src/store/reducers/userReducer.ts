@@ -8,7 +8,8 @@ import {
   USERS_GET_SUCCESS,
   USERS_REQUEST_FAILURE,
   USERS_REQUEST_SUCCESS,
-  UsersState
+  UsersState,
+  USERS_REQUEST_START
 } from '@store/types/usersType'
 import {
   fetchModelsWithTotalCountResponse,

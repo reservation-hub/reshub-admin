@@ -4,13 +4,18 @@ import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import { IPickerProps } from '../_PropsType'
 
-const TimePicker = ({ hh, mm, selectHandler, classes }: IPickerProps) => {
+export interface ITimePickerProps extends IPickerProps {
+  hh: number
+  mm: number
+}
+
+const TimePicker = ({ hh, mm, onChange, classes }: ITimePickerProps) => {
   return (
     <>
       <Select
         value={hh}
         name='hour'
-        onChange={selectHandler}
+        onChange={onChange}
         className={classes}
         variant='outlined'
       >
@@ -24,7 +29,7 @@ const TimePicker = ({ hh, mm, selectHandler, classes }: IPickerProps) => {
       <Select
         value={mm}
         name='minute'
-        onChange={selectHandler}
+        onChange={onChange}
         className={classes}
         variant='outlined'
       >

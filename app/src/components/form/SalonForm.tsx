@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react'
 import CustomButton from '@components/common/atoms/CustomButton'
 import FormStyle, { StyledInput } from './FormStyle'
-import Container from '@material-ui/core/Container'
 import TextField from '@material-ui/core/TextField'
 import TimePicker from '../common/atoms/TimePicker'
 import { useDispatch, useSelector } from 'react-redux'
 import { getArea, getOneCity, getOnePref } from '@store/actions/LocationAction'
 import { RootState } from '@store/store'
 import Header from './Header'
-import { ISalonFormProps } from './_PropsType'
 import CheckBox from '@components/common/atoms/CheckBox'
 import Selector from '@components/common/atoms/Selector'
 import { Days } from '@constants/Days'
+import { IFormProps, TSalonInput } from './_PropsType'
+
+export interface ISalonFormProps extends IFormProps {
+  formValue: TSalonInput
+}
 
 const SalonForm = ({
   submitHandler,
@@ -59,11 +62,11 @@ const SalonForm = ({
   }, [dispatch, formValue.areaId, formValue.prefectureId])
 
   return (
-    <Container maxWidth='sm' className={classes.container}>
+    <div className='p-[2rem] bg-secondary-main w-[60rem] mx-auto'>
       <Header title={formState?.shop?.id ? 'サロン編集' : 'サロン新規登録'} />
-      <div className='form-box'>
+      <div className='mt-[2rem]'>
         <form onSubmit={submitHandler}>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <StyledInput
               label='サロン名'
               autoComplete='off'
@@ -75,7 +78,7 @@ const SalonForm = ({
               onChange={changeHandlers.input}
             />
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <StyledInput
               label='電話番号'
               autoComplete='off'
@@ -87,7 +90,7 @@ const SalonForm = ({
               onChange={changeHandlers.input}
             />
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <StyledInput
               label='住所'
               autoComplete='off'
@@ -99,66 +102,66 @@ const SalonForm = ({
               onChange={changeHandlers.input}
             />
           </div>
-          <div className='input-box display-flex'>
+          <div className='mb-[2rem] flex justify-between'>
             <Selector
               id='area'
               name='areaId'
-              option={formValue.areaId}
-              selectHandler={changeHandlers.input}
+              value={formValue.areaId}
+              onChange={changeHandlers.input}
               data={data.areas}
               label='エリア'
             />
             <Selector
               id='pref'
               name='prefectureId'
-              option={formValue.prefectureId}
-              selectHandler={changeHandlers.input}
+              value={formValue.prefectureId}
+              onChange={changeHandlers.input}
               data={data.pref}
               label='都道府県'
             />
             <Selector
               id='city'
               name='cityId'
-              option={formValue.cityId}
-              selectHandler={changeHandlers.input}
+              value={formValue.cityId}
+              onChange={changeHandlers.input}
               data={data.city}
               label='市区町村'
             />
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <div className='label'>
               <span className='font-16'>営業日</span>
             </div>
             <CheckBox
-              inputHandler={changeHandlers.check}
+              onChange={changeHandlers.check}
               data={Days}
               checkedData={formValue.days}
             />
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <div className='label'>
               <span className='font-16'>営業時間</span>
             </div>
-            <div className='display-flex justify-between align-center'>
+            <div className='flex justify-between items-center'>
               <TimePicker
                 hh={Number(formValue.startTime.hour)}
                 mm={Number(formValue.startTime.minute)}
-                selectHandler={changeHandlers.startAt}
+                onChange={changeHandlers.startAt}
                 classes='w-13 font-16 h-4'
               />
               <span> - </span>
               <TimePicker
                 hh={Number(formValue.endTime.hour)}
                 mm={Number(formValue.endTime.minute)}
-                selectHandler={changeHandlers.endAt}
+                onChange={changeHandlers.endAt}
                 classes='w-13 font-16 h-4'
               />
             </div>
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <CustomButton>画像登録になる</CustomButton>
           </div>
-          <div className='input-box'>
+          <div className='mb-[2rem]'>
             <TextField
               label='詳細'
               autoComplete='off'
@@ -173,14 +176,18 @@ const SalonForm = ({
           </div>
           <CustomButton
             disabled={disabled}
-            classes={disabled ? 'disabled-button' : 'submit-button'}
+            classes={
+              disabled
+                ? 'w-[56rem] h-[4.5rem] mt-[.5rem]'
+                : 'w-[56rem] h-[4.5rem] mt-[.5rem]'
+            }
           >
             登録
           </CustomButton>
         </form>
       </div>
-    </Container>
+    </div>
   )
 }
 
-export default SalonForm
+export default React.memo(SalonForm)
