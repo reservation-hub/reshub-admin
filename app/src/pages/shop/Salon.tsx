@@ -24,8 +24,8 @@ const Salon = ({
   const [correct, setCorrect] = useState<boolean>(true)
   const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
 
-  const pageChangeHandler = (data: any | number[]) => {
-    const pageNum = data['selected']
+  const pageChangeHandler = (data: Record<string, any>) => {
+    const pageNum: number = data['selected']
     setPage(pageNum + 1)
     history.push(`/salon?p=${pageNum + 1}`, {
       currentPage: pageNum + 1

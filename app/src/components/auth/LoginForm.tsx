@@ -23,7 +23,7 @@ export interface IAuthFormProps extends ClassesAndChildren {
   googleHandler: (
     response: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => void
-  error?: TValid
+  error?: Record<string, any>
   test?: Record<string, any>
 }
 
@@ -34,11 +34,12 @@ const LoginForm = ({
   googleHandler,
   error
 }: IAuthFormProps) => {
+  const hasError = error?.error?.keys?.find((key: Record<string, any>) => key)
   let disabled = false
   for (const v of Object.values(value)) {
     disabled = v.length === 0
   }
-
+  console.log('test', hasError)
   return (
     <div className='w-[55rem] mx-auto p-[3rem] rounded-[.5rem] bg-secondary-main'>
       <form onSubmit={onSubmit}>
@@ -48,13 +49,13 @@ const LoginForm = ({
           autoComplete='off'
           placeholder='メールアドレスを入力してください'
           classes={
-            error?.email
+            hasError === 'email'
               ? 'border border-error-main rounded-[.25rem]'
               : 'border rounded-[.25rem]'
           }
           value={value.email}
           onChange={setValue}
-          error={error?.email}
+          error={hasError === 'email'}
           errorTxt={VALIDATION_TEXT.EMAIL}
           fullWidth
         />

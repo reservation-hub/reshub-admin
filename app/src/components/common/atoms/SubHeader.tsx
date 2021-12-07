@@ -19,11 +19,10 @@ const SubHeader = ({
   children
 }: ISubHeaderProps) => {
   return (
-    <div className='flex justify-between mb-4'>
-      <div>
-        <H1 classes='text-primary'>{title}</H1>
-      </div>
-      <div>
+    <div className='flex justify-between items-center mb-4'>
+      <H1 classes='text-primary'>{title}</H1>
+
+      <div className='flex items-center'>
         {children}
         {type === HEADER_TYPE.DETAIL && (
           <CustomButton classes='ml-2' onClick={subModalHandler}>

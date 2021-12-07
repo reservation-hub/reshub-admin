@@ -53,8 +53,8 @@ const InputFiled = ({
         onBlur={onBlur}
         className={
           fullWidth
-            ? `${classes} text-[1.6rem] p-3 w-full focus:border-2 focus:border-primary`
-            : `${classes} text-[1.6rem] p-3 focus:border-2 focus:border-primary`
+            ? `${classes} mb-2 text-[1.6rem] p-3 w-full focus:border-2 focus:border-primary`
+            : `${classes} mb-2 text-[1.6rem] p-3 focus:border-2 focus:border-primary`
         }
       />
       {error && (
@@ -66,4 +66,4 @@ const InputFiled = ({
   )
 }
 
-export default InputFiled
+export default React.memo(InputFiled)

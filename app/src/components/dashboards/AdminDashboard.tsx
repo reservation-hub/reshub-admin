@@ -8,7 +8,7 @@ import SubHeader from '@/components/common/atoms/SubHeader'
 
 const AdminDashboard = ({ data }: AdminDashboardProps) => {
   return (
-    <section>
+    <>
       <SubHeader title='ダッシュボード' type='dashboard'>
         <div className='text-[1.6rem]'>ユーザー{data.user.totalCount}件</div>
         <div className='text-[1.6rem]'>サロン {data.shop.totalCount}件</div>
@@ -23,7 +23,7 @@ const AdminDashboard = ({ data }: AdminDashboardProps) => {
           <SalonItem shop={value} key={index} />
         ))}
       </TableLayout>
-    </section>
+    </>
   )
 }
 

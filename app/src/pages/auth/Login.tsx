@@ -1,6 +1,6 @@
 import React, { FormEvent, useCallback, useState } from 'react'
 import { googleLogin, loginStart } from '@store/actions/authAction'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import history from '@utils/routes/history'
@@ -12,6 +12,7 @@ import { StyledAlert } from '@components/common/CommonStyle'
 import Fade from '@material-ui/core/Fade'
 import CenterBox from '@components/common/layout/CenterBox'
 import useValidation from '@utils/hooks/useValidation'
+import { RootState } from '@/store/store'
 
 interface LocationState {
   failed?: string
@@ -22,6 +23,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
   const validationSchema = { email: false, password: false }
   const { validation, error } = useValidation(input, validationSchema)
+  const {err} = useSelector((state: RootState) => state.auth)
 
   const dispatch = useDispatch()
 
@@ -35,6 +37,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
+      console.log(Boolean(err))
       validation(input, input.email, input.password)
       dispatch(loginStart(input.email, input.password))
     },
@@ -71,7 +74,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
           setValue={ChangeHandler}
           onSubmit={onSubmit}
           googleHandler={googleHandler}
-          error={error}
+          error={err}
         />
         <LoginSelectFooter />
       </CenterBox>
@@ -79,4 +82,4 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   )
 }
 
-export default Login
+export default React.memo(Login)
