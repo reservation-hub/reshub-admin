@@ -1,5 +1,4 @@
 import React from 'react'
-import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles } from '@material-ui/core/styles'
 
 const classes = makeStyles(() => ({
@@ -12,9 +11,11 @@ const classes = makeStyles(() => ({
 }))
 
 const Loading = () => {
+  const spinner =
+    'w-[5rem] h-[5rem] absolute top-2/4 left-2/4 animate-spin border-4 border-t-transparent border-primary rounded-full'
   return (
-    <div className='absolute top-2/4 left-2/4 h-full'>
-      <span>test</span>
+    <div className='container h-full'>
+      <div className={spinner} />
     </div>
   )
 }

@@ -8,7 +8,8 @@ import {
   SHOP_GET_SUCCESS,
   SHOP_REQUEST_FAILURE,
   SHOP_REQUEST_SUCCESS,
-  ShopState
+  ShopState,
+  SHOP_REQUEST_START
 } from '@store/types/shopTypes'
 import { ShopAction } from '@store/actions/shopAction'
 import {
@@ -18,7 +19,7 @@ import {
 import { TShop, TShopList } from '@Model/ShopResponse'
 
 const initialState: ShopState = {
-  loading: true,
+  loading: false,
   shops: {} as fetchModelsWithTotalCountResponse<modelResponse<TShopList>>,
   shop: {} as TShop,
   msg: ''
@@ -26,6 +27,11 @@ const initialState: ShopState = {
 
 const shopReducer = (state = initialState, action: ShopAction) => {
   switch (action.type) {
+    case SHOP_REQUEST_START:
+      return {
+        ...state,
+        loading: true
+      }
     case SHOP_REQUEST_SUCCESS:
       return {
         ...state,

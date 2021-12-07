@@ -10,10 +10,11 @@ import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
+import Loading from '@/components/common/atoms/loading'
 
 const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   const { id } = match.params
-  const { user } = useSelector((state: RootState) => state.user)
+  const { user, loading } = useSelector((state: RootState) => state.user)
   const convertId = Number(id)
   const dispatch = useDispatch()
 
@@ -30,19 +31,25 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   // TODO スタイルを指定
   return (
     <>
-      <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
-        <ModalAlert
-          modalCloseHandler={modalHandler}
-          modalHandler={onDelete}
-          alertText='このユーザーを削除しますか？'
-          buttonText='削除'
-        />
-      </ModalOverlay>
-      <ProfileItem
-        user={user}
-        modalOpenHandler={() => history.push(`/users/form/${id}`, { user })}
-        subModalHandler={modalHandler}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
+            <ModalAlert
+              modalCloseHandler={modalHandler}
+              modalHandler={onDelete}
+              alertText='このユーザーを削除しますか？'
+              buttonText='削除'
+            />
+          </ModalOverlay>
+          <ProfileItem
+            user={user}
+            modalOpenHandler={() => history.push(`/users/form/${id}`, { user })}
+            subModalHandler={modalHandler}
+          />
+        </>
+      )}
     </>
   )
 }

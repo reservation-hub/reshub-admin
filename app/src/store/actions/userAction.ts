@@ -73,7 +73,7 @@ export const fetchUserList =
 export const getOneUser =
   (id: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
-    // dispatch(userRequestStart())
+    dispatch(userRequestStart())
     try {
       const res = await apiEndpoint.users.getUser(id)
       dispatch(userGetSuccess(res.data))
