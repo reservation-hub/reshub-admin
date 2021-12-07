@@ -2,8 +2,6 @@ import React from 'react'
 import SubHeader from '@/components/common/atoms/SubHeader'
 import { IDetailProps } from '../_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
 import ShopData from '@components/detail/shop/ShopData'
 import CustomButton from '@components/common/atoms/CustomButton'
 import TableLayout from '@/components/common/atoms/TableLayout'
@@ -39,22 +37,20 @@ const DetailItem = ({
       >
         <CustomButton onClick={history.goBack}>戻る</CustomButton>
       </SubHeader>
-      <Grid container justifyContent='space-between' alignItems='center'>
+      <div className='container flex justify-between'>
         <ShopData shop={shop} />
-        <Grid md={5} item>
-          <Box>
-            <TableLayout cell={STYLELIST_CELL}>
-              {styleList.map((value, index) => (
-                <TableRow key={index}>
-                  <StyledTableCell>{value?.id}</StyledTableCell>
-                  <StyledTableCell>{value?.name}</StyledTableCell>
-                  <StyledTableCell>{value?.reservationCount}</StyledTableCell>
-                </TableRow>
-              ))}
-            </TableLayout>
-          </Box>
-        </Grid>
-      </Grid>
+        <div className='w-[55rem] h-full'>
+          <TableLayout cell={STYLELIST_CELL}>
+            {styleList.map((value, index) => (
+              <TableRow key={index}>
+                <StyledTableCell>{value?.id}</StyledTableCell>
+                <StyledTableCell>{value?.name}</StyledTableCell>
+                <StyledTableCell>{value?.reservationCount}</StyledTableCell>
+              </TableRow>
+            ))}
+          </TableLayout>
+        </div>
+      </div>
     </>
   )
 }
