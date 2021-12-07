@@ -32,3 +32,12 @@ export interface ClassesAndChildren {
   children?: React.ReactNode
   classes?: string
 }
+
+export interface IInputProps extends ClassesAndChildren {
+  id?: string
+  name?: string
+  label?: string
+  value?: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+}

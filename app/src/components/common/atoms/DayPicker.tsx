@@ -1,10 +1,11 @@
 import React from 'react'
-import Select from '@material-ui/core/Select'
-import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
 import { useRange } from '@utils/hooks/useRange'
-import { StyledControl } from '@components/form/FormStyle'
 import { IPickerProps } from '../_PropsType'
+
+export interface IDaySelectProps extends IPickerProps {
+  from: number
+  to: number
+}
 
 const DayPicker = ({
   option,
@@ -15,25 +16,28 @@ const DayPicker = ({
   to,
   label,
   id
-}: IPickerProps) => {
+}: IDaySelectProps) => {
   return (
-    <StyledControl>
-      <InputLabel id={id}>{label}</InputLabel>
-      <Select
-        value={option}
+    <div className={`${classes} grid`}>
+      {label && (
+        <label htmlFor={id} className='text-table-headerFont'>
+          {label}
+        </label>
+      )}
+      <select
         name={name}
+        id={id}
         onChange={selectHandler}
-        onBlur={selectHandler}
-        className={classes}
-        variant='outlined'
+        value={option}
+        className='border p-[1rem]'
       >
         {useRange(from as number, to as number).map((value, index) => (
-          <MenuItem key={index} value={value}>
+          <option key={index} value={value}>
             {String(value)}
-          </MenuItem>
+          </option>
         ))}
-      </Select>
-    </StyledControl>
+      </select>
+    </div>
   )
 }
 

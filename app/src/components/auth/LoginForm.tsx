@@ -45,11 +45,7 @@ const LoginForm = ({
           type='text'
           autoComplete='off'
           placeholder='メールアドレスを入力してください'
-          classes={
-            error?.email
-              ? 'border border-error-main rounded-[.25rem]'
-              : 'border rounded-[.25rem]'
-          }
+          classes='my-[1.5rem]'
           value={value.email}
           onChange={setValue}
           error={error?.email}
@@ -61,11 +57,7 @@ const LoginForm = ({
           type='password'
           placeholder='パスワードを入力してください'
           autoComplete='off'
-          classes={
-            error?.password
-              ? 'border border-error-main rounded-[.25rem]'
-              : 'border rounded-[.25rem]'
-          }
+          classes='my-[1.5rem]'
           value={value.password}
           onChange={setValue}
           error={error?.password}
