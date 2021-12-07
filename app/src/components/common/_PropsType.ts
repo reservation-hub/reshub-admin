@@ -11,26 +11,30 @@ export interface IMainTemplateProps extends ClassesAndChildren {
   onLogout?: () => void
 }
 
-export interface IPickerProps {
-  selectHandler?: React.ChangeEventHandler<{ value: unknown }>
-  inputHandler?: React.ChangeEventHandler<HTMLInputElement>
-  checkedData?: number[]
-  classes?: string
-  id?: string
-  name?: string
-  from?: number
-  to?: number
-  label?: string
-  hh?: number
-  mm?: number
-  option?: string
-  variant?: 'filled' | 'standard' | 'outlined' | undefined
-  data?: Area[] | Prefecture[] | City[] | Role[] | TDays[]
-}
+// export interface IPickerProps {
+//   selectHandler?: React.ChangeEventHandler<{ value: unknown }>
+//   inputHandler?: React.ChangeEventHandler<HTMLInputElement>
+//   checkedData?: number[]
+//   classes?: string
+//   id?: string
+//   name?: string
+//   from?: number
+//   to?: number
+//   label?: string
+//   hh?: number
+//   mm?: number
+//   option?: string
+//   variant?: 'filled' | 'standard' | 'outlined' | undefined
+//   data?: Area[] | Prefecture[] | City[] | Role[] | TDays[]
+// }
 
 export interface ClassesAndChildren {
   children?: React.ReactNode
   classes?: string
+}
+
+export interface IPickerProps extends IInputProps {
+  data?: Area[] | Prefecture[] | City[] | Role[] | TDays[]
 }
 
 export interface IInputProps extends ClassesAndChildren {
@@ -38,6 +42,8 @@ export interface IInputProps extends ClassesAndChildren {
   name?: string
   label?: string
   value?: string
-  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onChange?: React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement | { value: unknown }
+  >
   onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }

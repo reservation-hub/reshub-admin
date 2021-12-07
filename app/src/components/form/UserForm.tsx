@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from './Header'
-import FormStyle, { StyledInput } from './FormStyle'
 import CustomButton from '@components/common/atoms/CustomButton'
 import { IFormProps, TUserInput } from './_PropsType'
 import { VALIDATION_TEXT } from '@constants/FormValid'
@@ -9,9 +8,10 @@ import dayjs from 'dayjs'
 import Selector from '@components/common/atoms/Selector'
 import { ROLES } from '@constants/Roles'
 import { TValid } from '@/utils/hooks/useValidation'
-import InputFiled from '../common/atoms/InputFiled'
-import RadioButton, { GENDER_TYPE } from '../common/atoms/RadioButton'
-import ErrorMessage from '../common/atoms/ErrorMessage'
+import InputFiled from '@components/common/atoms/InputFiled'
+import RadioButton from '@components/common/atoms/RadioButton'
+import ErrorMessage from '@components/common/atoms/ErrorMessage'
+import { GENDER_TYPE } from '@constants/Gender'
 
 export interface IUserFormProps extends IFormProps {
   validation?: Record<string, any>
@@ -26,7 +26,6 @@ const UserForm = ({
   changeHandlers,
   error
 }: IUserFormProps) => {
-  const classes = FormStyle()
   let disabled = false
 
   for (const value of Object.values(formValue)) {
@@ -152,38 +151,38 @@ const UserForm = ({
               label='年'
               name='birthdayY'
               classes='w-[17.5rem]'
-              selectHandler={changeHandlers.input}
+              onChange={changeHandlers.input}
               from={1900}
               to={dayjs().year()}
-              option={formValue.birthdayY}
+              value={formValue.birthdayY}
             />
             <DayPicker
               id='month'
               label='月'
               name='birthdayM'
               classes='w-[17.5rem]'
-              selectHandler={changeHandlers.input}
+              onChange={changeHandlers.input}
               from={1}
               to={12}
-              option={formValue.birthdayM}
+              value={formValue.birthdayM}
             />
             <DayPicker
               id='day'
               label='日'
               name='birthdayD'
               classes='w-[17.5rem]'
-              selectHandler={changeHandlers.input}
+              onChange={changeHandlers.input}
               from={1}
               to={31}
-              option={formValue.birthdayD}
+              value={formValue.birthdayD}
             />
           </div>
           <div className='input-box'>
             <Selector
               id='role'
               name='role'
-              option={formValue.role}
-              selectHandler={changeHandlers.input}
+              value={formValue.role}
+              onChange={changeHandlers.input}
               data={ROLES}
               label='権限'
             />

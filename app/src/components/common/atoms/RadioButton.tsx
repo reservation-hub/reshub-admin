@@ -2,12 +2,6 @@ import React from 'react'
 import { IInputProps } from '../_PropsType'
 import '@styles/global.css'
 
-export const GENDER_TYPE = [
-  { id: '1', value: 'male', label: '男性' },
-  { id: '2', value: 'female', label: '女性' },
-  { id: '3', value: 'other', label: 'その他' }
-]
-
 export interface IRadioButtonProps extends IInputProps {
   data: Record<string, any>
 }

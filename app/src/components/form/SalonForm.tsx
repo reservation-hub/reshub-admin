@@ -106,24 +106,24 @@ const SalonForm = ({
             <Selector
               id='area'
               name='areaId'
-              option={formValue.areaId}
-              selectHandler={changeHandlers.input}
+              value={formValue.areaId}
+              onChange={changeHandlers.input}
               data={data.areas}
               label='エリア'
             />
             <Selector
               id='pref'
               name='prefectureId'
-              option={formValue.prefectureId}
-              selectHandler={changeHandlers.input}
+              value={formValue.prefectureId}
+              onChange={changeHandlers.input}
               data={data.pref}
               label='都道府県'
             />
             <Selector
               id='city'
               name='cityId'
-              option={formValue.cityId}
-              selectHandler={changeHandlers.input}
+              value={formValue.cityId}
+              onChange={changeHandlers.input}
               data={data.city}
               label='市区町村'
             />
@@ -133,7 +133,7 @@ const SalonForm = ({
               <span className='font-16'>営業日</span>
             </div>
             <CheckBox
-              inputHandler={changeHandlers.check}
+              onChange={changeHandlers.check}
               data={Days}
               checkedData={formValue.days}
             />
@@ -146,14 +146,14 @@ const SalonForm = ({
               <TimePicker
                 hh={Number(formValue.startTime.hour)}
                 mm={Number(formValue.startTime.minute)}
-                selectHandler={changeHandlers.startAt}
+                onChange={changeHandlers.startAt}
                 classes='w-13 font-16 h-4'
               />
               <span> - </span>
               <TimePicker
                 hh={Number(formValue.endTime.hour)}
                 mm={Number(formValue.endTime.minute)}
-                selectHandler={changeHandlers.endAt}
+                onChange={changeHandlers.endAt}
                 classes='w-13 font-16 h-4'
               />
             </div>

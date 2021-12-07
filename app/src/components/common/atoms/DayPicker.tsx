@@ -8,14 +8,14 @@ export interface IDaySelectProps extends IPickerProps {
 }
 
 const DayPicker = ({
-  option,
+  value,
   name,
-  selectHandler,
   classes,
   from,
   to,
   label,
-  id
+  id,
+  onChange
 }: IDaySelectProps) => {
   return (
     <div className={`${classes} grid`}>
@@ -27,8 +27,8 @@ const DayPicker = ({
       <select
         name={name}
         id={id}
-        onChange={selectHandler}
-        value={option}
+        onChange={onChange}
+        value={value}
         className='border p-[1rem]'
       >
         {useRange(from as number, to as number).map((value, index) => (

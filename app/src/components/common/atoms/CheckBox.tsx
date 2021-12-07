@@ -1,7 +1,11 @@
 import React from 'react'
 import { IPickerProps } from '../_PropsType'
 
-const CheckBox = ({ inputHandler, data, checkedData }: IPickerProps) => {
+export interface ICheckBoxProps extends IPickerProps {
+  checkedData?: number[]
+}
+
+const CheckBox = ({ onChange, data, checkedData }: ICheckBoxProps) => {
   return (
     <div className='flex justify-between'>
       {data?.map((value, index) => (
@@ -12,7 +16,7 @@ const CheckBox = ({ inputHandler, data, checkedData }: IPickerProps) => {
             checked={checkedData?.includes(value.id)}
             value={value.id}
             name={value.name}
-            onChange={inputHandler}
+            onChange={onChange}
           />
           <label htmlFor={`check-${value.id}`} className='labels'>
             {value.name}
