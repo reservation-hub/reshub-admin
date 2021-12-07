@@ -17,7 +17,7 @@ const Selector = ({
   selectToId
 }: ISelectorProps) => {
   const select =
-    'p-3 m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none'
+    'p-3 m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none text-[1.6rem]'
   return (
     <div className={`${classes} grid`}>
       {label && (

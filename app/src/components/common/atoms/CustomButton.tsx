@@ -13,7 +13,7 @@ const CustomButton = ({
   disabled
 }: IButtonProps) => {
   const styled =
-    'w-[11rem] h-[3.5rem] corsor-pointer border bg-secondary-main text-primary rounded-[.5rem] filter drop-shadow'
+    'w-[11rem] h-[3.5rem] text-[1.4rem] corsor-pointer border bg-secondary-main text-primary rounded-[.5rem] filter drop-shadow'
 
   return (
     <button

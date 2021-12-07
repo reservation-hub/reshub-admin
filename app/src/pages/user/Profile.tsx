@@ -20,6 +20,8 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
 
   const { open, modalHandler } = useModal(false)
 
+  console.log(modalHandler)
+
   const onDelete = useCallback(() => {
     dispatch(deleteUser(convertId))
   }, [dispatch, convertId])

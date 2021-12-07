@@ -1,24 +1,21 @@
 import React from 'react'
 import CustomButton from '@components/common/atoms/CustomButton'
 import { IModalProps } from './_PropsType'
-import ModalStyle from './ModalStyle'
+import '@styles/modal.css'
 
 const ModalAlert = ({
   alertText,
   modalCloseHandler,
   modalHandler,
-  buttonText
+  buttonText,
 }: IModalProps) => {
-  const classes = ModalStyle()
 
   return (
-    <div className={classes.Container}>
-      <div className='font-2 color-primary font-w-600'>
-        <span>{alertText}</span>
-      </div>
-      <div className='flexbox space-between'>
+    <div className='w-[30rem] bg-secondary-main p-[3rem] text-center rounded-[.5rem]'>
+      <span className='text-[1.6rem]'>{alertText}</span>
+      <div className='flex justify-between mt-4'>
         <CustomButton onClick={modalHandler}>{buttonText}</CustomButton>
-        <CustomButton onClick={modalCloseHandler}>戻る</CustomButton>
+        <CustomButton onClick={() => (modalCloseHandler)}>戻る</CustomButton>
       </div>
     </div>
   )
