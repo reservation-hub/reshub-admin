@@ -15,7 +15,7 @@ export const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['isAuthenticated', 'user']
-} 
+}
 
 export const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, auth),

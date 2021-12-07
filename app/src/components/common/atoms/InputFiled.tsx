@@ -58,9 +58,7 @@ const InputFiled = ({
             : `${classes} mb-2 text-[1.6rem] p-3 focus:border-2 focus:border-primary`
         }
       />
-      {error && (
-        <ErrorMessage text={errorTxt} />
-      )}
+      {error && <ErrorMessage text={errorTxt} />}
     </div>
   )
 }

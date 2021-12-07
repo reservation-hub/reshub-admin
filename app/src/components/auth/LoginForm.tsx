@@ -72,7 +72,9 @@ const LoginForm = ({
           errorTxt={VALIDATION_TEXT.PASSWORD}
           fullWidth
         />
-        {error?.invalid && <ErrorMessage text={VALIDATION_TEXT.INVALID_ERROR} />}
+        {error?.invalid && (
+          <ErrorMessage text={VALIDATION_TEXT.INVALID_ERROR} />
+        )}
         <CustomButton
           classes='min-w-full mt-[.5rem] mb-[1.5rem]'
           disabled={disabled}
