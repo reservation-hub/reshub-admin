@@ -12,6 +12,7 @@ import InputFiled from '@components/common/atoms/InputFiled'
 import RadioButton from '@components/common/atoms/RadioButton'
 import ErrorMessage from '@components/common/atoms/ErrorMessage'
 import { GENDER_TYPE } from '@constants/Gender'
+import GroupSelector from './GroupSelector'
 
 export interface IUserFormProps extends IFormProps {
   validation?: Record<string, any>
@@ -95,6 +96,8 @@ const UserForm = ({
               classes='w-[25.5rem]'
               value={formValue.firstNameKana}
               onChange={changeHandlers.input}
+              error={error.firstNameKana}
+              errorTxt={VALIDATION_TEXT.KANA_NAME}
             />
             <InputFiled
               label='メイ'
@@ -105,6 +108,8 @@ const UserForm = ({
               classes='w-[25.5rem]'
               value={formValue.lastNameKana}
               onChange={changeHandlers.input}
+              error={error.lastNameKana}
+              errorTxt={VALIDATION_TEXT.KANA_NAME}
             />
           </div>
           {!formState?.user && (
@@ -146,38 +151,12 @@ const UserForm = ({
             onChange={changeHandlers.input}
           />
           <div className='w-full flex justify-between my-3'>
-            <DayPicker
-              id='year'
-              label='年'
-              name='birthdayY'
-              classes='w-[17.5rem]'
+            <GroupSelector
+              groupType='birthday'
               onChange={changeHandlers.input}
-              from={1900}
-              to={dayjs().year()}
-              value={formValue.birthdayY}
-            />
-            <DayPicker
-              id='month'
-              label='月'
-              name='birthdayM'
-              classes='w-[17.5rem]'
-              onChange={changeHandlers.input}
-              from={1}
-              to={12}
-              value={formValue.birthdayM}
-            />
-            <DayPicker
-              id='day'
-              label='日'
-              name='birthdayD'
-              classes='w-[17.5rem]'
-              onChange={changeHandlers.input}
-              from={1}
-              to={31}
-              value={formValue.birthdayD}
             />
           </div>
-          <div className='input-box'>
+          <div className=''>
             <Selector
               id='role'
               name='role'
@@ -190,7 +169,10 @@ const UserForm = ({
           {error.duplicated && (
             <ErrorMessage text={VALIDATION_TEXT.DUPLICATED} />
           )}
-          <CustomButton classes='min-w-full min-h-[4.5rem]' disabled={disabled}>
+          <CustomButton
+            classes='min-w-full min-h-[4.5rem] mt-[2rem]'
+            disabled={disabled}
+          >
             登録
           </CustomButton>
         </form>

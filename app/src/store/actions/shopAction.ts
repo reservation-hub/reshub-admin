@@ -96,7 +96,6 @@ export const addShop =
       dispatch(shopAddSuccess(res.data))
       history.push({ pathname: '/salon', state: { currentPage: 1 } })
     } catch (e: any) {
-      console.log(e.response.data)
       dispatch(shopRequestFailure(e))
     }
   }

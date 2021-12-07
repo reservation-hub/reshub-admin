@@ -1,5 +1,4 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
 import { FaRegUserCircle } from 'react-icons/fa'
 import SubHeader from '@/components/common/atoms/SubHeader'
 import useBirthday from '@utils/hooks/useBirthday'
@@ -12,6 +11,10 @@ const ProfileItem = ({
   subModalHandler
 }: IDetailProps) => {
   const birthday = useBirthday(user?.birthday)
+  const dt =
+    'min-w-[15rem] text-[1.6rem] border-r-0 inline-block p-[2rem] border border-b-0 border-primary'
+  const dd =
+    'flex-1 text-[1.6rem] m-0 inline-block p-[2rem] border-b-0 border-primary border'
 
   return (
     <>
@@ -21,57 +24,45 @@ const ProfileItem = ({
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}
       />
-      <Grid container style={{ display: 'grid' }}>
-        <Grid item>
-          <FaRegUserCircle />
-        </Grid>
-        <Grid item>
-          <dt>
-            <strong>メールアドレス</strong>
-          </dt>
-          <dl>{user?.email}</dl>
-        </Grid>
-        <Grid item>
-          <dt>
-            <strong>ユーザーネーム</strong>
-          </dt>
-          <dl>{user?.username ?? 'ユーザーネームを設定してくだい。'}</dl>
-        </Grid>
-        <Grid item>
-          <dt>
-            <strong>お名前</strong>
-          </dt>
-          <dl>
+      <div className='w-[55rem]'>
+        <FaRegUserCircle className='w-[10rem] h-[10rem] mx-auto my-4' />
+      </div>
+      <div className='w-[55rem] border-primary border-b bg-secondary-main'>
+        <div className='flex'>
+          <dt className={dt}>メールアドレス</dt>
+          <dd className={dd}>{user?.email}</dd>
+        </div>
+        <div className='flex'>
+          <dt className={dt}>ユーザーネーム</dt>
+          <dd className={dd}>
+            {user?.username ?? 'ユーザーネームを設定してくだい。'}
+          </dd>
+        </div>
+        <div className='flex'>
+          <dt className={dt}>お名前</dt>
+          <dd className={dd}>
             {user?.firstNameKanji} {user?.lastNameKanji}
-          </dl>
-        </Grid>
-        <Grid item>
-          <dt>
-            <strong>カナ</strong>
-          </dt>
-          <dl>
+          </dd>
+        </div>
+        <div className='flex'>
+          <dt className={dt}>カナ</dt>
+          <dd className={dd}>
             {user?.firstNameKana} {user?.lastNameKana}
-          </dl>
-        </Grid>
-        <Grid item>
-          <dt>
-            <strong>生年月日</strong>
-          </dt>
-          <dl>{birthday === 'Invalid Date' ? '-' : birthday}</dl>
-        </Grid>
-        <Grid item>
-          <dt>
-            <strong>性別</strong>
-          </dt>
-          <dl>{user?.gender === '0' ? '男性' : '女性'}</dl>
-        </Grid>
-        <Grid item>
-          <dt>
-            <strong>アクセス権限</strong>
-          </dt>
-          <dl>{user?.role?.name}</dl>
-        </Grid>
-      </Grid>
+          </dd>
+        </div>
+        <div className='flex'>
+          <dt className={dt}>生年月日</dt>
+          <dd className={dd}>{birthday === 'Invalid Date' ? '-' : birthday}</dd>
+        </div>
+        <div className='flex'>
+          <dt className={dt}>性別</dt>
+          <dd className={dd}>{user?.gender === '0' ? '男性' : '女性'}</dd>
+        </div>
+        <div className='flex'>
+          <dt className={dt}>アクセス権限</dt>
+          <dd className={dd}>{user?.role?.name}</dd>
+        </div>
+      </div>
     </>
   )
 }

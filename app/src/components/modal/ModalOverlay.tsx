@@ -1,6 +1,6 @@
 import React from 'react'
-import Dialog from '@material-ui/core/Dialog'
 import { IModalProps } from './_PropsType'
+import '@styles/modal.css'
 
 const ModalOverlay = ({
   children,
@@ -8,9 +8,15 @@ const ModalOverlay = ({
   modalCloseHandler
 }: IModalProps) => {
   return (
-    <Dialog open={Boolean(modalOpen)} onClose={modalCloseHandler}>
-      {children}
-    </Dialog>
+    <>
+      {modalOpen && (
+        <div onClick={modalCloseHandler} className='modal-overlay'>
+          <div className='modal-container transform translate-x-[-50%] translate-y-[-50%]'>
+            {children}
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

@@ -21,9 +21,7 @@ const SalonDashboard = () => {
   const authCheck = (user: User) => user.role.name === 'admin'
 
   useEffect(() => {
-    if (authCheck(user)) {
-      dispatch(fetchDashboard())
-    }
+    if (authCheck(user)) dispatch(fetchDashboard())
   }, [dispatch, user])
 
   return (

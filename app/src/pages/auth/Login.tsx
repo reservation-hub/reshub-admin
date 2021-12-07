@@ -8,7 +8,6 @@ import useInput from '@utils/hooks/useInput'
 import LoginForm from '@components/auth/LoginForm'
 import LoginSelectHeader from '@components/common/choose/LoginSelectHeader'
 import LoginSelectFooter from '@components/common/choose/LoginSelectFooter'
-import { StyledAlert } from '@components/common/CommonStyle'
 import Fade from '@material-ui/core/Fade'
 import CenterBox from '@components/common/layout/CenterBox'
 import { RootState } from '@/store/store'
@@ -53,10 +52,11 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   )
 
   return (
-    <main className='w-full bg-primary h-full m-0'>
+    <main className='w-full bg-primary min-h-screen m-0'>
       {location.state && (
         <Fade in={errorState} timeout={1300}>
-          <StyledAlert
+          <div>test</div>
+          {/* <StyledAlert
             severity='error'
             action={
               <span onClick={() => clearError()}>
@@ -65,7 +65,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
             }
           >
             <strong>{location.state?.failed}</strong>
-          </StyledAlert>
+          </StyledAlert> */}
         </Fade>
       )}
       <CenterBox>

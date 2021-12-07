@@ -34,31 +34,33 @@ const Users = ({
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchUserList(Number(currentPage), order))
-  }, [page, dispatch, currentPage, match.isExact, correct])
+  }, [page, dispatch, currentPage, correct])
 
   return (
     <MainTemplate>
-      {loading ? (
-        <Loading />
-      ) : (
-        <Switch>
-          <Route exact path='/users'>
-            <UserList
-              users={users.values}
-              order={setCorrect}
-              correct={correct}
-              modalOpenHandler={() => history.push('/users/form')}
-            />
-            <Paginate
-              totalPage={users.totalCount}
-              page={currentPage}
-              pageChangeHandler={pageChangeHandler}
-            />
-          </Route>
-          <Route path='/users/form' component={Form} />
-          <Route path='/users/:id' component={Profile} />
-        </Switch>
-      )}
+      <Switch>
+        <Route exact path='/users'>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <UserList
+                users={users.values}
+                order={setCorrect}
+                correct={correct}
+                modalOpenHandler={() => history.push('/users/form')}
+              />
+              <Paginate
+                totalPage={users.totalCount}
+                page={currentPage}
+                pageChangeHandler={pageChangeHandler}
+              />
+            </>
+          )}
+        </Route>
+        <Route path='/users/form' component={Form} />
+        <Route path='/users/:id' component={Profile} />
+      </Switch>
     </MainTemplate>
   )
 }

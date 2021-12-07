@@ -16,15 +16,13 @@ const MainTemplate = ({ children }: IMainTemplateProps) => {
 
   return (
     <>
-      <Link to='./salon_dashboard'>
+      <Link to='/salon_dashboard'>
         <Header onLogout={onLogout} />
       </Link>
       <aside className='bg-primary text-secondary-main'>
         <NavBar />
       </aside>
-      <main className='w-[80%] absolute top-[5rem] right-[1.5rem]'>
-        {children}
-      </main>
+      <main className='w-[80%] absolute h-full right-[1.5rem]'>{children}</main>
     </>
   )
 }

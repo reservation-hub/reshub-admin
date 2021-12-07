@@ -48,7 +48,6 @@ export const silentLogin =
       dispatch(fetchUser(user.data.user))
       history.push('/')
     } catch (e: any) {
-      console.log(e.response)
       dispatch(loginRequestFailure(e.response.data))
     }
   }
@@ -117,7 +116,6 @@ export const logout =
 
       history.push('/auth')
     } catch (e: any) {
-      console.log(e.response)
       dispatch(loginRequestFailure(e.response.data))
     }
   }

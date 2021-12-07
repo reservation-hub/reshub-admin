@@ -19,7 +19,7 @@ import { User } from '@entities/User'
 import { UserAction } from '@store/actions/userAction'
 
 const initialState: UsersState = {
-  loading: true,
+  loading: false,
   users: {} as fetchModelsWithTotalCountResponse<modelResponse<User>>,
   user: {} as User,
   msg: ''
@@ -27,6 +27,11 @@ const initialState: UsersState = {
 
 const userReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
+    case USERS_REQUEST_START:
+      return {
+        ...state,
+        loading: true
+      }
     case USERS_REQUEST_SUCCESS:
       return {
         ...state,

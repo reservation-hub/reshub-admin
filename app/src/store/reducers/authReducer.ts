@@ -5,13 +5,15 @@ import {
   AuthState,
   LOGOUT_REQUEST_SUCCESS,
   USER_REQUEST_FAILURE,
-  USER_REQUEST_SUCCESS
+  USER_REQUEST_SUCCESS,
+  USER_REQUEST_START
 } from '@store/types/authTypes'
 import { AuthAction } from '@store/actions/authAction'
 import { User } from '@entities/User'
+import {} from '../types/usersType'
 
 const initialState: AuthState = {
-  loading: true,
+  loading: false,
   isAuthenticated: false,
   user: {} as User,
   err: {}
@@ -19,6 +21,11 @@ const initialState: AuthState = {
 
 const authReducer = (state = initialState, action: AuthAction) => {
   switch (action.type) {
+    case USER_REQUEST_START:
+      return {
+        ...state,
+        loading: true
+      }
     case USER_REQUEST_SUCCESS:
       return {
         ...state,

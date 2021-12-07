@@ -21,7 +21,7 @@ const PublicRoute = ({ children, ...rest }: any) => {
   )
 
   const isUser = (user: User) =>
-    user.role.name === 'admin' || user.role.name === 'shop_staff'
+    user.role.name === 'admin' || user.role.name === 'shop staff'
 
   return (
     <>

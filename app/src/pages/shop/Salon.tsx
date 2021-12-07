@@ -38,27 +38,29 @@ const Salon = ({
 
   return (
     <MainTemplate>
-      {loading ? (
-        <Loading />
-      ) : (
-        <Switch>
-          <Route exact path='/salon'>
-            <SalonList
-              shops={shops.values}
-              order={setCorrect}
-              correct={correct}
-              modalOpenHandler={() => history.push('/salon/form')}
-            />
-            <Paginate
-              totalPage={shops.totalCount}
-              page={currentPage}
-              pageChangeHandler={pageChangeHandler}
-            />
-          </Route>
-          <Route path='/salon/form' component={Form} />
-          <Route path='/salon/:id' component={Detail} />
-        </Switch>
-      )}
+      <Switch>
+        <Route exact path='/salon'>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <SalonList
+                shops={shops.values}
+                order={setCorrect}
+                correct={correct}
+                modalOpenHandler={() => history.push('/salon/form')}
+              />
+              <Paginate
+                totalPage={shops.totalCount}
+                page={currentPage}
+                pageChangeHandler={pageChangeHandler}
+              />
+            </>
+          )}
+        </Route>
+        <Route path='/salon/form' component={Form} />
+        <Route path='/salon/:id' component={Detail} />
+      </Switch>
     </MainTemplate>
   )
 }

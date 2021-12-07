@@ -9,10 +9,11 @@ import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import DetailItem from '@components/detail/shop/DetailItem'
 import history from '@utils/routes/history'
+import Loading from '@/components/common/atoms/loading'
 
 const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   const { id } = match.params
-  const { shop } = useSelector((state: RootState) => state.shop)
+  const { shop, loading } = useSelector((state: RootState) => state.shop)
   const convertId = Number(id)
   const dispatch = useDispatch()
 
@@ -28,19 +29,25 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
 
   return (
     <>
-      <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
-        <ModalAlert
-          modalCloseHandler={modalHandler}
-          alertText='本当にこの店舗を削除しますか？'
-          modalHandler={onDelete}
-          buttonText='削除'
-        />
-      </ModalOverlay>
-      <DetailItem
-        shop={shop}
-        modalOpenHandler={() => history.push(`/salon/form/${id}`, { shop })}
-        subModalHandler={modalHandler}
-      />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
+            <ModalAlert
+              modalCloseHandler={modalHandler}
+              alertText='本当にこの店舗を削除しますか？'
+              modalHandler={onDelete}
+              buttonText='削除'
+            />
+          </ModalOverlay>
+          <DetailItem
+            shop={shop}
+            modalOpenHandler={() => history.push(`/salon/form/${id}`, { shop })}
+            subModalHandler={modalHandler}
+          />
+        </>
+      )}
     </>
   )
 }
