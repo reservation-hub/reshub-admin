@@ -52,7 +52,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   )
 
   return (
-    <main className='w-full bg-primary h-full m-0'>
+    <main className='w-full bg-primary min-h-screen m-0'>
       {location.state && (
         <Fade in={errorState} timeout={1300}>
           <div>test</div>

@@ -6,7 +6,7 @@ import CenterBox from '@/components/common/layout/CenterBox'
 
 function Home() {
   return (
-    <main className='w-full bg-primary h-full m-0'>
+    <main className='w-full bg-primary min-h-screen m-0'>
       <CenterBox>
         <LoginSelectHeader />
         <PageSelect />

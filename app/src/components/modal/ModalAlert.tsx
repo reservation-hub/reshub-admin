@@ -1,14 +1,18 @@
 import React from 'react'
 import CustomButton from '@components/common/atoms/CustomButton'
 import { IModalProps } from './_PropsType'
-import '@styles/modal.css'
+
+export interface IModalAlertProps extends IModalProps {
+  alertText?: string
+  buttonText?: string
+}
 
 const ModalAlert = ({
   alertText,
   modalCloseHandler,
   modalHandler,
   buttonText
-}: IModalProps) => {
+}: IModalAlertProps) => {
   return (
     <div className='w-[30rem] bg-secondary-main p-[3rem] text-center rounded-[.5rem]'>
       <span className='text-[1.6rem]'>{alertText}</span>
