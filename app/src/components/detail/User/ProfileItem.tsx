@@ -34,7 +34,9 @@ const ProfileItem = ({
         </div>
         <div className='flex'>
           <dt className={dt}>ユーザーネーム</dt>
-          <dd className={dd}>{user?.username ?? 'ユーザーネームを設定してくだい。'}</dd>
+          <dd className={dd}>
+            {user?.username ?? 'ユーザーネームを設定してくだい。'}
+          </dd>
         </div>
         <div className='flex'>
           <dt className={dt}>お名前</dt>
