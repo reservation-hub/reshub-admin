@@ -12,6 +12,7 @@ import InputFiled from '@components/common/atoms/InputFiled'
 import RadioButton from '@components/common/atoms/RadioButton'
 import ErrorMessage from '@components/common/atoms/ErrorMessage'
 import { GENDER_TYPE } from '@constants/Gender'
+import GroupSelector from './GroupSelector'
 
 export interface IUserFormProps extends IFormProps {
   validation?: Record<string, any>
@@ -150,35 +151,9 @@ const UserForm = ({
             onChange={changeHandlers.input}
           />
           <div className='w-full flex justify-between my-3'>
-            <DayPicker
-              id='year'
-              label='年'
-              name='birthdayY'
-              classes='w-[17.5rem]'
+            <GroupSelector
+              groupType='birthday'
               onChange={changeHandlers.input}
-              from={1900}
-              to={dayjs().year()}
-              value={formValue.birthdayY}
-            />
-            <DayPicker
-              id='month'
-              label='月'
-              name='birthdayM'
-              classes='w-[17.5rem]'
-              onChange={changeHandlers.input}
-              from={1}
-              to={12}
-              value={formValue.birthdayM}
-            />
-            <DayPicker
-              id='day'
-              label='日'
-              name='birthdayD'
-              classes='w-[17.5rem]'
-              onChange={changeHandlers.input}
-              from={1}
-              to={31}
-              value={formValue.birthdayD}
             />
           </div>
           <div className=''>

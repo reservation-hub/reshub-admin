@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import CustomButton from '@components/common/atoms/CustomButton'
-import FormStyle, { StyledInput } from './FormStyle'
-import TextField from '@material-ui/core/TextField'
 import TimePicker from '../common/atoms/TimePicker'
 import { useDispatch, useSelector } from 'react-redux'
 import { getArea, getOneCity, getOnePref } from '@store/actions/LocationAction'
@@ -12,6 +10,7 @@ import Selector from '@components/common/atoms/Selector'
 import { Days } from '@constants/Days'
 import { IFormProps, TSalonInput } from './_PropsType'
 import InputFiled from '../common/atoms/InputFiled'
+import GroupSelector from './GroupSelector'
 
 export interface ISalonFormProps extends IFormProps {
   formValue: TSalonInput
@@ -23,7 +22,6 @@ const SalonForm = ({
   formState,
   changeHandlers
 }: ISalonFormProps) => {
-  const classes = FormStyle()
   const dispatch = useDispatch()
   let disabled = false
 
@@ -107,35 +105,10 @@ const SalonForm = ({
             onChange={changeHandlers.input}
           />
           <div className='my-3 flex justify-between'>
-            <Selector
-              id='area'
-              name='areaId'
-              value={formValue.areaId}
+            <GroupSelector
+              groupType='location'
+              datas={data}
               onChange={changeHandlers.input}
-              data={data.areas}
-              label='エリア'
-              classes='w-[18rem]'
-              selectToId
-            />
-            <Selector
-              id='pref'
-              name='prefectureId'
-              value={formValue.prefectureId}
-              onChange={changeHandlers.input}
-              data={data.pref}
-              label='都道府県'
-              classes='w-[18rem]'
-              selectToId
-            />
-            <Selector
-              id='city'
-              name='cityId'
-              value={formValue.cityId}
-              onChange={changeHandlers.input}
-              data={data.city}
-              label='市区町村'
-              classes='w-[18rem]'
-              selectToId
             />
           </div>
           <div className='my-3'>
