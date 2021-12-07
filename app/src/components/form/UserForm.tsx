@@ -95,6 +95,8 @@ const UserForm = ({
               classes='w-[25.5rem]'
               value={formValue.firstNameKana}
               onChange={changeHandlers.input}
+              error={error.firstNameKana}
+              errorTxt={VALIDATION_TEXT.KANA_NAME}
             />
             <InputFiled
               label='メイ'
@@ -105,6 +107,8 @@ const UserForm = ({
               classes='w-[25.5rem]'
               value={formValue.lastNameKana}
               onChange={changeHandlers.input}
+              error={error.lastNameKana}
+              errorTxt={VALIDATION_TEXT.KANA_NAME}
             />
           </div>
           {!formState?.user && (
@@ -177,7 +181,7 @@ const UserForm = ({
               value={formValue.birthdayD}
             />
           </div>
-          <div className='input-box'>
+          <div className=''>
             <Selector
               id='role'
               name='role'
@@ -190,7 +194,10 @@ const UserForm = ({
           {error.duplicated && (
             <ErrorMessage text={VALIDATION_TEXT.DUPLICATED} />
           )}
-          <CustomButton classes='min-w-full min-h-[4.5rem]' disabled={disabled}>
+          <CustomButton
+            classes='min-w-full min-h-[4.5rem] mt-[2rem]'
+            disabled={disabled}
+          >
             登録
           </CustomButton>
         </form>

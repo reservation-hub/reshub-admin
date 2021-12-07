@@ -11,6 +11,7 @@ import CheckBox from '@components/common/atoms/CheckBox'
 import Selector from '@components/common/atoms/Selector'
 import { Days } from '@constants/Days'
 import { IFormProps, TSalonInput } from './_PropsType'
+import InputFiled from '../common/atoms/InputFiled'
 
 export interface ISalonFormProps extends IFormProps {
   formValue: TSalonInput
@@ -63,46 +64,49 @@ const SalonForm = ({
 
   return (
     <div className='p-[2rem] bg-secondary-main w-[60rem] mx-auto'>
-      <Header title={formState?.shop?.id ? 'サロン編集' : 'サロン新規登録'} />
-      <div className='mt-[2rem]'>
+      <Header
+        title={
+          formState?.shop?.id
+            ? `${formState?.shop?.name}編集`
+            : 'サロン新規登録'
+        }
+      />
+      <div className='mt-4'>
         <form onSubmit={submitHandler}>
-          <div className='mb-[2rem]'>
-            <StyledInput
-              label='サロン名'
-              autoComplete='off'
-              placeholder='サロン名を入力してください。'
-              fullWidth
-              variant='outlined'
-              name='name'
-              value={formValue.name}
-              onChange={changeHandlers.input}
-            />
+          <div className='my-3'>
+            <CustomButton>画像登録になる</CustomButton>
           </div>
-          <div className='mb-[2rem]'>
-            <StyledInput
-              label='電話番号'
-              autoComplete='off'
-              placeholder='電話番号を入力してください。'
-              fullWidth
-              variant='outlined'
-              name='phoneNumber'
-              value={formValue.phoneNumber}
-              onChange={changeHandlers.input}
-            />
-          </div>
-          <div className='mb-[2rem]'>
-            <StyledInput
-              label='住所'
-              autoComplete='off'
-              placeholder='住所を入力してください。'
-              fullWidth
-              variant='outlined'
-              name='address'
-              value={formValue.address}
-              onChange={changeHandlers.input}
-            />
-          </div>
-          <div className='mb-[2rem] flex justify-between'>
+          <InputFiled
+            id='salon'
+            label='サロン名'
+            autoComplete='off'
+            placeholder='サロン名を入力してください。'
+            name='name'
+            classes='my-3'
+            value={formValue.name}
+            onChange={changeHandlers.input}
+          />
+          <InputFiled
+            id='tel'
+            label='電話番号'
+            autoComplete='off'
+            placeholder='電話番号を入力してください。'
+            name='phoneNumber'
+            classes='my-3'
+            value={formValue.phoneNumber}
+            onChange={changeHandlers.input}
+          />
+          <InputFiled
+            id='address'
+            label='住所'
+            autoComplete='off'
+            placeholder='住所を入力してください。'
+            name='address'
+            classes='my-3'
+            value={formValue.address}
+            onChange={changeHandlers.input}
+          />
+          <div className='my-3 flex justify-between'>
             <Selector
               id='area'
               name='areaId'
@@ -110,6 +114,8 @@ const SalonForm = ({
               onChange={changeHandlers.input}
               data={data.areas}
               label='エリア'
+              classes='w-[18rem]'
+              selectToId
             />
             <Selector
               id='pref'
@@ -118,6 +124,8 @@ const SalonForm = ({
               onChange={changeHandlers.input}
               data={data.pref}
               label='都道府県'
+              classes='w-[18rem]'
+              selectToId
             />
             <Selector
               id='city'
@@ -126,62 +134,52 @@ const SalonForm = ({
               onChange={changeHandlers.input}
               data={data.city}
               label='市区町村'
+              classes='w-[18rem]'
+              selectToId
             />
           </div>
-          <div className='mb-[2rem]'>
-            <div className='label'>
-              <span className='font-16'>営業日</span>
-            </div>
+          <div className='my-3'>
+            <span className='text-table-headerFont text-[1.6rem]'>営業日</span>
             <CheckBox
               onChange={changeHandlers.check}
               data={Days}
               checkedData={formValue.days}
             />
           </div>
-          <div className='mb-[2rem]'>
-            <div className='label'>
-              <span className='font-16'>営業時間</span>
-            </div>
+          <div className='my-3'>
+            <span className='text-table-headerFont text-[1.6rem]'>
+              営業時間
+            </span>
             <div className='flex justify-between items-center'>
               <TimePicker
                 hh={Number(formValue.startTime.hour)}
                 mm={Number(formValue.startTime.minute)}
                 onChange={changeHandlers.startAt}
-                classes='w-13 font-16 h-4'
               />
               <span> - </span>
               <TimePicker
                 hh={Number(formValue.endTime.hour)}
                 mm={Number(formValue.endTime.minute)}
                 onChange={changeHandlers.endAt}
-                classes='w-13 font-16 h-4'
               />
             </div>
           </div>
-          <div className='mb-[2rem]'>
-            <CustomButton>画像登録になる</CustomButton>
-          </div>
-          <div className='mb-[2rem]'>
-            <TextField
-              label='詳細'
-              autoComplete='off'
-              fullWidth
-              multiline
-              rows={4}
-              variant='outlined'
+          <div className='my-3'>
+            <label
+              htmlFor='details'
+              className='text-table-headerFont text-[1.6rem]'
+            >
+              詳細
+            </label>
+            <textarea
               name='details'
-              value={formValue.details}
+              autoComplete='off'
+              id='details'
+              className='w-full p-3 h-[10rem] border resize-none'
               onChange={changeHandlers.input}
             />
           </div>
-          <CustomButton
-            disabled={disabled}
-            classes={
-              disabled
-                ? 'w-[56rem] h-[4.5rem] mt-[.5rem]'
-                : 'w-[56rem] h-[4.5rem] mt-[.5rem]'
-            }
-          >
+          <CustomButton disabled={disabled} classes='min-w-full'>
             登録
           </CustomButton>
         </form>

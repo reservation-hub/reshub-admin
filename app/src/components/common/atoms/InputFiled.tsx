@@ -37,7 +37,6 @@ const InputFiled = ({
 }: IInputFiledProps) => {
   const input =
     'w-full text-[1.6rem] p-3 border rounded-[.25rem] focus:border-2 focus:border-primary'
-  console.log(error)
   return (
     <div className={fullWidth ? `${classes} w-full` : classes}>
       <div className='text-[1.6rem]'>

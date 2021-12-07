@@ -1,7 +1,5 @@
 import React from 'react'
 import { useRange } from '@utils/hooks/useRange'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
 import { IPickerProps } from '../_PropsType'
 
 export interface ITimePickerProps extends IPickerProps {
@@ -12,33 +10,33 @@ export interface ITimePickerProps extends IPickerProps {
 const TimePicker = ({ hh, mm, onChange, classes }: ITimePickerProps) => {
   return (
     <>
-      <Select
-        value={hh}
+      <select
         name='hour'
+        id='hour'
+        className={`${classes} w-full p-3 rounded-[.25rem] border`}
+        value={hh}
         onChange={onChange}
-        className={classes}
-        variant='outlined'
       >
         {useRange(0, 23).map((hour, index) => (
-          <MenuItem key={index} value={hour}>
+          <option key={index} value={hour}>
             {String(hour).padStart(2, '0')}
-          </MenuItem>
+          </option>
         ))}
-      </Select>
+      </select>
       <span>:</span>
-      <Select
+      <select
+        name='hour'
+        id='minute'
+        className={`${classes} w-full p-3 rounded-[.25rem] border`}
         value={mm}
-        name='minute'
         onChange={onChange}
-        className={classes}
-        variant='outlined'
       >
         {useRange(0, 50, 10).map((minute, index) => (
-          <MenuItem key={index} value={minute}>
+          <option key={index} value={minute}>
             {String(minute).padStart(2, '0')}
-          </MenuItem>
+          </option>
         ))}
-      </Select>
+      </select>
     </>
   )
 }

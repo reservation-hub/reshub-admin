@@ -13,8 +13,8 @@ const classes = makeStyles(() => ({
 
 const Loading = () => {
   return (
-    <div className={classes().root}>
-      <CircularProgress />
+    <div className='absolute top-2/4 left-2/4 h-full'>
+      <span>test</span>
     </div>
   )
 }
