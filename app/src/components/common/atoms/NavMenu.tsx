@@ -9,7 +9,7 @@ export interface INavMenuProps {
 
 const NavMenu = ({ role }: INavMenuProps) => {
   const [open, setOpen] = useState<boolean>(false)
-  const active = STAFF_NAV_MENU.find(v => v.subItem)?.path
+  const active = STAFF_NAV_MENU.find((v) => v.subItem)?.path
   return (
     <div className='grid mt-[3rem]'>
       {role
@@ -30,34 +30,29 @@ const NavMenu = ({ role }: INavMenuProps) => {
           ))
         : STAFF_NAV_MENU.map((value, index) => (
             <React.Fragment key={index}>
-              {value.subItem ? 
-                (
-                  <>
-                    <div className={open ? 'p-[1rem] open' : 'p-[1rem]'} onClick={() => (setOpen(!open))}>
-                      <span className='text-[2.4rem]'>
-                        {value.value}
-                      </span>
-                    </div>
-                  </>
-                ) : (
-                  <NavLink
-                    to={{
-                      pathname: value.path,
-                      state: { currentPage: 1 }
-                    }}
-                    className='p-[1rem]'
-                    activeClassName='bg-secondary-main text-primary'
+              {value.subItem ? (
+                <>
+                  <div
+                    className={open ? 'p-[1rem] open' : 'p-[1rem]'}
+                    onClick={() => setOpen(!open)}
                   >
-                    <span 
-                      className='text-[2.4rem]'
-                    >
-                        {value.value}
-                    </span>
-                  </NavLink>
-                )
-              }
-              
-              {open && 
+                    <span className='text-[2.4rem]'>{value.value}</span>
+                  </div>
+                </>
+              ) : (
+                <NavLink
+                  to={{
+                    pathname: value.path,
+                    state: { currentPage: 1 }
+                  }}
+                  className='p-[1rem]'
+                  activeClassName='bg-secondary-main text-primary'
+                >
+                  <span className='text-[2.4rem]'>{value.value}</span>
+                </NavLink>
+              )}
+
+              {open &&
                 value.subItem?.map((sub, index) => (
                   <NavLink
                     key={index}
@@ -70,8 +65,7 @@ const NavMenu = ({ role }: INavMenuProps) => {
                   >
                     {sub.value}
                   </NavLink>
-                ))
-              }
+                ))}
               <hr className='w-full' />
             </React.Fragment>
           ))}

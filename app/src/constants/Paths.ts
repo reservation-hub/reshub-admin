@@ -62,14 +62,15 @@ export const ADMIN_NAV_MENU: TNavMenu[] = [
 
 export const STAFF_NAV_MENU: TNavMenu[] = [
   { path: '/salon_dashboard', value: 'ダッシュボード' },
-  { path: '/staff_shop', 
-    value: '店舗管理', 
+  {
+    path: '/staff_shop',
+    value: '店舗管理',
     subItem: [
       { path: '/staff_shop', value: '店舗情報' },
       { path: '/stylist', value: 'スタイリスト管理' },
       { path: '/menus', value: 'メニュー管理' },
-      { path: '/reservation', value: '予約管理' },
-    ] 
+      { path: '/reservation', value: '予約管理' }
+    ]
   },
-  { path: '/settings', value: '設定' },
+  { path: '/settings', value: '設定' }
 ]
