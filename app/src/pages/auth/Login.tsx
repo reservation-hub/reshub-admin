@@ -8,6 +8,7 @@ import LoginSelectHeader from '@components/common/choose/LoginSelectHeader'
 import LoginSelectFooter from '@components/common/choose/LoginSelectFooter'
 import CenterBox from '@components/common/layout/CenterBox'
 import { RootState } from '@/store/store'
+import SubTemplate from '@/components/common/layout/SubTemplate'
 
 interface LocationState {
   failed?: string
@@ -41,7 +42,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   )
 
   return (
-    <main className='w-full bg-primary min-h-screen m-0'>
+    <SubTemplate>
       <CenterBox>
         <LoginSelectHeader />
         <LoginForm
@@ -53,7 +54,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
         />
         <LoginSelectFooter />
       </CenterBox>
-    </main>
+    </SubTemplate>
   )
 }
 

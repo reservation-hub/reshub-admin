@@ -6,6 +6,7 @@ import Home from '@/pages/choose/Home'
 import SalonDashboard from '@pages/dashboards/salon/SalonDashboard'
 import Login from '@pages/auth/Login'
 import Error from '@pages/error/Error'
+import NotLoggedIn from '@/pages/auth/NotloggedIn'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -32,6 +33,7 @@ export const PUBLIC_PATHS: TRouter[] = [
 
 export const COMMON_PATHS: TRouter[] = [
   { path: '/auth', exact: true, component: Login },
+  { path: '/auth_error', exact: false, component: NotLoggedIn },
   { path: '*', exact: false, component: Error }
 ]
 

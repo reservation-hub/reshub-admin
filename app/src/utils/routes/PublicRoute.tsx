@@ -30,7 +30,7 @@ const PublicRoute = ({ children, ...rest }: any) => {
       ) : (
         <Redirect
           to={{
-            pathname: '/auth',
+            pathname: '/auth_error',
             state: { failed: VALIDATION_TEXT.AUTHENTICATED_ERROR }
           }}
         />
