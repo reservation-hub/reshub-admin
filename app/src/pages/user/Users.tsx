@@ -12,6 +12,7 @@ import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
 import Form from '@pages/user/Form'
 import { TCurrentPage } from '@components/list/_PropsType'
+import Section from '@/components/common/layout/Section'
 
 const Users = ({
   match,
@@ -43,7 +44,7 @@ const Users = ({
           {loading ? (
             <Loading />
           ) : (
-            <>
+            <Section>
               <UserList
                 users={users.values}
                 order={setCorrect}
@@ -55,7 +56,7 @@ const Users = ({
                 page={currentPage}
                 pageChangeHandler={pageChangeHandler}
               />
-            </>
+            </Section>
           )}
         </Route>
         <Route path='/users/form' component={Form} />

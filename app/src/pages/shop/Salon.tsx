@@ -12,6 +12,7 @@ import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
 import Form from '@pages/shop/Form'
 import { TCurrentPage } from '@components/list/_PropsType'
+import Section from '@/components/common/layout/Section'
 
 const Salon = ({
   match,
@@ -43,7 +44,7 @@ const Salon = ({
           {loading ? (
             <Loading />
           ) : (
-            <>
+            <Section>
               <SalonList
                 shops={shops.values}
                 order={setCorrect}
@@ -55,7 +56,7 @@ const Salon = ({
                 page={currentPage}
                 pageChangeHandler={pageChangeHandler}
               />
-            </>
+            </Section>
           )}
         </Route>
         <Route path='/salon/form' component={Form} />

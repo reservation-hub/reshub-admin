@@ -10,13 +10,15 @@ export interface IGroupSelector extends IPickerProps {
   selectToId?: boolean
   groupType?: 'birthday' | 'location'
   datas?: { areas: Area[]; pref: Prefecture[]; city: City[]; days: TDays[] }
+  values?: string[]
 }
 
 const GroupSelector = ({
   value,
   onChange,
   groupType,
-  datas
+  datas,
+  values
 }: IGroupSelector) => {
   if (groupType === 'birthday') {
     return (

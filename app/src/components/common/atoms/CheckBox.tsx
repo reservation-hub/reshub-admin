@@ -7,7 +7,7 @@ export interface ICheckBoxProps extends IPickerProps {
 
 const CheckBox = ({ onChange, data, checkedData }: ICheckBoxProps) => {
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between text-[1.6rem]'>
       {data?.map((value, index) => (
         <div key={index} className='w-[7rem] h-[4.4rem]'>
           <input
@@ -18,7 +18,7 @@ const CheckBox = ({ onChange, data, checkedData }: ICheckBoxProps) => {
             name={value.name}
             onChange={onChange}
           />
-          <label htmlFor={`check-${value.id}`} className='labels text-[1.6rem]'>
+          <label htmlFor={`check-${value.id}`} className='labels'>
             {value.name}
           </label>
         </div>

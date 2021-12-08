@@ -22,7 +22,7 @@ const MainTemplate = ({ children }: IMainTemplateProps) => {
       <aside className='bg-primary text-secondary-main'>
         <NavBar />
       </aside>
-      <main className='w-[80%] absolute h-full right-[1.5rem]'>{children}</main>
+      <main className='container absolute h-full'>{children}</main>
     </>
   )
 }
