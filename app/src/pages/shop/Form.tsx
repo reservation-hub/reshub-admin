@@ -15,6 +15,7 @@ import {
   updateShopQuery
 } from '@utils/api/request-response-types/ShopService'
 import { addShop, editShopData } from '@store/actions/shopAction'
+import Section from '@/components/common/layout/Section'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -104,7 +105,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   )
 
   return (
-    <>
+    <Section>
       <Route exact path='/'>
         <SalonForm
           submitHandler={onSubmit}
@@ -121,7 +122,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           changeHandlers={changeHandlers}
         />
       </Route>
-    </>
+    </Section>
   )
 }
 

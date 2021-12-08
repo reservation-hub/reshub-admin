@@ -21,7 +21,7 @@ const DayPicker = ({
   const select =
     'p-[1rem] m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none'
   return (
-    <div className={`${classes} grid`}>
+    <div className={`${classes} grid text-[1.6rem]`}>
       {label && (
         <label htmlFor={id} className='text-table-headerFont'>
           {label}

@@ -15,6 +15,7 @@ import {
 } from '@utils/api/request-response-types/UserService'
 import dayjs from 'dayjs'
 import { addUser, patchUser } from '@store/actions/userAction'
+import Section from '@/components/common/layout/Section'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -119,7 +120,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   )
 
   return (
-    <>
+    <Section>
       <Route exact path='/'>
         <UserForm
           formState={location.state}
@@ -138,7 +139,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           error={error}
         />
       </Route>
-    </>
+    </Section>
   )
 }
 

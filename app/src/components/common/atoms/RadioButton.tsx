@@ -14,7 +14,7 @@ const RadioButton = ({
   onChange
 }: IRadioButtonProps) => {
   return (
-    <div className={classes}>
+    <div className={`${classes} text-[1.6rem]`}>
       <span className='text-[1.6rem] text-table-headerFont'>{label}</span>
       <div className='flex justify-between'>
         {Object.values(data).map((d, index) => (

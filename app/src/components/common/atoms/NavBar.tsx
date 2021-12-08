@@ -1,41 +1,26 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store/store'
 import { AiOutlineGithub } from 'react-icons/ai'
-import { NAV_MENU } from '@constants/Paths'
+import NavMenu from './NavMenu'
 
 const NavBar = () => {
   const { user } = useSelector((state: RootState) => state.auth)
+  const roleCheck = user.role.name === 'admin'
 
   return (
     <>
       <div className='mt-[3rem] mb-[1rem] text-[2.4rem]'>
-        <Link to={`/users/${user.id}`}>
+        <Link to={roleCheck ? `/users/${user.id}` : '/settings'}>
           <div className='text-center'>
             <FaRegUserCircle className='w-[5rem] h-[5rem] mx-auto' />
             <p className='m-0'>{user.username || 'Admin'}</p>
           </div>
         </Link>
       </div>
-      <div className='grid mt-[3rem]'>
-        {NAV_MENU.map((value, index) => (
-          <React.Fragment key={index}>
-            <NavLink
-              to={{
-                pathname: value.path,
-                state: { currentPage: 1 }
-              }}
-              className='p-[1rem]'
-              activeClassName='bg-secondary-main text-primary'
-            >
-              <span className='text-[2.4rem]'>{value.value}</span>
-            </NavLink>
-            <hr className='w-full' />
-          </React.Fragment>
-        ))}
-      </div>
+      <NavMenu role={roleCheck} />
       <footer className='flex items-center absolute bottom-[6rem] p-2'>
         <span>Copyright 2021Reshub</span>
         <span>

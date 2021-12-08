@@ -4,6 +4,7 @@ import SubHeader from '@/components/common/atoms/SubHeader'
 import useBirthday from '@utils/hooks/useBirthday'
 import { IDetailProps } from '@components/detail/_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
+import Section from '@/components/common/layout/Section'
 
 const ProfileItem = ({
   user,
@@ -17,7 +18,7 @@ const ProfileItem = ({
     'flex-1 text-[1.6rem] m-0 inline-block p-[2rem] border-b-0 border-primary border'
 
   return (
-    <>
+    <Section>
       <SubHeader
         title='ユーザー詳細'
         type={HEADER_TYPE.DETAIL}
@@ -63,7 +64,7 @@ const ProfileItem = ({
           <dd className={dd}>{user?.role?.name}</dd>
         </div>
       </div>
-    </>
+    </Section>
   )
 }
 

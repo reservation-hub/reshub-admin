@@ -7,6 +7,7 @@ import CustomButton from '@components/common/atoms/CustomButton'
 import TableLayout from '@/components/common/atoms/TableLayout'
 import { STYLELIST_CELL } from '@/constants/Table'
 import history from '@/utils/routes/history'
+import Section from '@/components/common/layout/Section'
 
 const DetailItem = ({
   shop,
@@ -26,7 +27,7 @@ const DetailItem = ({
   ]
 
   return (
-    <>
+    <Section>
       <SubHeader
         title={`${shop?.name}の詳細`}
         type={HEADER_TYPE.DETAIL}
@@ -48,7 +49,7 @@ const DetailItem = ({
           </TableLayout>
         </div>
       </div>
-    </>
+    </Section>
   )
 }
 

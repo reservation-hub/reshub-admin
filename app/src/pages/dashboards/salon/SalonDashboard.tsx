@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchDashboard } from '@store/actions/dashboardAction'
 import { RootState } from '@store/store'
-import { User } from '@entities/User'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import AdminDashboard from '@components/dashboards/AdminDashboard'
 import ShopDashboard from '@components/dashboards/salon/Shopdashboard'
@@ -18,17 +17,17 @@ const SalonDashboard = () => {
     shallowEqual
   )
   const dispatch = useDispatch()
-  const authCheck = (user: User) => user.role.name === 'admin'
+  const authCheck = user.role.name === 'admin'
 
   useEffect(() => {
-    if (authCheck(user)) dispatch(fetchDashboard())
+    if (authCheck) dispatch(fetchDashboard())
   }, [dispatch, user])
 
   return (
     <MainTemplate>
       {loading ? (
         <Loading />
-      ) : authCheck(user) ? (
+      ) : authCheck ? (
         <AdminDashboard data={data} />
       ) : (
         <ShopDashboard />
