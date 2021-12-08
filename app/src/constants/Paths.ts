@@ -21,6 +21,11 @@ export type TRouter = {
     | undefined
 }
 
+export type TNavMenu = {
+  path: string
+  value: string
+}
+
 export const PRIVATE_PATHS: TRouter[] = [
   { path: '/salon', exact: false, component: Salon },
   { path: '/users', exact: false, component: Users }
@@ -37,8 +42,15 @@ export const COMMON_PATHS: TRouter[] = [
   { path: '*', exact: false, component: Error }
 ]
 
-export const NAV_MENU: { path: string; value: string }[] = [
+export const ADMIN_NAV_MENU: TNavMenu[] = [
   { path: '/salon_dashboard', value: 'ダッシュボード' },
   { path: '/users', value: 'ユーザー一覧' },
   { path: '/salon', value: 'サロン一覧' }
+]
+
+export const STAFF_NAV_MENU: TNavMenu[] = [
+  { path: '/salon_dashboard', value: 'ダッシュボード' },
+  { path: '/staff_shop', value: '店舗管理' },
+  { path: '/stylist', value: 'スタイリスト一覧' },
+  { path: '/reservation', value: '予約管理' }
 ]
