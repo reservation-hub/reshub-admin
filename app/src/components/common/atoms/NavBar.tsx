@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store/store'
@@ -13,7 +13,7 @@ const NavBar = () => {
   return (
     <>
       <div className='mt-[3rem] mb-[1rem] text-[2.4rem]'>
-        <Link to={`/users/${user.id}`}>
+        <Link to={roleCheck ? `/users/${user.id}` : '/settings'}>
           <div className='text-center'>
             <FaRegUserCircle className='w-[5rem] h-[5rem] mx-auto' />
             <p className='m-0'>{user.username || 'Admin'}</p>

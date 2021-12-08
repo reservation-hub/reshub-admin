@@ -7,6 +7,9 @@ import SalonDashboard from '@pages/dashboards/salon/SalonDashboard'
 import Login from '@pages/auth/Login'
 import Error from '@pages/error/Error'
 import NotLoggedIn from '@/pages/auth/NotloggedIn'
+import StaffSalon from '@/pages/staff/shop/StaffSalon'
+import Stylist from '@/pages/staff/stylist/Stylist'
+import Reservation from '@/pages/staff/reservation/Reservation'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -23,6 +26,12 @@ export type TRouter = {
 
 export type TNavMenu = {
   path: string
+  subItem?: TSubItems[]
+  value: string
+}
+
+export type TSubItems = {
+  path: string
   value: string
 }
 
@@ -33,7 +42,10 @@ export const PRIVATE_PATHS: TRouter[] = [
 
 export const PUBLIC_PATHS: TRouter[] = [
   { path: '/', exact: true, component: Home },
-  { path: '/salon_dashboard', exact: false, component: SalonDashboard }
+  { path: '/salon_dashboard', exact: false, component: SalonDashboard },
+  { path: '/staff_shop', exact: false, component: StaffSalon },
+  { path: '/stylist', exact: false, component: Stylist },
+  { path: '/reservation', exact: false, component: Reservation }
 ]
 
 export const COMMON_PATHS: TRouter[] = [
@@ -50,7 +62,14 @@ export const ADMIN_NAV_MENU: TNavMenu[] = [
 
 export const STAFF_NAV_MENU: TNavMenu[] = [
   { path: '/salon_dashboard', value: 'ダッシュボード' },
-  { path: '/staff_shop', value: '店舗管理' },
-  { path: '/stylist', value: 'スタイリスト一覧' },
-  { path: '/reservation', value: '予約管理' }
+  { path: '/staff_shop', 
+    value: '店舗管理', 
+    subItem: [
+      { path: '/staff_shop', value: '店舗情報' },
+      { path: '/stylist', value: 'スタイリスト管理' },
+      { path: '/menus', value: 'メニュー管理' },
+      { path: '/reservation', value: '予約管理' },
+    ] 
+  },
+  { path: '/settings', value: '設定' },
 ]
