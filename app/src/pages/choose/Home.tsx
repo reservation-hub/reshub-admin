@@ -3,16 +3,17 @@ import LoginSelectHeader from '@/components/common/choose/LoginSelectHeader'
 import PageSelect from '@/components/choose/PageSelect'
 import LoginSelectFooter from '@/components/common/choose/LoginSelectFooter'
 import CenterBox from '@/components/common/layout/CenterBox'
+import SubTemplate from '@/components/common/layout/SubTemplate'
 
 function Home() {
   return (
-    <main className='w-full bg-primary min-h-screen m-0'>
+    <SubTemplate>
       <CenterBox>
         <LoginSelectHeader />
         <PageSelect />
         <LoginSelectFooter />
       </CenterBox>
-    </main>
+    </SubTemplate>
   )
 }
 

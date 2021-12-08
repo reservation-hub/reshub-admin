@@ -1,23 +1,20 @@
-import React, { FormEvent, useCallback, useState } from 'react'
+import React, { FormEvent, useCallback } from 'react'
 import { googleLogin, loginStart } from '@store/actions/authAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
-import { AiOutlineClose } from 'react-icons/ai'
-import history from '@utils/routes/history'
 import useInput from '@utils/hooks/useInput'
 import LoginForm from '@components/auth/LoginForm'
 import LoginSelectHeader from '@components/common/choose/LoginSelectHeader'
 import LoginSelectFooter from '@components/common/choose/LoginSelectFooter'
-import Fade from '@material-ui/core/Fade'
 import CenterBox from '@components/common/layout/CenterBox'
 import { RootState } from '@/store/store'
+import SubTemplate from '@/components/common/layout/SubTemplate'
 
 interface LocationState {
   failed?: string
 }
 
 const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
-  const [errorState, setErrorState] = useState<boolean>(true)
   const { input, ChangeHandler } = useInput({ email: '', password: '' })
   const { err } = useSelector((state: RootState) => state.auth)
 
@@ -28,13 +25,6 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   }
 
   const dispatch = useDispatch()
-
-  const clearError = (): void => {
-    setErrorState(false)
-    setTimeout(() => {
-      history.replace('/auth')
-    }, 1300)
-  }
 
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
@@ -52,22 +42,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
   )
 
   return (
-    <main className='w-full bg-primary min-h-screen m-0'>
-      {location.state && (
-        <Fade in={errorState} timeout={1300}>
-          <div>test</div>
-          {/* <StyledAlert
-            severity='error'
-            action={
-              <span onClick={() => clearError()}>
-                <AiOutlineClose />
-              </span>
-            }
-          >
-            <strong>{location.state?.failed}</strong>
-          </StyledAlert> */}
-        </Fade>
-      )}
+    <SubTemplate>
       <CenterBox>
         <LoginSelectHeader />
         <LoginForm
@@ -79,7 +54,7 @@ const Login = ({ location }: RouteComponentProps<any, any, LocationState>) => {
         />
         <LoginSelectFooter />
       </CenterBox>
-    </main>
+    </SubTemplate>
   )
 }
 
