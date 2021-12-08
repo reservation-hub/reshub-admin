@@ -6,42 +6,40 @@ export interface INavMenuProps {
   role?: boolean
 }
 
-const NavMenu = ({role}: INavMenuProps) => {
+const NavMenu = ({ role }: INavMenuProps) => {
   return (
     <div className='grid mt-[3rem]'>
-      {role ? (
-        ADMIN_NAV_MENU.map((value, index) => (
-          <React.Fragment key={index}>
-            <NavLink
-              to={{
-                pathname: value.path,
-                state: { currentPage: 1 }
-              }}
-              className='p-[1rem]'
-              activeClassName='bg-secondary-main text-primary'
-            >
-              <span className='text-[2.4rem]'>{value.value}</span>
-            </NavLink>
-            <hr className='w-full' />
-          </React.Fragment>
-        ))
-      ): (
-        STAFF_NAV_MENU.map((value, index) => (
-          <React.Fragment key={index}>
-            <NavLink
-              to={{
-                pathname: value.path,
-                state: { currentPage: 1 }
-              }}
-              className='p-[1rem]'
-              activeClassName='bg-secondary-main text-primary'
-            >
-              <span className='text-[2.4rem]'>{value.value}</span>
-            </NavLink>
-            <hr className='w-full' />
-          </React.Fragment>
-        ))
-      )}
+      {role
+        ? ADMIN_NAV_MENU.map((value, index) => (
+            <React.Fragment key={index}>
+              <NavLink
+                to={{
+                  pathname: value.path,
+                  state: { currentPage: 1 }
+                }}
+                className='p-[1rem]'
+                activeClassName='bg-secondary-main text-primary'
+              >
+                <span className='text-[2.4rem]'>{value.value}</span>
+              </NavLink>
+              <hr className='w-full' />
+            </React.Fragment>
+          ))
+        : STAFF_NAV_MENU.map((value, index) => (
+            <React.Fragment key={index}>
+              <NavLink
+                to={{
+                  pathname: value.path,
+                  state: { currentPage: 1 }
+                }}
+                className='p-[1rem]'
+                activeClassName='bg-secondary-main text-primary'
+              >
+                <span className='text-[2.4rem]'>{value.value}</span>
+              </NavLink>
+              <hr className='w-full' />
+            </React.Fragment>
+          ))}
     </div>
   )
 }
