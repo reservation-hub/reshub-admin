@@ -24,7 +24,8 @@ const SalonDashboard = () => {
     dispatch(fetchDashboard())
   }, [dispatch])
 
-  if (!authCheck && data.shops?.length === 0) return <Redirect to='/create_shop' />
+  if (!authCheck && data.shops?.length === 0)
+    return <Redirect to='/create_shop' />
 
   return (
     <MainTemplate>

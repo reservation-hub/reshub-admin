@@ -18,7 +18,7 @@ const CreateShop = () => {
   const endAt = useTimePicker('')
   const { checked, changeHandler } = useCheckBox([])
 
-  const {input, ChangeHandler} = useInput({
+  const { input, ChangeHandler } = useInput({
     name: '',
     address: '',
     phoneNumber: '',
@@ -76,15 +76,16 @@ const CreateShop = () => {
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       dispatch(addShop(shopData))
-    }, [dispatch, shopData],
+    },
+    [dispatch, shopData]
   )
 
   console.log(pageType)
-  
+
   return (
     <SubTemplate>
       <CenterBox classes='w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'>
-        <SalonForm 
+        <SalonForm
           submitHandler={onSubmit}
           formValue={form}
           changeHandlers={changeHandlers}
