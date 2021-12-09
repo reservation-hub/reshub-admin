@@ -21,5 +21,6 @@ export const SALON_CELL: Record<string, any> = {
 export const STYLELIST_CELL: Record<string, any> = {
   No: 'No',
   name: 'スタイリスト名',
+  price: '指名料',
   reservationCount: '予約件数'
 }
