@@ -72,7 +72,8 @@ const CreateShop = () => {
     [dispatch, shopData]
   )
 
-  const centerBarStyled = 'w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'
+  const centerBarStyled =
+    'w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'
 
   return (
     <SubTemplate>
