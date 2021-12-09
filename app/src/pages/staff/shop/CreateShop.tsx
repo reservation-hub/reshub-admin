@@ -12,7 +12,6 @@ import React, { useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 
 const CreateShop = () => {
-  let pageType = 'test'
   const dispatch = useDispatch()
   const startAt = useTimePicker('')
   const endAt = useTimePicker('')
@@ -65,13 +64,6 @@ const CreateShop = () => {
     }
   }, [form, startAt.HHmm, endAt.HHmm, checked])
 
-  const change = () => {
-    if (pageType === 'test') {
-      pageType = 'test2'
-      console.log(pageType)
-    }
-  }
-
   const onSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -80,11 +72,11 @@ const CreateShop = () => {
     [dispatch, shopData]
   )
 
-  console.log(pageType)
+  const centerBarStyled = 'w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'
 
   return (
     <SubTemplate>
-      <CenterBox classes='w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'>
+      <CenterBox classes={centerBarStyled}>
         <SalonForm
           submitHandler={onSubmit}
           formValue={form}
