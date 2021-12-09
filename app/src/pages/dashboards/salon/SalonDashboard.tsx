@@ -6,7 +6,7 @@ import MainTemplate from '@components/common/layout/MainTemplate'
 import AdminDashboard from '@components/dashboards/AdminDashboard'
 import ShopDashboard from '@components/dashboards/salon/Shopdashboard'
 import Loading from '@components/common/atoms/loading'
-import history from '@/utils/routes/history'
+import { Redirect } from 'react-router'
 
 const SalonDashboard = () => {
   const { user, data, loading } = useSelector(
@@ -24,7 +24,7 @@ const SalonDashboard = () => {
     dispatch(fetchDashboard())
   }, [dispatch])
 
-  if (data.shops.length === 0) history.push('/create_shop')
+  if (!authCheck && data.shops?.length === 0) return <Redirect to='/create_shop' />
 
   return (
     <MainTemplate>
