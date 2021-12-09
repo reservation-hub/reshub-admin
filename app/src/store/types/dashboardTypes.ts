@@ -1,16 +1,10 @@
-import { User } from '@entities/User'
-import { TShopList } from '@Model/ShopResponse'
+import { salonIndexAdminResponse, salonIndexShopStaffResponse } from '@/utils/api/request-response-types/Dashboard'
 
 export const DASHBOARD_REQUEST_START = 'DASHBOARD_REQUEST_START' as const
 
 export const DASHBOARD_REQUEST_SUCCESS = 'DASHBOARD_REQUEST_SUCCESS' as const
 
-export type DashBoardResponseType = {
-  user: { users: User[]; totalCount: number }
-  shop: { shopData: TShopList[]; totalCount: number }
-}
-
 export type DashBoardState = {
   loading: boolean
-  data: DashBoardResponseType
+  data: salonIndexShopStaffResponse & salonIndexAdminResponse
 }

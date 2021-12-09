@@ -10,6 +10,7 @@ import NotLoggedIn from '@/pages/auth/NotloggedIn'
 import StaffSalon from '@/pages/staff/shop/StaffSalon'
 import Stylist from '@/pages/staff/stylist/Stylist'
 import Reservation from '@/pages/staff/reservation/Reservation'
+import CreateShop from '@/pages/staff/shop/CreateShop'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -45,7 +46,8 @@ export const PUBLIC_PATHS: TRouter[] = [
   { path: '/salon_dashboard', exact: false, component: SalonDashboard },
   { path: '/staff_shop', exact: false, component: StaffSalon },
   { path: '/stylist', exact: false, component: Stylist },
-  { path: '/reservation', exact: false, component: Reservation }
+  { path: '/reservation', exact: false, component: Reservation },
+  { path: '/create_shop', exact: false, component: CreateShop }
 ]
 
 export const COMMON_PATHS: TRouter[] = [

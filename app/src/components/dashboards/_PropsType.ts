@@ -1,5 +1,5 @@
-import { DashBoardResponseType } from '@store/types/dashboardTypes'
+import { salonIndexAdminResponse, salonIndexShopStaffResponse } from "@/utils/api/request-response-types/Dashboard";
 
 export type AdminDashboardProps = {
-  data: DashBoardResponseType
+  data: salonIndexAdminResponse & salonIndexShopStaffResponse
 }

@@ -6,6 +6,7 @@ import MainTemplate from '@components/common/layout/MainTemplate'
 import AdminDashboard from '@components/dashboards/AdminDashboard'
 import ShopDashboard from '@components/dashboards/salon/Shopdashboard'
 import Loading from '@components/common/atoms/loading'
+import history from '@/utils/routes/history'
 
 const SalonDashboard = () => {
   const { user, data, loading } = useSelector(
@@ -20,8 +21,10 @@ const SalonDashboard = () => {
   const authCheck = user.role.name === 'admin'
 
   useEffect(() => {
-    if (authCheck) dispatch(fetchDashboard())
-  }, [dispatch, user])
+    dispatch(fetchDashboard())
+  }, [dispatch])
+
+  if (data.shops.length === 0) history.push('/create_shop')
 
   return (
     <MainTemplate>
