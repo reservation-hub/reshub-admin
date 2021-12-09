@@ -94,7 +94,7 @@ export const addShop =
     try {
       const res = await apiEndpoint.shops.createShop(shopData)
       dispatch(shopAddSuccess(res.data))
-      history.push({ pathname: '/salon', state: { currentPage: 1 } })
+      //   history.push({ pathname: '/salon', state: { currentPage: 1 } })
     } catch (e: any) {
       dispatch(shopRequestFailure(e))
     }

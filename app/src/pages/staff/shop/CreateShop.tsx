@@ -50,7 +50,7 @@ const CreateShop = () => {
     } as TSalonInput
   }, [input, startAt, endAt, checked])
 
-  const shopDate: insertShopQuery = useMemo(() => {
+  const shopData: insertShopQuery = useMemo(() => {
     return {
       name: form.name,
       address: form.address,
@@ -73,17 +73,17 @@ const CreateShop = () => {
   }
 
   const onSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
+    async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      dispatch(addShop(shopDate))
-    }, [dispatch, shopDate],
+      dispatch(addShop(shopData))
+    }, [dispatch, shopData],
   )
 
   console.log(pageType)
   
   return (
     <SubTemplate>
-      <CenterBox classes='w-[110rem] h-[50rem] bg-secondary-main'>
+      <CenterBox classes='w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'>
         <SalonForm 
           submitHandler={onSubmit}
           formValue={form}
