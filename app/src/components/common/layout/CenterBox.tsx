@@ -1,8 +1,14 @@
 import React from 'react'
 import { ClassesAndChildren } from '../_PropsType'
 
-const CenterBox = ({ children }: ClassesAndChildren) => {
-  return <div className='right-1/4 top-1/4 left-1/4 absolute'>{children}</div>
+const CenterBox = ({ classes, children }: ClassesAndChildren) => {
+  return (
+    <div
+      className={`top-2/4 left-2/4 absolute transform translate-x-[-50%] translate-y-[-50%] ${classes}`}
+    >
+      {children}
+    </div>
+  )
 }
 
 export default CenterBox

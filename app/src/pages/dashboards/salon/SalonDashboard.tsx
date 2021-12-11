@@ -4,8 +4,9 @@ import { fetchDashboard } from '@store/actions/dashboardAction'
 import { RootState } from '@store/store'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import AdminDashboard from '@components/dashboards/AdminDashboard'
-import ShopDashboard from '@components/dashboards/salon/Shopdashboard'
+import ShopDashboard from '@/components/dashboards/Shopdashboard'
 import Loading from '@components/common/atoms/loading'
+import { Redirect } from 'react-router'
 
 const SalonDashboard = () => {
   const { user, data, loading } = useSelector(
@@ -20,8 +21,11 @@ const SalonDashboard = () => {
   const authCheck = user.role.name === 'admin'
 
   useEffect(() => {
-    if (authCheck) dispatch(fetchDashboard())
-  }, [dispatch, user])
+    dispatch(fetchDashboard())
+  }, [dispatch])
+
+  if (!authCheck && data.shops?.length === 0)
+    return <Redirect to='/create_shop' />
 
   return (
     <MainTemplate>
@@ -30,7 +34,7 @@ const SalonDashboard = () => {
       ) : authCheck ? (
         <AdminDashboard data={data} />
       ) : (
-        <ShopDashboard />
+        <ShopDashboard data={data} />
       )}
     </MainTemplate>
   )

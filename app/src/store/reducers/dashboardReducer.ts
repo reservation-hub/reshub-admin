@@ -1,14 +1,17 @@
 import {
   DASHBOARD_REQUEST_SUCCESS,
-  DashBoardResponseType,
   DashBoardState,
   DASHBOARD_REQUEST_START
 } from '@store/types/dashboardTypes'
 import { DashboardAction } from '@store/actions/dashboardAction'
+import {
+  salonIndexAdminResponse,
+  salonIndexShopStaffResponse
+} from '@/utils/api/request-response-types/Dashboard'
 
 const initialState: DashBoardState = {
   loading: false,
-  data: {} as DashBoardResponseType
+  data: {} as salonIndexShopStaffResponse & salonIndexAdminResponse
 }
 
 const dashboardReducer = (state = initialState, action: DashboardAction) => {
