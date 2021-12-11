@@ -2,9 +2,10 @@ import SubHeader from '@/components/common/atoms/SubHeader'
 import TableLayout from '@/components/common/atoms/TableLayout'
 import Section from '@/components/common/layout/Section'
 import { ClassesAndChildren } from '@/components/common/_PropsType'
-import { STYLELIST_CELL } from '@/constants/Table'
+import { SALON_CELL, STYLELIST_CELL } from '@/constants/Table'
 import { salonIndexShopStaffResponse } from '@/utils/api/request-response-types/Dashboard'
 import React from 'react'
+import SalonItem from '@components/list/Shop/SalonItem'
 
 export interface ShopStaffDashboardProps extends ClassesAndChildren {
   data: salonIndexShopStaffResponse
@@ -16,11 +17,11 @@ const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {
       <SubHeader title='ダッシュボード' type='dashboard' />
       <div className='flex justify-between'>
         <TableLayout>ここ予約</TableLayout>
-        <TableLayout>ここお店</TableLayout>
+        <TableLayout cell={STYLELIST_CELL}>ここstylist</TableLayout>
       </div>
-      <TableLayout cell={STYLELIST_CELL}>
-        {data?.stylists?.map((value, index) => (
-          <div key={index}>{value.name}</div>
+      <TableLayout cell={SALON_CELL}>
+        {data?.shops?.map((value, index) => (
+          <SalonItem key={index} shop={value} />
         ))}
       </TableLayout>
     </Section>

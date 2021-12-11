@@ -10,7 +10,6 @@ import {
 } from '@store/types/authTypes'
 import { AuthAction } from '@store/actions/authAction'
 import { User } from '@entities/User'
-import {} from '../types/usersType'
 
 const initialState: AuthState = {
   loading: false,

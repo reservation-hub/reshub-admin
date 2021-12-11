@@ -8,6 +8,7 @@ import shop from './shopReducer'
 import user from './userReducer'
 import dashboard from './dashboardReducer'
 import location from './LocationReducer'
+import reservation from '@store/reducers/reservationReducer'
 import storage from 'redux-persist/lib/storage'
 import persistReducer from 'redux-persist/es/persistReducer'
 
@@ -22,5 +23,6 @@ export const rootReducer = combineReducers({
   shop,
   user,
   dashboard,
-  location
+  location,
+  reservation
 })
