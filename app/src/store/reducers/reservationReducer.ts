@@ -1,5 +1,5 @@
-import { ReservationAction } from "../actions/reservationAction";
-import { ReservationState, RESERVATION_TYPE } from "../types/reservationTypes";
+import { ReservationAction } from '../actions/reservationAction'
+import { ReservationState, RESERVATION_TYPE } from '../types/reservationTypes'
 
 const initialState: ReservationState = {
   loading: false,
@@ -8,7 +8,10 @@ const initialState: ReservationState = {
   err: ''
 }
 
-const reservationReducer = (state = initialState, action: ReservationAction) => {
+const reservationReducer = (
+  state = initialState,
+  action: ReservationAction
+) => {
   switch (action.type) {
     case RESERVATION_TYPE.REQUEST_START:
       return {
@@ -53,7 +56,7 @@ const reservationReducer = (state = initialState, action: ReservationAction) => 
       }
     default:
       return state
-  }  
+  }
 }
 
 export default reservationReducer
