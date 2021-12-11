@@ -32,4 +32,4 @@ export const RESERVATION_CELL: Record<string, any> = {
   menuName: 'メニュー名',
   stylistName: 'スタイリスト名',
   status: 'ステータス'
-} as const 
+} as const
