@@ -11,6 +11,7 @@ import StaffSalon from '@/pages/staff/shop/StaffSalon'
 import Stylist from '@/pages/staff/stylist/Stylist'
 import Reservation from '@/pages/staff/reservation/Reservation'
 import CreateShop from '@/pages/staff/shop/CreateShop'
+import Shops from '@/pages/staff/shop/Shops'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -43,6 +44,7 @@ export const PRIVATE_PATHS: TRouter[] = [
 
 export const PUBLIC_PATHS: TRouter[] = [
   { path: '/', exact: true, component: Home },
+  { path: '/shops', exact: false, component: Shops },
   { path: '/salon_dashboard', exact: false, component: SalonDashboard },
   { path: '/staff_shop', exact: false, component: StaffSalon },
   { path: '/stylist', exact: false, component: Stylist },
@@ -65,7 +67,7 @@ export const ADMIN_NAV_MENU: TNavMenu[] = [
 export const STAFF_NAV_MENU: TNavMenu[] = [
   { path: '/salon_dashboard', value: 'ダッシュボード' },
   {
-    path: '/staff_shop',
+    path: '/shops',
     value: '店舗管理',
     subItem: [
       { path: '/staff_shop', value: '店舗情報' },

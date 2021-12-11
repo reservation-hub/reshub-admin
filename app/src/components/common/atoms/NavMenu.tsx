@@ -2,7 +2,7 @@ import history from '@/utils/routes/history'
 import { ADMIN_NAV_MENU, STAFF_NAV_MENU } from '@constants/Paths'
 import React, { useState } from 'react'
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export interface INavMenuProps {
   role?: boolean
@@ -38,14 +38,15 @@ const NavMenu = ({ role }: INavMenuProps) => {
         : STAFF_NAV_MENU.map((value, index) => (
             <React.Fragment key={index}>
               {value.subItem ? (
-                <>
-                  <div
+                <div onClick={openHandler}>
+                  <NavLink
+                    to={value.path}
                     className={
                       open
                         ? 'p-[1rem] flex justify-between items-center open'
                         : 'p-[1rem] flex items-center justify-between'
                     }
-                    onClick={openHandler}
+                    activeClassName='bg-secondary-main text-primary'
                   >
                     <span className='text-[2.4rem]'>{value.value}</span>
                     {open || active ? (
@@ -53,8 +54,8 @@ const NavMenu = ({ role }: INavMenuProps) => {
                     ) : (
                       <AiOutlineArrowUp className='w-[2.4rem] h-[2.4rem]' />
                     )}
-                  </div>
-                </>
+                  </NavLink>
+                </div>
               ) : (
                 <NavLink
                   to={{
