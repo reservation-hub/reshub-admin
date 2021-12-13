@@ -16,9 +16,6 @@ export interface Items {
 }
 
 export interface IListProps extends Items {
-  modalOpenHandler?: () => void
-  order?: React.Dispatch<React.SetStateAction<boolean>>
-  correct?: boolean
   admin?: boolean
 }
 

@@ -39,7 +39,10 @@ const NavMenu = ({ role }: INavMenuProps) => {
               {value.subItem ? (
                 <div onClick={openHandler}>
                   <NavLink
-                    to={value.path}
+                    to={{
+                      pathname: value.path,
+                      state: { currentPage: 1 }
+                    }}
                     className={
                       open
                         ? 'p-[1rem] flex justify-between items-center open'

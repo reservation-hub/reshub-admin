@@ -41,9 +41,12 @@ const Salon = ({
   const pageChangeHandler = (data: Record<string, any>) => {
     const pageNum: number = data['selected']
     setPage(pageNum + 1)
-    history.push(`/salon?p=${pageNum + 1}`, {
-      currentPage: pageNum + 1
-    })
+    history.push(
+      authCheck ? `/salon?p=${pageNum + 1}` : `/shops?p=${pageNum + 1}`,
+      {
+        currentPage: pageNum + 1
+      }
+    )
   }
 
   useEffect(() => {
@@ -53,15 +56,17 @@ const Salon = ({
   return (
     <MainTemplate>
       <Switch>
-        <Route exact path='/salon'>
+        <Route exact path={authCheck ? '/salon' : '/shops'}>
           {loading ? (
             <Loading />
           ) : (
             <Section>
               <SubHeader
-                title='サロン一覧'
+                title={authCheck ? 'サロン一覧' : '店舗一覧'}
                 type={HEADER_TYPE.LIST}
-                modalOpenHandler={() => history.push('/salon/form')}
+                modalOpenHandler={() =>
+                  history.push(authCheck ? '/salon/form' : '/shops/form')
+                }
               >
                 <InputFiled />
                 <CustomButton
@@ -80,8 +85,14 @@ const Salon = ({
             </Section>
           )}
         </Route>
-        <Route path='/salon/form' component={Form} />
-        <Route path='/salon/:id' component={Detail} />
+        <Route
+          path={authCheck ? '/salon/form' : '/shops/form'}
+          component={Form}
+        />
+        <Route
+          path={authCheck ? '/salon/:id' : '/shops/:id'}
+          component={Detail}
+        />
       </Switch>
     </MainTemplate>
   )

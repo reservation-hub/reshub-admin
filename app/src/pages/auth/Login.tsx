@@ -38,7 +38,7 @@ const Login = () => {
     [dispatch]
   )
 
-  if (Cookies.get('authToken')) return <Redirect to='/salon_dashboard' />
+  if (Cookies.get('authToken')) return <Redirect to='/dashboard' />
 
   return (
     <SubTemplate>
