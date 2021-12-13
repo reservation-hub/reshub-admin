@@ -11,8 +11,8 @@ import ReservationsList from '@/components/list/reservations/ReservationList'
 
 const DetailItem = ({
   shop,
-  stylist,
-  reservation,
+  stylists,
+  reservations,
   modalOpenHandler,
   subModalHandler
 }: IDetailProps) => {
@@ -29,11 +29,11 @@ const DetailItem = ({
       <div className='container flex justify-between'>
         <ShopData shop={shop} />
         <div className='w-[50rem] h-full'>
-          <StylistList stylists={stylist} />
+          <StylistList stylists={stylists} />
         </div>
       </div>
       <div className='mt-4'>
-        <ReservationsList reservations={reservation} />
+        <ReservationsList reservations={reservations} />
       </div>
     </Section>
   )

@@ -1,3 +1,4 @@
+import { Items } from '@/constants/items'
 import { Menu } from '@/entities/Menu'
 import { Reservation } from '@/entities/Reservation'
 import { Shop } from '@/entities/Shop'
@@ -12,7 +13,7 @@ export interface IDetailItems {
   menu?: Menu[]
 }
 
-export interface IDetailProps extends IDetailItems {
+export interface IDetailProps extends Items {
   modalOpenHandler?: () => void
   subModalHandler?: () => void
 }
