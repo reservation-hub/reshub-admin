@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect } from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteUser, getOneUser } from '@store/actions/userAction'
 import { RouteComponentProps } from 'react-router-dom'
 import { RootState } from '@store/store'
 import { useModal } from '@utils/hooks/useModal'
-import ProfileItem from '@components/detail/User/ProfileItem'
+import ProfileItem from '@/components/detail/user/ProfileItem'
 import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import history from '@utils/routes/history'

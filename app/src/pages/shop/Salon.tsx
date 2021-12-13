@@ -13,6 +13,10 @@ import { MatchParams } from '@components/common/_PropsType'
 import Form from '@pages/shop/Form'
 import { TCurrentPage } from '@components/list/_PropsType'
 import Section from '@/components/common/layout/Section'
+import SubHeader from '@/components/common/atoms/SubHeader'
+import { HEADER_TYPE } from '@/constants/Common'
+import InputFiled from '@/components/common/atoms/InputFiled'
+import CustomButton from '@/components/common/atoms/CustomButton'
 
 const Salon = ({
   match,
@@ -45,12 +49,20 @@ const Salon = ({
             <Loading />
           ) : (
             <Section>
-              <SalonList
-                shops={shops.values}
-                order={setCorrect}
-                correct={correct}
+              <SubHeader
+                title='サロン一覧'
+                type={HEADER_TYPE.LIST}
                 modalOpenHandler={() => history.push('/salon/form')}
-              />
+              >
+                <InputFiled />
+                <CustomButton
+                  classes='ml-2'
+                  onClick={() => setCorrect(!correct)}
+                >
+                  並び替え
+                </CustomButton>
+              </SubHeader>
+              <SalonList shops={shops.values} />
               <Paginate
                 totalPage={shops.totalCount}
                 page={currentPage}

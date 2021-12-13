@@ -8,6 +8,9 @@ import React from 'react'
 import SalonItem from '@components/list/shop/SalonItem'
 import ReservationItems from '@components/list/reservations/ReservationItems'
 import StylistItem from '@components/list/stylist/StylistItem'
+import SalonList from '../list/shop/SalonList'
+import ReservationsList from '../list/reservations/ReservationList'
+import StylistList from '../list/stylist/StylistList'
 
 export interface ShopStaffDashboardProps extends ClassesAndChildren {
   data: salonIndexShopStaffResponse
@@ -19,25 +22,13 @@ const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {
       <SubHeader title='ダッシュボード' type='dashboard' />
       <div className='flex justify-between'>
         <div className='w-[57rem]'>
-          <TableLayout cell={RESERVATION_CELL}>
-            {data.reservations?.map((value, index) => (
-              <ReservationItems reservation={value} key={index} />
-            ))}
-          </TableLayout>
+          <ReservationsList reservations={data?.reservations} />
         </div>
         <div className='w-[50rem]'>
-          <TableLayout cell={STYLELIST_CELL}>
-            {data.stylists?.map((value, index) => (
-              <StylistItem stylist={value} key={index} />
-            ))}
-          </TableLayout>
+          <StylistList stylists={data?.stylists} />
         </div>
       </div>
-      <TableLayout cell={SALON_CELL}>
-        {data?.shops?.map((value, index) => (
-          <SalonItem key={index} shop={value} />
-        ))}
-      </TableLayout>
+      <SalonList shops={data?.shops} />
     </Section>
   )
 }

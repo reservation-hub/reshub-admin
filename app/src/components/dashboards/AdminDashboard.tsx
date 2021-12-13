@@ -8,6 +8,7 @@ import Section from '@components/common/layout/Section'
 import { salonIndexAdminResponse } from '@/utils/api/request-response-types/Dashboard'
 import { User } from '@/entities/User'
 import { Shop } from '@/entities/Shop'
+import SalonList from '../list/shop/SalonList'
 
 export type AdminDashboardProps = {
   data: salonIndexAdminResponse
@@ -25,11 +26,7 @@ const AdminDashboard = ({ data }: AdminDashboardProps) => {
           <UserItems user={value} key={index} />
         ))}
       </TableLayout>
-      <TableLayout cell={SALON_CELL}>
-        {data?.shop?.shopData.map((value: Shop, index: number) => (
-          <SalonItem shop={value} key={index} />
-        ))}
-      </TableLayout>
+      <SalonList shops={data.shop?.shopData} />
     </Section>
   )
 }
