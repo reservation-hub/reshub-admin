@@ -4,10 +4,7 @@ import { IListProps } from '../_PropsType'
 
 const ReservationItems = ({ reservation }: IListProps) => {
   return (
-    <TableRow
-      url='reservation'
-      id={reservation?.id}
-    >
+    <TableRow url='reservation' id={reservation?.id}>
       <td>{reservation?.shop?.name}</td>
       <td>
         {`${reservation?.user?.firstNameKana} ${reservation?.user?.lastNameKana}`}
@@ -16,7 +13,7 @@ const ReservationItems = ({ reservation }: IListProps) => {
       <td>{reservation?.stylist?.name}</td>
       <td>{reservation?.status}</td>
     </TableRow>
-  ) 
+  )
 }
 
 export default ReservationItems

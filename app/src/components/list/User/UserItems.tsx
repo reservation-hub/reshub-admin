@@ -10,10 +10,7 @@ const UserItems = ({ user }: IDetailProps) => {
   const birthday = useBirthday(user?.birthday)
   const role = useRole(user?.role)
   return (
-    <TableRow
-      url='users'
-      id={user?.id}
-    >
+    <TableRow url='users' id={user?.id}>
       <td>{user?.id}</td>
       <td>{user?.email}</td>
       <td>{`${user?.firstNameKanji} ${user?.lastNameKanji}`}</td>

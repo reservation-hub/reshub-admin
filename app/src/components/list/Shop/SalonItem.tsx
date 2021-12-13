@@ -5,10 +5,7 @@ import TableRow from '@/components/common/atoms/TableRow'
 
 const SalonItem = ({ shop }: IListProps) => {
   return (
-    <TableRow
-      url='salon'
-      id={shop?.id}
-    >
+    <TableRow url='salon' id={shop?.id}>
       <td>{shop?.id}</td>
       <td>{shop?.name}</td>
       <td>-</td>
