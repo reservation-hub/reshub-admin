@@ -23,7 +23,6 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TShop, TShopList } from '@Model/ShopResponse'
 import { Shop } from '@/entities/Shop'
 
 // リクエストを始まる
