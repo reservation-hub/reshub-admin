@@ -16,6 +16,7 @@ import {
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { Shop } from '@/entities/Shop'
+import { ShopIndex } from '@/utils/api/request-response-types/Shop'
 
 // リクエストを始まる
 const shopRequestStart = () => {
@@ -23,20 +24,20 @@ const shopRequestStart = () => {
 }
 
 const shopRequestSuccess = (
-  data: fetchModelsWithTotalCountResponse<modelResponse<Shop>>
+  data: fetchModelsWithTotalCountResponse<modelResponse<ShopIndex>>
 ) => {
   return typedAction(SHOPS_TYPE.REQUEST_SUCCESS, data)
 }
 
-const shopGetSuccess = (data: Shop) => {
+const shopGetSuccess = (data: ShopIndex) => {
   return typedAction(SHOPS_TYPE.GET_SUCCESS, data)
 }
 
-const shopAddSuccess = (data: Shop) => {
+const shopAddSuccess = (data: ShopIndex) => {
   return typedAction(SHOPS_TYPE.ADD_SUCCESS, data)
 }
 
-const shopPatchSuccess = (data: Shop) => {
+const shopPatchSuccess = (data: ShopIndex) => {
   return typedAction(SHOPS_TYPE.EDIT_SUCCESS, data)
 }
 

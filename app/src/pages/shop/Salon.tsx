@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SalonList from '@/components/list/shop/SalonList'
 import MainTemplate from '@components/common/layout/MainTemplate'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
 import Paginate from '@components/common/atoms/Paginate'
@@ -25,9 +25,18 @@ const Salon = ({
   const dispatch = useDispatch()
   const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
-  const { shops, loading } = useSelector((state: RootState) => state.shop)
+  const { shops, loading, user } = useSelector(
+    (state: RootState) => ({
+      loading: state.shop.loading,
+      shops: state.shop.shops,
+      user: state.auth.user
+    }),
+    shallowEqual
+  )
   const [correct, setCorrect] = useState<boolean>(true)
   const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
+
+  const authCheck = user.role.name === 'admin'
 
   const pageChangeHandler = (data: Record<string, any>) => {
     const pageNum: number = data['selected']
@@ -62,7 +71,7 @@ const Salon = ({
                   並び替え
                 </CustomButton>
               </SubHeader>
-              <SalonList shops={shops.values} />
+              <SalonList shops={shops.values} admin={authCheck} />
               <Paginate
                 totalPage={shops.totalCount}
                 page={currentPage}

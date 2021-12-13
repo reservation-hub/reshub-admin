@@ -9,6 +9,7 @@ import StylistList from '../list/stylist/StylistList'
 
 export interface ShopStaffDashboardProps extends ClassesAndChildren {
   data: salonIndexShopStaffResponse
+  admin?: boolean
 }
 
 const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {

@@ -1,16 +1,17 @@
 import React from 'react'
-import history from '@utils/routes/history'
 import { IListProps } from '@components/list/_PropsType'
 import TableRow from '@/components/common/atoms/TableRow'
 
-const SalonItem = ({ shop }: IListProps) => {
+const SalonItem = ({ shop, admin }: IListProps) => {
   return (
-    <TableRow url='salon' id={shop?.id}>
+    <TableRow url={admin ? 'salon' : 'staff_salon'} id={shop?.id}>
       <td>{shop?.id}</td>
       <td>{shop?.name}</td>
       <td>-</td>
       <td>{shop?.address ?? '-'}</td>
-      <td>{`${shop?.reservations?.length ?? 0}件`}</td>
+      <td>{`${
+        admin ? shop?.reservationsCount : shop?.reservations?.length ?? 0
+      }件`}</td>
       <td>{`${shop?.stylists?.length ?? 0}件`}</td>
       <td>{shop?.phoneNumber ?? '-'}</td>
     </TableRow>

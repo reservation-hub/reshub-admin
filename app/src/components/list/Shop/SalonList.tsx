@@ -4,11 +4,11 @@ import SalonItem from './SalonItem'
 import { IListProps } from '../_PropsType'
 import { SALON_CELL } from '@constants/Table'
 
-const SalonList = ({ shops }: IListProps) => {
+const SalonList = ({ shops, admin }: IListProps) => {
   return (
     <TableLayout cell={SALON_CELL}>
-      {shops?.map((value, index) => (
-        <SalonItem shop={value} key={index} />
+      {shops?.map((value: any, index) => (
+        <SalonItem shop={value} key={index} admin={admin} />
       ))}
     </TableLayout>
   )
