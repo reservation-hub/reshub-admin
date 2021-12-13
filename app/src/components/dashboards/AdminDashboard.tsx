@@ -24,7 +24,7 @@ const AdminDashboard = ({ data }: AdminDashboardProps) => {
           <UserItems user={value} key={index} />
         ))}
       </TableLayout>
-      <SalonList shops={data.shop?.shopData} />
+      <SalonList shops={data.shop?.shopData} admin />
     </Section>
   )
 }
