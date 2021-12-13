@@ -1,8 +1,7 @@
-import history from '@/utils/routes/history'
 import { ADMIN_NAV_MENU, STAFF_NAV_MENU } from '@constants/Paths'
 import React, { useState } from 'react'
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export interface INavMenuProps {
   role?: boolean

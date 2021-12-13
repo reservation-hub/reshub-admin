@@ -1,7 +1,7 @@
 import React, { FormEvent, useCallback } from 'react'
 import { googleLogin, loginStart } from '@store/actions/authAction'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, RouteComponentProps } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import useInput from '@utils/hooks/useInput'
 import LoginForm from '@components/auth/LoginForm'
 import LoginSelectHeader from '@components/common/choose/LoginSelectHeader'

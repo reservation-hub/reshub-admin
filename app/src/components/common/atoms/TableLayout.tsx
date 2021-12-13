@@ -1,6 +1,5 @@
 import React from 'react'
 import { ClassesAndChildren } from '@components/common/_PropsType'
-import { Items } from '@/components/list/_PropsType'
 
 export interface ITableProps extends ClassesAndChildren {
   cell?: Record<string, any>
