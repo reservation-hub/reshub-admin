@@ -1,12 +1,7 @@
 //----------------------------------
 // redux action ユーザー印証管理関数
 //----------------------------------
-import {
-  LOGOUT_REQUEST_SUCCESS,
-  USER_REQUEST_FAILURE,
-  USER_REQUEST_START,
-  USER_REQUEST_SUCCESS
-} from '@store/types/authTypes'
+import { AUTH_TYPE } from '@store/types/authTypes'
 import { RootState, typedAction } from '@store/store'
 import { GoogleLoginResponse } from 'react-google-login'
 import { User } from '@entities/User'
@@ -19,20 +14,20 @@ import Cookies from 'js-cookie'
 
 //ユーザーのリクエストをスタートするアクション
 const loginRequestStart = () => {
-  return typedAction(USER_REQUEST_START)
+  return typedAction(AUTH_TYPE.REQUEST_START)
 }
 
 const fetchUser = (user: User) => {
-  return typedAction(USER_REQUEST_SUCCESS, user)
+  return typedAction(AUTH_TYPE.REQUEST_SUCCESS, user)
 }
 
 //ユーザーのリクエストが失敗の時に実行するアクション
 const loginRequestFailure = (err: Record<string, any>) => {
-  return typedAction(USER_REQUEST_FAILURE, err)
+  return typedAction(AUTH_TYPE.REQUEST_FAILURE, err)
 }
 
 const logoutSuccess = (msg: string) => {
-  return typedAction(LOGOUT_REQUEST_SUCCESS, msg)
+  return typedAction(AUTH_TYPE.LOGOUT_SUCCESS, msg)
 }
 
 // refresh tokenをサーバーに投げてユーザー情報をもらってくるアクション

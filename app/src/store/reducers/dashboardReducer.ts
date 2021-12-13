@@ -1,8 +1,4 @@
-import {
-  DASHBOARD_REQUEST_SUCCESS,
-  DashBoardState,
-  DASHBOARD_REQUEST_START
-} from '@store/types/dashboardTypes'
+import { DashBoardState, DASHBOARD_TYPE } from '@store/types/dashboardTypes'
 import { DashboardAction } from '@store/actions/dashboardAction'
 import {
   salonIndexAdminResponse,
@@ -16,12 +12,12 @@ const initialState: DashBoardState = {
 
 const dashboardReducer = (state = initialState, action: DashboardAction) => {
   switch (action.type) {
-    case DASHBOARD_REQUEST_START:
+    case DASHBOARD_TYPE.REQUEST_START:
       return {
         ...state,
         loading: false
       }
-    case DASHBOARD_REQUEST_SUCCESS:
+    case DASHBOARD_TYPE.REQUEST_SUCCESS:
       return {
         ...state,
         loading: false,

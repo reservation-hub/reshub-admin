@@ -1,7 +1,4 @@
-import {
-  DASHBOARD_REQUEST_START,
-  DASHBOARD_REQUEST_SUCCESS
-} from '@store/types/dashboardTypes'
+import { DASHBOARD_TYPE } from '@store/types/dashboardTypes'
 import { RootState, typedAction } from '@store/store'
 import { ThunkAction } from 'redux-thunk'
 import apiEndpoint from '@utils/api/apiEndpoint'
@@ -12,13 +9,13 @@ import {
 } from '@/utils/api/request-response-types/Dashboard'
 
 const dashboardRequestStart = () => {
-  return typedAction(DASHBOARD_REQUEST_START)
+  return typedAction(DASHBOARD_TYPE.REQUEST_START)
 }
 
 const dashboardRequestSuccess = (
   data: salonIndexShopStaffResponse & salonIndexAdminResponse
 ) => {
-  return typedAction(DASHBOARD_REQUEST_SUCCESS, data)
+  return typedAction(DASHBOARD_TYPE.REQUEST_SUCCESS, data)
 }
 
 export const fetchDashboard =

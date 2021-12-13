@@ -1,15 +1,7 @@
 //----------------------------------
 // redux action お店情報管理関数
 //----------------------------------
-import {
-  SHOP_ADD_SUCCESS,
-  SHOP_DELETE_SUCCESS,
-  SHOP_EDIT_SUCCESS,
-  SHOP_GET_SUCCESS,
-  SHOP_REQUEST_FAILURE,
-  SHOP_REQUEST_START,
-  SHOP_REQUEST_SUCCESS
-} from '@store/types/shopTypes'
+import { SHOPS_TYPE } from '@store/types/shopTypes'
 import { RootState, typedAction } from '@store/store'
 import {
   insertShopQuery,
@@ -27,34 +19,34 @@ import { Shop } from '@/entities/Shop'
 
 // リクエストを始まる
 const shopRequestStart = () => {
-  return typedAction(SHOP_REQUEST_START)
+  return typedAction(SHOPS_TYPE.REQUEST_START)
 }
 
 const shopRequestSuccess = (
   data: fetchModelsWithTotalCountResponse<modelResponse<Shop>>
 ) => {
-  return typedAction(SHOP_REQUEST_SUCCESS, data)
+  return typedAction(SHOPS_TYPE.REQUEST_SUCCESS, data)
 }
 
 const shopGetSuccess = (data: Shop) => {
-  return typedAction(SHOP_GET_SUCCESS, data)
+  return typedAction(SHOPS_TYPE.GET_SUCCESS, data)
 }
 
 const shopAddSuccess = (data: Shop) => {
-  return typedAction(SHOP_ADD_SUCCESS, data)
+  return typedAction(SHOPS_TYPE.ADD_SUCCESS, data)
 }
 
 const shopPatchSuccess = (data: Shop) => {
-  return typedAction(SHOP_EDIT_SUCCESS, data)
+  return typedAction(SHOPS_TYPE.EDIT_SUCCESS, data)
 }
 
 const shopDeleteSuccess = (msg: string) => {
-  return typedAction(SHOP_DELETE_SUCCESS, msg)
+  return typedAction(SHOPS_TYPE.DELETE_SUCCESS, msg)
 }
 
 // リクエストが失敗したらこっち
 const shopRequestFailure = (err: string) => {
-  return typedAction(SHOP_REQUEST_FAILURE, err)
+  return typedAction(SHOPS_TYPE.REQUEST_FAILURE, err)
 }
 
 // 全てのお店データを読み込む
