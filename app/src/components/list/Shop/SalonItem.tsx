@@ -14,7 +14,9 @@ const SalonItem = ({ shop, admin }: IListProps) => {
           ? shop?.reservationsCount
           : shop?.reservations?.length ?? 0
       }件`}</td>
-      <td>{`${shop?.stylists?.length ?? 0}件`}</td>
+      <td>{`${
+        shop?.stylistsCount ? shop?.stylistsCount : shop?.stylists?.length ?? 0
+      }件`}</td>
       <td>{shop?.phoneNumber ?? '-'}</td>
     </TableRow>
   )
