@@ -16,12 +16,12 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TShop, TShopList } from '@Model/ShopResponse'
+import { Shop } from '@/entities/Shop'
 
 const initialState: ShopState = {
   loading: false,
-  shops: {} as fetchModelsWithTotalCountResponse<modelResponse<TShopList>>,
-  shop: {} as TShop,
+  shops: {} as fetchModelsWithTotalCountResponse<modelResponse<Shop>>,
+  shop: {} as Shop,
   msg: ''
 }
 

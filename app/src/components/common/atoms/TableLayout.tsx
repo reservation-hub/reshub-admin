@@ -1,5 +1,6 @@
 import React from 'react'
 import { ClassesAndChildren } from '@components/common/_PropsType'
+import { Items } from '@/components/list/_PropsType'
 
 export interface ITableProps extends ClassesAndChildren {
   cell?: Record<string, any>
@@ -18,7 +19,7 @@ function TableLayout({ children, cell, classes }: ITableProps) {
             ))}
         </tr>
       </thead>
-      <tbody>{children}</tbody>
+      <tbody className='text-[1.6rem] text-center'>{children}</tbody>
     </table>
   )
 }

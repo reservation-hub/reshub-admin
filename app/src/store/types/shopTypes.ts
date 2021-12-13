@@ -6,6 +6,7 @@ import {
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { TShop, TShopList } from '@Model/ShopResponse'
+import { Shop } from '@/entities/Shop'
 
 export const SHOP_REQUEST_START = 'SHOP_REQUEST_START' as const
 // お店情報のリクエスト成功
@@ -23,7 +24,7 @@ export const SHOP_REQUEST_FAILURE = 'SHOP_REQUEST_FAILURE' as const
 
 export type ShopState = {
   loading: boolean
-  shops: fetchModelsWithTotalCountResponse<modelResponse<TShopList>>
-  shop: TShop
+  shops: fetchModelsWithTotalCountResponse<modelResponse<Shop>>
+  shop: Shop
   msg: string
 }

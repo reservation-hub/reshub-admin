@@ -1,11 +1,21 @@
+import { Reservation } from '@/entities/Reservation'
+import { Shop } from '@/entities/Shop'
+import { Stylist } from '@/entities/Stylist'
 import { User } from '@entities/User'
-import { TShopList } from '@Model/ShopResponse'
 
-export interface IListProps {
+export interface Items {
   users?: User[]
+  user?: User
+  shops?: Shop[]
+  shop?: Shop
+  reservations?: Reservation[]
+  reservation?: Reservation
+  stylists?: Stylist[]
+  stylist?: Stylist
+}
+
+export interface IListProps extends Items {
   modalOpenHandler?: () => void
-  shops?: TShopList[]
-  shop?: TShopList
   order?: React.Dispatch<React.SetStateAction<boolean>>
   correct?: boolean
 }

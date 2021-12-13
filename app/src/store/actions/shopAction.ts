@@ -24,6 +24,7 @@ import {
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { TShop, TShopList } from '@Model/ShopResponse'
+import { Shop } from '@/entities/Shop'
 
 // リクエストを始まる
 const shopRequestStart = () => {
@@ -31,20 +32,20 @@ const shopRequestStart = () => {
 }
 
 const shopRequestSuccess = (
-  data: fetchModelsWithTotalCountResponse<modelResponse<TShopList>>
+  data: fetchModelsWithTotalCountResponse<modelResponse<Shop>>
 ) => {
   return typedAction(SHOP_REQUEST_SUCCESS, data)
 }
 
-const shopGetSuccess = (data: TShop) => {
+const shopGetSuccess = (data: Shop) => {
   return typedAction(SHOP_GET_SUCCESS, data)
 }
 
-const shopAddSuccess = (data: TShop) => {
+const shopAddSuccess = (data: Shop) => {
   return typedAction(SHOP_ADD_SUCCESS, data)
 }
 
-const shopPatchSuccess = (data: TShop) => {
+const shopPatchSuccess = (data: Shop) => {
   return typedAction(SHOP_EDIT_SUCCESS, data)
 }
 

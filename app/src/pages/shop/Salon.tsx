@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SalonList from '@components/list/Shop/SalonList'
+import SalonList from '@/components/list/shop/SalonList'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchShopList } from '@store/actions/shopAction'
