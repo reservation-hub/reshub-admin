@@ -7,7 +7,7 @@ const StylistItem = ({ stylist }: IListProps) => {
     <TableRow url='stylist' id={stylist?.id}>
       <td>{stylist?.name}</td>
       <td>{stylist?.price}</td>
-      <td>{stylist?.reservations?.length ?? '0件'}</td>
+      <td>{stylist?.reservationCount ?? '0件'}</td>
     </TableRow>
   )
 }

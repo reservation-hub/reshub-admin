@@ -8,14 +8,17 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { Area } from '@entities/Location'
 import { LocationAction } from '@store/actions/LocationAction'
-import { TCity, TPrefecture } from '@/Model/LocationResponse'
+import {
+  AreaPrefecturesResponse,
+  PrefectureCitiesResponse
+} from '@/utils/api/request-response-types/Location'
+import { TArea } from '@/model/Location'
 
 const initialState: LocationState = {
-  area: {} as fetchModelsWithTotalCountResponse<modelResponse<Area>>,
-  prefecture: {} as TPrefecture,
-  city: {} as TCity
+  area: {} as fetchModelsWithTotalCountResponse<modelResponse<TArea>>,
+  prefecture: {} as AreaPrefecturesResponse,
+  city: {} as PrefectureCitiesResponse
 }
 
 const locationReducer = (state = initialState, action: LocationAction) => {

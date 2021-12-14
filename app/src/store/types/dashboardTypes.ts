@@ -1,3 +1,4 @@
+import { TAdminDashboard, TStaffDashbaord } from '@/model/Dashboard'
 import {
   salonIndexAdminResponse,
   salonIndexShopStaffResponse
@@ -11,5 +12,5 @@ export const DASHBOARD_TYPE = {
 
 export type DashBoardState = {
   loading: boolean
-  data: salonIndexShopStaffResponse & salonIndexAdminResponse
+  data: TStaffDashbaord & TAdminDashboard
 }

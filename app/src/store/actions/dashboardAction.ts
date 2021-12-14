@@ -3,18 +3,13 @@ import { RootState, typedAction } from '@store/store'
 import { ThunkAction } from 'redux-thunk'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
-import {
-  salonIndexAdminResponse,
-  salonIndexShopStaffResponse
-} from '@/utils/api/request-response-types/Dashboard'
+import { TAdminDashboard, TStaffDashbaord } from '@/model/Dashboard'
 
 const dashboardRequestStart = () => {
   return typedAction(DASHBOARD_TYPE.REQUEST_START)
 }
 
-const dashboardRequestSuccess = (
-  data: salonIndexShopStaffResponse & salonIndexAdminResponse
-) => {
+const dashboardRequestSuccess = (data: TStaffDashbaord & TAdminDashboard) => {
   return typedAction(DASHBOARD_TYPE.REQUEST_SUCCESS, data)
 }
 

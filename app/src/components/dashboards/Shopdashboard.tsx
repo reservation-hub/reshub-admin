@@ -1,14 +1,14 @@
 import SubHeader from '@components/common/atoms/SubHeader'
 import Section from '@components/common/layout/Section'
 import { ClassesAndChildren } from '@components/common/_PropsType'
-import { salonIndexShopStaffResponse } from '@utils/api/request-response-types/Dashboard'
 import React from 'react'
 import SalonList from '../list/shop/SalonList'
 import ReservationsList from '../list/reservations/ReservationList'
 import StylistList from '../list/stylist/StylistList'
+import { TStaffDashbaord } from '@/model/Dashboard'
 
 export interface ShopStaffDashboardProps extends ClassesAndChildren {
-  data: salonIndexShopStaffResponse
+  data: TStaffDashbaord
   admin?: boolean
 }
 
@@ -21,7 +21,7 @@ const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {
           <ReservationsList reservations={data?.reservations} />
         </div>
         <div className='w-[50rem]'>
-          <StylistList stylists={data?.stylists} />
+          {/* <StylistList stylists={data?.stylists} /> */}
         </div>
       </div>
       <SalonList shops={data?.shops} />

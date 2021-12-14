@@ -4,10 +4,11 @@ import {
   salonIndexAdminResponse,
   salonIndexShopStaffResponse
 } from '@/utils/api/request-response-types/Dashboard'
+import { TAdminDashboard, TStaffDashbaord } from '@/model/Dashboard'
 
 const initialState: DashBoardState = {
   loading: false,
-  data: {} as salonIndexShopStaffResponse & salonIndexAdminResponse
+  data: {} as TStaffDashbaord & TAdminDashboard
 }
 
 const dashboardReducer = (state = initialState, action: DashboardAction) => {

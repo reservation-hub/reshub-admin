@@ -6,6 +6,7 @@ import {
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { ShopIndex } from '@/utils/api/request-response-types/Shop'
+import { TShopForDetails, TShopForList } from '@/model/Shop'
 
 export const SHOPS_TYPE = {
   REQUEST_START: 'SHOP_REQUEST_START',
@@ -19,7 +20,7 @@ export const SHOPS_TYPE = {
 
 export type ShopState = {
   loading: boolean
-  shops: fetchModelsWithTotalCountResponse<modelResponse<ShopIndex>>
-  shop: ShopIndex
+  shops: fetchModelsWithTotalCountResponse<modelResponse<TShopForList>>
+  shop: TShopForDetails
   msg: string
 }

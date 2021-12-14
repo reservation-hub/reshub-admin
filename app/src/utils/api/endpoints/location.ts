@@ -10,11 +10,10 @@ export const getArea = async (id: number) => await instance.get(`/areas/${id}`)
 export const getPrefecture = async (id: number) =>
   await instance.get(`/prefectures/${id}`)
 
-
 const location = {
   getAreas,
   getArea,
-  getPrefecture,
+  getPrefecture
 }
 
 export default location

@@ -11,14 +11,8 @@ const SalonItem = ({ shop, admin }: IListProps) => {
       <td>
         {`${shop?.prefecture?.name}${shop?.city?.name}${shop?.address}` ?? '-'}
       </td>
-      <td>{`${
-        shop?.reservationsCount
-          ? shop?.reservationsCount
-          : shop?.reservations?.length ?? 0
-      }件`}</td>
-      <td>{`${
-        shop?.stylistsCount ? shop?.stylistsCount : shop?.stylists?.length ?? 0
-      }件`}</td>
+      <td>{`${shop?.reservationsCount ?? 0}件`}</td>
+      <td>{`${shop?.stylistsCount ?? 0}件`}</td>
       <td>{shop?.phoneNumber ?? '-'}</td>
     </TableRow>
   )

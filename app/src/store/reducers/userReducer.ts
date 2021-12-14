@@ -6,13 +6,13 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { User } from '@entities/User'
 import { UserAction } from '@store/actions/userAction'
+import { TUser, TUserForList } from '@/model/User'
 
 const initialState: UsersState = {
   loading: false,
-  users: {} as fetchModelsWithTotalCountResponse<modelResponse<User>>,
-  user: {} as User,
+  users: {} as fetchModelsWithTotalCountResponse<modelResponse<TUserForList>>,
+  user: {} as TUser,
   msg: ''
 }
 
