@@ -68,7 +68,6 @@ const Salon = ({
                   history.push(authCheck ? '/salon/form' : '/shops/form')
                 }
               >
-                <InputFiled />
                 <CustomButton
                   classes='ml-2'
                   onClick={() => setCorrect(!correct)}

@@ -54,7 +54,6 @@ const Users = ({
                 modalOpenHandler={() => history.push('/users/form')}
                 type={HEADER_TYPE.LIST}
               >
-                <InputFiled />
                 <CustomButton
                   classes='ml-2'
                   onClick={() => setCorrect(!correct)}
