@@ -9,7 +9,7 @@ const PageSelect = () => {
     <div className={box}>
       <div className='container p-5'>
         <Link
-          to='/salon_dashboard'
+          to='/dashboard'
           className='text-[2.4rem] text-primary hover:underline'
         >
           サロン

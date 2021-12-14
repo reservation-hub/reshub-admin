@@ -34,7 +34,7 @@ const SalonDashboard = () => {
       ) : authCheck ? (
         <AdminDashboard data={data} />
       ) : (
-        <ShopDashboard data={data} />
+        <ShopDashboard data={data} admin={authCheck} />
       )}
     </MainTemplate>
   )

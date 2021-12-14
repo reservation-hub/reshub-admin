@@ -29,9 +29,9 @@ const ShopData = ({ shop }: IDetailProps) => {
       <div className='flex'>
         <dt className={dt}>営業時間</dt>
         <dd className={dd}>
-          {`${shop?.schedule?.startTime ?? ''}
+          {`${shop?.schedule?.hours?.start ?? ''}
             - 
-          ${shop?.schedule?.endTime ?? ''}`}
+          ${shop?.schedule?.hours.end ?? ''}`}
         </dd>
       </div>
       <div className='flex'>

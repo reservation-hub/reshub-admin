@@ -1,16 +1,7 @@
 //----------------------------------
 // redux ユーザー状態管理 reducer
 //----------------------------------
-import {
-  USERS_ADD_SUCCESS,
-  USERS_DELETE_SUCCESS,
-  USERS_EDIT_SUCCESS,
-  USERS_GET_SUCCESS,
-  USERS_REQUEST_FAILURE,
-  USERS_REQUEST_SUCCESS,
-  UsersState,
-  USERS_REQUEST_START
-} from '@store/types/usersType'
+import { UsersState, USER_TYPE } from '@store/types/usersType'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
@@ -27,43 +18,43 @@ const initialState: UsersState = {
 
 const userReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
-    case USERS_REQUEST_START:
+    case USER_TYPE.REQUEST_START:
       return {
         ...state,
         loading: true
       }
-    case USERS_REQUEST_SUCCESS:
+    case USER_TYPE.REQUEST_SUCCESS:
       return {
         ...state,
         loading: false,
         users: action.payload
       }
-    case USERS_GET_SUCCESS: {
+    case USER_TYPE.GET_SUCCESS: {
       return {
         ...state,
         loading: false,
         user: action.payload
       }
     }
-    case USERS_ADD_SUCCESS:
+    case USER_TYPE.ADD_SUCCESS:
       return {
         ...state,
         loading: false,
         user: action.payload
       }
-    case USERS_EDIT_SUCCESS:
+    case USER_TYPE.EDIT_SUCCESS:
       return {
         ...state,
         loading: false,
         user: action.payload
       }
-    case USERS_DELETE_SUCCESS:
+    case USER_TYPE.DELETE_SUCCESS:
       return {
         ...state,
         loading: false,
         msg: action.payload
       }
-    case USERS_REQUEST_FAILURE:
+    case USER_TYPE.REQUEST_FAILURE:
       return {
         ...state,
         loading: false,

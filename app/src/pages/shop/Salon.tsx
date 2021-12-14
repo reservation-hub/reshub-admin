@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import SalonList from '@components/list/Shop/SalonList'
+import SalonList from '@/components/list/shop/SalonList'
 import MainTemplate from '@components/common/layout/MainTemplate'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
 import Paginate from '@components/common/atoms/Paginate'
@@ -13,6 +13,10 @@ import { MatchParams } from '@components/common/_PropsType'
 import Form from '@pages/shop/Form'
 import { TCurrentPage } from '@components/list/_PropsType'
 import Section from '@/components/common/layout/Section'
+import SubHeader from '@/components/common/atoms/SubHeader'
+import { HEADER_TYPE } from '@/constants/Common'
+import InputFiled from '@/components/common/atoms/InputFiled'
+import CustomButton from '@/components/common/atoms/CustomButton'
 
 const Salon = ({
   match,
@@ -21,16 +25,28 @@ const Salon = ({
   const dispatch = useDispatch()
   const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
-  const { shops, loading } = useSelector((state: RootState) => state.shop)
+  const { shops, loading, user } = useSelector(
+    (state: RootState) => ({
+      loading: state.shop.loading,
+      shops: state.shop.shops,
+      user: state.auth.user
+    }),
+    shallowEqual
+  )
   const [correct, setCorrect] = useState<boolean>(true)
   const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
+
+  const authCheck = user.role.name === 'admin'
 
   const pageChangeHandler = (data: Record<string, any>) => {
     const pageNum: number = data['selected']
     setPage(pageNum + 1)
-    history.push(`/salon?p=${pageNum + 1}`, {
-      currentPage: pageNum + 1
-    })
+    history.push(
+      authCheck ? `/salon?p=${pageNum + 1}` : `/shops?p=${pageNum + 1}`,
+      {
+        currentPage: pageNum + 1
+      }
+    )
   }
 
   useEffect(() => {
@@ -40,17 +56,27 @@ const Salon = ({
   return (
     <MainTemplate>
       <Switch>
-        <Route exact path='/salon'>
+        <Route exact path={authCheck ? '/salon' : '/shops'}>
           {loading ? (
             <Loading />
           ) : (
             <Section>
-              <SalonList
-                shops={shops.values}
-                order={setCorrect}
-                correct={correct}
-                modalOpenHandler={() => history.push('/salon/form')}
-              />
+              <SubHeader
+                title={authCheck ? 'サロン一覧' : '店舗一覧'}
+                type={HEADER_TYPE.LIST}
+                modalOpenHandler={() =>
+                  history.push(authCheck ? '/salon/form' : '/shops/form')
+                }
+              >
+                <InputFiled />
+                <CustomButton
+                  classes='ml-2'
+                  onClick={() => setCorrect(!correct)}
+                >
+                  並び替え
+                </CustomButton>
+              </SubHeader>
+              <SalonList shops={shops.values} admin={authCheck} />
               <Paginate
                 totalPage={shops.totalCount}
                 page={currentPage}
@@ -59,8 +85,14 @@ const Salon = ({
             </Section>
           )}
         </Route>
-        <Route path='/salon/form' component={Form} />
-        <Route path='/salon/:id' component={Detail} />
+        <Route
+          path={authCheck ? '/salon/form' : '/shops/form'}
+          component={Form}
+        />
+        <Route
+          path={authCheck ? '/salon/:id' : '/shops/:id'}
+          component={Detail}
+        />
       </Switch>
     </MainTemplate>
   )

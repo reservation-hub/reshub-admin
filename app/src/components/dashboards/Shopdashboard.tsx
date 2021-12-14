@@ -1,14 +1,15 @@
-import SubHeader from '@/components/common/atoms/SubHeader'
-import TableLayout from '@/components/common/atoms/TableLayout'
-import Section from '@/components/common/layout/Section'
-import { ClassesAndChildren } from '@/components/common/_PropsType'
-import { RESERVATION_CELL, SALON_CELL, STYLELIST_CELL } from '@/constants/Table'
-import { salonIndexShopStaffResponse } from '@/utils/api/request-response-types/Dashboard'
+import SubHeader from '@components/common/atoms/SubHeader'
+import Section from '@components/common/layout/Section'
+import { ClassesAndChildren } from '@components/common/_PropsType'
+import { salonIndexShopStaffResponse } from '@utils/api/request-response-types/Dashboard'
 import React from 'react'
-import SalonItem from '@components/list/Shop/SalonItem'
+import SalonList from '../list/shop/SalonList'
+import ReservationsList from '../list/reservations/ReservationList'
+import StylistList from '../list/stylist/StylistList'
 
 export interface ShopStaffDashboardProps extends ClassesAndChildren {
   data: salonIndexShopStaffResponse
+  admin?: boolean
 }
 
 const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {
@@ -16,14 +17,14 @@ const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {
     <Section>
       <SubHeader title='ダッシュボード' type='dashboard' />
       <div className='flex justify-between'>
-        <TableLayout cell={RESERVATION_CELL}>ここ予約</TableLayout>
-        <TableLayout cell={STYLELIST_CELL}>ここstylist</TableLayout>
+        <div className='w-[57rem]'>
+          <ReservationsList reservations={data?.reservations} />
+        </div>
+        <div className='w-[50rem]'>
+          <StylistList stylists={data?.stylists} />
+        </div>
       </div>
-      <TableLayout cell={SALON_CELL}>
-        {data?.shops?.map((value, index) => (
-          <SalonItem key={index} shop={value} />
-        ))}
-      </TableLayout>
+      <SalonList shops={data?.shops} />
     </Section>
   )
 }

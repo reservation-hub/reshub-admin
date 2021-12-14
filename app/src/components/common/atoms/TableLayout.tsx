@@ -18,7 +18,7 @@ function TableLayout({ children, cell, classes }: ITableProps) {
             ))}
         </tr>
       </thead>
-      <tbody>{children}</tbody>
+      <tbody className='text-[1.6rem] text-center'>{children}</tbody>
     </table>
   )
 }

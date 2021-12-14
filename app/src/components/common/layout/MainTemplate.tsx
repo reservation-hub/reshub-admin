@@ -16,13 +16,11 @@ const MainTemplate = ({ children }: IMainTemplateProps) => {
 
   return (
     <>
-      <Link to='/salon_dashboard'>
-        <Header onLogout={onLogout} />
-      </Link>
+      <Header onLogout={onLogout} />
       <aside className='bg-primary text-secondary-main'>
         <NavBar />
       </aside>
-      <main className='container absolute h-full'>{children}</main>
+      <main className='h-full'>{children}</main>
     </>
   )
 }

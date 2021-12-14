@@ -1,68 +1,59 @@
 //----------------------------------
 // redux お店状態管理 reducer
 //----------------------------------
-import {
-  SHOP_ADD_SUCCESS,
-  SHOP_DELETE_SUCCESS,
-  SHOP_EDIT_SUCCESS,
-  SHOP_GET_SUCCESS,
-  SHOP_REQUEST_FAILURE,
-  SHOP_REQUEST_SUCCESS,
-  ShopState,
-  SHOP_REQUEST_START
-} from '@store/types/shopTypes'
+import { ShopState, SHOPS_TYPE } from '@store/types/shopTypes'
 import { ShopAction } from '@store/actions/shopAction'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TShop, TShopList } from '@Model/ShopResponse'
+import { ShopIndex } from '@/utils/api/request-response-types/Shop'
 
 const initialState: ShopState = {
   loading: false,
-  shops: {} as fetchModelsWithTotalCountResponse<modelResponse<TShopList>>,
-  shop: {} as TShop,
+  shops: {} as fetchModelsWithTotalCountResponse<modelResponse<ShopIndex>>,
+  shop: {} as ShopIndex,
   msg: ''
 }
 
 const shopReducer = (state = initialState, action: ShopAction) => {
   switch (action.type) {
-    case SHOP_REQUEST_START:
+    case SHOPS_TYPE.REQUEST_START:
       return {
         ...state,
         loading: true
       }
-    case SHOP_REQUEST_SUCCESS:
+    case SHOPS_TYPE.REQUEST_SUCCESS:
       return {
         ...state,
         loading: false,
         shops: action.payload
       }
-    case SHOP_GET_SUCCESS:
+    case SHOPS_TYPE.GET_SUCCESS:
       return {
         ...state,
         loading: false,
         shop: action.payload
       }
-    case SHOP_ADD_SUCCESS:
+    case SHOPS_TYPE.ADD_SUCCESS:
       return {
         ...state,
         loading: false,
         shop: action.payload
       }
-    case SHOP_EDIT_SUCCESS:
+    case SHOPS_TYPE.EDIT_SUCCESS:
       return {
         ...state,
         loading: false,
         shop: action.payload
       }
-    case SHOP_DELETE_SUCCESS:
+    case SHOPS_TYPE.DELETE_SUCCESS:
       return {
         ...state,
         loading: false,
         msg: action.payload
       }
-    case SHOP_REQUEST_FAILURE:
+    case SHOPS_TYPE.REQUEST_FAILURE:
       return {
         ...state,
         loading: false,

@@ -1,15 +1,7 @@
 //----------------------------------
 // redux ユーザー状態管理 action
 //----------------------------------
-import {
-  USERS_ADD_SUCCESS,
-  USERS_DELETE_SUCCESS,
-  USERS_EDIT_SUCCESS,
-  USERS_GET_SUCCESS,
-  USERS_REQUEST_FAILURE,
-  USERS_REQUEST_START,
-  USERS_REQUEST_SUCCESS
-} from '@store/types/usersType'
+import { USER_TYPE } from '@store/types/usersType'
 import { RootState, typedAction } from '@store/store'
 import {
   insertUserFromAdminQuery,
@@ -26,33 +18,33 @@ import {
 } from '@utils/api/request-response-types/ServiceCommonTypes'
 
 const userRequestStart = () => {
-  return typedAction(USERS_REQUEST_START)
+  return typedAction(USER_TYPE.REQUEST_START)
 }
 
 const userRequestSuccess = (
   data: fetchModelsWithTotalCountResponse<modelResponse<User>>
 ) => {
-  return typedAction(USERS_REQUEST_SUCCESS, data)
+  return typedAction(USER_TYPE.REQUEST_SUCCESS, data)
 }
 
 const userGetSuccess = (data: User) => {
-  return typedAction(USERS_GET_SUCCESS, data)
+  return typedAction(USER_TYPE.GET_SUCCESS, data)
 }
 
 const userAddSuccess = (data: User) => {
-  return typedAction(USERS_ADD_SUCCESS, data)
+  return typedAction(USER_TYPE.ADD_SUCCESS, data)
 }
 
 const userPatchSuccess = (data: User) => {
-  return typedAction(USERS_EDIT_SUCCESS, data)
+  return typedAction(USER_TYPE.EDIT_SUCCESS, data)
 }
 
 const userDeleteSuccess = (msg: string) => {
-  return typedAction(USERS_DELETE_SUCCESS, msg)
+  return typedAction(USER_TYPE.DELETE_SUCCESS, msg)
 }
 
 const userRequestFailure = (err: string) => {
-  return typedAction(USERS_REQUEST_FAILURE, err)
+  return typedAction(USER_TYPE.REQUEST_FAILURE, err)
 }
 
 export const fetchUserList =

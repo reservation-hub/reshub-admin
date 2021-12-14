@@ -2,6 +2,7 @@ import React from 'react'
 import { IMainTemplateProps } from '../_PropsType'
 import CustomButton from '@/components/common/atoms/CustomButton'
 import H1 from '../atoms/H1'
+import { Link } from 'react-router-dom'
 
 const Header = ({ onLogout }: IMainTemplateProps) => {
   const styled =
@@ -9,7 +10,9 @@ const Header = ({ onLogout }: IMainTemplateProps) => {
 
   return (
     <header className={styled}>
-      <H1>Reshub-admin</H1>
+      <Link to='/dashboard'>
+        <H1>Reshub-admin</H1>
+      </Link>
       <CustomButton onClick={onLogout}>Logout</CustomButton>
     </header>
   )

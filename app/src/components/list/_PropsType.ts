@@ -1,13 +1,7 @@
-import { User } from '@entities/User'
-import { TShopList } from '@Model/ShopResponse'
+import { Items } from '@/constants/items'
 
-export interface IListProps {
-  users?: User[]
-  modalOpenHandler?: () => void
-  shops?: TShopList[]
-  shop?: TShopList
-  order?: React.Dispatch<React.SetStateAction<boolean>>
-  correct?: boolean
+export interface IListProps extends Items {
+  admin?: boolean
 }
 
 export type TCurrentPage = {

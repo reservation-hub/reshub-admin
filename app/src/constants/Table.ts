@@ -19,14 +19,12 @@ export const SALON_CELL: Record<string, any> = {
 } as const
 
 export const STYLELIST_CELL: Record<string, any> = {
-  No: 'No',
   name: 'スタイリスト名',
   price: '指名料',
   reservationCount: '予約件数'
 } as const
 
 export const RESERVATION_CELL: Record<string, any> = {
-  No: 'No',
   shopName: '店舗名',
   userName: '予約者',
   menuName: 'メニュー名',

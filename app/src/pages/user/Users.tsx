@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import { RootState } from '@store/store'
 import { fetchUserList } from '@store/actions/userAction'
-import UserList from '@components/list/User/UserList'
+import UserList from '@/components/list/user/UserList'
 import Profile from './Profile'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Loading from '@components/common/atoms/loading'
@@ -13,6 +13,10 @@ import { MatchParams } from '@components/common/_PropsType'
 import Form from '@pages/user/Form'
 import { TCurrentPage } from '@components/list/_PropsType'
 import Section from '@/components/common/layout/Section'
+import SubHeader from '@/components/common/atoms/SubHeader'
+import CustomButton from '@/components/common/atoms/CustomButton'
+import InputFiled from '@/components/common/atoms/InputFiled'
+import { HEADER_TYPE } from '@/constants/Common'
 
 const Users = ({
   match,
@@ -45,12 +49,20 @@ const Users = ({
             <Loading />
           ) : (
             <Section>
-              <UserList
-                users={users.values}
-                order={setCorrect}
-                correct={correct}
+              <SubHeader
+                title='ユーザー一覧'
                 modalOpenHandler={() => history.push('/users/form')}
-              />
+                type={HEADER_TYPE.LIST}
+              >
+                <InputFiled />
+                <CustomButton
+                  classes='ml-2'
+                  onClick={() => setCorrect(!correct)}
+                >
+                  並び替え
+                </CustomButton>
+              </SubHeader>
+              <UserList users={users.values} />
               <Paginate
                 totalPage={users.totalCount}
                 page={currentPage}

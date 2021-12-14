@@ -43,6 +43,8 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
           </ModalOverlay>
           <DetailItem
             shop={shop}
+            stylists={shop.stylists}
+            reservations={shop.reservations}
             modalOpenHandler={() => history.push(`/salon/form/${id}`, { shop })}
             subModalHandler={modalHandler}
           />
