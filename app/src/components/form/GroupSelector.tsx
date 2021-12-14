@@ -31,7 +31,7 @@ const GroupSelector = ({
           onChange={onChange}
           from={1900}
           to={dayjs().year()}
-          value={value}
+          value={values?.[0]}
         />
         <DayPicker
           id='month'
@@ -41,7 +41,7 @@ const GroupSelector = ({
           onChange={onChange}
           from={1}
           to={12}
-          value={value}
+          value={value?.[1]}
         />
         <DayPicker
           id='day'
@@ -51,7 +51,7 @@ const GroupSelector = ({
           onChange={onChange}
           from={1}
           to={31}
-          value={value}
+          value={value?.[2]}
         />
       </>
     )
@@ -61,7 +61,7 @@ const GroupSelector = ({
         <Selector
           id='area'
           name='areaId'
-          value={value}
+          value={values?.[0]}
           onChange={onChange}
           data={datas?.areas}
           label='エリア'
@@ -71,7 +71,7 @@ const GroupSelector = ({
         <Selector
           id='pref'
           name='prefectureId'
-          value={value}
+          value={values?.[1]}
           onChange={onChange}
           data={datas?.pref}
           label='都道府県'
@@ -81,7 +81,7 @@ const GroupSelector = ({
         <Selector
           id='city'
           name='cityId'
-          value={value}
+          value={values?.[2]}
           onChange={onChange}
           data={datas?.city}
           label='市区町村'

@@ -31,3 +31,9 @@ export const RESERVATION_CELL: Record<string, any> = {
   stylistName: 'スタイリスト名',
   status: 'ステータス'
 } as const
+
+export const MENU_CELL: Record<string, any> = {
+  name: 'メニュー名',
+  price: '値段',
+  stylist: '対応可能'
+} as const

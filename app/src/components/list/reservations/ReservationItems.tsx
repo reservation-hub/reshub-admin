@@ -5,7 +5,11 @@ import { IListProps } from '../_PropsType'
 const ReservationItems = ({ reservation }: IListProps) => {
   return (
     <TableRow url='reservation' id={reservation?.id}>
-      <td>{reservation?.shop?.name}</td>
+      <td>
+        {String(reservation?.shop?.name).length >= 10
+          ? `${reservation?.shop?.name?.substring(0, 8)}...`
+          : reservation?.shop?.name}
+      </td>
       <td>
         {`${reservation?.user?.firstNameKana} ${reservation?.user?.lastNameKana}`}
       </td>

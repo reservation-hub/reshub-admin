@@ -8,7 +8,9 @@ const SalonItem = ({ shop, admin }: IListProps) => {
       <td>{shop?.id}</td>
       <td>{shop?.name}</td>
       <td>-</td>
-      <td>{shop?.address ?? '-'}</td>
+      <td>
+        {`${shop?.prefecture?.name}${shop?.city?.name}${shop?.address}` ?? '-'}
+      </td>
       <td>{`${
         shop?.reservationsCount
           ? shop?.reservationsCount

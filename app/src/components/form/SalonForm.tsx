@@ -6,7 +6,6 @@ import { getArea, getOneCity, getOnePref } from '@store/actions/LocationAction'
 import { RootState } from '@store/store'
 import Header from './Header'
 import CheckBox from '@components/common/atoms/CheckBox'
-import Selector from '@components/common/atoms/Selector'
 import { Days } from '@constants/Days'
 import { IFormProps, TSalonInput } from './_PropsType'
 import InputFiled from '../common/atoms/InputFiled'
@@ -24,6 +23,8 @@ const SalonForm = ({
 }: ISalonFormProps) => {
   const dispatch = useDispatch()
   let disabled = false
+
+  console.log(formValue.startTime)
 
   const { area, prefecture, city } = useSelector(
     (state: RootState) => state.location
@@ -94,9 +95,21 @@ const SalonForm = ({
             value={formValue.phoneNumber}
             onChange={changeHandlers.input}
           />
+          <div className='my-3 flex justify-between text-[1.6rem]'>
+            <GroupSelector
+              groupType='location'
+              datas={data}
+              values={[
+                formValue.areaId,
+                formValue.prefectureId,
+                formValue.cityId
+              ]}
+              onChange={changeHandlers.input}
+            />
+          </div>
           <InputFiled
             id='address'
-            label='住所'
+            label='住所（詳細）'
             autoComplete='off'
             placeholder='住所を入力してください。'
             name='address'
@@ -104,13 +117,6 @@ const SalonForm = ({
             value={formValue.address}
             onChange={changeHandlers.input}
           />
-          <div className='my-3 flex justify-between'>
-            <GroupSelector
-              groupType='location'
-              datas={data}
-              onChange={changeHandlers.input}
-            />
-          </div>
           <div className='my-3'>
             <span className='text-table-headerFont text-[1.6rem]'>営業日</span>
             <CheckBox

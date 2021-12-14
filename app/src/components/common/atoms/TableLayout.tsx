@@ -10,8 +10,8 @@ function TableLayout({ children, cell, classes }: ITableProps) {
   const styled = 'w-full bg-secondary-main rounded-[.25rem] p-[10rem] mb-5'
   return (
     <table className={`${styled} ${classes}`}>
-      <thead className='bg-table-header text-table-headerFont h-[6rem]'>
-        <tr className='text-[2rem]'>
+      <thead className='bg-table-header text-table-headerFont h-[5rem]'>
+        <tr className='text-[1.8rem]'>
           {cell &&
             Object.values(cell).map((value, index: number) => (
               <th key={index}>{value}</th>

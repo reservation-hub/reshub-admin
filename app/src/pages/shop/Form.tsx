@@ -16,6 +16,7 @@ import {
 } from '@utils/api/request-response-types/ShopService'
 import { addShop, editShopData } from '@store/actions/shopAction'
 import Section from '@/components/common/layout/Section'
+import dayjs from 'dayjs'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -25,6 +26,9 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const shop = useMemo(() => {
     return location?.state?.shop
   }, [location])
+
+  const test = dayjs().format('20:00').substring(0, 2)
+  const test2 = dayjs().hour(Number(test)).format('HH').toString()
 
   const { checked, changeHandler } = useCheckBox(shop?.schedule?.days ?? [])
 
@@ -91,6 +95,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       }
       return { insertData, updateData }
     }, [form, shop, startAt.HHmm, endAt.HHmm])
+
+  console.log(shop, dayjs().format('20:00').substring(3, 5), test2)
 
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
