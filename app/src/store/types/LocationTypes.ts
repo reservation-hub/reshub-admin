@@ -3,7 +3,7 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TCity, TPrefecture } from '@Model/LocationResponse'
+import { TCity, TPrefecture } from '@/Model/LocationResponse'
 
 export const GET_CITY_SUCCESS = 'GET_CITY_SUCCESS' as const
 

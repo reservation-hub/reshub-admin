@@ -10,7 +10,7 @@ import {
 } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { Area } from '@entities/Location'
 import { LocationAction } from '@store/actions/LocationAction'
-import { TCity, TPrefecture } from '@Model/LocationResponse'
+import { TCity, TPrefecture } from '@/Model/LocationResponse'
 
 const initialState: LocationState = {
   area: {} as fetchModelsWithTotalCountResponse<modelResponse<Area>>,

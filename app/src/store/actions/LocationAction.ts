@@ -13,7 +13,7 @@ import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@/utils/api/apiEndpoint'
 import history from '@utils/routes/history'
-import { TCity, TPrefecture } from '@Model/LocationResponse'
+import { TCity, TPrefecture } from '@/Model/LocationResponse'
 
 const areaReqSuccess = (
   data: fetchModelsWithTotalCountResponse<modelResponse<Area>>
