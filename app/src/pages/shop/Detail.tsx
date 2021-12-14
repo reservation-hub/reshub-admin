@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store/store'
 import { deleteShopData, getOneShop } from '@store/actions/shopAction'
 import { useModal } from '@utils/hooks/useModal'
@@ -13,9 +13,18 @@ import Loading from '@/components/common/atoms/loading'
 
 const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   const { id } = match.params
-  const { shop, loading } = useSelector((state: RootState) => state.shop)
+  const { shop, loading, user } = useSelector(
+    (state: RootState) => ({
+      shop: state.shop.shop,
+      loading: state.shop.loading,
+      user: state.auth.user
+    }),
+    shallowEqual
+  )
   const convertId = Number(id)
   const dispatch = useDispatch()
+
+  const authCheck = user.role.name === 'admin'
 
   const { open, modalHandler } = useModal(false)
 
@@ -43,9 +52,12 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
           </ModalOverlay>
           <DetailItem
             shop={shop}
-            stylists={shop.stylists}
-            reservations={shop.reservations}
-            modalOpenHandler={() => history.push(`/salon/form/${id}`, { shop })}
+            modalOpenHandler={() =>
+              history.push(
+                authCheck ? `/salon/form/${id}` : `/shops/form/${id}`,
+                { shop }
+              )
+            }
             subModalHandler={modalHandler}
           />
         </>
