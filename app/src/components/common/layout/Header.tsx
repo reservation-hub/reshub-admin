@@ -1,7 +1,7 @@
 import React from 'react'
-import { IMainTemplateProps } from '../_PropsType'
-import CustomButton from '@/components/common/atoms/CustomButton'
-import H1 from '../atoms/H1'
+import { IMainTemplateProps } from '@components/common/_PropsType'
+import CustomButton from '@components/common/atoms/CustomButton'
+import H1 from '@components/common/atoms/H1'
 import { Link } from 'react-router-dom'
 
 const Header = ({ onLogout }: IMainTemplateProps) => {

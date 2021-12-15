@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRange } from '@utils/hooks/useRange'
-import { IPickerProps } from '../_PropsType'
+import { IPickerProps } from '@components/common/_PropsType'
 import { AiOutlineArrowDown } from 'react-icons/ai'
 
 export interface IDaySelectProps extends IPickerProps {

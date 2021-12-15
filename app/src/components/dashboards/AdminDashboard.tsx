@@ -1,15 +1,12 @@
 import React from 'react'
-import TableLayout from '@components/common/atoms/TableLayout'
-import UserItems from '@/components/list/user/UserItems'
-import { USER_CELL } from '@constants/Table'
 import SubHeader from '@components/common/atoms/SubHeader'
 import Section from '@components/common/layout/Section'
-import { salonIndexAdminResponse } from '@/utils/api/request-response-types/Dashboard'
-import { User } from '@/entities/User'
-import SalonList from '../list/shop/SalonList'
+import SalonList from '@components/list/shop/SalonList'
+import UserList from '@components/list/user/UserList'
+import { TAdminDashboard } from '@model/Dashboard'
 
 export type AdminDashboardProps = {
-  data: salonIndexAdminResponse
+  data: TAdminDashboard
 }
 
 const AdminDashboard = ({ data }: AdminDashboardProps) => {
@@ -19,12 +16,8 @@ const AdminDashboard = ({ data }: AdminDashboardProps) => {
         <div className='text-[1.6rem]'>ユーザー{data.user?.totalCount}件</div>
         <div className='text-[1.6rem]'>サロン {data.shop?.totalCount}件</div>
       </SubHeader>
-      <TableLayout cell={USER_CELL}>
-        {data?.user?.users.map((value: User, index: number) => (
-          <UserItems user={value} key={index} />
-        ))}
-      </TableLayout>
-      <SalonList shops={data.shop?.shopData} admin />
+      <UserList users={data.user?.users} />
+      <SalonList shops={data.shop?.shops} admin />
     </Section>
   )
 }

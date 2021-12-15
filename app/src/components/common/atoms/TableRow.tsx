@@ -1,6 +1,6 @@
-import history from '@/utils/routes/history'
+import history from '@utils/routes/history'
 import React from 'react'
-import { ClassesAndChildren } from '../_PropsType'
+import { ClassesAndChildren } from '@components/common/_PropsType'
 
 export interface IRowPorps extends ClassesAndChildren {
   url?: string

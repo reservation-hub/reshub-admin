@@ -1,5 +1,5 @@
 import React from 'react'
-import { IInputProps } from '../_PropsType'
+import { IInputProps } from '@components/common/_PropsType'
 import ErrorMessage from './ErrorMessage'
 
 const INPUT_TYPE = {

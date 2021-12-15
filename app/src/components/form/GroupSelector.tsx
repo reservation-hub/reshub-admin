@@ -1,10 +1,10 @@
 import React from 'react'
-import { TDays } from '@/constants/Days'
-import { Area, City, Prefecture } from '@/entities/Location'
+import { TDays } from '@constants/Days'
+import { Area, City, Prefecture } from '@entities/Location'
 import dayjs from 'dayjs'
-import DayPicker from '../common/atoms/DayPicker'
-import Selector from '../common/atoms/Selector'
-import { IPickerProps } from '../common/_PropsType'
+import DayPicker from '@components/common/atoms/DayPicker'
+import Selector from '@components/common/atoms/Selector'
+import { IPickerProps } from '@components/common/_PropsType'
 
 export interface IGroupSelector extends IPickerProps {
   selectToId?: boolean

@@ -23,8 +23,8 @@
       "@entities/*": [
         "entities/*"
       ],
-      "@Model/*": [
-        "Model/*"
+      "@model/*": [
+        "model/*"
       ],
       "@constants/*": [
         "constants/*"

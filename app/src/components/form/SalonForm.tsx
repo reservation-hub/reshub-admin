@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import CustomButton from '@components/common/atoms/CustomButton'
-import TimePicker from '../common/atoms/TimePicker'
+import TimePicker from '@components/common/atoms/TimePicker'
 import { useDispatch, useSelector } from 'react-redux'
 import { getArea, getOneCity, getOnePref } from '@store/actions/LocationAction'
 import { RootState } from '@store/store'
@@ -8,7 +8,7 @@ import Header from './Header'
 import CheckBox from '@components/common/atoms/CheckBox'
 import { Days } from '@constants/Days'
 import { IFormProps, TSalonInput } from './_PropsType'
-import InputFiled from '../common/atoms/InputFiled'
+import InputFiled from '@components/common/atoms/InputFiled'
 import GroupSelector from './GroupSelector'
 
 export interface ISalonFormProps extends IFormProps {

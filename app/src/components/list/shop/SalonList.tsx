@@ -1,9 +1,9 @@
 import React from 'react'
 import TableLayout from '@components/common/atoms/TableLayout'
 import SalonItem from './SalonItem'
-import { IListProps } from '../_PropsType'
+import { IListProps } from '@components/list/_PropsType'
 import { SALON_CELL } from '@constants/Table'
-import IsEmpty from '@/components/common/atoms/IsEmpty'
+import IsEmpty from '@components/common/atoms/IsEmpty'
 
 const SalonList = ({ shops, admin }: IListProps) => {
   return (

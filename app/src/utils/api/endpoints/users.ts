@@ -1,25 +1,43 @@
 //-----------------------------------------------
 // users
 //-----------------------------------------------
+import { TUserForDetail, TUserForList } from '@model/User'
 import instance from '@utils/api'
 import {
   insertUserFromAdminQuery,
   updateUserFromAdminQuery
 } from '@utils/api/request-response-types/UserService'
+import { AxiosResponse } from 'axios'
+import { baseEndpoint } from '@utils/api/apiEndpoint'
+import { fetchModelsWithTotalCountResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 
-export const getUsers = async (page: number, order: 'asc' | 'desc') =>
-  await instance.get(`/users?page=${page}&order=${order}`)
+export const getUsers = async (
+  page: number,
+  order: 'asc' | 'desc'
+): Promise<AxiosResponse<fetchModelsWithTotalCountResponse<TUserForList>>> =>
+  await instance.get<fetchModelsWithTotalCountResponse<TUserForList>>(
+    `${baseEndpoint.users}?page=${page}&order=${order}`
+  )
 
-export const getUser = async (id: number) => await instance.get(`/users/${id}`)
+export const getUser = async (
+  id: number
+): Promise<AxiosResponse<TUserForDetail>> =>
+  await instance.get<TUserForDetail>(`${baseEndpoint.users}/${id}`)
 
-export const createUser = async (userData: insertUserFromAdminQuery) =>
-  await instance.post('/users', { ...userData })
+export const createUser = async (
+  userData: insertUserFromAdminQuery
+): Promise<AxiosResponse<TUserForDetail>> =>
+  await instance.post<TUserForDetail>(baseEndpoint.users, { ...userData })
 
-export const patchUser = async (userData: updateUserFromAdminQuery) =>
-  await instance.patch(`/users/${userData.id}`, { ...userData.params })
+export const patchUser = async (
+  userData: updateUserFromAdminQuery
+): Promise<AxiosResponse<TUserForDetail>> =>
+  await instance.patch<TUserForDetail>(`${baseEndpoint.users}/${userData.id}`, {
+    ...userData.params
+  })
 
-export const deleteUser = async (id: number) =>
-  await instance.delete(`/users/${id}`)
+export const deleteUser = async (id: number): Promise<AxiosResponse<string>> =>
+  await instance.delete<string>(`${baseEndpoint.users}/${id}`)
 
 const users = {
   getUsers,

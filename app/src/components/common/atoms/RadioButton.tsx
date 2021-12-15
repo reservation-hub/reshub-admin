@@ -1,5 +1,5 @@
 import React from 'react'
-import { IInputProps } from '../_PropsType'
+import { IInputProps } from '@components/common/_PropsType'
 import '@styles/global.css'
 
 export interface IRadioButtonProps extends IInputProps {

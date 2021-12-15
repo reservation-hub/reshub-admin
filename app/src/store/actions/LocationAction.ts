@@ -11,9 +11,12 @@ import {
 } from '@store/types/LocationTypes'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
-import apiEndpoint from '@/utils/api/apiEndpoint'
+import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
-import { TCity, TPrefecture } from '@Model/LocationResponse'
+import {
+  AreaPrefecturesResponse,
+  PrefectureCitiesResponse
+} from '@utils/api/request-response-types/Location'
 
 const areaReqSuccess = (
   data: fetchModelsWithTotalCountResponse<modelResponse<Area>>
@@ -21,11 +24,11 @@ const areaReqSuccess = (
   return typedAction(GET_AREA_SUCCESS, data)
 }
 
-const getOneAreaSuccess = (data: TPrefecture) => {
+const getOneAreaSuccess = (data: AreaPrefecturesResponse) => {
   return typedAction(GET_PREF_SUCCESS, data)
 }
 
-const getOnePrefSuccess = (data: TCity) => {
+const getOnePrefSuccess = (data: PrefectureCitiesResponse) => {
   return typedAction(GET_CITY_SUCCESS, data)
 }
 

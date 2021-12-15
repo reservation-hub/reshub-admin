@@ -1,7 +1,4 @@
-import {
-  salonIndexAdminResponse,
-  salonIndexShopStaffResponse
-} from '@/utils/api/request-response-types/Dashboard'
+import { TAdminDashboard, TStaffDashbaord } from '@model/Dashboard'
 
 export const DASHBOARD_TYPE = {
   REQUEST_START: 'DASHBOARD_REQUEST_START',
@@ -11,5 +8,5 @@ export const DASHBOARD_TYPE = {
 
 export type DashBoardState = {
   loading: boolean
-  data: salonIndexShopStaffResponse & salonIndexAdminResponse
+  data: TStaffDashbaord & TAdminDashboard
 }

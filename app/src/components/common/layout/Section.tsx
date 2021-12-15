@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClassesAndChildren } from '../_PropsType'
+import { ClassesAndChildren } from '@components/common/_PropsType'
 
 const Section = ({ children, classes }: ClassesAndChildren) => {
   return (

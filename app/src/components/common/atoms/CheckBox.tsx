@@ -1,5 +1,5 @@
 import React from 'react'
-import { IPickerProps } from '../_PropsType'
+import { IPickerProps } from '@components/common/_PropsType'
 
 export interface ICheckBoxProps extends IPickerProps {
   checkedData?: number[]

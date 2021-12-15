@@ -9,33 +9,33 @@ import {
 } from '@utils/api/request-response-types/UserService'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
-import { User } from '@entities/User'
-import apiEndpoint from '../../utils/api/apiEndpoint'
+import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { TUser, TUserForList } from '@model/User'
 
 const userRequestStart = () => {
   return typedAction(USER_TYPE.REQUEST_START)
 }
 
 const userRequestSuccess = (
-  data: fetchModelsWithTotalCountResponse<modelResponse<User>>
+  data: fetchModelsWithTotalCountResponse<modelResponse<TUserForList>>
 ) => {
   return typedAction(USER_TYPE.REQUEST_SUCCESS, data)
 }
 
-const userGetSuccess = (data: User) => {
+const userGetSuccess = (data: TUser) => {
   return typedAction(USER_TYPE.GET_SUCCESS, data)
 }
 
-const userAddSuccess = (data: User) => {
+const userAddSuccess = (data: TUser) => {
   return typedAction(USER_TYPE.ADD_SUCCESS, data)
 }
 
-const userPatchSuccess = (data: User) => {
+const userPatchSuccess = (data: TUser) => {
   return typedAction(USER_TYPE.EDIT_SUCCESS, data)
 }
 

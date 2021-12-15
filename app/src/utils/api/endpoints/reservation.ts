@@ -1,25 +1,49 @@
 //-----------------------------------------------
 // reservation
 //-----------------------------------------------
+import { TReservationForDetail } from '@model/Reservation'
 import instance from '@utils/api'
 import {
   insertReservationQuery,
   updateReservationQuery
 } from '@utils/api/request-response-types/ReservationService'
+import { AxiosResponse } from 'axios'
+import { baseEndpoint } from '@utils/api/apiEndpoint'
 
 export const getReservations = async () => await instance.get('reservations')
 
-export const getReservation = async (id: number) =>
-  await instance.get(`/reservations/${id}`)
+export const getReservation = async (
+  shopId: number
+): Promise<AxiosResponse<TReservationForDetail>> =>
+  await instance.get<TReservationForDetail>(
+    `${baseEndpoint.shops}/${shopId}/reservation`
+  )
 
-export const createReservation = async (resData: insertReservationQuery) =>
-  await instance.post('/reservations', { ...resData })
+export const createReservation = async (
+  resData: insertReservationQuery
+): Promise<AxiosResponse<TReservationForDetail>> =>
+  await instance.post<TReservationForDetail>(
+    `${baseEndpoint.shops}/${resData.shopId}/reservation`,
+    {
+      ...resData
+    }
+  )
 
-export const patchReservation = async (resData: updateReservationQuery) =>
-  await instance.patch(`/reservations/${resData.id}`, { ...resData })
+export const patchReservation = async (
+  resData: updateReservationQuery
+): Promise<AxiosResponse<TReservationForDetail>> =>
+  await instance.patch<TReservationForDetail>(
+    `${baseEndpoint.shops}/${resData.params.shopId}/reservation/${resData.id}`,
+    { ...resData }
+  )
 
-export const deleteReservation = async (id: number) =>
-  await instance.delete(`/reservations/${id}`)
+export const deleteReservation = async (
+  shopId: number,
+  id: number
+): Promise<AxiosResponse<string>> =>
+  await instance.delete<string>(
+    `${baseEndpoint.shops}/${shopId}/reservation/${id}`
+  )
 
 const reservation = {
   getReservations,

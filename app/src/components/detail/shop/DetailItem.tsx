@@ -1,19 +1,16 @@
 import React from 'react'
-import SubHeader from '@/components/common/atoms/SubHeader'
+import SubHeader from '@components/common/atoms/SubHeader'
 import { IDetailProps } from '../_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
 import ShopData from '@components/detail/shop/ShopData'
 import CustomButton from '@components/common/atoms/CustomButton'
-import history from '@/utils/routes/history'
-import Section from '@/components/common/layout/Section'
-import StylistList from '@/components/list/stylist/StylistList'
-import ReservationsList from '@/components/list/reservations/ReservationList'
-import MenuList from '@/components/list/menu/MenuList'
+import history from '@utils/routes/history'
+import Section from '@components/common/layout/Section'
+import StylistList from '@components/list/stylist/StylistList'
+import ReservationsList from '@components/list/reservations/ReservationList'
 
 const DetailItem = ({
   shop,
-  stylists,
-  reservations,
   modalOpenHandler,
   subModalHandler
 }: IDetailProps) => {
@@ -30,14 +27,12 @@ const DetailItem = ({
       <div className='container flex justify-between'>
         <ShopData shop={shop} />
         <div className='w-[34rem] h-full'>
-          <StylistList stylists={shop?.stylists} />
+          <StylistList stylists={shop?.stylist} />
         </div>
-        <div className='w-[34rem]'>
-          <MenuList menus={shop?.menu?.items} />
-        </div>
+        <div className='w-[34rem]'>{/* <MenuList menus={shop?.menu} /> */}</div>
       </div>
       <div className='mt-4'>
-        <ReservationsList reservations={shop?.reservations} />
+        <ReservationsList reservations={shop?.reservation} />
       </div>
     </Section>
   )
