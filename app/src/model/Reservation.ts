@@ -23,3 +23,8 @@ export type TReservationForList = Pick<
   TReservation,
   'id' | 'shop' | 'user' | 'stylist' | 'menuItem' | 'status'
 >
+
+export type TReservationForDetail = Pick<
+  TReservation,
+  'id' | 'shop' | 'user' | 'menuItem' | 'status' | 'stylist' | 'reservationDate'
+>

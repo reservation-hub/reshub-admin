@@ -1,5 +1,3 @@
-import { User } from '@/entities/User'
-
 export const GENDER = {
   MALE: 'MALE',
   FEMALE: 'FEMALE',
@@ -35,6 +33,18 @@ export type TUser = {
 }
 
 export type TUserForList = Pick<
-  User,
+  TUser,
   'id' | 'username' | 'email' | 'firstNameKana' | 'lastNameKana' | 'role'
 > & { ReservationCount: number }
+
+export type TUserForDetail = Pick<
+  TUser,
+  | 'id'
+  | 'username'
+  | 'email'
+  | 'firstNameKana'
+  | 'lastNameKana'
+  | 'gender'
+  | 'birthday'
+  | 'role'
+> & { reservationCount: number }

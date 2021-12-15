@@ -12,7 +12,17 @@ import menu from '@utils/api/endpoints/menu'
 //-----------------------------------------------
 
 export const fetchAll = async () => await instance.get(`/`)
-export const getDashboard = async () => await instance.get('/dashboard/salon')
+export const getDashboard = async () =>
+  await instance.get(`${baseEndpoint.dashboard}/salon`)
+
+export const baseEndpoint = {
+  shops: '/shops',
+  users: '/users',
+  area: '/areas',
+  prefecture: '/prefectures',
+  dashboard: '/dashboard',
+  auth: '/auth'
+}
 
 const apiEndpoint = {
   fetchAll,

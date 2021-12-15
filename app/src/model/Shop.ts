@@ -32,6 +32,7 @@ export type TShopForList = Pick<
   stylistsCount: number
   reservationsCount: number
 }
+
 export type TShopForDetails = Pick<
   TShop,
   'id' | 'address' | 'schedule' | 'name' | 'details' | 'phoneNumber'

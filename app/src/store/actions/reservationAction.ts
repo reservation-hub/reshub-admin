@@ -49,11 +49,11 @@ export const fetchAllReservations =
   }
 
 export const fetchOneRservation =
-  (id: number): ThunkAction<void, RootState, null, Action> =>
+  (shopId: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(reservationRequestStart())
     try {
-      const res = await apiEndpoint.reservation.getReservation(id)
+      const res = await apiEndpoint.reservation.getReservation(shopId)
       dispatch(reservationGetSuccess(res.data))
     } catch {
       history.push('/error')
@@ -97,11 +97,11 @@ export const patchReservation =
   }
 
 export const deleteReservation =
-  (id: number): ThunkAction<void, RootState, null, Action> =>
+  (shopId: number, id: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(reservationRequestStart())
     try {
-      const res = await apiEndpoint.reservation.deleteReservation(id)
+      const res = await apiEndpoint.reservation.deleteReservation(shopId, id)
       dispatch(reservationDeleteSuccess(res.data))
       history.push('/reservation', { currentPage: 1 })
     } catch (e: any) {

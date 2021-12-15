@@ -6,18 +6,33 @@ import {
   updateMenuItemQuery
 } from '@utils/api/request-response-types/ShopService'
 import instance from '@utils/api'
+import { baseEndpoint } from '../apiEndpoint'
+import { AxiosResponse } from 'axios'
+import { TMenuForDetail } from '@/model/Menu'
 
-export const createMenu = async (menuData: insertMenuItemQuery) =>
-  await instance.post(`/shops/${menuData.shopId}/menu`, { ...menuData })
-
-export const patchMenu = async (menuData: updateMenuItemQuery) =>
-  await instance.patch(
-    `/shops/${menuData.shopId}/menu/${menuData.menuItemId}`,
+export const createMenu = async (
+  menuData: insertMenuItemQuery
+): Promise<AxiosResponse<TMenuForDetail>> =>
+  await instance.post<TMenuForDetail>(
+    `${baseEndpoint.shops}/${menuData.shopId}/menu`,
     { ...menuData }
   )
 
-export const deleteMenu = async (shopId: number, menuId: number) =>
-  await instance.delete(`/shops/${shopId}/menu/${menuId}`)
+export const patchMenu = async (
+  menuData: updateMenuItemQuery
+): Promise<AxiosResponse<TMenuForDetail>> =>
+  await instance.patch<TMenuForDetail>(
+    `${baseEndpoint.shops}/${menuData.shopId}/menu/${menuData.menuItemId}`,
+    { ...menuData }
+  )
+
+export const deleteMenu = async (
+  shopId: number,
+  menuId: number
+): Promise<AxiosResponse<string>> =>
+  await instance.delete<string>(
+    `${baseEndpoint.shops}/${shopId}/menu/${menuId}`
+  )
 
 const menu = {
   createMenu,

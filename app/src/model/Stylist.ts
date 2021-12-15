@@ -20,3 +20,8 @@ export type TStylist = {
 export type TStylistForList = Pick<TStylist, 'id' | 'name' | 'price'> & {
   reservationCount: number
 }
+
+export type TStylistForDetail = Pick<
+  TStylist,
+  'id' | 'name' | 'price' | 'schedule' | 'shop'
+> & { reservationCount: number }
