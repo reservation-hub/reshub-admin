@@ -1,24 +1,15 @@
 //-----------------------------------------------
 // shops
 //-----------------------------------------------
-<<<<<<< HEAD
 import { TShopForDetails, TShopForList } from '@model/Shop'
-=======
-import { TShopForDetails, TShopForList } from '@/model/Shop'
->>>>>>> 2fe21c7 (axios / endpoint 修正)
 import instance from '@utils/api'
 import {
   insertShopQuery,
   updateShopQuery
 } from '@utils/api/request-response-types/ShopService'
 import { AxiosResponse } from 'axios'
-<<<<<<< HEAD
 import { baseEndpoint } from '@utils/api/apiEndpoint'
 import { fetchModelsWithTotalCountResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
-=======
-import { baseEndpoint } from '../apiEndpoint'
-import { fetchModelsWithTotalCountResponse } from '../request-response-types/ServiceCommonTypes'
->>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 export const getShops = async (
   page: number,
