@@ -1,6 +1,6 @@
 import { DashBoardState, DASHBOARD_TYPE } from '@store/types/dashboardTypes'
 import { DashboardAction } from '@store/actions/dashboardAction'
-import { TAdminDashboard, TStaffDashbaord } from '@model/Dashboard'
+import { TAdminDashboard, TStaffDashbaord } from '@/model/Dashboard'
 
 const initialState: DashBoardState = {
   loading: false,

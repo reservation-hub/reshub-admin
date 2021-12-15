@@ -15,7 +15,7 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TUser, TUserForList } from '@model/User'
+import { TUser, TUserForList } from '@/model/User'
 
 const userRequestStart = () => {
   return typedAction(USER_TYPE.REQUEST_START)
