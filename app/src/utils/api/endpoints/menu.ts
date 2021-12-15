@@ -8,7 +8,7 @@ import {
 import instance from '@utils/api'
 import { baseEndpoint } from '@utils/api/apiEndpoint'
 import { AxiosResponse } from 'axios'
-import { TMenuForDetail } from '@model/Menu'
+import { TMenuForDetail } from '@/model/Menu'
 
 export const createMenu = async (
   menuData: insertMenuItemQuery
