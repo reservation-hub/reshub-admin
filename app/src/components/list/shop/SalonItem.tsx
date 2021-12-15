@@ -5,15 +5,15 @@ import TableRow from '@components/common/atoms/TableRow'
 const SalonItem = ({ shop, admin }: IListProps) => {
   return (
     <TableRow url={admin ? 'salon' : 'shops'} id={shop?.id}>
-      <td>{shop?.id}</td>
-      <td>{shop?.name}</td>
-      <td>-</td>
-      <td>
+      <td className='p-4'>{shop?.id}</td>
+      <td className='p-4'>{shop?.name}</td>
+      <td className='p-4'>-</td>
+      <td className='p-4'>
         {`${shop?.prefecture?.name}${shop?.city?.name}${shop?.address}` ?? '-'}
       </td>
-      <td>{`${shop?.reservationsCount ?? 0}件`}</td>
-      <td>{`${shop?.stylistsCount ?? 0}件`}</td>
-      <td>{shop?.phoneNumber ?? '-'}</td>
+      <td className='p-4'>{`${shop?.reservationsCount ?? 0}件`}</td>
+      <td className='p-4'>{`${shop?.stylistsCount ?? 0}件`}</td>
+      <td className='p-4'>{shop?.phoneNumber ?? '-'}</td>
     </TableRow>
   )
 }
