@@ -7,8 +7,7 @@ import {
   AreaPrefecturesResponse,
   PrefectureCitiesResponse
 } from '@utils/api/request-response-types/Location'
-import { TArea } from '@/model/Location'
-import { modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { TArea } from '@model/Location'
 
 const initialState: LocationState = {
   loading: false,

@@ -1,7 +1,7 @@
 //-----------------------------------------------
 // users
 //-----------------------------------------------
-import { TUserForDetail, TUserForList } from '@/model/User'
+import { TUserForDetail, TUserForList } from '@model/User'
 import instance from '@utils/api'
 import {
   insertUserFromAdminQuery,

@@ -1,7 +1,7 @@
 //-----------------------------------------------
 // stylist
 //-----------------------------------------------
-import { TStylistForDetail } from '@/model/Stylist'
+import { TStylistForDetail } from '@model/Stylist'
 import instance from '@utils/api'
 import {
   insertStylistQuery,

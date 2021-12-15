@@ -1,4 +1,4 @@
-import { TAdminDashboard, TStaffDashbaord } from '@/model/Dashboard'
+import { TAdminDashboard, TStaffDashbaord } from '@model/Dashboard'
 import { AxiosResponse } from 'axios'
 import instance from '@utils/api'
 import { baseEndpoint } from '@utils/api/apiEndpoint'
