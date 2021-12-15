@@ -8,6 +8,7 @@ import {
   PrefectureCitiesResponse
 } from '@utils/api/request-response-types/Location'
 import { TArea } from '@model/Location'
+import { modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 
 const initialState: LocationState = {
   loading: false,
