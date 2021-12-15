@@ -6,15 +6,9 @@ import {
   updateMenuItemQuery
 } from '@utils/api/request-response-types/ShopService'
 import instance from '@utils/api'
-<<<<<<< HEAD
 import { baseEndpoint } from '@utils/api/apiEndpoint'
 import { AxiosResponse } from 'axios'
 import { TMenuForDetail } from '@model/Menu'
-=======
-import { baseEndpoint } from '../apiEndpoint'
-import { AxiosResponse } from 'axios'
-import { TMenuForDetail } from '@/model/Menu'
->>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 export const createMenu = async (
   menuData: insertMenuItemQuery
