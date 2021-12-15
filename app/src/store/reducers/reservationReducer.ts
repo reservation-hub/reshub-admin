@@ -1,5 +1,8 @@
 import { ReservationAction } from '@store/actions/reservationAction'
-import { ReservationState, RESERVATION_TYPE } from '@store/types/reservationTypes'
+import {
+  ReservationState,
+  RESERVATION_TYPE
+} from '@store/types/reservationTypes'
 
 const initialState: ReservationState = {
   loading: false,
