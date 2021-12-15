@@ -1,14 +1,22 @@
 //-----------------------------------------------
 // stylist
 //-----------------------------------------------
+<<<<<<< HEAD
 import { TStylistForDetail } from '@model/Stylist'
+=======
+import { TStylistForDetail } from '@/model/Stylist'
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 import instance from '@utils/api'
 import {
   insertStylistQuery,
   updateStylistQuery
 } from '@utils/api/request-response-types/ShopService'
 import { AxiosResponse } from 'axios'
+<<<<<<< HEAD
 import { baseEndpoint } from '@utils/api/apiEndpoint'
+=======
+import { baseEndpoint } from '../apiEndpoint'
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 export const getStylists = async () => await instance.get('/stylists')
 
