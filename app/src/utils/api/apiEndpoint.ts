@@ -13,6 +13,11 @@ import dashboard from '@utils/api/endpoints/dashboard'
 //-----------------------------------------------
 
 export const fetchAll = async () => await instance.get(`/`)
+<<<<<<< HEAD
+=======
+export const getDashboard = async () =>
+  await instance.get(`${baseEndpoint.dashboard}/salon`)
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 export const baseEndpoint = {
   shops: '/shops',
@@ -21,7 +26,11 @@ export const baseEndpoint = {
   prefecture: '/prefectures',
   dashboard: '/dashboard',
   auth: '/auth'
+<<<<<<< HEAD
 } as const
+=======
+}
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 const apiEndpoint = {
   fetchAll,

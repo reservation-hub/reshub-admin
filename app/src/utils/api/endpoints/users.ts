@@ -1,15 +1,24 @@
 //-----------------------------------------------
 // users
 //-----------------------------------------------
+<<<<<<< HEAD
 import { TUserForDetail, TUserForList } from '@model/User'
+=======
+import { TUserForDetail, TUserForList } from '@/model/User'
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 import instance from '@utils/api'
 import {
   insertUserFromAdminQuery,
   updateUserFromAdminQuery
 } from '@utils/api/request-response-types/UserService'
 import { AxiosResponse } from 'axios'
+<<<<<<< HEAD
 import { baseEndpoint } from '@utils/api/apiEndpoint'
 import { fetchModelsWithTotalCountResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+=======
+import { baseEndpoint } from '../apiEndpoint'
+import { fetchModelsWithTotalCountResponse } from '../request-response-types/ServiceCommonTypes'
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 export const getUsers = async (
   page: number,
@@ -22,7 +31,11 @@ export const getUsers = async (
 export const getUser = async (
   id: number
 ): Promise<AxiosResponse<TUserForDetail>> =>
+<<<<<<< HEAD
   await instance.get<TUserForDetail>(`${baseEndpoint.users}/${id}`)
+=======
+  await instance.get<TUserForDetail>(`/users/${id}`)
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 export const createUser = async (
   userData: insertUserFromAdminQuery

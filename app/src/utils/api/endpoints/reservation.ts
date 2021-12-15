@@ -1,14 +1,22 @@
 //-----------------------------------------------
 // reservation
 //-----------------------------------------------
+<<<<<<< HEAD
 import { TReservationForDetail } from '@model/Reservation'
+=======
+import { TReservationForDetail } from '@/model/Reservation'
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 import instance from '@utils/api'
 import {
   insertReservationQuery,
   updateReservationQuery
 } from '@utils/api/request-response-types/ReservationService'
 import { AxiosResponse } from 'axios'
+<<<<<<< HEAD
 import { baseEndpoint } from '@utils/api/apiEndpoint'
+=======
+import { baseEndpoint } from '../apiEndpoint'
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 export const getReservations = async () => await instance.get('reservations')
 

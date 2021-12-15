@@ -15,7 +15,11 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
+<<<<<<< HEAD
 import { TShopForDetails, TShopForList } from '@model/Shop'
+=======
+import { TShopForDetails, TShopForList } from '@/model/Shop'
+>>>>>>> 2fe21c7 (axios / endpoint 修正)
 
 // リクエストを始まる
 const shopRequestStart = () => {
