@@ -7,7 +7,7 @@ import {
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { UserAction } from '@store/actions/userAction'
-import { TUser, TUserForList } from '@model/User'
+import { TUser, TUserForList } from '@/model/User'
 
 const initialState: UsersState = {
   loading: false,

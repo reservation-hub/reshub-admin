@@ -1,7 +1,7 @@
 //----------------------------------
 // redux action types お店管理
 //----------------------------------
-import { TUser, TUserForList } from '@model/User'
+import { TUser, TUserForList } from '@/model/User'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse

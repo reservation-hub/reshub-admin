@@ -1,7 +1,4 @@
 import {
-  GET_AREA_SUCCESS,
-  GET_CITY_SUCCESS,
-  GET_PREF_SUCCESS,
   LocationState,
   LOCATION_TYPE
 } from '@store/types/LocationTypes'
@@ -10,8 +7,8 @@ import {
   AreaPrefecturesResponse,
   PrefectureCitiesResponse
 } from '@utils/api/request-response-types/Location'
-import { TArea } from '@model/Location'
-import { modelResponse } from '@/utils/api/request-response-types/ServiceCommonTypes'
+import { TArea } from '@/model/Location'
+import { modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 
 const initialState: LocationState = {
   loading: false,

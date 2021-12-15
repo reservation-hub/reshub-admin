@@ -1,7 +1,7 @@
 //-----------------------------------------------
 // reservation
 //-----------------------------------------------
-import { TReservationForDetail } from '@model/Reservation'
+import { TReservationForDetail } from '@/model/Reservation'
 import instance from '@utils/api'
 import {
   insertReservationQuery,
