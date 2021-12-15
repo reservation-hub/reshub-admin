@@ -1,6 +1,6 @@
 import React from 'react'
 import { IListProps } from '@components/list/_PropsType'
-import TableRow from '@/components/common/atoms/TableRow'
+import TableRow from '@components/common/atoms/TableRow'
 
 const SalonItem = ({ shop, admin }: IListProps) => {
   return (

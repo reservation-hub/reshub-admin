@@ -1,7 +1,7 @@
-import TableLayout from '@/components/common/atoms/TableLayout'
-import { MENU_CELL } from '@/constants/Table'
+import TableLayout from '@components/common/atoms/TableLayout'
+import { MENU_CELL } from '@constants/Table'
 import React from 'react'
-import { IListProps } from '../_PropsType'
+import { IListProps } from '@components/list/_PropsType'
 import MenuItem from './MenuItems'
 
 const MenuList = ({ menus }: IListProps) => {

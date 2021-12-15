@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRange } from '@utils/hooks/useRange'
-import { IPickerProps } from '../_PropsType'
+import { IPickerProps } from '@components/common/_PropsType'
 
 export interface ITimePickerProps extends IPickerProps {
   hh: number

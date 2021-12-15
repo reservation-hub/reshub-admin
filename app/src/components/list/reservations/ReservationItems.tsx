@@ -1,6 +1,6 @@
-import TableRow from '@/components/common/atoms/TableRow'
+import TableRow from '@components/common/atoms/TableRow'
 import React from 'react'
-import { IListProps } from '../_PropsType'
+import { IListProps } from '@components/list/_PropsType'
 
 const ReservationItems = ({ reservation }: IListProps) => {
   return (

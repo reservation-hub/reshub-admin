@@ -1,4 +1,4 @@
-import { TAdminDashboard, TStaffDashbaord } from '@/model/Dashboard'
+import { TAdminDashboard, TStaffDashbaord } from '@model/Dashboard'
 
 export const DASHBOARD_TYPE = {
   REQUEST_START: 'DASHBOARD_REQUEST_START',

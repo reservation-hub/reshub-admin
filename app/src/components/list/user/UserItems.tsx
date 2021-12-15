@@ -1,8 +1,6 @@
 import React from 'react'
-import useRole from '@utils/hooks/useRole'
-import useBirthday from '@utils/hooks/useBirthday'
 import { IDetailProps } from '@components/detail/_PropsType'
-import TableRow from '@/components/common/atoms/TableRow'
+import TableRow from '@components/common/atoms/TableRow'
 
 const UserItems = ({ user }: IDetailProps) => {
   return (

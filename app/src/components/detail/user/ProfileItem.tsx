@@ -1,10 +1,10 @@
 import React from 'react'
 import { FaRegUserCircle } from 'react-icons/fa'
-import SubHeader from '@/components/common/atoms/SubHeader'
+import SubHeader from '@components/common/atoms/SubHeader'
 import useBirthday from '@utils/hooks/useBirthday'
 import { IDetailProps } from '@components/detail/_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
-import Section from '@/components/common/layout/Section'
+import Section from '@components/common/layout/Section'
 
 const ProfileItem = ({
   user,

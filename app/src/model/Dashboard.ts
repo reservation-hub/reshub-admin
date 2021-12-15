@@ -1,13 +1,13 @@
 import { TReservationForList } from './Reservation'
-import { TShop, TShopForList } from './Shop'
-import { TStylist } from './Stylist'
+import { TShopForList } from './Shop'
+import { TStylistForList } from './Stylist'
 import { TUserForList } from './User'
 
 export type TStaffDashbaord = {
   shops: TShopForList[]
   shopTotalCount: number
   reservations: TReservationForList[]
-  stylists: TStylist[]
+  stylists: TStylistForList[]
 }
 
 export type TAdminDashboard = {

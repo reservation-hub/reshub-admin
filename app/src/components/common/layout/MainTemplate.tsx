@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react'
-import { IMainTemplateProps } from '../_PropsType'
+import { IMainTemplateProps } from '@components/common/_PropsType'
 import { useDispatch } from 'react-redux'
 import { logout } from '@store/actions/authAction'
 import Header from './Header'
-import NavBar from '@/components/common/atoms/NavBar'
+import NavBar from '@components/common/atoms/NavBar'
 import '@styles/template.css'
-import { Link } from 'react-router-dom'
 
 const MainTemplate = ({ children }: IMainTemplateProps) => {
   const dispatch = useDispatch()

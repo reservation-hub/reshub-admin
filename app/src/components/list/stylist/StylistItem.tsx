@@ -1,5 +1,5 @@
-import TableRow from '@/components/common/atoms/TableRow'
 import React from 'react'
+import TableRow from '@components/common/atoms/TableRow'
 import { IListProps } from '../_PropsType'
 
 const StylistItem = ({ stylist }: IListProps) => {

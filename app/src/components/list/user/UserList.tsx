@@ -2,8 +2,8 @@ import React from 'react'
 import TableLayout from '@components/common/atoms/TableLayout'
 import UserItems from './UserItems'
 import { USER_CELL } from '@constants/Table'
-import { IListProps } from '../_PropsType'
-import IsEmpty from '@/components/common/atoms/IsEmpty'
+import { IListProps } from '@components/list/_PropsType'
+import IsEmpty from '@components/common/atoms/IsEmpty'
 
 const UserList = ({ users }: IListProps) => {
   return (

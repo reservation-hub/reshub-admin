@@ -1,10 +1,9 @@
-import { Items } from '@/constants/items'
-import { Menu } from '@/entities/Menu'
-import { TShopForDetails } from '@/model/Shop'
+import { Menu } from '@entities/Menu'
+import { TShopForDetails } from '@model/Shop'
 import {
   ReservationForList,
   StylistForList
-} from '@/utils/api/request-response-types/Dashboard'
+} from '@utils/api/request-response-types/Dashboard'
 import { User } from '@entities/User'
 
 export interface IDetailItems {

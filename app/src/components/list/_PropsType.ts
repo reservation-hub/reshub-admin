@@ -1,4 +1,4 @@
-import { Items } from '@/constants/items'
+import { Items } from '@constants/items'
 
 export interface IListProps extends Items {
   admin?: boolean
