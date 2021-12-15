@@ -1,7 +1,7 @@
 //-----------------------------------------------
 // shops
 //-----------------------------------------------
-import { TShopForDetails, TShopForList } from '@/model/Shop'
+import { TShopForDetails, TShopForList } from '@model/Shop'
 import instance from '@utils/api'
 import {
   insertShopQuery,
