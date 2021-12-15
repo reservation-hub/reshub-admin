@@ -5,8 +5,7 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { ShopIndex } from '@/utils/api/request-response-types/Shop'
-import { TShopForDetails, TShopForList } from '@/model/Shop'
+import { TShopForDetails, TShopForList } from '@model/Shop'
 
 export const SHOPS_TYPE = {
   REQUEST_START: 'SHOP_REQUEST_START',

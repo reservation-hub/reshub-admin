@@ -8,7 +8,7 @@ import shop from './shopReducer'
 import user from './userReducer'
 import dashboard from './dashboardReducer'
 import location from './LocationReducer'
-import reservation from '@store/reducers/reservationReducer'
+import reservation from './reservationReducer'
 import storage from 'redux-persist/lib/storage'
 import persistReducer from 'redux-persist/es/persistReducer'
 

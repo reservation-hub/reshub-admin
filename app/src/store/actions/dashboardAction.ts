@@ -3,7 +3,7 @@ import { RootState, typedAction } from '@store/store'
 import { ThunkAction } from 'redux-thunk'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
-import { TAdminDashboard, TStaffDashbaord } from '@/model/Dashboard'
+import { TAdminDashboard, TStaffDashbaord } from '@model/Dashboard'
 
 const dashboardRequestStart = () => {
   return typedAction(DASHBOARD_TYPE.REQUEST_START)
@@ -18,7 +18,7 @@ export const fetchDashboard =
   async (dispatch) => {
     dispatch(dashboardRequestStart())
     try {
-      const res = await apiEndpoint.getDashboard()
+      const res = await apiEndpoint.dashboard.fetchDashboard()
       dispatch(dashboardRequestSuccess(res.data))
     } catch (e) {
       history.push('/error')

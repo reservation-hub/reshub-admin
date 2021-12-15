@@ -9,14 +9,13 @@ import {
 } from '@utils/api/request-response-types/UserService'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
-import { User } from '@entities/User'
-import apiEndpoint from '../../utils/api/apiEndpoint'
+import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TUser, TUserForList } from '@/model/User'
+import { TUser, TUserForList } from '@model/User'
 
 const userRequestStart = () => {
   return typedAction(USER_TYPE.REQUEST_START)

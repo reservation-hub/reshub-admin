@@ -1,14 +1,14 @@
 //-----------------------------------------------
 // reservation
 //-----------------------------------------------
-import { TReservationForDetail } from '@/model/Reservation'
+import { TReservationForDetail } from '@model/Reservation'
 import instance from '@utils/api'
 import {
   insertReservationQuery,
   updateReservationQuery
 } from '@utils/api/request-response-types/ReservationService'
 import { AxiosResponse } from 'axios'
-import { baseEndpoint } from '../apiEndpoint'
+import { baseEndpoint } from '@utils/api/apiEndpoint'
 
 export const getReservations = async () => await instance.get('reservations')
 

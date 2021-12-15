@@ -1,15 +1,15 @@
 //-----------------------------------------------
 // shops
 //-----------------------------------------------
-import { TShopForDetails, TShopForList } from '@/model/Shop'
+import { TShopForDetails, TShopForList } from '@model/Shop'
 import instance from '@utils/api'
 import {
   insertShopQuery,
   updateShopQuery
 } from '@utils/api/request-response-types/ShopService'
 import { AxiosResponse } from 'axios'
-import { baseEndpoint } from '../apiEndpoint'
-import { fetchModelsWithTotalCountResponse } from '../request-response-types/ServiceCommonTypes'
+import { baseEndpoint } from '@utils/api/apiEndpoint'
+import { fetchModelsWithTotalCountResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 
 export const getShops = async (
   page: number,

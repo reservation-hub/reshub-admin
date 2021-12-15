@@ -12,8 +12,8 @@ import { LocationAction } from '@store/actions/LocationAction'
 import {
   AreaPrefecturesResponse,
   PrefectureCitiesResponse
-} from '@/utils/api/request-response-types/Location'
-import { TArea } from '@/model/Location'
+} from '@utils/api/request-response-types/Location'
+import { TArea } from '@model/Location'
 
 const initialState: LocationState = {
   area: {} as fetchModelsWithTotalCountResponse<modelResponse<TArea>>,

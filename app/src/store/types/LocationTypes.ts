@@ -6,7 +6,7 @@ import {
 import {
   AreaPrefecturesResponse,
   PrefectureCitiesResponse
-} from '@/utils/api/request-response-types/Location'
+} from '@utils/api/request-response-types/Location'
 
 export const GET_CITY_SUCCESS = 'GET_CITY_SUCCESS' as const
 

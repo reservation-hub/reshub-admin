@@ -1,14 +1,14 @@
 //-----------------------------------------------
 // stylist
 //-----------------------------------------------
-import { TStylistForDetail } from '@/model/Stylist'
+import { TStylistForDetail } from '@model/Stylist'
 import instance from '@utils/api'
 import {
   insertStylistQuery,
   updateStylistQuery
 } from '@utils/api/request-response-types/ShopService'
 import { AxiosResponse } from 'axios'
-import { baseEndpoint } from '../apiEndpoint'
+import { baseEndpoint } from '@utils/api/apiEndpoint'
 
 export const getStylists = async () => await instance.get('/stylists')
 

@@ -1,13 +1,13 @@
-import apiEndpoint from '@/utils/api/apiEndpoint'
+import apiEndpoint from '@utils/api/apiEndpoint'
 import {
   insertReservationQuery,
   updateReservationQuery
-} from '@/utils/api/request-response-types/ReservationService'
-import history from '@/utils/routes/history'
+} from '@utils/api/request-response-types/ReservationService'
+import history from '@utils/routes/history'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
-import { RootState, typedAction } from '../store'
-import { RESERVATION_TYPE } from '../types/reservationTypes'
+import { RootState, typedAction } from '@store/store'
+import { RESERVATION_TYPE } from '@store/types/reservationTypes'
 
 const reservationRequestStart = () => {
   return typedAction(RESERVATION_TYPE.REQUEST_START)
