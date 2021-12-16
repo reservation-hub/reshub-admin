@@ -1,10 +1,9 @@
 export const USER_CELL: Record<string, any> = {
   No: 'No',
   email: 'メールアドレス',
-  kanjiName: '氏名（漢字）',
+  username: 'ユーザー名',
   kanaName: '氏名（カナ）',
-  birthday: '生年月日',
-  gender: '性別',
+  reservationCount: '予約件数',
   role: 'アクセス権限'
 } as const
 

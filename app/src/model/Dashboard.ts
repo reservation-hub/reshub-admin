@@ -16,7 +16,7 @@ export type TAdminDashboard = {
     totalCount: number
   }
   shop: {
-    shops: TShopForList[]
+    shopData: TShopForList[]
     totalCount: number
   }
 }
