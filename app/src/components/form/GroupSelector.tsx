@@ -5,11 +5,12 @@ import dayjs from 'dayjs'
 import DayPicker from '@components/common/atoms/DayPicker'
 import Selector from '@components/common/atoms/Selector'
 import { IPickerProps } from '@components/common/_PropsType'
+import { TArea } from '@/model/Location'
 
 export interface IGroupSelector extends IPickerProps {
   selectToId?: boolean
   groupType?: 'birthday' | 'location'
-  datas?: { areas: Area[]; pref: Prefecture[]; city: City[]; days: TDays[] }
+  datas?: { areas: TArea[]; pref: Prefecture[]; city: City[]; days: TDays[] }
   values?: string[]
 }
 

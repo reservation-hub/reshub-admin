@@ -31,11 +31,13 @@ const SalonForm = ({
   )
 
   const data = {
-    areas: area.values,
+    areas: area,
     pref: prefecture.prefectures,
     city: city.cities,
     days: Days
   }
+
+  console.log(data)
 
   if (
     formValue.name.length === 0 ||

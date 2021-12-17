@@ -4,10 +4,6 @@ import {
   GET_PREF_SUCCESS,
   LocationState
 } from '@store/types/LocationTypes'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { LocationAction } from '@store/actions/LocationAction'
 import {
   AreaPrefecturesResponse,
@@ -16,7 +12,7 @@ import {
 import { TArea } from '@model/Location'
 
 const initialState: LocationState = {
-  area: {} as fetchModelsWithTotalCountResponse<modelResponse<TArea>>,
+  area: {} as TArea[],
   prefecture: {} as AreaPrefecturesResponse,
   city: {} as PrefectureCitiesResponse
 }

@@ -26,8 +26,10 @@ export type TShop = {
 
 export type TShopForList = Pick<
   TShop,
-  'id' | 'name' | 'phoneNumber' | 'city' | 'prefecture' | 'address'
+  'id' | 'name' | 'phoneNumber' | 'address'
 > & {
+  prefectureName: string
+  cityName: string
   stylistsCount: number
   reservationsCount: number
 }

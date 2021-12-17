@@ -9,7 +9,8 @@ const SalonItem = ({ shop, admin }: IListProps) => {
       <td className='p-4'>{shop?.name}</td>
       <td className='p-4'>-</td>
       <td className='p-4'>
-        {`${shop?.prefecture?.name}${shop?.city?.name}${shop?.address}` ?? '-'}
+        {`${shop?.prefectureName}${shop?.cityName}${shop?.address ?? ''}` ??
+          '-'}
       </td>
       <td className='p-4'>{`${shop?.reservationsCount ?? 0}件`}</td>
       <td className='p-4'>{`${shop?.stylistsCount ?? 0}件`}</td>

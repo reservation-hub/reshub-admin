@@ -1,8 +1,7 @@
 import React from 'react'
-import { Area, City, Prefecture } from '@entities/Location'
 import { Role } from '@entities/Role'
 import { TDays } from '@constants/Days'
-
+import { TArea, TCity, TPrefecture } from '@model/Location'
 export type MatchParams = {
   id: string
 }
@@ -17,7 +16,7 @@ export interface ClassesAndChildren {
 }
 
 export interface IPickerProps extends IInputProps {
-  data?: Area[] | Prefecture[] | City[] | Role[] | TDays[]
+  data?: TArea[] | TPrefecture[] | TCity[] | Role[] | TDays[]
 }
 
 export interface IInputProps extends ClassesAndChildren {

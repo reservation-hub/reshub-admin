@@ -14,7 +14,9 @@ function TableLayout({ children, cell, classes }: ITableProps) {
         <tr className='text-[1.8rem]'>
           {cell &&
             Object.values(cell).map((value, index: number) => (
-              <th key={index} className='p-4'>{value}</th>
+              <th key={index} className='p-4'>
+                {value}
+              </th>
             ))}
         </tr>
       </thead>

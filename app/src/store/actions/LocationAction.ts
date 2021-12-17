@@ -17,10 +17,9 @@ import {
   AreaPrefecturesResponse,
   PrefectureCitiesResponse
 } from '@utils/api/request-response-types/Location'
+import { TArea } from '@model/Location'
 
-const areaReqSuccess = (
-  data: fetchModelsWithTotalCountResponse<modelResponse<Area>>
-) => {
+const areaReqSuccess = (data: TArea[]) => {
   return typedAction(GET_AREA_SUCCESS, data)
 }
 

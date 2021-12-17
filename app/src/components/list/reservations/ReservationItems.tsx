@@ -6,15 +6,13 @@ const ReservationItems = ({ reservation }: IListProps) => {
   return (
     <TableRow url='reservation' id={reservation?.id}>
       <td className='p-4'>
-        {String(reservation?.shop?.name).length >= 10
-          ? `${reservation?.shop?.name?.substring(0, 8)}...`
-          : reservation?.shop?.name}
+        {String(reservation?.shopName).length >= 10
+          ? `${reservation?.shopName?.substring(0, 8)}...`
+          : reservation?.shopName}
       </td>
-      <td className='p-4'>
-        {`${reservation?.user?.firstNameKana} ${reservation?.user?.lastNameKana}`}
-      </td>
-      <td className='p-4'>{reservation?.menuItem?.name}</td>
-      <td className='p-4'>{reservation?.stylist?.name}</td>
+      <td className='p-4'>{`${reservation?.clientName}`}</td>
+      <td className='p-4'>{reservation?.menuItemName}</td>
+      <td className='p-4'>{reservation?.stylistName}</td>
       <td className='p-4'>{reservation?.status}</td>
     </TableRow>
   )
