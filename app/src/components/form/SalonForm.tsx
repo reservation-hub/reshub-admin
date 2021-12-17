@@ -45,6 +45,8 @@ const SalonForm = ({
     days: Days.map((day) => ({ value: String(day.id), name: day.name }))
   }
 
+  console.log(data)
+
   if (
     formValue.name.length === 0 ||
     formValue.address.length === 0 ||
