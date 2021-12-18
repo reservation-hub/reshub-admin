@@ -1,8 +1,8 @@
-import { TMenu } from '@model/Menu'
-import { TReservationForList } from '@model/Reservation'
-import { TShopForList } from '@model/Shop'
-import { TStylistForList } from '@model/Stylist'
-import { TUserForList } from '@model/User'
+import { TMenu, TMenuForDetail, TMenuForList } from '@model/Menu'
+import { TReservationForDetail, TReservationForList } from '@model/Reservation'
+import { TShopForDetails, TShopForList } from '@model/Shop'
+import { TStylistForDetail, TStylistForList } from '@model/Stylist'
+import { TUserForDetail, TUserForList } from '@model/User'
 
 export interface Items {
   users?: TUserForList[]
@@ -13,6 +13,14 @@ export interface Items {
   reservation?: TReservationForList
   stylists?: TStylistForList[]
   stylist?: TStylistForList
-  menus?: TMenu[]
-  menu?: TMenu
+  menus?: TMenuForList[]
+  menu?: TMenuForList
+}
+
+export interface DetailItems {
+  user?: TUserForDetail
+  shop?: TShopForDetails
+  reservation?: TReservationForDetail
+  stylist?: TStylistForDetail
+  menu?: TMenuForDetail
 }

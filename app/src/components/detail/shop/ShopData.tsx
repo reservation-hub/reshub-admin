@@ -14,12 +14,12 @@ const ShopData = ({ shop }: IDetailProps) => {
         <dt className={dt}>店舗名</dt>
         <dd className={dd}>{shop?.name}</dd>
       </div>
-      {/* <div className='flex'>
+      <div className='flex'>
         <dt className={dt}>住所</dt>
         <dd
           className={dd}
         >{`${shop?.prefecture?.name}${shop?.city?.name}${shop?.address}`}</dd>
-      </div>  */}
+      </div>
       <div className='flex'>
         <dt className={dt}>電話番号</dt>
         <dd className={dd}>{shop?.phoneNumber}</dd>
@@ -31,9 +31,9 @@ const ShopData = ({ shop }: IDetailProps) => {
       <div className='flex'>
         <dt className={dt}>営業時間</dt>
         <dd className={dd}>
-          {/* {`${shop?.schedule?.hours?.start ?? ''}
-            - 
-          ${shop?.schedule?.hours.end ?? ''}`} */}
+          {`${
+            shop?.schedule?.startTime + ' - ' + shop?.schedule?.endTime ?? ''
+          }`}
         </dd>
       </div>
       <div className='flex'>
