@@ -1,4 +1,3 @@
-import { StylistForList } from '@/utils/api/request-response-types/Dashboard'
 import { TArea, TCity, TPrefecture } from './Location'
 import { TMenu } from './Menu'
 import { TReservation, TReservationForList } from './Reservation'
@@ -27,8 +26,10 @@ export type TShop = {
 
 export type TShopForList = Pick<
   TShop,
-  'id' | 'name' | 'phoneNumber' | 'city' | 'prefecture' | 'address'
+  'id' | 'name' | 'phoneNumber' | 'address'
 > & {
+  prefectureName: string
+  cityName: string
   stylistsCount: number
   reservationsCount: number
 }
@@ -37,6 +38,7 @@ export type TShopForDetails = Pick<
   TShop,
   'id' | 'address' | 'schedule' | 'name' | 'details' | 'phoneNumber'
 > & {
-  stylist: TStylistForList[]
-  reservation: TReservationForList[]
+  stylists: TStylistForList[]
+  reservations: TReservationForList[]
+  menu: { id: number; items: TMenu[] }
 }

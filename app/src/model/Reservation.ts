@@ -19,10 +19,12 @@ export type TReservation = {
   menuItem: TMenu
 }
 
-export type TReservationForList = Pick<
-  TReservation,
-  'id' | 'shop' | 'user' | 'stylist' | 'menuItem' | 'status'
->
+export type TReservationForList = Pick<TReservation, 'id' | 'status'> & {
+  clientName: string
+  menuItemName: string
+  shopName: string
+  stylistName: string
+}
 
 export type TReservationForDetail = Pick<
   TReservation,

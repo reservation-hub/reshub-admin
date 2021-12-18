@@ -11,14 +11,14 @@ const CheckBox = ({ onChange, data, checkedData }: ICheckBoxProps) => {
       {data?.map((value, index) => (
         <div key={index} className='w-[7rem] h-[4.4rem]'>
           <input
-            id={`check-${value.id}`}
+            id={`check-${value.name}`}
             type='checkbox'
-            checked={checkedData?.includes(value.id)}
-            value={value.id}
+            checked={checkedData?.includes(Number(value.value))}
+            value={value.value}
             name={value.name}
             onChange={onChange}
           />
-          <label htmlFor={`check-${value.id}`} className='labels'>
+          <label htmlFor={`check-${value.name}`} className='labels'>
             {value.name}
           </label>
         </div>

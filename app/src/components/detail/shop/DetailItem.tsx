@@ -8,6 +8,7 @@ import history from '@utils/routes/history'
 import Section from '@components/common/layout/Section'
 import StylistList from '@components/list/stylist/StylistList'
 import ReservationsList from '@components/list/reservations/ReservationList'
+import MenuList from '@components/list/menu/MenuList'
 
 const DetailItem = ({
   shop,
@@ -27,12 +28,14 @@ const DetailItem = ({
       <div className='container flex justify-between'>
         <ShopData shop={shop} />
         <div className='w-[34rem] h-full'>
-          <StylistList stylists={shop?.stylist} />
+          <StylistList stylists={shop?.stylists} />
         </div>
-        <div className='w-[34rem]'>{/* <MenuList menus={shop?.menu} /> */}</div>
+        <div className='w-[34rem]'>
+          <MenuList menus={shop?.menu?.items} />
+        </div>
       </div>
       <div className='mt-4'>
-        <ReservationsList reservations={shop?.reservation} />
+        <ReservationsList reservations={shop?.reservations} />
       </div>
     </Section>
   )

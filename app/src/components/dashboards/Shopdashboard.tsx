@@ -17,10 +17,10 @@ const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {
     <Section>
       <SubHeader title='ダッシュボード' type='dashboard' />
       <div className='flex justify-between'>
-        <div className='w-[57rem]'>
+        <div className='w-[65rem]'>
           <ReservationsList reservations={data?.reservations} />
         </div>
-        <div className='w-[50rem]'>
+        <div className='w-[43.5rem]'>
           <StylistList stylists={data?.stylists} />
         </div>
       </div>

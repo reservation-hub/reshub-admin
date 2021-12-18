@@ -5,17 +5,15 @@ import { IListProps } from '@components/list/_PropsType'
 const ReservationItems = ({ reservation }: IListProps) => {
   return (
     <TableRow url='reservation' id={reservation?.id}>
-      <td>
-        {String(reservation?.shop?.name).length >= 10
-          ? `${reservation?.shop?.name?.substring(0, 8)}...`
-          : reservation?.shop?.name}
+      <td className='p-4'>
+        {String(reservation?.shopName).length >= 10
+          ? `${reservation?.shopName?.substring(0, 8)}...`
+          : reservation?.shopName}
       </td>
-      <td>
-        {`${reservation?.user?.firstNameKana} ${reservation?.user?.lastNameKana}`}
-      </td>
-      <td>{reservation?.menuItem?.name}</td>
-      <td>{reservation?.stylist?.name}</td>
-      <td>{reservation?.status}</td>
+      <td className='p-4'>{`${reservation?.clientName}`}</td>
+      <td className='p-4'>{reservation?.menuItemName}</td>
+      <td className='p-4'>{reservation?.stylistName}</td>
+      <td className='p-4'>{reservation?.status}</td>
     </TableRow>
   )
 }

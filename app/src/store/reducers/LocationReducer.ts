@@ -2,40 +2,47 @@ import {
   GET_AREA_SUCCESS,
   GET_CITY_SUCCESS,
   GET_PREF_SUCCESS,
-  LocationState
+  LocationState,
+  LOCATION_TYPE
 } from '@store/types/LocationTypes'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { LocationAction } from '@store/actions/LocationAction'
 import {
   AreaPrefecturesResponse,
   PrefectureCitiesResponse
 } from '@utils/api/request-response-types/Location'
 import { TArea } from '@model/Location'
+import { modelResponse } from '@/utils/api/request-response-types/ServiceCommonTypes'
 
 const initialState: LocationState = {
-  area: {} as fetchModelsWithTotalCountResponse<modelResponse<TArea>>,
+  loading: false,
+  area: {} as modelResponse<TArea>[],
   prefecture: {} as AreaPrefecturesResponse,
   city: {} as PrefectureCitiesResponse
 }
 
 const locationReducer = (state = initialState, action: LocationAction) => {
   switch (action.type) {
-    case GET_AREA_SUCCESS:
+    case LOCATION_TYPE.REQUEST_START:
       return {
         ...state,
+        loading: true
+      }
+    case LOCATION_TYPE.GET_AREA_SUCCESS:
+      return {
+        ...state,
+        loading: false,
         area: action.payload
       }
-    case GET_PREF_SUCCESS:
+    case LOCATION_TYPE.GET_PREF_SUCCESS:
       return {
         ...state,
+        loading: false,
         prefecture: action.payload
       }
-    case GET_CITY_SUCCESS:
+    case LOCATION_TYPE.GET_CITY_SUCCESS:
       return {
         ...state,
+        loading: false,
         city: action.payload
       }
     default:

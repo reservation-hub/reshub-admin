@@ -5,9 +5,9 @@ import { IListProps } from '@components/list/_PropsType'
 const MenuItem = ({ menu }: IListProps) => {
   return (
     <TableRow>
-      <td>{menu?.name}</td>
-      <td>{menu?.price}</td>
-      <td>-</td>
+      <td className='p-4'>{menu?.name}</td>
+      <td className='p-4'>{menu?.price}</td>
+      <td className='p-4'>-</td>
     </TableRow>
   )
 }

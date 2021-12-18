@@ -8,7 +8,7 @@ const Error = () => {
   return (
     <MainTemplate>
       <Section>
-        <CenterBox classes='text-center text-[1.6rem] grid text-primary-dark'>
+        <CenterBox classes='text-center text-[1.6rem] grid text-primary-dark left-[55%]'>
           <BsQuestion className='w-[12rem] h-[12rem] mx-auto' />
           <span className='text-[3.2rem]'>404 NOT FOUND</span>
           <span>お探しのページまたはコンテンツは見つかりませんでした。</span>
