@@ -19,18 +19,16 @@ const ReservationDetail = ({
   match,
   location
 }: RouteComponentProps<MatchParams, any, TLocationStateInId>) => {
-  console.log(location)
   const { id } = match.params
-  const { reservation, loading } = useSelector(
-    (state: RootState) => state.reservation
-  )
   const dispatch = useDispatch()
   const convertId = Number(id)
   const shopId = location.state.id
   const { open, modalHandler } = useModal(false)
 
-  console.log(reservation)
-
+  const { reservation, loading } = useSelector(
+    (state: RootState) => state.reservation
+  )
+  
   const onDelete = useCallback(() => {
     dispatch(deleteReservation(shopId, convertId))
   }, [dispatch, shopId, convertId])

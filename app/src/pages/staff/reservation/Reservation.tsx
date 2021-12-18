@@ -15,6 +15,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 import ReservationDetail from './Detail'
+import NewReservation from './New'
 
 const Reservation = ({
   match,
@@ -75,6 +76,7 @@ const Reservation = ({
             </Section>
           )}
         </Route>
+        <Route path='/reservation/new' component={NewReservation} />
         <Route path='/reservation/:id' component={ReservationDetail} />
       </Switch>
     </MainTemplate>
