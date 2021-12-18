@@ -40,12 +40,6 @@ const ProfileItem = ({
           </dd>
         </div>
         <div className='flex'>
-          <dt className={dt}>お名前</dt>
-          <dd className={dd}>
-            {user?.firstNameKanji} {user?.lastNameKanji}
-          </dd>
-        </div>
-        <div className='flex'>
           <dt className={dt}>カナ</dt>
           <dd className={dd}>
             {user?.firstNameKana} {user?.lastNameKana}
@@ -57,7 +51,7 @@ const ProfileItem = ({
         </div>
         <div className='flex'>
           <dt className={dt}>性別</dt>
-          <dd className={dd}>{user?.gender === '0' ? '男性' : '女性'}</dd>
+          <dd className={dd}>{user?.gender === 'MALE' ? '男性' : '女性'}</dd>
         </div>
         <div className='flex'>
           <dt className={dt}>アクセス権限</dt>

@@ -1,7 +1,4 @@
-import {
-  LocationState,
-  LOCATION_TYPE
-} from '@store/types/LocationTypes'
+import { LocationState, LOCATION_TYPE } from '@store/types/LocationTypes'
 import { LocationAction } from '@store/actions/LocationAction'
 import {
   AreaPrefecturesResponse,

@@ -15,7 +15,7 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TUser, TUserForList } from '@model/User'
+import { TUserForDetail, TUserForList } from '@model/User'
 
 const userRequestStart = () => {
   return typedAction(USER_TYPE.REQUEST_START)
@@ -27,15 +27,15 @@ const userRequestSuccess = (
   return typedAction(USER_TYPE.REQUEST_SUCCESS, data)
 }
 
-const userGetSuccess = (data: TUser) => {
+const userGetSuccess = (data: TUserForDetail) => {
   return typedAction(USER_TYPE.GET_SUCCESS, data)
 }
 
-const userAddSuccess = (data: TUser) => {
+const userAddSuccess = (data: TUserForDetail) => {
   return typedAction(USER_TYPE.ADD_SUCCESS, data)
 }
 
-const userPatchSuccess = (data: TUser) => {
+const userPatchSuccess = (data: TUserForDetail) => {
   return typedAction(USER_TYPE.EDIT_SUCCESS, data)
 }
 

@@ -1,10 +1,6 @@
-import {
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
+import { modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { RootState, typedAction } from '@store/store'
-import {
-  LOCATION_TYPE
-} from '@store/types/LocationTypes'
+import { LOCATION_TYPE } from '@store/types/LocationTypes'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'
