@@ -3,7 +3,7 @@ import { IPickerProps } from '@components/common/_PropsType'
 import { AiOutlineArrowDown } from 'react-icons/ai'
 
 export interface ISelectorProps extends IPickerProps {
-  selectToId?: boolean
+  defaultValue?: string
 }
 
 const Selector = ({
@@ -13,7 +13,8 @@ const Selector = ({
   value,
   onChange,
   data,
-  classes
+  classes,
+  children
 }: ISelectorProps) => {
   const select =
     'p-3 m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none text-[1.6rem]'
@@ -32,6 +33,7 @@ const Selector = ({
           value={value}
           className={select}
         >
+          {children}
           {data?.map((type, index) => (
             <option key={index} value={type.value}>
               {type.name}

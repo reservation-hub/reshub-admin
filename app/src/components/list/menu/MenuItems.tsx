@@ -1,4 +1,4 @@
-import TableRow from '@/components/common/atoms/TableRow'
+import TableRow from '@components/common/atoms/TableRow'
 import React from 'react'
 import { IListProps } from '@components/list/_PropsType'
 

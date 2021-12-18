@@ -1,7 +1,7 @@
 //-----------------------------------------------
 // reservation
 //-----------------------------------------------
-import { TReservationForDetail } from '@model/Reservation'
+import { TReservationForDetail, TReservationForList } from '@model/Reservation'
 import instance from '@utils/api'
 import {
   insertReservationQuery,
@@ -14,8 +14,8 @@ export const getReservations = async () => await instance.get('reservations')
 
 export const getReservation = async (
   shopId: number
-): Promise<AxiosResponse<TReservationForDetail>> =>
-  await instance.get<TReservationForDetail>(
+): Promise<AxiosResponse<TReservationForList[]>> =>
+  await instance.get<TReservationForList[]>(
     `${baseEndpoint.shops}/${shopId}/reservation`
   )
 

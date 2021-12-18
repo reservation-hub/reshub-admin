@@ -4,7 +4,7 @@ import { IListProps } from '@components/list/_PropsType'
 
 const ReservationItems = ({ reservation }: IListProps) => {
   return (
-    <TableRow url='reservation' id={reservation?.id}>
+    <TableRow url='reservation' id={reservation?.id} subParams={5}>
       <td className='p-4'>
         {String(reservation?.shopName).length >= 10
           ? `${reservation?.shopName?.substring(0, 8)}...`

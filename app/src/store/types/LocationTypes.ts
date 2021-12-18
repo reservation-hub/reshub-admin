@@ -3,7 +3,7 @@ import {
   PrefectureCitiesResponse
 } from '@utils/api/request-response-types/Location'
 import { TArea } from '@model/Location'
-import { modelResponse } from '@/utils/api/request-response-types/ServiceCommonTypes'
+import { modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 
 export const LOCATION_TYPE = {
   REQUEST_START: 'LOCATION_REQUEST_START',

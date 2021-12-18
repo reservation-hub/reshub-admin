@@ -11,6 +11,8 @@ import { AxiosResponse } from 'axios'
 import { baseEndpoint } from '@utils/api/apiEndpoint'
 import { fetchModelsWithTotalCountResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 
+export const fetchAll = async () => await instance.get(`${baseEndpoint.shops}/`)
+
 export const getShops = async (
   page: number,
   order: 'asc' | 'desc'
@@ -40,6 +42,7 @@ export const deleteShop = async (id: number): Promise<AxiosResponse<string>> =>
   await instance.delete<string>(`${baseEndpoint.shops}/${id}`)
 
 const shops = {
+  fetchAll,
   getShops,
   getShop,
   createShop,

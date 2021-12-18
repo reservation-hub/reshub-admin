@@ -3,7 +3,7 @@ import { RootState, typedAction } from '@store/store'
 import { ThunkAction } from 'redux-thunk'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
-import { TAdminDashboard, TStaffDashbaord } from '@/model/Dashboard'
+import { TAdminDashboard, TStaffDashbaord } from '@model/Dashboard'
 
 const dashboardRequestStart = () => {
   return typedAction(DASHBOARD_TYPE.REQUEST_START)

@@ -7,8 +7,8 @@ import LoginForm from '@components/auth/LoginForm'
 import LoginSelectHeader from '@components/common/choose/LoginSelectHeader'
 import LoginSelectFooter from '@components/common/choose/LoginSelectFooter'
 import CenterBox from '@components/common/layout/CenterBox'
-import { RootState } from '@/store/store'
-import SubTemplate from '@/components/common/layout/SubTemplate'
+import { RootState } from '@store/store'
+import SubTemplate from '@components/common/layout/SubTemplate'
 import Cookies from 'js-cookie'
 
 const Login = () => {

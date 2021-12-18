@@ -9,7 +9,7 @@ import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import DetailItem from '@components/detail/shop/DetailItem'
 import history from '@utils/routes/history'
-import Loading from '@/components/common/atoms/loading'
+import Loading from '@components/common/atoms/loading'
 
 const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   const { id } = match.params

@@ -1,5 +1,5 @@
-import { Shop } from '@/entities/Shop'
 import { TReservation } from './Reservation'
+import { TShop } from './Shop'
 
 export type TStylistSchedule = {
   days: number[]
@@ -12,7 +12,7 @@ export type TStylist = {
   name: string
   price: number
   shopId?: number
-  shop?: Shop
+  shop?: TShop
   reservation?: TReservation[]
   schedule?: TStylistSchedule
 }

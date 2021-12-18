@@ -1,4 +1,4 @@
-import { TRole } from '@/model/User'
+import { TRole } from '@model/User'
 
 export const ROLES: TRole[] = [
   { id: 1, name: 'client', slug: 'client', description: 'client role' },

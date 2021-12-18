@@ -69,7 +69,6 @@ const GroupSelector = ({
           data={datas?.areas}
           label='エリア'
           classes='w-[18rem]'
-          selectToId
         />
         <Selector
           id='pref'
@@ -79,7 +78,6 @@ const GroupSelector = ({
           data={datas?.pref}
           label='都道府県'
           classes='w-[18rem]'
-          selectToId
         />
         <Selector
           id='city'
@@ -89,7 +87,6 @@ const GroupSelector = ({
           data={datas?.city}
           label='市区町村'
           classes='w-[18rem]'
-          selectToId
         />
       </>
     )

@@ -7,10 +7,11 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TShopForDetails, TShopForList } from '@model/Shop'
+import { TShop, TShopForDetails, TShopForList } from '@model/Shop'
 
 const initialState: ShopState = {
   loading: false,
+  fetchAll: {} as fetchModelsWithTotalCountResponse<TShop>,
   shops: {} as fetchModelsWithTotalCountResponse<modelResponse<TShopForList>>,
   shop: {} as TShopForDetails,
   msg: ''
@@ -22,6 +23,12 @@ const shopReducer = (state = initialState, action: ShopAction) => {
       return {
         ...state,
         loading: true
+      }
+    case SHOPS_TYPE.FETCH_ALL:
+      return {
+        ...state,
+        loading: false,
+        fetchAll: action.payload
       }
     case SHOPS_TYPE.REQUEST_SUCCESS:
       return {

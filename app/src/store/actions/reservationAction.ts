@@ -8,28 +8,29 @@ import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { RootState, typedAction } from '@store/store'
 import { RESERVATION_TYPE } from '@store/types/reservationTypes'
+import { TReservationForDetail, TReservationForList } from '@model/Reservation'
 
 const reservationRequestStart = () => {
   return typedAction(RESERVATION_TYPE.REQUEST_START)
 }
 
-const reservationsRequestSuccess = (data: any) => {
+const reservationsRequestSuccess = (data: TReservationForList[]) => {
   return typedAction(RESERVATION_TYPE.REQUSET_SUCCESS, data)
 }
 
-const reservationGetSuccess = (data: any) => {
+const reservationGetSuccess = (data: TReservationForList[]) => {
   return typedAction(RESERVATION_TYPE.GET_ONE_SUCCESS, data)
 }
 
-const reservationAddSuccess = (data: any) => {
+const reservationAddSuccess = (data: TReservationForDetail) => {
   return typedAction(RESERVATION_TYPE.ADD_SUCCESS, data)
 }
 
-const reservationPatchSuccess = (data: any) => {
+const reservationPatchSuccess = (data: TReservationForDetail) => {
   return typedAction(RESERVATION_TYPE.PATCH_SUCCESS, data)
 }
 
-const reservationDeleteSuccess = (data: any) => {
+const reservationDeleteSuccess = (data: string) => {
   return typedAction(RESERVATION_TYPE.DELETE_SUCCESS, data)
 }
 

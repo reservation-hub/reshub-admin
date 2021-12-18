@@ -1,3 +1,4 @@
+import { TReservationForDetail, TReservationForList } from '@model/Reservation'
 import { ReservationAction } from '@store/actions/reservationAction'
 import {
   ReservationState,
@@ -6,9 +7,10 @@ import {
 
 const initialState: ReservationState = {
   loading: false,
-  reservations: {},
-  reservation: {},
-  err: ''
+  reservations: {} as TReservationForList[],
+  reservation: {} as TReservationForDetail,
+  err: '',
+  msg: ''
 }
 
 const reservationReducer = (
@@ -31,7 +33,7 @@ const reservationReducer = (
       return {
         ...state,
         loading: false,
-        reservation: action.payload
+        reservations: action.payload
       }
     case RESERVATION_TYPE.ADD_SUCCESS:
       return {
@@ -49,7 +51,7 @@ const reservationReducer = (
       return {
         ...state,
         loading: false,
-        reservation: action.payload
+        msg: action.payload
       }
     case RESERVATION_TYPE.REQUEST_FAILURE:
       return {
