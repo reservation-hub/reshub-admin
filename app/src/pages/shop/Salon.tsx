@@ -15,7 +15,6 @@ import { TCurrentPage } from '@components/list/_PropsType'
 import Section from '@/components/common/layout/Section'
 import SubHeader from '@/components/common/atoms/SubHeader'
 import { HEADER_TYPE } from '@/constants/Common'
-import InputFiled from '@/components/common/atoms/InputFiled'
 import CustomButton from '@/components/common/atoms/CustomButton'
 
 const Salon = ({

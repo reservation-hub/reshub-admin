@@ -34,5 +34,5 @@ export const RESERVATION_CELL: Record<string, any> = {
 export const MENU_CELL: Record<string, any> = {
   name: 'メニュー名',
   price: '値段',
-  stylist: '対応可能'
+  duration: '時間'
 } as const

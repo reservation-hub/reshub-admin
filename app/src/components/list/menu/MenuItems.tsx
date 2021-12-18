@@ -7,7 +7,7 @@ const MenuItem = ({ menu }: IListProps) => {
     <TableRow>
       <td className='p-4'>{menu?.name}</td>
       <td className='p-4'>{menu?.price}</td>
-      <td className='p-4'>-</td>
+      <td className='p-4'>{menu?.duration}分</td>
     </TableRow>
   )
 }

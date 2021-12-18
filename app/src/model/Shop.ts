@@ -36,7 +36,14 @@ export type TShopForList = Pick<
 
 export type TShopForDetails = Pick<
   TShop,
-  'id' | 'address' | 'schedule' | 'name' | 'details' | 'phoneNumber'
+  | 'id'
+  | 'address'
+  | 'schedule'
+  | 'name'
+  | 'details'
+  | 'phoneNumber'
+  | 'prefecture'
+  | 'city'
 > & {
   stylists: TStylistForList[]
   reservations: TReservationForList[]
