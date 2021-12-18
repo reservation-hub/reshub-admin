@@ -15,7 +15,7 @@ import {
   updateShopQuery
 } from '@utils/api/request-response-types/ShopService'
 import { addShop, editShopData } from '@store/actions/shopAction'
-import Section from '@/components/common/layout/Section'
+import Section from '@components/common/layout/Section'
 import dayjs from 'dayjs'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {

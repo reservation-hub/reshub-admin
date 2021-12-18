@@ -1,4 +1,4 @@
-import MainTemplate from '@/components/common/layout/MainTemplate'
+import MainTemplate from '@components/common/layout/MainTemplate'
 import React from 'react'
 
 const Stylist = () => {

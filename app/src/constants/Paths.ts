@@ -9,7 +9,6 @@ import NotLoggedIn from '@pages/auth/NotloggedIn'
 import Stylist from '@pages/staff/stylist/Stylist'
 import Reservation from '@pages/staff/reservation/Reservation'
 import CreateShop from '@pages/staff/shop/CreateShop'
-import Detail from '@/pages/shop/Detail'
 
 export type TStaticContext = {
   statusCode?: number | undefined

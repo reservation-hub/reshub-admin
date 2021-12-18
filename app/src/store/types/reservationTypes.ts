@@ -1,3 +1,5 @@
+import { TReservationForDetail, TReservationForList } from '@model/Reservation'
+
 export const RESERVATION_TYPE = {
   REQUEST_START: 'REQUEST_START',
   REQUSET_SUCCESS: 'REQUEST_SUCCESS',
@@ -10,7 +12,8 @@ export const RESERVATION_TYPE = {
 
 export type ReservationState = {
   loading: boolean
-  reservations: Record<string, any>
-  reservation: Record<string, any>
+  reservations: TReservationForList[]
+  reservation: TReservationForDetail
   err: string
+  msg: string
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SalonList from '@/components/list/shop/SalonList'
+import SalonList from '@components/list/shop/SalonList'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchShopList } from '@store/actions/shopAction'
@@ -12,10 +12,10 @@ import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
 import Form from '@pages/shop/Form'
 import { TCurrentPage } from '@components/list/_PropsType'
-import Section from '@/components/common/layout/Section'
-import SubHeader from '@/components/common/atoms/SubHeader'
-import { HEADER_TYPE } from '@/constants/Common'
-import CustomButton from '@/components/common/atoms/CustomButton'
+import Section from '@components/common/layout/Section'
+import SubHeader from '@components/common/atoms/SubHeader'
+import { HEADER_TYPE } from '@constants/Common'
+import CustomButton from '@components/common/atoms/CustomButton'
 
 const Salon = ({
   match,

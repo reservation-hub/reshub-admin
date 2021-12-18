@@ -1,7 +1,7 @@
-import { User } from '@/entities/User'
 import { TMenu } from './Menu'
 import { TShop } from './Shop'
 import { TStylist } from './Stylist'
+import { TUserForDetail } from './User'
 
 export enum ReservationStatus {
   RESERVED = 'Reserved',
@@ -13,7 +13,7 @@ export type TReservation = {
   id: number
   shop?: TShop
   reservationDate: Date
-  user: User
+  user: TUserForDetail
   status: ReservationStatus
   stylist?: TStylist
   menuItem: TMenu

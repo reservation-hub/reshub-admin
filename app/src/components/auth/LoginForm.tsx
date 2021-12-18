@@ -2,14 +2,14 @@ import React from 'react'
 import { GoogleLogin } from 'react-google-login'
 import { FcGoogle } from 'react-icons/fc'
 import CustomButton from '@components/common/atoms/CustomButton'
-import InputFiled from '../common/atoms/InputFiled'
-import { ClassesAndChildren } from '../common/_PropsType'
+import InputFiled from '@components/common/atoms/InputFiled'
+import { ClassesAndChildren } from '@components/common/_PropsType'
 import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline
 } from 'react-google-login'
-import { VALIDATION_TEXT } from '@/constants/FormValid'
-import ErrorMessage from '../common/atoms/ErrorMessage'
+import { VALIDATION_TEXT } from '@constants/FormValid'
+import ErrorMessage from '@components/common/atoms/ErrorMessage'
 
 export type TAuthForm = {
   email: string

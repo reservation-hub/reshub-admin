@@ -15,11 +15,15 @@ import {
   fetchModelsWithTotalCountResponse,
   modelResponse
 } from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TShopForDetails, TShopForList } from '@model/Shop'
+import { TShop, TShopForDetails, TShopForList } from '@model/Shop'
 
 // リクエストを始まる
 const shopRequestStart = () => {
   return typedAction(SHOPS_TYPE.REQUEST_START)
+}
+
+const fetchAllSuccess = (data: fetchModelsWithTotalCountResponse<TShop>) => {
+  return typedAction(SHOPS_TYPE.FETCH_ALL, data)
 }
 
 const shopRequestSuccess = (
@@ -48,6 +52,17 @@ const shopDeleteSuccess = (msg: string) => {
 const shopRequestFailure = (err: string) => {
   return typedAction(SHOPS_TYPE.REQUEST_FAILURE, err)
 }
+
+export const fetchAllItems =
+  (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
+    dispatch(shopRequestStart())
+    try {
+      const res = await apiEndpoint.shops.fetchAll()
+      dispatch(fetchAllSuccess(res.data))
+    } catch {
+      console.log('error')
+    }
+  }
 
 // 全てのお店データを読み込む
 export const fetchShopList =
@@ -134,6 +149,7 @@ export const deleteShopData =
 
 export type ShopAction =
   | ReturnType<typeof shopRequestStart>
+  | ReturnType<typeof fetchAllSuccess>
   | ReturnType<typeof shopRequestSuccess>
   | ReturnType<typeof shopGetSuccess>
   | ReturnType<typeof shopAddSuccess>

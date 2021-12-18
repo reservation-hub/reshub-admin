@@ -1,5 +1,5 @@
-import CenterBox from '@/components/common/layout/CenterBox'
-import SubTemplate from '@/components/common/layout/SubTemplate'
+import CenterBox from '@components/common/layout/CenterBox'
+import SubTemplate from '@components/common/layout/SubTemplate'
 import { BsQuestion } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import React from 'react'

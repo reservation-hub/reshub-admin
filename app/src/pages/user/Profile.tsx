@@ -4,12 +4,12 @@ import { deleteUser, getOneUser } from '@store/actions/userAction'
 import { RouteComponentProps } from 'react-router-dom'
 import { RootState } from '@store/store'
 import { useModal } from '@utils/hooks/useModal'
-import ProfileItem from '@/components/detail/user/ProfileItem'
+import ProfileItem from '@components/detail/user/ProfileItem'
 import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import history from '@utils/routes/history'
 import { MatchParams } from '@components/common/_PropsType'
-import Loading from '@/components/common/atoms/loading'
+import Loading from '@components/common/atoms/loading'
 
 const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   const { id } = match.params

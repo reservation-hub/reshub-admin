@@ -1,7 +1,7 @@
 import React from 'react'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
-import CenterBox from '@/components/common/layout/CenterBox'
+import CenterBox from '@components/common/layout/CenterBox'
 import { BsQuestion } from 'react-icons/bs'
 
 const Error = () => {

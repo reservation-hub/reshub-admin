@@ -4,7 +4,7 @@ import { fetchDashboard } from '@store/actions/dashboardAction'
 import { RootState } from '@store/store'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import AdminDashboard from '@components/dashboards/AdminDashboard'
-import ShopDashboard from '@/components/dashboards/Shopdashboard'
+import ShopDashboard from '@components/dashboards/Shopdashboard'
 import Loading from '@components/common/atoms/loading'
 import { Redirect } from 'react-router'
 
