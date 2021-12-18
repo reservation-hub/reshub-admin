@@ -12,7 +12,7 @@ const dashboardReducer = (state = initialState, action: DashboardAction) => {
     case DASHBOARD_TYPE.REQUEST_START:
       return {
         ...state,
-        loading: false
+        loading: true
       }
     case DASHBOARD_TYPE.REQUEST_SUCCESS:
       return {

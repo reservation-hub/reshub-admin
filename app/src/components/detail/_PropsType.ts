@@ -1,17 +1,15 @@
-import { Menu } from '@entities/Menu'
 import { TShopForDetails } from '@model/Shop'
-import {
-  ReservationForList,
-  StylistForList
-} from '@utils/api/request-response-types/Dashboard'
-import { User } from '@entities/User'
+import { TUserForDetail } from '@model/User'
+import { TStylistForDetail } from '@model/Stylist'
+import { TReservationForDetail } from '@model/Reservation'
+import { TMenuForDetail } from '@model/Menu'
 
 export interface IDetailItems {
-  user?: User
+  user?: TUserForDetail
   shop?: TShopForDetails
-  stylist?: StylistForList[]
-  reservation?: ReservationForList[]
-  menu?: Menu[]
+  stylist?: TStylistForDetail
+  reservation?: TReservationForDetail
+  menu?: TMenuForDetail
 }
 
 export interface IDetailProps extends IDetailItems {

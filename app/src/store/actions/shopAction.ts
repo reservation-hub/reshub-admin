@@ -87,7 +87,7 @@ export const addShop =
       const res = await apiEndpoint.shops.createShop(shopData)
       dispatch(shopAddSuccess(res.data))
       if (history.location.pathname === '/create_shop') {
-        history.push('/salon_dashboard')
+        history.push('/dashboard')
       } else {
         history.push({ pathname: '/salon', state: { currentPage: 1 } })
       }
@@ -104,7 +104,11 @@ export const editShopData =
     try {
       const res = await apiEndpoint.shops.patchShop(shopData)
       dispatch(shopPatchSuccess(res.data))
-      history.push(`/salon/${res.data.id}`)
+      if (history.location.pathname === '/create_shop') {
+        history.push(`/shops/${res.data.id}`)
+      } else {
+        history.push(`/salon/${res.data.id}`)
+      }
     } catch (e: any) {
       dispatch(shopRequestFailure(e))
     }
@@ -118,7 +122,11 @@ export const deleteShopData =
     try {
       const res = await apiEndpoint.shops.deleteShop(id)
       dispatch(shopDeleteSuccess(res.data))
-      history.push({ pathname: '/salon', state: { currentPage: 1 } })
+      if (history.location.pathname === '/create_shop') {
+        history.push('/shops', { state: { currentPage: 1 } })
+      } else {
+        history.push({ pathname: '/salon', state: { currentPage: 1 } })
+      }
     } catch (e: any) {
       dispatch(shopRequestFailure(e))
     }
