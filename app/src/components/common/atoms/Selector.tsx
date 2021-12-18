@@ -13,8 +13,7 @@ const Selector = ({
   value,
   onChange,
   data,
-  classes,
-  selectToId
+  classes
 }: ISelectorProps) => {
   const select =
     'p-3 m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none text-[1.6rem]'
@@ -33,9 +32,9 @@ const Selector = ({
           value={value}
           className={select}
         >
-          {data?.map((value, index) => (
-            <option key={index} value={selectToId ? value.id : value.slug}>
-              {value.name}
+          {data?.map((type, index) => (
+            <option key={index} value={type.value}>
+              {type.name}
             </option>
           ))}
         </select>

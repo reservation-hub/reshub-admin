@@ -7,7 +7,8 @@ import { RootState, typedAction } from '@store/store'
 import {
   GET_AREA_SUCCESS,
   GET_CITY_SUCCESS,
-  GET_PREF_SUCCESS
+  GET_PREF_SUCCESS,
+  LOCATION_TYPE
 } from '@store/types/LocationTypes'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
@@ -19,20 +20,25 @@ import {
 } from '@utils/api/request-response-types/Location'
 import { TArea } from '@model/Location'
 
-const areaReqSuccess = (data: TArea[]) => {
-  return typedAction(GET_AREA_SUCCESS, data)
+const locationRequestStart = () => {
+  return typedAction(LOCATION_TYPE.REQUEST_START)
+}
+
+const areaReqSuccess = (data: modelResponse<TArea>[]) => {
+  return typedAction(LOCATION_TYPE.GET_AREA_SUCCESS, data)
 }
 
 const getOneAreaSuccess = (data: AreaPrefecturesResponse) => {
-  return typedAction(GET_PREF_SUCCESS, data)
+  return typedAction(LOCATION_TYPE.GET_PREF_SUCCESS, data)
 }
 
 const getOnePrefSuccess = (data: PrefectureCitiesResponse) => {
-  return typedAction(GET_CITY_SUCCESS, data)
+  return typedAction(LOCATION_TYPE.GET_CITY_SUCCESS, data)
 }
 
 export const getArea =
   (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
+    dispatch(locationRequestStart())
     try {
       const res = await apiEndpoint.location.getAreas()
       dispatch(areaReqSuccess(res.data))
@@ -64,6 +70,7 @@ export const getOneCity =
   }
 
 export type LocationAction =
+  | ReturnType<typeof locationRequestStart>
   | ReturnType<typeof areaReqSuccess>
   | ReturnType<typeof getOneAreaSuccess>
   | ReturnType<typeof getOnePrefSuccess>

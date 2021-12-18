@@ -1,9 +1,12 @@
 import React from 'react'
-import { Role } from '@entities/Role'
-import { TDays } from '@constants/Days'
-import { TArea, TCity, TPrefecture } from '@model/Location'
+
 export type MatchParams = {
   id: string
+}
+
+export type selectType = {
+  value: string
+  name: string
 }
 
 export interface IMainTemplateProps extends ClassesAndChildren {
@@ -16,7 +19,7 @@ export interface ClassesAndChildren {
 }
 
 export interface IPickerProps extends IInputProps {
-  data?: TArea[] | TPrefecture[] | TCity[] | Role[] | TDays[]
+  data?: selectType[]
 }
 
 export interface IInputProps extends ClassesAndChildren {

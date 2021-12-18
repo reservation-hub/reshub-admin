@@ -1,16 +1,18 @@
 import React from 'react'
-import { TDays } from '@constants/Days'
-import { Area, City, Prefecture } from '@entities/Location'
 import dayjs from 'dayjs'
 import DayPicker from '@components/common/atoms/DayPicker'
 import Selector from '@components/common/atoms/Selector'
-import { IPickerProps } from '@components/common/_PropsType'
-import { TArea } from '@/model/Location'
+import { IPickerProps, selectType } from '@components/common/_PropsType'
 
 export interface IGroupSelector extends IPickerProps {
   selectToId?: boolean
   groupType?: 'birthday' | 'location'
-  datas?: { areas: TArea[]; pref: Prefecture[]; city: City[]; days: TDays[] }
+  datas?: {
+    areas: selectType[]
+    pref: selectType[]
+    city: selectType[]
+    days: selectType[]
+  }
   values?: string[]
 }
 
