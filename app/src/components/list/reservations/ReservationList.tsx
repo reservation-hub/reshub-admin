@@ -6,12 +6,13 @@ import { IListProps } from '@components/list/_PropsType'
 import ReservationItems from './ReservationItems'
 
 const ReservationsList = ({ reservations }: IListProps) => {
+  console.log(reservations)
   return (
     <>
       <TableLayout cell={RESERVATION_CELL}>
-        {reservations?.map((value, index) => (
+        {/* {reservations?.map((value, index) => (
           <ReservationItems reservation={value} key={index} />
-        ))}
+        ))} */}
       </TableLayout>
       {reservations?.length === 0 && <IsEmpty text='予約' />}
     </>
