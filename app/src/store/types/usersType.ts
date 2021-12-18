@@ -1,7 +1,7 @@
 //----------------------------------
 // redux action types お店管理
 //----------------------------------
-import { TUser, TUserForList } from '@model/User'
+import { TUserForDetail, TUserForList } from '@model/User'
 import {
   fetchModelsWithTotalCountResponse,
   modelResponse
@@ -20,6 +20,6 @@ export const USER_TYPE = {
 export type UsersState = {
   loading: boolean
   users: fetchModelsWithTotalCountResponse<modelResponse<TUserForList>>
-  user: TUser
+  user: TUserForDetail
   msg: string
 }

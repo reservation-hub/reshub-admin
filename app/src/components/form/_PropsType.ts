@@ -1,6 +1,6 @@
-import { User } from '@entities/User'
 import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
-import { Shop } from '@/entities/Shop'
+import { TShop } from '@model/Shop'
+import { TUser } from '@model/User'
 
 export type TUserInput = {
   email: string
@@ -39,8 +39,8 @@ export type TChangeHandler = {
 }
 
 export type TFormState = {
-  user?: User
-  shop?: Shop
+  user?: TUser
+  shop?: TShop
 }
 
 export interface IFormProps {

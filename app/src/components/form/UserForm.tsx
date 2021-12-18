@@ -159,14 +159,14 @@ const UserForm = ({
               ]}
             />
           </div>
-          {/* <Selector
+          <Selector
             id='role'
             name='role'
             value={formValue.role}
             onChange={changeHandlers.input}
             data={ROLES.map((role) => ({ value: role.slug, name: role.name }))}
             label='権限'
-          /> */}
+          />
           {error.duplicated && (
             <ErrorMessage text={VALIDATION_TEXT.DUPLICATED} />
           )}

@@ -4,16 +4,28 @@
 import { TArea } from '@model/Location'
 import instance from '@utils/api'
 import { AxiosResponse } from 'axios'
-import { baseEndpoint } from '../apiEndpoint'
+import { baseEndpoint } from '@utils/api/apiEndpoint'
+import {
+  AreaPrefecturesResponse,
+  PrefectureCitiesResponse
+} from '@utils/api/request-response-types/Location'
 
 export const getAreas = async (): Promise<AxiosResponse<TArea[]>> =>
   await instance.get(baseEndpoint.area)
 
-export const getArea = async (id: number) =>
-  await instance.get(`${baseEndpoint.area}/${id}${baseEndpoint.prefecture}`)
+export const getArea = async (
+  id: number
+): Promise<AxiosResponse<AreaPrefecturesResponse>> =>
+  await instance.get<AreaPrefecturesResponse>(
+    `${baseEndpoint.area}/${id}${baseEndpoint.prefecture}`
+  )
 
-export const getPrefecture = async (id: number) =>
-  await instance.get(`${baseEndpoint.prefecture}/${id}/cities`)
+export const getPrefecture = async (
+  id: number
+): Promise<AxiosResponse<PrefectureCitiesResponse>> =>
+  await instance.get<PrefectureCitiesResponse>(
+    `${baseEndpoint.prefecture}/${id}/cities`
+  )
 
 const location = {
   getAreas,

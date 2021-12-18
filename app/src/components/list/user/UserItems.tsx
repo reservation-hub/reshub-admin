@@ -1,8 +1,8 @@
 import React from 'react'
-import { IDetailProps } from '@components/detail/_PropsType'
 import TableRow from '@components/common/atoms/TableRow'
+import { IListProps } from '@components/list/_PropsType'
 
-const UserItems = ({ user }: IDetailProps) => {
+const UserItems = ({ user }: IListProps) => {
   return (
     <TableRow url='users' id={user?.id}>
       <td className='p-4'>{user?.id}</td>

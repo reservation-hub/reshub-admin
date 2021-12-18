@@ -1,15 +1,6 @@
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
-import { Area } from '@entities/Location'
+import { modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { RootState, typedAction } from '@store/store'
-import {
-  GET_AREA_SUCCESS,
-  GET_CITY_SUCCESS,
-  GET_PREF_SUCCESS,
-  LOCATION_TYPE
-} from '@store/types/LocationTypes'
+import { LOCATION_TYPE } from '@store/types/LocationTypes'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'

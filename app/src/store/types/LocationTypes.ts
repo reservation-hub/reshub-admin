@@ -12,12 +12,6 @@ export const LOCATION_TYPE = {
   GET_CITY_SUCCESS: 'GET_CITY_SUCCESS'
 } as const
 
-export const GET_CITY_SUCCESS = 'GET_CITY_SUCCESS' as const
-
-export const GET_AREA_SUCCESS = 'GET_AREA_SUCCESS' as const
-
-export const GET_PREF_SUCCESS = 'GET_PREF_SUCCESS' as const
-
 export type LocationState = {
   loading: boolean
   area: modelResponse<TArea>[]

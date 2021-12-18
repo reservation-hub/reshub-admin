@@ -2,15 +2,13 @@ import React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import Salon from '@pages/shop/Salon'
 import Users from '@pages/user/Users'
-import Home from '@/pages/choose/Home'
 import SalonDashboard from '@pages/dashboards/salon/SalonDashboard'
 import Login from '@pages/auth/Login'
 import Error from '@pages/error/Error'
-import NotLoggedIn from '@/pages/auth/NotloggedIn'
-import StaffSalon from '@/pages/staff/shop/StaffSalon'
-import Stylist from '@/pages/staff/stylist/Stylist'
-import Reservation from '@/pages/staff/reservation/Reservation'
-import CreateShop from '@/pages/staff/shop/CreateShop'
+import NotLoggedIn from '@pages/auth/NotloggedIn'
+import Stylist from '@pages/staff/stylist/Stylist'
+import Reservation from '@pages/staff/reservation/Reservation'
+import CreateShop from '@pages/staff/shop/CreateShop'
 import Detail from '@/pages/shop/Detail'
 
 export type TStaticContext = {
@@ -43,7 +41,6 @@ export const PRIVATE_PATHS: TRouter[] = [
 ]
 
 export const PUBLIC_PATHS: TRouter[] = [
-  { path: '/', exact: true, component: Home },
   { path: '/shops', exact: false, component: Salon },
   { path: '/dashboard', exact: false, component: SalonDashboard },
   { path: '/stylist', exact: false, component: Stylist },

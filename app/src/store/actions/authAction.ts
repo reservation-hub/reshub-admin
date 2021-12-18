@@ -66,7 +66,7 @@ export const loginStart =
       setAuthToken(token)
 
       dispatch(fetchUser(user.data.user))
-      history.push('/')
+      history.push('/dashboard')
     } catch (e: any) {
       dispatch(loginRequestFailure(e.response.data))
     }
@@ -91,7 +91,7 @@ export const googleLogin =
       setAuthToken(token)
 
       dispatch(fetchUser(user.data.user))
-      history.push('/')
+      history.push('/dashboard')
     } catch (e: any) {
       dispatch(loginRequestFailure(e.response.data))
     }
