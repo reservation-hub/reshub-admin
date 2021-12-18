@@ -1,26 +1,33 @@
-import { TMenu, TMenuForDetail, TMenuForList } from '@model/Menu'
-import { TReservationForDetail, TReservationForList } from '@model/Reservation'
-import { TShopForDetails, TShopForList } from '@model/Shop'
-import { TStylistForDetail, TStylistForList } from '@model/Stylist'
-import { TUserForDetail, TUserForList } from '@model/User'
+import { MenuForList } from '@utils/api/request-response-types/models/Menu'
+import { ReservationForList } from '@utils/api/request-response-types/models/Reservation'
+import { ShopForList } from '@utils/api/request-response-types/models/Shop'
+import { StylistForList } from '@utils/api/request-response-types/models/Stylist'
+import { UserForList } from '@utils/api/request-response-types/models/User'
+import {
+  MenuResponse,
+  ReservationResponse,
+  ShopResponse,
+  StylistResponse
+} from '@utils/api/request-response-types/Shop'
+import { UserResponse } from '@utils/api/request-response-types/User'
 
 export interface Items {
-  users?: TUserForList[]
-  user?: TUserForList
-  shops?: TShopForList[]
-  shop?: TShopForList
-  reservations?: TReservationForList[]
-  reservation?: TReservationForList
-  stylists?: TStylistForList[]
-  stylist?: TStylistForList
-  menus?: TMenuForList[]
-  menu?: TMenuForList
+  users?: UserForList[]
+  user?: UserForList
+  shops?: ShopForList[]
+  shop?: ShopForList
+  reservations?: ReservationForList[]
+  reservation?: ReservationForList
+  stylists?: StylistForList[]
+  stylist?: StylistForList
+  menus?: MenuForList[]
+  menu?: MenuForList
 }
 
 export interface DetailItems {
-  user?: TUserForDetail
-  shop?: TShopForDetails
-  reservation?: TReservationForDetail
-  stylist?: TStylistForDetail
-  menu?: TMenuForDetail
+  user?: UserResponse
+  shop?: ShopResponse
+  reservation?: ReservationResponse
+  stylist?: StylistResponse
+  menu?: MenuResponse
 }

@@ -4,16 +4,15 @@
 import { ShopState, SHOPS_TYPE } from '@store/types/shopTypes'
 import { ShopAction } from '@store/actions/shopAction'
 import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TShop, TShopForDetails, TShopForList } from '@model/Shop'
+  ShopListResponse,
+  ShopResponse
+} from '@utils/api/request-response-types/Shop'
 
 const initialState: ShopState = {
   loading: false,
-  fetchAll: {} as fetchModelsWithTotalCountResponse<TShop>,
-  shops: {} as fetchModelsWithTotalCountResponse<modelResponse<TShopForList>>,
-  shop: {} as TShopForDetails,
+  fetchAll: {} as ShopListResponse,
+  shops: {} as ShopListResponse,
+  shop: {} as ShopResponse,
   msg: ''
 }
 
@@ -46,13 +45,13 @@ const shopReducer = (state = initialState, action: ShopAction) => {
       return {
         ...state,
         loading: false,
-        shop: action.payload
+        msg: action.payload
       }
     case SHOPS_TYPE.EDIT_SUCCESS:
       return {
         ...state,
         loading: false,
-        shop: action.payload
+        msg: action.payload
       }
     case SHOPS_TYPE.DELETE_SUCCESS:
       return {

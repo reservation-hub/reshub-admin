@@ -1,38 +1,38 @@
 //-----------------------------------------------
 // users
 //-----------------------------------------------
-import { TUserForDetail, TUserForList } from '@model/User'
 import instance from '@utils/api'
-import {
-  insertUserFromAdminQuery,
-  updateUserFromAdminQuery
-} from '@utils/api/request-response-types/UserService'
 import { AxiosResponse } from 'axios'
 import { baseEndpoint } from '@utils/api/apiEndpoint'
-import { fetchModelsWithTotalCountResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import {
+  InsertUserQuery,
+  UpdateUserQuery,
+  UserListResponse,
+  UserResponse
+} from '@utils/api/request-response-types/User'
 
 export const getUsers = async (
   page: number,
   order: 'asc' | 'desc'
-): Promise<AxiosResponse<fetchModelsWithTotalCountResponse<TUserForList>>> =>
-  await instance.get<fetchModelsWithTotalCountResponse<TUserForList>>(
+): Promise<AxiosResponse<UserListResponse>> =>
+  await instance.get<UserListResponse>(
     `${baseEndpoint.users}?page=${page}&order=${order}`
   )
 
 export const getUser = async (
   id: number
-): Promise<AxiosResponse<TUserForDetail>> =>
-  await instance.get<TUserForDetail>(`${baseEndpoint.users}/${id}`)
+): Promise<AxiosResponse<UserResponse>> =>
+  await instance.get<UserResponse>(`${baseEndpoint.users}/${id}`)
 
 export const createUser = async (
-  userData: insertUserFromAdminQuery
-): Promise<AxiosResponse<TUserForDetail>> =>
-  await instance.post<TUserForDetail>(baseEndpoint.users, { ...userData })
+  userData: InsertUserQuery
+): Promise<AxiosResponse<string>> =>
+  await instance.post<string>(baseEndpoint.users, { ...userData })
 
 export const patchUser = async (
-  userData: updateUserFromAdminQuery
-): Promise<AxiosResponse<TUserForDetail>> =>
-  await instance.patch<TUserForDetail>(`${baseEndpoint.users}/${userData.id}`, {
+  userData: UpdateUserQuery
+): Promise<AxiosResponse<string>> =>
+  await instance.patch<string>(`${baseEndpoint.users}/${userData.id}`, {
     ...userData.params
   })
 

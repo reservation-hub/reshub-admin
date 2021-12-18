@@ -9,13 +9,13 @@ import {
 } from '@components/form/_PropsType'
 import useInput from '@utils/hooks/useInput'
 import useValidation from '@utils/hooks/useValidation'
-import {
-  insertUserFromAdminQuery,
-  updateUserFromAdminQuery
-} from '@utils/api/request-response-types/UserService'
 import dayjs from 'dayjs'
 import { addUser, patchUser } from '@store/actions/userAction'
 import Section from '@components/common/layout/Section'
+import {
+  InsertUserQuery,
+  UpdateUserQuery
+} from '@utils/api/request-response-types/User'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -70,58 +70,58 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const { validation, error } = useValidation(form, validationSchema)
   const changeHandlers = { input: ChangeHandler } as TChangeHandler
 
-  const userData: {
-    insertData: insertUserFromAdminQuery
-    updateData: updateUserFromAdminQuery
-  } = useMemo(() => {
-    const insertData: insertUserFromAdminQuery = {
-      email: form.email,
-      password: form.password,
-      confirm: form.confirm,
-      firstNameKanji: form.firstNameKanji,
-      lastNameKanji: form.lastNameKanji,
-      firstNameKana: form.firstNameKana,
-      lastNameKana: form.lastNameKana,
-      roleSlug: form.role,
-      gender: form.gender,
-      birthday: dayjs(
-        `${form.birthdayY}/${form.birthdayM}/${form.birthdayD}`
-      ).format('YYYY-MM-DD')
-    }
-    const updateData: updateUserFromAdminQuery = {
-      id: Number(user?.id),
-      params: {
-        email: form.email,
-        firstNameKanji: form.firstNameKanji,
-        lastNameKanji: form.lastNameKanji,
-        firstNameKana: form.firstNameKana,
-        lastNameKana: form.lastNameKana,
-        roleSlug: form.role,
-        gender: form.gender,
-        birthday: dayjs(
-          `${form.birthdayY}/${form.birthdayM}/${form.birthdayD}`
-        ).format('YYYY-MM-DD')
-      }
-    }
-    return { insertData, updateData }
-  }, [form, user])
+  // const userData: {
+  //   insertData: InsertUserQuery
+  //   updateData: UpdateUserQuery
+  // } = useMemo(() => {
+  //   const insertData: InsertUserQuery = {
+  //     email: form.email,
+  //     password: form.password,
+  //     confirm: form.confirm,
+  //     firstNameKanji: form.firstNameKanji,
+  //     lastNameKanji: form.lastNameKanji,
+  //     firstNameKana: form.firstNameKana,
+  //     lastNameKana: form.lastNameKana,
+  //     roleSlug: form.role,
+  //     gender: form.gender,
+  //     birthday: dayjs(
+  //       `${form.birthdayY}/${form.birthdayM}/${form.birthdayD}`
+  //     ).format('YYYY-MM-DD')
+  //   }
+  //   const updateData: UpdateUserQuery = {
+  //     id: Number(user?.id),
+  //     params: {
+  //       email: form.email,
+  //       firstNameKanji: form.firstNameKanji,
+  //       lastNameKanji: form.lastNameKanji,
+  //       firstNameKana: form.firstNameKana,
+  //       lastNameKana: form.lastNameKana,
+  //       roleSlug: form.role,
+  //       gender: form.gender,
+  //       birthday: dayjs(
+  //         `${form.birthdayY}/${form.birthdayM}/${form.birthdayD}`
+  //       ).format('YYYY-MM-DD')
+  //     }
+  //   }
+  //   return { insertData, updateData }
+  // }, [form, user])
 
-  const submitHandler = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      validation(form, form.password, form.confirm)
-      if (user) {
-        dispatch(patchUser(userData.updateData))
-      } else {
-        dispatch(addUser(userData.insertData))
-      }
-    },
-    [dispatch, form, userData, user, validation]
-  )
+  // const submitHandler = useCallback(
+  //   (e: React.FormEvent<HTMLFormElement>) => {
+  //     e.preventDefault()
+  //     validation(form, form.password, form.confirm)
+  //     if (user) {
+  //       dispatch(patchUser(userData.updateData))
+  //     } else {
+  //       dispatch(addUser(userData.insertData))
+  //     }
+  //   },
+  //   [dispatch, form, userData, user, validation]
+  // )
 
   return (
     <Section>
-      <Route exact path='/'>
+      {/* <Route exact path='/'>
         <UserForm
           formState={location.state}
           formValue={form}
@@ -138,7 +138,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           changeHandlers={changeHandlers}
           error={error}
         />
-      </Route>
+      </Route> */}
     </Section>
   )
 }

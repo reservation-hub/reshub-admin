@@ -10,13 +10,13 @@ import { useDispatch } from 'react-redux'
 import useInput from '@utils/hooks/useInput'
 import { useTimePicker } from '@utils/hooks/useTimePicker'
 import { useCheckBox } from '@utils/hooks/useCheckBox'
-import {
-  insertShopQuery,
-  updateShopQuery
-} from '@utils/api/request-response-types/ShopService'
 import { addShop, editShopData } from '@store/actions/shopAction'
 import Section from '@components/common/layout/Section'
 import dayjs from 'dayjs'
+import {
+  InsertShopQuery,
+  UpdateShopQuery
+} from '@utils/api/request-response-types/Shop'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -64,9 +64,9 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     } as TSalonInput
   }, [shop, input, startAt, endAt, checked])
 
-  const shopData: { insertData: insertShopQuery; updateData: updateShopQuery } =
+  const shopData: { insertData: InsertShopQuery; updateData: UpdateShopQuery } =
     useMemo(() => {
-      const insertData: insertShopQuery = {
+      const insertData: InsertShopQuery = {
         name: form.name,
         address: form.address,
         phoneNumber: form.phoneNumber,
@@ -78,7 +78,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
         days: form.days,
         details: form.details
       }
-      const updateData: updateShopQuery = {
+      const updateData: UpdateShopQuery = {
         id: Number(shop?.id),
         params: {
           name: form.name,

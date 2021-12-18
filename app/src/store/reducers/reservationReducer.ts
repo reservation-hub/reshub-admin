@@ -1,4 +1,4 @@
-import { TReservationForDetail, TReservationForList } from '@model/Reservation'
+import { ReservationListResponse } from '@utils/api/request-response-types/Shop'
 import { ReservationAction } from '@store/actions/reservationAction'
 import {
   ReservationState,
@@ -7,8 +7,8 @@ import {
 
 const initialState: ReservationState = {
   loading: false,
-  reservations: {} as TReservationForList[],
-  reservation: {} as TReservationForDetail,
+  reservations: {} as ReservationListResponse,
+  reservation: {} as ReservationListResponse,
   err: '',
   msg: ''
 }
@@ -39,13 +39,13 @@ const reservationReducer = (
       return {
         ...state,
         loading: false,
-        reservation: action.payload
+        msg: action.payload
       }
     case RESERVATION_TYPE.PATCH_SUCCESS:
       return {
         ...state,
         loading: false,
-        reservation: action.payload
+        msg: action.payload
       }
     case RESERVATION_TYPE.DELETE_SUCCESS:
       return {

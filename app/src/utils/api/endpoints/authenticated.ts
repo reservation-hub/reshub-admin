@@ -1,9 +1,9 @@
 //-----------------------------------------------
 // authenticate
 //-----------------------------------------------
-import { localAuthenticationQuery } from '@utils/api/request-response-types/AuthService'
 import instance from '@utils/api'
 import { baseEndpoint } from '@utils/api/apiEndpoint'
+import { localAuthenticationQuery } from '@utils/api/request-response-types/Auth'
 
 export const localLogin = async (formData: localAuthenticationQuery) =>
   await instance.post(`${baseEndpoint.auth}/login`, {

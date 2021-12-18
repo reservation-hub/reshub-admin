@@ -30,6 +30,8 @@ const Reservation = ({
     reservations: state.reservation.reservations
   }))
 
+  console.log(shops)
+
   const shopSelect: selectType[] = shops?.map((shop) => ({
     value: String(shop.id),
     name: shop.name
@@ -64,7 +66,9 @@ const Reservation = ({
                       listStyle
                     />
                   </SubHeader>
-                  <ReservationsList reservations={option ? reservations : []} />
+                  <ReservationsList
+                    reservations={option ? reservations.values : []}
+                  />
                 </>
               ) : (
                 <ShopSelect

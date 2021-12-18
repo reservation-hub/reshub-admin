@@ -51,7 +51,7 @@ const ProfileItem = ({
         </div>
         <div className='flex'>
           <dt className={dt}>性別</dt>
-          <dd className={dd}>{user?.gender === 'MALE' ? '男性' : '女性'}</dd>
+          <dd className={dd}>{user?.gender}</dd>
         </div>
         <div className='flex'>
           <dt className={dt}>アクセス権限</dt>

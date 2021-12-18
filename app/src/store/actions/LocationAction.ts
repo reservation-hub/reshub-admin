@@ -1,4 +1,3 @@
-import { modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
 import { RootState, typedAction } from '@store/store'
 import { LOCATION_TYPE } from '@store/types/LocationTypes'
 import { ThunkAction } from 'redux-thunk'
@@ -9,13 +8,13 @@ import {
   AreaPrefecturesResponse,
   PrefectureCitiesResponse
 } from '@utils/api/request-response-types/Location'
-import { TArea } from '@model/Location'
+import { Area } from '@utils/api/request-response-types/models/Location'
 
 const locationRequestStart = () => {
   return typedAction(LOCATION_TYPE.REQUEST_START)
 }
 
-const areaReqSuccess = (data: modelResponse<TArea>[]) => {
+const areaReqSuccess = (data: Area[]) => {
   return typedAction(LOCATION_TYPE.GET_AREA_SUCCESS, data)
 }
 

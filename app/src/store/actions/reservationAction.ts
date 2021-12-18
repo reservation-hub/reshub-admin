@@ -1,32 +1,32 @@
 import apiEndpoint from '@utils/api/apiEndpoint'
-import {
-  insertReservationQuery,
-  updateReservationQuery
-} from '@utils/api/request-response-types/ReservationService'
 import history from '@utils/routes/history'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import { RootState, typedAction } from '@store/store'
 import { RESERVATION_TYPE } from '@store/types/reservationTypes'
-import { TReservationForDetail, TReservationForList } from '@model/Reservation'
+import {
+  InsertShopReservationQuery,
+  ReservationListResponse,
+  UpdateShopReservationQuery
+} from '@utils/api/request-response-types/Shop'
 
 const reservationRequestStart = () => {
   return typedAction(RESERVATION_TYPE.REQUEST_START)
 }
 
-const reservationsRequestSuccess = (data: TReservationForList[]) => {
+const reservationsRequestSuccess = (data: ReservationListResponse) => {
   return typedAction(RESERVATION_TYPE.REQUSET_SUCCESS, data)
 }
 
-const reservationGetSuccess = (data: TReservationForList[]) => {
+const reservationGetSuccess = (data: ReservationListResponse) => {
   return typedAction(RESERVATION_TYPE.GET_ONE_SUCCESS, data)
 }
 
-const reservationAddSuccess = (data: TReservationForDetail) => {
+const reservationAddSuccess = (data: string) => {
   return typedAction(RESERVATION_TYPE.ADD_SUCCESS, data)
 }
 
-const reservationPatchSuccess = (data: TReservationForDetail) => {
+const reservationPatchSuccess = (data: string) => {
   return typedAction(RESERVATION_TYPE.PATCH_SUCCESS, data)
 }
 
@@ -63,7 +63,7 @@ export const fetchOneRservation =
 
 export const createReservation =
   (
-    reservationData: insertReservationQuery
+    reservationData: InsertShopReservationQuery
   ): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(reservationRequestStart())
@@ -81,7 +81,7 @@ export const createReservation =
 
 export const patchReservation =
   (
-    reservationData: updateReservationQuery
+    reservationData: UpdateShopReservationQuery
   ): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(reservationRequestStart())
@@ -90,7 +90,7 @@ export const patchReservation =
         reservationData
       )
       dispatch(reservationPatchSuccess(res.data))
-      history.push(`/reservation/${res.data.id}`)
+      history.push(`/reservation/${reservationData.reservationId}`)
     } catch (e: any) {
       const err = e.response.data
       dispatch(reservationRequestFailure(err))

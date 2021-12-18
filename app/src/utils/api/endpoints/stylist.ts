@@ -1,38 +1,38 @@
 //-----------------------------------------------
 // stylist
 //-----------------------------------------------
-import { TStylistForDetail } from '@model/Stylist'
 import instance from '@utils/api'
-import {
-  insertStylistQuery,
-  updateStylistQuery
-} from '@utils/api/request-response-types/ShopService'
 import { AxiosResponse } from 'axios'
 import { baseEndpoint } from '@utils/api/apiEndpoint'
+import {
+  InsertStylistQuery,
+  StylistResponse,
+  UpdateStylistQuery
+} from '@utils/api/request-response-types/Shop'
 
 export const getStylists = async () => await instance.get('/stylists')
 
 export const getStylist = async (
   shopId: number,
   id: number
-): Promise<AxiosResponse<TStylistForDetail>> =>
-  await instance.get<TStylistForDetail>(
+): Promise<AxiosResponse<StylistResponse>> =>
+  await instance.get<StylistResponse>(
     `${baseEndpoint.shops}/${shopId}/stylists/${id}`
   )
 
 export const createStylist = async (
-  stylistData: insertStylistQuery
-): Promise<AxiosResponse<TStylistForDetail>> =>
-  await instance.post<TStylistForDetail>(
+  stylistData: InsertStylistQuery
+): Promise<AxiosResponse<string>> =>
+  await instance.post<string>(
     `${baseEndpoint.shops}}/${stylistData.shopId}/stylists`,
     {
       ...stylistData
     }
   )
 export const patchStylist = async (
-  stylistData: updateStylistQuery
-): Promise<AxiosResponse<TStylistForDetail>> =>
-  await instance.patch<TStylistForDetail>(
+  stylistData: UpdateStylistQuery
+): Promise<AxiosResponse<string>> =>
+  await instance.patch<string>(
     `${baseEndpoint.shops}/${stylistData.shopId}/stylists/${stylistData.stylistId}`,
     { ...stylistData }
   )

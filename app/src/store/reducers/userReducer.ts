@@ -2,17 +2,16 @@
 // redux ユーザー状態管理 reducer
 //----------------------------------
 import { UsersState, USER_TYPE } from '@store/types/usersType'
-import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
 import { UserAction } from '@store/actions/userAction'
-import { TUserForDetail, TUserForList } from '@model/User'
+import {
+  UserListResponse,
+  UserResponse
+} from '@utils/api/request-response-types/User'
 
 const initialState: UsersState = {
   loading: false,
-  users: {} as fetchModelsWithTotalCountResponse<modelResponse<TUserForList>>,
-  user: {} as TUserForDetail,
+  users: {} as UserListResponse,
+  user: {} as UserResponse,
   msg: ''
 }
 
@@ -40,13 +39,13 @@ const userReducer = (state = initialState, action: UserAction) => {
       return {
         ...state,
         loading: false,
-        user: action.payload
+        msg: action.payload
       }
     case USER_TYPE.EDIT_SUCCESS:
       return {
         ...state,
         loading: false,
-        user: action.payload
+        msg: action.payload
       }
     case USER_TYPE.DELETE_SUCCESS:
       return {

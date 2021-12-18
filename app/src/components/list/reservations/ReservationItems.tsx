@@ -11,7 +11,7 @@ const ReservationItems = ({ reservation }: IListProps) => {
           : reservation?.shopName}
       </td>
       <td className='p-4'>{`${reservation?.clientName}`}</td>
-      <td className='p-4'>{reservation?.menuItemName}</td>
+      <td className='p-4'>{reservation?.menuName}</td>
       <td className='p-4'>{reservation?.stylistName}</td>
       <td className='p-4'>{reservation?.status}</td>
     </TableRow>

@@ -1,6 +1,6 @@
 import React from 'react'
 import SubHeader from '@components/common/atoms/SubHeader'
-import { IDetailProps } from '../_PropsType'
+import { IDetailProps } from '@components/detail/_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
 import ShopData from '@components/detail/shop/ShopData'
 import CustomButton from '@components/common/atoms/CustomButton'
@@ -31,7 +31,7 @@ const DetailItem = ({
           <StylistList stylists={shop?.stylists} />
         </div>
         <div className='w-[34rem]'>
-          <MenuList menus={shop?.menu?.items} />
+          <MenuList menus={shop?.menu} />
         </div>
       </div>
       <div className='mt-4'>

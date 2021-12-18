@@ -1,10 +1,13 @@
 import { DashBoardState, DASHBOARD_TYPE } from '@store/types/dashboardTypes'
 import { DashboardAction } from '@store/actions/dashboardAction'
-import { TAdminDashboard, TStaffDashbaord } from '@model/Dashboard'
+import {
+  salonIndexAdminResponse,
+  salonIndexShopStaffResponse
+} from '@utils/api/request-response-types/Dashboard'
 
 const initialState: DashBoardState = {
   loading: false,
-  data: {} as TStaffDashbaord & TAdminDashboard
+  data: {} as salonIndexShopStaffResponse & salonIndexAdminResponse
 }
 
 const dashboardReducer = (state = initialState, action: DashboardAction) => {

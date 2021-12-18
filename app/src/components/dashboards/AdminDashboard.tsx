@@ -3,10 +3,10 @@ import SubHeader from '@components/common/atoms/SubHeader'
 import Section from '@components/common/layout/Section'
 import SalonList from '@components/list/shop/SalonList'
 import UserList from '@components/list/user/UserList'
-import { TAdminDashboard } from '@model/Dashboard'
+import { salonIndexAdminResponse } from '@utils/api/request-response-types/Dashboard'
 
 export type AdminDashboardProps = {
-  data: TAdminDashboard
+  data: salonIndexAdminResponse
 }
 
 const AdminDashboard = ({ data }: AdminDashboardProps) => {

@@ -3,39 +3,34 @@
 //----------------------------------
 import { USER_TYPE } from '@store/types/usersType'
 import { RootState, typedAction } from '@store/store'
-import {
-  insertUserFromAdminQuery,
-  updateUserFromAdminQuery
-} from '@utils/api/request-response-types/UserService'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
 import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TUserForDetail, TUserForList } from '@model/User'
+  InsertUserQuery,
+  UpdateUserQuery,
+  UserListResponse,
+  UserResponse
+} from '@utils/api/request-response-types/User'
 
 const userRequestStart = () => {
   return typedAction(USER_TYPE.REQUEST_START)
 }
 
-const userRequestSuccess = (
-  data: fetchModelsWithTotalCountResponse<modelResponse<TUserForList>>
-) => {
+const userRequestSuccess = (data: UserListResponse) => {
   return typedAction(USER_TYPE.REQUEST_SUCCESS, data)
 }
 
-const userGetSuccess = (data: TUserForDetail) => {
+const userGetSuccess = (data: UserResponse) => {
   return typedAction(USER_TYPE.GET_SUCCESS, data)
 }
 
-const userAddSuccess = (data: TUserForDetail) => {
+const userAddSuccess = (data: string) => {
   return typedAction(USER_TYPE.ADD_SUCCESS, data)
 }
 
-const userPatchSuccess = (data: TUserForDetail) => {
+const userPatchSuccess = (data: string) => {
   return typedAction(USER_TYPE.EDIT_SUCCESS, data)
 }
 
@@ -75,9 +70,7 @@ export const getOneUser =
   }
 
 export const addUser =
-  (
-    userData: insertUserFromAdminQuery
-  ): ThunkAction<void, RootState, null, Action> =>
+  (userData: InsertUserQuery): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
@@ -91,15 +84,13 @@ export const addUser =
   }
 
 export const patchUser =
-  (
-    userData: updateUserFromAdminQuery
-  ): ThunkAction<void, RootState, null, Action> =>
+  (userData: UpdateUserQuery): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
       const res = await apiEndpoint.users.patchUser(userData)
       dispatch(userPatchSuccess(res.data))
-      history.push(`/users/${res.data.id}`)
+      history.push(`/users/${userData.id}`)
     } catch (e: any) {
       const error = e.response.data
       dispatch(userRequestFailure(error))

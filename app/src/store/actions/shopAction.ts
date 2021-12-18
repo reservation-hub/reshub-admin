@@ -3,44 +3,39 @@
 //----------------------------------
 import { SHOPS_TYPE } from '@store/types/shopTypes'
 import { RootState, typedAction } from '@store/store'
-import {
-  insertShopQuery,
-  updateShopQuery
-} from '@utils/api/request-response-types/ShopService'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
 import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
-import { TShop, TShopForDetails, TShopForList } from '@model/Shop'
+  InsertShopQuery,
+  ShopListResponse,
+  ShopResponse,
+  UpdateShopQuery
+} from '@utils/api/request-response-types/Shop'
 
 // リクエストを始まる
 const shopRequestStart = () => {
   return typedAction(SHOPS_TYPE.REQUEST_START)
 }
 
-const fetchAllSuccess = (data: fetchModelsWithTotalCountResponse<TShop>) => {
+const fetchAllSuccess = (data: ShopListResponse) => {
   return typedAction(SHOPS_TYPE.FETCH_ALL, data)
 }
 
-const shopRequestSuccess = (
-  data: fetchModelsWithTotalCountResponse<modelResponse<TShopForList>>
-) => {
+const shopRequestSuccess = (data: ShopListResponse) => {
   return typedAction(SHOPS_TYPE.REQUEST_SUCCESS, data)
 }
 
-const shopGetSuccess = (data: TShopForDetails) => {
+const shopGetSuccess = (data: ShopResponse) => {
   return typedAction(SHOPS_TYPE.GET_SUCCESS, data)
 }
 
-const shopAddSuccess = (data: TShopForDetails) => {
+const shopAddSuccess = (data: string) => {
   return typedAction(SHOPS_TYPE.ADD_SUCCESS, data)
 }
 
-const shopPatchSuccess = (data: TShopForDetails) => {
+const shopPatchSuccess = (data: string) => {
   return typedAction(SHOPS_TYPE.EDIT_SUCCESS, data)
 }
 
@@ -95,7 +90,7 @@ export const getOneShop =
 
 // お店データを追加する
 export const addShop =
-  (shopData: insertShopQuery): ThunkAction<void, RootState, null, Action> =>
+  (shopData: InsertShopQuery): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(shopRequestStart())
     try {
@@ -113,16 +108,16 @@ export const addShop =
 
 // お店のデータを編集する
 export const editShopData =
-  (shopData: updateShopQuery): ThunkAction<void, RootState, null, Action> =>
+  (shopData: UpdateShopQuery): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(shopRequestStart())
     try {
       const res = await apiEndpoint.shops.patchShop(shopData)
       dispatch(shopPatchSuccess(res.data))
       if (history.location.pathname === '/create_shop') {
-        history.push(`/shops/${res.data.id}`)
+        history.push(`/shops/${shopData.id}`)
       } else {
-        history.push(`/salon/${res.data.id}`)
+        history.push(`/salon/${shopData.id}`)
       }
     } catch (e: any) {
       dispatch(shopRequestFailure(e))

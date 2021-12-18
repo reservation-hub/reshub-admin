@@ -1,11 +1,10 @@
 //----------------------------------
 // redux action types お店管理
 //----------------------------------
-import { TUserForDetail, TUserForList } from '@model/User'
 import {
-  fetchModelsWithTotalCountResponse,
-  modelResponse
-} from '@utils/api/request-response-types/ServiceCommonTypes'
+  UserListResponse,
+  UserResponse
+} from '@utils/api/request-response-types/User'
 
 export const USER_TYPE = {
   REQUEST_START: 'USERS_REQUEST_START',
@@ -19,7 +18,7 @@ export const USER_TYPE = {
 
 export type UsersState = {
   loading: boolean
-  users: fetchModelsWithTotalCountResponse<modelResponse<TUserForList>>
-  user: TUserForDetail
+  users: UserListResponse
+  user: UserResponse
   msg: string
 }

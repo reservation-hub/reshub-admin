@@ -10,9 +10,9 @@ const ReservationsList = ({ reservations }: IListProps) => {
   return (
     <>
       <TableLayout cell={RESERVATION_CELL}>
-        {/* {reservations?.map((value, index) => (
+        {reservations?.map((value, index) => (
           <ReservationItems reservation={value} key={index} />
-        ))} */}
+        ))}
       </TableLayout>
       {reservations?.length === 0 && <IsEmpty text='予約' />}
     </>

@@ -2,8 +2,7 @@ import {
   AreaPrefecturesResponse,
   PrefectureCitiesResponse
 } from '@utils/api/request-response-types/Location'
-import { TArea } from '@model/Location'
-import { modelResponse } from '@utils/api/request-response-types/ServiceCommonTypes'
+import { Area } from '@utils/api/request-response-types/models/Location'
 
 export const LOCATION_TYPE = {
   REQUEST_START: 'LOCATION_REQUEST_START',
@@ -14,7 +13,7 @@ export const LOCATION_TYPE = {
 
 export type LocationState = {
   loading: boolean
-  area: modelResponse<TArea>[]
+  area: Area[]
   prefecture: AreaPrefecturesResponse
   city: PrefectureCitiesResponse
 }

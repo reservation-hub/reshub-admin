@@ -1,4 +1,4 @@
-import { TReservationForDetail, TReservationForList } from '@model/Reservation'
+import { ReservationListResponse } from '@utils/api/request-response-types/Shop'
 
 export const RESERVATION_TYPE = {
   REQUEST_START: 'REQUEST_START',
@@ -12,8 +12,8 @@ export const RESERVATION_TYPE = {
 
 export type ReservationState = {
   loading: boolean
-  reservations: TReservationForList[]
-  reservation: TReservationForDetail
+  reservations: ReservationListResponse
+  reservation: ReservationListResponse
   err: string
   msg: string
 }

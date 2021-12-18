@@ -28,7 +28,7 @@ const ReservationDetail = ({
   const { reservation, loading } = useSelector(
     (state: RootState) => state.reservation
   )
-  
+
   const onDelete = useCallback(() => {
     dispatch(deleteReservation(shopId, convertId))
   }, [dispatch, shopId, convertId])

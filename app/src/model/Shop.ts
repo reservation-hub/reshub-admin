@@ -47,5 +47,10 @@ export type TShopForDetails = Pick<
 > & {
   stylists: TStylistForList[]
   reservations: TReservationForList[]
-  menu: { id: number; items: TMenu[] }
+  menu: TMenu[]
+  cityName: string
+  prefectureName: string
+  startTime: string
+  endTime: string
+  days: string[]
 }

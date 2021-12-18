@@ -1,28 +1,26 @@
 //-----------------------------------------------
 // menu
 //-----------------------------------------------
-import {
-  insertMenuItemQuery,
-  updateMenuItemQuery
-} from '@utils/api/request-response-types/ShopService'
 import instance from '@utils/api'
 import { baseEndpoint } from '@utils/api/apiEndpoint'
 import { AxiosResponse } from 'axios'
-import { TMenuForDetail } from '@model/Menu'
+import {
+  InsertMenuQuery,
+  UpdateMenuQuery
+} from '@utils/api/request-response-types/Shop'
 
 export const createMenu = async (
-  menuData: insertMenuItemQuery
-): Promise<AxiosResponse<TMenuForDetail>> =>
-  await instance.post<TMenuForDetail>(
-    `${baseEndpoint.shops}/${menuData.shopId}/menu`,
-    { ...menuData }
-  )
+  menuData: InsertMenuQuery
+): Promise<AxiosResponse<string>> =>
+  await instance.post<string>(`${baseEndpoint.shops}/${menuData.shopId}/menu`, {
+    ...menuData
+  })
 
 export const patchMenu = async (
-  menuData: updateMenuItemQuery
-): Promise<AxiosResponse<TMenuForDetail>> =>
-  await instance.patch<TMenuForDetail>(
-    `${baseEndpoint.shops}/${menuData.shopId}/menu/${menuData.menuItemId}`,
+  menuData: UpdateMenuQuery
+): Promise<AxiosResponse<string>> =>
+  await instance.patch<string>(
+    `${baseEndpoint.shops}/${menuData.shopId}/menu/${menuData.menuId}`,
     { ...menuData }
   )
 

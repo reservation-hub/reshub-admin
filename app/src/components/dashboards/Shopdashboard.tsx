@@ -5,10 +5,10 @@ import React from 'react'
 import SalonList from '@components/list/shop/SalonList'
 import ReservationsList from '@components/list/reservations/ReservationList'
 import StylistList from '@components/list/stylist/StylistList'
-import { TStaffDashbaord } from '@model/Dashboard'
+import { salonIndexShopStaffResponse } from '@utils/api/request-response-types/Dashboard'
 
 export interface ShopStaffDashboardProps extends ClassesAndChildren {
-  data: TStaffDashbaord
+  data: salonIndexShopStaffResponse
   admin?: boolean
 }
 

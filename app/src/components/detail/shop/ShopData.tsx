@@ -1,9 +1,7 @@
 import React from 'react'
 import { IDetailProps } from '@components/detail/_PropsType'
-import { useDays } from '@utils/hooks/useDays'
 
 const ShopData = ({ shop }: IDetailProps) => {
-  const days = useDays(shop?.schedule?.days)
   const dt =
     'min-w-[13rem] text-[1.6rem] font-bold border-r-0 inline-block p-[1rem] border border-b-0 border-secondary-main text-secondary-main bg-primary'
   const dd =
@@ -16,9 +14,9 @@ const ShopData = ({ shop }: IDetailProps) => {
       </div>
       <div className='flex'>
         <dt className={dt}>住所</dt>
-        <dd
-          className={dd}
-        >{`${shop?.prefecture?.name}${shop?.city?.name}${shop?.address}`}</dd>
+        <dd className={dd}>{`${shop?.prefectureName}${shop?.cityName}${
+          shop?.address ?? ''
+        }`}</dd>
       </div>
       <div className='flex'>
         <dt className={dt}>電話番号</dt>
@@ -26,14 +24,12 @@ const ShopData = ({ shop }: IDetailProps) => {
       </div>
       <div className='flex'>
         <dt className={dt}>営業日</dt>
-        <dd className={dd}>{days?.join(' ・ ')}</dd>
+        <dd className={dd}>{shop?.days?.join(' ・ ')}</dd>
       </div>
       <div className='flex'>
         <dt className={dt}>営業時間</dt>
         <dd className={dd}>
-          {`${
-            shop?.schedule?.startTime + ' - ' + shop?.schedule?.endTime ?? ''
-          }`}
+          {`${shop?.startTime + ' - ' + shop?.endTime ?? ''}`}
         </dd>
       </div>
       <div className='flex'>

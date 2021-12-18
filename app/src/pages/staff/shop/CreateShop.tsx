@@ -1,9 +1,9 @@
+import { InsertShopQuery } from '@utils/api/request-response-types/Shop'
 import CenterBox from '@components/common/layout/CenterBox'
 import SubTemplate from '@components/common/layout/SubTemplate'
 import SalonForm from '@components/form/SalonForm'
 import { TChangeHandler, TSalonInput } from '@components/form/_PropsType'
 import { addShop } from '@store/actions/shopAction'
-import { insertShopQuery } from '@utils/api/request-response-types/ShopService'
 import { useCheckBox } from '@utils/hooks/useCheckBox'
 import useInput from '@utils/hooks/useInput'
 import { useTimePicker } from '@utils/hooks/useTimePicker'
@@ -48,7 +48,7 @@ const CreateShop = () => {
     } as TSalonInput
   }, [input, startAt, endAt, checked])
 
-  const shopData: insertShopQuery = useMemo(() => {
+  const shopData: InsertShopQuery = useMemo(() => {
     return {
       name: form.name,
       address: form.address,
