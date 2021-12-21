@@ -6,7 +6,6 @@ import { IListProps } from '@components/list/_PropsType'
 import ReservationItems from './ReservationItems'
 
 const ReservationsList = ({ reservations }: IListProps) => {
-  console.log(reservations)
   return (
     <>
       <TableLayout cell={RESERVATION_CELL}>

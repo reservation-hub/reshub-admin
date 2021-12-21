@@ -28,6 +28,7 @@ export const RESERVATION_CELL: Record<string, any> = {
   userName: '予約者',
   menuName: 'メニュー名',
   stylistName: 'スタイリスト名',
+  reservationDate: '予約日',
   status: 'ステータス'
 } as const
 

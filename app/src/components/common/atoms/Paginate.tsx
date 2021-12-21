@@ -11,7 +11,7 @@ export interface IPaginateProps {
 const Paginate = ({ totalPage, page, pageChangeHandler }: IPaginateProps) => {
   return (
     <ReactPaginate
-      marginPagesDisplayed={10}
+      marginPagesDisplayed={2}
       pageCount={Math.ceil(totalPage / 10)}
       pageRangeDisplayed={10}
       breakLabel='...'
@@ -23,6 +23,7 @@ const Paginate = ({ totalPage, page, pageChangeHandler }: IPaginateProps) => {
       pageLinkClassName='w-[4rem] inline-block'
       previousLinkClassName='w-[4rem] inline-block'
       nextLinkClassName='w-[4rem] inline-block'
+      breakLinkClassName='w-[4rem] inline-block'
       onPageChange={pageChangeHandler}
     />
   )

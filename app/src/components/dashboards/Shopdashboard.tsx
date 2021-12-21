@@ -17,7 +17,7 @@ const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {
     <Section>
       <SubHeader title='ダッシュボード' type='dashboard' />
       <div className='flex justify-between'>
-        <div className='w-[65rem]'>
+        <div className='w-[71rem]'>
           <ReservationsList reservations={data?.reservations} />
         </div>
         <div className='w-[43.5rem]'>

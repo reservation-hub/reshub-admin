@@ -44,7 +44,9 @@ export const PUBLIC_PATHS: TRouter[] = [
   { path: '/dashboard', exact: false, component: SalonDashboard },
   { path: '/stylist', exact: false, component: Stylist },
   { path: '/reservation', exact: false, component: Reservation },
-  { path: '/create_shop', exact: false, component: CreateShop }
+  { path: '/create_shop', exact: false, component: CreateShop },
+  { path: '/settings', exact: false },
+  { path: '/menu', exact: false }
 ]
 
 export const COMMON_PATHS: TRouter[] = [
@@ -66,7 +68,7 @@ export const STAFF_NAV_MENU: TNavMenu[] = [
     value: '店舗管理',
     subItem: [
       { path: '/stylist', value: 'スタイリスト管理' },
-      { path: '/menus', value: 'メニュー管理' },
+      { path: '/menu', value: 'メニュー管理' },
       { path: '/reservation', value: '予約管理' }
     ]
   },
