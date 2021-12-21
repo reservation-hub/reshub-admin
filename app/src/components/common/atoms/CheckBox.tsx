@@ -13,7 +13,7 @@ const CheckBox = ({ onChange, data, checkedData }: ICheckBoxProps) => {
           <input
             id={`check-${value.name}`}
             type='checkbox'
-            checked={checkedData?.includes(Number(value.value))}
+            checked={checkedData?.includes(value.name)}
             value={value.value}
             name={value.name}
             onChange={onChange}
