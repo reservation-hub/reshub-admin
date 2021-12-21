@@ -2,7 +2,7 @@ import React from 'react'
 import { IPickerProps } from '@components/common/_PropsType'
 
 export interface ICheckBoxProps extends IPickerProps {
-  checkedData?: number[]
+  checkedData?: any[]
 }
 
 const CheckBox = ({ onChange, data, checkedData }: ICheckBoxProps) => {

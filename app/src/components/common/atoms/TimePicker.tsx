@@ -25,7 +25,7 @@ const TimePicker = ({ hh, mm, onChange, classes }: ITimePickerProps) => {
       </select>
       <span>:</span>
       <select
-        name='hour'
+        name='minute'
         id='minute'
         className={`${classes} w-full p-3 rounded-[.25rem] border text-[1.6rem]`}
         value={mm}

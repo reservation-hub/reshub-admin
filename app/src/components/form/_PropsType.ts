@@ -1,6 +1,7 @@
 import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
 import { TShop } from '@model/Shop'
 import { TUser } from '@model/User'
+import { ShopResponse } from '@/utils/api/request-response-types/Shop'
 
 export type TUserInput = {
   email: string
@@ -40,7 +41,7 @@ export type TChangeHandler = {
 
 export type TFormState = {
   user?: TUser
-  shop?: TShop
+  shop?: ShopResponse
 }
 
 export interface IFormProps {

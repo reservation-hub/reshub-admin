@@ -6,7 +6,7 @@ import {
   TFormState,
   TSalonInput
 } from '@components/form/_PropsType'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import useInput from '@utils/hooks/useInput'
 import { useTimePicker } from '@utils/hooks/useTimePicker'
 import { useCheckBox } from '@utils/hooks/useCheckBox'
@@ -20,25 +20,22 @@ import {
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
-  const startAt = useTimePicker('')
-  const endAt = useTimePicker('')
 
   const shop = useMemo(() => {
     return location?.state?.shop
   }, [location])
 
-  const test = dayjs().format('20:00').substring(0, 2)
-  const test2 = dayjs().hour(Number(test)).format('HH').toString()
-
-  const { checked, changeHandler } = useCheckBox(shop?.schedule?.days ?? [])
+  const startAt = useTimePicker('')
+  const endAt = useTimePicker('')
+  const { checked, changeHandler } = useCheckBox(shop?.days ?? [])
 
   const { input, ChangeHandler } = useInput({
     name: shop?.name ?? '',
     address: shop?.address ?? '',
     phoneNumber: shop?.phoneNumber ?? '',
-    areaId: String(shop?.area?.id) ?? '',
-    prefectureId: String(shop?.prefecture?.id) ?? '',
-    cityId: String(shop?.city?.id) ?? '',
+    areaId: String(shop?.areaId) ?? '',
+    prefectureId: String(shop?.prefectureId) ?? '',
+    cityId: String(shop?.cityId) ?? '',
     details: shop?.details ?? ''
   })
 
@@ -57,8 +54,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       cityId: String(input.cityId),
       prefectureId: String(input.prefectureId),
       areaId: String(input.areaId),
-      startTime: { hour: String(startAt.hour), minute: String(startAt.minute) },
-      endTime: { hour: String(endAt.hour), minute: String(endAt.minute) },
+      startTime: { hour: startAt.hour, minute: startAt.minute }, 
+      endTime: { hour: endAt.hour, minute: endAt.minute },
       days: checked,
       details: input.details
     } as TSalonInput
@@ -96,16 +93,15 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       return { insertData, updateData }
     }, [form, shop, startAt.HHmm, endAt.HHmm])
 
-  console.log(shop, dayjs().format('20:00').substring(3, 5), test2)
-
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      if (shop) {
-        dispatch(editShopData(shopData.updateData))
-      } else {
-        dispatch(addShop(shopData.insertData))
-      }
+      console.log(shopData.updateData)
+      // if (shop) {
+      //   dispatch(editShopData(shopData.updateData))
+      // } else {
+      //   dispatch(addShop(shopData.insertData))
+      // }
     },
     [dispatch, shop, shopData]
   )
