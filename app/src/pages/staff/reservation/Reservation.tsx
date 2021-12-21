@@ -12,7 +12,7 @@ import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
 import history from '@utils/routes/history'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 import ReservationDetail from './Detail'
 import NewReservation from './New'
@@ -24,11 +24,14 @@ const Reservation = ({
   const { option, changeHandler } = useSelect('')
   const dispatch = useDispatch()
 
-  const { shops, loading, reservations } = useSelector((state: RootState) => ({
-    shops: state.shop.shops.values,
-    loading: state.shop.loading,
-    reservations: state.reservation.reservations
-  }))
+  const { shops, loading, reservations } = useSelector(
+    (state: RootState) => ({
+      shops: state.shop.shops.values,
+      loading: state.shop.loading,
+      reservations: state.reservation.reservations
+    }),
+    shallowEqual
+  )
 
   const shopSelect: selectType[] = shops?.map((shop) => ({
     value: String(shop.id),
