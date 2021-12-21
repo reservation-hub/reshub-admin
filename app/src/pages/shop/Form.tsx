@@ -54,7 +54,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       cityId: String(input.cityId),
       prefectureId: String(input.prefectureId),
       areaId: String(input.areaId),
-      startTime: { hour: startAt.hour, minute: startAt.minute }, 
+      startTime: { hour: startAt.hour, minute: startAt.minute },
       endTime: { hour: endAt.hour, minute: endAt.minute },
       days: checked,
       details: input.details

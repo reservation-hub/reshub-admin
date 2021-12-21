@@ -2,6 +2,7 @@ import TableRow from '@components/common/atoms/TableRow'
 import React from 'react'
 import { IListProps } from '@components/list/_PropsType'
 import dayjs from 'dayjs'
+import useConvertTime from '@/utils/hooks/useConverTime'
 
 const ReservationItems = ({ reservation }: IListProps) => {
   return (
@@ -14,7 +15,9 @@ const ReservationItems = ({ reservation }: IListProps) => {
       <td className='p-4'>{`${reservation?.clientName}`}</td>
       <td className='p-4'>{reservation?.menuName}</td>
       <td className='p-4'>{reservation?.stylistName}</td>
-      <td className='p-4'>{dayjs(reservation?.reservationDate).format('YYYY-MM-DD')}</td>
+      <td className='p-4'>
+        {useConvertTime('ymd', reservation?.reservationDate)}
+      </td>
       <td className='p-4'>{reservation?.status}</td>
     </TableRow>
   )
