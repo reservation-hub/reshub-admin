@@ -2,7 +2,10 @@ import React, { useCallback, useEffect } from 'react'
 import { MatchParams } from '@components/common/_PropsType'
 import ModalAlert from '@components/modal/ModalAlert'
 import ModalOverlay from '@components/modal/ModalOverlay'
-import { deleteReservation, getReservation } from '@store/actions/reservationAction'
+import {
+  deleteReservation,
+  getReservation
+} from '@store/actions/reservationAction'
 import { RootState } from '@store/store'
 import { useModal } from '@utils/hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'

@@ -1,8 +1,12 @@
-import { ReservationListResponse, ReservationResponse } from '@utils/api/request-response-types/Shop'
+import {
+  ReservationListResponse,
+  ReservationResponse
+} from '@utils/api/request-response-types/Shop'
 
 export const RESERVATION_TYPE = {
   REQUEST_START: 'REQUEST_START',
   REQUSET_SUCCESS: 'REQUEST_SUCCESS',
+  FOR_CALENDAR: 'FOR_CALENDAR',
   GET_ONE_SUCCESS: 'GET_ONE_SUCCESS',
   ADD_SUCCESS: 'ADD_SUCCESS',
   PATCH_SUCCESS: 'PATCH_SUCCESS',

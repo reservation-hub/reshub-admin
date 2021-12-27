@@ -1,4 +1,7 @@
-import { ReservationListResponse, ReservationResponse } from '@utils/api/request-response-types/Shop'
+import {
+  ReservationListResponse,
+  ReservationResponse
+} from '@utils/api/request-response-types/Shop'
 import { ReservationAction } from '@store/actions/reservationAction'
 import {
   ReservationState,
@@ -24,6 +27,12 @@ const reservationReducer = (
         loading: true
       }
     case RESERVATION_TYPE.REQUSET_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        reservations: action.payload
+      }
+    case RESERVATION_TYPE.FOR_CALENDAR:
       return {
         ...state,
         loading: false,

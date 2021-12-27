@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Loading from '@components/common/atoms/loading'
 import ShopSelect from '@components/list/reservations/ShopSelect'
-import { fetchReservations } from '@store/actions/reservationAction'
+import {
+  fetchReservations,
+  fetchReservationsForCalendar
+} from '@store/actions/reservationAction'
 import { useSelect } from '@utils/hooks/useSelect'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
@@ -19,7 +22,6 @@ import NewReservation from './New'
 import Calendar from '@components/common/atoms/Calendar'
 import CustomButton from '@/components/common/atoms/CustomButton'
 import Paginate from '@components/common/atoms/Paginate'
-import reservation from '@/utils/api/endpoints/reservation'
 
 const Reservation = ({
   match,
@@ -68,9 +70,11 @@ const Reservation = ({
   useEffect(() => {
     dispatch(fetchShopList(1, 'desc'))
     if (option && match.isExact) {
-      dispatch(fetchReservations(Number(option), Number(page), order))
+      calendar
+        ? dispatch(fetchReservationsForCalendar(Number(option), 2021, 12))
+        : dispatch(fetchReservations(Number(option), Number(page), order))
     }
-  }, [dispatch, option, match.isExact, page])
+  }, [dispatch, option, match.isExact, page, calendar])
 
   return (
     <MainTemplate>

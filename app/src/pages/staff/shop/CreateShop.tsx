@@ -48,28 +48,28 @@ const CreateShop = () => {
     } as TSalonInput
   }, [input, startAt, endAt, checked])
 
-  const shopData: InsertShopQuery = useMemo(() => {
-    return {
-      name: form.name,
-      address: form.address,
-      phoneNumber: form.phoneNumber,
-      startTime: startAt.HHmm,
-      endTime: endAt.HHmm,
-      areaId: Number(form.areaId),
-      prefectureId: Number(form.prefectureId),
-      cityId: Number(form.cityId),
-      days: form.days,
-      details: form.details
-    }
-  }, [form, startAt.HHmm, endAt.HHmm, checked])
+  // const shopData: InsertShopQuery = useMemo(() => {
+  //   return {
+  //     name: form.name,
+  //     address: form.address,
+  //     phoneNumber: form.phoneNumber,
+  //     startTime: startAt.HHmm,
+  //     endTime: endAt.HHmm,
+  //     areaId: Number(form.areaId),
+  //     prefectureId: Number(form.prefectureId),
+  //     cityId: Number(form.cityId),
+  //     days: form.days,
+  //     details: form.details
+  //   }
+  // }, [form, startAt.HHmm, endAt.HHmm, checked])
 
-  const onSubmit = useCallback(
-    async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      dispatch(addShop(shopData))
-    },
-    [dispatch, shopData]
-  )
+  // const onSubmit = useCallback(
+  //   async (e: React.FormEvent<HTMLFormElement>) => {
+  //     e.preventDefault()
+  //     dispatch(addShop(shopData))
+  //   },
+  //   [dispatch, shopData]
+  // )
 
   const centerBarStyled =
     'w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'
@@ -77,11 +77,11 @@ const CreateShop = () => {
   return (
     <SubTemplate>
       <CenterBox classes={centerBarStyled}>
-        <SalonForm
+        {/* <SalonForm
           submitHandler={onSubmit}
           formValue={form}
           changeHandlers={changeHandlers}
-        />
+        /> */}
       </CenterBox>
     </SubTemplate>
   )

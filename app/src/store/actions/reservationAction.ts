@@ -19,6 +19,10 @@ const reservationsRequestSuccess = (data: ReservationListResponse) => {
   return typedAction(RESERVATION_TYPE.REQUSET_SUCCESS, data)
 }
 
+const reservationForCalendarSuccess = (data: ReservationListResponse) => {
+  return typedAction(RESERVATION_TYPE.FOR_CALENDAR, data)
+}
+
 const reservationGetSuccess = (data: ReservationResponse) => {
   return typedAction(RESERVATION_TYPE.GET_ONE_SUCCESS, data)
 }
@@ -59,16 +63,44 @@ export const fetchReservations =
     }
   }
 
-export const getReservation = (shopId: number, reservationId: number): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
-  dispatch(reservationRequestStart)
-  try {
-    const res = await apiEndpoint.reservation.getReservation(shopId, reservationId)
-    console.log(res)
-    dispatch(reservationGetSuccess(res.data))
-  } catch {
-    history.push('/error')
+export const fetchReservationsForCalendar =
+  (
+    shopId: number,
+    year: number,
+    month: number
+  ): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(reservationRequestStart())
+    try {
+      const res = await apiEndpoint.reservation.fetchReservationsForCalendar(
+        shopId,
+        year,
+        month
+      )
+      dispatch(reservationForCalendarSuccess(res.data))
+    } catch {
+      history.push('/error')
+    }
   }
-}
+
+export const getReservation =
+  (
+    shopId: number,
+    reservationId: number
+  ): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(reservationRequestStart)
+    try {
+      const res = await apiEndpoint.reservation.getReservation(
+        shopId,
+        reservationId
+      )
+      console.log(res)
+      dispatch(reservationGetSuccess(res.data))
+    } catch {
+      history.push('/error')
+    }
+  }
 
 export const createReservation =
   (
@@ -123,6 +155,7 @@ export const deleteReservation =
 export type ReservationAction =
   | ReturnType<typeof reservationRequestStart>
   | ReturnType<typeof reservationsRequestSuccess>
+  | ReturnType<typeof reservationForCalendarSuccess>
   | ReturnType<typeof reservationGetSuccess>
   | ReturnType<typeof reservationAddSuccess>
   | ReturnType<typeof reservationPatchSuccess>
