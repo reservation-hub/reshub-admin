@@ -26,7 +26,7 @@ const Salon = ({
   const [page, setPage] = useState<number>(currentPage)
   const [correct, setCorrect] = useState<boolean>(true)
   const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
-  
+
   const { shops, loading, user } = useSelector(
     (state: RootState) => ({
       loading: state.shop.loading,

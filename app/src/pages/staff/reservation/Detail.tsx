@@ -2,10 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import { MatchParams } from '@components/common/_PropsType'
 import ModalAlert from '@components/modal/ModalAlert'
 import ModalOverlay from '@components/modal/ModalOverlay'
-import {
-  deleteReservation,
-  fetchOneRservation
-} from '@store/actions/reservationAction'
+import { deleteReservation, getReservation } from '@store/actions/reservationAction'
 import { RootState } from '@store/store'
 import { useModal } from '@utils/hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
@@ -29,13 +26,15 @@ const ReservationDetail = ({
     (state: RootState) => state.reservation
   )
 
+  console.log(reservation, shopId)
+
   const onDelete = useCallback(() => {
     dispatch(deleteReservation(shopId, convertId))
   }, [dispatch, shopId, convertId])
 
   useEffect(() => {
-    dispatch(fetchOneRservation(shopId))
-  }, [dispatch, shopId])
+    dispatch(getReservation(shopId, convertId))
+  }, [dispatch, shopId, convertId])
 
   return (
     <>

@@ -7,6 +7,7 @@ import { RESERVATION_TYPE } from '@store/types/reservationTypes'
 import {
   InsertShopReservationQuery,
   ReservationListResponse,
+  ReservationResponse,
   UpdateShopReservationQuery
 } from '@utils/api/request-response-types/Shop'
 
@@ -18,7 +19,7 @@ const reservationsRequestSuccess = (data: ReservationListResponse) => {
   return typedAction(RESERVATION_TYPE.REQUSET_SUCCESS, data)
 }
 
-const reservationGetSuccess = (data: ReservationListResponse) => {
+const reservationGetSuccess = (data: ReservationResponse) => {
   return typedAction(RESERVATION_TYPE.GET_ONE_SUCCESS, data)
 }
 
@@ -38,28 +39,36 @@ const reservationRequestFailure = (err: string) => {
   return typedAction(RESERVATION_TYPE.REQUEST_FAILURE, err)
 }
 
-export const fetchAllReservations =
-  (): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
+export const fetchReservations =
+  (
+    shopId: number,
+    page: number,
+    order?: string
+  ): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
     dispatch(reservationRequestStart())
     try {
-      const res = await apiEndpoint.reservation.getReservations()
+      const res = await apiEndpoint.reservation.fetchReservations(
+        shopId,
+        page,
+        order
+      )
       dispatch(reservationsRequestSuccess(res.data))
     } catch {
       history.push('/error')
     }
   }
 
-export const fetchOneRservation =
-  (shopId: number): ThunkAction<void, RootState, null, Action> =>
-  async (dispatch) => {
-    dispatch(reservationRequestStart())
-    try {
-      const res = await apiEndpoint.reservation.getReservation(shopId)
-      dispatch(reservationGetSuccess(res.data))
-    } catch {
-      history.push('/error')
-    }
+export const getReservation = (shopId: number, reservationId: number): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
+  dispatch(reservationRequestStart)
+  try {
+    const res = await apiEndpoint.reservation.getReservation(shopId, reservationId)
+    console.log(res)
+    dispatch(reservationGetSuccess(res.data))
+  } catch {
+    history.push('/error')
   }
+}
 
 export const createReservation =
   (

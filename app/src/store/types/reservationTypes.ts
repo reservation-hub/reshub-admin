@@ -1,4 +1,4 @@
-import { ReservationListResponse } from '@utils/api/request-response-types/Shop'
+import { ReservationListResponse, ReservationResponse } from '@utils/api/request-response-types/Shop'
 
 export const RESERVATION_TYPE = {
   REQUEST_START: 'REQUEST_START',
@@ -13,7 +13,7 @@ export const RESERVATION_TYPE = {
 export type ReservationState = {
   loading: boolean
   reservations: ReservationListResponse
-  reservation: ReservationListResponse
+  reservation: ReservationResponse
   err: string
   msg: string
 }

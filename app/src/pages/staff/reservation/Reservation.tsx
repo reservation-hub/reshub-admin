@@ -1,6 +1,7 @@
+import React, { useEffect, useState } from 'react'
 import Loading from '@components/common/atoms/loading'
 import ShopSelect from '@components/list/reservations/ShopSelect'
-import { fetchOneRservation } from '@store/actions/reservationAction'
+import { fetchReservations } from '@store/actions/reservationAction'
 import { useSelect } from '@utils/hooks/useSelect'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
@@ -11,7 +12,6 @@ import { HEADER_TYPE } from '@constants/Common'
 import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
 import history from '@utils/routes/history'
-import React, { useEffect, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 import ReservationDetail from './Detail'
@@ -19,6 +19,7 @@ import NewReservation from './New'
 import Calendar from '@components/common/atoms/Calendar'
 import CustomButton from '@/components/common/atoms/CustomButton'
 import Paginate from '@components/common/atoms/Paginate'
+import reservation from '@/utils/api/endpoints/reservation'
 
 const Reservation = ({
   match,
@@ -61,15 +62,15 @@ const Reservation = ({
   const pageChangeHandler = (data: Record<string, any>) => {
     const pageNum: number = data['selected']
     setPage(pageNum + 1)
-    history.push(`/reservation?p=${page}`, {currentPage: page})
+    history.push(`/reservation?p=${page}`, { currentPage: pageNum + 1 })
   }
 
   useEffect(() => {
     dispatch(fetchShopList(1, 'desc'))
     if (option && match.isExact) {
-      dispatch(fetchOneRservation(Number(option)))
+      dispatch(fetchReservations(Number(option), Number(page), order))
     }
-  }, [dispatch, option, match.isExact])
+  }, [dispatch, option, match.isExact, page])
 
   return (
     <MainTemplate>
@@ -106,9 +107,10 @@ const Reservation = ({
                       <ReservationsList
                         reservations={option ? reservations.values : []}
                       />
-                      <Paginate 
-                        totalPage={reservations?.totalCount} 
-                        pageChangeHandler={pageChangeHandler} 
+                      <Paginate
+                        totalPage={reservations?.totalCount}
+                        page={currentPage}
+                        pageChangeHandler={pageChangeHandler}
                       />
                     </>
                   )}
