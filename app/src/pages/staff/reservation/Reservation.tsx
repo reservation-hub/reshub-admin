@@ -11,18 +11,26 @@ import { HEADER_TYPE } from '@constants/Common'
 import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
 import history from '@utils/routes/history'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 import ReservationDetail from './Detail'
 import NewReservation from './New'
+import Calendar from '@components/common/atoms/Calendar'
+import CustomButton from '@/components/common/atoms/CustomButton'
+import Paginate from '@components/common/atoms/Paginate'
 
 const Reservation = ({
   match,
   location
 }: RouteComponentProps<MatchParams, any, any>) => {
-  const { option, changeHandler } = useSelect('')
   const dispatch = useDispatch()
+  const currentPage = location?.state?.currentPage
+  const { option, changeHandler } = useSelect('')
+  const [calendar, setCalendar] = useState<boolean>(false)
+  const [page, setPage] = useState<number>(currentPage)
+  const [correct, setCorrect] = useState<boolean>(true)
+  const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
 
   const { shops, loading, reservations } = useSelector(
     (state: RootState) => ({
@@ -38,12 +46,30 @@ const Reservation = ({
     name: shop.name
   }))
 
+  const reservationsEvent: {
+    id: string
+    shopId: string
+    title: string
+    date: string
+  }[] = reservations.values?.map((reservation) => ({
+    id: String(reservation.id),
+    shopId: String(reservation.shopId),
+    title: `${reservation.clientName}/${reservation.menuName}`,
+    date: String(reservation.reservationDate)
+  }))
+
+  const pageChangeHandler = (data: Record<string, any>) => {
+    const pageNum: number = data['selected']
+    setPage(pageNum + 1)
+    history.push(`/reservation?p=${page}`, {currentPage: page})
+  }
+
   useEffect(() => {
     dispatch(fetchShopList(1, 'desc'))
-    if (option) {
+    if (option && match.isExact) {
       dispatch(fetchOneRservation(Number(option)))
     }
-  }, [dispatch, option])
+  }, [dispatch, option, match.isExact])
 
   return (
     <MainTemplate>
@@ -66,10 +92,26 @@ const Reservation = ({
                       onChange={changeHandler}
                       listStyle
                     />
+                    <CustomButton
+                      onClick={() => setCalendar(!calendar)}
+                      classes='min-w-[12rem] ml-2'
+                    >
+                      カレンダーで見る
+                    </CustomButton>
                   </SubHeader>
-                  <ReservationsList
-                    reservations={option ? reservations.values : []}
-                  />
+                  {calendar ? (
+                    <Calendar events={reservationsEvent} />
+                  ) : (
+                    <>
+                      <ReservationsList
+                        reservations={option ? reservations.values : []}
+                      />
+                      <Paginate 
+                        totalPage={reservations?.totalCount} 
+                        pageChangeHandler={pageChangeHandler} 
+                      />
+                    </>
+                  )}
                 </>
               ) : (
                 <ShopSelect

@@ -24,6 +24,9 @@ const Salon = ({
   const dispatch = useDispatch()
   const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
+  const [correct, setCorrect] = useState<boolean>(true)
+  const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
+  
   const { shops, loading, user } = useSelector(
     (state: RootState) => ({
       loading: state.shop.loading,
@@ -32,8 +35,6 @@ const Salon = ({
     }),
     shallowEqual
   )
-  const [correct, setCorrect] = useState<boolean>(true)
-  const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
 
   const authCheck = user.role.name === 'admin'
 
