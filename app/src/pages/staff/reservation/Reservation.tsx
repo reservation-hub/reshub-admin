@@ -22,6 +22,7 @@ import NewReservation from './New'
 import Calendar from '@components/common/atoms/Calendar'
 import CustomButton from '@/components/common/atoms/CustomButton'
 import Paginate from '@components/common/atoms/Paginate'
+import dayjs from 'dayjs'
 
 const Reservation = ({
   match,
@@ -31,9 +32,9 @@ const Reservation = ({
   const currentPage = location?.state?.currentPage
   const { option, changeHandler } = useSelect('')
   const [calendar, setCalendar] = useState<boolean>(false)
+  const [year, setYear] = useState<string>(dayjs().format('YYYY') || '')
+  const [month, setMonth] = useState<string>(dayjs().format('MM') || '')
   const [page, setPage] = useState<number>(currentPage)
-  const [correct, setCorrect] = useState<boolean>(true)
-  const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
 
   const { shops, loading, reservations } = useSelector(
     (state: RootState) => ({
@@ -71,10 +72,10 @@ const Reservation = ({
     dispatch(fetchShopList(1, 'desc'))
     if (option && match.isExact) {
       calendar
-        ? dispatch(fetchReservationsForCalendar(Number(option), 2021, 12))
-        : dispatch(fetchReservations(Number(option), Number(page), order))
+        ? dispatch(fetchReservationsForCalendar(Number(option), Number(year), Number(month)))
+        : dispatch(fetchReservations(Number(option), Number(page), 'desc'))
     }
-  }, [dispatch, option, match.isExact, page, calendar])
+  }, [dispatch, option, match.isExact, page, calendar, month])
 
   return (
     <MainTemplate>
@@ -101,7 +102,7 @@ const Reservation = ({
                       onClick={() => setCalendar(!calendar)}
                       classes='min-w-[12rem] ml-2'
                     >
-                      カレンダーで見る
+                      {calendar ? 'リストで見る' : 'カレンダーで見る'}
                     </CustomButton>
                   </SubHeader>
                   {calendar ? (
