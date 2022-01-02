@@ -39,7 +39,11 @@ const Salon = ({
 
   const authCheck = user.role.name === 'admin'
 
-  const pageChangeHandler = usePagination(authCheck ? 'salon' : 'shops', page, setPage)
+  const pageChangeHandler = usePagination(
+    authCheck ? 'salon' : 'shops',
+    page,
+    setPage
+  )
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchShopList(Number(currentPage), order))
