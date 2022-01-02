@@ -1,8 +1,7 @@
 import TableRow from '@components/common/atoms/TableRow'
 import React from 'react'
 import { IListProps } from '@components/list/_PropsType'
-import dayjs from 'dayjs'
-import useConvertTime from '@/utils/hooks/useConverTime'
+import useConvertTime from '@utils/hooks/useConverTime'
 
 const ReservationItems = ({ reservation }: IListProps) => {
   return (

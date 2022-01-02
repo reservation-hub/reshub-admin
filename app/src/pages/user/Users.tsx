@@ -16,6 +16,7 @@ import Section from '@components/common/layout/Section'
 import SubHeader from '@components/common/atoms/SubHeader'
 import CustomButton from '@components/common/atoms/CustomButton'
 import { HEADER_TYPE } from '@constants/Common'
+import usePagination from '@utils/hooks/usePagination'
 
 const Users = ({
   match,
@@ -28,13 +29,7 @@ const Users = ({
   const [correct, setCorrect] = useState<boolean>(true)
   const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
 
-  const pageChangeHandler = (data: Record<string, any>) => {
-    const pageNum: number = data['selected']
-    setPage(pageNum + 1)
-    history.push(`/users?p=${pageNum + 1}`, {
-      currentPage: pageNum + 1
-    })
-  }
+  const pageChangeHandler = usePagination('users', page, setPage)
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchUserList(Number(currentPage), order))

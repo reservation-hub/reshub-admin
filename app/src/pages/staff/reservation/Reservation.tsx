@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import Loading from '@components/common/atoms/loading'
 import ShopSelect from '@components/list/reservations/ShopSelect'
 import {
@@ -20,9 +20,10 @@ import { Route, RouteComponentProps, Switch } from 'react-router'
 import ReservationDetail from './Detail'
 import NewReservation from './New'
 import Calendar from '@components/common/atoms/Calendar'
-import CustomButton from '@/components/common/atoms/CustomButton'
+import CustomButton from '@components/common/atoms/CustomButton'
 import Paginate from '@components/common/atoms/Paginate'
-import dayjs from 'dayjs'
+import FullCalendar from '@fullcalendar/react'
+import usePagination from '@utils/hooks/usePagination'
 
 const Reservation = ({
   match,
@@ -30,11 +31,11 @@ const Reservation = ({
 }: RouteComponentProps<MatchParams, any, any>) => {
   const dispatch = useDispatch()
   const currentPage = location?.state?.currentPage
+  const calendarRef = createRef<FullCalendar>()
   const { option, changeHandler } = useSelect('')
   const [calendar, setCalendar] = useState<boolean>(false)
-  const [year, setYear] = useState<string>(dayjs().format('YYYY') || '')
-  const [month, setMonth] = useState<string>(dayjs().format('MM') || '')
   const [page, setPage] = useState<number>(currentPage)
+  const pageChangeHandler = usePagination('reservation', page, setPage)
 
   const { shops, loading, reservations } = useSelector(
     (state: RootState) => ({
@@ -50,6 +51,33 @@ const Reservation = ({
     name: shop.name
   }))
 
+  const callReservationsForCalendar = () => {
+    return dispatch(
+      fetchReservationsForCalendar(
+        Number(option),
+        Number(calendarRef.current?.getApi().getDate().getFullYear()),
+        Number(calendarRef.current?.getApi().getDate().getMonth()) + 1
+      )
+    )
+  }
+
+  const calendarCustomButton = {
+    prev: {
+      text: '先月',
+      click: () => {
+        calendarRef.current?.getApi().prev()
+        callReservationsForCalendar()
+      }
+    },
+    next: {
+      text: '来月',
+      click: () => {
+        calendarRef.current?.getApi().next()
+        callReservationsForCalendar()
+      }
+    }
+  }
+
   const reservationsEvent: {
     id: string
     shopId: string
@@ -62,20 +90,14 @@ const Reservation = ({
     date: String(reservation.reservationDate)
   }))
 
-  const pageChangeHandler = (data: Record<string, any>) => {
-    const pageNum: number = data['selected']
-    setPage(pageNum + 1)
-    history.push(`/reservation?p=${page}`, { currentPage: pageNum + 1 })
-  }
-
   useEffect(() => {
     dispatch(fetchShopList(1, 'desc'))
     if (option && match.isExact) {
       calendar
-        ? dispatch(fetchReservationsForCalendar(Number(option), Number(year), Number(month)))
+        ? callReservationsForCalendar()
         : dispatch(fetchReservations(Number(option), Number(page), 'desc'))
     }
-  }, [dispatch, option, match.isExact, page, calendar, month])
+  }, [dispatch, option, match.isExact, page, calendar, calendarRef.current])
 
   return (
     <MainTemplate>
@@ -106,7 +128,11 @@ const Reservation = ({
                     </CustomButton>
                   </SubHeader>
                   {calendar ? (
-                    <Calendar events={reservationsEvent} />
+                    <Calendar
+                      events={reservationsEvent}
+                      calendarRef={calendarRef}
+                      customButtons={calendarCustomButton}
+                    />
                   ) : (
                     <>
                       <ReservationsList

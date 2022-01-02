@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 
 export type TLocationStateInId = {
-  id: number
+  shopId: string
 }
 
 const ReservationDetail = ({
@@ -22,14 +22,12 @@ const ReservationDetail = ({
   const { id } = match.params
   const dispatch = useDispatch()
   const convertId = Number(id)
-  const shopId = location.state.id
+  const shopId = Number(location.state.shopId)
   const { open, modalHandler } = useModal(false)
 
   const { reservation, loading } = useSelector(
     (state: RootState) => state.reservation
   )
-
-  console.log(reservation, shopId)
 
   const onDelete = useCallback(() => {
     dispatch(deleteReservation(shopId, convertId))

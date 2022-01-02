@@ -16,6 +16,7 @@ import Section from '@components/common/layout/Section'
 import SubHeader from '@components/common/atoms/SubHeader'
 import { HEADER_TYPE } from '@constants/Common'
 import CustomButton from '@components/common/atoms/CustomButton'
+import usePagination from '@utils/hooks/usePagination'
 
 const Salon = ({
   match,
@@ -38,16 +39,7 @@ const Salon = ({
 
   const authCheck = user.role.name === 'admin'
 
-  const pageChangeHandler = (data: Record<string, any>) => {
-    const pageNum: number = data['selected']
-    setPage(pageNum + 1)
-    history.push(
-      authCheck ? `/salon?p=${pageNum + 1}` : `/shops?p=${pageNum + 1}`,
-      {
-        currentPage: pageNum + 1
-      }
-    )
-  }
+  const pageChangeHandler = usePagination(authCheck ? 'salon' : 'shops', page, setPage)
 
   useEffect(() => {
     if (match.isExact) dispatch(fetchShopList(Number(currentPage), order))

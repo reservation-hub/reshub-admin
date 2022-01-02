@@ -1,4 +1,4 @@
-import Loading from '@/components/common/atoms/loading'
+import Loading from '@components/common/atoms/loading'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
