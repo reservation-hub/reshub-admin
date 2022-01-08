@@ -6,8 +6,29 @@ import { baseEndpoint } from '@utils/api/apiEndpoint'
 import { AxiosResponse } from 'axios'
 import {
   InsertMenuQuery,
+  MenuListResponse,
+  MenuResponse,
   UpdateMenuQuery
 } from '@utils/api/request-response-types/Shop'
+
+export const fetchAll = async (
+  shopId: number,
+  page: number,
+  order?: string
+): Promise<AxiosResponse<MenuListResponse>> => {
+  return await instance.get<MenuListResponse>(
+    `${baseEndpoint.shops}/${shopId}/menu?page=${page}&order=${order}`
+  )
+}
+
+export const getMenu = async (
+  shopId: number,
+  menuId: number
+): Promise<AxiosResponse<MenuResponse>> => {
+  return await instance.get<MenuResponse>(
+    `${baseEndpoint.shops}/${shopId}/menu/${menuId}`
+  )
+}
 
 export const createMenu = async (
   menuData: InsertMenuQuery
@@ -33,6 +54,8 @@ export const deleteMenu = async (
   )
 
 const menu = {
+  fetchAll,
+  getMenu,
   createMenu,
   patchMenu,
   deleteMenu
