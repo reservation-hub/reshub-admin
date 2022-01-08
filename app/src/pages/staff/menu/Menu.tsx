@@ -11,16 +11,23 @@ import { RootState } from '@store/store'
 import { useSelect } from '@utils/hooks/useSelect'
 import history from '@utils/routes/history'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
 const Menu = () => {
   const { option, changeHandler } = useSelect('')
   const dispatch = useDispatch()
 
-  const { shops, loading } = useSelector((state: RootState) => state.shop)
+  const { shops, loading } = useSelector(
+    (state: RootState) => ({
+      shops: state.shop.shops.values,
+      loading: state.menu?.loading,
+      menus: state.menu?.menus
+    }),
+    shallowEqual
+  )
 
-  const shopSelect: selectType[] = shops?.values?.map((shop) => ({
+  const shopSelect: selectType[] = shops?.map((shop) => ({
     value: String(shop.id),
     name: shop.name
   }))

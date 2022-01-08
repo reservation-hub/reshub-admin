@@ -1,6 +1,9 @@
-import { MenuListResponse, MenuResponse } from "@/utils/api/request-response-types/Shop";
-import { MenuState, MENU_TYPE } from "@store/types/menuTypes";
-import { MenuAction } from "@store/actions/menuAction";
+import {
+  MenuListResponse,
+  MenuResponse
+} from '@/utils/api/request-response-types/Shop'
+import { MenuState, MENU_TYPE } from '@store/types/menuTypes'
+import { MenuAction } from '@store/actions/menuAction'
 
 const initialState: MenuState = {
   loading: false,
@@ -11,7 +14,7 @@ const initialState: MenuState = {
 
 const menuReducer = (state = initialState, action: MenuAction) => {
   switch (action.type) {
-    case MENU_TYPE.REQUEST_SUCCESS: 
+    case MENU_TYPE.REQUEST_SUCCESS:
       return {
         ...state,
         loading: true

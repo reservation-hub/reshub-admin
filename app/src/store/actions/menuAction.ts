@@ -55,45 +55,59 @@ export const fetchAllMenu =
     }
   }
 
-export const getMenu = (shopId: number, menuId: number): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
-  dispatch(menuRequsetStart())
-  try {
-    const res = await apiEndpoint.menu.getMenu(shopId, menuId)
-    dispatch(getSuccess(res.data))
-  } catch {
-    history.push('/error')
+export const getMenu =
+  (
+    shopId: number,
+    menuId: number
+  ): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(menuRequsetStart())
+    try {
+      const res = await apiEndpoint.menu.getMenu(shopId, menuId)
+      dispatch(getSuccess(res.data))
+    } catch {
+      history.push('/error')
+    }
   }
-}
 
-export const createMenu = (menuData: InsertMenuQuery): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
-  dispatch(menuRequsetStart())
-  try {
-    const res = await apiEndpoint.menu.createMenu(menuData)
-    dispatch(addSuccess(res.data))
-  } catch (e: any) {
-    dispatch(requestFailure(e))
+export const createMenu =
+  (menuData: InsertMenuQuery): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(menuRequsetStart())
+    try {
+      const res = await apiEndpoint.menu.createMenu(menuData)
+      dispatch(addSuccess(res.data))
+    } catch (e: any) {
+      dispatch(requestFailure(e))
+    }
   }
-}
 
-export const editMenu = (menuData: UpdateMenuQuery): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
-  dispatch(menuRequsetStart())
-  try {
-    const res = await apiEndpoint.menu.patchMenu(menuData)
-    dispatch(editSuccess(res.data))
-  } catch (e: any) {
-    dispatch(requestFailure(e))
+export const editMenu =
+  (menuData: UpdateMenuQuery): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(menuRequsetStart())
+    try {
+      const res = await apiEndpoint.menu.patchMenu(menuData)
+      dispatch(editSuccess(res.data))
+    } catch (e: any) {
+      dispatch(requestFailure(e))
+    }
   }
-}
 
-export const deleteMenu = (shopId: number, menuId: number): ThunkAction<void, RootState, null, Action> => async (dispatch) => {
-  dispatch(menuRequsetStart())
-  try {
-    const res = await apiEndpoint.menu.deleteMenu(shopId, menuId)
-    dispatch(deleteSuccess(res.data))
-  } catch (e: any) {
-    dispatch(requestFailure(e))
+export const deleteMenu =
+  (
+    shopId: number,
+    menuId: number
+  ): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(menuRequsetStart())
+    try {
+      const res = await apiEndpoint.menu.deleteMenu(shopId, menuId)
+      dispatch(deleteSuccess(res.data))
+    } catch (e: any) {
+      dispatch(requestFailure(e))
+    }
   }
-}
 
 export type MenuAction =
   | ReturnType<typeof menuRequsetStart>
