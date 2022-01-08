@@ -46,7 +46,7 @@ const Table = <T extends Record<string, any>>({
                   onClick={() =>
                     history.push(
                       `/${url}/${item['id']}`,
-                      subParams ? { state: { shopId: item['shopId'] } } : null
+                      subParams ? { shopId: item['shopId'] } : null
                     )
                   }
                 >

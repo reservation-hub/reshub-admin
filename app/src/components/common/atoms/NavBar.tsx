@@ -8,7 +8,7 @@ import NavMenu from './NavMenu'
 
 const NavBar = () => {
   const { user } = useSelector((state: RootState) => state.auth)
-  const roleCheck = user.role?.name === 'admin'
+  const roleCheck = user.role.name === 'admin'
 
   return (
     <>
