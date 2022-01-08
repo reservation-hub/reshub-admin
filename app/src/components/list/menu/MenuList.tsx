@@ -1,7 +1,7 @@
 import React from 'react'
 import { IListProps } from '@components/list/_PropsType'
 import Table from '@components/common/atoms/Table'
-import { MenuForList } from '@/utils/api/request-response-types/models/Menu'
+import { MenuForList } from '@utils/api/request-response-types/models/Menu'
 
 const MenuList = ({
   item,

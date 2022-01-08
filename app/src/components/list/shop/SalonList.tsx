@@ -2,7 +2,7 @@ import React from 'react'
 import { IListProps } from '@components/list/_PropsType'
 import IsEmpty from '@components/common/atoms/IsEmpty'
 import Table from '@components/common/atoms/Table'
-import { ShopForList } from '@/utils/api/request-response-types/models/Shop'
+import { ShopForList } from '@utils/api/request-response-types/models/Shop'
 
 const SalonList = ({
   item,
@@ -12,7 +12,7 @@ const SalonList = ({
   totalPage,
   pageChangeHandler
 }: IListProps) => {
-  const rowItems = item?.map((shop: ShopForList) => ({
+  const rowItems: ShopForList[] = item?.map((shop: ShopForList) => ({
     ...shop,
     address: `${shop.prefectureName}${shop.cityName}${shop.address || ''}`
   }))

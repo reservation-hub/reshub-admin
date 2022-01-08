@@ -7,9 +7,10 @@ import { useModal } from '@utils/hooks/useModal'
 import { MatchParams } from '@components/common/_PropsType'
 import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
-import DetailItem from '@components/detail/shop/DetailItem'
 import history from '@utils/routes/history'
 import Loading from '@components/common/atoms/loading'
+import Section from '@components/common/layout/Section'
+import ShopDetail from '@components/detail/shop/ShopDetail'
 
 const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   const { id } = match.params
@@ -25,6 +26,11 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   const dispatch = useDispatch()
 
   const authCheck = user.role.name === 'admin'
+  const itme = {
+    ...shop,
+    address: `${shop.prefectureName}${shop.cityName}${shop.address || ''}`
+  }
+  console.log(itme['name'])
 
   const { open, modalHandler } = useModal(false)
 
@@ -41,7 +47,7 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <Section>
           <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
             <ModalAlert
               modalCloseHandler={modalHandler}
@@ -50,8 +56,8 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
               buttonText='削除'
             />
           </ModalOverlay>
-          <DetailItem
-            shop={shop}
+          <ShopDetail
+            item={shop}
             modalOpenHandler={() =>
               history.push(
                 authCheck ? `/salon/form/${id}` : `/shops/form/${id}`,
@@ -60,7 +66,7 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
             }
             subModalHandler={modalHandler}
           />
-        </>
+        </Section>
       )}
     </>
   )

@@ -1,6 +1,5 @@
-import { DetailItems } from '@constants/items'
-
-export interface IDetailProps extends DetailItems {
+export interface IDetailProps {
+  item?: Record<string, any>
   modalOpenHandler?: () => void
   subModalHandler?: () => void
 }

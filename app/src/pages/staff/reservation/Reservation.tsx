@@ -21,12 +21,8 @@ import ReservationDetail from './Detail'
 import NewReservation from './New'
 import Calendar from '@components/common/atoms/Calendar'
 import CustomButton from '@components/common/atoms/CustomButton'
-import Paginate from '@components/common/atoms/Paginate'
 import FullCalendar from '@fullcalendar/react'
 import usePagination from '@utils/hooks/usePagination'
-import Table from '@/components/common/atoms/Table'
-import { useConvertTime } from '@/utils/hooks/useConverTime'
-import reservation from '@/utils/api/endpoints/reservation'
 
 const Reservation = ({
   match,

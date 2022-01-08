@@ -1,9 +1,7 @@
 import React from 'react'
 import TableRow from './TableRow'
-import history from '@/utils/routes/history'
-import { ClassesAndChildren } from '../_PropsType'
+import history from '@utils/routes/history'
 import Paginate, { IPaginateProps } from './Paginate'
-import usePagination from '@/utils/hooks/usePagination'
 
 export interface ITableProps<T> extends IPaginateProps {
   cell: { column: string; key: keyof T }[]

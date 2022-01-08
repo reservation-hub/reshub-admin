@@ -33,7 +33,7 @@ const ReservationsList = ({
         url='reservation'
         subParams
         usePaginate={usePaginate}
-        page={page} 
+        page={page}
         totalPage={totalPage}
         pageChangeHandler={pageChangeHandler}
       />
