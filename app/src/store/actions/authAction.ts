@@ -4,20 +4,20 @@
 import { AUTH_TYPE } from '@store/types/authTypes'
 import { RootState, typedAction } from '@store/store'
 import { GoogleLoginResponse } from 'react-google-login'
-import { User } from '@entities/User'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import apiEndpoint from '@utils/api/apiEndpoint'
 import setAuthToken from '@utils/api/setAuthToken'
 import history from '@utils/routes/history'
 import Cookies from 'js-cookie'
+import { loginResponse } from '@utils/api/request-response-types/Auth'
 
 //ユーザーのリクエストをスタートするアクション
 const loginRequestStart = () => {
   return typedAction(AUTH_TYPE.REQUEST_START)
 }
 
-const fetchUser = (user: User) => {
+const fetchUser = (user: loginResponse) => {
   return typedAction(AUTH_TYPE.REQUEST_SUCCESS, user)
 }
 

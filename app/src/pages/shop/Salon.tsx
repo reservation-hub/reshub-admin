@@ -37,7 +37,7 @@ const Salon = ({
     shallowEqual
   )
 
-  const authCheck = user.role.name === 'admin'
+  const authCheck = user.user?.role?.name === 'admin'
 
   const pageChangeHandler = usePagination(
     authCheck ? 'salon' : 'shops',

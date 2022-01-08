@@ -2,8 +2,8 @@ import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store/store'
-import { User } from '@entities/User'
 import { VALIDATION_TEXT } from '@constants/FormValid'
+import { loginResponse } from '../api/request-response-types/Auth'
 
 /**
  *
@@ -20,7 +20,7 @@ const PrivateRoute = ({ children, ...rest }: any) => {
     (state: RootState) => state.auth
   )
 
-  const isAdmin = (user: User) => user.role.name === 'admin'
+  const isAdmin = (user: loginResponse) => user.user?.role?.name === 'admin'
 
   return (
     <>

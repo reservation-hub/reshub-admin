@@ -8,15 +8,15 @@ import NavMenu from './NavMenu'
 
 const NavBar = () => {
   const { user } = useSelector((state: RootState) => state.auth)
-  const roleCheck = user.role.name === 'admin'
+  const roleCheck = user.user?.role?.name === 'admin'
 
   return (
     <>
       <div className='mt-[3rem] mb-[1rem] text-[2.4rem]'>
-        <Link to={roleCheck ? `/users/${user.id}` : '/settings'}>
+        <Link to={roleCheck ? `/users/${user.user.id}` : '/settings'}>
           <div className='text-center'>
             <FaRegUserCircle className='w-[5rem] h-[5rem] mx-auto' />
-            <p className='m-0'>{user.username || 'Admin'}</p>
+            <p className='m-0'>{'User' || 'Admin'}</p>
           </div>
         </Link>
       </div>

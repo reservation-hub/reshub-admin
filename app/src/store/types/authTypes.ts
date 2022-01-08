@@ -1,7 +1,7 @@
 //----------------------------------
 // redux action types ユーザー
 //----------------------------------
-import { User } from '@entities/User'
+import { loginResponse } from '@/utils/api/request-response-types/Auth'
 
 export const AUTH_TYPE = {
   REQUEST_START: 'USER_REQUEST_START',
@@ -13,6 +13,6 @@ export const AUTH_TYPE = {
 export type AuthState = {
   isAuthenticated: boolean
   loading: boolean
-  user: User
+  user: loginResponse
   err?: Record<string, any>
 }
