@@ -18,7 +18,7 @@ const SalonDashboard = () => {
     shallowEqual
   )
   const dispatch = useDispatch()
-  const authCheck = user.user?.role?.name === 'admin'
+  const authCheck = user.role?.name === 'admin'
 
   useEffect(() => {
     dispatch(fetchDashboard())

@@ -6,13 +6,12 @@ import {
   TFormState,
   TSalonInput
 } from '@components/form/_PropsType'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import useInput from '@utils/hooks/useInput'
 import { useTimePicker } from '@utils/hooks/useTimePicker'
 import { useCheckBox } from '@utils/hooks/useCheckBox'
 import { addShop, editShopData } from '@store/actions/shopAction'
 import Section from '@components/common/layout/Section'
-import dayjs from 'dayjs'
 import {
   InsertShopQuery,
   UpdateShopQuery
@@ -73,7 +72,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
         prefectureId: Number(form.prefectureId),
         cityId: Number(form.cityId),
         days: form.days,
-        details: form.details
+        details: form.details,
+        seats: 0  
       }
       const updateData: UpdateShopQuery = {
         id: Number(shop?.id),
@@ -87,7 +87,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           prefectureId: Number(form.prefectureId),
           cityId: Number(form.cityId),
           days: form.days,
-          details: form.details
+          details: form.details,
+          seats: 0 
         }
       }
       return { insertData, updateData }

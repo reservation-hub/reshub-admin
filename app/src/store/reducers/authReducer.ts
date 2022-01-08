@@ -3,12 +3,12 @@
 //----------------------------------
 import { AuthState, AUTH_TYPE } from '@store/types/authTypes'
 import { AuthAction } from '@store/actions/authAction'
-import { loginResponse } from '@utils/api/request-response-types/Auth'
+import { UserForAuth } from '@/utils/api/request-response-types/models/User'
 
 const initialState: AuthState = {
   loading: false,
   isAuthenticated: false,
-  user: {} as loginResponse,
+  user: {} as UserForAuth,
   err: {}
 }
 

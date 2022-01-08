@@ -10,14 +10,14 @@ import apiEndpoint from '@utils/api/apiEndpoint'
 import setAuthToken from '@utils/api/setAuthToken'
 import history from '@utils/routes/history'
 import Cookies from 'js-cookie'
-import { loginResponse } from '@utils/api/request-response-types/Auth'
+import { UserForAuth } from '@utils/api/request-response-types/models/User'
 
 //ユーザーのリクエストをスタートするアクション
 const loginRequestStart = () => {
   return typedAction(AUTH_TYPE.REQUEST_START)
 }
 
-const fetchUser = (user: loginResponse) => {
+const fetchUser = (user: UserForAuth) => {
   return typedAction(AUTH_TYPE.REQUEST_SUCCESS, user)
 }
 

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@store/store'
 import { VALIDATION_TEXT } from '@constants/FormValid'
 import { loginResponse } from '../api/request-response-types/Auth'
+import { UserForAuth } from '../api/request-response-types/models/User'
 
 /**
  *
@@ -20,8 +21,10 @@ const PublicRoute = ({ children, ...rest }: any) => {
     (state: RootState) => state.auth
   )
 
-  const isUser = (user: loginResponse) =>
-    user.user?.role?.name === 'admin' || user.user?.role?.name === 'shop staff'
+  console.log(user)
+
+  const isUser = (user: UserForAuth) =>
+    user.role.name === 'admin' || user.role.name === 'shop staff'
 
   return (
     <>
