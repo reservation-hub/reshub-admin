@@ -22,7 +22,7 @@ const Detail = ({
   location
 }: RouteComponentProps<MatchParams, any, TLocationStateInId>) => {
   const { id } = match.params
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()
   const convertId = Number(id)
   const shopId = Number(location.state.state.shopId)
   const { open, modalHandler } = useModal(false)
@@ -50,9 +50,7 @@ const Detail = ({
           buttonText='キャンセル'
         />
       </ModalOverlay>
-      <ReservationDetail 
-        item={reservation}
-      />
+      <ReservationDetail item={reservation} />
     </Section>
   )
 }

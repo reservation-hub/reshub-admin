@@ -4,7 +4,8 @@
 import { UsersState, USER_TYPE } from '@store/types/usersType'
 import { UserAction } from '@store/actions/userAction'
 import {
-  UserListResponse, UserResponse,
+  UserListResponse,
+  UserResponse
 } from '@utils/api/request-response-types/User'
 
 const initialState: UsersState = {

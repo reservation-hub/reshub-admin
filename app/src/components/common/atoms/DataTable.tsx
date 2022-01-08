@@ -11,8 +11,7 @@ const DataTable = <T extends Record<string, any>>({
   item,
   classes
 }: IDataTableProps<T>) => {
-  const dt =
-    `${classes}  min-w-[13rem] text-[1.6rem] font-bold border-r-0 inline-block p-[1rem] border border-b-0 border-secondary-main text-secondary-main bg-primary`
+  const dt = `${classes}  min-w-[13rem] text-[1.6rem] font-bold border-r-0 inline-block p-[1rem] border border-b-0 border-secondary-main text-secondary-main bg-primary`
   const dd =
     'flex-1 text-[1.4rem] m-0 inline-block p-[1rem] border-b-0 border-primary border'
   return (

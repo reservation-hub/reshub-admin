@@ -8,16 +8,20 @@ import DataTable from '@/components/common/atoms/DataTable'
 import useConvertTime from '@/utils/hooks/useConverTime'
 import { ReservationResponse } from '@/utils/api/request-response-types/Shop'
 
-const ReservationDetail = ({ item, modalOpenHandler, subModalHandler }: IDetailProps) => {
+const ReservationDetail = ({
+  item,
+  modalOpenHandler,
+  subModalHandler
+}: IDetailProps) => {
   type ReservationType = ReservationResponse & {
     reservationDate: string
   }
-  
+
   const data = {
     ...item,
     reservationDate: useConvertTime('ymdhm', item?.reservationDate)
   } as ReservationType
-  
+
   return (
     <>
       <SubHeader
@@ -28,7 +32,7 @@ const ReservationDetail = ({ item, modalOpenHandler, subModalHandler }: IDetailP
       >
         <CustomButton onClick={history.goBack}>戻る</CustomButton>
       </SubHeader>
-      <DataTable 
+      <DataTable
         cell={[
           { column: '予約者', key: 'clientName' },
           { column: '店舗名', key: 'shopName' },

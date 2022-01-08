@@ -73,7 +73,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
         cityId: Number(form.cityId),
         days: form.days,
         details: form.details,
-        seats: 0  
+        seats: 0
       }
       const updateData: UpdateShopQuery = {
         id: Number(shop?.id),
@@ -88,7 +88,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           cityId: Number(form.cityId),
           days: form.days,
           details: form.details,
-          seats: 0 
+          seats: 0
         }
       }
       return { insertData, updateData }
