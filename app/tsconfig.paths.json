@@ -20,12 +20,6 @@
       "@styles/*": [
         "styles/*"
       ],
-      "@entities/*": [
-        "entities/*"
-      ],
-      "@model/*": [
-        "model/*"
-      ],
       "@constants/*": [
         "constants/*"
       ]

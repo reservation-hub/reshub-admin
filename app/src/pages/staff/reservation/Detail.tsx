@@ -20,10 +20,11 @@ const ReservationDetail = ({
   location
 }: RouteComponentProps<MatchParams, any, TLocationStateInId>) => {
   const { id } = match.params
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() 
   const convertId = Number(id)
   const shopId = Number(location.state.shopId)
   const { open, modalHandler } = useModal(false)
+  console.log(location)
 
   const { reservation, loading } = useSelector(
     (state: RootState) => state.reservation

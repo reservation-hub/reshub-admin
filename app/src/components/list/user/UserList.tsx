@@ -1,7 +1,7 @@
 import React from 'react'
 import { IListProps } from '@components/list/_PropsType'
 import IsEmpty from '@components/common/atoms/IsEmpty'
-import Table from 'components/common/atoms/Table'
+import Table from '@components/common/atoms/Table'
 import {
   UserResponse
 } from '@utils/api/request-response-types/User'

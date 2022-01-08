@@ -64,28 +64,6 @@ const UserForm = ({
           />
           <div className='flex justify-between w-full my-3'>
             <InputFiled
-              label='性'
-              id='firstNameKanji'
-              name='firstNameKanji'
-              autoComplete='off'
-              placeholder='お名前（名字）を入力してください。'
-              classes='w-[25.5rem]'
-              value={formValue.firstNameKanji}
-              onChange={changeHandlers.input}
-            />
-            <InputFiled
-              label='名'
-              id='lastNameKanji'
-              name='lastNameKanji'
-              autoComplete='off'
-              placeholder='お名前を入力してください。'
-              classes='w-[25.5rem]'
-              value={formValue.lastNameKanji}
-              onChange={changeHandlers.input}
-            />
-          </div>
-          <div className='flex justify-between w-full my-3'>
-            <InputFiled
               label='セイ'
               id='firstNameKana'
               name='firstNameKana'

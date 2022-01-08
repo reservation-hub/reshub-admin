@@ -1,7 +1,7 @@
-import { TRole } from '@model/User'
+import { Role, RoleSlug } from "@utils/api/request-response-types/models/Role";
 
-export const ROLES: TRole[] = [
-  { id: 1, name: 'client', slug: 'client', description: 'client role' },
-  { id: 2, name: 'admin', slug: 'admin', description: 'admin role' },
-  { id: 3, name: 'shop staff', slug: 'shop_staff', description: 'staff role' }
+export const ROLES: Role[] = [
+  { name: 'client', slug: RoleSlug.CLIENT},
+  { name: 'admin', slug: RoleSlug.ADMIN },
+  { name: 'shop staff', slug: RoleSlug.SHOP_STAFF }
 ]
