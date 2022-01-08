@@ -7,7 +7,7 @@ export const useCheckBox = (initialState: any[]) => {
     (e: ChangeEvent<HTMLInputElement>) => {
       const target = e.target
       if (target.checked) {
-        setChecked([...checked, [target.value]])
+        setChecked([...checked, target.value])
       } else {
         setChecked(checked?.filter((value) => value !== target.value))
       }

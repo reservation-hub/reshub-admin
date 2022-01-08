@@ -28,14 +28,14 @@ const DetailItem = ({
       <div className='container flex justify-between'>
         <ShopData shop={shop} />
         <div className='w-[34rem] h-full'>
-          <StylistList stylists={shop?.stylists} />
+          <StylistList item={shop?.stylists} />
         </div>
         <div className='w-[34rem]'>
-          <MenuList menus={shop?.menu} />
+          <MenuList item={shop?.menu} />
         </div>
       </div>
       <div className='mt-4'>
-        <ReservationsList reservations={shop?.reservations} />
+        <ReservationsList item={shop?.reservations} />
       </div>
     </Section>
   )

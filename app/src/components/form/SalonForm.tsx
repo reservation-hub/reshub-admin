@@ -42,7 +42,7 @@ const SalonForm = ({
       value: String(city.id),
       name: city.name
     })),
-    days: Days.map((day) => ({ value: day.slug, name: day.name }))
+    days: Days.map((day) => ({ value: day.name, name: day.name }))
   }
 
   if (

@@ -1,18 +1,20 @@
 import React from 'react'
 import ReactPaginate from 'react-paginate'
 import '@styles/paginate.css'
+import { ClassesAndChildren } from '@components/common/_PropsType'
 
-export interface IPaginateProps {
-  totalPage: number
+export interface IPaginateProps extends ClassesAndChildren {
+  totalPage?: number
   page?: string | number | null
-  pageChangeHandler: (selectedItem: { selected: number }) => void
+  pageChangeHandler?: (selectedItem: { selected: number }) => void
+  usePaginate?: boolean
 }
 
 const Paginate = ({ totalPage, page, pageChangeHandler }: IPaginateProps) => {
   return (
     <ReactPaginate
       marginPagesDisplayed={2}
-      pageCount={Math.ceil(totalPage / 10)}
+      pageCount={Math.ceil(Number(totalPage) / 10)}
       pageRangeDisplayed={10}
       breakLabel='...'
       initialPage={Number(page) - 1}

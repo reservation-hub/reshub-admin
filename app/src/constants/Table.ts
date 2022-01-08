@@ -23,14 +23,14 @@ export const STYLELIST_CELL: Record<string, any> = {
   reservationCount: '予約件数'
 } as const
 
-export const RESERVATION_CELL: Record<string, any> = {
-  shopName: '店舗名',
-  userName: '予約者',
-  menuName: 'メニュー名',
-  stylistName: 'スタイリスト名',
-  reservationDate: '予約日',
-  status: 'ステータス'
-} as const
+export const RESERVATION_CELL = [
+  { column: '店舗名', key: 'shopName' },
+  { column: '予約者', key: 'userName' },
+  { column: 'メニュー名', key: 'menuName' },
+  { column: 'スタイリスト名', key: 'stylistName' },
+  { column: '予約日', key: 'reservationDate' },
+  { column: 'ステータス', key: 'status' }
+] as const
 
 export const MENU_CELL: Record<string, any> = {
   name: 'メニュー名',

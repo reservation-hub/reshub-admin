@@ -16,8 +16,8 @@ const AdminDashboard = ({ data }: AdminDashboardProps) => {
         <div className='text-[1.6rem]'>ユーザー{data.user?.totalCount}件</div>
         <div className='text-[1.6rem]'>サロン {data.shop?.totalCount}件</div>
       </SubHeader>
-      <UserList users={data.user?.users} />
-      <SalonList shops={data.shop?.shopData} admin />
+      <UserList item={data.user?.users} />
+      <SalonList item={data.shop?.shopData} admin />
     </Section>
   )
 }

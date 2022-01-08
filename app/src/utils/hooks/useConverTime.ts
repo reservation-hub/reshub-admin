@@ -9,7 +9,7 @@ import dayjs from 'dayjs'
  */
 export const useConvertTime = (
   format: string,
-  dateTime?: Date | string,
+  dateTime?: Date | string | number,
   secondTime?: Date | string
 ): string => {
   switch (format) {

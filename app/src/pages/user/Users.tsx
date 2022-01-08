@@ -55,7 +55,7 @@ const Users = ({
                   並び替え
                 </CustomButton>
               </SubHeader>
-              <UserList users={users.values} />
+              <UserList item={users.values} />
               <Paginate
                 totalPage={users.totalCount}
                 page={currentPage}

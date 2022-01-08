@@ -24,6 +24,9 @@ import CustomButton from '@components/common/atoms/CustomButton'
 import Paginate from '@components/common/atoms/Paginate'
 import FullCalendar from '@fullcalendar/react'
 import usePagination from '@utils/hooks/usePagination'
+import Table from '@/components/common/atoms/Table'
+import { useConvertTime } from '@/utils/hooks/useConverTime'
+import reservation from '@/utils/api/endpoints/reservation'
 
 const Reservation = ({
   match,
@@ -78,12 +81,7 @@ const Reservation = ({
     }
   }
 
-  const reservationsEvent: {
-    id: string
-    shopId: string
-    title: string
-    date: string
-  }[] = reservations.values?.map((reservation) => ({
+  const reservationsEvent = reservations.values?.map((reservation) => ({
     id: String(reservation.id),
     shopId: String(reservation.shopId),
     title: `${reservation.clientName}/${reservation.menuName}`,
@@ -134,16 +132,13 @@ const Reservation = ({
                       customButtons={calendarCustomButton}
                     />
                   ) : (
-                    <>
-                      <ReservationsList
-                        reservations={option ? reservations.values : []}
-                      />
-                      <Paginate
-                        totalPage={reservations?.totalCount}
-                        page={currentPage}
-                        pageChangeHandler={pageChangeHandler}
-                      />
-                    </>
+                    <ReservationsList
+                      item={option ? reservations.values : []}
+                      page={page}
+                      totalPage={reservations?.totalCount}
+                      pageChangeHandler={pageChangeHandler}
+                      usePaginate
+                    />
                   )}
                 </>
               ) : (

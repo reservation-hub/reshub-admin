@@ -16,7 +16,7 @@ export interface Items {
   user?: UserForList
   shops?: ShopForList[]
   shop?: ShopForList
-  reservations?: ReservationForList[]
+  reservations?: Record<string, any>
   reservation?: ReservationForList
   stylists?: StylistForList[]
   stylist?: StylistForList

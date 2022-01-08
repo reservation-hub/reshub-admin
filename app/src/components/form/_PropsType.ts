@@ -1,6 +1,9 @@
 import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
 import { TUser } from '@model/User'
 import { ShopResponse } from '@utils/api/request-response-types/Shop'
+import { ScheduleDays } from '@utils/api/request-response-types/models/Common'
+import { RoleSlug } from '@utils/api/request-response-types/models/Role'
+import { Gender } from '@utils/api/request-response-types/models/User'
 
 export type TUserInput = {
   email: string
@@ -10,12 +13,12 @@ export type TUserInput = {
   firstNameKana: string
   password: string
   confirm: string
-  gender: string
+  gender: Gender
   birthdayY: string
   birthdayM: string
   birthdayD: string
   username: string
-  role: string
+  role: RoleSlug
 }
 
 export type TSalonInput = {
@@ -27,7 +30,7 @@ export type TSalonInput = {
   areaId: string
   startTime: { hour: string; minute: string }
   endTime: { hour: string; minute: string }
-  days: number[]
+  days: ScheduleDays[]
   details: string
 }
 

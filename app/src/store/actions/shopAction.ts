@@ -114,7 +114,8 @@ export const editShopData =
     try {
       const res = await apiEndpoint.shops.patchShop(shopData)
       dispatch(shopPatchSuccess(res.data))
-      if (history.location.pathname === '/create_shop') {
+      console.log(history.location.pathname)
+      if (history.location.pathname === `/shops/form/${shopData.id}`) {
         history.push(`/shops/${shopData.id}`)
       } else {
         history.push(`/salon/${shopData.id}`)
@@ -132,7 +133,7 @@ export const deleteShopData =
     try {
       const res = await apiEndpoint.shops.deleteShop(id)
       dispatch(shopDeleteSuccess(res.data))
-      if (history.location.pathname === '/create_shop') {
+      if (history.location.pathname === `/shops/${id}`) {
         history.push('/shops', { state: { currentPage: 1 } })
       } else {
         history.push({ pathname: '/salon', state: { currentPage: 1 } })

@@ -71,8 +71,10 @@ const Salon = ({
                   並び替え
                 </CustomButton>
               </SubHeader>
-              <SalonList shops={shops.values} admin={authCheck} />
-              <Paginate
+              <SalonList
+                item={shops.values}
+                admin={authCheck}
+                usePaginate
                 totalPage={shops.totalCount}
                 page={currentPage}
                 pageChangeHandler={pageChangeHandler}
