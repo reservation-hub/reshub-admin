@@ -50,7 +50,7 @@ const Detail = ({
           buttonText='キャンセル'
         />
       </ModalOverlay>
-      <ReservationDetail item={reservation} />
+      <ReservationDetail item={reservation} subModalHandler={modalHandler} />
     </>
   )
 }

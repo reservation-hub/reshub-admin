@@ -32,26 +32,29 @@ export const getMenu = async (
 
 export const createMenu = async (
   menuData: InsertMenuQuery
-): Promise<AxiosResponse<string>> =>
-  await instance.post<string>(`${baseEndpoint.shops}/${menuData.shopId}/menu`, {
+): Promise<AxiosResponse<string>> => {
+  return await instance.post<string>(`${baseEndpoint.shops}/${menuData.shopId}/menu`, {
     ...menuData
   })
+}
 
 export const patchMenu = async (
   menuData: UpdateMenuQuery
-): Promise<AxiosResponse<string>> =>
-  await instance.patch<string>(
+): Promise<AxiosResponse<string>> => {
+  return await instance.patch<string>(
     `${baseEndpoint.shops}/${menuData.shopId}/menu/${menuData.menuId}`,
     { ...menuData }
   )
+}
 
 export const deleteMenu = async (
   shopId: number,
   menuId: number
-): Promise<AxiosResponse<string>> =>
-  await instance.delete<string>(
+): Promise<AxiosResponse<string>> => {
+  return await instance.delete<string>(
     `${baseEndpoint.shops}/${shopId}/menu/${menuId}`
   )
+}
 
 const menu = {
   fetchAll,

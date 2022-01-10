@@ -8,10 +8,11 @@ import {
 
 export const fetchDashboard = async (): Promise<
   AxiosResponse<salonIndexShopStaffResponse & salonIndexAdminResponse>
-> =>
-  await instance.get<salonIndexShopStaffResponse & salonIndexAdminResponse>(
+> => {
+  return await instance.get<salonIndexShopStaffResponse & salonIndexAdminResponse>(
     `${baseEndpoint.dashboard}/salon`
   )
+}
 
 const dashboard = {
   fetchDashboard

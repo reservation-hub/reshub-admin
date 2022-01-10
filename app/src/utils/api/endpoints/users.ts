@@ -14,30 +14,37 @@ import {
 export const getUsers = async (
   page: number,
   order: 'asc' | 'desc'
-): Promise<AxiosResponse<UserListResponse>> =>
-  await instance.get<UserListResponse>(
+): Promise<AxiosResponse<UserListResponse>> => {
+  return await instance.get<UserListResponse>(
     `${baseEndpoint.users}?page=${page}&order=${order}`
   )
+}
 
 export const getUser = async (
   id: number
-): Promise<AxiosResponse<UserResponse>> =>
-  await instance.get<UserResponse>(`${baseEndpoint.users}/${id}`)
+): Promise<AxiosResponse<UserResponse>> => {
+  return await instance.get<UserResponse>(`${baseEndpoint.users}/${id}`)
+}
 
 export const createUser = async (
   userData: InsertUserQuery
-): Promise<AxiosResponse<string>> =>
-  await instance.post<string>(baseEndpoint.users, { ...userData })
+): Promise<AxiosResponse<string>> => {
+  return await instance.post<string>(baseEndpoint.users, { ...userData })
+}
 
 export const patchUser = async (
   userData: UpdateUserQuery
-): Promise<AxiosResponse<string>> =>
-  await instance.patch<string>(`${baseEndpoint.users}/${userData.id}`, {
+): Promise<AxiosResponse<string>> => {
+  return await instance.patch<string>(`${baseEndpoint.users}/${userData.id}`, {
     ...userData.params
   })
+}
 
-export const deleteUser = async (id: number): Promise<AxiosResponse<string>> =>
-  await instance.delete<string>(`${baseEndpoint.users}/${id}`)
+export const deleteUser = async (
+  id: number
+): Promise<AxiosResponse<string>> => {
+  return await instance.delete<string>(`${baseEndpoint.users}/${id}`)
+}
 
 const users = {
   getUsers,
