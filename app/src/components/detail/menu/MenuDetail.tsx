@@ -1,11 +1,11 @@
 import React from 'react'
-import CustomButton from '@/components/common/atoms/CustomButton'
-import SubHeader from '@/components/common/atoms/SubHeader'
-import { HEADER_TYPE } from '@/constants/Common'
-import history from '@/utils/routes/history'
+import CustomButton from '@components/common/atoms/CustomButton'
+import SubHeader from '@components/common/atoms/SubHeader'
+import { HEADER_TYPE } from '@constants/Common'
+import history from '@utils/routes/history'
 import { IDetailProps } from '../_PropsType'
-import DataTable from '@/components/common/atoms/DataTable'
-import { MenuResponse } from '@/utils/api/request-response-types/Shop'
+import DataTable from '@components/common/atoms/DataTable'
+import { MenuResponse } from '@utils/api/request-response-types/Shop'
 
 const MenuDetail = ({
   item,

@@ -1,7 +1,7 @@
 import {
   MenuListResponse,
   MenuResponse
-} from '@/utils/api/request-response-types/Shop'
+} from '@utils/api/request-response-types/Shop'
 import { MenuState, MENU_TYPE } from '@store/types/menuTypes'
 import { MenuAction } from '@store/actions/menuAction'
 

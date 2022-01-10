@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect } from 'react'
-import Loading from '@/components/common/atoms/loading'
-import { MatchParams } from '@/components/common/_PropsType'
-import { deleteMenu, getMenu } from '@/store/actions/menuAction'
-import { RootState } from '@/store/store'
-import { useModal } from '@/utils/hooks/useModal'
+import Loading from '@components/common/atoms/loading'
+import { MatchParams } from '@components/common/_PropsType'
+import { deleteMenu, getMenu } from '@store/actions/menuAction'
+import { RootState } from '@store/store'
+import { useModal } from '@utils/hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
 import { TLocationStateInId } from '../reservation/Detail'
-import ModalOverlay from '@/components/modal/ModalOverlay'
-import ModalAlert from '@/components/modal/ModalAlert'
-import MenuDetail from '@/components/detail/menu/MenuDetail'
+import ModalOverlay from '@components/modal/ModalOverlay'
+import ModalAlert from '@components/modal/ModalAlert'
+import MenuDetail from '@components/detail/menu/MenuDetail'
 
 const Detail = ({
   match,

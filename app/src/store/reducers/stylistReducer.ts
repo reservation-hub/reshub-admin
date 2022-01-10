@@ -1,7 +1,7 @@
 import {
   StylistListResponse,
   StylistResponse
-} from '@/utils/api/request-response-types/Shop'
+} from '@utils/api/request-response-types/Shop'
 import { StylistAction } from '@store/actions/stylistAction'
 import { StylistState, STYLIST_TPYE } from '@store/types/stylistTypes'
 

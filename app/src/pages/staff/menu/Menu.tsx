@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { fetchAllMenu } from '@/store/actions/menuAction'
-import usePagination from '@/utils/hooks/usePagination'
+import { fetchAllMenu } from '@store/actions/menuAction'
+import usePagination from '@utils/hooks/usePagination'
 import Loading from '@components/common/atoms/loading'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'

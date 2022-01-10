@@ -10,8 +10,7 @@ import { RootState } from '@store/store'
 import { useModal } from '@utils/hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import ReservationDetail from '@/components/detail/reservation/ReservationDetail'
-import Section from '@/components/common/layout/Section'
+import ReservationDetail from '@components/detail/reservation/ReservationDetail'
 
 export type TLocationStateInId = {
   state: { shopId: string }

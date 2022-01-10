@@ -3,7 +3,7 @@ import { ShopResponse } from '@utils/api/request-response-types/Shop'
 import { ScheduleDays } from '@utils/api/request-response-types/models/Common'
 import { RoleSlug } from '@utils/api/request-response-types/models/Role'
 import { Gender } from '@utils/api/request-response-types/models/User'
-import { UserResponse } from '@/utils/api/request-response-types/User'
+import { UserResponse } from '@utils/api/request-response-types/User'
 
 export type TUserInput = {
   email: string

@@ -1,7 +1,7 @@
 import {
   MenuListResponse,
   MenuResponse
-} from '@/utils/api/request-response-types/Shop'
+} from '@utils/api/request-response-types/Shop'
 
 export const MENU_TYPE = {
   REQUEST_START: 'MENU_REQUEST_START',

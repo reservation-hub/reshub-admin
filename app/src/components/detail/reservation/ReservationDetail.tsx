@@ -4,9 +4,9 @@ import SubHeader from '@components/common/atoms/SubHeader'
 import { HEADER_TYPE } from '@constants/Common'
 import history from '@utils/routes/history'
 import { IDetailProps } from '@components/detail/_PropsType'
-import DataTable from '@/components/common/atoms/DataTable'
-import useConvertTime from '@/utils/hooks/useConverTime'
-import { ReservationResponse } from '@/utils/api/request-response-types/Shop'
+import DataTable from '@components/common/atoms/DataTable'
+import useConvertTime from '@utils/hooks/useConverTime'
+import { ReservationResponse } from '@utils/api/request-response-types/Shop'
 
 const ReservationDetail = ({
   item,

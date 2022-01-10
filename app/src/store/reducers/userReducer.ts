@@ -1,7 +1,7 @@
 //----------------------------------
 // redux ユーザー状態管理 reducer
 //----------------------------------
-import { UsersState, USER_TYPE } from '@/store/types/usersTypes'
+import { UsersState, USER_TYPE } from '@store/types/usersTypes'
 import { UserAction } from '@store/actions/userAction'
 import {
   UserListResponse,
