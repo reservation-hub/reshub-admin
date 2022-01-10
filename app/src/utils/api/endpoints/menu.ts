@@ -33,9 +33,12 @@ export const getMenu = async (
 export const createMenu = async (
   menuData: InsertMenuQuery
 ): Promise<AxiosResponse<string>> => {
-  return await instance.post<string>(`${baseEndpoint.shops}/${menuData.shopId}/menu`, {
-    ...menuData
-  })
+  return await instance.post<string>(
+    `${baseEndpoint.shops}/${menuData.shopId}/menu`,
+    {
+      ...menuData
+    }
+  )
 }
 
 export const patchMenu = async (

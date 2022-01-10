@@ -29,7 +29,6 @@ export const getShop = async (
 ): Promise<AxiosResponse<ShopResponse>> => {
   return await instance.get<ShopResponse>(`${baseEndpoint.shops}/${id}`)
 }
-  
 
 export const createShop = async (
   shopData: InsertShopQuery
@@ -44,9 +43,10 @@ export const patchShop = async (
     ...shopData.params
   })
 }
-  
 
-export const deleteShop = async (id: number): Promise<AxiosResponse<string>> => {
+export const deleteShop = async (
+  id: number
+): Promise<AxiosResponse<string>> => {
   return await instance.delete<string>(`${baseEndpoint.shops}/${id}`)
 }
 

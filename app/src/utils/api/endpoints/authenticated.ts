@@ -19,14 +19,15 @@ export const localLogin = async (
 }
 
 export const googleLogin = async (provider: string, tokenId: string) => {
-  return await instance.post(`${baseEndpoint.auth}/google`, { provider, tokenId })
+  return await instance.post(`${baseEndpoint.auth}/google`, {
+    provider,
+    tokenId
+  })
 }
-  
 
 export const silentRefresh = async () => {
   return await instance.post(`${baseEndpoint.auth}/silent_refresh`)
 }
-  
 
 export const logout = async () => {
   return await instance.get(`${baseEndpoint.auth}/logout`)

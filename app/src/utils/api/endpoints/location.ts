@@ -29,7 +29,6 @@ export const getPrefecture = async (
     `${baseEndpoint.prefecture}/${id}/cities`
   )
 }
-  
 
 const location = {
   getAreas,
