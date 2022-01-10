@@ -31,22 +31,20 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
       {loading ? (
         <Loading />
       ) : (
-        <>
-          <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
-            <ModalAlert
-              modalCloseHandler={modalHandler}
-              modalHandler={onDelete}
-              alertText='このユーザーを削除しますか？'
-              buttonText='削除'
-            />
-          </ModalOverlay>
-          <UserDetail
-            item={user}
-            modalOpenHandler={() => history.push(`/users/form/${id}`, { user })}
-            subModalHandler={modalHandler}
-          />
-        </>
+        <UserDetail
+          item={user}
+          modalOpenHandler={() => history.push(`/users/form/${id}`, { user })}
+          subModalHandler={modalHandler}
+        />
       )}
+      <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
+        <ModalAlert
+          modalCloseHandler={modalHandler}
+          modalHandler={onDelete}
+          alertText='このユーザーを削除しますか？'
+          buttonText='削除'
+        />
+      </ModalOverlay>
     </>
   )
 }

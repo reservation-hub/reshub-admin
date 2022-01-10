@@ -107,7 +107,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   )
 
   return (
-    <Section>
+    <>
       <Route exact path='/'>
         <SalonForm
           submitHandler={onSubmit}
@@ -124,7 +124,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           changeHandlers={changeHandlers}
         />
       </Route>
-    </Section>
+    </>
   )
 }
 

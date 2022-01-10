@@ -41,7 +41,7 @@ const Detail = ({
   }, [dispatch, shopId, convertId])
 
   return (
-    <Section>
+    <>
       <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
         <ModalAlert
           modalCloseHandler={modalHandler}
@@ -51,7 +51,7 @@ const Detail = ({
         />
       </ModalOverlay>
       <ReservationDetail item={reservation} />
-    </Section>
+    </>
   )
 }
 

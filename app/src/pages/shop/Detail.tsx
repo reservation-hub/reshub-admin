@@ -40,27 +40,25 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
       {loading ? (
         <Loading />
       ) : (
-        <Section>
-          <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
-            <ModalAlert
-              modalCloseHandler={modalHandler}
-              alertText='本当にこの店舗を削除しますか？'
-              modalHandler={onDelete}
-              buttonText='削除'
-            />
-          </ModalOverlay>
-          <ShopDetail
-            item={shop}
-            modalOpenHandler={() =>
-              history.push(
-                authCheck ? `/salon/form/${id}` : `/shops/form/${id}`,
-                { shop }
-              )
-            }
-            subModalHandler={modalHandler}
-          />
-        </Section>
+        <ShopDetail
+          item={shop}
+          modalOpenHandler={() =>
+            history.push(
+              authCheck ? `/salon/form/${id}` : `/shops/form/${id}`,
+              { shop }
+            )
+          }
+          subModalHandler={modalHandler}
+        />
       )}
+      <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
+        <ModalAlert
+          modalCloseHandler={modalHandler}
+          alertText='本当にこの店舗を削除しますか？'
+          modalHandler={onDelete}
+          buttonText='削除'
+        />
+      </ModalOverlay>
     </>
   )
 }

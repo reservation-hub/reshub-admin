@@ -38,34 +38,36 @@ const Users = ({
   return (
     <MainTemplate>
       <Switch>
-        <Route exact path='/users'>
-          {loading ? (
-            <Loading />
-          ) : (
-            <Section>
-              <SubHeader
-                title='ユーザー一覧'
-                modalOpenHandler={() => history.push('/users/form')}
-                type={HEADER_TYPE.LIST}
-              >
-                <CustomButton
-                  classes='ml-2'
-                  onClick={() => setCorrect(!correct)}
+        <Section>
+          <Route exact path='/users'>
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                <SubHeader
+                  title='ユーザー一覧'
+                  modalOpenHandler={() => history.push('/users/form')}
+                  type={HEADER_TYPE.LIST}
                 >
-                  並び替え
-                </CustomButton>
-              </SubHeader>
-              <UserList item={users.values} />
-              <Paginate
-                totalPage={users.totalCount}
-                page={currentPage}
-                pageChangeHandler={pageChangeHandler}
-              />
-            </Section>
-          )}
-        </Route>
-        <Route path='/users/form' component={Form} />
-        <Route path='/users/:id' component={Profile} />
+                  <CustomButton
+                    classes='ml-2'
+                    onClick={() => setCorrect(!correct)}
+                  >
+                    並び替え
+                  </CustomButton>
+                </SubHeader>
+                <UserList item={users.values} />
+                <Paginate
+                  totalPage={users.totalCount}
+                  page={currentPage}
+                  pageChangeHandler={pageChangeHandler}
+                />
+              </>
+            )}
+          </Route>
+          <Route path='/users/form' component={Form} />
+          <Route path='/users/:id' component={Profile} />
+        </Section>
       </Switch>
     </MainTemplate>
   )

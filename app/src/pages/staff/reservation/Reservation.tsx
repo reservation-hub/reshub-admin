@@ -96,59 +96,61 @@ const Reservation = ({
   return (
     <MainTemplate>
       <Switch>
-        <Route exact path='/reservation'>
-          {loading ? (
-            <Loading />
-          ) : (
-            <Section>
-              {option ? (
-                <>
-                  <SubHeader
-                    title='予約管理'
-                    type={HEADER_TYPE.LIST}
-                    modalOpenHandler={() => history.push('/reservation/new')}
-                  >
-                    <ShopSelect
-                      data={shopSelect}
-                      value={option}
-                      onChange={changeHandler}
-                      listStyle
-                    />
-                    <CustomButton
-                      onClick={() => setCalendar(!calendar)}
-                      classes='min-w-[12rem] ml-2'
+        <Section>
+          <Route exact path='/reservation'>
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                {option ? (
+                  <>
+                    <SubHeader
+                      title='予約管理'
+                      type={HEADER_TYPE.LIST}
+                      modalOpenHandler={() => history.push('/reservation/new')}
                     >
-                      {calendar ? 'リストで見る' : 'カレンダーで見る'}
-                    </CustomButton>
-                  </SubHeader>
-                  {calendar ? (
-                    <Calendar
-                      events={reservationsEvent}
-                      calendarRef={calendarRef}
-                      customButtons={calendarCustomButton}
-                    />
-                  ) : (
-                    <ReservationsList
-                      item={option ? reservations.values : []}
-                      page={page}
-                      totalPage={reservations?.totalCount}
-                      pageChangeHandler={pageChangeHandler}
-                      usePaginate
-                    />
-                  )}
-                </>
-              ) : (
-                <ShopSelect
-                  data={shopSelect}
-                  value={option}
-                  onChange={changeHandler}
-                />
-              )}
-            </Section>
-          )}
-        </Route>
-        <Route path='/reservation/new' component={NewReservation} />
-        <Route path='/reservation/:id' component={ReservationDetail} />
+                      <ShopSelect
+                        data={shopSelect}
+                        value={option}
+                        onChange={changeHandler}
+                        listStyle
+                      />
+                      <CustomButton
+                        onClick={() => setCalendar(!calendar)}
+                        classes='min-w-[12rem] ml-2'
+                      >
+                        {calendar ? 'リストで見る' : 'カレンダーで見る'}
+                      </CustomButton>
+                    </SubHeader>
+                    {calendar ? (
+                      <Calendar
+                        events={reservationsEvent}
+                        calendarRef={calendarRef}
+                        customButtons={calendarCustomButton}
+                      />
+                    ) : (
+                      <ReservationsList
+                        item={option ? reservations.values : []}
+                        page={page}
+                        totalPage={reservations?.totalCount}
+                        pageChangeHandler={pageChangeHandler}
+                        usePaginate
+                      />
+                    )}
+                  </>
+                ) : (
+                  <ShopSelect
+                    data={shopSelect}
+                    value={option}
+                    onChange={changeHandler}
+                  />
+                )}
+              </>
+            )}
+          </Route>
+          <Route path='/reservation/new' component={NewReservation} />
+          <Route path='/reservation/:id' component={ReservationDetail} />
+        </Section>
       </Switch>
     </MainTemplate>
   )

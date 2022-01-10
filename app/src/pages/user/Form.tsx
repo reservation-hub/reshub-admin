@@ -116,7 +116,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   )
 
   return (
-    <Section>
+    <>
       <Route exact path='/'>
         <UserForm
           formState={location.state}
@@ -135,7 +135,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           error={error}
         />
       </Route>
-    </Section>
+    </>
   )
 }
 

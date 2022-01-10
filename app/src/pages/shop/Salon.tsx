@@ -52,44 +52,46 @@ const Salon = ({
   return (
     <MainTemplate>
       <Switch>
-        <Route exact path={authCheck ? '/salon' : '/shops'}>
-          {loading ? (
-            <Loading />
-          ) : (
-            <Section>
-              <SubHeader
-                title={authCheck ? 'サロン一覧' : '店舗一覧'}
-                type={HEADER_TYPE.LIST}
-                modalOpenHandler={() =>
-                  history.push(authCheck ? '/salon/form' : '/shops/form')
-                }
-              >
-                <CustomButton
-                  classes='ml-2'
-                  onClick={() => setCorrect(!correct)}
+        <Section>
+          <Route exact path={authCheck ? '/salon' : '/shops'}>
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                <SubHeader
+                  title={authCheck ? 'サロン一覧' : '店舗一覧'}
+                  type={HEADER_TYPE.LIST}
+                  modalOpenHandler={() =>
+                    history.push(authCheck ? '/salon/form' : '/shops/form')
+                  }
                 >
-                  並び替え
-                </CustomButton>
-              </SubHeader>
-              <SalonList
-                item={shops.values}
-                admin={authCheck}
-                usePaginate
-                totalPage={shops.totalCount}
-                page={currentPage}
-                pageChangeHandler={pageChangeHandler}
-              />
-            </Section>
-          )}
-        </Route>
-        <Route
-          path={authCheck ? '/salon/form' : '/shops/form'}
-          component={Form}
-        />
-        <Route
-          path={authCheck ? '/salon/:id' : '/shops/:id'}
-          component={Detail}
-        />
+                  <CustomButton
+                    classes='ml-2'
+                    onClick={() => setCorrect(!correct)}
+                  >
+                    並び替え
+                  </CustomButton>
+                </SubHeader>
+                <SalonList
+                  item={shops.values}
+                  admin={authCheck}
+                  usePaginate
+                  totalPage={shops.totalCount}
+                  page={currentPage}
+                  pageChangeHandler={pageChangeHandler}
+                />
+              </>
+            )}
+          </Route>
+          <Route
+            path={authCheck ? '/salon/form' : '/shops/form'}
+            component={Form}
+          />
+          <Route
+            path={authCheck ? '/salon/:id' : '/shops/:id'}
+            component={Detail}
+          />
+        </Section>
       </Switch>
     </MainTemplate>
   )
