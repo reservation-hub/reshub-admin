@@ -11,6 +11,7 @@ import { useModal } from '@utils/hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import ReservationDetail from '@components/detail/reservation/ReservationDetail'
+import Loading from '@/components/common/atoms/loading'
 
 export type TLocationStateInId = {
   state: { shopId: string }
@@ -49,7 +50,11 @@ const Detail = ({
           buttonText='キャンセル'
         />
       </ModalOverlay>
-      <ReservationDetail item={reservation} subModalHandler={modalHandler} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <ReservationDetail item={reservation} subModalHandler={modalHandler} />
+      )}
     </>
   )
 }

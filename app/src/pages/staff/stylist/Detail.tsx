@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import Loading from '@components/common/atoms/loading'
 import { MatchParams } from '@components/common/_PropsType'
-import { deleteMenu, getMenu } from '@store/actions/menuAction'
 import { RootState } from '@store/store'
 import { useModal } from '@utils/hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +8,8 @@ import { RouteComponentProps } from 'react-router-dom'
 import { TLocationStateInId } from '../reservation/Detail'
 import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
-import MenuDetail from '@components/detail/menu/MenuDetail'
+import { deleteStylist, getStylist } from '@store/actions/stylistAction'
+import StylistDetail from '@components/detail/stylist/StylistDetail'
 
 const Detail = ({
   match,
@@ -20,14 +20,14 @@ const Detail = ({
   const convertId = Number(id)
   const shopId = Number(location.state?.shopId)
   const { open, modalHandler } = useModal(false)
-  const { menu, loading } = useSelector((state: RootState) => state.menu)
+  const { stylist, loading } = useSelector((state: RootState) => state.stylist)
 
   const onDelete = useCallback(() => {
-    dispatch(deleteMenu(menu.shopId, menu.id))
-  }, [dispatch, menu])
+    dispatch(deleteStylist(stylist.shopId, stylist.id))
+  }, [dispatch, stylist])
 
   useEffect(() => {
-    dispatch(getMenu(shopId, convertId))
+    dispatch(getStylist(shopId, convertId))
   }, [dispatch, shopId, convertId])
 
   return (
@@ -35,7 +35,7 @@ const Detail = ({
       {loading ? (
         <Loading />
       ) : (
-        <MenuDetail item={menu} subModalHandler={modalHandler} />
+        <StylistDetail item={stylist} subModalHandler={modalHandler} />
       )}
       <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
         <ModalAlert

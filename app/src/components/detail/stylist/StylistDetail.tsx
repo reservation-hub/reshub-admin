@@ -5,24 +5,24 @@ import { HEADER_TYPE } from '@constants/Common'
 import history from '@utils/routes/history'
 import { IDetailProps } from '../_PropsType'
 import DataTable from '@components/common/atoms/DataTable'
-import { MenuResponse } from '@utils/api/request-response-types/Shop'
+import { StylistResponse } from '@/utils/api/request-response-types/Shop'
 
-const MenuDetail = ({
+const StylistDetail = ({
   item,
   modalOpenHandler,
   subModalHandler
 }: IDetailProps) => {
-  type MenuDetail = MenuResponse & {
+  type StylistDetail = StylistResponse & {
     price: string
-    duration: string
+    businessTime: string
   }
 
   const data = {
     ...item,
     price: `${item?.price.toLocaleString()}¥`,
-    duration: `${item?.duration}分`
-  } as MenuDetail
-
+    days: item?.days.join(' ・ '),
+    businessTime: `${item?.startTime} - ${item?.endTime}`
+  } as StylistDetail
   return (
     <>
       <SubHeader
@@ -34,12 +34,13 @@ const MenuDetail = ({
         <CustomButton onClick={history.goBack}>戻る</CustomButton>
       </SubHeader>
 
-      <DataTable
+      <DataTable 
         cell={[
-          { column: 'メニュー名', key: 'name' },
-          { column: '値段', key: 'price' },
-          { column: '時間', key: 'duration' },
-          { column: '詳細', key: 'description' }
+          { column: 'スタイリスト名', key: 'name' },
+          { column: '所属店舗', key: 'shopName' },
+          { column: '稼働日', key: 'days' },
+          { column: '稼働時間', key: 'businessTime' },
+          { column: '指名料', key: 'price' }
         ]}
         item={data}
       />
@@ -47,4 +48,4 @@ const MenuDetail = ({
   )
 }
 
-export default MenuDetail
+export default StylistDetail

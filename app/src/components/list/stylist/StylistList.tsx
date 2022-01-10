@@ -30,6 +30,7 @@ const StylistList = ({
         totalPage={totalPage}
         pageChangeHandler={pageChangeHandler}
         url='stylist'
+        subParams
       />
       {item?.length === 0 && <IsEmpty text='スタイリスト' />}
     </>
