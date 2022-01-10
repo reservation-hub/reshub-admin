@@ -55,7 +55,7 @@ export const fetchAllItems =
       const res = await apiEndpoint.shops.fetchAll()
       dispatch(fetchAllSuccess(res.data))
     } catch {
-      console.log('error')
+      history.push('/error')
     }
   }
 
@@ -114,7 +114,6 @@ export const editShopData =
     try {
       const res = await apiEndpoint.shops.patchShop(shopData)
       dispatch(shopPatchSuccess(res.data))
-      console.log(history.location.pathname)
       if (history.location.pathname === `/shops/form/${shopData.id}`) {
         history.push(`/shops/${shopData.id}`)
       } else {

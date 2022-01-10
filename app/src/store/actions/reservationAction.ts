@@ -95,7 +95,6 @@ export const getReservation =
         shopId,
         reservationId
       )
-      console.log(res)
       dispatch(reservationGetSuccess(res.data))
     } catch {
       history.push('/error')

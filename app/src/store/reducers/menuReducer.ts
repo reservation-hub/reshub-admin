@@ -14,7 +14,7 @@ const initialState: MenuState = {
 
 const menuReducer = (state = initialState, action: MenuAction) => {
   switch (action.type) {
-    case MENU_TYPE.REQUEST_SUCCESS:
+    case MENU_TYPE.REQUEST_START:
       return {
         ...state,
         loading: true
@@ -55,6 +55,8 @@ const menuReducer = (state = initialState, action: MenuAction) => {
         loading: false,
         err: action.payload
       }
+    default:
+      return state
   }
 }
 

@@ -15,6 +15,7 @@ import Section from '@/components/common/layout/Section'
 
 export type TLocationStateInId = {
   state: { shopId: string }
+  shopId?: string
 }
 
 const Detail = ({
@@ -24,9 +25,8 @@ const Detail = ({
   const { id } = match.params
   const dispatch = useDispatch()
   const convertId = Number(id)
-  const shopId = Number(location.state.state.shopId)
+  const shopId = Number(location.state.shopId)
   const { open, modalHandler } = useModal(false)
-  console.log('shopId:', location.state.state.shopId, 'state', location.state)
 
   const { reservation, loading } = useSelector(
     (state: RootState) => state.reservation

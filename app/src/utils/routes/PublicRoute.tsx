@@ -21,8 +21,6 @@ const PublicRoute = ({ children, ...rest }: any) => {
     (state: RootState) => state.auth
   )
 
-  console.log(user)
-
   const isUser = (user: UserForAuth) =>
     user.role.name === 'admin' || user.role.name === 'shop staff'
 

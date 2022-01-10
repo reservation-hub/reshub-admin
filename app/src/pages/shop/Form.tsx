@@ -97,7 +97,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      console.log(shopData.updateData)
       if (shop) {
         dispatch(editShopData(shopData.updateData))
       } else {

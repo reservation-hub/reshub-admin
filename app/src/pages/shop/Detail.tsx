@@ -24,14 +24,7 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   )
   const convertId = Number(id)
   const dispatch = useDispatch()
-
   const authCheck = user.role.name === 'admin'
-  const itme = {
-    ...shop,
-    address: `${shop.prefectureName}${shop.cityName}${shop.address || ''}`
-  }
-  console.log(itme['name'])
-
   const { open, modalHandler } = useModal(false)
 
   const onDelete = useCallback(() => {

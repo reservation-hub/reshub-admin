@@ -16,10 +16,7 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
   const { user, loading } = useSelector((state: RootState) => state.user)
   const convertId = Number(id)
   const dispatch = useDispatch()
-
   const { open, modalHandler } = useModal(false)
-
-  console.log(modalHandler)
 
   const onDelete = useCallback(() => {
     dispatch(deleteUser(convertId))
@@ -29,7 +26,6 @@ const Profile = ({ match }: RouteComponentProps<MatchParams>) => {
     dispatch(getOneUser(convertId))
   }, [dispatch, convertId])
 
-  // TODO スタイルを指定
   return (
     <>
       {loading ? (

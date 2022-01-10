@@ -59,8 +59,6 @@ const SalonForm = ({
     disabled = !disabled
   }
 
-  console.log(formValue)
-
   useEffect(() => {
     dispatch(getArea())
     if (formValue.areaId) {
