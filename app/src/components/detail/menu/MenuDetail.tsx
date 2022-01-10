@@ -13,7 +13,7 @@ const MenuDetail = ({
   subModalHandler
 }: IDetailProps) => {
   type MenuDetail = MenuResponse & {
-    price: string,
+    price: string
     duration: string
   }
 
@@ -33,13 +33,13 @@ const MenuDetail = ({
       >
         <CustomButton onClick={history.goBack}>戻る</CustomButton>
       </SubHeader>
-      
-      <DataTable 
-        cell={[ 
+
+      <DataTable
+        cell={[
           { column: 'メニュー名', key: 'name' },
           { column: '値段', key: 'price' },
           { column: '時間', key: 'duration' },
-          { column: '詳細', key: 'description' },
+          { column: '詳細', key: 'description' }
         ]}
         item={data}
       />

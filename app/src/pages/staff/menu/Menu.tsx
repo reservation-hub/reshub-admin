@@ -77,7 +77,6 @@ const Menu = ({
                       totalPage={menus?.totalCount}
                       pageChangeHandler={pageChangeHandler}
                       usePaginate
-
                     />
                   </>
                 ) : (

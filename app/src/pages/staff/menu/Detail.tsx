@@ -32,9 +32,11 @@ const Detail = ({
 
   return (
     <>
-      { loading ? <Loading /> : (
+      {loading ? (
+        <Loading />
+      ) : (
         <MenuDetail item={menu} subModalHandler={modalHandler} />
-      ) }
+      )}
       <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
         <ModalAlert
           modalCloseHandler={modalHandler}
