@@ -39,6 +39,10 @@ const store = createStore(
 )
 
 export type RootState = ReturnType<typeof store.getState>
+export type DefaultState = {
+  loading: boolean
+  msg?: string
+}
 
 export function typedAction<T extends string>(type: T): { type: T }
 export function typedAction<T extends string, P extends any>(

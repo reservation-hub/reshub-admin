@@ -1,7 +1,7 @@
 //----------------------------------
 // redux ユーザー状態管理 action
 //----------------------------------
-import { USER_TYPE } from '@store/types/usersType'
+import { USER_TYPE } from '@store/types/usersTypes'
 import { RootState, typedAction } from '@store/store'
 import { Action } from 'redux'
 import { ThunkAction } from 'redux-thunk'

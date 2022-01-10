@@ -13,10 +13,11 @@ import {
 
 export const fetchAll = async (
   shopId: number,
-  id: number
+  page: number,
+  order: 'asc' | 'desc'
 ): Promise<AxiosResponse<StylistListResponse>> => {
   return await instance.get<StylistListResponse>(
-    `${baseEndpoint.shops}/${shopId}/stylists/${id}`
+    `${baseEndpoint.shops}/${shopId}/stylists?page=${page}&order=${order}`
   )
 }
 
@@ -60,6 +61,7 @@ export const deleteStylist = async (
 
 const stylist = {
   fetchAll,
+  getStylist,
   createStylist,
   patchStylist,
   deleteStylist
