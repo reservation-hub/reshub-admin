@@ -34,7 +34,7 @@ const StylistDetail = ({
         <CustomButton onClick={history.goBack}>戻る</CustomButton>
       </SubHeader>
 
-      <DataTable 
+      <DataTable
         cell={[
           { column: 'スタイリスト名', key: 'name' },
           { column: '所属店舗', key: 'shopName' },

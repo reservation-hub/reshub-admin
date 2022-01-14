@@ -10,6 +10,7 @@ import Stylist from '@pages/staff/stylist/Stylist'
 import Reservation from '@pages/staff/reservation/Reservation'
 import CreateShop from '@pages/staff/shop/CreateShop'
 import Menu from '@pages/staff/menu/Menu'
+import TestForm from '@/pages/test'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -47,7 +48,8 @@ export const PUBLIC_PATHS: TRouter[] = [
   { path: '/reservation', exact: false, component: Reservation },
   { path: '/create_shop', exact: false, component: CreateShop },
   { path: '/settings', exact: false },
-  { path: '/menu', exact: false, component: Menu }
+  { path: '/menu', exact: false, component: Menu },
+  { path: '/test', exact: false, component: TestForm }
 ]
 
 export const COMMON_PATHS: TRouter[] = [

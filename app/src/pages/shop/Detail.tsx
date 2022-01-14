@@ -9,7 +9,6 @@ import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import history from '@utils/routes/history'
 import Loading from '@components/common/atoms/loading'
-import Section from '@components/common/layout/Section'
 import ShopDetail from '@components/detail/shop/ShopDetail'
 
 const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
@@ -33,7 +32,7 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
 
   useEffect(() => {
     dispatch(getOneShop(convertId))
-  }, [dispatch, convertId])
+  }, [dispatch, convertId, match.isExact])
 
   return (
     <>

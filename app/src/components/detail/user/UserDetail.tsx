@@ -20,7 +20,7 @@ const UserDetail = ({
   const data = {
     ...item,
     kanaName: `${item?.firstNameKana} ${item?.lastNameKana}`,
-    role: item?.role.name,
+    role: item?.role?.name,
     reservationCount: `${item?.reservationCount}件`
   } as UserDetail
 

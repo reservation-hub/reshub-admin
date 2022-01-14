@@ -20,5 +20,6 @@ export const VALIDATION_TEXT = {
   DUPLICATED: 'パスワードが一致していません。',
   AUTHENTICATED_ERROR: '権限がありません。',
   INVALID_ERROR:
-    'メールアドレスかパスワードが伴っています。 もう一度ご確認の上、再度お試しください。'
+    'メールアドレスかパスワードが伴っています。 もう一度ご確認の上、再度お試しください。',
+  IS_EMPTY: 'この項目は必須です。'
 } as const

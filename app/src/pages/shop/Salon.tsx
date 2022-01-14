@@ -84,12 +84,12 @@ const Salon = ({
             )}
           </Route>
           <Route
-            path={authCheck ? '/salon/form' : '/shops/form'}
-            component={Form}
+            path={authCheck ? '/salon/detail/:id' : '/shops/detail/:id'}
+            component={Detail}
           />
           <Route
-            path={authCheck ? '/salon/:id' : '/shops/:id'}
-            component={Detail}
+            path={authCheck ? '/salon/form' : '/shops/form'}
+            component={Form}
           />
         </Section>
       </Switch>

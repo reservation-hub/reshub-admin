@@ -1,9 +1,9 @@
-import { ChangeEvent, ChangeEventHandler, FormEventHandler } from 'react'
+import { FormEventHandler } from 'react'
 import { ShopResponse } from '@utils/api/request-response-types/Shop'
-import { ScheduleDays } from '@utils/api/request-response-types/models/Common'
 import { RoleSlug } from '@utils/api/request-response-types/models/Role'
 import { Gender } from '@utils/api/request-response-types/models/User'
 import { UserResponse } from '@utils/api/request-response-types/User'
+import { Control } from 'react-hook-form'
 
 export type TUserInput = {
   email: string
@@ -21,37 +21,14 @@ export type TUserInput = {
   role: RoleSlug
 }
 
-export type TSalonInput = {
-  name: string
-  address: string
-  phoneNumber: string
-  cityId: string
-  prefectureId: string
-  areaId: string
-  startTime: { hour: string; minute: string }
-  endTime: { hour: string; minute: string }
-  days: ScheduleDays[]
-  details: string
-}
-
-export type TChangeHandler = {
-  input: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-  check?: ChangeEventHandler<HTMLInputElement>
-  startAt?: (e: ChangeEvent<HTMLSelectElement>) => void
-  endAt?: (e: ChangeEvent<HTMLSelectElement>) => void
-}
-
 export type TFormState = {
   user?: UserResponse
   shop?: ShopResponse
 }
 
-export interface IFormProps {
-  changeHandlers: TChangeHandler
+export interface IFormProps<T> {
   formState?: TFormState
+  error?: Record<string, any>
+  control?: Control<T>
   submitHandler: FormEventHandler<HTMLFormElement>
-}
-
-export interface IFormType {
-  title?: string
 }

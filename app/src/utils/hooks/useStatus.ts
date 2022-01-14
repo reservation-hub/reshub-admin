@@ -7,11 +7,11 @@ const RESERVATION_STATUS_TYPE = {
 const useConvertStatus = (status: string) => {
   switch (status) {
     case RESERVATION_STATUS_TYPE.RESERVED:
-      return status = '予約中'
+      return (status = '予約中')
     case RESERVATION_STATUS_TYPE.COMPLETED:
-      return status = '終了'
+      return (status = '終了')
     case RESERVATION_STATUS_TYPE.CANCELLED:
-      return status = 'キャンセル'
+      return (status = 'キャンセル')
     default:
       return status
   }

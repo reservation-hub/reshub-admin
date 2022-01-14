@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { VALID_REGEX, VALID_TYPE } from '@constants/FormValid'
+import { VALID_REGEX, VALID_TYPE } from '@/constants/FormValid'
 
 export type TValid = {
   email?: boolean

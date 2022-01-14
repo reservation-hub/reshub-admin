@@ -1,8 +1,7 @@
 import { InsertShopQuery } from '@utils/api/request-response-types/Shop'
 import CenterBox from '@components/common/layout/CenterBox'
 import SubTemplate from '@components/common/layout/SubTemplate'
-import SalonForm from '@components/form/SalonForm'
-import { TChangeHandler, TSalonInput } from '@components/form/_PropsType'
+import SalonForm from '@/components/form/shop/SalonForm'
 import { addShop } from '@store/actions/shopAction'
 import { useCheckBox } from '@utils/hooks/useCheckBox'
 import useInput from '@utils/hooks/useInput'
@@ -25,28 +24,6 @@ const CreateShop = () => {
     cityId: '',
     details: ''
   })
-
-  const changeHandlers = {
-    input: ChangeHandler,
-    check: changeHandler,
-    startAt: startAt.changeHandler,
-    endAt: endAt.changeHandler
-  } as TChangeHandler
-
-  const form = useMemo(() => {
-    return {
-      name: input.name,
-      address: input.address,
-      phoneNumber: input.phoneNumber,
-      cityId: String(input.cityId),
-      prefectureId: String(input.prefectureId),
-      areaId: String(input.areaId),
-      startTime: { hour: String(startAt.hour), minute: String(startAt.minute) },
-      endTime: { hour: String(endAt.hour), minute: String(endAt.minute) },
-      days: checked,
-      details: input.details
-    } as TSalonInput
-  }, [input, startAt, endAt, checked])
 
   // const shopData: InsertShopQuery = useMemo(() => {
   //   return {

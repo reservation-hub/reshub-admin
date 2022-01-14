@@ -3,53 +3,39 @@ import { GoogleLogin } from 'react-google-login'
 import { FcGoogle } from 'react-icons/fc'
 import CustomButton from '@components/common/atoms/CustomButton'
 import InputFiled from '@components/common/atoms/InputFiled'
-import { ClassesAndChildren } from '@components/common/_PropsType'
 import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline
 } from 'react-google-login'
-import { VALIDATION_TEXT } from '@constants/FormValid'
+import { VALIDATION_TEXT } from '@/constants/FormValid'
 import ErrorMessage from '@components/common/atoms/ErrorMessage'
+import { IFormProps } from '@components/form/_PropsType'
+import { LoginSchema } from '@components/form/validation/validationSchema'
 
-export type TAuthForm = {
-  email: string
-  password: string
-}
-
-export interface IAuthFormProps extends ClassesAndChildren {
-  value: TAuthForm
-  setValue: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-  onSubmit: React.FormEventHandler<HTMLFormElement>
+export interface IAuthFormProps<T> extends IFormProps<T> {
   googleHandler: (
     response: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => void
-  error?: Record<string, any>
 }
 
-const LoginForm = ({
-  value,
-  setValue,
-  onSubmit,
+const LoginForm = <T extends LoginSchema>({
+  submitHandler,
   googleHandler,
-  error
-}: IAuthFormProps) => {
-  let disabled = false
-  for (const v of Object.values(value)) {
-    disabled = v.length === 0
-  }
+  error,
+  control
+}: IAuthFormProps<T>) => {
   return (
     <div className='w-[55rem] mx-auto p-[3rem] rounded-[.5rem] bg-secondary-main'>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={submitHandler}>
         <InputFiled
           name='email'
           type='text'
           autoComplete='off'
           placeholder='メールアドレスを入力してください'
           classes='my-[1.5rem]'
-          value={value.email}
-          onChange={setValue}
-          error={error?.email}
-          errorTxt={VALIDATION_TEXT.EMAIL}
+          control={control}
+          error={Boolean(error?.email)}
+          errorTxt={error?.email?.message}
           fullWidth
         />
         <InputFiled
@@ -58,19 +44,15 @@ const LoginForm = ({
           placeholder='パスワードを入力してください'
           autoComplete='off'
           classes='my-[1.5rem]'
-          value={value.password}
-          onChange={setValue}
-          error={error?.password}
-          errorTxt={VALIDATION_TEXT.PASSWORD}
+          control={control}
+          error={Boolean(error?.password)}
+          errorTxt={error?.password?.message}
           fullWidth
         />
         {error?.invalid && (
           <ErrorMessage text={VALIDATION_TEXT.INVALID_ERROR} />
         )}
-        <CustomButton
-          classes='min-w-full mt-[.5rem] mb-[1.5rem]'
-          disabled={disabled}
-        >
+        <CustomButton classes='min-w-full mt-[.5rem] mb-[1.5rem]'>
           ログイン
         </CustomButton>
         <GoogleLogin

@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './Header'
+import Header from '../Header'
 import CustomButton from '@components/common/atoms/CustomButton'
-import { IFormProps, TUserInput } from './_PropsType'
-import { VALIDATION_TEXT } from '@constants/FormValid'
+import { IFormProps, TUserInput } from '../_PropsType'
+import { VALIDATION_TEXT } from '@/constants/FormValid'
 import Selector from '@components/common/atoms/Selector'
 import { ROLES } from '@constants/Roles'
 import { TValid } from '@utils/hooks/useValidation'
@@ -10,21 +10,21 @@ import InputFiled from '@components/common/atoms/InputFiled'
 import RadioButton from '@components/common/atoms/RadioButton'
 import ErrorMessage from '@components/common/atoms/ErrorMessage'
 import { GENDER_TYPE } from '@constants/Gender'
-import GroupSelector from './GroupSelector'
+import GroupSelector from '../GroupSelector'
+import { UseFormRegister } from 'react-hook-form'
 
-export interface IUserFormProps extends IFormProps {
+export interface IUserFormProps<T> extends IFormProps<T> {
   validation?: Record<string, any>
   formValue: TUserInput
-  error: TValid
+  error: { [x: string]: any }
 }
 
-const UserForm = ({
+const UserForm = <T extends Record<string, any>>({
   submitHandler,
   formState,
   formValue,
-  changeHandlers,
   error
-}: IUserFormProps) => {
+}: IUserFormProps<T>) => {
   let disabled = false
 
   for (const value of Object.values(formValue)) {
@@ -46,7 +46,6 @@ const UserForm = ({
             classes='my-3'
             name='email'
             value={formValue.email}
-            onChange={changeHandlers.input}
             error={error.email}
             errorTxt={VALIDATION_TEXT.EMAIL}
             fullWidth
@@ -59,7 +58,6 @@ const UserForm = ({
             name='username'
             classes='my-3'
             value={formValue.username}
-            onChange={changeHandlers.input}
             fullWidth
           />
           <div className='flex justify-between w-full my-3'>
@@ -67,11 +65,10 @@ const UserForm = ({
               label='セイ'
               id='firstNameKana'
               name='firstNameKana'
-              autoComplete='off'
+              autoComplete='off' 
               placeholder='お名前（名字）を入力してください。'
               classes='w-[25.5rem]'
               value={formValue.firstNameKana}
-              onChange={changeHandlers.input}
               error={error.firstNameKana}
               errorTxt={VALIDATION_TEXT.KANA_NAME}
             />
@@ -83,7 +80,6 @@ const UserForm = ({
               placeholder='お名前を入力してください。'
               classes='w-[25.5rem]'
               value={formValue.lastNameKana}
-              onChange={changeHandlers.input}
               error={error.lastNameKana}
               errorTxt={VALIDATION_TEXT.KANA_NAME}
             />
@@ -99,7 +95,6 @@ const UserForm = ({
                 type='password'
                 classes='my-3'
                 error={error.password || error.duplicated}
-                onChange={changeHandlers.input}
                 errorTxt={VALIDATION_TEXT.PASSWORD}
                 fullWidth
               />
@@ -112,7 +107,6 @@ const UserForm = ({
                 type='password'
                 classes='my-3'
                 error={error.confirm || error.duplicated}
-                onChange={changeHandlers.input}
                 errorTxt={VALIDATION_TEXT.PASSWORD}
                 fullWidth
               />
@@ -124,24 +118,22 @@ const UserForm = ({
             name='gender'
             label='性別'
             classes='my-3'
-            onChange={changeHandlers.input}
           />
           <div className='w-full flex justify-between my-3'>
-            <GroupSelector
+            {/* <GroupSelector
               groupType='birthday'
-              onChange={changeHandlers.input}
               values={[
                 formValue.birthdayY,
                 formValue.birthdayM,
                 formValue.birthdayD
               ]}
-            />
+              name=''
+            /> */}
           </div>
           <Selector
             id='role'
             name='role'
             value={formValue.role}
-            onChange={changeHandlers.input}
             data={ROLES.map((role) => ({ value: role.slug, name: role.name }))}
             label='権限'
           />

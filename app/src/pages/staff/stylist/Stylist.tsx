@@ -35,7 +35,7 @@ const Stylist = ({
     }),
     shallowEqual
   )
-  
+
   const shopSelect: selectType[] = shops?.map((shop) => ({
     value: String(shop.id),
     name: shop.name
@@ -55,7 +55,7 @@ const Stylist = ({
           <Route exact path='/stylist'>
             {loading ? (
               <Loading />
-            ): (
+            ) : (
               <>
                 {option ? (
                   <>
@@ -64,11 +64,12 @@ const Stylist = ({
                       type={HEADER_TYPE.LIST}
                       modalOpenHandler={() => history.push('/stylist/new')}
                     >
-                      <ShopSelect 
+                      <ShopSelect
                         data={shopSelect}
                         value={option}
                         onChange={changeHandler}
                         listStyle
+                        name=''
                       />
                     </SubHeader>
                     <StylistList
@@ -84,6 +85,7 @@ const Stylist = ({
                     data={shopSelect}
                     value={option}
                     onChange={changeHandler}
+                    name=''
                   />
                 )}
               </>

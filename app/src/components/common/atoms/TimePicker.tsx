@@ -1,43 +1,47 @@
 import React from 'react'
-import { useRange } from '@utils/hooks/useRange'
 import { IPickerProps } from '@components/common/_PropsType'
+import Selector from './Selector'
+import { TIME_TABLE } from '@/constants/Time'
+import ErrorMessage from './ErrorMessage'
 
 export interface ITimePickerProps extends IPickerProps {
-  hh: number
-  mm: number
+  names: string[]
 }
 
-const TimePicker = ({ hh, mm, onChange, classes }: ITimePickerProps) => {
+const TimePicker = ({
+  control,
+  names,
+  classes,
+  label,
+  error,
+  errorTxt
+}: ITimePickerProps) => {
+  const timeTable = TIME_TABLE.map((time) => ({
+    value: time,
+    name: time
+  }))
   return (
-    <>
-      <select
-        name='hour'
-        id='hour'
-        className={`${classes} w-full p-3 rounded-[.25rem] border text-[1.6rem]`}
-        value={hh}
-        onChange={onChange}
-      >
-        {useRange(0, 23).map((hour, index) => (
-          <option key={index} value={hour}>
-            {String(hour).padStart(2, '0')}
-          </option>
-        ))}
-      </select>
-      <span>:</span>
-      <select
-        name='minute'
-        id='minute'
-        className={`${classes} w-full p-3 rounded-[.25rem] border text-[1.6rem]`}
-        value={mm}
-        onChange={onChange}
-      >
-        {useRange(0, 50, 10).map((minute, index) => (
-          <option key={index} value={minute}>
-            {String(minute).padStart(2, '0')}
-          </option>
-        ))}
-      </select>
-    </>
+    <div className={`${classes} text-[1.6rem]`}>
+      <span className='text-table-headerFont'>{label}</span>
+      <div className='flex w-full justify-between items-center'>
+        <Selector
+          classes='w-[26rem]'
+          data={timeTable}
+          control={control}
+          name={names[0]}
+          error={error}
+        />
+        <span> ~ </span>
+        <Selector
+          classes='w-[26rem]'
+          data={timeTable}
+          control={control}
+          name={names[1]}
+          error={error}
+        />
+      </div>
+      {error && <ErrorMessage text={errorTxt} />}
+    </div>
   )
 }
 

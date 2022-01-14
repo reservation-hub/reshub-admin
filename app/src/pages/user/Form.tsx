@@ -1,21 +1,20 @@
 import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
-import UserForm from '@components/form/UserForm'
+import UserForm from '@/components/form/user/UserForm'
 import { useDispatch } from 'react-redux'
-import {
-  TChangeHandler,
-  TFormState,
-  TUserInput
-} from '@components/form/_PropsType'
+import { TFormState, TUserInput } from '@components/form/_PropsType'
 import useInput from '@utils/hooks/useInput'
 import useValidation from '@utils/hooks/useValidation'
 import dayjs from 'dayjs'
 import { addUser, patchUser } from '@store/actions/userAction'
-import Section from '@components/common/layout/Section'
 import {
   InsertUserQuery,
   UpdateUserQuery
 } from '@utils/api/request-response-types/User'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { VALIDATION_TEXT, VALID_REGEX } from '@/constants/FormValid'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -32,6 +31,35 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     lastNameKana: false,
     duplicated: false
   }
+  const schema = z
+    .object({
+      email: z
+        .string()
+        .email({ message: VALIDATION_TEXT.EMAIL })
+        .nonempty({ message: 'error' })
+        .default(user?.email || ''),
+      password: z.string().min(1).max(8).nonempty({ message: 'error' }),
+      confirm: z.string().nonempty(),
+      firstNameKana: z
+        .string()
+        .nonempty()
+        .regex(VALID_REGEX.KANA_NAME, VALIDATION_TEXT.KANA_NAME),
+      lastNameKana: z
+        .string()
+        .nonempty()
+        .regex(VALID_REGEX.KANA_NAME, VALIDATION_TEXT.KANA_NAME),
+      gender: z.enum(['MALE', 'FEMALE'])
+    })
+    .refine((value) => value.password === value.confirm, {
+      message: 'error',
+      path: ['confirm']
+    })
+
+  const { register, handleSubmit, reset, formState } = useForm({
+    resolver: zodResolver(schema),
+    mode: 'onSubmit'
+  })
+  const { errors } = formState
 
   const { input, ChangeHandler } = useInput({
     email: user?.email ?? '',
@@ -64,7 +92,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   }, [input, user])
 
   const { validation, error } = useValidation(form, validationSchema)
-  const changeHandlers = { input: ChangeHandler } as TChangeHandler
 
   const userData: {
     insertData: InsertUserQuery
@@ -121,9 +148,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
         <UserForm
           formState={location.state}
           formValue={form}
-          submitHandler={submitHandler}
-          changeHandlers={changeHandlers}
-          error={error}
+          submitHandler={handleSubmit(() => submitHandler)}
+          error={errors}
         />
       </Route>
       <Route path='/:id'>
@@ -131,8 +157,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
           formState={location.state}
           formValue={form}
           submitHandler={submitHandler}
-          changeHandlers={changeHandlers}
-          error={error}
+          error={errors}
         />
       </Route>
     </>

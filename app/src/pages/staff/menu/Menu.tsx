@@ -69,6 +69,7 @@ const Menu = ({
                         value={option}
                         onChange={changeHandler}
                         listStyle
+                        name=''
                       />
                     </SubHeader>
                     <MenuList
@@ -84,6 +85,7 @@ const Menu = ({
                     data={shopSelect}
                     value={option}
                     onChange={changeHandler}
+                    name=''
                   />
                 )}
               </>

@@ -29,7 +29,7 @@ const SalonList = ({
           { column: '電話番号', key: 'phoneNumber' }
         ]}
         row={rowItems}
-        url={admin ? 'salon' : 'shops'}
+        url={admin ? 'salon/detail' : 'shops/detail'}
         usePaginate={usePaginate}
         page={page}
         totalPage={totalPage}

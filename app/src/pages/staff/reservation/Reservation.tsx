@@ -114,6 +114,7 @@ const Reservation = ({
                         value={option}
                         onChange={changeHandler}
                         listStyle
+                        name=''
                       />
                       <CustomButton
                         onClick={() => setCalendar(!calendar)}
@@ -143,6 +144,7 @@ const Reservation = ({
                     data={shopSelect}
                     value={option}
                     onChange={changeHandler}
+                    name=''
                   />
                 )}
               </>
