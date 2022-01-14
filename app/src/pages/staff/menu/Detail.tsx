@@ -36,7 +36,11 @@ const Detail = ({
       {loading ? (
         <Loading />
       ) : (
-        <MenuDetail item={menu} subModalHandler={modalHandler} modalOpenHandler={() => history.push(`/menu/edit/${id}`, { menu })} />
+        <MenuDetail
+          item={menu}
+          subModalHandler={modalHandler}
+          modalOpenHandler={() => history.push(`/menu/edit/${id}`, { menu })}
+        />
       )}
       <ModalOverlay modalOpen={open} modalCloseHandler={modalHandler}>
         <ModalAlert

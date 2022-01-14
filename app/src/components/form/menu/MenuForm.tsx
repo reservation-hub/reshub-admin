@@ -14,11 +14,7 @@ const MenuForm = <T extends MenuSchema>({
   return (
     <FormWrapper
       submitHandler={submitHandler}
-      text={
-        formState?.menu
-          ? `${formState?.menu?.id}編集`
-          : 'メニュー作成'
-      }
+      text={formState?.menu ? `${formState?.menu?.id}編集` : 'メニュー作成'}
     >
       <InputFiled
         id='name'
@@ -48,7 +44,7 @@ const MenuForm = <T extends MenuSchema>({
         error={error?.duration}
         errorTxt={error?.duration?.message}
       />
-      <TextArea 
+      <TextArea
         id='description'
         name='description'
         label='詳細'

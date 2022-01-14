@@ -11,10 +11,7 @@ import SubTemplate from '@components/common/layout/SubTemplate'
 import Cookies from 'js-cookie'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  LoginSchema,
-  loginSchema
-} from '@components/form/validation/validationSchema'
+import { loginSchema, LoginSchema } from '@/components/form/auth/loginSchema'
 
 const Login = () => {
   const {

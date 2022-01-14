@@ -1,5 +1,5 @@
-import { VALIDATION_TEXT } from "@/constants/FormValid";
-import { z } from "zod";
+import { VALIDATION_TEXT } from '@/constants/FormValid'
+import { z } from 'zod'
 
 export const menuSchema = z.object({
   name: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),

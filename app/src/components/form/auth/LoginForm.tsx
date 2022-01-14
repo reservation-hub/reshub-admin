@@ -10,7 +10,7 @@ import {
 import { VALIDATION_TEXT } from '@/constants/FormValid'
 import ErrorMessage from '@components/common/atoms/ErrorMessage'
 import { IFormProps } from '@components/form/_PropsType'
-import { LoginSchema } from '@components/form/validation/validationSchema'
+import { LoginSchema } from './loginSchema'
 
 export interface IAuthFormProps<T> extends IFormProps<T> {
   googleHandler: (

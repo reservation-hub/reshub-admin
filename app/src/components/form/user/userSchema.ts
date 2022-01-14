@@ -1,36 +1,7 @@
 import { VALIDATION_TEXT, VALID_REGEX } from '@/constants/FormValid'
-import { Role, RoleSlug } from '@/utils/api/request-response-types/models/Role'
+import { RoleSlug } from '@/utils/api/request-response-types/models/Role'
 import { Gender } from '@/utils/api/request-response-types/models/User'
-import { ScheduleDays } from '@utils/api/request-response-types/models/Common'
 import { z } from 'zod'
-
-export const loginSchema = z.object({
-  email: z
-    .string()
-    .email({ message: VALIDATION_TEXT.EMAIL })
-    .nonempty({ message: VALIDATION_TEXT.EMAIL }),
-  password: z.string().nonempty({ message: VALIDATION_TEXT.PASSWORD })
-})
-
-export type LoginSchema = z.infer<typeof loginSchema>
-
-export const shopSchema = z.object({
-  name: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  address: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  phoneNumber: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  areaId: z.string({ required_error: VALIDATION_TEXT.IS_EMPTY }),
-  prefectureId: z.string({ required_error: VALIDATION_TEXT.IS_EMPTY }),
-  cityId: z.string({ required_error: VALIDATION_TEXT.IS_EMPTY }),
-  startTime: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  endTime: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  seats: z.string({ required_error: VALIDATION_TEXT.IS_EMPTY }),
-  days: z
-    .nativeEnum(ScheduleDays, { required_error: VALIDATION_TEXT.IS_EMPTY })
-    .array(),
-  details: z.string()
-})
-
-export type ShopSchema = z.infer<typeof shopSchema>
 
 export const userSchema = z
   .object({

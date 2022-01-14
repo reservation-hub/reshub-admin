@@ -37,22 +37,35 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       event?.preventDefault()
       // console.log(value)
       if (menu) {
-        dispatch(editMenu({
-          shopId: menu.shopId,
-          menuId: menu.id,
-          params: { ...value, price: Number(value.price), duration: Number(value.duration) }
-        }))
+        dispatch(
+          editMenu({
+            shopId: menu.shopId,
+            menuId: menu.id,
+            params: {
+              ...value,
+              price: Number(value.price),
+              duration: Number(value.duration)
+            }
+          })
+        )
       } else {
-        dispatch(createMenu({
-          shopId: Number(shopId),
-          params: { ...value, price: Number(value.price), duration: Number(value.duration) }
-        }))
+        dispatch(
+          createMenu({
+            shopId: Number(shopId),
+            params: {
+              ...value,
+              price: Number(value.price),
+              duration: Number(value.duration)
+            }
+          })
+        )
       }
-    }, [dispatch]
+    },
+    [dispatch]
   )
 
   return (
-    <MenuForm 
+    <MenuForm
       submitHandler={handleSubmit(onSubmit)}
       control={control}
       error={errors}

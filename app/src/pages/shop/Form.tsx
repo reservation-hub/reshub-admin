@@ -6,12 +6,9 @@ import { useDispatch } from 'react-redux'
 import { addShop, editShopData } from '@store/actions/shopAction'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  shopSchema,
-  ShopSchema
-} from '@components/form/validation/validationSchema'
 import dayjs from 'dayjs'
 import useConvertTime from '@/utils/hooks/useConverTime'
+import { ShopSchema, shopSchema } from '@/components/form/shop/shopSchema'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()

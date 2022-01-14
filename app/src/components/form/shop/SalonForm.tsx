@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
-import CustomButton from '@components/common/atoms/CustomButton'
 import TimePicker from '@components/common/atoms/TimePicker'
 import { useDispatch, useSelector } from 'react-redux'
 import { getArea, getOneCity, getOnePref } from '@store/actions/locationAction'
 import { RootState } from '@store/store'
-import Header from '@components/form/Header'
 import CheckBox from '@components/common/atoms/CheckBox'
 import { Days } from '@constants/Days'
 import { IFormProps } from '@components/form/_PropsType'
@@ -12,7 +10,8 @@ import InputFiled from '@components/common/atoms/InputFiled'
 import GroupSelector from '@components/form/GroupSelector'
 import Loading from '@components/common/atoms/loading'
 import TextArea from '@components/common/atoms/TextArea'
-import { ShopSchema } from '@components/form/validation/validationSchema'
+import FormWrapper from '../FormWrapper'
+import { ShopSchema } from './shopSchema'
 
 export interface ISalonFormProps<T> extends IFormProps<T> {
   formValue: Record<string, any>
@@ -64,86 +63,83 @@ const SalonForm = <T extends ShopSchema>({
       {loading ? (
         <Loading />
       ) : (
-        <div className='p-[2rem] bg-secondary-main w-[60rem] mx-auto'>
-          <Header
-            title={
-              formState?.shop?.id
-                ? `${formState?.shop?.name}編集`
-                : 'サロン新規登録'
-            }
+        <FormWrapper
+          submitHandler={submitHandler}
+          text={
+            formState?.shop?.id
+              ? `${formState?.shop?.name}編集`
+              : 'サロン新規登録'
+          }
+        >
+          <InputFiled
+            id='salon'
+            name='name'
+            label='サロン名'
+            placeholder='サロン名を入力してください。'
+            classes='my-4'
+            control={control}
+            error={Boolean(error?.name)}
+            errorTxt={error?.name?.message}
           />
-          <form onSubmit={submitHandler}>
-            <InputFiled
-              id='salon'
-              name='name'
-              label='サロン名'
-              placeholder='サロン名を入力してください。'
-              classes='my-4'
-              control={control}
-              error={Boolean(error?.name)}
-              errorTxt={error?.name?.message}
-            />
-            <InputFiled
-              id='tel'
-              label='電話番号'
-              placeholder='電話番号を入力してください。'
-              name='phoneNumber'
-              classes='my-3'
-              control={control}
-              error={Boolean(error?.phoneNumber)}
-              errorTxt={error?.phoneNumber?.message}
-            />
-            <GroupSelector datas={data} control={control} name='group' />
-            <InputFiled
-              id='address'
-              label='住所'
-              placeholder='住所を入力してください。'
-              name='address'
-              classes='my-3'
-              control={control}
-              error={Boolean(error?.address)}
-              errorTxt={error?.address?.message}
-            />
-            <TimePicker
-              name='time'
-              label='営業時間'
-              classes='my-3'
-              names={['startTime', 'endTime']}
-              control={control}
-              error={Boolean(error?.startTime) || Boolean(error?.endTime)}
-              errorTxt={error?.startTime?.message || error?.endTime?.message}
-            />
-            <CheckBox
-              id='days'
-              name='days'
-              label='営業日'
-              classes='my-3'
-              control={control}
-              data={data.days}
-              checkedData={formValue.days}
-              error={Boolean(error?.days)}
-              errorTxt={error?.days?.message}
-            />
-            <InputFiled
-              id='seats'
-              name='seats'
-              label='座席数'
-              classes='my-3'
-              type='number'
-              control={control}
-              error={Boolean(error?.seats)}
-              errorTxt={error?.seats?.message}
-            />
-            <TextArea
-              control={control}
-              name='details'
-              label='詳細'
-              classes='my-3'
-              fullWidth
-            />
-            <CustomButton classes='min-w-full'>登録</CustomButton>
-          </form>
-        </div>
+          <InputFiled
+            id='tel'
+            label='電話番号'
+            placeholder='電話番号を入力してください。'
+            name='phoneNumber'
+            classes='my-3'
+            control={control}
+            error={Boolean(error?.phoneNumber)}
+            errorTxt={error?.phoneNumber?.message}
+          />
+          <GroupSelector datas={data} control={control} name='group' />
+          <InputFiled
+            id='address'
+            label='住所'
+            placeholder='住所を入力してください。'
+            name='address'
+            classes='my-3'
+            control={control}
+            error={Boolean(error?.address)}
+            errorTxt={error?.address?.message}
+          />
+          <TimePicker
+            name='time'
+            label='営業時間'
+            classes='my-3'
+            names={['startTime', 'endTime']}
+            control={control}
+            error={Boolean(error?.startTime) || Boolean(error?.endTime)}
+            errorTxt={error?.startTime?.message || error?.endTime?.message}
+          />
+          <CheckBox
+            id='days'
+            name='days'
+            label='営業日'
+            classes='my-3'
+            control={control}
+            data={data.days}
+            checkedData={formValue.days}
+            error={Boolean(error?.days)}
+            errorTxt={error?.days?.message}
+          />
+          <InputFiled
+            id='seats'
+            name='seats'
+            label='座席数'
+            classes='my-3'
+            type='number'
+            control={control}
+            error={Boolean(error?.seats)}
+            errorTxt={error?.seats?.message}
+          />
+          <TextArea
+            control={control}
+            name='details'
+            label='詳細'
+            classes='my-3'
+            fullWidth
+          />
+        </FormWrapper>
       )}
     </>
   )
