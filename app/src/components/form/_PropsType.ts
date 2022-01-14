@@ -1,32 +1,20 @@
 import { FormEventHandler } from 'react'
-import { ShopResponse } from '@utils/api/request-response-types/Shop'
-import { RoleSlug } from '@utils/api/request-response-types/models/Role'
-import { Gender } from '@utils/api/request-response-types/models/User'
+import {
+  ShopResponse,
+  StylistResponse
+} from '@utils/api/request-response-types/Shop'
 import { UserResponse } from '@utils/api/request-response-types/User'
 import { Control } from 'react-hook-form'
-
-export type TUserInput = {
-  email: string
-  lastNameKanji: string
-  firstNameKanji: string
-  lastNameKana: string
-  firstNameKana: string
-  password: string
-  confirm: string
-  gender: Gender
-  birthdayY: string
-  birthdayM: string
-  birthdayD: string
-  username: string
-  role: RoleSlug
-}
+import { ClassesAndChildren } from '../common/_PropsType'
 
 export type TFormState = {
   user?: UserResponse
   shop?: ShopResponse
+  stylist?: StylistResponse
+  option?: number
 }
 
-export interface IFormProps<T> {
+export interface IFormProps<T> extends ClassesAndChildren {
   formState?: TFormState
   error?: Record<string, any>
   control?: Control<T>

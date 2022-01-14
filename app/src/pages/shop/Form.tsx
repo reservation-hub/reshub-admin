@@ -10,10 +10,12 @@ import {
   shopSchema,
   ShopSchema
 } from '@components/form/validation/validationSchema'
+import dayjs from 'dayjs'
+import useConvertTime from '@/utils/hooks/useConverTime'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
-
+  const currentDay = dayjs().format('YYYY-MM-DD')
   const shop = useMemo(() => {
     return location.state?.shop
   }, [location])
@@ -33,13 +35,17 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       areaId: String(shop?.areaId) || undefined,
       prefectureId: String(shop?.prefectureId) || undefined,
       cityId: String(shop?.cityId) || undefined,
-      startTime: shop?.startTime || '',
-      endTime: shop?.endTime || '',
+      startTime: useConvertTime('hm', shop?.startTime) || '',
+      endTime: useConvertTime('hm', shop?.endTime) || '',
       days: shop?.days || [],
       seats: String(shop?.seats) || '',
       details: shop?.details || ''
     }
   })
+
+  const test = dayjs().format('YYYY-MM-DD')
+  const test2 = dayjs(`${currentDay} 10:00:00`).format()
+  console.log(test2)
 
   const watchLocationIds = watch(['areaId', 'prefectureId'])
 
@@ -55,7 +61,9 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
               areaId: Number(value.areaId),
               prefectureId: Number(value.prefectureId),
               cityId: Number(value.cityId),
-              seats: Number(value.seats)
+              seats: Number(value.seats),
+              startTime: new Date(),
+              endTime: new Date()
             }
           })
         )
@@ -66,7 +74,9 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             areaId: Number(value.areaId),
             prefectureId: Number(value.prefectureId),
             cityId: Number(value.cityId),
-            seats: Number(value.seats)
+            seats: Number(value.seats),
+            startTime: new Date(),
+            endTime: new Date()
           })
         )
       }
@@ -74,6 +84,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     [dispatch]
   )
 
+  console.log(control._defaultValues)
   return (
     <>
       <Route path='/'>

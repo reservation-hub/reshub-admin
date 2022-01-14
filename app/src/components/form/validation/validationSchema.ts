@@ -9,9 +9,7 @@ export const loginSchema = z.object({
     .string()
     .email({ message: VALIDATION_TEXT.EMAIL })
     .nonempty({ message: VALIDATION_TEXT.EMAIL }),
-  password: z
-    .string()
-    .nonempty({ message: VALIDATION_TEXT.PASSWORD })
+  password: z.string().nonempty({ message: VALIDATION_TEXT.PASSWORD })
 })
 
 export type LoginSchema = z.infer<typeof loginSchema>
@@ -54,12 +52,18 @@ export const userSchema = z
       .string()
       .regex(VALID_REGEX.KANA_NAME, VALIDATION_TEXT.KANA_NAME)
       .nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
+    roleSlug: z.nativeEnum(RoleSlug, {
+      required_error: VALIDATION_TEXT.IS_EMPTY,
+      invalid_type_error: VALIDATION_TEXT.IS_EMPTY
+    }),
+    gender: z.nativeEnum(Gender, {
+      required_error: VALIDATION_TEXT.IS_EMPTY,
+      invalid_type_error: VALIDATION_TEXT.IS_EMPTY
+    }),
+    username: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
     firstNameKanji: z.string(),
     lastNameKanji: z.string(),
-    username: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-    gender: z.nativeEnum(Gender),
-    birthday: z.string(),
-    roleSlug: z.nativeEnum(RoleSlug)
+    birthday: z.string()
   })
   .refine((value) => value.password === value.confirm, {
     message: VALIDATION_TEXT.DUPLICATED,
@@ -81,10 +85,16 @@ export const userEditSchema = z.object({
     .string()
     .regex(VALID_REGEX.KANA_NAME, VALIDATION_TEXT.KANA_NAME)
     .nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
+  roleSlug: z.nativeEnum(RoleSlug, {
+    required_error: VALIDATION_TEXT.IS_EMPTY,
+    invalid_type_error: VALIDATION_TEXT.IS_EMPTY
+  }),
+  gender: z.nativeEnum(Gender, {
+    required_error: VALIDATION_TEXT.IS_EMPTY,
+    invalid_type_error: VALIDATION_TEXT.IS_EMPTY
+  }),
+  username: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
   firstNameKanji: z.string(),
   lastNameKanji: z.string(),
-  username: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  gender: z.nativeEnum(Gender),
-  birthday: z.string(),
-  roleSlug: z.nativeEnum(RoleSlug)
+  birthday: z.string()
 })

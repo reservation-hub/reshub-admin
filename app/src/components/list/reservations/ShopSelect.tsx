@@ -9,11 +9,10 @@ const ShopSelect = ({
   id,
   label,
   name,
-  value,
-  onChange,
   data,
   classes,
-  listStyle
+  listStyle,
+  control
 }: IShopSelectProps) => {
   return (
     <>
@@ -21,11 +20,10 @@ const ShopSelect = ({
         <Selector
           id={id}
           label={label}
-          name={name}
-          value={value}
-          onChange={onChange}
           data={data}
           classes={classes}
+          control={control}
+          name={name}
         >
           <option>閲覧したい店舗を選択してください</option>
         </Selector>
@@ -38,9 +36,8 @@ const ShopSelect = ({
             <Selector
               id={id}
               label={label}
+              control={control}
               name={name}
-              value={value}
-              onChange={onChange}
               data={data}
               classes={classes}
             >

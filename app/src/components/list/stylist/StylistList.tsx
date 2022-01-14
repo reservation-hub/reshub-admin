@@ -29,7 +29,7 @@ const StylistList = ({
         page={page}
         totalPage={totalPage}
         pageChangeHandler={pageChangeHandler}
-        url='stylist'
+        url='stylist/detail'
         subParams
       />
       {item?.length === 0 && <IsEmpty text='スタイリスト' />}

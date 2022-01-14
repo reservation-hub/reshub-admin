@@ -3,7 +3,6 @@ import MainTemplate from '@components/common/layout/MainTemplate'
 import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Section from '@components/common/layout/Section'
 import { MatchParams, selectType } from '@components/common/_PropsType'
-import { useSelect } from '@utils/hooks/useSelect'
 import usePagination from '@utils/hooks/usePagination'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store/store'
@@ -16,12 +15,13 @@ import history from '@utils/routes/history'
 import ShopSelect from '@components/list/reservations/ShopSelect'
 import StylistList from '@components/list/stylist/StylistList'
 import Detail from '@pages/staff/stylist/Detail'
+import { useForm } from 'react-hook-form'
+import Form from './Form'
 
 const Stylist = ({
   match,
   location
 }: RouteComponentProps<MatchParams, any, any>) => {
-  const { option, changeHandler } = useSelect('')
   const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
   const pageChangeHandler = usePagination('stylist', page, setPage)
@@ -35,6 +35,14 @@ const Stylist = ({
     }),
     shallowEqual
   )
+
+  const { watch, control } = useForm({
+    defaultValues: {
+      shopId: shops?.find((shop) => shop)?.id
+    }
+  })
+
+  const option = watch('shopId')
 
   const shopSelect: selectType[] = shops?.map((shop) => ({
     value: String(shop.id),
@@ -57,41 +65,32 @@ const Stylist = ({
               <Loading />
             ) : (
               <>
-                {option ? (
-                  <>
-                    <SubHeader
-                      title='スタイリスト一覧'
-                      type={HEADER_TYPE.LIST}
-                      modalOpenHandler={() => history.push('/stylist/new')}
-                    >
-                      <ShopSelect
-                        data={shopSelect}
-                        value={option}
-                        onChange={changeHandler}
-                        listStyle
-                        name=''
-                      />
-                    </SubHeader>
-                    <StylistList
-                      item={option ? stylists?.values : []}
-                      page={page}
-                      totalPage={stylists?.totalCount}
-                      pageChangeHandler={pageChangeHandler}
-                      usePaginate
-                    />
-                  </>
-                ) : (
+                <SubHeader
+                  title='スタイリスト一覧'
+                  type={HEADER_TYPE.LIST}
+                  modalOpenHandler={() =>
+                    history.push('/stylist/new', { option })
+                  }
+                >
                   <ShopSelect
                     data={shopSelect}
-                    value={option}
-                    onChange={changeHandler}
-                    name=''
+                    control={control}
+                    listStyle
+                    name='shopId'
                   />
-                )}
+                </SubHeader>
+                <StylistList
+                  item={option ? stylists?.values : []}
+                  page={page}
+                  totalPage={stylists?.totalCount}
+                  pageChangeHandler={pageChangeHandler}
+                  usePaginate
+                />
               </>
             )}
           </Route>
-          <Route path='/stylist/:id' component={Detail} />
+          <Route path='/stylist/detail/:id' component={Detail} />
+          <Route path='/stylist/(new|edit)' component={Form} />
         </Section>
       </Switch>
     </MainTemplate>

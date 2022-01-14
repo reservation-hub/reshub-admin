@@ -19,8 +19,8 @@ const StylistDetail = ({
 
   const data = {
     ...item,
-    price: `${item?.price.toLocaleString()}¥`,
-    days: item?.days.join(' ・ '),
+    price: `${item?.price?.toLocaleString()}¥`,
+    days: item?.days?.join(' ・ '),
     businessTime: `${item?.startTime} - ${item?.endTime}`
   } as StylistDetail
   return (
