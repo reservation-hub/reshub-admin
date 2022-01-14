@@ -11,6 +11,7 @@ import Reservation from '@pages/staff/reservation/Reservation'
 import CreateShop from '@pages/staff/shop/CreateShop'
 import Menu from '@pages/staff/menu/Menu'
 import TestForm from '@/pages/test'
+import Setting from '@/pages/setting/Setting'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -47,7 +48,7 @@ export const PUBLIC_PATHS: TRouter[] = [
   { path: '/stylist', exact: false, component: Stylist },
   { path: '/reservation', exact: false, component: Reservation },
   { path: '/create_shop', exact: false, component: CreateShop },
-  { path: '/settings', exact: false },
+  { path: '/settings', exact: false, component: Setting },
   { path: '/menu', exact: false, component: Menu },
   { path: '/test', exact: false, component: TestForm }
 ]

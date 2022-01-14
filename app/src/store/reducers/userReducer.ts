@@ -53,6 +53,12 @@ const userReducer = (state = initialState, action: UserAction) => {
         loading: false,
         msg: action.payload
       }
+    case USER_TYPE.CHANGE_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        msg: action.payload
+      }
     case USER_TYPE.REQUEST_FAILURE:
       return {
         ...state,

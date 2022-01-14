@@ -9,6 +9,7 @@ import apiEndpoint from '@utils/api/apiEndpoint'
 import history from '@utils/routes/history'
 import {
   InsertUserQuery,
+  UpdateUserPasswordQuery,
   UpdateUserQuery,
   UserListResponse,
   UserResponse
@@ -36,6 +37,10 @@ const userPatchSuccess = (data: string) => {
 
 const userDeleteSuccess = (msg: string) => {
   return typedAction(USER_TYPE.DELETE_SUCCESS, msg)
+}
+
+const userChangePasswordSuccess = (msg: string) => {
+  return typedAction(USER_TYPE.CHANGE_PASSWORD_SUCCESS, msg)
 }
 
 const userRequestFailure = (err: string) => {
@@ -97,6 +102,19 @@ export const patchUser =
     }
   }
 
+export const changePassword =
+  (userData: UpdateUserPasswordQuery): ThunkAction<void, RootState, null, Action> =>
+  async (dispatch) => {
+    dispatch(userRequestStart())
+    try {
+      const res = await apiEndpoint.users.changePassword(userData)
+      dispatch(userPatchSuccess(res.data))
+    } catch (e: any) {
+      const error = e.response.data
+      dispatch(userRequestFailure(error))
+    }
+  }
+
 export const deleteUser =
   (id: number): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
@@ -118,4 +136,5 @@ export type UserAction =
   | ReturnType<typeof userAddSuccess>
   | ReturnType<typeof userPatchSuccess>
   | ReturnType<typeof userDeleteSuccess>
+  | ReturnType<typeof userChangePasswordSuccess>
   | ReturnType<typeof userRequestFailure>

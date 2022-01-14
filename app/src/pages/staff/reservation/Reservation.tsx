@@ -150,8 +150,8 @@ const Reservation = ({
               </>
             )}
           </Route>
-          <Route path='/reservation/new' component={NewReservation} />
-          <Route path='/reservation/:id' component={ReservationDetail} />
+          <Route path='/reservation/(new|edit)' component={NewReservation} />
+          <Route path='/reservation/detail/:id' component={ReservationDetail} />
         </Section>
       </Switch>
     </MainTemplate>

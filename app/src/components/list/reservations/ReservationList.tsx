@@ -32,7 +32,7 @@ const ReservationsList = ({
           { column: 'ステータス', key: 'status' }
         ]}
         row={rowItems}
-        url='reservation'
+        url='reservation/detail'
         subParams
         usePaginate={usePaginate}
         page={page}
