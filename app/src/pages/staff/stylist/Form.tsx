@@ -56,16 +56,12 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   )
 
   return (
-    <>
-      <Route path='/'>
-        <StylistForm
-          submitHandler={handleSubmit(onSubmit)}
-          control={control}
-          error={errors}
-          formState={location?.state}
-        />
-      </Route>
-    </>
+    <StylistForm
+      submitHandler={handleSubmit(onSubmit)}
+      control={control}
+      error={errors}
+      formState={location?.state}
+    />
   )
 }
 

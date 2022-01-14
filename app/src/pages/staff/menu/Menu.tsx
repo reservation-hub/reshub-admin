@@ -16,12 +16,13 @@ import history from '@utils/routes/history'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Detail from './Detail'
+import { useForm } from 'react-hook-form'
+import Form from './Form'
 
 const Menu = ({
   match,
   location
 }: RouteComponentProps<MatchParams, any, any>) => {
-  const { option, changeHandler } = useSelect('')
   const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
   const pageChangeHandler = usePagination('menu', page, setPage)
@@ -35,6 +36,14 @@ const Menu = ({
     }),
     shallowEqual
   )
+
+  const { watch, control } = useForm({
+    defaultValues: {
+      shopId: shops?.find((shop) => shop)?.id
+    }
+  })
+
+  const option = watch('shopId')
 
   const shopSelect: selectType[] = shops?.map((shop) => ({
     value: String(shop.id),
@@ -57,41 +66,30 @@ const Menu = ({
               <Loading />
             ) : (
               <>
-                {option ? (
-                  <>
-                    <SubHeader
-                      title='メニュー一覧'
-                      type={HEADER_TYPE.LIST}
-                      modalOpenHandler={() => history.push('/menu/new')}
-                    >
-                      <ShopSelect
-                        data={shopSelect}
-                        value={option}
-                        onChange={changeHandler}
-                        listStyle
-                        name=''
-                      />
-                    </SubHeader>
-                    <MenuList
-                      item={option ? menus.values : []}
-                      page={page}
-                      totalPage={menus?.totalCount}
-                      pageChangeHandler={pageChangeHandler}
-                      usePaginate
-                    />
-                  </>
-                ) : (
+                <SubHeader
+                  title='メニュー一覧'
+                  type={HEADER_TYPE.LIST}
+                  modalOpenHandler={() => history.push('/menu/new')}
+                >
                   <ShopSelect
                     data={shopSelect}
-                    value={option}
-                    onChange={changeHandler}
-                    name=''
+                    control={control}
+                    listStyle
+                    name='shopId'
                   />
-                )}
+                </SubHeader>
+                <MenuList
+                  item={option ? menus.values : []}
+                  page={page}
+                  totalPage={menus?.totalCount}
+                  pageChangeHandler={pageChangeHandler}
+                  usePaginate
+                />
               </>
             )}
           </Route>
-          <Route path='/menu/:id' component={Detail} />
+          <Route path='/menu/detail/:id' component={Detail} />
+          <Route path='/menu/(new|edit)' component={Form} />
         </Section>
       </Switch>
     </MainTemplate>

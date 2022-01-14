@@ -28,7 +28,7 @@ const MenuList = ({
       page={page}
       totalPage={totalPage}
       pageChangeHandler={pageChangeHandler}
-      url='menu'
+      url='menu/detail'
       subParams
     />
   )

@@ -1,5 +1,6 @@
 import { FormEventHandler } from 'react'
 import {
+  MenuResponse,
   ShopResponse,
   StylistResponse
 } from '@utils/api/request-response-types/Shop'
@@ -11,6 +12,7 @@ export type TFormState = {
   user?: UserResponse
   shop?: ShopResponse
   stylist?: StylistResponse
+  menu?: MenuResponse
   option?: number
 }
 

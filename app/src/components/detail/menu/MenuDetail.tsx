@@ -19,7 +19,7 @@ const MenuDetail = ({
 
   const data = {
     ...item,
-    price: `${item?.price.toLocaleString()}¥`,
+    price: `${item?.price?.toLocaleString()}¥`,
     duration: `${item?.duration}分`
   } as MenuDetail
 
