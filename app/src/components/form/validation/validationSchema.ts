@@ -21,10 +21,12 @@ export const shopSchema = z.object({
   areaId: z.string({ required_error: VALIDATION_TEXT.IS_EMPTY }),
   prefectureId: z.string({ required_error: VALIDATION_TEXT.IS_EMPTY }),
   cityId: z.string({ required_error: VALIDATION_TEXT.IS_EMPTY }),
-  days: z.nativeEnum(ScheduleDays, { required_error: 'error' }).array(),
   startTime: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
   endTime: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
   seats: z.string({ required_error: VALIDATION_TEXT.IS_EMPTY }),
+  days: z
+    .nativeEnum(ScheduleDays, { required_error: VALIDATION_TEXT.IS_EMPTY })
+    .array(),
   details: z.string()
 })
 

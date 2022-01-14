@@ -30,7 +30,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     mode: 'onSubmit',
     defaultValues: {
       name: stylist?.name ?? '',
-      price: stylist?.price ?? undefined,
+      price: String(stylist?.price) ?? undefined,
       days: stylist?.days ?? [],
       startTime: useConvertTime('hm', stylist?.startTime) ?? '',
       endTime: useConvertTime('hm', stylist?.endTime) ?? ''
@@ -55,12 +55,15 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     [dispatch]
   )
 
-  console.log(stylist)
-
   return (
     <>
       <Route path='/'>
-        <StylistForm submitHandler={handleSubmit(onSubmit)} control={control} />
+        <StylistForm
+          submitHandler={handleSubmit(onSubmit)}
+          control={control}
+          error={errors}
+          formState={location?.state}
+        />
       </Route>
     </>
   )

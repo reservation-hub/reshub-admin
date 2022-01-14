@@ -28,15 +28,18 @@ const StylistForm = <T extends StylistSchema>({
         label='スタイリスト名'
         classes='my-3'
         control={control}
-        error={error?.stylist}
+        error={error?.name}
+        errorTxt={error?.name?.message}
       />
       <InputFiled
         id='price'
         name='price'
         label='指名料'
         classes='my-3'
+        type='number'
         control={control}
-        error={error?.stylist}
+        error={error?.price}
+        errorTxt={error?.price?.message}
       />
       <CheckBox
         id='days'
@@ -45,14 +48,18 @@ const StylistForm = <T extends StylistSchema>({
         name='days'
         control={control}
         data={Days.map((day) => ({ value: day.name, name: day.name }))}
+        error={error?.days}
+        errorTxt={error?.days?.message}
       />
-      <TimePicker 
+      <TimePicker
         id='time'
         name='time'
         label='出勤時間'
         classes='mt-3 mb-10'
         names={['startTime', 'endTime']}
         control={control}
+        error={error?.startTime || error?.endTime}
+        errorTxt={error?.startTime?.message || error?.endTime?.message}
       />
     </FormWrapper>
   )
