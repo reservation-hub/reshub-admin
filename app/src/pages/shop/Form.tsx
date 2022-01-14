@@ -30,13 +30,13 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       name: shop?.name || '',
       phoneNumber: shop?.phoneNumber || '',
       address: shop?.address || '',
-      areaId: shop?.areaId || undefined,
-      prefectureId: shop?.prefectureId || undefined,
-      cityId: shop?.cityId || undefined,
+      areaId: String(shop?.areaId) || undefined,
+      prefectureId: String(shop?.prefectureId) || undefined,
+      cityId: String(shop?.cityId) || undefined,
       startTime: shop?.startTime || '',
       endTime: shop?.endTime || '',
       days: shop?.days || [],
-      seats: shop?.seats || 0,
+      seats: String(shop?.seats) || '',
       details: shop?.details || ''
     }
   })
@@ -47,15 +47,32 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     (value, event) => {
       event?.preventDefault()
       if (shop) {
-        dispatch(editShopData({ id: Number(shop?.id), params: value }))
+        dispatch(
+          editShopData({
+            id: Number(shop?.id),
+            params: {
+              ...value,
+              areaId: Number(value.areaId),
+              prefectureId: Number(value.prefectureId),
+              cityId: Number(value.cityId),
+              seats: Number(value.seats)
+            }
+          })
+        )
       } else {
-        dispatch(addShop(value))
+        dispatch(
+          addShop({
+            ...value,
+            areaId: Number(value.areaId),
+            prefectureId: Number(value.prefectureId),
+            cityId: Number(value.cityId),
+            seats: Number(value.seats)
+          })
+        )
       }
     },
-    [dispatch, shop]
+    [dispatch]
   )
-
-  console.log(errors)
 
   return (
     <>

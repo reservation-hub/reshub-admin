@@ -1,20 +1,18 @@
 import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
-import UserForm from '@/components/form/user/UserForm'
+import UserForm from '@components/form/user/UserForm'
 import { useDispatch } from 'react-redux'
-import { TFormState, TUserInput } from '@components/form/_PropsType'
-import useInput from '@utils/hooks/useInput'
-import useValidation from '@utils/hooks/useValidation'
-import dayjs from 'dayjs'
+import { TFormState } from '@components/form/_PropsType'
 import { addUser, patchUser } from '@store/actions/userAction'
-import {
-  InsertUserQuery,
-  UpdateUserQuery
-} from '@utils/api/request-response-types/User'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { VALIDATION_TEXT, VALID_REGEX } from '@/constants/FormValid'
+import {
+  userEditSchema,
+  UserSchema,
+  userSchema
+} from '@/components/form/validation/validationSchema'
+import useConvertTime from '@/utils/hooks/useConverTime'
+import { RoleSlug } from '@/utils/api/request-response-types/models/Role'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -23,142 +21,56 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     return location?.state?.user
   }, [location])
 
-  const validationSchema = {
-    email: false,
-    password: false,
-    confirm: false,
-    firstNameKana: false,
-    lastNameKana: false,
-    duplicated: false
-  }
-  const schema = z
-    .object({
-      email: z
-        .string()
-        .email({ message: VALIDATION_TEXT.EMAIL })
-        .nonempty({ message: 'error' })
-        .default(user?.email || ''),
-      password: z.string().min(1).max(8).nonempty({ message: 'error' }),
-      confirm: z.string().nonempty(),
-      firstNameKana: z
-        .string()
-        .nonempty()
-        .regex(VALID_REGEX.KANA_NAME, VALIDATION_TEXT.KANA_NAME),
-      lastNameKana: z
-        .string()
-        .nonempty()
-        .regex(VALID_REGEX.KANA_NAME, VALIDATION_TEXT.KANA_NAME),
-      gender: z.enum(['MALE', 'FEMALE'])
-    })
-    .refine((value) => value.password === value.confirm, {
-      message: 'error',
-      path: ['confirm']
-    })
-
-  const { register, handleSubmit, reset, formState } = useForm({
-    resolver: zodResolver(schema),
-    mode: 'onSubmit'
-  })
-  const { errors } = formState
-
-  const { input, ChangeHandler } = useInput({
-    email: user?.email ?? '',
-    password: '',
-    confirm: '',
-    username: '',
-    firstNameKana: user?.firstNameKana ?? '',
-    lastNameKana: user?.lastNameKana ?? '',
-    birthdayY: String(dayjs(user?.birthday).year()) ?? '',
-    birthdayM: String(dayjs(user?.birthday).format('M')) ?? '',
-    birthdayD: String(dayjs(user?.birthday).format('D')) ?? '',
-    gender: user?.gender ?? '',
-    role: user?.role.slug ?? ''
+  const {
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<UserSchema>({
+    resolver: zodResolver(user ? userEditSchema : userSchema),
+    mode: 'onSubmit',
+    defaultValues: {
+      email: user?.email ?? '',
+      username: user?.username ?? '',
+      password: '',
+      confirm: '',
+      firstNameKana: user?.firstNameKana ?? '',
+      lastNameKana: user?.lastNameKana ?? '',
+      firstNameKanji: '',
+      lastNameKanji: '',
+      birthday: useConvertTime('ymd', user?.birthday) ?? '',
+      roleSlug: user?.role?.slug ?? RoleSlug.SHOP_STAFF
+    }
   })
 
-  const form = useMemo(() => {
-    return {
-      email: input.email,
-      password: input.password,
-      confirm: input.confirm,
-      username: input.username,
-      firstNameKana: input.firstNameKana,
-      lastNameKana: input.lastNameKana,
-      birthdayY: input.birthdayY,
-      birthdayM: input.birthdayM,
-      birthdayD: input.birthdayD,
-      gender: input.gender,
-      role: input.role
-    } as TUserInput
-  }, [input, user])
-
-  const { validation, error } = useValidation(form, validationSchema)
-
-  const userData: {
-    insertData: InsertUserQuery
-    updateData: UpdateUserQuery
-  } = useMemo(() => {
-    const insertData: InsertUserQuery = {
-      email: form.email,
-      password: form.password,
-      confirm: form.confirm,
-      firstNameKanji: form.firstNameKanji,
-      lastNameKanji: form.lastNameKanji,
-      firstNameKana: form.firstNameKana,
-      lastNameKana: form.lastNameKana,
-      roleSlug: form.role,
-      gender: form.gender,
-      birthday: dayjs(
-        `${form.birthdayY}/${form.birthdayM}/${form.birthdayD}`
-      ).format('YYYY-MM-DD')
-    }
-    const updateData: UpdateUserQuery = {
-      id: Number(user?.id),
-      params: {
-        email: form.email,
-        firstNameKanji: form.firstNameKanji,
-        lastNameKanji: form.lastNameKanji,
-        firstNameKana: form.firstNameKana,
-        lastNameKana: form.lastNameKana,
-        roleSlug: form.role,
-        gender: form.gender,
-        birthday: dayjs(
-          `${form.birthdayY}/${form.birthdayM}/${form.birthdayD}`
-        ).format('YYYY-MM-DD')
-      }
-    }
-    return { insertData, updateData }
-  }, [form, user])
-
-  const submitHandler = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      validation(form, form.password, form.confirm)
+  const onSubmit: SubmitHandler<UserSchema> = useCallback(
+    async (value) => {
       if (user) {
-        dispatch(patchUser(userData.updateData))
+        dispatch(patchUser({ id: user?.id, params: value }))
       } else {
-        dispatch(addUser(userData.insertData))
+        dispatch(addUser(value))
       }
     },
-    [dispatch, form, userData, user, validation]
+    [dispatch, user]
   )
 
   return (
     <>
-      <Route exact path='/'>
+      <Route path='/'>
         <UserForm
           formState={location.state}
-          formValue={form}
-          submitHandler={handleSubmit(() => submitHandler)}
+          formValue={control._defaultValues}
+          submitHandler={handleSubmit(onSubmit)}
           error={errors}
+          control={control}
         />
       </Route>
       <Route path='/:id'>
-        <UserForm
+        {/* <UserForm
           formState={location.state}
           formValue={form}
           submitHandler={submitHandler}
           error={errors}
-        />
+        /> */}
       </Route>
     </>
   )

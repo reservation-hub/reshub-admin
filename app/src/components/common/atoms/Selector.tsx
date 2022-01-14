@@ -29,7 +29,11 @@ const Selector = ({
         {label}
       </label>
       <div className='flex'>
-        <select id={id} className={error ? `${select} border-error-main` : select} {...field}>
+        <select
+          id={id}
+          className={error ? `${select} border-error-main` : select}
+          {...field}
+        >
           {children}
           {data?.map((type, index) => (
             <option key={index} value={type.value}>

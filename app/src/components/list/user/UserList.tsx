@@ -35,7 +35,7 @@ const UserList = ({
           { column: '権限', key: 'role' }
         ]}
         row={rowItems}
-        url='users'
+        url='users/detail'
         usePaginate={usePaginate}
         page={page}
         totalPage={totalPage}

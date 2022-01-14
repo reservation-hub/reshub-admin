@@ -16,7 +16,7 @@ import { ShopSchema } from '@components/form/validation/validationSchema'
 
 export interface ISalonFormProps<T> extends IFormProps<T> {
   formValue: Record<string, any>
-  watchLocationIds?: number[]
+  watchLocationIds?: string[]
 }
 
 const SalonForm = <T extends ShopSchema>({
@@ -52,12 +52,12 @@ const SalonForm = <T extends ShopSchema>({
   useEffect(() => {
     dispatch(getArea())
     if (watchLocationIds?.[0]) {
-      dispatch(getOnePref(watchLocationIds?.[0]))
+      dispatch(getOnePref(Number(watchLocationIds?.[0])))
     }
     if (watchLocationIds?.[1]) {
-      dispatch(getOneCity(watchLocationIds?.[1]))
+      dispatch(getOneCity(Number(watchLocationIds?.[1])))
     }
-  }, [dispatch, watchLocationIds])
+  }, [dispatch, watchLocationIds?.[0], watchLocationIds?.[1]])
 
   return (
     <>
@@ -124,7 +124,7 @@ const SalonForm = <T extends ShopSchema>({
               error={Boolean(error?.days)}
               errorTxt={error?.days?.message}
             />
-            <InputFiled 
+            <InputFiled
               id='seats'
               name='seats'
               label='座席数'

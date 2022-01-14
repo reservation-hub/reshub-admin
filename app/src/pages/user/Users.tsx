@@ -66,7 +66,7 @@ const Users = ({
             )}
           </Route>
           <Route path='/users/form' component={Form} />
-          <Route path='/users/:id' component={Profile} />
+          <Route path='/users/detail/:id' component={Profile} />
         </Section>
       </Switch>
     </MainTemplate>

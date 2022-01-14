@@ -1,5 +1,6 @@
 import CheckBox from '@/components/common/atoms/CheckBox'
 import InputFiled from '@/components/common/atoms/InputFiled'
+import RadioButton from '@/components/common/atoms/RadioButton'
 import Selector from '@/components/common/atoms/Selector'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useEffect } from 'react'
@@ -12,7 +13,8 @@ const TestForm = () => {
     password: z.string().nonempty({ message: 'error' }),
     array: z.enum(['1', '2', '3']).array(),
     select: z.string(),
-    date: z.string()
+    date: z.string(),
+    radio: z.enum(['test', 'test1'])
   })
   type testFrom = z.infer<typeof schema>
   const {
@@ -27,12 +29,22 @@ const TestForm = () => {
       array: ['1', '2'] || [],
       name: '123',
       password: '',
-      date: ''
+      date: '',
+      radio: 'test'
     }
   })
   const onSubmit: SubmitHandler<testFrom> = React.useCallback(async (value) => {
     console.log(value)
   }, [])
+  // const test = z.object({
+  //   v1: z.string(),
+  //   v2: z.string()
+  // })
+  // .refine((value) => value.v1 === value.v2, {
+  //   message: 'test',
+  //   path: ['v2']
+  // })
+  // console.log(test.parse({v1: '1', v2: '2'}))
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -60,6 +72,11 @@ const TestForm = () => {
         data={['1', '2', '3'].map((v) => ({ name: v, value: v }))}
       />
       <InputFiled control={control} name='date' type='date' />
+      <RadioButton
+        control={control}
+        name='radio'
+        data={['test', 'test1'].map((r, i) => ({ id: i, label: r, value: r }))}
+      />
       <button type='submit'>submit</button>
     </form>
   )
