@@ -103,7 +103,9 @@ export const patchUser =
   }
 
 export const changePassword =
-  (userData: UpdateUserPasswordQuery): ThunkAction<void, RootState, null, Action> =>
+  (
+    userData: UpdateUserPasswordQuery
+  ): ThunkAction<void, RootState, null, Action> =>
   async (dispatch) => {
     dispatch(userRequestStart())
     try {
