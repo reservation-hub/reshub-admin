@@ -56,7 +56,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
               cityId: Number(value.cityId),
               seats: Number(value.seats),
               startTime: dayjs(`${currentDay} ${value.startTime}:00`).toDate(),
-              endTime: dayjs(`${currentDay} ${value.endTime}:00`).toDate(),
+              endTime: dayjs(`${currentDay} ${value.endTime}:00`).toDate()
             }
           })
         )
@@ -69,7 +69,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             cityId: Number(value.cityId),
             seats: Number(value.seats),
             startTime: dayjs(`${currentDay} ${value.startTime}:00`).toDate(),
-            endTime: dayjs(`${currentDay} ${value.endTime}:00`).toDate(),
+            endTime: dayjs(`${currentDay} ${value.endTime}:00`).toDate()
           })
         )
       }
