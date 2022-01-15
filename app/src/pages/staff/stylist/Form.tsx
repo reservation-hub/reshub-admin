@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux'
 import { Route, RouteComponentProps } from 'react-router-dom'
 import dayjs from 'dayjs'
 import { currentDate } from '@/constants/Time'
+import convertScheduleTimeToDateString from '@/utils/hooks/useConvertScheduleTimeToDateString'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -50,12 +51,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             params: {
               ...value,
               price: Number(value.price),
-              startTime: dayjs(`${currentDate} ${value.startTime}:00`).format(
-                'YYYY-MM-DDTHH:mm:ss'
-              ),
-              endTime: dayjs(`${currentDate} ${value.endTime}:00`).format(
-                'YYYY-MM-DDTHH:mm:ss'
-              )
+              startTime: convertScheduleTimeToDateString(value.startTime),
+              endTime: convertScheduleTimeToDateString(value.endTime)
             }
           })
         )
@@ -66,12 +63,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             params: {
               ...value,
               price: Number(value.price),
-              startTime: dayjs(`${currentDate} ${value.startTime}:00`).format(
-                'YYYY-MM-DDTHH:mm:ss'
-              ),
-              endTime: dayjs(`${currentDate} ${value.endTime}:00`).format(
-                'YYYY-MM-DDTHH:mm:ss'
-              )
+              startTime: convertScheduleTimeToDateString(value.startTime),
+              endTime: convertScheduleTimeToDateString(value.endTime)
             }
           })
         )

@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import dayjs from 'dayjs'
 import useConvertTime from '@utils/hooks/useConverTime'
 import { ShopSchema, shopSchema } from '@components/form/shop/shopSchema'
+import convertScheduleTimeToDateString from '@utils/hooks/useConvertScheduleTimeToDateString'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -55,12 +56,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
               prefectureId: Number(value.prefectureId),
               cityId: Number(value.cityId),
               seats: Number(value.seats),
-              startTime: dayjs(`${currentDay} ${value.startTime}:00`).format(
-                'YYYY-MM-DDTHH:mm:ss'
-              ),
-              endTime: dayjs(`${currentDay} ${value.endTime}:00`).format(
-                'YYYY-MM-DDTHH:mm:ss'
-              )
+              startTime: convertScheduleTimeToDateString(value.startTime),
+              endTime: convertScheduleTimeToDateString(value.endTime)
             }
           })
         )
@@ -72,12 +69,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             prefectureId: Number(value.prefectureId),
             cityId: Number(value.cityId),
             seats: Number(value.seats),
-            startTime: dayjs(`${currentDay} ${value.startTime}:00`).format(
-              'YYYY-MM-DDTHH:mm:ss'
-            ),
-            endTime: dayjs(`${currentDay} ${value.endTime}:00`).format(
-              'YYYY-MM-DDTHH:mm:ss'
-            )
+            startTime: convertScheduleTimeToDateString(value.startTime),
+            endTime: convertScheduleTimeToDateString(value.endTime)
           })
         )
       }
