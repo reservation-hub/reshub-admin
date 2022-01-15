@@ -69,7 +69,7 @@ const Stylist = ({
                   title='スタイリスト一覧'
                   type={HEADER_TYPE.LIST}
                   modalOpenHandler={() =>
-                    history.push('/stylist/new', { option })
+                    history.push('/stylist/new', { option, shops })
                   }
                 >
                   <ShopSelect

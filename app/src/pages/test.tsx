@@ -3,6 +3,7 @@ import InputFiled from '@/components/common/atoms/InputFiled'
 import RadioButton from '@/components/common/atoms/RadioButton'
 import Selector from '@/components/common/atoms/Selector'
 import { zodResolver } from '@hookform/resolvers/zod'
+import dayjs from 'dayjs'
 import React, { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -45,6 +46,8 @@ const TestForm = () => {
   //   path: ['v2']
   // })
   // console.log(test.parse({v1: '1', v2: '2'}))
+
+  console.log(dayjs().format('YYYY-MM-DD HH:mm:ss'))
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

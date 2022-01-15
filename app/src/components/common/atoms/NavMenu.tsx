@@ -8,7 +8,7 @@ export interface INavMenuProps {
 }
 
 const NavMenu = ({ role }: INavMenuProps) => {
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(true)
   const active = STAFF_NAV_MENU.find((v) => v.subItem)?.subItem?.some(
     (s) => location.pathname === s.path
   )

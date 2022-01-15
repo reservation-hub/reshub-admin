@@ -23,6 +23,7 @@ import Calendar from '@components/common/atoms/Calendar'
 import CustomButton from '@components/common/atoms/CustomButton'
 import FullCalendar from '@fullcalendar/react'
 import usePagination from '@utils/hooks/usePagination'
+import { useForm } from 'react-hook-form'
 
 const Reservation = ({
   match,
@@ -31,7 +32,6 @@ const Reservation = ({
   const dispatch = useDispatch()
   const currentPage = location?.state?.currentPage
   const calendarRef = createRef<FullCalendar>()
-  const { option, changeHandler } = useSelect('')
   const [calendar, setCalendar] = useState<boolean>(false)
   const [page, setPage] = useState<number>(currentPage)
   const pageChangeHandler = usePagination('reservation', page, setPage)
@@ -44,6 +44,14 @@ const Reservation = ({
     }),
     shallowEqual
   )
+
+  const { watch, control } = useForm({
+    defaultValues: {
+      shopId: shops?.find((shop) => shop)?.id
+    }
+  })
+
+  const option = watch('shopId')
 
   const shopSelect: selectType[] = shops?.map((shop) => ({
     value: String(shop.id),
@@ -102,49 +110,39 @@ const Reservation = ({
               <Loading />
             ) : (
               <>
-                {option ? (
-                  <>
-                    <SubHeader
-                      title='予約管理'
-                      type={HEADER_TYPE.LIST}
-                      modalOpenHandler={() => history.push('/reservation/new')}
-                    >
-                      <ShopSelect
-                        data={shopSelect}
-                        value={option}
-                        onChange={changeHandler}
-                        listStyle
-                        name=''
-                      />
-                      <CustomButton
-                        onClick={() => setCalendar(!calendar)}
-                        classes='min-w-[12rem] ml-2'
-                      >
-                        {calendar ? 'リストで見る' : 'カレンダーで見る'}
-                      </CustomButton>
-                    </SubHeader>
-                    {calendar ? (
-                      <Calendar
-                        events={reservationsEvent}
-                        calendarRef={calendarRef}
-                        customButtons={calendarCustomButton}
-                      />
-                    ) : (
-                      <ReservationsList
-                        item={option ? reservations.values : []}
-                        page={page}
-                        totalPage={reservations?.totalCount}
-                        pageChangeHandler={pageChangeHandler}
-                        usePaginate
-                      />
-                    )}
-                  </>
-                ) : (
+                <SubHeader
+                  title='予約管理'
+                  type={HEADER_TYPE.LIST}
+                  modalOpenHandler={() =>
+                    history.push('/reservation/new', { option })
+                  }
+                >
                   <ShopSelect
                     data={shopSelect}
-                    value={option}
-                    onChange={changeHandler}
-                    name=''
+                    control={control}
+                    listStyle
+                    name='shopId'
+                  />
+                  <CustomButton
+                    onClick={() => setCalendar(!calendar)}
+                    classes='min-w-[12rem] ml-2'
+                  >
+                    {calendar ? 'リストで見る' : 'カレンダーで見る'}
+                  </CustomButton>
+                </SubHeader>
+                {calendar ? (
+                  <Calendar
+                    events={reservationsEvent}
+                    calendarRef={calendarRef}
+                    customButtons={calendarCustomButton}
+                  />
+                ) : (
+                  <ReservationsList
+                    item={option ? reservations.values : []}
+                    page={page}
+                    totalPage={reservations?.totalCount}
+                    pageChangeHandler={pageChangeHandler}
+                    usePaginate
                   />
                 )}
               </>
