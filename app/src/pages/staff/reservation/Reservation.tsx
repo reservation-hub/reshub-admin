@@ -18,7 +18,7 @@ import history from '@utils/routes/history'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 import ReservationDetail from './Detail'
-import NewReservation from './New'
+import Form from './Form'
 import Calendar from '@components/common/atoms/Calendar'
 import CustomButton from '@components/common/atoms/CustomButton'
 import FullCalendar from '@fullcalendar/react'
@@ -150,7 +150,7 @@ const Reservation = ({
               </>
             )}
           </Route>
-          <Route path='/reservation/(new|edit)' component={NewReservation} />
+          <Route path='/reservation/(new|edit)' component={Form} />
           <Route path='/reservation/detail/:id' component={ReservationDetail} />
         </Section>
       </Switch>

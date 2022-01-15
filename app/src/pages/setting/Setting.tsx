@@ -9,6 +9,7 @@ import {
   SettingSchema
 } from '@/components/form/setting/settingSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Section from '@/components/common/layout/Section'
 
 const Setting = () => {
   const dispatch = useDispatch()
@@ -37,11 +38,13 @@ const Setting = () => {
 
   return (
     <MainTemplate>
-      <SettingForm
-        submitHandler={handleSubmit(onSubmit)}
-        error={errors}
-        control={control}
-      />
+      <Section>
+        <SettingForm
+          submitHandler={handleSubmit(onSubmit)}
+          error={errors}
+          control={control}
+        />
+      </Section>
     </MainTemplate>
   )
 }
