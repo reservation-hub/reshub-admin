@@ -5,7 +5,7 @@ import SalonList from '@components/list/shop/SalonList'
 import UserList from '@components/list/user/UserList'
 import { salonIndexAdminResponse } from '@utils/api/request-response-types/Dashboard'
 
-export type AdminDashboardProps = {
+export interface AdminDashboardProps {
   data: salonIndexAdminResponse
 }
 
