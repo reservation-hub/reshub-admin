@@ -98,6 +98,8 @@ export const addShop =
       dispatch(shopAddSuccess(res.data))
       if (history.location.pathname === '/create_shop') {
         history.push('/dashboard')
+      } else if (history.location.pathname === '/shops') {
+        history.push('/shops')
       } else {
         history.push({ pathname: '/salon', state: { currentPage: 1 } })
       }

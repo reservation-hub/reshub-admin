@@ -69,7 +69,7 @@ const Menu = ({
                 <SubHeader
                   title='メニュー一覧'
                   type={HEADER_TYPE.LIST}
-                  modalOpenHandler={() => history.push('/menu/new')}
+                  modalOpenHandler={() => history.push('/menu/new', { option })}
                 >
                   <ShopSelect
                     data={shopSelect}

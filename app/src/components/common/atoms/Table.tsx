@@ -2,6 +2,7 @@ import React from 'react'
 import TableRow from './TableRow'
 import history from '@utils/routes/history'
 import Paginate, { IPaginateProps } from './Paginate'
+import IsEmpty from './IsEmpty'
 
 export interface ITableProps<T> extends IPaginateProps {
   cell: { column: string; key: keyof T }[]
@@ -23,7 +24,7 @@ const Table = <T extends Record<string, any>>({
   classes
 }: ITableProps<T>): React.ReactElement => {
   const styled = 'w-full bg-secondary-main rounded-[.25rem] p-[10rem] mb-5'
-
+  console.log(row?.length)
   return (
     <>
       <table className={`${styled} ${classes}`}>
@@ -57,6 +58,7 @@ const Table = <T extends Record<string, any>>({
           ))}
         </tbody>
       </table>
+      {row?.length === 0 && <IsEmpty text='データー' /> }
       {usePaginate && (
         <Paginate
           totalPage={totalPage}

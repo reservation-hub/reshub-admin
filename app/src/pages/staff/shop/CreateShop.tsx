@@ -11,43 +11,7 @@ import { useDispatch } from 'react-redux'
 
 const CreateShop = () => {
   const dispatch = useDispatch()
-  const startAt = useTimePicker('')
-  const endAt = useTimePicker('')
-  const { checked, changeHandler } = useCheckBox([])
-
-  const { input, ChangeHandler } = useInput({
-    name: '',
-    address: '',
-    phoneNumber: '',
-    areaId: '',
-    prefectureId: '',
-    cityId: '',
-    details: ''
-  })
-
-  // const shopData: InsertShopQuery = useMemo(() => {
-  //   return {
-  //     name: form.name,
-  //     address: form.address,
-  //     phoneNumber: form.phoneNumber,
-  //     startTime: startAt.HHmm,
-  //     endTime: endAt.HHmm,
-  //     areaId: Number(form.areaId),
-  //     prefectureId: Number(form.prefectureId),
-  //     cityId: Number(form.cityId),
-  //     days: form.days,
-  //     details: form.details
-  //   }
-  // }, [form, startAt.HHmm, endAt.HHmm, checked])
-
-  // const onSubmit = useCallback(
-  //   async (e: React.FormEvent<HTMLFormElement>) => {
-  //     e.preventDefault()
-  //     dispatch(addShop(shopData))
-  //   },
-  //   [dispatch, shopData]
-  // )
-
+  
   const centerBarStyled =
     'w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'
 

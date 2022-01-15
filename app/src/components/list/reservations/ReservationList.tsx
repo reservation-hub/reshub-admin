@@ -21,26 +21,23 @@ const ReservationsList = ({
   }))
 
   return (
-    <>
-      <Table
-        cell={[
-          { column: '店舗名', key: 'shopName' },
-          { column: '予約者', key: 'clientName' },
-          { column: 'メニュー名', key: 'menuName' },
-          { column: 'スタイリスト名', key: 'stylistName' },
-          { column: '予約日', key: 'reservationDate' },
-          { column: 'ステータス', key: 'status' }
-        ]}
-        row={rowItems}
-        url='reservation/detail'
-        subParams
-        usePaginate={usePaginate}
-        page={page}
-        totalPage={totalPage}
-        pageChangeHandler={pageChangeHandler}
-      />
-      {item?.length === 0 && <IsEmpty text='予約' />}
-    </>
+    <Table
+      cell={[
+        { column: '店舗名', key: 'shopName' },
+        { column: '予約者', key: 'clientName' },
+        { column: 'メニュー名', key: 'menuName' },
+        { column: 'スタイリスト名', key: 'stylistName' },
+        { column: '予約日', key: 'reservationDate' },
+        { column: 'ステータス', key: 'status' }
+      ]}
+      row={rowItems}
+      url='reservation/detail'
+      subParams
+      usePaginate={usePaginate}
+      page={page}
+      totalPage={totalPage}
+      pageChangeHandler={pageChangeHandler}
+    />
   )
 }
 

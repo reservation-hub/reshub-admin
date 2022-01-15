@@ -25,24 +25,21 @@ const UserList = ({
   }))
 
   return (
-    <>
-      <Table
-        cell={[
-          { column: 'ユーザー名', key: 'username' },
-          { column: 'お名前（カナ）', key: 'kanaName' },
-          { column: 'メールアドレス', key: 'email' },
-          { column: '予約件数', key: 'reservationCount' },
-          { column: '権限', key: 'role' }
-        ]}
-        row={rowItems}
-        url='users/detail'
-        usePaginate={usePaginate}
-        page={page}
-        totalPage={totalPage}
-        pageChangeHandler={pageChangeHandler}
-      />
-      {item?.length === 0 && <IsEmpty text='ユーザー' />}
-    </>
+    <Table
+      cell={[
+        { column: 'ユーザー名', key: 'username' },
+        { column: 'お名前（カナ）', key: 'kanaName' },
+        { column: 'メールアドレス', key: 'email' },
+        { column: '予約件数', key: 'reservationCount' },
+        { column: '権限', key: 'role' }
+      ]}
+      row={rowItems}
+      url='users/detail'
+      usePaginate={usePaginate}
+      page={page}
+      totalPage={totalPage}
+      pageChangeHandler={pageChangeHandler}
+    />
   )
 }
 

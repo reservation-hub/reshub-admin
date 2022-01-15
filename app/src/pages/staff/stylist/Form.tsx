@@ -11,6 +11,8 @@ import React, { useCallback, useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { Route, RouteComponentProps } from 'react-router-dom'
+import dayjs from 'dayjs'
+import { currentDate } from '@/constants/Time'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -40,17 +42,28 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const onSubmit: SubmitHandler<StylistSchema> = useCallback(
     (value, event) => {
       event?.preventDefault()
-      // if (stylist) {
-      //   dispatch(
-      //     editStylist({
-      //       shopId: stylist?.shopId,
-      //       stylistId: stylist?.id,
-      //       params: value
-      //     })
-      //   )
-      // } else {
-      //   dispatch(createStylist({ shopId: Number(shopId), params: value }))
-      // }
+      console.log(value)
+      if (stylist) {
+        dispatch(
+          editStylist({
+            shopId: stylist?.shopId,
+            stylistId: stylist?.id,
+            params: {
+              ...value,
+              price: Number(value.price),
+              startTime: dayjs(`${currentDate} ${value.startTime}:00`).toDate(),
+              endTime: dayjs(`${currentDate} ${value.endTime}:00`).toDate()
+            }
+          })
+        )
+      } else {
+        dispatch(createStylist({ shopId: Number(shopId), params: {
+          ...value,
+          price: Number(value.price),
+          startTime: dayjs(`${currentDate} ${value.startTime}:00`).toDate(),
+          endTime: dayjs(`${currentDate} ${value.endTime}:00`).toDate()
+        } }))
+      }
     },
     [dispatch]
   )

@@ -34,7 +34,7 @@ export const createStylist = async (
   stylistData: InsertStylistQuery
 ): Promise<AxiosResponse<string>> => {
   return await instance.post<string>(
-    `${baseEndpoint.shops}}/${stylistData.shopId}/stylist`,
+    `${baseEndpoint.shops}/${stylistData.shopId}/stylist`,
     {
       ...stylistData
     }

@@ -1,3 +1,5 @@
+import dayjs from "dayjs"
+
 export const TIME_PICKER_TIME_TYPE = {
   HOUR: 'hour',
   MINUTE: 'minute'
@@ -53,3 +55,5 @@ export const TIME_TABLE = [
   '23:00',
   '23:30'
 ]
+
+export const currentDate = dayjs().format('YYYY-MM-DD')
