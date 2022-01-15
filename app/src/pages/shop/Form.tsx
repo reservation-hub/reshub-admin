@@ -29,20 +29,16 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       name: shop?.name || '',
       phoneNumber: shop?.phoneNumber || '',
       address: shop?.address || '',
-      areaId: String(shop?.areaId) || undefined,
-      prefectureId: String(shop?.prefectureId) || undefined,
-      cityId: String(shop?.cityId) || undefined,
-      startTime: useConvertTime('hm', shop?.startTime) || '',
-      endTime: useConvertTime('hm', shop?.endTime) || '',
+      areaId: shop ? String(shop.areaId) : '',
+      prefectureId: shop ? String(shop.prefectureId) : '',
+      cityId: shop ? String(shop.cityId) : '',
+      startTime: useConvertTime('hm', shop?.startTime) ?? '',
+      endTime: useConvertTime('hm', shop?.endTime) ?? '',
       days: shop?.days || [],
       seats: String(shop?.seats) || '',
       details: shop?.details || ''
     }
   })
-
-  const test = dayjs().format('YYYY-MM-DD')
-  const test2 = dayjs(`${currentDay} 10:00:00`).format()
-  console.log(test2)
 
   const watchLocationIds = watch(['areaId', 'prefectureId'])
 
@@ -59,8 +55,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
               prefectureId: Number(value.prefectureId),
               cityId: Number(value.cityId),
               seats: Number(value.seats),
-              startTime: new Date(),
-              endTime: new Date()
+              startTime: dayjs(`${currentDay} ${value.startTime}:00`).toDate(),
+              endTime: dayjs(`${currentDay} ${value.endTime}:00`).toDate(),
             }
           })
         )
@@ -72,8 +68,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             prefectureId: Number(value.prefectureId),
             cityId: Number(value.cityId),
             seats: Number(value.seats),
-            startTime: new Date(),
-            endTime: new Date()
+            startTime: dayjs(`${currentDay} ${value.startTime}:00`).toDate(),
+            endTime: dayjs(`${currentDay} ${value.endTime}:00`).toDate(),
           })
         )
       }
