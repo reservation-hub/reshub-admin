@@ -1,7 +1,7 @@
 import React from 'react'
-import InputFiled from '@/components/common/atoms/InputFiled'
-import FormWrapper from '../FormWrapper'
-import { IFormProps } from '../_PropsType'
+import InputFiled from '@components/common/atoms/InputFiled'
+import FormWrapper from '@components/form/FormWrapper'
+import { IFormProps } from '@components/form/_PropsType'
 
 const SettingForm = <T extends Record<string, any>>({
   submitHandler,

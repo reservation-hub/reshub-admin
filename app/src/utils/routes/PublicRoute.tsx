@@ -2,9 +2,8 @@ import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store/store'
-import { VALIDATION_TEXT } from '@/constants/FormValid'
-import { loginResponse } from '../api/request-response-types/Auth'
-import { UserForAuth } from '../api/request-response-types/models/User'
+import { VALIDATION_TEXT } from '@constants/FormValid'
+import { UserForAuth } from '@utils/api/request-response-types/models/User'
 
 /**
  *

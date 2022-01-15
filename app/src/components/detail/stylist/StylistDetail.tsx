@@ -5,7 +5,7 @@ import { HEADER_TYPE } from '@constants/Common'
 import history from '@utils/routes/history'
 import { IDetailProps } from '../_PropsType'
 import DataTable from '@components/common/atoms/DataTable'
-import { StylistResponse } from '@/utils/api/request-response-types/Shop'
+import { StylistResponse } from '@utils/api/request-response-types/Shop'
 
 const StylistDetail = ({
   item,

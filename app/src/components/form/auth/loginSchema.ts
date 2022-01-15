@@ -1,4 +1,4 @@
-import { VALIDATION_TEXT, VALID_REGEX } from '@/constants/FormValid'
+import { VALIDATION_TEXT, VALID_REGEX } from '@constants/FormValid'
 import { z } from 'zod'
 
 export const loginSchema = z.object({

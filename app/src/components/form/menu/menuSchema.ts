@@ -1,4 +1,4 @@
-import { VALIDATION_TEXT } from '@/constants/FormValid'
+import { VALIDATION_TEXT } from '@constants/FormValid'
 import { z } from 'zod'
 
 export const menuSchema = z.object({

@@ -1,6 +1,6 @@
-import { VALIDATION_TEXT, VALID_REGEX } from '@/constants/FormValid'
-import { RoleSlug } from '@/utils/api/request-response-types/models/Role'
-import { Gender } from '@/utils/api/request-response-types/models/User'
+import { VALIDATION_TEXT, VALID_REGEX } from '@constants/FormValid'
+import { RoleSlug } from '@utils/api/request-response-types/models/Role'
+import { Gender } from '@utils/api/request-response-types/models/User'
 import { z } from 'zod'
 
 export const userSchema = z

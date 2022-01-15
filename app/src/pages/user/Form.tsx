@@ -6,13 +6,13 @@ import { TFormState } from '@components/form/_PropsType'
 import { addUser, patchUser } from '@store/actions/userAction'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import useConvertTime from '@/utils/hooks/useConverTime'
-import { RoleSlug } from '@/utils/api/request-response-types/models/Role'
+import useConvertTime from '@utils/hooks/useConverTime'
+import { RoleSlug } from '@utils/api/request-response-types/models/Role'
 import {
   userEditSchema,
   UserSchema,
   userSchema
-} from '@/components/form/user/userSchema'
+} from '@components/form/user/userSchema'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()

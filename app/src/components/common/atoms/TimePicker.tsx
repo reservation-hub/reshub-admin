@@ -1,7 +1,7 @@
 import React from 'react'
 import { IPickerProps } from '@components/common/_PropsType'
 import Selector from './Selector'
-import { TIME_TABLE } from '@/constants/Time'
+import { TIME_TABLE } from '@constants/Time'
 import ErrorMessage from './ErrorMessage'
 
 export interface ITimePickerProps extends IPickerProps {

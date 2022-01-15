@@ -1,5 +1,5 @@
-import { VALIDATION_TEXT } from '@/constants/FormValid'
-import { ScheduleDays } from '@/utils/api/request-response-types/models/Common'
+import { VALIDATION_TEXT } from '@constants/FormValid'
+import { ScheduleDays } from '@utils/api/request-response-types/models/Common'
 import { z } from 'zod'
 
 export const stylistSchema = z.object({

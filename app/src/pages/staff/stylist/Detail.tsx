@@ -10,7 +10,7 @@ import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import { deleteStylist, getStylist } from '@store/actions/stylistAction'
 import StylistDetail from '@components/detail/stylist/StylistDetail'
-import history from '@/utils/routes/history'
+import history from '@utils/routes/history'
 
 const Detail = ({
   match,

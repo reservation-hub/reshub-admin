@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react'
-import MainTemplate from '@/components/common/layout/MainTemplate'
-import SettingForm from '@/components/form/setting/SettingForm'
+import MainTemplate from '@components/common/layout/MainTemplate'
+import SettingForm from '@components/form/setting/SettingForm'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { changePassword } from '@/store/actions/userAction'
+import { changePassword } from '@store/actions/userAction'
 import {
   settingSchema,
   SettingSchema
-} from '@/components/form/setting/settingSchema'
+} from '@components/form/setting/settingSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import Section from '@/components/common/layout/Section'
+import Section from '@components/common/layout/Section'
 
 const Setting = () => {
   const dispatch = useDispatch()

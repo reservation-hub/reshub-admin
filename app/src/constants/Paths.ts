@@ -10,8 +10,8 @@ import Stylist from '@pages/staff/stylist/Stylist'
 import Reservation from '@pages/staff/reservation/Reservation'
 import CreateShop from '@pages/staff/shop/CreateShop'
 import Menu from '@pages/staff/menu/Menu'
-import TestForm from '@/pages/test'
-import Setting from '@/pages/setting/Setting'
+import TestForm from '@pages/test'
+import Setting from '@pages/setting/Setting'
 
 export type TStaticContext = {
   statusCode?: number | undefined

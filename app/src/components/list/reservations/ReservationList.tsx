@@ -4,7 +4,7 @@ import { IListProps } from '@components/list/_PropsType'
 import Table from '@components/common/atoms/Table'
 import useConvertTime from '@utils/hooks/useConverTime'
 import { ReservationForList } from '@utils/api/request-response-types/models/Reservation'
-import useConvertStatus from '@/utils/hooks/useStatus'
+import useConvertStatus from '@utils/hooks/useStatus'
 
 const ReservationsList = ({
   item,

@@ -10,7 +10,7 @@ import { TLocationStateInId } from '../reservation/Detail'
 import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import MenuDetail from '@components/detail/menu/MenuDetail'
-import history from '@/utils/routes/history'
+import history from '@utils/routes/history'
 
 const Detail = ({
   match,

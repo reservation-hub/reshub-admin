@@ -1,8 +1,8 @@
-import InputFiled from '@/components/common/atoms/InputFiled'
-import TextArea from '@/components/common/atoms/TextArea'
+import InputFiled from '@components/common/atoms/InputFiled'
+import TextArea from '@components/common/atoms/TextArea'
 import React from 'react'
-import FormWrapper from '../FormWrapper'
-import { IFormProps } from '../_PropsType'
+import FormWrapper from '@components/form/FormWrapper'
+import { IFormProps } from '@components/form/_PropsType'
 import { MenuSchema } from './menuSchema'
 
 const MenuForm = <T extends MenuSchema>({

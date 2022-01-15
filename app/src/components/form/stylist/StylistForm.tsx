@@ -1,10 +1,10 @@
 import React from 'react'
-import CheckBox from '@/components/common/atoms/CheckBox'
-import InputFiled from '@/components/common/atoms/InputFiled'
-import TimePicker from '@/components/common/atoms/TimePicker'
-import { Days } from '@/constants/Days'
-import FormWrapper from '../FormWrapper'
-import { IFormProps } from '../_PropsType'
+import CheckBox from '@components/common/atoms/CheckBox'
+import InputFiled from '@components/common/atoms/InputFiled'
+import TimePicker from '@components/common/atoms/TimePicker'
+import { Days } from '@constants/Days'
+import FormWrapper from '@components/form/FormWrapper'
+import { IFormProps } from '@components/form/_PropsType'
 import { StylistSchema } from './stylistSchema'
 
 const StylistForm = <T extends StylistSchema>({

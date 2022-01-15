@@ -7,7 +7,7 @@ import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline
 } from 'react-google-login'
-import { VALIDATION_TEXT } from '@/constants/FormValid'
+import { VALIDATION_TEXT } from '@constants/FormValid'
 import ErrorMessage from '@components/common/atoms/ErrorMessage'
 import { IFormProps } from '@components/form/_PropsType'
 import { LoginSchema } from './loginSchema'

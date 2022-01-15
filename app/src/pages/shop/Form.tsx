@@ -1,14 +1,14 @@
 import React, { useCallback, useMemo } from 'react'
 import { Route, RouteComponentProps } from 'react-router-dom'
-import SalonForm from '@/components/form/shop/SalonForm'
+import SalonForm from '@components/form/shop/SalonForm'
 import { TFormState } from '@components/form/_PropsType'
 import { useDispatch } from 'react-redux'
 import { addShop, editShopData } from '@store/actions/shopAction'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import dayjs from 'dayjs'
-import useConvertTime from '@/utils/hooks/useConverTime'
-import { ShopSchema, shopSchema } from '@/components/form/shop/shopSchema'
+import useConvertTime from '@utils/hooks/useConverTime'
+import { ShopSchema, shopSchema } from '@components/form/shop/shopSchema'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
