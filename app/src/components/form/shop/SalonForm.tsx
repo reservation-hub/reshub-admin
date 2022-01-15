@@ -50,10 +50,10 @@ const SalonForm = <T extends ShopSchema>({
 
   useEffect(() => {
     dispatch(getArea())
-    if (watchLocationIds?.[0]) {
+    if (watchLocationIds?.[0] !== '') {
       dispatch(getOnePref(Number(watchLocationIds?.[0])))
     }
-    if (watchLocationIds?.[1]) {
+    if (watchLocationIds?.[1] !== '') {
       dispatch(getOneCity(Number(watchLocationIds?.[1])))
     }
   }, [dispatch, watchLocationIds?.[0], watchLocationIds?.[1]])
