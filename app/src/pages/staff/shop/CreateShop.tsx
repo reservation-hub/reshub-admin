@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux'
 
 const CreateShop = () => {
   const dispatch = useDispatch()
-  
+
   const centerBarStyled =
     'w-[80rem] h-[50rem] rounded-[.5rem] bg-secondary-main overflow-scroll'
 

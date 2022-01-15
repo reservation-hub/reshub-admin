@@ -1,4 +1,4 @@
-import dayjs from "dayjs"
+import dayjs from 'dayjs'
 
 export const TIME_PICKER_TIME_TYPE = {
   HOUR: 'hour',

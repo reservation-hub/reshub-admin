@@ -58,7 +58,7 @@ const Table = <T extends Record<string, any>>({
           ))}
         </tbody>
       </table>
-      {row?.length === 0 && <IsEmpty text='データー' /> }
+      {row?.length === 0 && <IsEmpty text='データー' />}
       {usePaginate && (
         <Paginate
           totalPage={totalPage}

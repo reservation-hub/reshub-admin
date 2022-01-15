@@ -36,7 +36,7 @@ export const createStylist = async (
   return await instance.post<string>(
     `${baseEndpoint.shops}/${stylistData.shopId}/stylist`,
     {
-      ...stylistData
+      ...stylistData.params
     }
   )
 }

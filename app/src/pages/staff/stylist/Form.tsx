@@ -42,7 +42,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const onSubmit: SubmitHandler<StylistSchema> = useCallback(
     (value, event) => {
       event?.preventDefault()
-      console.log(value)
       if (stylist) {
         dispatch(
           editStylist({
@@ -51,18 +50,31 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             params: {
               ...value,
               price: Number(value.price),
-              startTime: dayjs(`${currentDate} ${value.startTime}:00`).toDate(),
-              endTime: dayjs(`${currentDate} ${value.endTime}:00`).toDate()
+              startTime: dayjs(`${currentDate} ${value.startTime}:00`).format(
+                'YYYY-MM-DDTHH:mm:ss'
+              ),
+              endTime: dayjs(`${currentDate} ${value.endTime}:00`).format(
+                'YYYY-MM-DDTHH:mm:ss'
+              )
             }
           })
         )
       } else {
-        dispatch(createStylist({ shopId: Number(shopId), params: {
-          ...value,
-          price: Number(value.price),
-          startTime: dayjs(`${currentDate} ${value.startTime}:00`).toDate(),
-          endTime: dayjs(`${currentDate} ${value.endTime}:00`).toDate()
-        } }))
+        dispatch(
+          createStylist({
+            shopId: Number(shopId),
+            params: {
+              ...value,
+              price: Number(value.price),
+              startTime: dayjs(`${currentDate} ${value.startTime}:00`).format(
+                'YYYY-MM-DDTHH:mm:ss'
+              ),
+              endTime: dayjs(`${currentDate} ${value.endTime}:00`).format(
+                'YYYY-MM-DDTHH:mm:ss'
+              )
+            }
+          })
+        )
       }
     },
     [dispatch]

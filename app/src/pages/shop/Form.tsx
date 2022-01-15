@@ -55,8 +55,12 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
               prefectureId: Number(value.prefectureId),
               cityId: Number(value.cityId),
               seats: Number(value.seats),
-              startTime: dayjs(`${currentDay} ${value.startTime}:00`).toDate(),
-              endTime: dayjs(`${currentDay} ${value.endTime}:00`).toDate()
+              startTime: dayjs(`${currentDay} ${value.startTime}:00`).format(
+                'YYYY-MM-DDTHH:mm:ss'
+              ),
+              endTime: dayjs(`${currentDay} ${value.endTime}:00`).format(
+                'YYYY-MM-DDTHH:mm:ss'
+              )
             }
           })
         )
@@ -68,8 +72,12 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             prefectureId: Number(value.prefectureId),
             cityId: Number(value.cityId),
             seats: Number(value.seats),
-            startTime: dayjs(`${currentDay} ${value.startTime}:00`).toDate(),
-            endTime: dayjs(`${currentDay} ${value.endTime}:00`).toDate()
+            startTime: dayjs(`${currentDay} ${value.startTime}:00`).format(
+              'YYYY-MM-DDTHH:mm:ss'
+            ),
+            endTime: dayjs(`${currentDay} ${value.endTime}:00`).format(
+              'YYYY-MM-DDTHH:mm:ss'
+            )
           })
         )
       }
