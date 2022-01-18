@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Section from '@components/common/layout/Section'
-import { MatchParams, selectType } from '@components/common/_PropsType'
+import { MatchParams, OptionsType } from '@components/common/_PropsType'
 import usePagination from '@utils/hooks/usePagination'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@store/store'
@@ -44,9 +44,9 @@ const Stylist = ({
 
   const option = watch('shopId')
 
-  const shopSelect: selectType[] = shops?.map((shop) => ({
+  const shopSelect: OptionsType[] = shops?.map((shop) => ({
     value: String(shop.id),
-    name: shop.name
+    label: shop.name
   }))
 
   useEffect(() => {

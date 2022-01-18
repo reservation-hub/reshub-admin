@@ -145,7 +145,7 @@ const UserForm = <T extends UserSchema>({
         id='role'
         name='roleSlug'
         label='権限'
-        data={ROLES.map((role) => ({ value: role.slug, name: role.name }))}
+        data={ROLES.map((role) => ({ value: role.slug, label: role.name }))}
         control={control}
       />
     </FormWrapper>

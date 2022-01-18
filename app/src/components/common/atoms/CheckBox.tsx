@@ -50,15 +50,15 @@ const CheckBox = ({
           {data?.map((value, index) => (
             <div key={index} className='w-[7rem] h-[4.4rem]'>
               <input
-                id={`check-${value.name}`}
+                id={`check-${value.label}`}
                 type='checkbox'
                 name={name}
-                checked={values?.includes(value.name)}
+                checked={values?.includes(value.label)}
                 value={value.value}
                 onChange={changeHandler}
               />
-              <label htmlFor={`check-${value.name}`} className='labels'>
-                {value.name}
+              <label htmlFor={`check-${value.label}`} className='labels'>
+                {value.label}
               </label>
             </div>
           ))}

@@ -4,7 +4,7 @@ import { z } from 'zod'
 export const settingSchema = z.object({
   oldPassword: z
     .string()
-    .regex(VALID_REGEX.PASSWORD, VALIDATION_TEXT.PASSWORD)
+    // .regex(VALID_REGEX.PASSWORD, VALIDATION_TEXT.PASSWORD)
     .nonempty({ message: VALIDATION_TEXT.PASSWORD }),
   newPassword: z
     .string()

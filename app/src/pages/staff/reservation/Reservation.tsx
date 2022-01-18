@@ -5,11 +5,10 @@ import {
   fetchReservations,
   fetchReservationsForCalendar
 } from '@store/actions/reservationAction'
-import { useSelect } from '@utils/hooks/useSelect'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
-import { MatchParams, selectType } from '@components/common/_PropsType'
+import { MatchParams, OptionsType } from '@components/common/_PropsType'
 import ReservationsList from '@components/list/reservations/ReservationList'
 import { HEADER_TYPE } from '@constants/Common'
 import { fetchShopList } from '@store/actions/shopAction'
@@ -53,9 +52,9 @@ const Reservation = ({
 
   const option = watch('shopId')
 
-  const shopSelect: selectType[] = shops?.map((shop) => ({
+  const shopSelect: OptionsType[] = shops?.map((shop) => ({
     value: String(shop.id),
-    name: shop.name
+    label: shop.name
   }))
 
   const callReservationsForCalendar = () => {
