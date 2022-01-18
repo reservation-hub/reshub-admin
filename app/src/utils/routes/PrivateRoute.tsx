@@ -20,8 +20,6 @@ const PrivateRoute = ({ children, ...rest }: RouteProps) => {
     (state: RootState) => state.auth
   )
 
-  console.log('11', user)
-
   const isAdmin = (user: UserForAuth) => user.role.name === 'admin'
 
   return (

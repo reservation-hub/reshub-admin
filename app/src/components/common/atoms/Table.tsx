@@ -24,7 +24,6 @@ const Table = <T extends Record<string, any>>({
   classes
 }: ITableProps<T>): React.ReactElement => {
   const styled = 'w-full bg-secondary-main rounded-[.25rem] p-[10rem] mb-5'
-  console.log(row?.length)
   return (
     <>
       <table className={`${styled} ${classes}`}>

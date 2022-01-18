@@ -78,7 +78,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     [dispatch]
   )
 
-  console.log(control._defaultValues)
   return (
     <>
       <Route path='/'>

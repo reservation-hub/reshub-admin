@@ -16,7 +16,6 @@ const Setting = () => {
   const dispatch = useDispatch()
 
   const { user } = useSelector((state: RootState) => state.auth)
-  console.log(user.id)
 
   const {
     control,

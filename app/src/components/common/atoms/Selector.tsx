@@ -17,11 +17,11 @@ const Selector = ({
   classes,
   control,
   error,
+  value,
   errorTxt
 }: ISelectorProps) => {
   const select =
     'p-3 m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none text-[1.6rem]'
-
   const { field } = useController({ control, name })
   return (
     <div className={`${classes} text-[1.6rem]`}>
@@ -32,6 +32,7 @@ const Selector = ({
         id={id}
         options={data}
         name={name}
+        defaultValue={data?.find(v => v.value === value)}
         value={data?.find((v) => v.value === field.value)}
         onChange={(e) => {
           field.onChange(e?.value)

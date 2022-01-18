@@ -12,16 +12,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import ReservationDetail from '@components/detail/reservation/ReservationDetail'
 import Loading from '@components/common/atoms/loading'
-
-export type TLocationStateInId = {
-  state: { shopId: string }
-  shopId?: string
-}
+import { TStateInId } from '@components/detail/_PropsType'
+import history from '@/utils/routes/history'
 
 const Detail = ({
   match,
   location
-}: RouteComponentProps<MatchParams, any, TLocationStateInId>) => {
+}: RouteComponentProps<MatchParams, any, TStateInId>) => {
   const { id } = match.params
   const dispatch = useDispatch()
   const convertId = Number(id)
@@ -53,7 +50,7 @@ const Detail = ({
       {loading ? (
         <Loading />
       ) : (
-        <ReservationDetail item={reservation} subModalHandler={modalHandler} />
+        <ReservationDetail item={reservation} subModalHandler={modalHandler} modalOpenHandler={() => history.push(`/reservation/edit/${id}`, { reservation })} />
       )}
     </>
   )

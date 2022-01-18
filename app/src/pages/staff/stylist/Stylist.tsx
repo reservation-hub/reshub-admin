@@ -17,12 +17,13 @@ import StylistList from '@components/list/stylist/StylistList'
 import Detail from '@pages/staff/stylist/Detail'
 import { useForm } from 'react-hook-form'
 import Form from './Form'
+import { TCurrentPage } from '@/components/list/_PropsType'
 
 const Stylist = ({
   match,
   location
-}: RouteComponentProps<MatchParams, any, any>) => {
-  const currentPage = location?.state?.currentPage
+}: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
+  const currentPage = location?.state.currentPage
   const [page, setPage] = useState<number>(currentPage)
   const pageChangeHandler = usePagination('stylist', page, setPage)
   const dispatch = useDispatch()
@@ -38,12 +39,12 @@ const Stylist = ({
 
   const { watch, control } = useForm({
     defaultValues: {
-      shopId: shops?.find((shop) => shop)?.id
+      shopId: shops && shops.find((shop) => shop)?.id
     }
   })
 
   const option = watch('shopId')
-
+  console.log(option)
   const shopSelect: OptionsType[] = shops?.map((shop) => ({
     value: String(shop.id),
     label: shop.name

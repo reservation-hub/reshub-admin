@@ -23,13 +23,14 @@ import CustomButton from '@components/common/atoms/CustomButton'
 import FullCalendar from '@fullcalendar/react'
 import usePagination from '@utils/hooks/usePagination'
 import { useForm } from 'react-hook-form'
+import { TCurrentPage } from '@/components/list/_PropsType'
 
 const Reservation = ({
   match,
   location
-}: RouteComponentProps<MatchParams, any, any>) => {
+}: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
   const dispatch = useDispatch()
-  const currentPage = location?.state?.currentPage
+  const currentPage = location?.state.currentPage
   const calendarRef = createRef<FullCalendar>()
   const [calendar, setCalendar] = useState<boolean>(false)
   const [page, setPage] = useState<number>(currentPage)

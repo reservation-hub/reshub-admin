@@ -17,12 +17,13 @@ import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Detail from './Detail'
 import { useForm } from 'react-hook-form'
 import Form from './Form'
+import { TCurrentPage } from '@/components/list/_PropsType'
 
 const Menu = ({
   match,
   location
-}: RouteComponentProps<MatchParams, any, any>) => {
-  const currentPage = location?.state?.currentPage
+}: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
+  const currentPage = location?.state.currentPage
   const [page, setPage] = useState<number>(currentPage)
   const pageChangeHandler = usePagination('menu', page, setPage)
   const dispatch = useDispatch()
@@ -43,7 +44,7 @@ const Menu = ({
   })
 
   const option = watch('shopId')
-
+  console.log('option', option)
   const shopSelect: OptionsType[] = shops?.map((shop) => ({
     value: String(shop.id),
     label: shop.name
@@ -73,6 +74,7 @@ const Menu = ({
                   <ShopSelect
                     data={shopSelect}
                     control={control}
+                    value={String(shops?.find((shop) => shop)?.id)}
                     listStyle
                     name='shopId'
                   />

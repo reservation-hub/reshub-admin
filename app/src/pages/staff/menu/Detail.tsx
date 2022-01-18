@@ -6,16 +6,16 @@ import { RootState } from '@store/store'
 import { useModal } from '@utils/hooks/useModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
-import { TLocationStateInId } from '../reservation/Detail'
 import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import MenuDetail from '@components/detail/menu/MenuDetail'
 import history from '@utils/routes/history'
+import { TStateInId } from '@/components/detail/_PropsType'
 
 const Detail = ({
   match,
   location
-}: RouteComponentProps<MatchParams, any, TLocationStateInId>) => {
+}: RouteComponentProps<MatchParams, any, TStateInId>) => {
   const { id } = match.params
   const dispatch = useDispatch()
   const convertId = Number(id)

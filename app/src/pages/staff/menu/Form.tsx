@@ -35,7 +35,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const onSubmit: SubmitHandler<MenuSchema> = useCallback(
     (value, event) => {
       event?.preventDefault()
-      // console.log(value)
       if (menu) {
         dispatch(
           editMenu({

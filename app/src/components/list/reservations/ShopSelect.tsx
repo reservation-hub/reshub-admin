@@ -12,8 +12,10 @@ const ShopSelect = ({
   data,
   classes,
   listStyle,
+  value,
   control
 }: IShopSelectProps) => {
+  
   return (
     <>
       {listStyle ? (
@@ -23,10 +25,9 @@ const ShopSelect = ({
           data={data}
           classes={classes}
           control={control}
+          value={value}
           name={name}
-        >
-          <option>閲覧したい店舗を選択してください</option>
-        </Selector>
+        />
       ) : (
         <div className='top-2/4 left-[55%] absolute transform translate-x-[-50%] translate-y-[-50%] w-[40rem] text-center'>
           <span className='text-[2rem]'>
@@ -40,6 +41,7 @@ const ShopSelect = ({
               name={name}
               data={data}
               classes={classes}
+              defaultValue={value}
             >
               <option>閲覧したい店舗を選択してください</option>
             </Selector>

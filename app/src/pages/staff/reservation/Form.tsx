@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import ReservationForm from '@components/form/reservation/ReservationForm'
 import { RouteComponentProps } from 'react-router-dom'
@@ -10,12 +10,17 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 import { createReservation } from '@/store/actions/reservationAction'
 import dayjs from '@utils/hooks/useDayJs'
+import { TFormState } from '@/components/form/_PropsType'
 
-const Form = ({ location }: RouteComponentProps<any, any, any>) => {
+const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
 
   const option = location.state?.option
 
+  const reservation = useMemo(() => {
+    return location.state?.reservation
+  }, [location])
+  
   const {
     control,
     watch,
@@ -25,9 +30,9 @@ const Form = ({ location }: RouteComponentProps<any, any, any>) => {
     resolver: zodResolver(reservationSchema),
     mode: 'onSubmit',
     defaultValues: {
-      reservationDay: '',
-      reservationTime: '',
-      userId: '',
+      reservationDay: String(dayjs(reservation?.reservationDate).format('YYYY-MM-DD')) ?? '',
+      reservationTime: String(dayjs(reservation?.reservationDate).format('HH:mm')) ??'',
+      userId: String(reservation?.clientName) ?? '',
       menuId: '',
       stylistId: ''
     }
@@ -54,7 +59,8 @@ const Form = ({ location }: RouteComponentProps<any, any, any>) => {
     <ReservationForm
       submitHandler={handleSubmit(onSubmit)}
       control={control}
-      shopId={option}
+      shopId={Number(option)}
+      error={errors}
     />
   )
 }

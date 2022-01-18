@@ -24,10 +24,6 @@ const ReservationForm = <T extends ReservationSchema>({
   const loadStylist = useLoadOptions(baseEndpoint.shops, shopId, 'stylist')
   const loadUser = useLoadOptions(`${baseEndpoint.users}`, undefined, undefined, true)
 
-  useEffect(() => {
-    apiEndpoint.users.searchUser('upthe15752')
-  }, [])
-
   return (
     <FormWrapper submitHandler={submitHandler} text='予約'>
       <div className='flex justify-between'>
