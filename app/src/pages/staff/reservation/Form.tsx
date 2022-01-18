@@ -67,6 +67,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       control={control}
       shopId={Number(option)}
       error={errors}
+      formState={location.state}
     />
   )
 }
