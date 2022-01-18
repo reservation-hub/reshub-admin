@@ -14,7 +14,7 @@ const Form = ({ location }: RouteComponentProps<any, any, any>) => {
   const dispatch = useDispatch()
 
   const option = location.state?.option
-
+  
   const {
     control,
     watch,

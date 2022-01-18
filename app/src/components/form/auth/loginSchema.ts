@@ -8,7 +8,7 @@ export const loginSchema = z.object({
     .nonempty({ message: VALIDATION_TEXT.EMAIL }),
   password: z
     .string()
-    // .regex(VALID_REGEX.PASSWORD, VALIDATION_TEXT.PASSWORD)
+    .regex(VALID_REGEX.PASSWORD, VALIDATION_TEXT.PASSWORD)
     .nonempty({ message: VALIDATION_TEXT.PASSWORD })
 })
 

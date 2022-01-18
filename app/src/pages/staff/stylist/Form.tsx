@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
 import dayjs from 'dayjs'
 import { currentDate } from '@/constants/Time'
+import convertScheduleTimeToDateString from '@/utils/hooks/useConvertScheduleTimeToDateString'
 import { RootState } from '@/store/store'
 import { getOneShop } from '@/store/actions/shopAction'
 
@@ -46,7 +47,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const onSubmit: SubmitHandler<StylistSchema> = useCallback(
     (value, event) => {
       event?.preventDefault()
-      console.log(value)
       if (stylist) {
         dispatch(
           editStylist({
@@ -55,8 +55,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             params: {
               ...value,
               price: Number(value.price),
-              startTime: dayjs(`${currentDate} ${value.startTime}:00`).toDate(),
-              endTime: dayjs(`${currentDate} ${value.endTime}:00`).toDate()
+              startTime: convertScheduleTimeToDateString(value.startTime),
+              endTime: convertScheduleTimeToDateString(value.endTime)
             }
           })
         )
@@ -67,8 +67,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             params: {
               ...value,
               price: Number(value.price),
-              startTime: dayjs(`${currentDate} ${value.startTime}:00`).toDate(),
-              endTime: dayjs(`${currentDate} ${value.endTime}:00`).toDate()
+              startTime: convertScheduleTimeToDateString(value.startTime),
+              endTime: convertScheduleTimeToDateString(value.endTime)
             }
           })
         )
