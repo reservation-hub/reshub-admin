@@ -66,13 +66,13 @@ const ReservationForm = <T extends ReservationSchema>({
         defaultAdditional={{ page: 1 }}
         loadOptions={loadMenu.loadMore}
       />
-      <AsyncSelector 
+      <AsyncSelector
         id='stylistId'
         name='stylistId'
         label='スタイリスト選択'
         classes='my-3'
         control={control}
-        defaultAdditional={{page: 1}}
+        defaultAdditional={{ page: 1 }}
         loadOptions={loadStylist.loadMore}
       />
     </FormWrapper>

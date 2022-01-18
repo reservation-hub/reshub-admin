@@ -28,11 +28,11 @@ const Selector = ({
       <label htmlFor={id} className='text-table-headerFont'>
         {label}
       </label>
-      <Select 
+      <Select
         id={id}
         options={data}
         name={name}
-        value={data?.find(v => v.value === field.value)}
+        value={data?.find((v) => v.value === field.value)}
         onChange={(e) => {
           field.onChange(e?.value)
         }}

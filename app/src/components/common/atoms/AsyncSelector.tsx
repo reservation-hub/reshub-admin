@@ -3,8 +3,6 @@ import { Controller, useController } from 'react-hook-form'
 import { AsyncPaginate, LoadOptions } from 'react-select-async-paginate'
 import { IPickerProps } from '../_PropsType'
 
-
-
 export interface IAsyncSelectorProps extends IPickerProps {
   loadOptions: LoadOptions<any, any, { page: any }>
   defaultAdditional?: { page: number }
@@ -20,7 +18,7 @@ const AsyncSelector = ({
   error,
   errorTxt,
   defaultAdditional,
-  loadOptions,
+  loadOptions
 }: IAsyncSelectorProps) => {
   const { field } = useController({ control, name })
 

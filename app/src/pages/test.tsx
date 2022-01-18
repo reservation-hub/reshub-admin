@@ -103,7 +103,11 @@ const TestForm = () => {
     }
   }
 
-  const { loadMore } = useLoadOptions<ReservationListResponse>(baseEndpoint.shops, 205, 'reservation')
+  const { loadMore } = useLoadOptions<ReservationListResponse>(
+    baseEndpoint.shops,
+    205,
+    'reservation'
+  )
 
   const defaultAdditional = {
     page: page
@@ -173,7 +177,7 @@ const TestForm = () => {
             />
           )}
         /> */}
-        <AsyncSelector 
+        <AsyncSelector
           name='select'
           label='test'
           id='select'

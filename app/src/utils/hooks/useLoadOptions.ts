@@ -40,7 +40,9 @@ export const useLoadOptions = <
       filterdOptions = data
     } else {
       const searchLowercase = search.toLowerCase()
-      filterdOptions = data.filter(({ label }: any) => label.includes(searchLowercase))
+      filterdOptions = data.filter(({ label }: any) =>
+        label.includes(searchLowercase)
+      )
     }
     return {
       options: filterdOptions,
