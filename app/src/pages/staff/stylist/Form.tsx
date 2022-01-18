@@ -11,11 +11,9 @@ import React, { useCallback, useEffect, useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
-import dayjs from 'dayjs'
-import { currentDate } from '@/constants/Time'
-import convertScheduleTimeToDateString from '@/utils/hooks/useConvertScheduleTimeToDateString'
 import { RootState } from '@/store/store'
 import { getOneShop } from '@/store/actions/shopAction'
+import convertScheduleTimeToDateString from '@/utils/hooks/useConvertScheduleTimeToDateString'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
