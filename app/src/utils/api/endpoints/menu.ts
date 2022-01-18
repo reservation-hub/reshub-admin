@@ -36,7 +36,7 @@ export const createMenu = async (
   return await instance.post<string>(
     `${baseEndpoint.shops}/${menuData.shopId}/menu`,
     {
-      ...menuData
+      ...menuData.params
     }
   )
 }
@@ -46,7 +46,7 @@ export const patchMenu = async (
 ): Promise<AxiosResponse<string>> => {
   return await instance.patch<string>(
     `${baseEndpoint.shops}/${menuData.shopId}/menu/${menuData.menuId}`,
-    { ...menuData }
+    { ...menuData.params }
   )
 }
 

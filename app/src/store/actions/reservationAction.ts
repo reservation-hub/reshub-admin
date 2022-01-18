@@ -114,7 +114,7 @@ export const createReservation =
       dispatch(reservationAddSuccess(res.data))
       history.push('/reservation', { currentPage: 1 })
     } catch (e: any) {
-      const err = e.reseponse.data
+      const err = e.response?.data
       dispatch(reservationRequestFailure(err))
     }
   }
@@ -132,7 +132,7 @@ export const patchReservation =
       dispatch(reservationPatchSuccess(res.data))
       history.push(`/reservation/${reservationData.reservationId}`)
     } catch (e: any) {
-      const err = e.response.data
+      const err = e.response?.data
       dispatch(reservationRequestFailure(err))
     }
   }
@@ -146,7 +146,7 @@ export const deleteReservation =
       dispatch(reservationDeleteSuccess(res.data))
       history.push('/reservation', { currentPage: 1 })
     } catch (e: any) {
-      const err = e.response.data
+      const err = e.response?.data
       dispatch(reservationRequestFailure(err))
     }
   }

@@ -46,7 +46,7 @@ export const createReservation = async (
   return await instance.post<string>(
     `${baseEndpoint.shops}/${resData.shopId}/reservation`,
     {
-      ...resData
+      ...resData.params
     }
   )
 }
@@ -56,7 +56,7 @@ export const patchReservation = async (
 ): Promise<AxiosResponse<string>> => {
   return await instance.patch<string>(
     `${baseEndpoint.shops}/${resData.shopId}/reservation/${resData.reservationId}`,
-    { ...resData }
+    { ...resData.params }
   )
 }
 

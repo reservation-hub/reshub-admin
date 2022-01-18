@@ -21,16 +21,17 @@ export const useLoadOptions = <
 >(
   baseEndpoint: string,
   shopId?: number,
-  url?: string
+  url?: string,
+  useKeyword?: boolean
 ) => {
   const loadOptions = async (search: string, page: number) => {
     const res = await instance.get<T>(
       url
         ? `${baseEndpoint}/${shopId}/${url}?page=${page}&order=desc`
-        : `${baseEndpoint}?page=${page}&order=desc`
+        : `${baseEndpoint}?page=${page}`
     )
     const data = res.data?.values?.map((v: any, i: number) => ({
-      label: String(v.name || v.clientName),
+      label: String(v.name || v.username),
       value: String(v.id)
     }))
 

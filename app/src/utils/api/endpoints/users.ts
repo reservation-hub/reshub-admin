@@ -62,7 +62,7 @@ export const searchUser = async (
   order?: 'desc' | 'asc'
 ): Promise<AxiosResponse<UserResponse>> => {
   return await instance.get<UserResponse>(
-    `${baseEndpoint.users}?keyword=${keyword}&page=${page}&order=${order}`
+    `${baseEndpoint.users}/search?keyword=${keyword}&page=${page}&order=${order}`
   )
 }
 

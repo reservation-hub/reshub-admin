@@ -46,7 +46,7 @@ export const patchStylist = async (
 ): Promise<AxiosResponse<string>> => {
   return await instance.patch<string>(
     `${baseEndpoint.shops}/${stylistData.shopId}/stylist/${stylistData.stylistId}`,
-    { ...stylistData }
+    { ...stylistData.params }
   )
 }
 

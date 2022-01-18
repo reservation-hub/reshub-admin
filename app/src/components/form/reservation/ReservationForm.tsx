@@ -7,6 +7,7 @@ import { useLoadOptions } from '@/utils/hooks/useLoadOptions'
 import FormWrapper from '@components/form//FormWrapper'
 import { IFormProps } from '@components/form/_PropsType'
 import { ReservationSchema } from './reservationSchema'
+import { TIME_TABLE } from '@/constants/Time'
 
 export interface IReservationFormProps<T> extends IFormProps<T> {
   shopId: number
@@ -21,7 +22,7 @@ const ReservationForm = <T extends ReservationSchema>({
 }: IReservationFormProps<T>) => {
   const loadMenu = useLoadOptions(baseEndpoint.shops, shopId, 'menu')
   const loadStylist = useLoadOptions(baseEndpoint.shops, shopId, 'stylist')
-  const loadUser = useLoadOptions(baseEndpoint.users)
+  const loadUser = useLoadOptions(`${baseEndpoint.users}`, undefined, undefined, true)
 
   useEffect(() => {
     apiEndpoint.users.searchUser('upthe15752')
@@ -46,6 +47,7 @@ const ReservationForm = <T extends ReservationSchema>({
           classes='my-3 w-[20rem]'
           control={control}
           error={error?.reservationTime}
+          data={TIME_TABLE.map((time) => ({ label: time, value: time }))}
         />
       </div>
       <AsyncSelector
