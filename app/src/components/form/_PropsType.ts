@@ -7,13 +7,7 @@ import {
 } from '@utils/api/request-response-types/Shop'
 import { UserResponse } from '@utils/api/request-response-types/User'
 import { Control } from 'react-hook-form'
-import { ClassesAndChildren } from '../common/_PropsType'
-
-export const RESERVATION_STEP = {
-  ONE: '1',
-  TWO: '2',
-  THREE: '3'
-} as const
+import { ClassesAndChildren } from '@components/common/_PropsType'
 
 export type TFormState = {
   user?: UserResponse

@@ -1,6 +1,5 @@
 import React from 'react'
-import CustomButton from '../common/atoms/CustomButton'
-import { ClassesAndChildren } from '../common/_PropsType'
+import CustomButton from '@components/common/atoms/CustomButton'
 import Header from './Header'
 import { IFormProps } from './_PropsType'
 

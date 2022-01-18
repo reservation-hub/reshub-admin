@@ -10,7 +10,7 @@ import {
 } from '@components/form/setting/settingSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Section from '@components/common/layout/Section'
-import { RootState } from '@/store/store'
+import { RootState } from '@store/store'
 
 const Setting = () => {
   const dispatch = useDispatch()

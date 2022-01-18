@@ -32,7 +32,7 @@ const Selector = ({
         id={id}
         options={data}
         name={name}
-        defaultValue={data?.find(v => v.value === value)}
+        defaultValue={data?.find((v) => v.value === value)}
         value={data?.find((v) => v.value === field.value)}
         onChange={(e) => {
           field.onChange(e?.value)

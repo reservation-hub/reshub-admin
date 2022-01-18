@@ -79,6 +79,7 @@ export const createStylist =
     try {
       const res = await apiEndpoint.stylist.createStylist(stylistData)
       dispatch(addSuccess(res.data))
+      history.push('/stylist', { currnetPage: 1 })
     } catch (e: any) {
       dispatch(requestFailure(e))
     }
@@ -93,6 +94,7 @@ export const editStylist =
     try {
       const res = await apiEndpoint.stylist.patchStylist(stylistData)
       dispatch(editSuccess(res.data))
+      history.push(`/stylist${stylistData.stylistId}`)
     } catch (e: any) {
       dispatch(requestFailure(e))
     }
@@ -108,6 +110,7 @@ export const deleteStylist =
     try {
       const res = await apiEndpoint.stylist.deleteStylist(shopId, stylistId)
       dispatch(deleteSuccess(res.data))
+      history.push('/stylist', { currnetPage: 1 })
     } catch (e: any) {
       dispatch(requestFailure(e))
     }

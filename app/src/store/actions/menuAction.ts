@@ -77,6 +77,7 @@ export const createMenu =
     try {
       const res = await apiEndpoint.menu.createMenu(menuData)
       dispatch(addSuccess(res.data))
+      history.push('/menu', { currnetPage: 1 })
     } catch (e: any) {
       dispatch(requestFailure(e))
     }
@@ -89,6 +90,7 @@ export const editMenu =
     try {
       const res = await apiEndpoint.menu.patchMenu(menuData)
       dispatch(editSuccess(res.data))
+      history.push(`/menu/${menuData.menuId}`)
     } catch (e: any) {
       dispatch(requestFailure(e))
     }
@@ -104,6 +106,7 @@ export const deleteMenu =
     try {
       const res = await apiEndpoint.menu.deleteMenu(shopId, menuId)
       dispatch(deleteSuccess(res.data))
+      history.push('/menu', { currnetPage: 1 })
     } catch (e: any) {
       dispatch(requestFailure(e))
     }

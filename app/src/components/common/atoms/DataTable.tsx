@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClassesAndChildren } from '../_PropsType'
+import { ClassesAndChildren } from '@components/common/_PropsType'
 
 export interface IDataTableProps<T> extends ClassesAndChildren {
   cell: { column: string; key: keyof T }[]

@@ -3,7 +3,7 @@ import CustomButton from '@components/common/atoms/CustomButton'
 import SubHeader from '@components/common/atoms/SubHeader'
 import { HEADER_TYPE } from '@constants/Common'
 import history from '@utils/routes/history'
-import { IDetailProps } from '../_PropsType'
+import { IDetailProps } from '@components/detail/_PropsType'
 import DataTable from '@components/common/atoms/DataTable'
 import { StylistResponse } from '@utils/api/request-response-types/Shop'
 

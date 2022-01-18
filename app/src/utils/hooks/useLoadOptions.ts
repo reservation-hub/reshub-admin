@@ -8,7 +8,7 @@ import {
 import instance from '@utils/api'
 import { LoadOptions } from 'react-select-async-paginate'
 import { GroupBase, OptionsOrGroups } from 'react-select'
-import { UserListResponse } from '../api/request-response-types/User'
+import { UserListResponse } from '@utils/api/request-response-types/User'
 import { OptionsType } from '@components/common/_PropsType'
 
 export const useLoadOptions = <

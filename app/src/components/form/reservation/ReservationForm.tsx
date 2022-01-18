@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
-import AsyncSelector from '@/components/common/atoms/AsyncSelector'
-import InputFiled from '@/components/common/atoms/InputFiled'
-import Selector from '@/components/common/atoms/Selector'
-import apiEndpoint, { baseEndpoint } from '@/utils/api/apiEndpoint'
-import { useLoadOptions } from '@/utils/hooks/useLoadOptions'
+import React from 'react'
+import AsyncSelector from '@components/common/atoms/AsyncSelector'
+import InputFiled from '@components/common/atoms/InputFiled'
+import Selector from '@components/common/atoms/Selector'
+import { baseEndpoint } from '@utils/api/apiEndpoint'
+import { useLoadOptions } from '@utils/hooks/useLoadOptions'
 import FormWrapper from '@components/form//FormWrapper'
 import { IFormProps } from '@components/form/_PropsType'
 import { ReservationSchema } from './reservationSchema'
-import { TIME_TABLE } from '@/constants/Time'
+import { TIME_TABLE } from '@constants/Time'
 
 export interface IReservationFormProps<T> extends IFormProps<T> {
   shopId: number
@@ -22,7 +22,12 @@ const ReservationForm = <T extends ReservationSchema>({
 }: IReservationFormProps<T>) => {
   const loadMenu = useLoadOptions(baseEndpoint.shops, shopId, 'menu')
   const loadStylist = useLoadOptions(baseEndpoint.shops, shopId, 'stylist')
-  const loadUser = useLoadOptions(`${baseEndpoint.users}`, undefined, undefined, true)
+  const loadUser = useLoadOptions(
+    `${baseEndpoint.users}`,
+    undefined,
+    undefined,
+    true
+  )
 
   return (
     <FormWrapper submitHandler={submitHandler} text='予約'>

@@ -23,7 +23,7 @@ import CustomButton from '@components/common/atoms/CustomButton'
 import FullCalendar from '@fullcalendar/react'
 import usePagination from '@utils/hooks/usePagination'
 import { useForm } from 'react-hook-form'
-import { TCurrentPage } from '@/components/list/_PropsType'
+import { TCurrentPage } from '@components/list/_PropsType'
 
 const Reservation = ({
   match,

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import ReservationForm from '@components/form/reservation/ReservationForm'
 import { RouteComponentProps } from 'react-router-dom'
@@ -8,9 +8,9 @@ import {
   ReservationSchema
 } from '@components/form/reservation/reservationSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { createReservation } from '@/store/actions/reservationAction'
+import { createReservation } from '@store/actions/reservationAction'
 import dayjs from '@utils/hooks/useDayJs'
-import { TFormState } from '@/components/form/_PropsType'
+import { TFormState } from '@components/form/_PropsType'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const reservation = useMemo(() => {
     return location.state?.reservation
   }, [location])
-  
+
   const {
     control,
     watch,
@@ -30,8 +30,10 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     resolver: zodResolver(reservationSchema),
     mode: 'onSubmit',
     defaultValues: {
-      reservationDay: String(dayjs(reservation?.reservationDate).format('YYYY-MM-DD')) ?? '',
-      reservationTime: String(dayjs(reservation?.reservationDate).format('HH:mm')) ??'',
+      reservationDay:
+        String(dayjs(reservation?.reservationDate).format('YYYY-MM-DD')) ?? '',
+      reservationTime:
+        String(dayjs(reservation?.reservationDate).format('HH:mm')) ?? '',
       userId: String(reservation?.clientName) ?? '',
       menuId: '',
       stylistId: ''
@@ -42,15 +44,19 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
 
   const onSubmit: SubmitHandler<ReservationSchema> = useCallback(
     (value) => {
-      dispatch(createReservation({
-        shopId: Number(option),
-        params: {
-          userId: Number(value.userId),
-          menuId: Number(value.menuId),
-          stylistId: Number(value.stylistId),
-          reservationDate: dayjs(`${value.reservationDay} ${value.reservationTime}:00`).tz('Asia/Tokyo').toDate()
-        }
-      }))
+      dispatch(
+        createReservation({
+          shopId: Number(option),
+          params: {
+            userId: Number(value.userId),
+            menuId: Number(value.menuId),
+            stylistId: Number(value.stylistId),
+            reservationDate: dayjs(
+              `${value.reservationDay} ${value.reservationTime}:00`
+            ).format('YYYY-MM-DD HH:mm:ss')
+          }
+        })
+      )
     },
     [dispatch]
   )

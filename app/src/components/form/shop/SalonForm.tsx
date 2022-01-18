@@ -10,7 +10,7 @@ import InputFiled from '@components/common/atoms/InputFiled'
 import GroupSelector from '@components/form/GroupSelector'
 import Loading from '@components/common/atoms/loading'
 import TextArea from '@components/common/atoms/TextArea'
-import FormWrapper from '../FormWrapper'
+import FormWrapper from '@components/form/FormWrapper'
 import { ShopSchema } from './shopSchema'
 
 export interface ISalonFormProps<T> extends IFormProps<T> {

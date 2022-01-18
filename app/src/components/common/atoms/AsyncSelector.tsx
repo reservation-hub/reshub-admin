@@ -1,7 +1,7 @@
 import React from 'react'
 import { Controller, useController } from 'react-hook-form'
 import { AsyncPaginate, LoadOptions } from 'react-select-async-paginate'
-import { IPickerProps } from '../_PropsType'
+import { IPickerProps } from '@components/common/_PropsType'
 
 export interface IAsyncSelectorProps extends IPickerProps {
   loadOptions: LoadOptions<any, any, { page: any }>

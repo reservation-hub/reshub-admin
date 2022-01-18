@@ -15,7 +15,6 @@ const ShopSelect = ({
   value,
   control
 }: IShopSelectProps) => {
-  
   return (
     <>
       {listStyle ? (

@@ -6,7 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import history from '@utils/routes/history'
 
 export interface ICalnederProps {
-  events?: { id: string; shopId: string; title: string; date: string }[]
+  events: { id: string; shopId: string; title: string; date: string }[]
   customButtons?: { prev: Record<string, any>; next: Record<string, any> }
   calendarRef?: RefObject<FullCalendar>
 }
@@ -20,6 +20,8 @@ const Calendar = ({ events, customButtons, calendarRef }: ICalnederProps) => {
     },
     [history]
   )
+
+  console.log('e', events)
 
   return (
     <FullCalendar

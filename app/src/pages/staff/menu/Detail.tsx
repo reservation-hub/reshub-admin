@@ -10,7 +10,7 @@ import ModalOverlay from '@components/modal/ModalOverlay'
 import ModalAlert from '@components/modal/ModalAlert'
 import MenuDetail from '@components/detail/menu/MenuDetail'
 import history from '@utils/routes/history'
-import { TStateInId } from '@/components/detail/_PropsType'
+import { TStateInId } from '@components/detail/_PropsType'
 
 const Detail = ({
   match,

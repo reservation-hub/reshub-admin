@@ -13,7 +13,7 @@ import { RouteComponentProps } from 'react-router'
 import ReservationDetail from '@components/detail/reservation/ReservationDetail'
 import Loading from '@components/common/atoms/loading'
 import { TStateInId } from '@components/detail/_PropsType'
-import history from '@/utils/routes/history'
+import history from '@utils/routes/history'
 
 const Detail = ({
   match,
@@ -50,7 +50,13 @@ const Detail = ({
       {loading ? (
         <Loading />
       ) : (
-        <ReservationDetail item={reservation} subModalHandler={modalHandler} modalOpenHandler={() => history.push(`/reservation/edit/${id}`, { reservation })} />
+        <ReservationDetail
+          item={reservation}
+          subModalHandler={modalHandler}
+          modalOpenHandler={() =>
+            history.push(`/reservation/edit/${id}`, { reservation })
+          }
+        />
       )}
     </>
   )

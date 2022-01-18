@@ -1,11 +1,11 @@
 import React from 'react'
-import { IFormProps } from '../_PropsType'
+import { IFormProps } from '@components/form/_PropsType'
 import Selector from '@components/common/atoms/Selector'
 import { ROLES } from '@constants/Roles'
 import InputFiled from '@components/common/atoms/InputFiled'
 import RadioButton from '@components/common/atoms/RadioButton'
 import { GENDER_TYPE } from '@constants/Gender'
-import FormWrapper from '../FormWrapper'
+import FormWrapper from '@components/form/FormWrapper'
 import { UserSchema } from './userSchema'
 
 export interface IUserFormProps<T> extends IFormProps<T> {

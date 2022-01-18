@@ -17,7 +17,7 @@ import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Detail from './Detail'
 import { useForm } from 'react-hook-form'
 import Form from './Form'
-import { TCurrentPage } from '@/components/list/_PropsType'
+import { TCurrentPage } from '@components/list/_PropsType'
 
 const Menu = ({
   match,
@@ -44,7 +44,7 @@ const Menu = ({
   })
 
   const option = watch('shopId')
-  console.log('option', option)
+
   const shopSelect: OptionsType[] = shops?.map((shop) => ({
     value: String(shop.id),
     label: shop.name

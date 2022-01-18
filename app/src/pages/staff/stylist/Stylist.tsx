@@ -17,7 +17,7 @@ import StylistList from '@components/list/stylist/StylistList'
 import Detail from '@pages/staff/stylist/Detail'
 import { useForm } from 'react-hook-form'
 import Form from './Form'
-import { TCurrentPage } from '@/components/list/_PropsType'
+import { TCurrentPage } from '@components/list/_PropsType'
 
 const Stylist = ({
   match,
@@ -44,7 +44,7 @@ const Stylist = ({
   })
 
   const option = watch('shopId')
-  console.log(option)
+
   const shopSelect: OptionsType[] = shops?.map((shop) => ({
     value: String(shop.id),
     label: shop.name
