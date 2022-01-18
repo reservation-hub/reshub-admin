@@ -1,4 +1,4 @@
-import dayjs from 'dayjs'
+import dayjs from '@utils/hooks/useDayJs'
 
 export const TIME_PICKER_TIME_TYPE = {
   HOUR: 'hour',
@@ -56,4 +56,4 @@ export const TIME_TABLE = [
   '23:30'
 ]
 
-export const currentDate = dayjs().format('YYYY-MM-DD')
+export const currentDate = dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD')

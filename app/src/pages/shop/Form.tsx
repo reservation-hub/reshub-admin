@@ -6,14 +6,14 @@ import { useDispatch } from 'react-redux'
 import { addShop, editShopData } from '@store/actions/shopAction'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import dayjs from 'dayjs'
 import useConvertTime from '@utils/hooks/useConverTime'
 import { ShopSchema, shopSchema } from '@components/form/shop/shopSchema'
 import convertScheduleTimeToDateString from '@utils/hooks/useConvertScheduleTimeToDateString'
+import { currentDate } from '@constants/Time'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
-  const currentDay = dayjs().format('YYYY-MM-DD')
+  const currentDay = currentDate
   const shop = useMemo(() => {
     return location.state?.shop
   }, [location])
