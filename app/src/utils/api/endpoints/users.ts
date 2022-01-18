@@ -56,13 +56,24 @@ export const changePassword = async (
   )
 }
 
+export const searchUser = async (
+  keyword: string,
+  page?: number,
+  order?: 'desc' | 'asc'
+): Promise<AxiosResponse<UserResponse>> => {
+  return await instance.get<UserResponse>(
+    `${baseEndpoint.users}?keyword=${keyword}&page=${page}&order=${order}`
+  )
+}
+
 const users = {
   getUsers,
   getUser,
   createUser,
   patchUser,
   changePassword,
-  deleteUser
+  deleteUser,
+  searchUser
 }
 
 export default users

@@ -7,13 +7,15 @@ import { TFormState } from '@components/form/_PropsType'
 import { createStylist, editStylist } from '@store/actions/stylistAction'
 import useConvertTime from '@utils/hooks/useConverTime'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { Route, RouteComponentProps } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { RouteComponentProps } from 'react-router-dom'
 import dayjs from 'dayjs'
 import { currentDate } from '@/constants/Time'
 import convertScheduleTimeToDateString from '@/utils/hooks/useConvertScheduleTimeToDateString'
+import { RootState } from '@/store/store'
+import { getOneShop } from '@/store/actions/shopAction'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -24,6 +26,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     return location.state?.stylist
   }, [location])
 
+  const { shop } = useSelector((state: RootState) => state.shop)
+
   const {
     control,
     handleSubmit,
@@ -33,7 +37,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     mode: 'onSubmit',
     defaultValues: {
       name: stylist?.name ?? '',
-      price: String(stylist?.price) ?? undefined,
+      price: String(stylist?.price) ?? '',
       days: stylist?.days ?? [],
       startTime: useConvertTime('hm', stylist?.startTime) ?? '',
       endTime: useConvertTime('hm', stylist?.endTime) ?? ''
@@ -72,6 +76,10 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     },
     [dispatch]
   )
+
+  useEffect(() => {
+    if (shopId) dispatch(getOneShop(Number(shopId)))
+  }, [dispatch, shopId])
 
   return (
     <StylistForm

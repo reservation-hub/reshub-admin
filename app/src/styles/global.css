@@ -28,9 +28,13 @@ input[type=radio] {
 }
 
 input[type=radio] + .labels {
-  @apply p-[.65rem] cursor-pointer w-[17.5rem] border rounded-[.25rem] text-center hover:text-secondary-main hover:bg-primary
+  @apply p-[.65rem] cursor-pointer w-[17.5rem] border rounded-[.25rem] text-center hover:text-secondary-main hover:bg-primary;
 }
 
 input[type=radio]:checked + .labels {
-  @apply bg-primary text-secondary-main
+  @apply bg-primary text-secondary-main;
+}
+
+.react-select__control {
+  @apply h-[4.3rem] rounded-[.25rem];
 }

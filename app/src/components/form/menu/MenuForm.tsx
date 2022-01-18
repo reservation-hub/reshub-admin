@@ -30,6 +30,7 @@ const MenuForm = <T extends MenuSchema>({
         name='price'
         label='価格'
         classes='my-3'
+        type='number'
         control={control}
         error={error?.price}
         errorTxt={error?.price?.message}

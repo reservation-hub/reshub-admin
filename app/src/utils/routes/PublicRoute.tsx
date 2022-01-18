@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import { Redirect, Route, RouteProps } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '@store/store'
 import { VALIDATION_TEXT } from '@constants/FormValid'
@@ -10,7 +10,7 @@ import { UserForAuth } from '@utils/api/request-response-types/models/User'
  * @access staff and admin
  * @constructor
  */
-const PublicRoute = ({ children, ...rest }: any) => {
+const PublicRoute = ({ children, ...rest }: RouteProps) => {
   //-----------------------------------------------------------
   // 権限をチェックして権限がadminもしくはsalon staffの場合だけ
   // 行こうとしている経路へ移動させる

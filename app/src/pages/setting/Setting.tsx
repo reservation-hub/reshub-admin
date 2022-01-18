@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import SettingForm from '@components/form/setting/SettingForm'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { changePassword } from '@store/actions/userAction'
 import {
   settingSchema,
@@ -10,9 +10,13 @@ import {
 } from '@components/form/setting/settingSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Section from '@components/common/layout/Section'
+import { RootState } from '@/store/store'
 
 const Setting = () => {
   const dispatch = useDispatch()
+
+  const { user } = useSelector((state: RootState) => state.auth)
+  console.log(user.id)
 
   const {
     control,
@@ -31,7 +35,7 @@ const Setting = () => {
   const onSubmit: SubmitHandler<SettingSchema> = useCallback(
     (value, event) => {
       event?.preventDefault()
-      dispatch(changePassword({ id: 1, params: value }))
+      dispatch(changePassword({ id: user.id, params: value }))
     },
     [dispatch]
   )

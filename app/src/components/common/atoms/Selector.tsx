@@ -3,6 +3,7 @@ import { IPickerProps } from '@components/common/_PropsType'
 import { AiOutlineArrowDown } from 'react-icons/ai'
 import { useController } from 'react-hook-form'
 import ErrorMessage from './ErrorMessage'
+import Select from 'react-select'
 
 export interface ISelectorProps extends IPickerProps {
   defaultValue?: string
@@ -14,7 +15,6 @@ const Selector = ({
   name,
   data,
   classes,
-  children,
   control,
   error,
   errorTxt
@@ -24,25 +24,20 @@ const Selector = ({
 
   const { field } = useController({ control, name })
   return (
-    <div className={`${classes} grid`}>
+    <div className={`${classes} text-[1.6rem]`}>
       <label htmlFor={id} className='text-table-headerFont'>
         {label}
       </label>
-      <div className='flex'>
-        <select
-          id={id}
-          className={error ? `${select} border-error-main` : select}
-          {...field}
-        >
-          {children}
-          {data?.map((type, index) => (
-            <option key={index} value={type.value}>
-              {type.name}
-            </option>
-          ))}
-        </select>
-        <AiOutlineArrowDown className='self-center ml-[-2.8rem]' />
-      </div>
+      <Select 
+        id={id}
+        options={data}
+        name={name}
+        value={data?.find(v => v.value === field.value)}
+        onChange={(e) => {
+          field.onChange(e?.value)
+        }}
+        classNamePrefix='react-select'
+      />
       {error && errorTxt && <ErrorMessage text={errorTxt} />}
     </div>
   )

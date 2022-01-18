@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import ReservationForm from '@components/form/reservation/ReservationForm'
 import { RouteComponentProps } from 'react-router-dom'
@@ -8,10 +8,13 @@ import {
   ReservationSchema
 } from '@components/form/reservation/reservationSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { createReservation } from '@/store/actions/reservationAction'
 
 const Form = ({ location }: RouteComponentProps<any, any, any>) => {
   const dispatch = useDispatch()
 
+  const option = location.state?.option
+  
   const {
     control,
     watch,
@@ -20,10 +23,31 @@ const Form = ({ location }: RouteComponentProps<any, any, any>) => {
   } = useForm<ReservationSchema>({
     resolver: zodResolver(reservationSchema),
     mode: 'onSubmit',
-    defaultValues: {}
+    defaultValues: {
+      reservationDate: '',
+      userId: '',
+      menuId: '',
+      stylistId: ''
+    }
   })
 
-  return <ReservationForm />
+  const watchAll = watch()
+  console.log(watchAll)
+
+  const onSubmit = useCallback(
+    (value) => {
+      dispatch(createReservation(value))
+    },
+    [dispatch]
+  )
+
+  return (
+    <ReservationForm
+      submitHandler={handleSubmit(onSubmit)}
+      control={control}
+      shopId={option}
+    />
+  )
 }
 
 export default Form

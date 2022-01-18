@@ -1,13 +1,13 @@
 import React from 'react'
 import Selector from '@components/common/atoms/Selector'
-import { IPickerProps, selectType } from '@components/common/_PropsType'
+import { IPickerProps, OptionsType } from '@components/common/_PropsType'
 
 export interface IGroupSelector extends IPickerProps {
   datas?: {
-    areas: selectType[]
-    pref: selectType[]
-    city: selectType[]
-    days: selectType[]
+    areas: OptionsType[]
+    pref: OptionsType[]
+    city: OptionsType[]
+    days: OptionsType[]
   }
 }
 

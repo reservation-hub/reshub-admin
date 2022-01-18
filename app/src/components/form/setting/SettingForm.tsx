@@ -23,7 +23,7 @@ const SettingForm = <T extends Record<string, any>>({
       <InputFiled
         id='newPassword'
         name='newPassword'
-        label='現在パスワード'
+        label='新しいパスワード'
         classes='my-3'
         type='password'
         control={control}
@@ -33,7 +33,7 @@ const SettingForm = <T extends Record<string, any>>({
       <InputFiled
         id='confirmNewPassword'
         name='confirmNewPassword'
-        label='現在パスワード'
+        label='パスワード確認'
         classes='my-3'
         type='password'
         control={control}

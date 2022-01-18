@@ -5,13 +5,12 @@ import Loading from '@components/common/atoms/loading'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
-import { MatchParams, selectType } from '@components/common/_PropsType'
+import { MatchParams, OptionsType } from '@components/common/_PropsType'
 import MenuList from '@components/list/menu/MenuList'
 import ShopSelect from '@components/list/reservations/ShopSelect'
 import { HEADER_TYPE } from '@constants/Common'
 import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
-import { useSelect } from '@utils/hooks/useSelect'
 import history from '@utils/routes/history'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router-dom'
@@ -45,9 +44,9 @@ const Menu = ({
 
   const option = watch('shopId')
 
-  const shopSelect: selectType[] = shops?.map((shop) => ({
+  const shopSelect: OptionsType[] = shops?.map((shop) => ({
     value: String(shop.id),
-    name: shop.name
+    label: shop.name
   }))
 
   useEffect(() => {

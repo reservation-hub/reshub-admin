@@ -5,9 +5,9 @@ export type MatchParams = {
   id: string
 }
 
-export type selectType = {
+export type OptionsType = {
+  label: string
   value: string
-  name: string
 }
 
 export interface IMainTemplateProps extends ClassesAndChildren {
@@ -20,7 +20,7 @@ export interface ClassesAndChildren {
 }
 
 export interface IPickerProps extends IInputProps {
-  data?: selectType[]
+  data?: OptionsType[]
 }
 
 export interface IInputProps extends ClassesAndChildren {

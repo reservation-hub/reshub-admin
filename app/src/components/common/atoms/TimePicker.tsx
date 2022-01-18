@@ -18,7 +18,7 @@ const TimePicker = ({
 }: ITimePickerProps) => {
   const timeTable = TIME_TABLE.map((time) => ({
     value: time,
-    name: time
+    label: time
   }))
   return (
     <div className={`${classes} text-[1.6rem]`}>

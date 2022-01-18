@@ -16,7 +16,7 @@ const NavBar = () => {
         <Link to={roleCheck ? `/users/${user.id}` : '/settings'}>
           <div className='text-center'>
             <FaRegUserCircle className='w-[5rem] h-[5rem] mx-auto' />
-            <p className='m-0'>{'User' || 'Admin'}</p>
+            <p className='m-0'>{roleCheck ? 'ADMIN' : 'USER'}</p>
           </div>
         </Link>
       </div>

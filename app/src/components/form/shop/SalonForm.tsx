@@ -35,17 +35,17 @@ const SalonForm = <T extends ShopSchema>({
   const data = {
     areas: Object.values(area).map((area) => ({
       value: String(area.id),
-      name: area.name
+      label: area.name
     })),
     pref: prefecture?.prefectures?.map((pref) => ({
       value: String(pref.id),
-      name: pref.name
+      label: pref.name
     })),
     city: city?.cities?.map((city) => ({
       value: String(city.id),
-      name: city.name
+      label: city.name
     })),
-    days: Days.map((day) => ({ value: day.name, name: day.name }))
+    days: Days.map((day) => ({ value: day.name, label: day.name }))
   }
 
   useEffect(() => {
