@@ -12,6 +12,7 @@ import Loading from '@components/common/atoms/loading'
 import TextArea from '@components/common/atoms/TextArea'
 import FormWrapper from '@components/form/FormWrapper'
 import { ShopSchema } from './shopSchema'
+import { convertToOptionsType } from '@/utils/hooks/useShopSelect'
 
 export interface ISalonFormProps<T> extends IFormProps<T> {
   formValue: Record<string, any>
@@ -33,20 +34,13 @@ const SalonForm = <T extends ShopSchema>({
   )
 
   const data = {
-    areas: Object.values(area).map((area) => ({
-      value: String(area.id),
-      label: area.name
-    })),
-    pref: prefecture?.prefectures?.map((pref) => ({
-      value: String(pref.id),
-      label: pref.name
-    })),
-    city: city?.cities?.map((city) => ({
-      value: String(city.id),
-      label: city.name
-    })),
-    days: Days.map((day) => ({ value: day.name, label: day.name }))
+    areas: Object.values(area).map(convertToOptionsType),
+    pref: prefecture?.prefectures?.map(convertToOptionsType),
+    city: city?.cities?.map(convertToOptionsType),
+    days: Days.map(convertToOptionsType)
   }
+
+  console.log(data)
 
   useEffect(() => {
     dispatch(getArea())

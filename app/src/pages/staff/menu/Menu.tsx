@@ -5,19 +5,19 @@ import Loading from '@components/common/atoms/loading'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
-import { MatchParams, OptionsType } from '@components/common/_PropsType'
+import { MatchParams } from '@components/common/_PropsType'
 import MenuList from '@components/list/menu/MenuList'
 import ShopSelect from '@components/list/reservations/ShopSelect'
 import { HEADER_TYPE } from '@constants/Common'
-import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
 import history from '@utils/routes/history'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Detail from './Detail'
-import { useForm } from 'react-hook-form'
 import Form from './Form'
 import { TCurrentPage } from '@components/list/_PropsType'
+import CustomButton from '@components/common/atoms/CustomButton'
+import { useShopSelect } from '@utils/hooks/useShopSelect'
 
 const Menu = ({
   match,
@@ -25,37 +25,23 @@ const Menu = ({
 }: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
   const currentPage = location?.state.currentPage
   const [page, setPage] = useState<number>(currentPage)
+  const [order, setOrder] = useState<'desc' | 'asc'>('desc')
   const pageChangeHandler = usePagination('menu', page, setPage)
+  const { option, control, shopSelect, loading } = useShopSelect(page)
   const dispatch = useDispatch()
 
-  const { shops, loading, menus } = useSelector(
+  const { menus } = useSelector(
     (state: RootState) => ({
-      shops: state.shop.shops.values,
-      loading: state.shop.loading,
       menus: state.menu.menus
     }),
     shallowEqual
   )
 
-  const { watch, control } = useForm({
-    defaultValues: {
-      shopId: shops?.find((shop) => shop)?.id
-    }
-  })
-
-  const option = watch('shopId')
-
-  const shopSelect: OptionsType[] = shops?.map((shop) => ({
-    value: String(shop.id),
-    label: shop.name
-  }))
-
   useEffect(() => {
-    dispatch(fetchShopList(1, 'desc'))
     if (option && match.isExact) {
-      dispatch(fetchAllMenu(Number(option), page, 'desc'))
+      dispatch(fetchAllMenu(Number(option), page, order))
     }
-  }, [dispatch, option, match.isExact, page])
+  }, [dispatch, option, match.isExact, page, order])
 
   return (
     <MainTemplate>
@@ -74,10 +60,17 @@ const Menu = ({
                   <ShopSelect
                     data={shopSelect}
                     control={control}
-                    value={String(shops?.find((shop) => shop)?.id)}
                     listStyle
                     name='shopId'
                   />
+                  <CustomButton
+                    onClick={() =>
+                      order === 'desc' ? setOrder('asc') : setOrder('desc')
+                    }
+                    classes='min-w-[12rem] ml-2'
+                  >
+                    並び替え
+                  </CustomButton>
                 </SubHeader>
                 <MenuList
                   item={option ? menus.values : []}

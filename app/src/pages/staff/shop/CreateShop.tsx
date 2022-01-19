@@ -3,7 +3,6 @@ import CenterBox from '@components/common/layout/CenterBox'
 import SubTemplate from '@components/common/layout/SubTemplate'
 import SalonForm from 'components/form/shop/SalonForm'
 import { addShop } from '@store/actions/shopAction'
-import { useTimePicker } from '@utils/hooks/useTimePicker'
 import React, { useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 

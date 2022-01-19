@@ -1,4 +1,3 @@
-import { Items } from '@constants/items'
 import { IPaginateProps } from '@components/common/atoms/Paginate'
 
 export interface IListProps extends IPaginateProps {

@@ -30,7 +30,14 @@ const ReservationForm = <T extends ReservationSchema>({
   )
 
   return (
-    <FormWrapper submitHandler={submitHandler} text={formState?.reservation ? `${formState.reservation.id}編集` : '予約新規作成'}>
+    <FormWrapper
+      submitHandler={submitHandler}
+      text={
+        formState?.reservation
+          ? `${formState.reservation.id}編集`
+          : '予約新規作成'
+      }
+    >
       <div className='flex justify-between'>
         <InputFiled
           id='reservationDay'

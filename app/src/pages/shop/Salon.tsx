@@ -4,7 +4,6 @@ import MainTemplate from '@components/common/layout/MainTemplate'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
-import Paginate from '@components/common/atoms/Paginate'
 import { Route, RouteComponentProps, Switch } from 'react-router-dom'
 import Detail from './Detail'
 import Loading from '@components/common/atoms/loading'
@@ -25,8 +24,7 @@ const Salon = ({
   const dispatch = useDispatch()
   const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
-  const [correct, setCorrect] = useState<boolean>(true)
-  const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
+  const [order, setOrder] = useState<'desc' | 'asc'>('desc')
 
   const { shops, loading, user } = useSelector(
     (state: RootState) => ({
@@ -67,7 +65,9 @@ const Salon = ({
                 >
                   <CustomButton
                     classes='ml-2'
-                    onClick={() => setCorrect(!correct)}
+                    onClick={() =>
+                      order === 'desc' ? setOrder('asc') : setOrder('desc')
+                    }
                   >
                     並び替え
                   </CustomButton>

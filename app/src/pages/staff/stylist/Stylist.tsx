@@ -18,6 +18,7 @@ import Detail from '@pages/staff/stylist/Detail'
 import { useForm } from 'react-hook-form'
 import Form from './Form'
 import { TCurrentPage } from '@components/list/_PropsType'
+import CustomButton from '@components/common/atoms/CustomButton'
 
 const Stylist = ({
   match,
@@ -25,6 +26,7 @@ const Stylist = ({
 }: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
   const currentPage = location?.state.currentPage
   const [page, setPage] = useState<number>(currentPage)
+  const [order, setOrder] = useState<'desc' | 'asc'>('desc')
   const pageChangeHandler = usePagination('stylist', page, setPage)
   const dispatch = useDispatch()
 
@@ -53,9 +55,9 @@ const Stylist = ({
   useEffect(() => {
     dispatch(fetchShopList(1, 'desc'))
     if (option && match.isExact) {
-      dispatch(fetchAllStylist(Number(option), page, 'desc'))
+      dispatch(fetchAllStylist(Number(option), page, order))
     }
-  }, [dispatch, option, match.isExact, page])
+  }, [dispatch, option, match.isExact, page, order])
 
   return (
     <MainTemplate>
@@ -79,6 +81,14 @@ const Stylist = ({
                     listStyle
                     name='shopId'
                   />
+                  <CustomButton
+                    onClick={() =>
+                      order === 'desc' ? setOrder('asc') : setOrder('desc')
+                    }
+                    classes='min-w-[12rem] ml-2'
+                  >
+                    並び替え
+                  </CustomButton>
                 </SubHeader>
                 <StylistList
                   item={option ? stylists?.values : []}

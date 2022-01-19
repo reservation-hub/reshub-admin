@@ -74,35 +74,6 @@ const TestForm = () => {
   //   setPage(page + 1)
   // }
 
-  const loadOptions = async (search: string, page: number) => {
-    const res = await apiEndpoint.reservation.fetchReservations(
-      205,
-      page,
-      'desc'
-    )
-    const data = res.data.values?.map((v, i) => ({
-      label: v.clientName + i,
-      value: String(v.id)
-    }))
-
-    let filteredOptions
-
-    if (!search) {
-      filteredOptions = data
-    } else {
-      const searchLower = search.toLowerCase()
-
-      filteredOptions = data.filter(({ label }) =>
-        label.toLowerCase().includes(searchLower)
-      )
-    }
-
-    return {
-      options: filteredOptions,
-      hasMore: filteredOptions.length > page
-    }
-  }
-
   const { loadMore } = useLoadOptions<ReservationListResponse>(
     baseEndpoint.shops,
     205,
@@ -112,26 +83,6 @@ const TestForm = () => {
   const defaultAdditional = {
     page: page
   }
-
-  // const load: LoadOptions<string, any, { page: any }> = async (q: string, p: any, a: { page: number } | undefined) => {
-  //   const { options, hasMore } = await loadOptions2(q, Number(a?.page))
-
-  //   return {
-  //     options,
-  //     hasMore,
-  //     additional: {
-  //       page: Number(a?.page) + 1
-  //     }
-  //   }
-  // }
-
-  // const test = fetch()
-  // console.log(test)
-
-  // useEffect(() => {
-  //   const { data } = fetch()
-  //   console.log(data)
-  // }, [dispatch, page, 205])
 
   return (
     <div>

@@ -8,22 +8,21 @@ import {
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
-import { MatchParams, OptionsType } from '@components/common/_PropsType'
+import { MatchParams } from '@components/common/_PropsType'
 import ReservationsList from '@components/list/reservations/ReservationList'
 import { HEADER_TYPE } from '@constants/Common'
-import { fetchShopList } from '@store/actions/shopAction'
 import { RootState } from '@store/store'
 import history from '@utils/routes/history'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Route, RouteComponentProps, Switch } from 'react-router'
 import ReservationDetail from './Detail'
 import Form from './Form'
 import Calendar from '@components/common/atoms/Calendar'
 import CustomButton from '@components/common/atoms/CustomButton'
-import FullCalendar from '@fullcalendar/react'
 import usePagination from '@utils/hooks/usePagination'
-import { useForm } from 'react-hook-form'
 import { TCurrentPage } from '@components/list/_PropsType'
+import { useShopSelect } from '@/utils/hooks/useShopSelect'
+import { useCalendar } from '@/utils/hooks/useCalendar'
 
 const Reservation = ({
   match,
@@ -31,75 +30,43 @@ const Reservation = ({
 }: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
   const dispatch = useDispatch()
   const currentPage = location?.state.currentPage
-  const calendarRef = createRef<FullCalendar>()
-  const [calendar, setCalendar] = useState<boolean>(false)
   const [page, setPage] = useState<number>(currentPage)
+  const [order, setOrder] = useState<'desc' | 'asc'>('desc')
   const pageChangeHandler = usePagination('reservation', page, setPage)
+  const { option, control, shopSelect, loading } = useShopSelect(page)
 
-  const { shops, loading, reservations } = useSelector(
-    (state: RootState) => ({
-      shops: state.shop.shops.values,
-      loading: state.shop.loading,
-      reservations: state.reservation.reservations
-    }),
-    shallowEqual
-  )
+  const { reservations } = useSelector((state: RootState) => state.reservation)
 
-  const { watch, control } = useForm({
-    defaultValues: {
-      shopId: shops?.find((shop) => shop)?.id
-    }
-  })
-
-  const option = watch('shopId')
-
-  const shopSelect: OptionsType[] = shops?.map((shop) => ({
-    value: String(shop.id),
-    label: shop.name
-  }))
-
-  const callReservationsForCalendar = () => {
-    return dispatch(
-      fetchReservationsForCalendar(
-        Number(option),
-        Number(calendarRef.current?.getApi().getDate().getFullYear()),
-        Number(calendarRef.current?.getApi().getDate().getMonth()) + 1
-      )
-    )
-  }
+  const {
+    calendar,
+    calendarRef,
+    reservationsEvent,
+    viewCalendar,
+    fetchForCalendar
+  } = useCalendar(Number(option), reservations.values)
 
   const calendarCustomButton = {
     prev: {
       text: '先月',
       click: () => {
         calendarRef.current?.getApi().prev()
-        callReservationsForCalendar()
+        fetchForCalendar()
       }
     },
     next: {
       text: '来月',
       click: () => {
         calendarRef.current?.getApi().next()
-        callReservationsForCalendar()
+        fetchForCalendar()
       }
     }
   }
 
-  const reservationsEvent = reservations.values?.map((reservation) => ({
-    id: String(reservation.id),
-    shopId: String(reservation.shopId),
-    title: `${reservation.clientName}/${reservation.menuName}`,
-    date: String(reservation.reservationDate)
-  }))
-
   useEffect(() => {
-    dispatch(fetchShopList(1, 'desc'))
-    if (option && match.isExact) {
-      calendar
-        ? callReservationsForCalendar()
-        : dispatch(fetchReservations(Number(option), Number(page), 'desc'))
+    if (option && match.isExact && !calendar) {
+      dispatch(fetchReservations(Number(option), Number(page), order))
     }
-  }, [dispatch, option, match.isExact, page, calendar, calendarRef.current])
+  }, [dispatch, option, match.isExact, page, order, calendar])
 
   return (
     <MainTemplate>
@@ -124,10 +91,18 @@ const Reservation = ({
                     name='shopId'
                   />
                   <CustomButton
-                    onClick={() => setCalendar(!calendar)}
+                    onClick={viewCalendar}
                     classes='min-w-[12rem] ml-2'
                   >
                     {calendar ? 'リストで見る' : 'カレンダーで見る'}
+                  </CustomButton>
+                  <CustomButton
+                    onClick={() =>
+                      order === 'desc' ? setOrder('asc') : setOrder('desc')
+                    }
+                    classes='min-w-[12rem] ml-2'
+                  >
+                    並び替え
                   </CustomButton>
                 </SubHeader>
                 {calendar ? (

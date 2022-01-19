@@ -21,8 +21,6 @@ const Calendar = ({ events, customButtons, calendarRef }: ICalnederProps) => {
     [history]
   )
 
-  console.log('e', events)
-
   return (
     <FullCalendar
       ref={calendarRef}
