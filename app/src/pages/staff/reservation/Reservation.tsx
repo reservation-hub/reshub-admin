@@ -21,8 +21,8 @@ import Calendar from '@components/common/atoms/Calendar'
 import CustomButton from '@components/common/atoms/CustomButton'
 import usePagination from '@utils/hooks/usePagination'
 import { TCurrentPage } from '@components/list/_PropsType'
-import { useShopSelect } from '@/utils/hooks/useShopSelect'
-import { useCalendar } from '@/utils/hooks/useCalendar'
+import { useShopSelect } from '@utils/hooks/useShopSelect'
+import { useCalendar } from '@utils/hooks/useCalendar'
 
 const Reservation = ({
   match,

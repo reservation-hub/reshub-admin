@@ -12,7 +12,7 @@ import Loading from '@components/common/atoms/loading'
 import TextArea from '@components/common/atoms/TextArea'
 import FormWrapper from '@components/form/FormWrapper'
 import { ShopSchema } from './shopSchema'
-import { convertToOptionsType } from '@/utils/hooks/useShopSelect'
+import { convertToOptionsType } from '@utils/hooks/useShopSelect'
 
 export interface ISalonFormProps<T> extends IFormProps<T> {
   formValue: Record<string, any>

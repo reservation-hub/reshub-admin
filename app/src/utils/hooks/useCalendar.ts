@@ -1,4 +1,4 @@
-import { fetchReservationsForCalendar } from '@/store/actions/reservationAction'
+import { fetchReservationsForCalendar } from '@store/actions/reservationAction'
 import FullCalendar from '@fullcalendar/react'
 import { createRef, useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
