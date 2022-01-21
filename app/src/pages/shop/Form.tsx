@@ -9,11 +9,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import useConvertTime from '@utils/hooks/useConverTime'
 import { ShopSchema, shopSchema } from '@components/form/shop/shopSchema'
 import convertScheduleTimeToDateString from '@utils/hooks/useConvertScheduleTimeToDateString'
-import { currentDate } from '@constants/Time'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
-  const currentDay = currentDate
   const shop = useMemo(() => {
     return location.state?.shop
   }, [location])
@@ -43,7 +41,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
 
   const watchLocationIds = watch(['areaId', 'prefectureId'])
 
-  const createShop: SubmitHandler<ShopSchema> = useCallback(
+  const onSubmit: SubmitHandler<ShopSchema> = useCallback(
     (value, event) => {
       event?.preventDefault()
       if (shop) {
@@ -82,7 +80,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     <>
       <Route path='/'>
         <SalonForm
-          submitHandler={handleSubmit(createShop)}
+          submitHandler={handleSubmit(onSubmit)}
           watchLocationIds={watchLocationIds}
           formState={location.state}
           formValue={control._defaultValues}
@@ -92,7 +90,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       </Route>
       <Route path='/form/:id'>
         <SalonForm
-          submitHandler={handleSubmit(createShop)}
+          submitHandler={handleSubmit(onSubmit)}
           watchLocationIds={watchLocationIds}
           formState={location.state}
           formValue={control._defaultValues}

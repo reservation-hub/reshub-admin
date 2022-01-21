@@ -15,7 +15,7 @@ import { ShopSchema } from './shopSchema'
 import { convertToOptionsType } from '@utils/hooks/useShopSelect'
 
 export interface ISalonFormProps<T> extends IFormProps<T> {
-  formValue: Record<string, any>
+  formValue?: Record<string, any>
   watchLocationIds?: string[]
 }
 
@@ -39,8 +39,6 @@ const SalonForm = <T extends ShopSchema>({
     city: city?.cities?.map(convertToOptionsType),
     days: Days.map(convertToOptionsType)
   }
-
-  console.log(data)
 
   useEffect(() => {
     dispatch(getArea())
@@ -112,7 +110,7 @@ const SalonForm = <T extends ShopSchema>({
             classes='my-3'
             control={control}
             data={data.days}
-            checkedData={formValue.days}
+            checkedData={formValue?.days}
             error={Boolean(error?.days)}
             errorTxt={error?.days?.message}
           />

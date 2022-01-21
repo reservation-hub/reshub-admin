@@ -4,6 +4,8 @@ import { silentLogin } from '@store/actions/authAction'
 import Cookies from 'js-cookie'
 import RouterIndex from '@utils/routes/RouterIndex'
 import setAuthToken from '@utils/api/setAuthToken'
+import history from './utils/routes/history'
+import { Redirect } from 'react-router-dom'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -11,6 +13,10 @@ const App = () => {
   const authToken: string = Cookies.get('authToken') ?? ''
   const refreshToken: string = Cookies.get('refreshToken') ?? ''
   setAuthToken(sessionToken)
+
+  if (!authToken && !sessionToken && !refreshToken) {
+    return <Redirect to='/auth' />
+  }
 
   useEffect(() => {
     if (!authToken && !sessionToken && refreshToken) {
