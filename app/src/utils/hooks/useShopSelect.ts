@@ -29,6 +29,8 @@ export const useShopSelect = (page?: number) => {
   localStorage.setItem('currentShop', String(shopId))
 
   const option = localStorage.getItem('currentShop')
+    ? localStorage.getItem('currentShop')
+    : shopId
 
   useEffect(() => {
     dispatch(fetchShopList(Number(page), 'desc'))
