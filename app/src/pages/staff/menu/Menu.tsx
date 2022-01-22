@@ -7,7 +7,7 @@ import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
 import { MatchParams } from '@components/common/_PropsType'
 import MenuList from '@components/list/menu/MenuList'
-import ShopSelect from '@/components/list/ShopSelect'
+import ShopSelect from '@components/list/ShopSelect'
 import { HEADER_TYPE } from '@constants/Common'
 import { RootState } from '@store/store'
 import history from '@utils/routes/history'
@@ -23,7 +23,7 @@ const Menu = ({
   match,
   location
 }: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
-  const currentPage = location?.state.currentPage
+  const currentPage = location?.state?.currentPage
   const [page, setPage] = useState<number>(currentPage)
   const [order, setOrder] = useState<'desc' | 'asc'>('desc')
   const pageChangeHandler = usePagination('menu', page, setPage)
@@ -53,7 +53,7 @@ const Menu = ({
             ) : (
               <>
                 <SubHeader
-                  title='メニュー一覧'
+                  text='メニュー一覧'
                   type={HEADER_TYPE.LIST}
                   modalOpenHandler={() => history.push('/menu/new', { option })}
                 >

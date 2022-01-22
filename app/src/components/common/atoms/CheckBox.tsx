@@ -57,7 +57,10 @@ const CheckBox = ({
                 value={value.value}
                 onChange={changeHandler}
               />
-              <label htmlFor={`check-${value.label}`} className='labels'>
+              <label
+                htmlFor={`check-${value.label}`}
+                className={error ? 'labels border-error-main' : 'labels'}
+              >
                 {value.label}
               </label>
             </div>

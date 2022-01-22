@@ -15,7 +15,7 @@ const FormWrapper = <T extends Record<string, any>>({
 }: IFormWrapperProps<T>) => {
   return (
     <div className='p-[2rem] bg-secondary-main w-[60rem] mx-auto'>
-      <Header title={String(text)} onClick={onClick} />
+      <Header text={String(text)} onClick={onClick} />
       <form onSubmit={submitHandler}>
         {children}
         <CustomButton classes='min-w-full'>登録</CustomButton>

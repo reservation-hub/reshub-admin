@@ -117,9 +117,9 @@ export const editShopData =
       const res = await apiEndpoint.shops.patchShop(shopData)
       dispatch(shopPatchSuccess(res.data))
       if (history.location.pathname === `/shops/form/${shopData.id}`) {
-        history.push(`/shops/${shopData.id}`)
+        history.push(`/shops/detail/${shopData.id}`)
       } else {
-        history.push(`/salon/${shopData.id}`)
+        history.push(`/salon/deatil/${shopData.id}`)
       }
     } catch (e: any) {
       dispatch(shopRequestFailure(e))

@@ -45,7 +45,7 @@ const Users = ({
             ) : (
               <>
                 <SubHeader
-                  title='ユーザー一覧'
+                  text='ユーザー一覧'
                   modalOpenHandler={() => history.push('/users/form')}
                   type={HEADER_TYPE.LIST}
                 >

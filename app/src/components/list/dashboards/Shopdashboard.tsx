@@ -15,7 +15,7 @@ export interface ShopStaffDashboardProps extends ClassesAndChildren {
 const ShopDashboard = ({ data }: ShopStaffDashboardProps) => {
   return (
     <Section>
-      <SubHeader title='ダッシュボード' type='dashboard' />
+      <SubHeader text='ダッシュボード' type='dashboard' />
       <div className='flex justify-between'>
         <div className='w-[71rem]'>
           <ReservationsList item={data?.reservations} />

@@ -31,8 +31,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       areaId: shop ? String(shop.areaId) : '',
       prefectureId: shop ? String(shop.prefectureId) : '',
       cityId: shop ? String(shop.cityId) : '',
-      startTime: useConvertTime('hm', shop?.startTime) ?? '',
-      endTime: useConvertTime('hm', shop?.endTime) ?? '',
+      startTime: useConvertTime('hm', shop?.startTime) || '',
+      endTime: useConvertTime('hm', shop?.endTime) || '',
       days: shop?.days || [],
       seats: String(shop?.seats) || '',
       details: shop?.details || ''
@@ -75,6 +75,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     },
     [dispatch]
   )
+
+  console.log(errors)
 
   return (
     <>

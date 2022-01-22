@@ -12,7 +12,7 @@ export interface AdminDashboardProps {
 const AdminDashboard = ({ data }: AdminDashboardProps) => {
   return (
     <Section>
-      <SubHeader title='ダッシュボード' type='dashboard'>
+      <SubHeader text='ダッシュボード' type='dashboard'>
         <div className='text-[1.6rem]'>ユーザー{data.user?.totalCount}件</div>
         <div className='text-[1.6rem]'>サロン {data.shop?.totalCount}件</div>
       </SubHeader>

@@ -11,7 +11,7 @@ import Loading from '@components/common/atoms/loading'
 import SubHeader from '@components/common/atoms/SubHeader'
 import { HEADER_TYPE } from '@constants/Common'
 import history from '@utils/routes/history'
-import ShopSelect from '@/components/list/ShopSelect'
+import ShopSelect from '@components/list/ShopSelect'
 import StylistList from '@components/list/stylist/StylistList'
 import Detail from '@pages/staff/stylist/Detail'
 import Form from './Form'
@@ -48,7 +48,7 @@ const Stylist = ({
             ) : (
               <>
                 <SubHeader
-                  title='スタイリスト一覧'
+                  text='スタイリスト一覧'
                   type={HEADER_TYPE.LIST}
                   modalOpenHandler={() =>
                     history.push('/stylist/new', { option })

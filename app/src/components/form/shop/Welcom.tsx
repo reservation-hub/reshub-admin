@@ -1,5 +1,5 @@
-import CustomButton from '@/components/common/atoms/CustomButton'
-import { OnClickProps } from '@/components/common/_PropsType'
+import CustomButton from '@components/common/atoms/CustomButton'
+import { OnClickProps } from '@components/common/_PropsType'
 import React from 'react'
 
 const Welcome = ({ onClick }: OnClickProps) => {

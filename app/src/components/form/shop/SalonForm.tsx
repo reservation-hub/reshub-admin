@@ -41,6 +41,12 @@ const SalonForm = <T extends ShopSchema>({
     days: Days.map(convertToOptionsType)
   }
 
+  const errors = {
+    area: error?.areaId,
+    prefecture: error?.prefectureId,
+    city: error?.cityId
+  }
+
   useEffect(() => {
     dispatch(getArea())
     if (watchLocationIds?.[0] !== '') {
@@ -85,7 +91,12 @@ const SalonForm = <T extends ShopSchema>({
             error={Boolean(error?.phoneNumber)}
             errorTxt={error?.phoneNumber?.message}
           />
-          <GroupSelector items={items} control={control} name='group' />
+          <GroupSelector
+            items={items}
+            control={control}
+            name='group'
+            errors={errors}
+          />
           <InputFiled
             id='address'
             label='住所'
@@ -102,6 +113,10 @@ const SalonForm = <T extends ShopSchema>({
             classes='my-3'
             names={['startTime', 'endTime']}
             control={control}
+            errors={{
+              startTime: error?.startTime,
+              endTime: error?.endTime
+            }}
             error={Boolean(error?.startTime) || Boolean(error?.endTime)}
             errorTxt={error?.startTime?.message || error?.endTime?.message}
           />

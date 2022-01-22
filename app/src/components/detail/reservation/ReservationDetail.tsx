@@ -28,7 +28,7 @@ const ReservationDetail = ({
   return (
     <>
       <SubHeader
-        title={`${item?.id}詳細`}
+        text={`${item?.id}詳細`}
         type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}

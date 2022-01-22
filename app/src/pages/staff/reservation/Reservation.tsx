@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Loading from '@components/common/atoms/loading'
-import ShopSelect from '@/components/list/ShopSelect'
+import ShopSelect from '@components/list/ShopSelect'
 import { fetchReservations } from '@store/actions/reservationAction'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
@@ -75,7 +75,7 @@ const Reservation = ({
             ) : (
               <>
                 <SubHeader
-                  title='予約管理'
+                  text='予約管理'
                   type={HEADER_TYPE.LIST}
                   modalOpenHandler={() =>
                     history.push('/reservation/new', { option })

@@ -1,11 +1,7 @@
 import React from 'react'
-import { ClassesAndChildren } from '@components/common/_PropsType'
+import { TextProps } from '@components/common/_PropsType'
 
-export interface IErrorMessageProps extends ClassesAndChildren {
-  text?: string
-}
-
-const ErrorMessage = ({ children, text, classes }: IErrorMessageProps) => {
+const ErrorMessage = ({ children, text, classes }: TextProps) => {
   return (
     <span className={`${classes} text-error-main text-[1.4rem] mb-5`}>
       {text ? text : children}

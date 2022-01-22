@@ -9,6 +9,7 @@ import ReservationsList from '@components/list/reservations/ReservationList'
 import MenuList from '@components/list/menu/MenuList'
 import DataTable from '@components/common/atoms/DataTable'
 import { ShopResponse } from '@utils/api/request-response-types/Shop'
+import useConvertTime from '@/utils/hooks/useConverTime'
 
 const ShopDetail = ({
   item,
@@ -23,13 +24,17 @@ const ShopDetail = ({
     ...item,
     address: `${item?.prefectureName}${item?.cityName}${item?.address || ''}`,
     days: item?.days?.join(' ・ '),
-    businessTime: `${item?.startTime} - ${item?.endTime}` || ''
+    businessTime:
+      `${useConvertTime('hm', item?.startTime)} - ${useConvertTime(
+        'hm',
+        item?.endTime
+      )}` || ''
   } as ShopDetail
 
   return (
     <>
       <SubHeader
-        title={`${item?.name}の詳細`}
+        text={`${item?.name}の詳細`}
         type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}

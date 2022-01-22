@@ -6,6 +6,7 @@ import ErrorMessage from './ErrorMessage'
 
 export interface ITimePickerProps extends IPickerProps {
   names: string[]
+  errors: Record<string, any>
 }
 
 const TimePicker = ({
@@ -13,7 +14,7 @@ const TimePicker = ({
   names,
   classes,
   label,
-  error,
+  errors,
   errorTxt
 }: ITimePickerProps) => {
   const timeTable = TIME_TABLE.map((time) => ({
@@ -29,7 +30,8 @@ const TimePicker = ({
           item={timeTable}
           control={control}
           name={names[0]}
-          error={error}
+          error={errors?.startTime}
+          errorTxt={errorTxt}
         />
         <span> ~ </span>
         <Selector
@@ -37,10 +39,10 @@ const TimePicker = ({
           item={timeTable}
           control={control}
           name={names[1]}
-          error={error}
+          error={errors?.endTime}
         />
       </div>
-      {error && <ErrorMessage text={errorTxt} />}
+      {/* {error && <ErrorMessage text={errorTxt} />} */}
     </div>
   )
 }

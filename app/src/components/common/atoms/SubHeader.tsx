@@ -1,18 +1,17 @@
 import React from 'react'
 import CustomButton from './CustomButton'
 import H1 from './H1'
-import { ClassesAndChildren } from '@components/common/_PropsType'
+import { TextProps } from '@components/common/_PropsType'
 import { HEADER_TYPE } from '@constants/Common'
 
-export interface ISubHeaderProps extends ClassesAndChildren {
-  title: string
+export interface ISubHeaderProps extends TextProps {
   type?: typeof HEADER_TYPE[keyof typeof HEADER_TYPE]
   modalOpenHandler?: () => void
   subModalHandler?: () => void
 }
 
 const SubHeader = ({
-  title,
+  text,
   modalOpenHandler,
   type,
   subModalHandler,
@@ -20,7 +19,7 @@ const SubHeader = ({
 }: ISubHeaderProps) => {
   return (
     <div className='flex justify-between items-center mb-4'>
-      <H1 classes='text-primary'>{title}</H1>
+      <H1 classes='text-primary' text={text} />
 
       <div className='flex items-center'>
         {children}

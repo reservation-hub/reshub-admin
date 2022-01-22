@@ -94,7 +94,9 @@ export const editStylist =
     try {
       const res = await apiEndpoint.stylist.patchStylist(stylistData)
       dispatch(editSuccess(res.data))
-      history.push(`/stylist${stylistData.stylistId}`)
+      history.push(`/stylist/detail/${stylistData.stylistId}`, {
+        shopId: stylistData.shopId
+      })
     } catch (e: any) {
       dispatch(requestFailure(e))
     }

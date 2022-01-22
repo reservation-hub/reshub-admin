@@ -90,7 +90,9 @@ export const editMenu =
     try {
       const res = await apiEndpoint.menu.patchMenu(menuData)
       dispatch(editSuccess(res.data))
-      history.push(`/menu/${menuData.menuId}`)
+      history.push(`/menu/detail/${menuData.menuId}`, {
+        shopId: menuData.shopId
+      })
     } catch (e: any) {
       dispatch(requestFailure(e))
     }

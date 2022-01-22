@@ -6,6 +6,7 @@ import Select from 'react-select'
 
 export interface ISelectorProps extends IPickerProps {
   defaultValue?: string
+  classNamePrefix?: string
 }
 
 const Selector = ({
@@ -17,7 +18,8 @@ const Selector = ({
   control,
   error,
   value,
-  errorTxt
+  errorTxt,
+  classNamePrefix
 }: ISelectorProps) => {
   const { field } = useController({ control, name })
 
@@ -35,7 +37,9 @@ const Selector = ({
         onChange={(e) => {
           field.onChange(e?.value)
         }}
-        classNamePrefix='react-select'
+        classNamePrefix={
+          classNamePrefix ? `${classNamePrefix}` : 'react-select'
+        }
       />
       {error && errorTxt && <ErrorMessage text={errorTxt} />}
     </div>

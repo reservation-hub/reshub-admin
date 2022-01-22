@@ -57,7 +57,7 @@ const Salon = ({
             ) : (
               <>
                 <SubHeader
-                  title={authCheck ? 'サロン一覧' : '店舗一覧'}
+                  text={authCheck ? 'サロン一覧' : '店舗一覧'}
                   type={HEADER_TYPE.LIST}
                   modalOpenHandler={() =>
                     history.push(authCheck ? '/salon/form' : '/shops/form')

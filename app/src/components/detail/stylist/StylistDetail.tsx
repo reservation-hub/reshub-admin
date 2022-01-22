@@ -6,6 +6,7 @@ import history from '@utils/routes/history'
 import { IDetailProps } from '@components/detail/_PropsType'
 import DataTable from '@components/common/atoms/DataTable'
 import { StylistResponse } from '@utils/api/request-response-types/Shop'
+import useConvertTime from '@/utils/hooks/useConverTime'
 
 const StylistDetail = ({
   item,
@@ -21,12 +22,15 @@ const StylistDetail = ({
     ...item,
     price: `${item?.price?.toLocaleString()}¥`,
     days: item?.days?.join(' ・ '),
-    businessTime: `${item?.startTime} - ${item?.endTime}`
+    businessTime: `${useConvertTime('hm', item?.startTime)} - ${useConvertTime(
+      'hm',
+      item?.endTime
+    )}`
   } as StylistDetail
   return (
     <>
       <SubHeader
-        title={`${data.name}詳細`}
+        text={`${data.name}詳細`}
         type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}

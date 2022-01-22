@@ -58,6 +58,10 @@ const StylistForm = <T extends StylistSchema>({
         classes='mt-3 mb-10'
         names={['startTime', 'endTime']}
         control={control}
+        errors={{
+          startTime: error?.startTime,
+          endTime: error?.endTime
+        }}
         error={error?.startTime || error?.endTime}
         errorTxt={error?.startTime?.message || error?.endTime?.message}
       />

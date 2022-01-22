@@ -33,7 +33,7 @@ export const useCalendar = (
     (item: ReservationForList): TCalendarEvnet => {
       return {
         id: String(item.id),
-        shopId: String(item.id),
+        shopId: String(item.shopId),
         title: `${item.clientName}/${item.menuName}`,
         date: String(item.reservationDate)
       }

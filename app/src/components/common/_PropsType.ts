@@ -43,3 +43,7 @@ export interface IInputProps extends ClassesAndChildren {
 export interface OnClickProps extends ClassesAndChildren {
   onClick?: () => void
 }
+
+export interface TextProps extends OnClickProps {
+  text?: string
+}

@@ -23,7 +23,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
 
   const {
     control,
-    watch,
     handleSubmit,
     formState: { errors }
   } = useForm<ReservationSchema>({
@@ -39,8 +38,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       stylistId: ''
     }
   })
-
-  const watchAll = watch()
 
   const onSubmit: SubmitHandler<ReservationSchema> = useCallback(
     (value) => {
@@ -65,7 +62,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     <ReservationForm
       submitHandler={handleSubmit(onSubmit)}
       control={control}
-      shopId={Number(option)}
+      shopId={Number(option) || Number(reservation?.shopId)}
       error={errors}
       formState={location.state}
     />

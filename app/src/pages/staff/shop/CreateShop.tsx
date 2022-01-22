@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { shopSchema, ShopSchema } from '@components/form/shop/shopSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import convertScheduleTimeToDateString from '@utils/hooks/useConvertScheduleTimeToDateString'
-import Welcome from '@/components/form/shop/Welcom'
+import Welcome from '@components/form/shop/Welcom'
 
 const CreateShop = () => {
   const dispatch = useDispatch()

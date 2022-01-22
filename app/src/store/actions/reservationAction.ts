@@ -130,7 +130,9 @@ export const patchReservation =
         reservationData
       )
       dispatch(reservationPatchSuccess(res.data))
-      history.push(`/reservation/${reservationData.reservationId}`)
+      history.push(`/reservation/detail/${reservationData.reservationId}`, {
+        shopId: reservationData.shopId
+      })
     } catch (e: any) {
       const err = e.response?.data
       dispatch(reservationRequestFailure(err))

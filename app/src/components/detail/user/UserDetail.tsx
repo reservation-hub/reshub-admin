@@ -27,7 +27,7 @@ const UserDetail = ({
   return (
     <Section>
       <SubHeader
-        title='ユーザー詳細'
+        text='ユーザー詳細'
         type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}

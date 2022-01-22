@@ -14,7 +14,7 @@ export interface ICalnederProps {
 const Calendar = ({ events, customButtons, calendarRef }: ICalnederProps) => {
   const calendarClickHandler = useCallback(
     (arg: EventClickArg) => {
-      history.push(`/reservation/${arg.event?.id}`, {
+      history.push(`/reservation/detail/${arg.event?.id}`, {
         shopId: arg.event.extendedProps?.shopId
       })
     },

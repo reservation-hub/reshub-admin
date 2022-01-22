@@ -23,7 +23,7 @@ const Detail = ({ match }: RouteComponentProps<MatchParams>) => {
   )
   const convertId = Number(id)
   const dispatch = useDispatch()
-  const authCheck = user.role.name === 'admin'
+  const authCheck = user.role?.name === 'admin'
   const { open, modalHandler } = useModal(false)
 
   const onDelete = useCallback(() => {

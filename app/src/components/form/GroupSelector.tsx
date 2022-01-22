@@ -8,9 +8,10 @@ export interface IGroupSelector extends IPickerProps {
     pref: OptionsType[]
     city: OptionsType[]
   }
+  errors?: Record<string, any>
 }
 
-const GroupSelector = ({ items, control, classes }: IGroupSelector) => {
+const GroupSelector = ({ items, control, classes, errors }: IGroupSelector) => {
   return (
     <div className={`${classes} w-full flex justify-between text-[1.6rem]`}>
       <Selector
@@ -20,6 +21,8 @@ const GroupSelector = ({ items, control, classes }: IGroupSelector) => {
         classes='w-[18rem]'
         item={items?.areas}
         control={control}
+        error={errors?.area}
+        errorTxt={errors?.area?.message}
       />
       <Selector
         id='pref'
@@ -28,6 +31,8 @@ const GroupSelector = ({ items, control, classes }: IGroupSelector) => {
         classes='w-[18rem]'
         item={items?.pref}
         control={control}
+        error={errors?.prefecture}
+        errorTxt={errors?.prefecture?.message}
       />
       <Selector
         id='city'
@@ -36,6 +41,8 @@ const GroupSelector = ({ items, control, classes }: IGroupSelector) => {
         classes='w-[18rem]'
         item={items?.city}
         control={control}
+        error={errors?.city}
+        errorTxt={errors?.city?.message}
       />
     </div>
   )

@@ -9,9 +9,8 @@ import useConvertTime from '@utils/hooks/useConverTime'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
-import { RootState } from '@store/store'
 import { getOneShop } from '@store/actions/shopAction'
 import convertScheduleTimeToDateString from '@utils/hooks/useConvertScheduleTimeToDateString'
 
@@ -23,8 +22,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const stylist = useMemo(() => {
     return location.state?.stylist
   }, [location])
-
-  const { shop } = useSelector((state: RootState) => state.shop)
 
   const {
     control,
@@ -74,10 +71,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     },
     [dispatch]
   )
-
-  useEffect(() => {
-    if (shopId) dispatch(getOneShop(Number(shopId)))
-  }, [dispatch, shopId])
 
   return (
     <StylistForm

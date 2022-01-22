@@ -26,7 +26,7 @@ const MenuDetail = ({
   return (
     <>
       <SubHeader
-        title={`${data.name}詳細`}
+        text={`${data.name}詳細`}
         type={HEADER_TYPE.DETAIL}
         modalOpenHandler={modalOpenHandler}
         subModalHandler={subModalHandler}
