@@ -6,7 +6,7 @@ import { TFormState } from '@components/form/_PropsType'
 import { addUser, patchUser } from '@store/actions/userAction'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import useConvertTime from '@utils/hooks/useConverTime'
+import useConvertTime from '@utils/hooks/useConvertTime'
 import { RoleSlug } from '@utils/api/request-response-types/models/Role'
 import {
   userEditSchema,
