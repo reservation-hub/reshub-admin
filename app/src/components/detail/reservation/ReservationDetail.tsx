@@ -8,6 +8,7 @@ import DataTable from '@components/common/atoms/DataTable'
 import useConvertTime from '@utils/hooks/useConverTime'
 import { ReservationResponse } from '@utils/api/request-response-types/Shop'
 import useConvertStatus from '@utils/hooks/useStatus'
+import dayjs from 'dayjs'
 
 const ReservationDetail = ({
   item,
@@ -19,9 +20,11 @@ const ReservationDetail = ({
     status: string
   }
 
+  console.log(dayjs(item?.reservationDate), item?.reservationDate)
+
   const data = {
     ...item,
-    reservationDate: useConvertTime('ymdhm', item?.reservationDate),
+    reservationDate: dayjs(item?.reservationDate).format('YYYY-MM-DD HH:mm'),
     status: useConvertStatus(item?.status)
   } as ReservationType
 
@@ -45,7 +48,7 @@ const ReservationDetail = ({
           { column: 'ステータス', key: 'status' }
         ]}
         item={data}
-        classes='min-w-[18rem]'
+        classes='min-w-[20rem]'
       />
     </>
   )

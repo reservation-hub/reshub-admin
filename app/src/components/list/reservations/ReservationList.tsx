@@ -15,7 +15,7 @@ const ReservationsList = ({
 }: IListProps) => {
   const rowItems = item?.map((reservation: ReservationForList) => ({
     ...reservation,
-    stylistName: String(reservation.stylistName),
+    stylistName: String(reservation.stylistName) ?? '指名なし',
     reservationDate: useConvertTime('ymd', reservation.reservationDate),
     status: useConvertStatus(reservation.status)
   }))

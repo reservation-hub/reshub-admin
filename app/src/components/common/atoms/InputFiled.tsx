@@ -45,7 +45,13 @@ const InputFiled = ({
           type={type}
           autoComplete={autoComplete || 'off'}
           required={required}
-          {...field}
+          name={field.name}
+          value={field.value}
+          onChange={
+            type === 'number'
+              ? (value) => field.onChange(Number(value))
+              : field.onChange
+          }
           className={error ? `${input} border-error-main` : input}
         />
       </div>

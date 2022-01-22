@@ -18,6 +18,7 @@ const ReservationForm = <T extends ReservationSchema>({
   formState,
   error,
   shopId,
+  defaultValue,
   submitHandler
 }: IReservationFormProps<T>) => {
   const loadMenu = useLoadOptions(baseEndpoint.shops, shopId, 'menu')
@@ -28,6 +29,8 @@ const ReservationForm = <T extends ReservationSchema>({
     undefined,
     true
   )
+
+  console.log(error)
 
   return (
     <FormWrapper
@@ -47,6 +50,7 @@ const ReservationForm = <T extends ReservationSchema>({
           classes='my-3 w-[35rem]'
           control={control}
           error={error?.reservationDay}
+          errorTxt={error?.reservationDay?.message}
         />
         <Selector
           id='reservationTime'
@@ -55,6 +59,7 @@ const ReservationForm = <T extends ReservationSchema>({
           classes='my-3 w-[20rem]'
           control={control}
           error={error?.reservationTime}
+          errorTxt={error?.reservationTime?.message}
           item={TIME_TABLE.map((time) => ({ label: time, value: time }))}
         />
       </div>
@@ -66,6 +71,9 @@ const ReservationForm = <T extends ReservationSchema>({
         control={control}
         defaultAdditional={{ page: 1 }}
         loadOptions={loadUser.loadMore}
+        value={defaultValue?.clientName}
+        error={error?.userId}
+        errorTxt={error?.userId?.message}
       />
       <AsyncSelector
         id='menuId'
@@ -75,15 +83,21 @@ const ReservationForm = <T extends ReservationSchema>({
         control={control}
         defaultAdditional={{ page: 1 }}
         loadOptions={loadMenu.loadMore}
+        value={defaultValue?.menuName}
+        error={error?.menuId}
+        errorTxt={error?.menuId?.message}
       />
       <AsyncSelector
         id='stylistId'
         name='stylistId'
         label='スタイリスト選択'
-        classes='my-3'
+        classes='mt-3 mb-10'
         control={control}
         defaultAdditional={{ page: 1 }}
         loadOptions={loadStylist.loadMore}
+        value={defaultValue?.stylistName}
+        error={error?.stylistId}
+        errorTxt={error?.stylistId?.message}
       />
     </FormWrapper>
   )

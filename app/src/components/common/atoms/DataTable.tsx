@@ -11,11 +11,11 @@ const DataTable = <T extends Record<string, any>>({
   item,
   classes
 }: IDataTableProps<T>) => {
-  const dt = `${classes}  min-w-[13rem] text-[1.6rem] font-bold border-r-0 inline-block p-[1rem] border border-b-0 border-secondary-main text-secondary-main bg-primary`
+  const dt = `${classes}  min-w-[15rem] font-bold border-r-0 p-4 border-b-0 border-primary bg-table-header`
   const dd =
-    'flex-1 text-[1.4rem] m-0 inline-block p-[1rem] border-b-0 border-primary border'
+    'flex-1 text-[1.4rem] m-0 p-4 border-b-0 border-l-0 border bg-secondary-main'
   return (
-    <div className='w-[40rem] h-full border-primary border-b bg-secondary-main'>
+    <div className='w-[51rem] h-full border-b text-[1.6rem]'>
       {cell?.map((value, index) => (
         <div className='flex' key={index}>
           <dt className={dt}>{value.column}</dt>

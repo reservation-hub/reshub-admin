@@ -18,6 +18,7 @@ const ShopDetail = ({
 }: IDetailProps) => {
   type ShopDetail = ShopResponse & {
     businessTime: string
+    seats: string
   }
 
   const data = {
@@ -28,7 +29,8 @@ const ShopDetail = ({
       `${useConvertTime('hm', item?.startTime)} - ${useConvertTime(
         'hm',
         item?.endTime
-      )}` || ''
+      )}` || '',
+    seats: `${item?.seats}席`
   } as ShopDetail
 
   return (
@@ -49,14 +51,15 @@ const ShopDetail = ({
             { column: '電話番号', key: 'phoneNumber' },
             { column: '営業日', key: 'days' },
             { column: '営業時間', key: 'businessTime' },
+            { column: '座席数', key: 'seats' },
             { column: '詳細', key: 'details' }
           ]}
           item={data}
         />
-        <div className='w-[34rem] h-full'>
+        <div className='w-[35rem] h-full'>
           <StylistList item={item?.stylists} />
         </div>
-        <div className='w-[34rem]'>
+        <div className='w-[30rem]'>
           <MenuList item={item?.menu} />
         </div>
       </div>

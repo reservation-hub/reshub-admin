@@ -22,5 +22,6 @@ export interface IFormProps<T> extends OnClickProps {
   formState?: TFormState
   error?: Record<string, any>
   control?: Control<T>
+  defaultValue?: Record<string, any>
   submitHandler: FormEventHandler<HTMLFormElement>
 }

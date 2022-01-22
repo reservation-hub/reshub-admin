@@ -38,3 +38,7 @@ input[type=radio]:checked + .labels {
 .react-select__control {
   @apply h-[4.3rem] rounded-[.25rem];
 }
+
+.react-select-error__control {
+  @apply h-[4.3rem];
+}

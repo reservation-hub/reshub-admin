@@ -15,7 +15,7 @@ const App = () => {
   setAuthToken(sessionToken)
 
   if (!authToken && !sessionToken && !refreshToken) {
-    return <Redirect to='/auth' />
+    history.push('/auth')
   }
 
   useEffect(() => {

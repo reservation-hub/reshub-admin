@@ -22,5 +22,6 @@ export const VALIDATION_TEXT = {
   INVALID_ERROR:
     'メールアドレスかパスワードが伴っています。 もう一度ご確認の上、再度お試しください。',
   IS_EMPTY: 'この項目は必須です。',
-  PHONE_NUMBER_ERROR: '正しい電話番号を入力してください。'
+  PHONE_NUMBER_ERROR: '正しい電話番号を入力してください。',
+  INVALID_NUMBER: '半額数字で入力してください。'
 } as const

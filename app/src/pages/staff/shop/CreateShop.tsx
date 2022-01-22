@@ -35,7 +35,7 @@ const CreateShop = () => {
       startTime: '',
       endTime: '',
       days: [],
-      seats: '',
+      seats: undefined,
       details: ''
     }
   })

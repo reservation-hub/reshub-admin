@@ -26,8 +26,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     mode: 'onSubmit',
     defaultValues: {
       name: menu?.name ?? '',
-      price: String(menu?.price) ?? '',
-      duration: String(menu?.duration) ?? '',
+      price: menu?.price ?? undefined,
+      duration: menu?.duration ?? undefined,
       description: menu?.description ?? ''
     }
   })

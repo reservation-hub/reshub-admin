@@ -31,7 +31,7 @@ const TimePicker = ({
           control={control}
           name={names[0]}
           error={errors?.startTime}
-          errorTxt={errorTxt}
+          errorTxt={errors?.startTime?.message}
         />
         <span> ~ </span>
         <Selector
@@ -40,6 +40,7 @@ const TimePicker = ({
           control={control}
           name={names[1]}
           error={errors?.endTime}
+          errorTxt={errors?.endTime?.message}
         />
       </div>
       {/* {error && <ErrorMessage text={errorTxt} />} */}
