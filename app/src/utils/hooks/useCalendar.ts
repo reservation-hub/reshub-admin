@@ -45,7 +45,7 @@ export const useCalendar = (
     setCalendar(!calendar)
   }, [calendar])
 
-  const reservationsEvent: TCalendarEvnet[] = reservations.map(
+  const reservationsEvent: TCalendarEvnet[] = reservations?.map(
     convertToCalendarEvent
   )
 

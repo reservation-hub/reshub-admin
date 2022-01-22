@@ -7,11 +7,10 @@ import { TFormState } from '@components/form/_PropsType'
 import { createStylist, editStylist } from '@store/actions/stylistAction'
 import useConvertTime from '@utils/hooks/useConverTime'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
-import { getOneShop } from '@store/actions/shopAction'
 import convertScheduleTimeToDateString from '@utils/hooks/useConvertScheduleTimeToDateString'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
