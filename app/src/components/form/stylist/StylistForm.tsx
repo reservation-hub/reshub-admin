@@ -36,7 +36,6 @@ const StylistForm = <T extends StylistSchema>({
         name='price'
         label='指名料'
         classes='my-3'
-        type='number'
         control={control}
         error={error?.price}
         errorTxt={error?.price?.message}

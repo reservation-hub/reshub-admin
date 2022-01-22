@@ -4,10 +4,10 @@ import { z } from 'zod'
 
 export const stylistSchema = z.object({
   name: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  price: z.number({
-    required_error: VALIDATION_TEXT.IS_EMPTY,
-    invalid_type_error: VALIDATION_TEXT.INVALID_NUMBER
-  }),
+  price: z
+    .string()
+    .regex(/^[0-9]+$/, VALIDATION_TEXT.INVALID_NUMBER)
+    .nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
   days: z
     .nativeEnum(ScheduleDays, { required_error: VALIDATION_TEXT.IS_EMPTY })
     .array()

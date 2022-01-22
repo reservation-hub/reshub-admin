@@ -31,7 +31,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     mode: 'onSubmit',
     defaultValues: {
       name: stylist?.name ?? '',
-      price: stylist?.price ?? undefined,
+      price: stylist ? String(stylist.price) : '',
       days: stylist?.days ?? [],
       startTime: useConvertTime('hm', stylist?.startTime) ?? '',
       endTime: useConvertTime('hm', stylist?.endTime) ?? ''

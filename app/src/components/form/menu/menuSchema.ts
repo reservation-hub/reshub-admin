@@ -3,8 +3,14 @@ import { z } from 'zod'
 
 export const menuSchema = z.object({
   name: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  price: z.number({ invalid_type_error: VALIDATION_TEXT.INVALID_NUMBER }),
-  duration: z.number({ invalid_type_error: VALIDATION_TEXT.INVALID_NUMBER }),
+  price: z
+    .string()
+    .regex(/^[0-9]+$/, VALIDATION_TEXT.INVALID_NUMBER)
+    .nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
+  duration: z
+    .string()
+    .regex(/^[0-9]+$/, VALIDATION_TEXT.INVALID_NUMBER)
+    .nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
   description: z.string()
 })
 
