@@ -2,7 +2,7 @@ import React from 'react'
 import IsEmpty from '@components/common/atoms/IsEmpty'
 import { IListProps } from '@components/list/_PropsType'
 import Table from '@components/common/atoms/Table'
-import useConvertTime from '@utils/hooks/useConverTime'
+import useConvertTime from '@utils/hooks/useConvertTime'
 import { ReservationForList } from '@utils/api/request-response-types/models/Reservation'
 import useConvertStatus from '@utils/hooks/useStatus'
 

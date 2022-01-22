@@ -6,9 +6,8 @@ import { useDispatch } from 'react-redux'
 import { addShop, editShopData } from '@store/actions/shopAction'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import useConvertTime from '@utils/hooks/useConverTime'
+import useConvertTime from '@utils/hooks/useConvertTime'
 import { ShopSchema, shopSchema } from '@components/form/shop/shopSchema'
-import convertScheduleTimeToDateString from '@utils/hooks/useConvertScheduleTimeToDateString'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -31,8 +30,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       areaId: shop ? String(shop.areaId) : '',
       prefectureId: shop ? String(shop.prefectureId) : '',
       cityId: shop ? String(shop.cityId) : '',
-      startTime: useConvertTime('hm', shop?.startTime) || '',
-      endTime: useConvertTime('hm', shop?.endTime) || '',
+      startTime: shop?.startTime || '',
+      endTime: shop?.endTime || '',
       days: shop?.days || [],
       seats: shop?.seats || undefined,
       details: shop?.details || ''
@@ -54,8 +53,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
               prefectureId: Number(value.prefectureId),
               cityId: Number(value.cityId),
               seats: Number(value.seats),
-              startTime: convertScheduleTimeToDateString(value.startTime),
-              endTime: convertScheduleTimeToDateString(value.endTime)
+              startTime: value.startTime,
+              endTime: value.endTime
             }
           })
         )
@@ -67,8 +66,8 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             prefectureId: Number(value.prefectureId),
             cityId: Number(value.cityId),
             seats: Number(value.seats),
-            startTime: convertScheduleTimeToDateString(value.startTime),
-            endTime: convertScheduleTimeToDateString(value.endTime)
+            startTime: value.startTime,
+            endTime: value.endTime,
           })
         )
       }

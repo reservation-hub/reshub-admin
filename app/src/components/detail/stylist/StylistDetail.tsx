@@ -6,7 +6,7 @@ import history from '@utils/routes/history'
 import { IDetailProps } from '@components/detail/_PropsType'
 import DataTable from '@components/common/atoms/DataTable'
 import { StylistResponse } from '@utils/api/request-response-types/Shop'
-import useConvertTime from '@/utils/hooks/useConverTime'
+import useConvertTime from '@utils/hooks/useConvertTime'
 
 const StylistDetail = ({
   item,
@@ -22,10 +22,7 @@ const StylistDetail = ({
     ...item,
     price: `${item?.price?.toLocaleString()}¥`,
     days: item?.days?.join(' ・ '),
-    businessTime: `${useConvertTime('hm', item?.startTime)} - ${useConvertTime(
-      'hm',
-      item?.endTime
-    )}`
+    businessTime: `${item?.startTime} - ${item?.endTime}`
   } as StylistDetail
   return (
     <>
