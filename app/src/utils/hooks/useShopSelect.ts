@@ -16,13 +16,19 @@ export const useShopSelect = (page?: number) => {
 
   const { watch, control } = useForm({
     defaultValues: {
-      shopId: (shops && shops.values?.find((shop) => shop)?.id) || ''
+      shopId:
+        (shops && shops.values?.find((shop) => shop)?.id) ||
+        localStorage.getItem('currentShop')
     }
   })
 
   const shopSelect: OptionsType[] = shops.values?.map(convertToOptionsType)
 
-  const option = watch('shopId')
+  const shopId = watch('shopId')
+
+  localStorage.setItem('currentShop', String(shopId))
+
+  const option = localStorage.getItem('currentShop')
 
   useEffect(() => {
     dispatch(fetchShopList(Number(page), 'desc'))

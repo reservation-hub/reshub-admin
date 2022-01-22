@@ -30,7 +30,7 @@ const Reservation = ({
   const [page, setPage] = useState<number>(currentPage)
   const [order, setOrder] = useState<'desc' | 'asc'>('desc')
   const pageChangeHandler = usePagination('reservation', page, setPage)
-  const { option, control, shopSelect, loading } = useShopSelect(page)
+  const { option, control, shopSelect, loading } = useShopSelect(1)
 
   const { reservations } = useSelector((state: RootState) => state.reservation)
 
