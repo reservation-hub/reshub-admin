@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { shopSchema, ShopSchema } from '@components/form/shop/shopSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import convertScheduleTimeToDateString from '@utils/hooks/useConvertScheduleTimeToDateString'
 import Welcome from '@components/form/shop/Welcom'
 
 const CreateShop = () => {
@@ -35,7 +34,7 @@ const CreateShop = () => {
       startTime: '',
       endTime: '',
       days: [],
-      seats: undefined,
+      seats: 0,
       details: ''
     }
   })
@@ -50,8 +49,8 @@ const CreateShop = () => {
         prefectureId: Number(value.prefectureId),
         cityId: Number(value.cityId),
         seats: Number(value.seats),
-        startTime: convertScheduleTimeToDateString(value.startTime),
-        endTime: convertScheduleTimeToDateString(value.endTime)
+        startTime: value.startTime,
+        endTime: value.endTime
       })
     )
   }, [])

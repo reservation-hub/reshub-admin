@@ -9,7 +9,7 @@ import ReservationsList from '@components/list/reservations/ReservationList'
 import MenuList from '@components/list/menu/MenuList'
 import DataTable from '@components/common/atoms/DataTable'
 import { ShopResponse } from '@utils/api/request-response-types/Shop'
-import useConvertTime from '@/utils/hooks/useConverTime'
+import useConvertTime from '@utils/hooks/useConvertTime'
 
 const ShopDetail = ({
   item,
@@ -20,16 +20,13 @@ const ShopDetail = ({
     businessTime: string
     seats: string
   }
+  console.log(item)
 
   const data = {
     ...item,
     address: `${item?.prefectureName}${item?.cityName}${item?.address || ''}`,
     days: item?.days?.join(' ・ '),
-    businessTime:
-      `${useConvertTime('hm', item?.startTime)} - ${useConvertTime(
-        'hm',
-        item?.endTime
-      )}` || '',
+    businessTime: `${item?.startTime} - ${item?.endTime}` || '',
     seats: `${item?.seats}席`
   } as ShopDetail
 

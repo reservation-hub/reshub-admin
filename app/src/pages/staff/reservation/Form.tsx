@@ -14,7 +14,7 @@ import {
 } from '@store/actions/reservationAction'
 import dayjs from '@utils/hooks/useDayJs'
 import { TFormState } from '@components/form/_PropsType'
-import useConvertTime from '@/utils/hooks/useConverTime'
+import useConvertTime from '@utils/hooks/useConvertTime'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
