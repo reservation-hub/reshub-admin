@@ -65,6 +65,7 @@ const CreateShop = () => {
           step === '2' && (
             <SalonForm
               submitHandler={handleSubmit(createShop)}
+              onClick={() => setStep('1')}
               watchLocationIds={watchLocationIds}
               control={control}
               error={errors}

@@ -7,7 +7,7 @@ import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
 import { MatchParams } from '@components/common/_PropsType'
 import MenuList from '@components/list/menu/MenuList'
-import ShopSelect from '@components/list/reservations/ShopSelect'
+import ShopSelect from '@/components/list/ShopSelect'
 import { HEADER_TYPE } from '@constants/Common'
 import { RootState } from '@store/store'
 import history from '@utils/routes/history'
@@ -58,7 +58,7 @@ const Menu = ({
                   modalOpenHandler={() => history.push('/menu/new', { option })}
                 >
                   <ShopSelect
-                    data={shopSelect}
+                    item={shopSelect}
                     control={control}
                     listStyle
                     name='shopId'

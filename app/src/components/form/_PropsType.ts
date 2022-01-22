@@ -7,7 +7,7 @@ import {
 } from '@utils/api/request-response-types/Shop'
 import { UserResponse } from '@utils/api/request-response-types/User'
 import { Control } from 'react-hook-form'
-import { ClassesAndChildren } from '@components/common/_PropsType'
+import { OnClickProps } from '@components/common/_PropsType'
 
 export type TFormState = {
   user?: UserResponse
@@ -18,7 +18,7 @@ export type TFormState = {
   option?: number
 }
 
-export interface IFormProps<T> extends ClassesAndChildren {
+export interface IFormProps<T> extends OnClickProps {
   formState?: TFormState
   error?: Record<string, any>
   control?: Control<T>

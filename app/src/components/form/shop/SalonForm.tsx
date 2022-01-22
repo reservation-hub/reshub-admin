@@ -21,6 +21,7 @@ export interface ISalonFormProps<T> extends IFormProps<T> {
 
 const SalonForm = <T extends ShopSchema>({
   submitHandler,
+  onClick,
   watchLocationIds,
   formValue,
   formState,
@@ -33,7 +34,7 @@ const SalonForm = <T extends ShopSchema>({
     (state: RootState) => state.location
   )
 
-  const data = {
+  const items = {
     areas: Object.values(area).map(convertToOptionsType),
     pref: prefecture?.prefectures?.map(convertToOptionsType),
     city: city?.cities?.map(convertToOptionsType),
@@ -57,6 +58,7 @@ const SalonForm = <T extends ShopSchema>({
       ) : (
         <FormWrapper
           submitHandler={submitHandler}
+          onClick={onClick}
           text={
             formState?.shop?.id
               ? `${formState?.shop?.name}編集`
@@ -83,7 +85,7 @@ const SalonForm = <T extends ShopSchema>({
             error={Boolean(error?.phoneNumber)}
             errorTxt={error?.phoneNumber?.message}
           />
-          <GroupSelector datas={data} control={control} name='group' />
+          <GroupSelector items={items} control={control} name='group' />
           <InputFiled
             id='address'
             label='住所'
@@ -109,7 +111,7 @@ const SalonForm = <T extends ShopSchema>({
             label='営業日'
             classes='my-3'
             control={control}
-            data={data.days}
+            item={items.days}
             checkedData={formValue?.days}
             error={Boolean(error?.days)}
             errorTxt={error?.days?.message}

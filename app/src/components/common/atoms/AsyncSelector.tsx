@@ -11,7 +11,7 @@ export interface IAsyncSelectorProps extends IPickerProps {
 const AsyncSelector = ({
   control,
   name,
-  data,
+  item,
   classes,
   label,
   id,
@@ -30,7 +30,7 @@ const AsyncSelector = ({
       <AsyncPaginate
         additional={defaultAdditional}
         loadOptions={loadOptions}
-        value={data?.find((v) => v.value === field.value)}
+        value={item?.find((v) => v.value === field.value)}
         onChange={(e) => {
           field.onChange(e?.value)
         }}

@@ -55,7 +55,7 @@ const ReservationForm = <T extends ReservationSchema>({
           classes='my-3 w-[20rem]'
           control={control}
           error={error?.reservationTime}
-          data={TIME_TABLE.map((time) => ({ label: time, value: time }))}
+          item={TIME_TABLE.map((time) => ({ label: time, value: time }))}
         />
       </div>
       <AsyncSelector

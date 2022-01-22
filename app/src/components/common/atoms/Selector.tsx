@@ -1,6 +1,5 @@
 import React from 'react'
 import { IPickerProps } from '@components/common/_PropsType'
-import { AiOutlineArrowDown } from 'react-icons/ai'
 import { useController } from 'react-hook-form'
 import ErrorMessage from './ErrorMessage'
 import Select from 'react-select'
@@ -13,16 +12,15 @@ const Selector = ({
   id,
   label,
   name,
-  data,
+  item,
   classes,
   control,
   error,
   value,
   errorTxt
 }: ISelectorProps) => {
-  const select =
-    'p-3 m-0 min-w-0 block w-full border focus:border-primary rounded-[.25rem] appearance-none text-[1.6rem]'
   const { field } = useController({ control, name })
+
   return (
     <div className={`${classes} text-[1.6rem]`}>
       <label htmlFor={id} className='text-table-headerFont'>
@@ -30,10 +28,10 @@ const Selector = ({
       </label>
       <Select
         id={id}
-        options={data}
+        options={item}
         name={name}
-        defaultValue={data?.find((v) => v.value === value)}
-        value={data?.find((v) => v.value === field.value)}
+        defaultValue={item?.find((v) => v.value === value)}
+        value={item?.find((v) => v.value === field.value)}
         onChange={(e) => {
           field.onChange(e?.value)
         }}

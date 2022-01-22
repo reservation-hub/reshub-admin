@@ -9,7 +9,7 @@ const ShopSelect = ({
   id,
   label,
   name,
-  data,
+  item,
   classes,
   listStyle,
   value,
@@ -21,7 +21,7 @@ const ShopSelect = ({
         <Selector
           id={id}
           label={label}
-          data={data}
+          item={item}
           classes={classes}
           control={control}
           value={value}
@@ -38,7 +38,7 @@ const ShopSelect = ({
               label={label}
               control={control}
               name={name}
-              data={data}
+              item={item}
               classes={classes}
               defaultValue={value}
             >

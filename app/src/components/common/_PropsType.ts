@@ -20,7 +20,7 @@ export interface ClassesAndChildren {
 }
 
 export interface IPickerProps extends IInputProps {
-  data?: OptionsType[]
+  item?: OptionsType[]
 }
 
 export interface IInputProps extends ClassesAndChildren {
@@ -38,4 +38,8 @@ export interface IInputProps extends ClassesAndChildren {
   onChange?: React.ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement | { value: unknown }
   >
+}
+
+export interface OnClickProps extends ClassesAndChildren {
+  onClick?: () => void
 }

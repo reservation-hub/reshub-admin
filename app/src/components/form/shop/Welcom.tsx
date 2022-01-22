@@ -1,11 +1,8 @@
 import CustomButton from '@/components/common/atoms/CustomButton'
+import { OnClickProps } from '@/components/common/_PropsType'
 import React from 'react'
 
-export interface IWelcomeProps {
-  onClick?: () => void
-}
-
-const Welcome = ({ onClick }: IWelcomeProps) => {
+const Welcome = ({ onClick }: OnClickProps) => {
   return (
     <div className='text-center text-4xl text-secondary-light border p-11 rounded-md'>
       <div className='grid'>

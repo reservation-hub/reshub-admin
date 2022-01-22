@@ -11,7 +11,7 @@ import Loading from '@components/common/atoms/loading'
 import SubHeader from '@components/common/atoms/SubHeader'
 import { HEADER_TYPE } from '@constants/Common'
 import history from '@utils/routes/history'
-import ShopSelect from '@components/list/reservations/ShopSelect'
+import ShopSelect from '@/components/list/ShopSelect'
 import StylistList from '@components/list/stylist/StylistList'
 import Detail from '@pages/staff/stylist/Detail'
 import Form from './Form'
@@ -55,7 +55,7 @@ const Stylist = ({
                   }
                 >
                   <ShopSelect
-                    data={shopSelect}
+                    item={shopSelect}
                     control={control}
                     listStyle
                     name='shopId'

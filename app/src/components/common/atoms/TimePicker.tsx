@@ -26,7 +26,7 @@ const TimePicker = ({
       <div className='flex w-full justify-between items-center'>
         <Selector
           classes='w-[26rem]'
-          data={timeTable}
+          item={timeTable}
           control={control}
           name={names[0]}
           error={error}
@@ -34,7 +34,7 @@ const TimePicker = ({
         <span> ~ </span>
         <Selector
           classes='w-[26rem]'
-          data={timeTable}
+          item={timeTable}
           control={control}
           name={names[1]}
           error={error}

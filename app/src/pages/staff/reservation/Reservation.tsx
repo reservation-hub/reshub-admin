@@ -1,10 +1,7 @@
-import React, { createRef, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Loading from '@components/common/atoms/loading'
-import ShopSelect from '@components/list/reservations/ShopSelect'
-import {
-  fetchReservations,
-  fetchReservationsForCalendar
-} from '@store/actions/reservationAction'
+import ShopSelect from '@/components/list/ShopSelect'
+import { fetchReservations } from '@store/actions/reservationAction'
 import SubHeader from '@components/common/atoms/SubHeader'
 import MainTemplate from '@components/common/layout/MainTemplate'
 import Section from '@components/common/layout/Section'
@@ -85,7 +82,7 @@ const Reservation = ({
                   }
                 >
                   <ShopSelect
-                    data={shopSelect}
+                    item={shopSelect}
                     control={control}
                     listStyle
                     name='shopId'

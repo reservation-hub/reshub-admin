@@ -1,8 +1,7 @@
 import React from 'react'
-import { ClassesAndChildren } from '@components/common/_PropsType'
+import { OnClickProps } from '@components/common/_PropsType'
 
-export interface IButtonProps extends ClassesAndChildren {
-  onClick?: () => void
+export interface IButtonProps extends OnClickProps {
   disabled?: boolean
 }
 
