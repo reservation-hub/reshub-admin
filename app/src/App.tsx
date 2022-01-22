@@ -5,7 +5,6 @@ import Cookies from 'js-cookie'
 import RouterIndex from '@utils/routes/RouterIndex'
 import setAuthToken from '@utils/api/setAuthToken'
 import history from './utils/routes/history'
-import { Redirect } from 'react-router-dom'
 
 const App = () => {
   const dispatch = useDispatch()

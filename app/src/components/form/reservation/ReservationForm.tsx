@@ -74,6 +74,7 @@ const ReservationForm = <T extends ReservationSchema>({
         value={defaultValue?.clientName}
         error={error?.userId}
         errorTxt={error?.userId?.message}
+        numric
       />
       <AsyncSelector
         id='menuId'
@@ -86,6 +87,7 @@ const ReservationForm = <T extends ReservationSchema>({
         value={defaultValue?.menuName}
         error={error?.menuId}
         errorTxt={error?.menuId?.message}
+        numric
       />
       <AsyncSelector
         id='stylistId'
@@ -98,6 +100,7 @@ const ReservationForm = <T extends ReservationSchema>({
         value={defaultValue?.stylistName}
         error={error?.stylistId}
         errorTxt={error?.stylistId?.message}
+        numric
       />
     </FormWrapper>
   )
