@@ -51,7 +51,7 @@ export const useCalendar = (
         id: String(item.id),
         shopId: String(item.shopId),
         title: `${item.clientName}/${item.menuName}`,
-        date: useConvertTime('ymdhm', item.reservationDate),
+        date: item.reservationDate,
         color: convertStatusToColor(item.status)
       }
     },

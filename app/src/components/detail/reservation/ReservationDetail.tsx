@@ -5,10 +5,8 @@ import { HEADER_TYPE } from '@constants/Common'
 import history from '@utils/routes/history'
 import { IDetailProps } from '@components/detail/_PropsType'
 import DataTable from '@components/common/atoms/DataTable'
-import useConvertTime from '@utils/hooks/useConvertTime'
 import { ReservationResponse } from '@utils/api/request-response-types/Shop'
 import useConvertStatus from '@utils/hooks/useStatus'
-import dayjs from 'dayjs'
 
 const ReservationDetail = ({
   item,
@@ -22,7 +20,7 @@ const ReservationDetail = ({
 
   const data = {
     ...item,
-    reservationDate: useConvertTime('ymdhm', item?.reservationDate),
+    reservationDate: item?.reservationDate,
     status: useConvertStatus(item?.status)
   } as ReservationType
 
