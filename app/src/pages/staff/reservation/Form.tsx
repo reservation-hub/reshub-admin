@@ -76,8 +76,6 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
     [dispatch]
   )
 
-  console.log(errors)
-
   return (
     <ReservationForm
       submitHandler={handleSubmit(onSubmit)}

@@ -6,7 +6,7 @@ import { HEADER_TYPE } from '@constants/Common'
 import Section from '@components/common/layout/Section'
 import DataTable from '@components/common/atoms/DataTable'
 import { UserResponse } from '@utils/api/request-response-types/User'
-import useConvertTime from '@/utils/hooks/useConvertTime'
+import useConvertTime from '@utils/hooks/useConvertTime'
 
 const UserDetail = ({
   item,
