@@ -6,7 +6,6 @@ import history from '@utils/routes/history'
 import { IDetailProps } from '@components/detail/_PropsType'
 import DataTable from '@components/common/atoms/DataTable'
 import { StylistResponse } from '@utils/api/request-response-types/Shop'
-import useConvertTime from '@utils/hooks/useConvertTime'
 
 const StylistDetail = ({
   item,
