@@ -14,13 +14,13 @@ export const useConvertTime = (
 ): string => {
   switch (format) {
     case 'ymd': {
-      return dayjs(dateTime).utc().format('YYYY-MM-DD')
+      return dayjs(dateTime).format('YYYY-MM-DD')
     }
     case 'ymdhm': {
-      return dayjs(dateTime).utc().format('YYYY-MM-DD HH:mm')
+      return dayjs(dateTime).format('YYYY-MM-DD HH:mm')
     }
     case 'hm': {
-      return dayjs(dateTime).utc().format('HH:mm')
+      return dayjs(dateTime).format('HH:mm')
     }
     case 'ymdhm-hm': {
       return `${dayjs(dateTime).format('YYYY-MM-DD HH:mm')} - ${dayjs(
