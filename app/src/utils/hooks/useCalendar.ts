@@ -2,13 +2,15 @@ import { fetchReservationsForCalendar } from '@store/actions/reservationAction'
 import FullCalendar from '@fullcalendar/react'
 import { createRef, useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { ReservationForList } from '../api/request-response-types/models/Reservation'
+import { ReservationForList, ReservationStatus } from '../api/request-response-types/models/Reservation'
+import useConvertTime from './useConvertTime'
 
-export type TCalendarEvnet = {
+export type TCalendarEvent = {
   id: string
   shopId: string
   title: string
   date: string
+  color: string
 }
 
 export const useCalendar = (
@@ -29,13 +31,25 @@ export const useCalendar = (
     )
   }
 
+  const convertStatusToColor = (s: ReservationStatus): string => {
+    switch (s) {
+      case ReservationStatus.CANCELLED: 
+        return 'red'
+      case ReservationStatus.COMPLETED:
+        return 'blue'
+      default:
+        return 'yellow'
+    }
+  }
+
   const convertToCalendarEvent = useCallback(
-    (item: ReservationForList): TCalendarEvnet => {
+    (item: ReservationForList): TCalendarEvent => {
       return {
         id: String(item.id),
         shopId: String(item.shopId),
         title: `${item.clientName}/${item.menuName}`,
-        date: String(item.reservationDate)
+        date: useConvertTime('ymdhm', item.reservationDate),
+        color: convertStatusToColor(item.status),
       }
     },
     []
@@ -45,7 +59,7 @@ export const useCalendar = (
     setCalendar(!calendar)
   }, [calendar])
 
-  const reservationsEvent: TCalendarEvnet[] = reservations?.map(
+  const reservationsEvent: TCalendarEvent[] = reservations?.map(
     convertToCalendarEvent
   )
 
