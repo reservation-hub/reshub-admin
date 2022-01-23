@@ -67,7 +67,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
             cityId: Number(value.cityId),
             seats: Number(value.seats),
             startTime: value.startTime,
-            endTime: value.endTime,
+            endTime: value.endTime
           })
         )
       }

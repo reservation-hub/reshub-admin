@@ -5,13 +5,19 @@ import allLocales from '@fullcalendar/core/locales-all'
 import interactionPlugin from '@fullcalendar/interaction'
 import history from '@utils/routes/history'
 
-export interface ICalnederProps {
-  events: { id: string; shopId: string; title: string; date: string }[]
+export interface ICalendarProps {
+  events: {
+    id: string
+    shopId: string
+    title: string
+    date: string
+    color: string
+  }[]
   customButtons?: { prev: Record<string, any>; next: Record<string, any> }
   calendarRef?: RefObject<FullCalendar>
 }
 
-const Calendar = ({ events, customButtons, calendarRef }: ICalnederProps) => {
+const Calendar = ({ events, customButtons, calendarRef }: ICalendarProps) => {
   const calendarClickHandler = useCallback(
     (arg: EventClickArg) => {
       history.push(`/reservation/detail/${arg.event?.id}`, {
