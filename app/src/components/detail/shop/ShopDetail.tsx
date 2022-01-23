@@ -19,7 +19,6 @@ const ShopDetail = ({
     businessTime: string
     seats: string
   }
-  console.log(item)
 
   const data = {
     ...item,

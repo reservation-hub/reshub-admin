@@ -30,8 +30,6 @@ const ReservationForm = <T extends ReservationSchema>({
     true
   )
 
-  console.log(error)
-
   return (
     <FormWrapper
       submitHandler={submitHandler}

@@ -32,7 +32,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
       startTime: shop?.startTime || '',
       endTime: shop?.endTime || '',
       days: shop?.days || [],
-      seats: shop?.seats || undefined,
+      seats: shop?.seats || 0,
       details: shop?.details || ''
     }
   })

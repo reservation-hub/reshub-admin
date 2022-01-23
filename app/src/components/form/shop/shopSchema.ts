@@ -14,7 +14,10 @@ export const shopSchema = z.object({
   cityId: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
   startTime: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
   endTime: z.string().nonempty({ message: VALIDATION_TEXT.IS_EMPTY }),
-  seats: z.number({ invalid_type_error: VALIDATION_TEXT.INVALID_NUMBER }),
+  seats: z.preprocess(
+    (s) => parseInt(s as string, 10),
+    z.number({ invalid_type_error: VALIDATION_TEXT.INVALID_NUMBER })
+  ),
   days: z
     .nativeEnum(ScheduleDays, { required_error: VALIDATION_TEXT.IS_EMPTY })
     .array()
