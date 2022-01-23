@@ -2,7 +2,10 @@ import { fetchReservationsForCalendar } from '@store/actions/reservationAction'
 import FullCalendar from '@fullcalendar/react'
 import { createRef, useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { ReservationForList, ReservationStatus } from '../api/request-response-types/models/Reservation'
+import {
+  ReservationForList,
+  ReservationStatus
+} from '../api/request-response-types/models/Reservation'
 import useConvertTime from './useConvertTime'
 
 export type TCalendarEvent = {
@@ -33,7 +36,7 @@ export const useCalendar = (
 
   const convertStatusToColor = (s: ReservationStatus): string => {
     switch (s) {
-      case ReservationStatus.CANCELLED: 
+      case ReservationStatus.CANCELLED:
         return 'red'
       case ReservationStatus.COMPLETED:
         return 'blue'
@@ -49,7 +52,7 @@ export const useCalendar = (
         shopId: String(item.shopId),
         title: `${item.clientName}/${item.menuName}`,
         date: useConvertTime('ymdhm', item.reservationDate),
-        color: convertStatusToColor(item.status),
+        color: convertStatusToColor(item.status)
       }
     },
     []

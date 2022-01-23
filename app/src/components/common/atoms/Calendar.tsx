@@ -6,7 +6,13 @@ import interactionPlugin from '@fullcalendar/interaction'
 import history from '@utils/routes/history'
 
 export interface ICalendarProps {
-  events: { id: string; shopId: string; title: string; date: string, color: string }[]
+  events: {
+    id: string
+    shopId: string
+    title: string
+    date: string
+    color: string
+  }[]
   customButtons?: { prev: Record<string, any>; next: Record<string, any> }
   calendarRef?: RefObject<FullCalendar>
 }
