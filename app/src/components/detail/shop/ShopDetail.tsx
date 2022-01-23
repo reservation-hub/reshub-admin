@@ -9,7 +9,6 @@ import ReservationsList from '@components/list/reservations/ReservationList'
 import MenuList from '@components/list/menu/MenuList'
 import DataTable from '@components/common/atoms/DataTable'
 import { ShopResponse } from '@utils/api/request-response-types/Shop'
-import useConvertTime from '@utils/hooks/useConvertTime'
 
 const ShopDetail = ({
   item,

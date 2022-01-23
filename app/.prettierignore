@@ -8,3 +8,5 @@ node_modules/*
 src/entities/*
 src/utils/api/request-response-types/*
 src/styles
+
+build
