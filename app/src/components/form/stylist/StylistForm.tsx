@@ -46,7 +46,7 @@ const StylistForm = <T extends StylistSchema>({
         classes='my-3'
         name='days'
         control={control}
-        item={Days.map((day) => ({ value: day.name, label: day.name }))}
+        item={Days}
         error={error?.days}
         errorTxt={error?.days?.message}
       />

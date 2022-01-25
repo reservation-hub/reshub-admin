@@ -1,14 +1,16 @@
+import { ScheduleDays } from "@request-response-types/models/Common"
+
 export type TDays = {
-  name: string
-  slug: string
+  value: string
+  label: string
 }
 
 export const Days: TDays[] = [
-  { name: '月', slug: 'MONDAY' },
-  { name: '火', slug: 'TUESDAY' },
-  { name: '水', slug: 'WEDNESDAY' },
-  { name: '木', slug: 'THURSDAY' },
-  { name: '金', slug: 'FRIDAY' },
-  { name: '土', slug: 'SATURDAY' },
-  { name: '日', slug: 'SUNDAY' }
+  { value: ScheduleDays.MONDAY, label: ScheduleDays.MONDAY },
+  { value: ScheduleDays.TUESDAY, label: ScheduleDays.TUESDAY },
+  { value: ScheduleDays.WEDNESDAY, label: ScheduleDays.WEDNESDAY },
+  { value: ScheduleDays.THURSDAY, label: ScheduleDays.THURSDAY },
+  { value: ScheduleDays.FRIDAY, label: ScheduleDays.FRIDAY },
+  { value: ScheduleDays.SATURDAY, label: ScheduleDays.SATURDAY },
+  { value: ScheduleDays.SUNDAY, label: ScheduleDays.SUNDAY }
 ]
