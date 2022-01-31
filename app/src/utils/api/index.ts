@@ -9,7 +9,7 @@ const BASE_URL: string = process.env.REACT_APP_BASE_URL
 // axiosのインスタンス生成
 const instance: AxiosInstance = axios.create({
   withCredentials: true,
-  baseURL: BASE_URL
+  baseURL: BASE_URL,
 })
 
 export default instance

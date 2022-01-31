@@ -24,7 +24,7 @@ const ReservationForm = <T extends ReservationSchema>({
   const loadMenu = useLoadOptions(baseEndpoint.shops, shopId, 'menu')
   const loadStylist = useLoadOptions(baseEndpoint.shops, shopId, 'stylist')
   const loadUser = useLoadOptions(
-    `${baseEndpoint.users}`,
+    baseEndpoint.users,
     undefined,
     undefined,
     true
