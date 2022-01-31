@@ -6,9 +6,9 @@ COPY ./app/public ./public
 COPY ./app/src ./src
 COPY ./app/package.json .
 COPY ./app/yarn.lock .
-COPY ./app/tsconfig.* .
-COPY ./app/*.config.js .
-COPY ./app/.* .
+COPY ./app/tsconfig.* ./
+COPY ./app/*.config.js ./
+COPY ./app/.* ./
 
 COPY ./scripts /scripts
 
