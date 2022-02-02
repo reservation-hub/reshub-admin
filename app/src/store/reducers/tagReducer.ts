@@ -12,7 +12,7 @@ const initialState: TagsState = {
   msg: ''
 }
 
-const userReducer = (state = initialState, action: tagAction) => {
+const tagReducer = (state = initialState, action: tagAction) => {
   switch (action.type) {
     case TAG_TYPE.REQUEST_START:
       return {
@@ -23,13 +23,13 @@ const userReducer = (state = initialState, action: tagAction) => {
       return {
         ...state,
         loading: false,
-        users: action.payload
+        tags: action.payload
       }
     case TAG_TYPE.GET_SUCCESS: {
       return {
         ...state,
         loading: false,
-        user: action.payload
+        tag: action.payload
       }
     }
     case TAG_TYPE.ADD_SUCCESS:
@@ -61,4 +61,4 @@ const userReducer = (state = initialState, action: tagAction) => {
   }
 }
 
-export default userReducer
+export default tagReducer

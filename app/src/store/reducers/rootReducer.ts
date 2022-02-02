@@ -11,6 +11,7 @@ import location from './locationReducer'
 import reservation from './reservationReducer'
 import menu from './menuReducer'
 import stylist from './stylistReducer'
+import tag from './tagReducer'
 import storage from 'redux-persist/lib/storage'
 import persistReducer from 'redux-persist/es/persistReducer'
 
@@ -28,5 +29,6 @@ export const rootReducer = combineReducers({
   location,
   reservation,
   menu,
-  stylist
+  stylist,
+  tag,
 })
