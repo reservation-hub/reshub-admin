@@ -7,6 +7,7 @@ import reservation from '@utils/api/endpoints/reservation'
 import stylist from '@utils/api/endpoints/stylist'
 import menu from '@utils/api/endpoints/menu'
 import dashboard from '@utils/api/endpoints/dashboard'
+import tags from '@utils/api/endpoints/tags'
 
 //-----------------------------------------------
 // get method
@@ -20,7 +21,8 @@ export const baseEndpoint = {
   area: '/areas',
   prefecture: '/prefectures',
   dashboard: '/dashboard',
-  auth: '/auth'
+  auth: '/auth',
+  tags: '/tags'
 } as const
 
 const apiEndpoint = {
@@ -33,6 +35,7 @@ const apiEndpoint = {
   reservation,
   stylist,
   menu,
+  tags,
   instance
 }
 
