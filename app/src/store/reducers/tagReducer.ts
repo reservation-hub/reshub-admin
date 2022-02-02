@@ -3,7 +3,10 @@
 //----------------------------------
 import { TagsState, TAG_TYPE } from '@store/types/tagTypes'
 import { tagAction } from '@store/actions/tagAction'
-import { TagListResponse, TagResponse } from '@utils/api/request-response-types/Tag'
+import {
+  TagListResponse,
+  TagResponse
+} from '@utils/api/request-response-types/Tag'
 
 const initialState: TagsState = {
   loading: false,

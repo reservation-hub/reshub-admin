@@ -51,13 +51,13 @@ export const PUBLIC_PATHS: TRouter[] = [
   { path: '/create_shop', exact: false, component: CreateShop },
   { path: '/settings', exact: false, component: Setting },
   { path: '/menu', exact: false, component: Menu },
-  { path: '/test', exact: false, component: TestForm },
+  { path: '/test', exact: false, component: TestForm }
 ]
 
 export const COMMON_PATHS: TRouter[] = [
   { path: '/auth', exact: true, component: Login },
   { path: '/auth_error', exact: false, component: NotLoggedIn },
-  { path: '/tags', exact: false, component: Tags},
+  { path: '/tags', exact: false, component: Tags },
   { path: '*', exact: false, component: Error }
 ]
 
@@ -65,7 +65,7 @@ export const ADMIN_NAV_MENU: TNavMenu[] = [
   { path: '/dashboard', value: 'ダッシュボード' },
   { path: '/users', value: 'ユーザー一覧' },
   { path: '/salon', value: 'サロン一覧' },
-  { path: '/tags', value: 'タグ管理' },
+  { path: '/tags', value: 'タグ管理' }
 ]
 
 export const STAFF_NAV_MENU: TNavMenu[] = [

@@ -1,4 +1,4 @@
-import { ScheduleDays } from "@request-response-types/models/Common"
+import { ScheduleDays } from '@request-response-types/models/Common'
 
 export type TDays = {
   value: string

@@ -30,5 +30,5 @@ export const rootReducer = combineReducers({
   reservation,
   menu,
   stylist,
-  tag,
+  tag
 })

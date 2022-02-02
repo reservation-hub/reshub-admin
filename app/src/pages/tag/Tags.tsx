@@ -17,61 +17,60 @@ import Paginate from '@components/common/atoms/Paginate'
 import TagList from '@components/list/tag/TagList'
 import history from '@utils/routes/history'
 
-
 const Tags = ({
-    match,
-    location
-  }: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
-    const dispatch = useDispatch()
-    const currentPage = location?.state?.currentPage
-    const [page, setPage] = useState<number>(currentPage)
-    const { tags, loading } = useSelector((state: RootState) => state.tag)
-    const [correct, setCorrect] = useState<boolean>(true)
-    const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
-  
-    const pageChangeHandler = usePagination('tags', page, setPage)
-  
-    useEffect(() => {
-      if (match.isExact) dispatch(fetchTagList(Number(currentPage), order))
-    }, [page, dispatch, currentPage, correct])
-    
-    console.log(tags)
+  match,
+  location
+}: RouteComponentProps<MatchParams, any, TCurrentPage>) => {
+  const dispatch = useDispatch()
+  const currentPage = location?.state?.currentPage
+  const [page, setPage] = useState<number>(currentPage)
+  const { tags, loading } = useSelector((state: RootState) => state.tag)
+  const [correct, setCorrect] = useState<boolean>(true)
+  const order: 'asc' | 'desc' = correct ? 'desc' : 'asc'
 
-    return (
-      <MainTemplate>
-        <Switch>
-          <Section>
-            <Route exact path='/tags'>
-              {loading ? (
-                <Loading />
-              ) : (
-                <>
-                  <SubHeader
-                    text='タグ一覧'
-                    modalOpenHandler={() => history.push('/tags/form')}
-                    type={HEADER_TYPE.LIST}
+  const pageChangeHandler = usePagination('tags', page, setPage)
+
+  useEffect(() => {
+    if (match.isExact) dispatch(fetchTagList(Number(currentPage), order))
+  }, [page, dispatch, currentPage, correct])
+
+  console.log(tags)
+
+  return (
+    <MainTemplate>
+      <Switch>
+        <Section>
+          <Route exact path='/tags'>
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                <SubHeader
+                  text='タグ一覧'
+                  modalOpenHandler={() => history.push('/tags/form')}
+                  type={HEADER_TYPE.LIST}
+                >
+                  <CustomButton
+                    classes='ml-2'
+                    onClick={() => setCorrect(!correct)}
                   >
-                    <CustomButton
-                      classes='ml-2'
-                      onClick={() => setCorrect(!correct)}
-                    >
-                      並び替え
-                    </CustomButton>
-                  </SubHeader>
-                  <TagList item={tags.values} />
-                  <Paginate
-                    totalPage={tags.totalCount}
-                    page={currentPage}
-                    pageChangeHandler={pageChangeHandler}
-                  />
-                </>
-              )}
-            </Route>
-            <Route path='/tags/form' component={Form} />
-          </Section>
-        </Switch>
-      </MainTemplate>
-    )
-  }
+                    並び替え
+                  </CustomButton>
+                </SubHeader>
+                <TagList item={tags.values} />
+                <Paginate
+                  totalPage={tags.totalCount}
+                  page={currentPage}
+                  pageChangeHandler={pageChangeHandler}
+                />
+              </>
+            )}
+          </Route>
+          <Route path='/tags/form' component={Form} />
+        </Section>
+      </Switch>
+    </MainTemplate>
+  )
+}
 
 export default React.memo(Tags)

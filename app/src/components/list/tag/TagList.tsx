@@ -14,9 +14,7 @@ const TagList = ({
 
   return (
     <Table
-      cell={[
-        { column: 'タグ', key: 'slug' },
-      ]}
+      cell={[{ column: 'タグ', key: 'slug' }]}
       row={rowItems}
       usePaginate={usePaginate}
       page={page}

@@ -40,9 +40,7 @@ export const patchTag = async (
   })
 }
 
-export const deleteTag = async (
-  id: number
-): Promise<AxiosResponse<string>> => {
+export const deleteTag = async (id: number): Promise<AxiosResponse<string>> => {
   return await instance.delete<string>(`${baseEndpoint.tags}/${id}`)
 }
 
