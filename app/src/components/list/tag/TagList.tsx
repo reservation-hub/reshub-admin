@@ -11,7 +11,7 @@ const TagList = ({
   pageChangeHandler
 }: IListProps) => {
   const rowItems = item?.map((item: TagResponse) => item)
-
+  const onClick = () => null
   return (
     <Table
       cell={[{ column: 'タグ', key: 'slug' }]}
@@ -20,6 +20,8 @@ const TagList = ({
       page={page}
       totalPage={totalPage}
       pageChangeHandler={pageChangeHandler}
+      onClick={onClick}
+      classes={'w-1/2 mx-auto'}
     />
   )
 }
