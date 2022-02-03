@@ -10,6 +10,7 @@ export interface ITableProps<T> extends IPaginateProps {
   index?: number
   url?: string
   subParams?: boolean
+  onClick?: () => void
 }
 
 const Table = <T extends Record<string, any>>({
@@ -21,7 +22,8 @@ const Table = <T extends Record<string, any>>({
   page,
   pageChangeHandler,
   usePaginate,
-  classes
+  classes,
+  onClick
 }: ITableProps<T>): React.ReactElement => {
   const styled = 'w-full bg-secondary-main rounded-[.25rem] p-[10rem] mb-5'
   return (
@@ -43,11 +45,14 @@ const Table = <T extends Record<string, any>>({
                 <td
                   className='p-4'
                   key={index}
-                  onClick={() =>
-                    history.push(
-                      `/${url}/${item['id']}`,
-                      subParams ? { shopId: item['shopId'] } : null
-                    )
+                  onClick={
+                    onClick
+                      ? onClick
+                      : () =>
+                          history.push(
+                            `/${url}/${item['id']}`,
+                            subParams ? { shopId: item['shopId'] } : null
+                          )
                   }
                 >
                   {item[field.key] || '-'}

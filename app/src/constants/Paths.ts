@@ -12,6 +12,7 @@ import CreateShop from '@pages/staff/shop/CreateShop'
 import Menu from '@pages/staff/menu/Menu'
 import TestForm from '@pages/test'
 import Setting from '@pages/setting/Setting'
+import Tags from '@pages/tag/Tags'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -56,13 +57,15 @@ export const PUBLIC_PATHS: TRouter[] = [
 export const COMMON_PATHS: TRouter[] = [
   { path: '/auth', exact: true, component: Login },
   { path: '/auth_error', exact: false, component: NotLoggedIn },
+  { path: '/tags', exact: false, component: Tags },
   { path: '*', exact: false, component: Error }
 ]
 
 export const ADMIN_NAV_MENU: TNavMenu[] = [
   { path: '/dashboard', value: 'ダッシュボード' },
   { path: '/users', value: 'ユーザー一覧' },
-  { path: '/salon', value: 'サロン一覧' }
+  { path: '/salon', value: 'サロン一覧' },
+  { path: '/tags', value: 'タグ管理' }
 ]
 
 export const STAFF_NAV_MENU: TNavMenu[] = [
@@ -76,5 +79,6 @@ export const STAFF_NAV_MENU: TNavMenu[] = [
       { path: '/reservation', value: '予約管理' }
     ]
   },
+  { path: '/tags', value: 'タグ管理' },
   { path: '/settings', value: '設定' }
 ]

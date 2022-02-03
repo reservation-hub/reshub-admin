@@ -8,6 +8,7 @@ import {
 import { UserResponse } from '@utils/api/request-response-types/User'
 import { Control } from 'react-hook-form'
 import { OnClickProps } from '@components/common/_PropsType'
+import { TagResponse } from '@/utils/api/request-response-types/Tag'
 
 export type TFormState = {
   user?: UserResponse
@@ -15,6 +16,7 @@ export type TFormState = {
   stylist?: StylistResponse
   menu?: MenuResponse
   reservation?: ReservationResponse
+  tag?: TagResponse
   option?: number
 }
 
