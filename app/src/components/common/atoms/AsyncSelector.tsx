@@ -8,6 +8,7 @@ export interface IAsyncSelectorProps extends IPickerProps {
   loadOptions: LoadOptions<any, any, { page: any }>
   defaultAdditional?: { page: number }
   numric?: boolean
+  isMulti?: boolean
 }
 
 const AsyncSelector = ({
@@ -22,6 +23,7 @@ const AsyncSelector = ({
   defaultAdditional,
   value,
   numric,
+  isMulti,
   loadOptions
 }: IAsyncSelectorProps) => {
   const { field } = useController({ control, name })
@@ -36,12 +38,21 @@ const AsyncSelector = ({
       <AsyncPaginate
         additional={defaultAdditional}
         loadOptions={loadOptions}
-        value={item?.find((v) => v.value === field.value)}
+        value={isMulti ? item?.find((v) => [v.value] === [field.value]) : item?.find((v) => v.value === field.value)}
         onChange={(e) => {
-          numric ? field.onChange(Number(e?.value)) : field.onChange(e?.value)
+          if (numric && isMulti) {
+            field.onChange(e.map((v:any) => Number(v.value)))
+          } else if (numric) {
+            field.onChange(Number(e?.value))
+          } else if (isMulti) {
+            field.onChange(e.map((v:any) => v.value))
+          } else {
+            field.onChange(e?.value)
+          }
         }}
         defaultInputValue={value}
         classNamePrefix={error ? 'react-select-error' : 'react-select'}
+        isMulti={isMulti}
       />
       {error && <ErrorMessage text={errorTxt} />}
     </div>

@@ -10,6 +10,7 @@ import { LoadOptions } from 'react-select-async-paginate'
 import { GroupBase, OptionsOrGroups } from 'react-select'
 import { UserListResponse } from '@utils/api/request-response-types/User'
 import { OptionsType } from '@components/common/_PropsType'
+import { TagListResponse } from '@utils/api/request-response-types/Tag'
 
 export const useLoadOptions = <
   T extends
@@ -18,6 +19,7 @@ export const useLoadOptions = <
     | ShopListResponse
     | StylistListResponse
     | UserListResponse
+    | TagListResponse
 >(
   baseEndpoint: string,
   shopId?: number,
@@ -31,7 +33,7 @@ export const useLoadOptions = <
         : `${baseEndpoint}?page=${page}`
     )
     const data = res.data?.values?.map((v: any, i: number) => ({
-      label: String(v.name || v.username),
+      label: String(v.name || v.username || v.slug),
       value: String(v.id)
     }))
 

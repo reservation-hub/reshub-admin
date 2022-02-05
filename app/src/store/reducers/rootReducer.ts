@@ -12,6 +12,7 @@ import reservation from './reservationReducer'
 import menu from './menuReducer'
 import stylist from './stylistReducer'
 import tag from './tagReducer'
+import shopTag from './shopTagReducer'
 import storage from 'redux-persist/lib/storage'
 import persistReducer from 'redux-persist/es/persistReducer'
 
@@ -30,5 +31,6 @@ export const rootReducer = combineReducers({
   reservation,
   menu,
   stylist,
-  tag
+  tag,
+  shopTag
 })

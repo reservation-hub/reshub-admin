@@ -13,6 +13,7 @@ import Menu from '@pages/staff/menu/Menu'
 import TestForm from '@pages/test'
 import Setting from '@pages/setting/Setting'
 import Tags from '@pages/tag/Tags'
+import ShopTags from '@/pages/staff/tag/ShopTags'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -51,7 +52,8 @@ export const PUBLIC_PATHS: TRouter[] = [
   { path: '/create_shop', exact: false, component: CreateShop },
   { path: '/settings', exact: false, component: Setting },
   { path: '/menu', exact: false, component: Menu },
-  { path: '/test', exact: false, component: TestForm }
+  { path: '/test', exact: false, component: TestForm },
+  { path: '/shop_tags', exact: false, component: ShopTags }
 ]
 
 export const COMMON_PATHS: TRouter[] = [
@@ -64,8 +66,10 @@ export const COMMON_PATHS: TRouter[] = [
 export const ADMIN_NAV_MENU: TNavMenu[] = [
   { path: '/dashboard', value: 'ダッシュボード' },
   { path: '/users', value: 'ユーザー一覧' },
-  { path: '/salon', value: 'サロン一覧' },
-  { path: '/tags', value: 'タグ管理' }
+  { path: '/salon', value: 'サロン一覧', subItem: [
+    { path: '/shop_tags', value: 'タグ管理' },
+  ] },
+  { path: '/tags', value: 'タグ' }
 ]
 
 export const STAFF_NAV_MENU: TNavMenu[] = [
@@ -76,9 +80,10 @@ export const STAFF_NAV_MENU: TNavMenu[] = [
     subItem: [
       { path: '/stylist', value: 'スタイリスト管理' },
       { path: '/menu', value: 'メニュー管理' },
-      { path: '/reservation', value: '予約管理' }
+      { path: '/reservation', value: '予約管理' },
+      { path: '/shop_tags', value: 'タグ管理' },
     ]
   },
-  { path: '/tags', value: 'タグ管理' },
+  { path: '/tags', value: 'タグ' },
   { path: '/settings', value: '設定' }
 ]
