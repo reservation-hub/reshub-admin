@@ -23,19 +23,24 @@ export const getTags = async (
 export const linkTag = async (
   tagData: TagLinkQuery
 ): Promise<AxiosResponse<string>> => {
-  return await instance.post<string>(`${baseEndpoint.shops}/${tagData.shopId}/tags`, { ...tagData.params })
+  return await instance.post<string>(
+    `${baseEndpoint.shops}/${tagData.shopId}/tags`,
+    { ...tagData.params }
+  )
 }
 
 export const unlinkTag = async (
   query: TagUnlinkQuery
 ): Promise<AxiosResponse<string>> => {
-  return await instance.delete<string>(`${baseEndpoint.shops}/${query.shopId}/${query.tagId}`)
+  return await instance.delete<string>(
+    `${baseEndpoint.shops}/${query.shopId}/${query.tagId}`
+  )
 }
 
 const shopTags = {
   getTags,
   linkTag,
-  unlinkTag,
+  unlinkTag
 }
 
 export default shopTags

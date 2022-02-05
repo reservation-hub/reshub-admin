@@ -34,7 +34,8 @@ const ShopTags = ({
   const pageChangeHandler = usePagination('shop_tags', page, setPage)
 
   useEffect(() => {
-    if (match.isExact) dispatch(fetchTagList(Number(option), Number(currentPage), order))
+    if (match.isExact)
+      dispatch(fetchTagList(Number(option), Number(currentPage), order))
   }, [page, dispatch, currentPage, correct])
 
   return (
@@ -48,7 +49,9 @@ const ShopTags = ({
               <>
                 <SubHeader
                   text='タグ一覧'
-                  modalOpenHandler={() => history.push('/shop_tags/form', { option })}
+                  modalOpenHandler={() =>
+                    history.push('/shop_tags/form', { option })
+                  }
                   type={HEADER_TYPE.LIST}
                 >
                   <ShopSelect

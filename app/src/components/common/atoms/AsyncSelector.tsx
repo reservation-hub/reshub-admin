@@ -38,14 +38,18 @@ const AsyncSelector = ({
       <AsyncPaginate
         additional={defaultAdditional}
         loadOptions={loadOptions}
-        value={isMulti ? item?.find((v) => [v.value] === [field.value]) : item?.find((v) => v.value === field.value)}
+        value={
+          isMulti
+            ? item?.find((v) => [v.value] === [field.value])
+            : item?.find((v) => v.value === field.value)
+        }
         onChange={(e) => {
           if (numric && isMulti) {
-            field.onChange(e.map((v:any) => Number(v.value)))
+            field.onChange(e.map((v: any) => Number(v.value)))
           } else if (numric) {
             field.onChange(Number(e?.value))
           } else if (isMulti) {
-            field.onChange(e.map((v:any) => v.value))
+            field.onChange(e.map((v: any) => v.value))
           } else {
             field.onChange(e?.value)
           }

@@ -6,10 +6,7 @@ import { TFormState } from '@components/form/_PropsType'
 import { linkTag } from '@store/actions/shopTagAction'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  TagSchema,
-  tagSchema
-} from '@components/form/shopTag/shopTagSchema'
+import { TagSchema, tagSchema } from '@components/form/shopTag/shopTagSchema'
 
 const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
   const dispatch = useDispatch()
@@ -29,7 +26,7 @@ const Form = ({ location }: RouteComponentProps<any, any, TFormState>) => {
 
   const onSubmit: SubmitHandler<TagSchema> = useCallback(
     async (value) => {
-        dispatch(linkTag({shopId: Number(option), params: value}))
+      dispatch(linkTag({ shopId: Number(option), params: value }))
     },
     [dispatch]
   )

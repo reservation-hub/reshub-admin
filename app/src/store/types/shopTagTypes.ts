@@ -1,9 +1,7 @@
 //----------------------------------
 // redux action types tags
 //----------------------------------
-import {
-  TagListResponse,
-} from '@utils/api/request-response-types/Shop'
+import { TagListResponse } from '@utils/api/request-response-types/Shop'
 
 export const SHOP_TAG_TYPE = {
   REQUEST_START: 'SHOP_TAGS_REQUEST_START',

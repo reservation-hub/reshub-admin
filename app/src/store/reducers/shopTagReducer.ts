@@ -3,9 +3,7 @@
 //----------------------------------
 import { ShopTagsState, SHOP_TAG_TYPE } from '@store/types/shopTagTypes'
 import { tagAction } from '@store/actions/shopTagAction'
-import {
-  TagListResponse,
-} from '@utils/api/request-response-types/Shop'
+import { TagListResponse } from '@utils/api/request-response-types/Shop'
 
 const initialState: ShopTagsState = {
   loading: false,

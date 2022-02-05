@@ -66,9 +66,11 @@ export const COMMON_PATHS: TRouter[] = [
 export const ADMIN_NAV_MENU: TNavMenu[] = [
   { path: '/dashboard', value: 'ダッシュボード' },
   { path: '/users', value: 'ユーザー一覧' },
-  { path: '/salon', value: 'サロン一覧', subItem: [
-    { path: '/shop_tags', value: 'タグ管理' },
-  ] },
+  {
+    path: '/salon',
+    value: 'サロン一覧',
+    subItem: [{ path: '/shop_tags', value: 'タグ管理' }]
+  },
   { path: '/tags', value: 'タグ' }
 ]
 
@@ -81,7 +83,7 @@ export const STAFF_NAV_MENU: TNavMenu[] = [
       { path: '/stylist', value: 'スタイリスト管理' },
       { path: '/menu', value: 'メニュー管理' },
       { path: '/reservation', value: '予約管理' },
-      { path: '/shop_tags', value: 'タグ管理' },
+      { path: '/shop_tags', value: 'タグ管理' }
     ]
   },
   { path: '/tags', value: 'タグ' },

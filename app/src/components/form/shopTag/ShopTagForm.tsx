@@ -19,10 +19,7 @@ const ShopTagForm = <T extends TagSchema>({
 }: IShopTagFormProps<T>) => {
   const loadTags = useLoadOptions(baseEndpoint.tags, undefined, undefined, true)
   return (
-    <FormWrapper
-      submitHandler={submitHandler}
-      text={'新規登録'}
-    >
+    <FormWrapper submitHandler={submitHandler} text={'新規登録'}>
       <AsyncSelector
         id='tagIds'
         label='タグ'
