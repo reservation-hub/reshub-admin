@@ -10,6 +10,7 @@ import dashboard from './dashboardReducer'
 import location from './locationReducer'
 import reservation from './reservationReducer'
 import menu from './menuReducer'
+import review from './reviewReducer'
 import stylist from './stylistReducer'
 import tag from './tagReducer'
 import shopTag from './shopTagReducer'
@@ -32,5 +33,6 @@ export const rootReducer = combineReducers({
   menu,
   stylist,
   tag,
-  shopTag
+  shopTag,
+  review
 })
