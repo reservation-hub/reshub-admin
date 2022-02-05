@@ -8,6 +8,7 @@ import stylist from '@utils/api/endpoints/stylist'
 import menu from '@utils/api/endpoints/menu'
 import dashboard from '@utils/api/endpoints/dashboard'
 import tags from '@utils/api/endpoints/tags'
+import shopTags from '@utils/api/endpoints/shopTags'
 
 //-----------------------------------------------
 // get method
@@ -36,6 +37,7 @@ const apiEndpoint = {
   stylist,
   menu,
   tags,
+  shopTags,
   instance
 }
 
