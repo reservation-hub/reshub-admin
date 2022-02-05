@@ -8,6 +8,8 @@ export interface ISubHeaderProps extends TextProps {
   type?: typeof HEADER_TYPE[keyof typeof HEADER_TYPE]
   modalOpenHandler?: () => void
   subModalHandler?: () => void
+  noDelete?: boolean
+  noEdit?: boolean
 }
 
 const SubHeader = ({
@@ -15,20 +17,27 @@ const SubHeader = ({
   modalOpenHandler,
   type,
   subModalHandler,
-  children
+  children,
+  noDelete,
+  noEdit,
 }: ISubHeaderProps) => {
+  const showDeleteButton = type === HEADER_TYPE.DETAIL && noDelete === undefined
+  const showEditButton = type !== HEADER_TYPE.DASHBOARD && noEdit === undefined
+  console.log(type === HEADER_TYPE.DETAIL)
+  console.log(showDeleteButton)
+  console.log(showEditButton)
   return (
     <div className='flex justify-between items-center mb-4'>
       <H1 classes='text-primary' text={text} />
 
       <div className='flex items-center'>
         {children}
-        {type === HEADER_TYPE.DETAIL && (
+        {showDeleteButton && (
           <CustomButton classes='ml-2' onClick={subModalHandler}>
             削除
           </CustomButton>
         )}
-        {type !== HEADER_TYPE.DASHBOARD && (
+        {showEditButton && (
           <CustomButton classes='ml-2' onClick={modalOpenHandler}>
             {type === HEADER_TYPE.LIST ? '新規登録' : '編集'}
           </CustomButton>

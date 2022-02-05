@@ -14,6 +14,7 @@ import TestForm from '@pages/test'
 import Setting from '@pages/setting/Setting'
 import Tags from '@pages/tag/Tags'
 import ShopTags from '@/pages/staff/tag/ShopTags'
+import Reviews from '@/pages/staff/review/Reviews'
 
 export type TStaticContext = {
   statusCode?: number | undefined
@@ -53,7 +54,8 @@ export const PUBLIC_PATHS: TRouter[] = [
   { path: '/settings', exact: false, component: Setting },
   { path: '/menu', exact: false, component: Menu },
   { path: '/test', exact: false, component: TestForm },
-  { path: '/shop_tags', exact: false, component: ShopTags }
+  { path: '/shop_tags', exact: false, component: ShopTags },
+  { path: '/review', exact: false, component: Reviews },
 ]
 
 export const COMMON_PATHS: TRouter[] = [
@@ -83,7 +85,8 @@ export const STAFF_NAV_MENU: TNavMenu[] = [
       { path: '/stylist', value: 'スタイリスト管理' },
       { path: '/menu', value: 'メニュー管理' },
       { path: '/reservation', value: '予約管理' },
-      { path: '/shop_tags', value: 'タグ管理' }
+      { path: '/shop_tags', value: 'タグ管理' },
+      { path: '/review', value: '口コミ管理' }
     ]
   },
   { path: '/tags', value: 'タグ' },
