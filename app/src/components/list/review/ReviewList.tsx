@@ -16,7 +16,7 @@ const ReviewList = ({
     <Table
       cell={[
         { column: 'お名前', key: 'clientName' },
-        { column: '評価', key: 'score' },
+        { column: '評価', key: 'score' }
       ]}
       row={rowIems}
       usePaginate={usePaginate}

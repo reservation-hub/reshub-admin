@@ -17,7 +17,7 @@ const ReservationDetail = ({
   type ReviewType = ReviewResponse
 
   const data = {
-    ...item,
+    ...item
   } as ReviewType
 
   return (
@@ -35,7 +35,7 @@ const ReservationDetail = ({
           { column: '予約者', key: 'clientName' },
           { column: '店舗名', key: 'shopName' },
           { column: '評価', key: 'score' },
-          { column: '口コミ', key: 'text' },
+          { column: '口コミ', key: 'text' }
         ]}
         item={data}
         classes='min-w-[20rem]'

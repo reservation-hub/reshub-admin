@@ -55,7 +55,7 @@ export const PUBLIC_PATHS: TRouter[] = [
   { path: '/menu', exact: false, component: Menu },
   { path: '/test', exact: false, component: TestForm },
   { path: '/shop_tags', exact: false, component: ShopTags },
-  { path: '/review', exact: false, component: Reviews },
+  { path: '/review', exact: false, component: Reviews }
 ]
 
 export const COMMON_PATHS: TRouter[] = [

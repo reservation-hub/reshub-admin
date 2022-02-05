@@ -30,7 +30,7 @@ export const getReview = async (
 
 const review = {
   fetchAll,
-  getReview,
+  getReview
 }
 
 export default review

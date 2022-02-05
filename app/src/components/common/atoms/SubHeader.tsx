@@ -19,7 +19,7 @@ const SubHeader = ({
   subModalHandler,
   children,
   noDelete,
-  noEdit,
+  noEdit
 }: ISubHeaderProps) => {
   const showDeleteButton = type === HEADER_TYPE.DETAIL && noDelete === undefined
   const showEditButton = type !== HEADER_TYPE.DASHBOARD && noEdit === undefined

@@ -21,9 +21,7 @@ const Detail = ({
   const convertId = Number(id)
   const shopId = Number(location.state.shopId)
 
-  const { review, loading } = useSelector(
-    (state: RootState) => state.review
-  )
+  const { review, loading } = useSelector((state: RootState) => state.review)
 
   console.log(review)
 
@@ -31,17 +29,7 @@ const Detail = ({
     dispatch(getReview(shopId, convertId))
   }, [dispatch, shopId, convertId])
 
-  return (
-    <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <ReviewDetail
-          item={review}
-        />
-      )}
-    </>
-  )
+  return <>{loading ? <Loading /> : <ReviewDetail item={review} />}</>
 }
 
 export default Detail

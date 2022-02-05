@@ -1,6 +1,6 @@
 import {
   ReviewListResponse,
-  ReviewResponse,
+  ReviewResponse
 } from '@utils/api/request-response-types/Shop'
 import { REVIEW_TYPE } from '@store/types/reviewTypes'
 import { RootState, typedAction } from '@store/store'
@@ -55,7 +55,6 @@ export const getReview =
       history.push('/error')
     }
   }
-
 
 export type ReviewAction =
   | ReturnType<typeof reviewRequestStart>
