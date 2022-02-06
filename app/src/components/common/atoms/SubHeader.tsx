@@ -23,9 +23,6 @@ const SubHeader = ({
 }: ISubHeaderProps) => {
   const showDeleteButton = type === HEADER_TYPE.DETAIL && noDelete === undefined
   const showEditButton = type !== HEADER_TYPE.DASHBOARD && noEdit === undefined
-  console.log(type === HEADER_TYPE.DETAIL)
-  console.log(showDeleteButton)
-  console.log(showEditButton)
   return (
     <div className='flex justify-between items-center mb-4'>
       <H1 classes='text-primary' text={text} />

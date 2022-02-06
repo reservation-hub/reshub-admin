@@ -33,8 +33,6 @@ const ShopReviews = ({
 
   const pageChangeHandler = usePagination('review', page, setPage)
 
-  console.log(reviews)
-
   useEffect(() => {
     if (match.isExact)
       dispatch(fetchAllReview(Number(option), Number(currentPage), order))

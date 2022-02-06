@@ -18,6 +18,7 @@ const ShopDetail = ({
   type ShopDetail = ShopResponse & {
     businessTime: string
     seats: string
+    totalSales: string
   }
 
   const data = {
@@ -25,7 +26,8 @@ const ShopDetail = ({
     address: `${item?.prefectureName}${item?.cityName}${item?.address || ''}`,
     days: item?.days?.join(' ・ '),
     businessTime: `${item?.startTime} - ${item?.endTime}` || '',
-    seats: `${item?.seats}席`
+    seats: `${item?.seats}席`,
+    totalSales: `￥${item?.totalSalesForCurrentMonth}`
   } as ShopDetail
 
   return (
@@ -47,7 +49,8 @@ const ShopDetail = ({
             { column: '営業日', key: 'days' },
             { column: '営業時間', key: 'businessTime' },
             { column: '座席数', key: 'seats' },
-            { column: '詳細', key: 'details' }
+            { column: '詳細', key: 'details' },
+            { column: '売り上げ', key: 'totalSales' }
           ]}
           item={data}
         />
