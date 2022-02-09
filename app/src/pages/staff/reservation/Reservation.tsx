@@ -33,15 +33,13 @@ const Reservation = ({
   const { option, control, shopSelect, loading } = useShopSelect(1)
 
   const { reservations } = useSelector((state: RootState) => state.reservation)
-
   const {
     calendar,
     calendarRef,
     reservationsEvent,
     viewCalendar,
     fetchForCalendar
-  } = useCalendar(Number(option), reservations.values)
-
+  } = useCalendar(Number(option), reservations?.values ?? [])
   const calendarCustomButton = {
     prev: {
       text: '先月',
@@ -110,7 +108,7 @@ const Reservation = ({
                   />
                 ) : (
                   <ReservationsList
-                    item={option ? reservations.values : []}
+                    item={option ? reservations?.values : []}
                     page={page}
                     totalPage={reservations?.totalCount}
                     pageChangeHandler={pageChangeHandler}

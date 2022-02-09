@@ -73,7 +73,7 @@ const Salon = ({
                   </CustomButton>
                 </SubHeader>
                 <SalonList
-                  item={shops.values}
+                  item={shops?.values ?? []}
                   admin={authCheck}
                   usePaginate
                   totalPage={shops.totalCount}

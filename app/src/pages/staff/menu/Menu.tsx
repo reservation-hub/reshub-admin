@@ -73,7 +73,7 @@ const Menu = ({
                   </CustomButton>
                 </SubHeader>
                 <MenuList
-                  item={option ? menus.values : []}
+                  item={option ? menus?.values : []}
                   page={page}
                   totalPage={menus?.totalCount}
                   pageChangeHandler={pageChangeHandler}
